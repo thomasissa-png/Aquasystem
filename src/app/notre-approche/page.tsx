@@ -1,10 +1,17 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { SITE_NAME } from '@/lib/constants';
-import { SITE_URL, absoluteUrl } from '@/lib/seo';
+import {
+  SITE_URL,
+  absoluteUrl,
+  breadcrumbJsonLd,
+  faqPageJsonLd,
+} from '@/lib/seo';
 import { photoSrc } from '@/content/realisations';
 import { SectionCTA } from '@/components/sections/SectionCTA';
 import { PhotoPlaceholder } from '@/components/sections/PhotoPlaceholder';
+import { FaqSection } from '@/components/sections/FaqSection';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { FAQ_NOTRE_APPROCHE, toFaqJsonLd } from '@/content/faq';
 
 /**
  * Notre approche (/notre-approche) — F-04, WF-04.
@@ -13,14 +20,32 @@ import { PhotoPlaceholder } from '@/components/sections/PhotoPlaceholder';
  * vue aérienne (ancrage) sans photo réelle → PhotoPlaceholder.
  */
 export const metadata: Metadata = {
-  title: 'Notre approche — De la vision à la réalisation, un seul interlocuteur',
-  description: `Comment ${SITE_NAME} porte un projet d’extérieur complet en Yvelines et Hauts-de-Seine : écoute, bureau d’études, réalisation et suivi — une seule équipe de bout en bout.`,
+  // Metas finales — metadata-templates.md Page 4 (title 59 car., ancrage géo).
+  title: { absolute: 'Notre méthode — Piscine, jardin, extérieur complet en 78/92' },
+  description:
+    "Aqua System et Les Terres Essentielles portent ensemble votre projet d'extérieur en 78/92 — de la conception au suivi. Un seul interlocuteur.",
   alternates: { canonical: absoluteUrl('/notre-approche/') },
   openGraph: {
     url: `${SITE_URL}/notre-approche/`,
-    title: 'Notre approche — De la vision à la réalisation',
+    title: 'Notre méthode — Piscine & Jardin intégrés, 78/92',
+    images: [
+      {
+        url: absoluteUrl('/og-image.jpg'),
+        width: 1200,
+        height: 630,
+        alt: "Bureau d'études intégré Aqua System et Les Terres Essentielles",
+      },
+    ],
   },
 };
+
+/** Fil d'Ariane (BreadcrumbList JSON-LD) — seo-strategy.md §C.6.3. */
+const BREADCRUMB = breadcrumbJsonLd([
+  { name: 'Notre approche', path: '/notre-approche/' },
+]);
+
+/** FAQPage JSON-LD — content-restructuring.md §C.1 (Q/R @geo). */
+const FAQ_JSONLD = faqPageJsonLd(toFaqJsonLd(FAQ_NOTRE_APPROCHE));
 
 const STEPS = [
   {
@@ -69,6 +94,8 @@ const COMMUNES = [
 export default function NotreApprochePage() {
   return (
     <>
+      <JsonLd data={BREADCRUMB} />
+      <JsonLd data={FAQ_JSONLD} />
       {/* Hero split — texte gauche (fond clair), photo droite. */}
       <section className="bg-background">
         <div className="mx-auto grid max-w-container items-stretch gap-0 lg:min-h-[70vh] lg:grid-cols-2">
@@ -149,6 +176,15 @@ export default function NotreApprochePage() {
             <p className="mt-6 font-serif text-xl italic text-foreground md:text-2xl">
               {COMMUNES.join(' — ')}
             </p>
+            {/* Ajout factuel GEO (faq-geo-copy.md §B.2 — wording @copywriter exact) —
+                extractibilité géographique : zone complète + 2 adresses dans le
+                même passage. */}
+            <p className="mt-4 text-base leading-8 text-foreground-secondary">
+              — et l'ensemble des communes des Yvelines (78) et des Hauts-de-Seine
+              (92). Aqua System est établie à Freneuse (Yvelines, 78840), à moins
+              de 60 km de Paris. Les Terres Essentielles, partenaire paysagiste,
+              opère aux Alluets-le-Roi (78580).
+            </p>
           </div>
           <figure>
             <PhotoPlaceholder
@@ -158,6 +194,14 @@ export default function NotreApprochePage() {
           </figure>
         </div>
       </section>
+
+      {/* FAQ GEO — content-restructuring.md §A.1 (après la timeline, avant le CTA).
+          Q3 « durée de chantier » omise (placeholder [À CONFIRMER fondateur]). */}
+      <FaqSection
+        heading="Questions fréquentes"
+        items={FAQ_NOTRE_APPROCHE.map((i) => ({ q: i.q, a: i.a }))}
+        tone="default"
+      />
 
       <SectionCTA
         amorce="Parlez-nous de votre projet. Nous vous dirons ce qu'on peut faire ensemble."

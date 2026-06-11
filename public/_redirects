@@ -1,0 +1,30 @@
+# Cloudflare Pages — _redirects
+# Format : [source] [destination] [code]   (un par ligne, # = commentaire)
+# Réf. : https://developers.cloudflare.com/pages/configuration/redirects/
+#
+# ─────────────────────────────────────────────────────────────────────────────
+# REDIRECTIONS 301 aqua-system.fr → domaine ombrelle (seo-strategy.md §E.2)
+# ─────────────────────────────────────────────────────────────────────────────
+# STATUT : COMMENTÉES — À ACTIVER À LA BASCULE.
+#
+# Conditions d'activation (seo-strategy.md §E.2) :
+#   1. Le nouveau site est en production stable depuis >= 30 jours.
+#   2. Le domaine ombrelle final est tranché (naming) et configuré.
+#   3. aqua-system.fr est servi/proxifié par ce projet Cloudflare Pages
+#      (sinon ces règles s'appliquent au mauvais host — préférer Bulk Redirects
+#      côté Cloudflare si aqua-system.fr reste un site distinct).
+#
+# Pour activer : décommenter les 10 lignes ci-dessous (retirer le « # » initial).
+# Ne JAMAIS utiliser de 302 ici — les redirections de bascule doivent être
+# permanentes (301) pour transférer le jus SEO historique.
+#
+# /                          /                       301
+# /votre-piscine             /piscines-bien-etre/    301
+# /galerie                   /realisations/          301
+# /spa-collection-highlife   /piscines-bien-etre/    301
+# /spa-collection-limelight  /piscines-bien-etre/    301
+# /spa-collection-hot-spot   /piscines-bien-etre/    301
+# /spa-accessoires           /piscines-bien-etre/    301
+# /spa-pourquoi-hotspring    /piscines-bien-etre/    301
+# /Saunas_hammams            /piscines-bien-etre/    301
+# /contact                   /contact/               301

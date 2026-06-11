@@ -1,0 +1,29 @@
+REDIRECTIONS 301 aqua-system.fr → domaine ombrelle (seo-strategy.md §E.2)
+=========================================================================
+
+À COLLER tel quel dans public/_redirects (Cloudflare Pages) ou Cloudflare
+Bulk Redirects À LA BASCULE. Source : seo-strategy.md §E.1/E.2 (10 URLs indexées).
+
+Conditions d'activation :
+  1. Nouveau site en production stable >= 30 jours.
+  2. Domaine ombrelle final tranché + configuré.
+  3. aqua-system.fr servi par ce projet Pages (sinon : Bulk Redirects).
+
+Toujours 301 (permanent), jamais 302 — transfert du jus SEO historique.
+
+-------------------------------------------------------------------------
+/                          /                       301
+/votre-piscine             /piscines-bien-etre/    301
+/galerie                   /realisations/          301
+/spa-collection-highlife   /piscines-bien-etre/    301
+/spa-collection-limelight  /piscines-bien-etre/    301
+/spa-collection-hot-spot   /piscines-bien-etre/    301
+/spa-accessoires           /piscines-bien-etre/    301
+/spa-pourquoi-hotspring    /piscines-bien-etre/    301
+/Saunas_hammams            /piscines-bien-etre/    301
+/contact                   /contact/               301
+-------------------------------------------------------------------------
+
+NOTE : Cloudflare _redirects SUPPORTE les commentaires (# en début de ligne).
+Les 10 règles sont donc déjà présentes — COMMENTÉES — dans public/_redirects.
+Activer = retirer le « # » devant chaque ligne de règle.

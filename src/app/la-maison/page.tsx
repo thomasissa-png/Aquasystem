@@ -1,11 +1,17 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Mail, MapPin, Phone } from 'lucide-react';
-import { CONTACT, PARTNER_CONTACT, SITE_NAME } from '@/lib/constants';
-import { SITE_URL, absoluteUrl } from '@/lib/seo';
+import { CONTACT, PARTNER_CONTACT } from '@/lib/constants';
+import {
+  SITE_URL,
+  absoluteUrl,
+  breadcrumbJsonLd,
+  nicolasBergJsonLd,
+} from '@/lib/seo';
 import { photoSrc } from '@/content/realisations';
 import { Hero } from '@/components/sections/Hero';
 import { SectionCTA } from '@/components/sections/SectionCTA';
+import { JsonLd } from '@/components/seo/JsonLd';
 
 /**
  * La maison (/la-maison) — F-06, WF-06.
@@ -15,15 +21,30 @@ import { SectionCTA } from '@/components/sections/SectionCTA';
  * (pas de logo SVG fourni — à substituer si assets reçus).
  */
 export const metadata: Metadata = {
-  title: `La maison — 30 ans d’expertise, Freneuse (78) — ${SITE_NAME}`,
+  // Metas finales — metadata-templates.md Page 5 (title 58 car., « Freneuse » conservé).
+  title: { absolute: "Aqua System — Pisciniste Freneuse (78), 30 ans d'expertise" },
   description:
-    'Aqua System et Les Terres Essentielles : histoire, valeurs, équipe. Plus de 30 ans d’ancrage dans les Yvelines et les Hauts-de-Seine. Certification Socotec CSP/ESP-001.',
+    "Aqua System et Les Terres Essentielles — 30 ans dans le 78/92. Certification Socotec. Membre L'Esprit Piscine. Rencontrons-nous.",
   alternates: { canonical: absoluteUrl('/la-maison/') },
   openGraph: {
     url: `${SITE_URL}/la-maison/`,
-    title: `La maison — 30 ans d'expertise, Freneuse (78)`,
+    title: "Aqua System — Pisciniste Freneuse (78), 30 ans d'expertise",
+    images: [
+      {
+        url: absoluteUrl('/og-image.jpg'),
+        width: 1200,
+        height: 630,
+        alt: 'Aqua System — Pisciniste à Freneuse dans les Yvelines depuis 30 ans',
+      },
+    ],
   },
 };
+
+/** Fil d'Ariane (BreadcrumbList JSON-LD) — seo-strategy.md §C.6.3. */
+const BREADCRUMB = breadcrumbJsonLd([{ name: 'La maison', path: '/la-maison/' }]);
+
+/** Person JSON-LD Nicolas Berg (content-restructuring.md §C.2). */
+const PERSON = nicolasBergJsonLd();
 
 const VALEURS = [
   {
@@ -46,6 +67,8 @@ const VALEURS = [
 export default function LaMaisonPage() {
   return (
     <>
+      <JsonLd data={BREADCRUMB} />
+      <JsonLd data={PERSON} />
       {/* Hero — FALLBACK : photo de réalisation (photo Nicolas Berg non fournie). */}
       <Hero
         imageSrc={photoSrc('piscine-couloir-demeure-ancienne', '1280w')}
@@ -94,6 +117,12 @@ export default function LaMaisonPage() {
                 Membre du réseau L'Esprit Piscine. Certification Socotec
                 « Professionnels de la piscine » CSP/ESP-001.
               </p>
+              {/* Distinctions récentes (faq-geo-copy.md §B.3 — wording @copywriter
+                  exact) — faits vérifiables, augmentent la fraîcheur perçue LLM. */}
+              <p>
+                Trophée d'Or FPP 2024 — Piscine intérieure. Award Bronze EUSA 2025
+                — Piscines intérieures privées (Barcelone).
+              </p>
             </div>
             <ul className="mt-5 flex flex-wrap gap-2">
               <li className="rounded-md bg-background-proof px-3 py-1.5 text-xs font-medium text-foreground">
@@ -101,6 +130,9 @@ export default function LaMaisonPage() {
               </li>
               <li className="rounded-md bg-background-proof px-3 py-1.5 text-xs font-medium text-foreground">
                 Réseau L'Esprit Piscine
+              </li>
+              <li className="rounded-md bg-background-proof px-3 py-1.5 text-xs font-medium text-foreground">
+                Trophée Or FPP 2024
               </li>
             </ul>
             <address className="mt-5 text-sm not-italic text-foreground-secondary">

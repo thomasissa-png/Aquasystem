@@ -2,7 +2,9 @@ import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { CONTACT } from '@/lib/constants';
+import { absoluteUrl, breadcrumbJsonLd } from '@/lib/seo';
 import { ContactForm } from '@/components/forms/ContactForm';
+import { JsonLd } from '@/components/seo/JsonLd';
 
 /**
  * /contact — page formulaire de conversion (F-08).
@@ -12,15 +14,21 @@ import { ContactForm } from '@/components/forms/ContactForm';
  * Composition : WF-08 — split asymétrique conviction-first sobre.
  */
 export const metadata: Metadata = {
-  title: 'Contact',
+  // Metas finales — metadata-templates.md Page 8 (title enrichi + CTA + géo ;
+  // canonical absolu avec trailing slash, conforme trailingSlash:true).
+  title: { absolute: 'Parlez-nous de votre projet — Contact, Yvelines 78/92' },
   description:
-    "Décrivez-nous votre projet d'aménagement extérieur — piscine, jardin ou projet complet. Un seul interlocuteur pour les belles propriétés du 78/92.",
-  alternates: { canonical: '/contact' },
+    "Décrivez-nous votre projet extérieur — piscine, jardin ou les deux. Un seul interlocuteur pour les belles propriétés du 78/92. Nous vous répondons.",
+  alternates: { canonical: absoluteUrl('/contact/') },
 };
+
+/** Fil d'Ariane (BreadcrumbList JSON-LD) — seo-strategy.md §C.6.3. */
+const BREADCRUMB = breadcrumbJsonLd([{ name: 'Contact', path: '/contact/' }]);
 
 export default function ContactPage() {
   return (
     <div className="bg-background">
+      <JsonLd data={BREADCRUMB} />
       <div className="mx-auto grid max-w-container gap-12 px-4 pb-16 pt-16 md:px-8 lg:grid-cols-12 lg:gap-16 lg:pt-24">
         {/* Colonne gauche — texte + coordonnées */}
         <div className="flex flex-col lg:col-span-5">

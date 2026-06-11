@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, CheckCircle, FileText } from 'lucide-react';
-import { SITE_URL, absoluteUrl } from '@/lib/seo';
+import { SITE_URL, absoluteUrl, breadcrumbJsonLd } from '@/lib/seo';
 import {
   REALISATIONS,
   getRealisation,
@@ -13,6 +13,7 @@ import {
 } from '@/content/realisations';
 import { ButtonLink } from '@/components/ui/ButtonLink';
 import { CrossSellingBlock } from '@/components/sections/CrossSellingBlock';
+import { JsonLd } from '@/components/seo/JsonLd';
 
 /**
  * Fiche réalisation (/realisations/[slug]) — F-05b, WF-05b.
@@ -35,14 +36,16 @@ export function generateMetadata({
   const r = getRealisation(params.slug);
   if (!r) return { title: 'Réalisation introuvable' };
   const ogImg = absoluteUrl(photoSrc(r.photos[0]!.base, '1280w'));
+  // Metas dynamiques — metadata-templates.md Page 9. Le titre factuel inclut
+  // déjà la zone (realisations.ts) → on n'y ajoute pas de commune inventée.
   return {
-    title: `${r.title} — Réalisation`,
-    description: `${r.cardType} — ${r.zone}. Une réalisation Aqua System dans l'ouest parisien.`,
+    title: `${r.title} — Réalisation Aqua System`,
+    description: `${r.cardType} — ${r.zone}. Une réalisation Aqua System dans l'ouest parisien. Parlez-nous de votre projet.`,
     alternates: { canonical: absoluteUrl(`/realisations/${r.slug}/`) },
     openGraph: {
       url: `${SITE_URL}/realisations/${r.slug}/`,
       title: r.title,
-      images: [{ url: ogImg, width: 1280, height: 720 }],
+      images: [{ url: ogImg, width: 1280, height: 720, alt: r.photos[0]!.alt }],
     },
   };
 }
@@ -60,8 +63,28 @@ export default function RealisationFiche({
   // Cross-sell conditionnel : seulement si piscine "seule" (pas projet complet).
   const showCrossSell = r.type === 'piscine_bien_etre';
 
+  // BreadcrumbList JSON-LD (3 niveaux) — seo-strategy.md §C.6.3.
+  const breadcrumb = breadcrumbJsonLd([
+    { name: 'Réalisations', path: '/realisations/' },
+    { name: r.title, path: `/realisations/${r.slug}/` },
+  ]);
+
+  // ImageObject JSON-LD sur la photo principale — seo-strategy.md §C.6.4.
+  // Données factuelles uniquement (alt réel, zone large, jamais de commune inventée).
+  const imageObject = {
+    '@context': 'https://schema.org',
+    '@type': 'ImageObject',
+    contentUrl: absoluteUrl(photoSrc(main.base, '1280w')),
+    name: `${r.title} — Réalisation Aqua System`,
+    description: main.alt,
+    creator: { '@type': 'Organization', name: 'Aqua System' },
+    copyrightHolder: { '@type': 'Organization', name: 'SARL AQUA SYSTEM' },
+  };
+
   return (
     <>
+      <JsonLd data={breadcrumb} />
+      <JsonLd data={imageObject} />
       {/* Breadcrumb */}
       <div className="bg-background">
         <div className="mx-auto max-w-container px-4 py-6 md:px-8">

@@ -17,11 +17,12 @@ import { JsonLd } from '@/components/seo/JsonLd';
  * réelle disponible → PhotoPlaceholder unique (jamais 2 identiques).
  */
 export const metadata: Metadata = {
-  // Metas finales — metadata-templates.md Page 2 + description enrichie GEO
-  // (content-restructuring.md §B.5 : distinctions FPP/EUSA injectées).
-  title: 'Piscines sur mesure Yvelines & 92 — Pisciniste Aqua System',
+  // Metas finales — metadata-templates.md Page 2 (source de vérité @seo).
+  // Arbitrage B.5 (orchestrateur, 2026-06-11) : version enrichie GEO retenue —
+  // Trophée Or FPP 2024 vérifié, signal CTR différenciant premium (141 car.).
+  title: { absolute: 'Piscines sur mesure Yvelines & 92 — Pisciniste Aqua System' },
   description:
-    "Pisciniste certifié Socotec CSP/ESP-001, membre L'Esprit Piscine. Trophée Or FPP 2024. Piscines sur mesure, spas, saunas en Yvelines et Hauts-de-Seine — plus de 30 ans d'ancrage local.",
+    'Pisciniste certifié Socotec, Trophée Or FPP 2024. Piscines sur mesure en Yvelines (78) et Hauts-de-Seine (92). Parlez-nous de votre projet.',
   alternates: { canonical: absoluteUrl('/piscines-bien-etre/') },
   openGraph: {
     url: `${SITE_URL}/piscines-bien-etre/`,
@@ -85,19 +86,22 @@ export default function PiscinesBienEtrePage() {
       <section className="bg-background">
         <div className="mx-auto max-w-container px-4 py-16 md:px-8">
           <ProofBadges />
-          {/* Synthèse texte extractible par les LLM (content-restructuring.md §B.1) —
-              les badges visuels ne sont pas lus par les moteurs IA, ce paragraphe
-              rend les claims sourcés extractibles. Visible (pas sr-only). */}
-          <p className="mx-auto mt-8 max-w-[70ch] text-base leading-8 text-foreground-secondary">
+          {/* Synthèse texte extractible par les LLM (faq-geo-copy.md §B.1 —
+              wording @copywriter exact). Les badges visuels ne sont pas lus par
+              les moteurs IA ; ce paragraphe rend les claims sourcés extractibles.
+              Visible (pas sr-only). */}
+          <p className="mt-8 max-w-[70ch] text-base leading-8 text-foreground-secondary">
             Aqua System est certifié Socotec CSP/ESP-001 « Professionnels de la
             piscine privée à usage familial » et membre du réseau L'Esprit Piscine
             — groupement de piscinistes français sur mesure. L'entreprise assure
             l'entretien de plus de 350 piscines dans les Yvelines et les
             Hauts-de-Seine, depuis plus de 30 ans.
           </p>
-          <p className="mx-auto mt-4 max-w-[70ch] text-sm font-medium text-foreground-accent-water">
-            Trophée d'Or FPP 2024 — Piscine intérieure&nbsp;| Award Bronze EUSA
-            2025 — Piscines intérieures privées.
+          <p className="mt-4 max-w-[70ch] text-sm leading-7 text-foreground-secondary">
+            Trophée d'Or FPP 2024 — Piscine intérieure (Fédération des
+            Professionnels de la Piscine et du Spa)&nbsp;| Award Bronze EUSA 2025 —
+            Piscines intérieures privées (European Union of Swimming Pools and
+            Spas, Barcelone).
           </p>
         </div>
       </section>

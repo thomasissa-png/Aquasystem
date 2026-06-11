@@ -165,3 +165,41 @@ Dev server `127.0.0.1:3000`, Playwright (`--no-save`), reducedMotion. **33 basel
 
 ### Vérification finale
 `tsc --noEmit` PASS · `next lint` PASS · `npm run build` PASS · `out/` = 26 routes (dont 14 fiches via generateStaticParams) + 42 WebP + favicons + OG. JSON-LD/canonical/manifest/OG vérifiés dans le HTML rendu.
+
+---
+
+## D-12 — Lot technique SEO + GEO Phase 3.3 (@fullstack, 2026-06-11)
+
+**Objet** : sitemap/robots/llms.txt, JSON-LD enrichis (+ Person, LTE, Breadcrumb, FAQPage, ImageObject), metas finales 9 pages, FAQ GEO 2 pages, redirects aqua-system.fr, alt texts portfolio.
+
+### Fichiers SEO statiques (out/ vérifié)
+- `src/app/sitemap.ts` — `force-static`, **date FIXE `new Date('2026-06-11')`** (jamais runtime, anti-spam Bing). 24 URLs : 8 pages principales + 2 légales + 14 fiches (itère `REALISATIONS`). `/contact/merci` exclu.
+- `src/app/robots.ts` — `force-static`. AI crawlers AUTORISÉS (GPTBot/ClaudeBot/anthropic-ai/PerplexityBot/Google-Extended) ; **Bytespider bloqué** ; `Disallow /contact/merci` ; `Sitemap:` référencé.
+- `public/llms.txt` — contenu exact geo-strategy.md §5. URLs sur domaine PROVISOIRE `www.aquasystem.fr` (= fallback `NEXT_PUBLIC_SITE_URL`). **Fichier statique non interpolé** → Grep `aquasystem.fr` dans `public/llms.txt` à la bascule naming.
+
+### JSON-LD (composant `src/components/seo/JsonLd.tsx` + helpers `lib/seo.ts`)
+- `organizationJsonLd` enrichi : `sameAs` (esprit-piscine/aqua-system, LinkedIn AS, Facebook LTE), `logo`, `image`, `geo` (**Freneuse 49.0482 / 1.6008 — VÉRIFIÉ cartesfrance.fr**, pas la valeur approx du brief), `hasOfferCatalog`, `hasCredential` (Socotec), `award` (Trophée Or FPP 2024 + EUSA Bronze 2025), `memberOf` (L'Esprit Piscine).
+- `partnerOrganizationJsonLd` (LocalBusiness LTE) ajouté en 2e bloc layout — **aucune affirmation de propriété commune** (acquisition non actée).
+- `nicolasBergJsonLd` (Person) sur /la-maison ; `breadcrumbJsonLd` (helper, accueil auto-ajouté) sur 7 pages niveau ≥ 2 + fiche [slug] (3 niveaux) ; `faqPageJsonLd` sur /notre-approche + /prescripteurs ; ImageObject sur fiche [slug] (alt réel, zone large, jamais de commune inventée).
+
+### Metas finales (metadata-templates.md) — `title: { absolute }` partout
+Sans `absolute`, le template layout `%s — Aquasystem` doublait le suffixe marque et dépassait 60 car. → `absolute` sur les 8 pages + generateMetadata fiche. Canonical /contact corrigé `'/contact'` → `absoluteUrl('/contact/')` (trailing slash). OG alt ajoutés.
+
+### FAQ GEO — `src/components/sections/FaqSection.tsx` + `src/content/faq.ts`
+- Source de vérité = **@copywriter `docs/copy/faq-geo-copy.md`** (présent à l'arrivée, commit 3f69932), pas les templates @geo bruts. faq.ts = source UNIQUE pour la FAQ visible ET le FAQPage JSON-LD (zéro divergence).
+- `FaqSection` : `<ul>/<li>` + `<details>/<summary>` natif (**zéro accordéon JS**). **Pas de `<dl>/<dt>/<dd>`** : axe `definition-list`/`dlitem` exige dt/dd enfants directs, incompatible avec details/summary (bug corrigé après 1 échec E2E a11y sur /prescripteurs).
+- /notre-approche : « Questions fréquentes » 4 Q/R (Q3 « durée de chantier » OMISE — placeholder [À CONFIRMER fondateur]). /prescripteurs : « Ce que les architectes nous demandent » 4 Q/R.
+- Reformulations §B appliquées mot-pour-mot @copywriter : B.1 (synthèse + trophées sous ProofBadges /piscines), B.2 (ancrage + 2 adresses /notre-approche), B.3 (distinctions /la-maison), B.4 (Socotec sourcé /prescripteurs).
+- **B.5 (méta /piscines enrichie distinctions) : NON appliquée** — @copywriter signale divergence + recommande version @seo courte jusqu'à arbitrage. Règle « metadata-templates gagne » respectée → description @seo conservée. **À arbitrer @seo.**
+
+### Redirects (Cloudflare supporte `#` commentaires — vérifié docs CF)
+`public/_redirects` : 10 règles 301 aqua-system.fr COMMENTÉES + conditions d'activation. Doublon prêt-à-coller `docs/infra/redirects-aqua-system.txt`.
+
+### Alt texts portfolio (`src/content/realisations.ts`)
+14 alts enrichis du signal factuel `— réalisation/projet Aqua System, [zone]` (metadata-templates.md item 9). Zone large uniquement (78/92), **jamais de commune inventée** (règle n°2).
+
+### Vérification
+`tsc` PASS · `next lint` PASS · `build` PASS (**30 routes** = 28 + sitemap.xml + robots.txt) · **117 tests PASS** (89 vitest + 28 E2E ×3 devices, a11y axe 0 violation). `out/` : sitemap.xml (24 URLs, date fixe), robots.txt (AI ok / Bytespider bloqué), llms.txt, _redirects présents et corrects. JSON-LD vérifiés dans le HTML rendu (BreadcrumbList, FAQPage, Person, LTE org, award). **12 baselines re-screenshot** (piscines/notre-approche/la-maison/prescripteurs × 3 viewports).
+
+### Pas de commit
+Working tree laissé non commité (consigne mission). NB : un commit antérieur `ee2bd11 "WIP : SEO/GEO 3.3 en cours"` (hors session) avait déjà figé une version de sitemap/robots/llms/seo/layout/JsonLd identique au résultat final → ces fichiers n'apparaissent pas en diff `git status` mais sont bien dans le code livré.

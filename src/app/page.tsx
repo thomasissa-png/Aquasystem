@@ -21,7 +21,9 @@ import { ButtonLink } from '@/components/ui/ButtonLink';
  */
 export const metadata: Metadata = {
   // Metas finales — metadata-templates.md Page 1 (title 56 car. avec "Aquasystem").
-  title: `${SITE_NAME} — Pisciniste & Paysagiste haut de gamme, 78/92`,
+  title: {
+    absolute: `${SITE_NAME} — Pisciniste & Paysagiste haut de gamme, 78/92`,
+  },
   description:
     "Piscines et jardins sur mesure, Yvelines et Hauts-de-Seine. Un seul interlocuteur, 30 ans d'expertise. Parlez-nous de votre projet.",
   alternates: { canonical: SITE_URL },

@@ -1,6 +1,11 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { SITE_URL, absoluteUrl } from '@/lib/seo';
+import {
+  SITE_URL,
+  absoluteUrl,
+  breadcrumbJsonLd,
+  faqPageJsonLd,
+} from '@/lib/seo';
 import { photoSrc, getRealisation } from '@/content/realisations';
 import {
   PrescripteurPageView,
@@ -8,6 +13,9 @@ import {
 } from '@/components/sections/PrescripteurTracking';
 import { RealisationCard } from '@/components/sections/RealisationCard';
 import { ButtonLink } from '@/components/ui/ButtonLink';
+import { FaqSection } from '@/components/sections/FaqSection';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { FAQ_PRESCRIPTEURS, toFaqJsonLd } from '@/content/faq';
 
 /**
  * Espace prescripteurs (/prescripteurs) — F-07, WF-07.
@@ -18,15 +26,32 @@ import { ButtonLink } from '@/components/ui/ButtonLink';
  * irréprochable réutilisée (paroi verre travertin).
  */
 export const metadata: Metadata = {
-  title: 'Espace architectes & prescripteurs — Aqua System, 78/92',
+  // Metas finales — metadata-templates.md Page 7 (title 55 car., CTA « Présentons-nous »).
+  title: { absolute: 'Espace prescripteurs — Pisciniste & Paysagiste, 78/92' },
   description:
-    'Architectes, paysagistes et décorateurs : un exécutant haut de gamme qui travaille sur votre plan, protège votre relation client et respecte vos délais. 78/92.',
+    'Pisciniste & paysagiste haut de gamme 78/92 pour architectes : travail sur votre plan, délais tenus. Présentons-nous.',
   alternates: { canonical: absoluteUrl('/prescripteurs/') },
   openGraph: {
     url: `${SITE_URL}/prescripteurs/`,
-    title: 'Espace architectes & prescripteurs — Aqua System, 78/92',
+    title: 'Espace prescripteurs — Aqua System, pisciniste 78/92',
+    images: [
+      {
+        url: absoluteUrl('/og-image.jpg'),
+        width: 1200,
+        height: 630,
+        alt: 'Aqua System — Partenaire pisciniste des architectes en Yvelines et Hauts-de-Seine',
+      },
+    ],
   },
 };
+
+/** Fil d'Ariane (BreadcrumbList JSON-LD) — seo-strategy.md §C.6.3. */
+const BREADCRUMB = breadcrumbJsonLd([
+  { name: 'Architectes & prescripteurs', path: '/prescripteurs/' },
+]);
+
+/** FAQPage JSON-LD — content-restructuring.md §C.1 (Q/R @geo). */
+const FAQ_JSONLD = faqPageJsonLd(toFaqJsonLd(FAQ_PRESCRIPTEURS));
 
 const VALEURS = [
   {
@@ -54,8 +79,10 @@ const VALEURS = [
 
 const PREUVES = [
   {
+    // Reformulation GEO avec source nommée (content-restructuring.md §B.4) —
+    // signal de vérifiabilité pour les LLM (organisme + domaine cités).
     titre: 'Certification Socotec CSP/ESP-001',
-    desc: '« Professionnels de la piscine » — certification de référence dans le secteur, délivrée par un organisme tiers indépendant.',
+    desc: '« Professionnels de la piscine privée à usage familial » — certification délivrée par Socotec Certification France (socotec-certification-international.fr). Disponible sur demande pour tout dossier de prescription.',
   },
   {
     titre: "Réseau L'Esprit Piscine",
@@ -84,6 +111,8 @@ export default function PrescripteursPage() {
 
   return (
     <>
+      <JsonLd data={BREADCRUMB} />
+      <JsonLd data={FAQ_JSONLD} />
       <PrescripteurPageView />
 
       {/* Hero split */}
@@ -174,8 +203,16 @@ export default function PrescripteursPage() {
         </div>
       </section>
 
+      {/* FAQ GEO — content-restructuring.md §A.2 (entre preuves et portfolio).
+          Titre B2B « Ce que les architectes nous demandent » (pas « FAQ »). */}
+      <FaqSection
+        heading="Ce que les architectes nous demandent"
+        items={FAQ_PRESCRIPTEURS.map((i) => ({ q: i.q, a: i.a }))}
+        tone="default"
+      />
+
       {/* Accès portfolio */}
-      <section className="bg-background">
+      <section className="bg-background-secondary">
         <div className="mx-auto max-w-container px-4 py-20 md:px-8">
           <h2 className="font-serif text-3xl leading-tight text-foreground md:text-4xl">
             Nos réalisations — références vérifiables

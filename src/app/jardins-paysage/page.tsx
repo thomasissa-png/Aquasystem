@@ -18,7 +18,7 @@ import { JsonLd } from '@/components/seo/JsonLd';
  */
 export const metadata: Metadata = {
   // Metas finales — metadata-templates.md Page 3 (title 50 car., "Paysagiste" en tête).
-  title: 'Paysagiste Yvelines — Jardins haut de gamme, 78/92',
+  title: { absolute: 'Paysagiste Yvelines — Jardins haut de gamme, 78/92' },
   description:
     "Bureau d'études paysager, jardins et parcs sur mesure en 78/92. Les Terres Essentielles, en partenariat avec Aqua System. Contactez-nous.",
   alternates: { canonical: absoluteUrl('/jardins-paysage/') },
@@ -51,6 +51,7 @@ const JARDINS_PROOFS: ProofItem[] = [
 export default function JardinsPaysagePage() {
   return (
     <>
+      <JsonLd data={BREADCRUMB} />
       <Hero
         imageSrc={photoSrc('projet-pool-house-toit-vegetalise', '1280w')}
         imageAlt="Jardin structuré d'une grande propriété : massifs fleuris, pelouse, pavillon à toiture végétalisée, perspective paysagère"

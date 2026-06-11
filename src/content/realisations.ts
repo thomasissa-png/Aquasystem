@@ -101,7 +101,7 @@ export const REALISATIONS: Realisation[] = [
     photos: [
       {
         base: 'piscine-debordement-foret',
-        alt: "Piscine à débordement bordée d'une terrasse en bois et d'une pelouse, plan d'eau ouvert sur une forêt de pins, mur en pierre, transats au bord",
+        alt: "Piscine à débordement bordée d'une terrasse en bois et d'une pelouse, plan d'eau ouvert sur une forêt de pins, mur en pierre, transats au bord — réalisation Aqua System, Yvelines (78)",
         credit: 'esprit-piscine.fr / Aqua System',
       },
     ],
@@ -120,7 +120,7 @@ export const REALISATIONS: Realisation[] = [
     photos: [
       {
         base: 'projet-piscine-jardin-banquette',
-        alt: "Bassin rectangulaire en béton dans un jardin clos structuré, pelouse, banquette de terrasse en bois avec coussins, demeure ancienne en arrière-plan",
+        alt: "Bassin rectangulaire en béton dans un jardin clos structuré, pelouse, banquette de terrasse en bois avec coussins, demeure ancienne en arrière-plan — projet complet eau et jardin Aqua System, Yvelines (78)",
         credit: 'esprit-piscine.fr / Aqua System',
       },
     ],
@@ -139,7 +139,7 @@ export const REALISATIONS: Realisation[] = [
     photos: [
       {
         base: 'piscine-couloir-demeure-ancienne',
-        alt: "Long bassin miroir face à une demeure ancienne en pierre et brique, grande pelouse, arbres adultes, reflet de la façade dans l'eau",
+        alt: "Long bassin miroir face à une demeure ancienne en pierre et brique, grande pelouse, arbres adultes, reflet de la façade dans l'eau — projet complet eau et jardin Aqua System, Yvelines (78)",
         credit: 'esprit-piscine.fr / Aqua System',
       },
     ],
@@ -158,7 +158,7 @@ export const REALISATIONS: Realisation[] = [
     photos: [
       {
         base: 'piscine-paroi-verre-travertin',
-        alt: "Piscine surélevée à paroi vitrée transparente, margelles et muret en travertin clair, jardinières de graminées, terrasse bois et transats",
+        alt: "Piscine surélevée à paroi vitrée transparente, margelles et muret en travertin clair, jardinières de graminées, terrasse bois et transats — réalisation Aqua System, Yvelines (78)",
         credit: 'esprit-piscine.fr / Aqua System',
       },
     ],
@@ -177,7 +177,7 @@ export const REALISATIONS: Realisation[] = [
     photos: [
       {
         base: 'piscine-paroi-verre-pierre',
-        alt: "Piscine surélevée à paroi de verre transparente, parement en pierre grise empilée, pelouse, salon de jardin et parasol devant une maison",
+        alt: "Piscine surélevée à paroi de verre transparente, parement en pierre grise empilée, pelouse, salon de jardin et parasol devant une maison — réalisation Aqua System, Hauts-de-Seine (92)",
         credit: 'esprit-piscine.fr / Aqua System',
       },
     ],
@@ -196,7 +196,7 @@ export const REALISATIONS: Realisation[] = [
     photos: [
       {
         base: 'piscine-jardin-arbre',
-        alt: "Bassin sombre encadré de margelles claires, arbre planté en bord de bassin, terrasse bois, jardin dense et maison contemporaine, parasol orange",
+        alt: "Bassin sombre encadré de margelles claires, arbre planté en bord de bassin, terrasse bois, jardin dense et maison contemporaine, parasol orange — projet complet eau et jardin Aqua System, Yvelines (78)",
         credit: 'esprit-piscine.fr / Aqua System',
       },
     ],
@@ -215,7 +215,7 @@ export const REALISATIONS: Realisation[] = [
     photos: [
       {
         base: 'piscine-terrasse-bois-plongee',
-        alt: "Vue plongeante sur un bassin rectangulaire bordé d'une vaste terrasse en bois, pelouse, transats et fauteuils design, végétation périphérique",
+        alt: "Vue plongeante sur un bassin rectangulaire bordé d'une vaste terrasse en bois, pelouse, transats et fauteuils design, végétation périphérique — réalisation Aqua System, Hauts-de-Seine (92)",
         credit: 'esprit-piscine.fr / Aqua System',
       },
     ],
@@ -234,7 +234,7 @@ export const REALISATIONS: Realisation[] = [
     photos: [
       {
         base: 'piscine-enterree-maison-brique',
-        alt: "Bassin à l'eau verte bordé de pierre, muret en brique, terrasse haute avec parasols, maison contemporaine en brique et bois, haie dense",
+        alt: "Bassin à l'eau verte bordé de pierre, muret en brique, terrasse haute avec parasols, maison contemporaine en brique et bois, haie dense — réalisation Aqua System, Hauts-de-Seine (92)",
         credit: 'esprit-piscine.fr / Aqua System',
       },
     ],
@@ -253,7 +253,7 @@ export const REALISATIONS: Realisation[] = [
     photos: [
       {
         base: 'projet-bassin-jardin-paysage',
-        alt: "Petit bassin intégré dans un jardin paysagé en terrasses, murets ocre, emmarchements en bois, banquette à coussins, végétation luxuriante",
+        alt: "Petit bassin intégré dans un jardin paysagé en terrasses, murets ocre, emmarchements en bois, banquette à coussins, végétation luxuriante — projet complet eau et jardin Aqua System, Hauts-de-Seine (92)",
         credit: 'esprit-piscine.fr / Aqua System',
       },
     ],
@@ -272,7 +272,7 @@ export const REALISATIONS: Realisation[] = [
     photos: [
       {
         base: 'projet-pool-house-toit-vegetalise',
-        alt: "Pavillon de piscine vitré à toiture végétalisée, passerelle vitrée au sol au-dessus de l'eau, jardin structuré avec massifs fleuris et pelouse",
+        alt: "Pavillon de piscine vitré à toiture végétalisée, passerelle vitrée au sol au-dessus de l'eau, jardin structuré avec massifs fleuris et pelouse — projet complet eau et jardin Aqua System, Yvelines (78)",
         credit: 'esprit-piscine.fr / Aqua System — Architecte SKP',
       },
     ],
@@ -291,7 +291,7 @@ export const REALISATIONS: Realisation[] = [
     photos: [
       {
         base: 'piscine-interieure-beton-baies',
-        alt: "Piscine intérieure aux murs et plafond en béton brut, larges baies vitrées ouvertes sur le jardin, terrasse en bois, salon bas",
+        alt: "Piscine intérieure aux murs et plafond en béton brut, larges baies vitrées ouvertes sur le jardin, terrasse en bois, salon bas — réalisation Aqua System, Yvelines (78)",
         credit: 'esprit-piscine.fr / Aqua System',
       },
     ],
@@ -310,7 +310,7 @@ export const REALISATIONS: Realisation[] = [
     photos: [
       {
         base: 'piscine-interieure-pierre-poutres',
-        alt: "Long couloir de nage intérieur, murs en pierre apparente, plafond à poutres de bois, dallage en travertin, baies vitrées sur le jardin, transats",
+        alt: "Long couloir de nage intérieur, murs en pierre apparente, plafond à poutres de bois, dallage en travertin, baies vitrées sur le jardin, transats — réalisation Aqua System, Yvelines (78)",
         credit: 'esprit-piscine.fr / Aqua System',
       },
     ],
@@ -329,7 +329,7 @@ export const REALISATIONS: Realisation[] = [
     photos: [
       {
         base: 'piscine-interieure-veranda-soir',
-        alt: "Piscine couverte sous une véranda à structure métallique noire, terrasse en bois, mur en pierre, éclairage chaud de soirée",
+        alt: "Piscine couverte sous une véranda à structure métallique noire, terrasse en bois, mur en pierre, éclairage chaud de soirée — réalisation Aqua System, Hauts-de-Seine (92)",
         credit: 'esprit-piscine.fr / Aqua System',
       },
     ],
@@ -348,7 +348,7 @@ export const REALISATIONS: Realisation[] = [
     photos: [
       {
         base: 'jardin-bassin-maison-bois',
-        alt: "Long bassin de nage intégré dans une terrasse en bois, grande table conviviale, massif de bambous, maison contemporaine à bardage bois",
+        alt: "Long bassin de nage intégré dans une terrasse en bois, grande table conviviale, massif de bambous, maison contemporaine à bardage bois — jardin et bassin Aqua System, Hauts-de-Seine (92)",
         credit: 'esprit-piscine.fr / Aqua System',
       },
     ],
