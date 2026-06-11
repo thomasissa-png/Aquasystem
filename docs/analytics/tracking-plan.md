@@ -8,6 +8,15 @@
 
 ---
 
+**v1.1 — 2026-06-11 — Gaps UX intégrés**
+4 points de décision signalés par @ux traités :
+- Gap 1 (temps portfolio) : couvert par temps de session natif Umami — pas d'event supplémentaire.
+- Gap 2 (chemin de conviction) : requête séquence pageviews documentée dans dashboard-specs.md — pas d'event.
+- Gap 3 (cross-selling → projet_complet) : propriété `has_cross_selling` ajoutée sur `form_submission_success` (E-01).
+- Gap 4 (prescripteur non converti) : couvert par filtre `prescripteur_page_viewed` existant — requête documentée dans dashboard-specs.md.
+
+---
+
 ## Recommandation outil analytics — Décision à valider fondateur
 
 ### Contexte de la décision
@@ -136,8 +145,11 @@ Ces events mesurent directement la NSM ou un signal de conversion critique.
 | `budget_tranche` | string | `moins_50k`, `50_100k`, `100_200k`, `200k_plus`, `prefere_discuter`, `non_renseigne` | Oui | OK — fourchette anonyme |
 | `has_description` | boolean | `true`, `false` (description ≥ 20 caractères) | Oui | OK — présence/absence, pas le contenu |
 | `page_source` | string | `contact`, `accueil`, `piscines`, `jardins`, `approche`, `realisations`, `prescripteurs`, `about` | Oui | OK |
+| `has_cross_selling` | boolean | `true` si un clic `cross_selling_clicked` a eu lieu dans la même session (sessionStorage), `false` sinon | Oui | OK — flag de comportement de session, zéro PII |
 
 **Note RGPD** : NE PAS inclure nom, email, téléphone, contenu de la description dans l'event.
+
+**Note Gap 3 (cross-selling → projet_complet)** : La propriété `has_cross_selling` permet de corréler les soumissions avec `type_projet = "projet_complet"` qui proviennent d'une session où l'utilisateur a cliqué sur le composant cross-selling. Alimente la décision HYP-02. Implémentation : lors du déclenchement de `cross_selling_clicked`, @fullstack pose `sessionStorage.setItem('has_cross_selling', 'true')` ; la valeur est lue à la soumission du formulaire.
 
 ---
 
@@ -404,7 +416,7 @@ export function trackEvent(name: EventName, properties?: EventProperties): void 
 | `portfolio_realisation_viewed` | `src/components/RealisationCard.tsx` | `onClick` carte |
 | `prescripteur_page_viewed` | `src/app/prescripteurs/page.tsx` | `useEffect` au montage |
 | `prescripteur_cta_clicked` | `src/app/prescripteurs/page.tsx` | `onClick` CTA dédié |
-| `cross_selling_clicked` | `src/components/CrossSellingBlock.tsx` | `onClick` bloc cross-sell |
+| `cross_selling_clicked` | `src/components/CrossSellingBlock.tsx` | `onClick` bloc cross-sell — ET `sessionStorage.setItem('has_cross_selling', 'true')` au même moment |
 
 ---
 
