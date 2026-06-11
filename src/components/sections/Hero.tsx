@@ -51,6 +51,8 @@ export function Hero({
         <img
           src={imageSrc}
           alt={imageAlt}
+          width={1280}
+          height={720}
           fetchPriority="high"
           loading="eager"
           decoding="async"

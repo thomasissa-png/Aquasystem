@@ -23,7 +23,7 @@ export function NoticeRGPD() {
       </a>
       .{' '}
       <Link
-        href="/politique-confidentialite"
+        href="/politique-confidentialite/"
         className="text-foreground-accent-water underline underline-offset-2"
       >
         Politique de confidentialité →

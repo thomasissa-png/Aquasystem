@@ -23,7 +23,7 @@
   /* text */
   --color-text-primary: #2a2420; /* sand.900 */
   --color-text-secondary: #6b6058; /* sand.700 */
-  --color-text-muted: #7e7468; /* sand.600 */
+  --color-text-muted: #6b6058; /* sand.700 — v1.2.0 BUG-A11Y-3 (≥ 4.5:1 sur fonds sand-100/200, PASS AA texte courant ; ancien sand.600 #7e7468 = 3.63:1 FAIL) */
   --color-text-inverse: #f5f0e8; /* sand.100 */
   --color-text-accent-water: #3a6675; /* water.600 */
   --color-text-accent-forest: #3b5240; /* forest.600 */
@@ -32,11 +32,13 @@
   --color-text-footer-legal: #a89e92; /* sand.500 — v1.1 BUG-A11Y-1 (6.87:1 sur inverse, PASS AAA) */
   --color-text-error: #8b2e2e;
   --color-text-success: #2e5e3a;
+  --color-bg-error: #f5d5d5; /* fond de message d'erreur — token sémantique (INFO-VIS-1, remplace le hex hardcodé) */
 
   /* border */
   --color-border-default: #d4ccc0; /* sand.400 */
   --color-border-strong: #a89e92; /* sand.500 */
   --color-border-muted: #e0d8cc; /* sand.300 */
+  --color-border-error: #8b2e2e; /* bordure d'erreur (alignée sur text-error) */
 
   /* action (CTA) */
   --color-action-primary-bg: #3a6675; /* water.600 */
@@ -78,6 +80,30 @@ h4 {
 :focus-visible {
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
+}
+
+/* ===========================================================================
+ * Skip link « Aller au contenu » (BUG-A11Y-4, WCAG 2.4.1) — premier élément
+ * focusable du body. Visuellement caché hors focus, révélé au focus clavier en
+ * haut à gauche. Couleurs = tokens (action primaire eau / texte inverse).
+ * ========================================================================= */
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 500;
+  border-radius: 4px;
+  background-color: var(--color-action-primary-bg);
+  padding: 8px 16px;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-action-primary-text);
+  transition: top 150ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.skip-link:focus {
+  top: 16px;
 }
 
 /* ===========================================================================

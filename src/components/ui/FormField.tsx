@@ -35,7 +35,7 @@ function fieldClasses(hasError: boolean, extra: string): string {
   return cn(
     FIELD_BASE,
     hasError
-      ? 'border-[var(--color-border-error)] bg-[#F5D5D5]/40'
+      ? 'border-[var(--color-border-error)] bg-[var(--color-bg-error)]/40'
       : 'border-border',
     extra,
   );

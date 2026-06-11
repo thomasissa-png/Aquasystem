@@ -230,7 +230,7 @@ export function ContactForm() {
           ref={submitErrorRef}
           role="alert"
           tabIndex={-1}
-          className="rounded-md border border-[var(--color-border-error)] bg-[#F5D5D5]/50 p-4 text-sm text-foreground"
+          className="rounded-md border border-[var(--color-border-error)] bg-[var(--color-bg-error)]/50 p-4 text-sm text-foreground"
         >
           <p className="flex items-start gap-2 font-medium">
             <AlertCircle aria-hidden className="mt-0.5 h-4 w-4 shrink-0" />

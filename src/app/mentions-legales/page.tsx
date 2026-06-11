@@ -138,7 +138,7 @@ export default function MentionsLegalesPage() {
           Le traitement des données personnelles collectées via ce site est décrit
           dans notre{' '}
           <a
-            href="/politique-confidentialite"
+            href="/politique-confidentialite/"
             className="text-foreground-accent-water underline underline-offset-2"
           >
             politique de confidentialité

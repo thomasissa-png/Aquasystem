@@ -376,6 +376,20 @@ export function getFeatured(): Realisation[] {
   );
 }
 
+/**
+ * Titre court pour la balise <title> des fiches (SEO — INFO-SEO-1).
+ * Le `title` éditorial inclut le suffixe « — Zone » et reste affiché en H1,
+ * mais il dépasse 60 car. une fois le suffixe marque ajouté → tronqué en SERP.
+ * On retire le suffixe de zone (« — Yvelines (78) » etc.) pour le <title> ;
+ * combiné avec « — Réalisations » (14 car.) le total reste < 60. Si le tronc
+ * reste trop long, on retombe sur le type de card (toujours court).
+ */
+export function shortTitle(r: Realisation): string {
+  const core = r.title.replace(/\s*[—-]\s*(Yvelines|Hauts-de-Seine).*$/u, '').trim();
+  // « — Réalisations » = 15 car. → tronc max 44 pour rester STRICTEMENT < 60.
+  return core.length <= 44 ? core : r.cardType;
+}
+
 /** True si la fiche n'a encore AUCUNE donnée éditoriale réelle. */
 export function isDraft(r: Realisation): boolean {
   return (

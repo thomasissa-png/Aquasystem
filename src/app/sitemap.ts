@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { SITE_URL, absoluteUrl } from '@/lib/seo';
-import { REALISATIONS } from '@/content/realisations';
+import { REALISATIONS, isDraft } from '@/content/realisations';
 
 /**
  * Sitemap (/sitemap.xml) — seo-strategy.md §C.1 (P0-SEO-1).
@@ -13,8 +13,10 @@ import { REALISATIONS } from '@/content/realisations';
  * Un lastModified qui change à chaque build = signal spam pour Bing Webmaster.
  * À mettre à jour MANUELLEMENT lors d'une vraie modification de contenu.
  *
- * Exclusions : /contact/merci (noindex). Les pages légales sont incluses
- * (index:true confirmé dans leurs metadata) en priorité basse.
+ * Exclusions : /contact/merci (noindex) ; fiches réalisations EN DRAFT
+ * (thin content → noindex, arbitrage orchestrateur) — même critère `isDraft`
+ * que le `robots` de la page : ré-inclusion automatique dès documentation.
+ * Les pages légales sont incluses (index:true) en priorité basse.
  */
 export const dynamic = 'force-static';
 
@@ -34,8 +36,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: absoluteUrl('/politique-confidentialite/'), lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.2 },
   ];
 
-  // Fiches réalisations — itère sur le manifeste (slugs réels).
-  const realisationPages: MetadataRoute.Sitemap = REALISATIONS.map((r) => ({
+  // Fiches réalisations — itère sur le manifeste (slugs réels). Les fiches en
+  // draft (noindex) sont EXCLUES pour ne pas soumettre de thin content à Bing.
+  const realisationPages: MetadataRoute.Sitemap = REALISATIONS.filter(
+    (r) => !isDraft(r),
+  ).map((r) => ({
     url: absoluteUrl(`/realisations/${r.slug}/`),
     lastModified: LAST_MODIFIED,
     changeFrequency: 'monthly',

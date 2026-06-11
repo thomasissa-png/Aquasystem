@@ -219,3 +219,39 @@ Working tree laissé non commité (consigne mission). NB : un commit antérieur 
 **Alternative écartée** : module `functions/lib/scoring.ts` séparé → la Function Cloudflare est mono-fichier (file-based routing Pages, pas de bundler partagé configuré pour `functions/`). Scoring co-localisé dans `contact.ts` (auto-suffisant, conforme D-04). À extraire si réutilisé.
 
 **Vérif** : `tsc --noEmit` PASS (Next) + tsc standalone DOM/Workers PASS (functions) · `next lint` PASS · `build` PASS (30 routes) · **99 tests PASS** (89 → +10 scoring/PII). Pas de commit (consigne).
+
+---
+
+## D-14 — Correction lot Phase 5.2 (bugs revue finale P1/P2 + arbitrages) (@fullstack, 2026-06-11)
+
+**Objet** : correction groupée des bugs de `docs/qa/page-review-report.md` (P1/P2) + arbitrages `orchestration-plan.md` (post-revue). Tokens uniquement, aucun autre changement, pas de commit.
+
+### 1. BUG-A11Y-3 — token muted (P1, contraste)
+`globals.css` `--color-text-muted` : sand.600 `#7e7468` (3.63:1 sur fonds sand-100/200, FAIL) → **sand.700 `#6b6058`** (≥ 4.5:1, PASS AA texte courant) — valeur design-tokens v1.2.0 (@design). Le token est consommé via la classe sémantique `text-foreground-muted` partout (figcaption fiche, PhotoPlaceholder, ImageOff) → propagation automatique. **Grep `text-sand-600` dans `src/` : 0 occurrence** (déjà migré en classe sémantique lors de BUG-A11Y-1 — barre légale footer). Aucun composant à toucher au-delà du token.
+
+### 2. BUG-A11Y-4 — skip link (P1, WCAG 2.4.1)
+`<a href="#main" class="skip-link">Aller au contenu</a>` = **1er élément focusable du `<body>`** (layout.tsx, avant NavBar) ; `id="main"` ajouté sur le `<main>`. Style `.skip-link` dans globals.css : hors-écran (`top:-100px`) sauf focus (`top:16px`), couleurs = tokens (action primaire eau / texte inverse), z-index 500. Présent sur les 13 pages (layout partagé).
+
+### 3. Couverture axe E2E élargie à 13 pages (P1)
+Nouveau `tests/e2e/a11y-all-pages.spec.ts` : **boucle paramétrée sur les 13 pages distinctes** (vs 5 auparavant — la couverture partielle avait masqué BUG-A11Y-3). Chaque test vérifie aussi la présence du skip link au DOM. Les 5 tests axe préexistants (contact/realisations/prescripteurs/accueil) sont conservés.
+
+### 4. Libellé footer prescripteurs (P2) — VÉRIFIÉ CONFORME
+ux-writing §6 (source de vérité) prévoit **deux** libellés distincts intentionnels : nav = « Architectes », footer = « Espace prescripteurs ». `constants.ts` `NAV_LINKS`/`FOOTER_NAV_LINKS` les portent DÉJÀ exactement. Aucun changement nécessaire — conformité confirmée (l'arbitrage « aligner sur §6 » est déjà respecté).
+
+### 5. Titres fiches /realisations/[slug] < 60 car. (P2, INFO-SEO-1)
+Helper `shortTitle(r)` (realisations.ts) : retire le suffixe de zone (« — Yvelines (78) » etc.) du titre éditorial ; si le tronc > 44 car. → repli sur `cardType` (toujours court). `generateMetadata` → `title.absolute = "${shortTitle} — Réalisations"` (≤ 59 car. garanti par test). Le **titre long factuel reste le H1** (inchangé). Test `realisations.test.ts` : tous les `<title>` fiches < 60 + ne contiennent pas de zone.
+
+### 6. Fond message d'erreur — token sémantique (P2, INFO-VIS-1)
+Nouveaux tokens `--color-bg-error: #f5d5d5` + `--color-border-error: #8b2e2e` (ce dernier était référencé mais non défini dans `:root`). `ContactForm.tsx` (bloc erreur) + `FormField.tsx` (champ en erreur) : `bg-[#F5D5D5]` hardcodé → `bg-[var(--color-bg-error)]`.
+
+### 7. `<img>` hero/picture — width/height explicites (P2, INFO-IMG-1)
+`Hero.tsx` + `MediaSplit.tsx` (seuls `<img>` bruts du site — le reste passe par next/image) : `width={1280} height={720}` (16:9 des sources). Ratio préservé via CSS existant (`absolute inset-0 object-cover` dans conteneur à ratio). Prévention CLS (mesuré 0, robustesse si le CSS conteneur évolue).
+
+### 8. Href interne sans trailing slash (P2, INFO-LINK-1)
+`mentions-legales/page.tsx` (`<a>`) + `NoticeRGPD.tsx` (`<Link>`) : `/politique-confidentialite` → `/politique-confidentialite/` (évite le 308 de `trailingSlash:true`). Grep des autres liens internes sans slash : 0 résiduel.
+
+### 9. Fiches en draft = noindex + hors sitemap (arbitrage orchestrateur)
+`generateMetadata` fiche : `robots: isDraft(r) ? { index:false, follow:true } : { index:true, follow:true }`. `sitemap.ts` : `REALISATIONS.filter((r) => !isDraft(r))` — **même critère `isDraft`** que le robots de la page → ré-indexation automatique dès qu'une fiche reçoit ses données éditoriales. État actuel : 14 fiches toutes en draft → **sitemap passe de 24 à 10 URLs** (0 fiche). Test `realisations.test.ts` : invariant « aucune fiche indexable n'est un draft ».
+
+### Vérification
+`tsc --noEmit` PASS · `next lint` PASS · `build` PASS (30 routes) · **Vitest 102 PASS** (99 → +3 : titres courts, zone strippée, exclusion drafts) · **Playwright 41 PASS** dont **axe-core 13 pages VERT** (+ 13 nouveaux tests). Vérif `out/` : skip link + `id="main"` présents, fiche `noindex` + `<title>` court, sitemap = 10 URLs, tokens muted/bg-error dans le CSS. **9 baselines re-screenshot** (piscines-bien-etre / jardins-paysage / notre-approche × mobile/tablet/desktop — pages touchées par le muted). Pas de commit (consigne).

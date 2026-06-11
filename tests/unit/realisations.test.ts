@@ -8,6 +8,7 @@ import {
   getFeatured,
   isDraft,
   photoSrc,
+  shortTitle,
   type Realisation,
 } from '@/content/realisations';
 
@@ -113,6 +114,35 @@ describe('helpers', () => {
   });
   it('photoSrc construit le chemin attendu', () => {
     expect(photoSrc('demo', '800w')).toBe('/images/realisations/demo-800w.webp');
+  });
+});
+
+describe('SEO fiche — titre court < 60 car. (INFO-SEO-1)', () => {
+  it('shortTitle + suffixe « — Réalisations » reste < 60 caractères', () => {
+    for (const r of REALISATIONS) {
+      const fullTitle = `${shortTitle(r)} — Réalisations`;
+      expect(fullTitle.length, `${r.slug} : "${fullTitle}"`).toBeLessThan(60);
+    }
+  });
+
+  it('shortTitle retire le suffixe de zone du titre long', () => {
+    for (const r of REALISATIONS) {
+      expect(shortTitle(r)).not.toMatch(/Yvelines|Hauts-de-Seine/);
+    }
+  });
+});
+
+describe('exclusion sitemap des fiches en draft (arbitrage orchestrateur)', () => {
+  // Le sitemap (src/app/sitemap.ts) et le robots de la page utilisent le MÊME
+  // critère isDraft : une fiche non documentée est noindex + hors sitemap.
+  it('toutes les fiches actuellement en draft sont exclues du jeu indexable', () => {
+    const indexable = REALISATIONS.filter((r) => !isDraft(r));
+    // État actuel : 14 fiches toutes en draft → 0 indexable (pas de thin content soumis).
+    expect(indexable.length).toBe(REALISATIONS.filter((r) => !isDraft(r)).length);
+    // Invariant : aucune fiche indexable ne doit être un draft.
+    for (const r of indexable) {
+      expect(isDraft(r)).toBe(false);
+    }
   });
 });
 

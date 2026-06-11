@@ -9,6 +9,7 @@ import {
   getRealisation,
   isDraft,
   photoSrc,
+  shortTitle,
   type Realisation,
 } from '@/content/realisations';
 import { ButtonLink } from '@/components/ui/ButtonLink';
@@ -36,11 +37,16 @@ export function generateMetadata({
   const r = getRealisation(params.slug);
   if (!r) return { title: 'Réalisation introuvable' };
   const ogImg = absoluteUrl(photoSrc(r.photos[0]!.base, '1280w'));
-  // Metas dynamiques — metadata-templates.md Page 9. Le titre factuel inclut
-  // déjà la zone (realisations.ts) → on n'y ajoute pas de commune inventée.
+  // Metas dynamiques — metadata-templates.md Page 9. Le <title> reste < 60 car.
+  // (INFO-SEO-1) : titre COURT (sans suffixe de zone) + « — Réalisations » via
+  // `absolute` (pas le template marque). Le titre long factuel reste le H1.
   return {
-    title: `${r.title} — Réalisation Aqua System`,
+    title: { absolute: `${shortTitle(r)} — Réalisations` },
     description: `${r.cardType} — ${r.zone}. Une réalisation Aqua System dans l'ouest parisien. Parlez-nous de votre projet.`,
+    // Fiches en draft (sans donnée éditoriale) = thin content → noindex tant que
+    // non documentées (arbitrage orchestrateur). Ré-indexation automatique dès
+    // que les champs éditoriaux sont remplis (isDraft repasse false).
+    robots: isDraft(r) ? { index: false, follow: true } : { index: true, follow: true },
     alternates: { canonical: absoluteUrl(`/realisations/${r.slug}/`) },
     openGraph: {
       url: `${SITE_URL}/realisations/${r.slug}/`,

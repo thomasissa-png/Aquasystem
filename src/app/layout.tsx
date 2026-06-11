@@ -105,6 +105,10 @@ export default function RootLayout({
         />
       </head>
       <body className="flex min-h-dvh flex-col">
+        {/* Skip link — premier élément focusable (BUG-A11Y-4, WCAG 2.4.1). */}
+        <a href="#main" className="skip-link">
+          Aller au contenu
+        </a>
         {/* E-10 page_view : Umami couvre toutes les pages (afterInteractive).
             Fail-silent : sans NEXT_PUBLIC_UMAMI_*, aucun script n'est injecté. */}
         {UMAMI_ID && UMAMI_URL && (
@@ -115,7 +119,9 @@ export default function RootLayout({
           />
         )}
         <NavBar />
-        <main className="flex-1">{children}</main>
+        <main id="main" className="flex-1">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
