@@ -31,11 +31,12 @@
 ### Phase 1 — Expérience — EN COURS — derniers agents : @ux ∥ @copywriter ∥ @product-manager(specs)
 | Ordre | Agent | Livrables attendus | Statut | Verdict |
 |---|---|---|---|---|
-| 1.1 (∥) | @ux | docs/ux/user-flows.md, wireframes.md | EN COURS | — |
-| 1.2 (∥) | @copywriter | docs/copy/brand-voice.md, ux-writing-guide.md | EN COURS | — |
+| 1.1 (∥) | @ux | docs/ux/user-flows.md, wireframes.md | LIVRÉ 2026-06-11 | OK — gates PASS. Nav plate 6 liens + CTA sticky ; formulaire 6 champs single-page ; 2 frictions H2 documentées avec solutions ; 4 gaps tracking remontés |
+| 1.2 (∥) | @copywriter | docs/copy/brand-voice.md, ux-writing-guide.md | LIVRÉ 2026-06-11 | OK — gates PASS. Registre AD/Côté Maison ; tranches budget 50-80/80-150/150+ k€ ; [À CONFIRMER : délai réponse Nicolas] |
 | 1.3 (∥) | @product-manager | docs/product/functional-specs.md | EN COURS | — |
-| 1.4 | @creative-strategy | docs/strategy/verbal-identity.md (territoire verbal) | Dépend 1.2 | — |
-| 1.5 | @design | docs/design/art-direction.md, design-system.md, design-tokens.json, page-compositions.md, favicons specs | Dépend 1.1 | — |
+| 1.4 | @creative-strategy | docs/strategy/verbal-identity.md (territoire verbal) | EN COURS | — |
+| 1.4b | @data-analyst | tracking-plan v1.1 + dashboard-specs v1.1 (4 gaps UX) | EN COURS | — |
+| 1.5 | @design | docs/design/art-direction.md, design-tokens.json, design-system.md, page-compositions.md (+ favicons specs) | EN COURS | — |
 | 1.6 | CHECKPOINT specs | @reviewer quick-check functional-specs (« @fullstack peut-il coder sans question ? ») | Bloquant avant Phase 2 | — |
 ### Checkpoint specs (entre 1 et 2) : @reviewer quick-check functional-specs.md — À VENIR
 ### Phase 2 — Développement : @infrastructure (setup CF Pages) → @fullstack (boucle visuelle 3 devices obligatoire, gate G26 baselines) → @ux review → @qa → @infrastructure finalisation — À VENIR
