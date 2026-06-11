@@ -195,3 +195,46 @@ Trois sources de vérité contradictoires pour la barre de nav. Le dev ne sait p
 - **Points d'attention** : P0-2 touche le SEUL point de conversion du site (formulaire) — priorité absolue. Vérifier creative-brief.md §9 invoqué par le copy avant de trancher le type du champ projet.
 - **Re-check** : re-vérifier UNIQUEMENT les gates/critères en FAIL (critère 11) et la résolution des 5 P0 après corrections. Max 3 itérations puis escalade.
 ---
+
+---
+
+## Re-check 2026-06-11 — itération 1 (boucle corrective post-harmonisation)
+
+> Périmètre STRICTEMENT limité : levée des 5 P0 + critère 11. Pas de ré-audit complet.
+> Méthode : Grep + lecture croisée dans functional-specs v1.1, wireframes v1.1, user-flows v1.1, ux-writing-guide v1.2, tracking-plan v1.2, kpi-framework v1.2, dashboard-specs v1.2, page-compositions (@design NON relancé).
+> Corrections amont vérifiées : arbitrations-p0-checkpoint.md (@product-manager) + harmonisations @ux/@copywriter/@data-analyst.
+
+### Verdict final pour @fullstack : **GO conditionnel** — les 5 P0 sont LEVÉS, le critère 11 est LEVÉ pour les états critiques (succès, erreurs formulaire). Findings résiduels P1/P2 NON bloquants pour démarrer le code (corrigeables par @design + @product-manager pendant que @fullstack code les fondations et le formulaire).
+
+GO démarrage code des pages F-01→F-10 + formulaire F-08. La seule réserve : un dev qui code le **label affiché des chips** et l'**empty state portfolio** doit suivre ux-writing-guide v1.2 (source de vérité copy) et non les valeurs résiduelles de functional-specs (cf. R-P1-1, R-P2-1). À signaler dans le prompt @fullstack.
+
+### Statut des 5 P0 + critère 11
+
+| # | Point | Statut | Preuve (fichier:ligne) |
+|---|-------|--------|------------------------|
+| **P0-1** | 9 routes longues identiques partout, plus aucune route courte | **LEVÉ (résiduel P2)** | Routes longues cohérentes : functional-specs L161/L241/L1454, ux-writing L243-247, tracking-plan L156, dashboard-specs L11, page-compositions L14-22, wireframes L320/L403, user-flows L25-26. Enums `page_source` = slugs longs (tracking L156). **Résiduel** : 4 occurrences de routes courtes dans des critères Given/When/Then de functional-specs (L206 « aller vers `/jardins` », L218 « crawle `/piscines` », L254 « cross-selling depuis `/piscines` », L288 « crawle `/jardins` ») — cf. R-P2-2. Non bloquant (le dev lit l'URL canonique en tête de chaque feature L161/L241), mais à nettoyer. |
+| **P0-2** | Formulaire : chips optionnels (4 valeurs + mapping API), tél facultatif, description obligatoire ≥ 20, NSM = commune + description | **LEVÉ (résiduel P1 sur labels)** | Chips = 4 valeurs API identiques `piscine_bien_etre`/`jardin_paysage`/`projet_complet`/`prescripteur` : specs L684-687, ux-writing L58-61, wireframes L851-852, tracking L151. Tél facultatif : specs L668, ux-writing L44-45. Description obligatoire ≥ 20 : specs L672, ux-writing L99. NSM = commune 78/92 + description ≥ 20 (type_projet retiré) : kpi-framework L20-26, tracking L161, dashboard-specs L12. **Résiduel** : labels affichés des chips divergents entre specs et ux-writing/wireframes (casse + 4e chip) — cf. R-P1-1. API non impactée. |
+| **P0-3** | Tranches budget identiques au caractère près (FR + enums API) | **LEVÉ** | 4 tranches identiques : `50_80k`/`80_150k`/`150k_plus`/`prefere_discuter` + labels FR « 50 000 – 80 000 € » etc. — specs L695-698, ux-writing L86-89, tracking L154, wireframes L868-869. Validation serveur enum specs L756. Aucune trace des anciennes tranches `moins_50k`/`50_100k`/`100_200k`/`200k+` dans le contrat dev. (v1-scope.md L175 + assumption-map L165 gardent les vieilles tranches mais ce sont des docs discovery amont, hors contrat dev — informatif, non bloquant.) |
+| **P0-4** | `/contact/merci` partout, aucune mention de succès inline ni « ne pas rediriger » | **LEVÉ** | Redirect explicite : wireframes L938 « redirect vers la page distincte `/contact/merci` … PAS un remplacement inline », ux-writing L197 « Pas de remplacement inline », specs L939 « redirigé vers `/contact/merci` ». Double signal conversion documenté tracking L163. Aucune occurrence résiduelle de « ne pas rediriger ». Event E-01 avant redirect (wireframes L955, specs L939). |
+| **P0-5** | Nav 6 liens, même ordre + libellés (wireframes, user-flows, ux-writing, page-compositions) | **LEVÉ** | Ordre + libellés identiques (Réalisations · Piscines & Bien-être · Jardins & Paysage · Notre approche · La maison · Architectes), pas d'« Accueil », Contact = CTA : specs L1099, ux-writing L242-247, wireframes L28-30 + drawer L51-56, user-flows L41 + L59-64. **page-compositions** ne définit PAS de liste nav (header délégué au design-system, breadcrumb seul L413) → aucune contradiction. |
+| **Critère 11** | Un seul wording de référence par état UI (ux-writing v1.2 source de vérité) | **LEVÉ pour les états critiques (résiduels P2)** | functional-specs déclare désormais ux-writing §2 source de vérité (L7, L889, L1459) et la précédence « le ux-writing-guide prévaut » (L889). Succès harmonisé « Votre message est bien parvenu. » (specs L909 = ux-writing). « 2 jours ouvrés » retiré (specs L916/L1450). Erreurs inline alignées (specs L898-899/L944 = ux-writing L134). **Résiduels** : (a) empty state portfolio divergent « catégorie » (specs L442/L454) vs « sélection » (ux-writing L207) — cf. R-P2-1 ; (b) bloc JSON 400 serveur (specs L835-836) garde l'ancien wording « Format d'email invalide. » / « (20 caractères minimum) » ≠ message affiché L898 — cf. R-P2-3. Non bloquants (L889 tranche la précédence), mais doublons à supprimer. |
+
+### Findings résiduels (NON bloquants — corrigeables en parallèle du code)
+
+| ID | Sévérité | Fichier:ligne | Problème | Correction | Agent |
+|----|----------|---------------|----------|-----------|-------|
+| **R-P1-1** | P1 | functional-specs L684-687 vs ux-writing L58-61 + wireframes L851-852 | Labels AFFICHÉS des chips divergents : specs « Piscine & **B**ien-être / Jardin & **P**aysage / **Espace prescripteur** » vs copy/UX « Piscine & **b**ien-être / Jardin & **p**aysage / **Je suis prescripteur** ». API identique (`prescripteur` etc.) → non bloquant backend, mais wording client-facing du formulaire = point de conversion. | @copywriter = source de vérité ; @product-manager aligne les labels de specs L684-687 sur ux-writing L58-61, ou renvoie explicitement vers ux-writing pour le label affiché. | @product-manager + @copywriter |
+| **R-P2-1** | P2 | functional-specs L442/L454 vs ux-writing L207 | Empty state portfolio : « Aucune réalisation dans cette **catégorie** » (specs) vs « ne correspond à cette **sélection** » (ux-writing v1.2). Même état, 2 wordings. | @product-manager remplace le texte en dur des specs par un renvoi à ux-writing (ou aligne au caractère près). | @product-manager + @copywriter |
+| **R-P2-2** | P2 | functional-specs L206/L218/L254/L288 | 4 routes courtes résiduelles dans des critères Given/When/Then (`/jardins`, `/piscines`) après l'arbitrage P0-1 routes longues. | @product-manager remplace par `/jardins-paysage` / `/piscines-bien-etre` dans ces 4 critères. | @product-manager |
+| **R-P2-3** | P2 | functional-specs L835-836 | Bloc JSON exemple 400 garde l'ancien wording serveur (« Format d'email invalide. », « (20 caractères minimum) ») ≠ message affiché harmonisé (L898/L944). | @product-manager harmonise l'exemple JSON sur le wording ux-writing §2, ou note explicitement que le message affiché provient du client (mapping côté front), pas du payload serveur. | @product-manager + @data-analyst |
+
+### Conclusion re-check itération 1
+
+- **5 P0 : LEVÉS.** Le contrat dev est désormais cohérent sur URLs, formulaire (structure + types), budget, comportement succès, navigation.
+- **Critère 11 : LEVÉ** pour les états critiques (succès + erreurs formulaire), avec précédence ux-writing établie ; 3 doublons mineurs subsistent (R-P2-1/2/3).
+- **Verdict @fullstack : GO** pour coder F-01→F-10 + le formulaire F-08, en suivant ux-writing-guide v1.2 comme source de vérité du wording affiché (labels chips, empty state). Les 4 findings résiduels (1 P1, 3 P2) sont des nettoyages @product-manager/@copywriter qui n'empêchent pas de démarrer.
+- **page-compositions (@design non relancé)** : aucune contradiction bloquante détectée — routes longues conformes (TOC L14-22), WF-08 délègue l'ordre des champs à wireframes (L593), header nav délégué au design-system (pas de liste contradictoire). Aucun finding résiduel @design.
+
+**Boucle corrective : 1 itération suffit. Prochaine action = @fullstack démarre, @product-manager traite R-P1-1/R-P2-* en parallèle (non bloquant).**
+
+---
