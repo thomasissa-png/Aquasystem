@@ -251,7 +251,7 @@ En tant qu'Alexandre ayant un projet de piscine sur mesure, je veux comprendre p
 En tant qu'Alexandre propriétaire d'un grand terrain, je veux comprendre ce que [SITE_NAME] peut réaliser en matière de jardin afin d'envisager un projet global eau + végétal avec un seul interlocuteur.
 
 #### Contexte de navigation
-- **Origine** : accueil (bloc univers jardins), cross-selling depuis `/piscines`, navigation principale
+- **Origine** : accueil (bloc univers jardins), cross-selling depuis `/piscines-bien-etre`, navigation principale
 - **Déclencheur** : curiosité pour le paysagisme ou intention jardin directe
 - **Destination succès** : clic CTA → `/contact`, ou cross-selling → `/piscines-bien-etre`
 - **Destination échec** : rebond
@@ -285,7 +285,7 @@ Identique à F-02 (page statique avec même structure).
 5. Given JavaScript est désactivé / When la page charge / Then tout le contenu textuel est accessible, les CTA sont des `<a>` natifs.
 
 **Cas limites :**
-6. Given Alexandre cherche "paysagiste haut de gamme 92" sur Google / When Googlebot crawle `/jardins` / Then les balises SEO mentionnent paysage + zone 78 ou 92.
+6. Given Alexandre cherche "paysagiste haut de gamme 92" sur Google / When Googlebot crawle `/jardins-paysage` / Then les balises SEO mentionnent paysage + zone 78 ou 92.
 7. Given la gouvernance LTE n'est pas encore finalisée (acquisition en cours) / When la page est publiée / Then aucune affirmation de propriété n'est présente — uniquement "en partenariat avec".
 
 **Permissions :**
@@ -834,12 +834,14 @@ HTTP 400
   "success": false,
   "error": "validation",
   "fields": {
-    "email": "Format d'email invalide.",
-    "description": "Décrivez votre projet en quelques mots (20 caractères minimum).",
-    "telephone": "Numéro de téléphone invalide (format français attendu : 06 XX XX XX XX) — ou laissez ce champ vide."
+    "email": "invalid_format",
+    "description": "too_short",
+    "telephone": "invalid_format"
   }
 }
 ```
+> **Message machine (`fields.*`)** : codes erreur API (`invalid_format`, `too_short`) — jamais affichés tels quels à l'utilisateur.
+> **Message affiché** : le front mappe ces codes sur les libellés de `docs/copy/ux-writing-guide.md` §2 (source de vérité). Exemple : `invalid_format` sur `email` → « L'adresse email semble incorrecte — vérifiez le format (exemple : prenom@domaine.fr). »
 
 **Erreur d'envoi email (500) :**
 ```json
@@ -940,7 +942,7 @@ HTTP 429
 **Happy path :**
 1. Given Alexandre remplit les champs obligatoires (prenom_nom, email, commune, description ≥ 20 chars) sans sélectionner de chip ni renseigner de téléphone / When il clique sur "Parlez-nous de votre projet" / Then le bouton passe en loading, la Pages Function est appelée avec `type_projet: absent`, et Alexandre est redirigé vers `/contact/merci` avec le titre "Votre message est bien parvenu."
 2. Given Alexandre ne renseigne pas le budget (champ optionnel) / When il soumet le formulaire avec tous les autres champs valides / Then la soumission réussit — l'email reçu par Nicolas indique "Budget : Non renseigné".
-3. Given Alexandre arrive depuis `/prescripteurs` / When le formulaire se charge / Then le chip "Espace prescripteur" est activé côté client (smart default) — il reste désactivable par l'utilisateur.
+3. Given Alexandre arrive depuis `/prescripteurs` / When le formulaire se charge / Then le chip "Je suis prescripteur" est activé côté client (smart default) — il reste désactivable par l'utilisateur.
 
 **Erreurs :**
 4. Given Alexandre saisit un email mal formaté (ex: "alexandre.test") / When il tente de soumettre / Then le formulaire ne soumet pas, le message "L'adresse email semble incorrecte — vérifiez le format (exemple : prenom@domaine.fr)." apparaît sous le champ email (source : ux-writing-guide §2), le focus se positionne sur ce champ.
@@ -987,7 +989,7 @@ HTTP 429
   7. Formulaire natif (JS désactivé) → email reçu, redirect `/contact/merci`
   8. Erreur 500 simulée → formulaire préservé, message d'erreur visible
   9. Timeout 10s simulé → état erreur, numéro visible
-  10. Smart default depuis `/piscines-bien-etre` → chip "Piscine & Bien-être" pré-activé, désactivable
+  10. Smart default depuis `/piscines-bien-etre` → chip "Piscine & bien-être" pré-activé, désactivable
 - **@ux** : vérifier que la mention RGPD est lisible (contraste, taille) sans gêner l'accès au bouton.
 
 ---
