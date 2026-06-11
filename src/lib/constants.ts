@@ -111,6 +111,7 @@ export type ProjectType = (typeof PROJECT_CHIPS)[number]['value'];
 export const SOURCE_TO_CHIP: Record<string, ProjectType> = {
   'piscines-bien-etre': 'piscine_bien_etre',
   'jardins-paysage': 'jardin_paysage',
+  'projet-complet': 'projet_complet',
   prescripteurs: 'prescripteur',
 };
 

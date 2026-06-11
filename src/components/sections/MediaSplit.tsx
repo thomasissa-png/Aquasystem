@@ -1,0 +1,83 @@
+import Image from 'next/image';
+import { cn } from '@/lib/cn';
+
+/**
+ * MediaSplit — bloc prestation texte/photo (page-compositions WF-02/WF-03 §2-4).
+ * Split desktop (texte + photo), stack mobile (photo dessus, texte dessous).
+ * `reversed` inverse l'ordre desktop (alternance visuelle). `tone` change le
+ * fond de section (sand-100 défaut / sand-200 alterné).
+ * Server component. Photo `lazy` (jamais le LCP — toujours sous le hero).
+ */
+export interface MediaSplitProps {
+  eyebrow: string;
+  /** Couleur de l'eyebrow : water (piscines) ou forest (jardins). */
+  accent?: 'water' | 'forest';
+  title: string;
+  /** Paragraphes du corps (chaque entrée = un <p>). */
+  body: string[];
+  imageSrc: string;
+  imageAlt: string;
+  reversed?: boolean;
+  tone?: 'default' | 'alt';
+}
+
+export function MediaSplit({
+  eyebrow,
+  accent = 'water',
+  title,
+  body,
+  imageSrc,
+  imageAlt,
+  reversed = false,
+  tone = 'default',
+}: MediaSplitProps) {
+  return (
+    <section className={cn(tone === 'alt' && 'bg-background-secondary')}>
+      <div className="mx-auto max-w-container px-4 py-16 md:px-8 md:py-20">
+        <div
+          className={cn(
+            'grid items-center gap-8 md:gap-12 lg:grid-cols-2',
+            reversed && 'lg:[&>figure]:order-first',
+          )}
+        >
+          <div className={cn(reversed ? 'lg:order-last' : '')}>
+            <p
+              className={cn(
+                'mb-3 text-xs font-medium uppercase tracking-[0.1em]',
+                accent === 'water'
+                  ? 'text-foreground-accent-water'
+                  : 'text-foreground-accent-forest',
+              )}
+            >
+              {eyebrow}
+            </p>
+            <h2 className="font-serif text-3xl leading-tight text-foreground md:text-4xl">
+              {title}
+            </h2>
+            <div className="mt-4 space-y-4">
+              {body.map((para, i) => (
+                <p
+                  key={i}
+                  className="max-w-[52ch] text-base leading-8 text-foreground-secondary"
+                >
+                  {para}
+                </p>
+              ))}
+            </div>
+          </div>
+
+          <figure className="relative aspect-[3/2] w-full overflow-hidden rounded-lg">
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              fill
+              loading="lazy"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </figure>
+        </div>
+      </div>
+    </section>
+  );
+}

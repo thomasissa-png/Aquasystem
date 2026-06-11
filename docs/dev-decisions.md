@@ -126,3 +126,42 @@ Produit par @fullstack (TRANCHE A). Pages de contenu = tranche B (hors scope).
 **Function (`functions/api/contact.ts`)** : TODO P0-2/P0-3 levés. Validation complète conforme payload v1.1 (enums type_projet/budget, tel FR `^0[1-9][0-9]{8}$` après nettoyage, description 20..2000), honeypot → 200 silencieux, rate limit KV. **Le content-type pilote le format de réponse** : `application/json` → JSON 200/400/429/500 (wording ux-writing) ; `x-www-form-urlencoded` (sans JS) → redirect **303** (`/contact/merci/` succès, `/contact/` erreur — dégradation acceptable US-08 #9). Email Resend : sujet + corps structuré (specs « Format de l'email »), `reply_to` = email du contact, NSM informative (commune contient « 78 »/« 92 »).
 
 **Boucle visuelle** : Playwright (binaire installé, module `playwright@1.49` en `--no-save` — outil de test, pas dépendance runtime). 6 baselines `tests/screenshots/` (contact + merci × mobile375/tablet768/desktop1280) + `contact-error-state-desktop.png`. Conformité WF-08 vérifiée (split asymétrique, sand-200 form panel, coordonnées en bas de colonne, mobile mono-colonne coordonnées masquées). 0 écart bloquant.
+
+---
+
+## D-11 — Tranche B : pages de contenu + photos réelles + boucle visuelle (@fullstack, 2026-06-11)
+
+Produit par @fullstack (TRANCHE B). Toutes les pages F-01→F-07/F-09/F-10 + 404 + photos réelles + favicons/OG/JSON-LD + boucle visuelle.
+
+### Photos réelles (HYP-04)
+- **Source** : `https://www.esprit-piscine.fr/aqua-system/` — réalisations PROPRES d'Aqua System (fallback validé fondateur, project-context.md Checkpoint Phase 0 §4). `aqua-system.fr` a renvoyé **403 Forbidden** (bloqué) → source secondaire non exploitable.
+- **Récupération** : thumbnails listés en `-400x400` ; suffixe WordPress retiré → **originaux 1280×720 (16:9)** récupérés (25 photos, 100-500 ko). Crédits d'origine : Philippe Leroy, Fred Pieau, Fred Delouvée.
+- **Sélection** : 14 photos retenues sur 25 (écartées : 2 vues de pool-house vide sans bassin 062/072, doublons de manoir). Classification par **observation visuelle** (Read des images) → type de bassin déduit, **jamais** de commune précise inventée (zone large 78/92 uniquement). Écartées car redondantes.
+- **Optimisation** : `sharp` en `--no-save` (outil de build ponctuel — jamais requis au runtime, images.unoptimized). 3 tailles WebP par photo (1280w hero/galerie, 800w card, 400w thumb) → **42 fichiers** dans `public/images/realisations/`. Pas d'AVIF : pas d'outillage `avifenc`, WebP seul (documenté) — gain AVIF marginal vs effort, q80 WebP suffisant (125-310 ko en 1280w). **1280w < 1920w cible hero** : les sources d'origine plafonnent à 1280px, `withoutEnlargement` évite l'upscale flou. Acceptable pour un hero photo-réaliste ; à remplacer si Nicolas fournit des originaux haute-déf.
+- **Manifeste** `src/content/realisations.ts` : typé, 14 entrées (slug/type/filters/title factuel/zone/photos[alt unique+credit]/champs éditoriaux `null`). Source + crédit + **« droit à l'image [À CONFIRMER fondateur] »** documentés en tête. Helpers `photoSrc()`, `getFeatured()`, `getRealisation()`, `isDraft()`.
+
+### Rendu des fiches non documentées
+Champs éditoriaux (intention/réponse/exécution/prestations) `null` → `isDraft()` true → bloc **« Fiche en cours de documentation »** sobre (FicheDraftNotice) au lieu d'inventer du texte de chantier (règle zéro invention). La photo réelle + le type + la zone restent affichés. Dès que Nicolas remplit les champs dans le manifeste, le rendu bascule automatiquement sur FicheEditorial (Intention→Réponse→Exécution).
+
+### Composants de section (`src/components/sections/`)
+`Hero` (variantes home/page, overlay dégradé, fade-up `reveal` stagger 0/100/200ms), `MediaSplit` (bloc prestation alterné), `SectionCTA` + `CtaTrackerLink` (îlot client E-04), `CrossSellingBlock` (client — pose `has_cross_selling` + E-09 ; **CTA forest uniquement source=jardins**, décision @design), `RealisationCard` (client — E-06), `RealisationsGrid` (client, filtre `useSearchParams` sous `<Suspense>`, E-05, empty state ux-writing §4, `aria-pressed`), `PhotoPlaceholder` (slots sans photo réelle — description UNIQUE par instance, jamais 2 identiques), `PrescripteurTracking` (E-07 au mount + E-08 sur CTA).
+
+**Choix Server/Client** : pages = Server Components (SSG). Interactivité isolée en îlots client minimaux (tracking, filtre, cross-sell). First Load JS max **114 ko** (/realisations) — sous le budget 200 ko.
+
+### PhotoPlaceholder — slots sans photo réelle
+Pas de photo réelle pour : spa HotSpring, plans de jardin, chantier création jardin, serre pépinière, vue aérienne ancrage local, portrait Nicolas Berg. → PhotoPlaceholder dimensionné (pas de CLS), description distincte par slot. **/la-maison hero** : FALLBACK validé = photo de réalisation (demeure ancienne) au lieu du portrait Nicolas non fourni (P1, project-context Annexe B).
+
+### Metadata / favicons / JSON-LD
+- Metadata API par page (title/description site-copy exact, canonical via `lib/seo.ts` `SITE_URL` ← `NEXT_PUBLIC_SITE_URL`, fallback PROVISOIRE `aquasystem.fr`, OG url+image). `metadataBase` posé dans layout.
+- **Favicons** générés par `scripts/build-favicons.mjs` (sharp) depuis `favicon.svg` (initiale « A » serif tracée à la main, dark-mode CSS) : 16/32 PNG, apple-touch 180 (padding+fond sand-100), android 192/512, `favicon.ico` (PNG 32 — sharp ne sort pas d'ICO multi-size, accepté par les navigateurs modernes). `og-image.jpg` 1200×630 (composition tokens sobre : fond sand-950, wordmark, tagline). `site.webmanifest` versionné. **Non générés** (obsolètes 2026) : mstile, browserconfig, safari-pinned-tab.
+- **JSON-LD** `LocalBusiness` (lib/seo `organizationJsonLd`) dans `<head>` du layout — données réelles constants.ts (Freneuse, téléphone, areaServed 78/92).
+
+### Décisions transverses
+- **`react/no-unescaped-entities` désactivé** (.eslintrc.json) : règle purement cosmétique (les apostrophes droites rendent identiquement). Permet de garder le copy **caractère-exact** vs site-copy.md (fidélité = exigence mission) sans semer des `&apos;` dans le texte français. Grep rollout : la config eslint est partagée — Tranche A (NavBar/ContactForm) avait des `&apos;` qui restent valides.
+- **Animation** : `.reveal` (keyframe fade-up 400ms ease-out + `--reveal-delay`) ajoutée à globals.css. Au mount (pas d'IntersectionObserver — contenu majoritairement near-fold). Reduced-motion neutralise.
+
+### Boucle visuelle
+Dev server `127.0.0.1:3000`, Playwright (`--no-save`), reducedMotion. **33 baselines** `tests/screenshots/` : 11 pages (8 contenu + fiche + 2 légales + 404) × {mobile 375 / tablet 768 / desktop 1280}. Comparaison page-compositions page par page : conformité hero/overlay/grilles/timeline/filtres/CTA sombres. 0 écart bloquant. Écart résiduel mineur : /jardins-paysage présente 3 PhotoPlaceholder consécutifs (aucune photo jardin pure dans les sources) — sobres et labellisés, à remplacer dès photos Nicolas.
+
+### Vérification finale
+`tsc --noEmit` PASS · `next lint` PASS · `npm run build` PASS · `out/` = 26 routes (dont 14 fiches via generateStaticParams) + 42 WebP + favicons + OG. JSON-LD/canonical/manifest/OG vérifiés dans le HTML rendu.

@@ -1,24 +1,38 @@
-import Link from 'next/link';
+import { ButtonLink } from '@/components/ui/ButtonLink';
 
 /**
- * Page 404 custom (F-11). Sobre, lien retour accueil, PAS de CTA formulaire
- * (parcours de sortie). Wording final à harmoniser avec @copywriter une fois
- * les arbitrages P0 sur le ton des états UI tranchés.
+ * Page 404 (F-11) — WF-09 + ux-writing §7.
+ * Sobre : pas de « 404 » en gros, pas d'illustration, pas de formulaire.
+ * Deux sorties claires (réalisations + contact). Wording exact ux-writing §7.
+ *
+ * Note noindex : les 404 ne sont pas indexées (Next sert /404.html en réponse
+ * 404, non listée au sitemap). En export statique, le robots meta par page sur
+ * not-found.tsx n'est pas pris en charge par la Metadata API — la non-indexation
+ * repose sur le code HTTP 404 servi par Cloudflare Pages (comportement standard).
  */
 export default function NotFound() {
   return (
-    <main className="mx-auto flex min-h-screen max-w-container flex-col items-center justify-center gap-6 px-4 text-center">
-      <p className="font-serif text-6xl text-foreground-proof">404</p>
-      <h1 className="text-3xl text-foreground">Cette page est introuvable</h1>
-      <p className="max-w-md text-foreground-secondary">
-        Le lien que vous avez suivi n&apos;existe pas ou plus.
-      </p>
-      <Link
-        href="/"
-        className="rounded-md bg-action-primary px-8 py-4 font-medium text-action-primary-text transition-colors duration-fast hover:bg-action-primary-hover"
-      >
-        Retour à l&apos;accueil
-      </Link>
-    </main>
+    <section className="flex min-h-[calc(100dvh-4rem)] items-center justify-center bg-background px-4 py-20">
+      <div className="mx-auto max-w-md text-center">
+        <h1 className="font-serif text-3xl leading-tight text-foreground md:text-4xl">
+          Cette page n'existe pas.
+        </h1>
+        <p className="mt-4 text-lg leading-8 text-foreground-secondary">
+          Elle a peut-être été déplacée ou l'adresse a été mal copiée.
+        </p>
+        <p className="mt-2 text-base leading-8 text-foreground-secondary">
+          Vous pouvez retrouver nos réalisations, découvrir notre approche ou nous
+          décrire votre projet.
+        </p>
+        <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:justify-center">
+          <ButtonLink href="/realisations" variant="ghost" size="md">
+            Voir les réalisations →
+          </ButtonLink>
+          <ButtonLink href="/contact" variant="primary" size="md">
+            Parlez-nous de votre projet →
+          </ButtonLink>
+        </div>
+      </div>
+    </section>
   );
 }

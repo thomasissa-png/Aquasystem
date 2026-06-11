@@ -1,24 +1,159 @@
-import { SITE_NAME, SITE_TAGLINE } from '@/lib/constants';
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import { SITE_NAME } from '@/lib/constants';
+import { SITE_URL, absoluteUrl } from '@/lib/seo';
+import { getFeatured, photoSrc } from '@/content/realisations';
+import { Hero } from '@/components/sections/Hero';
+import { SectionHeading } from '@/components/ui/SectionHeading';
+import { ProofBadges } from '@/components/ui/ProofBadges';
+import { RealisationCard } from '@/components/sections/RealisationCard';
+import { SectionCTA } from '@/components/sections/SectionCTA';
+import { CtaTrackerLink } from '@/components/sections/CtaTrackerLink';
+import { ButtonLink } from '@/components/ui/ButtonLink';
 
 /**
- * Page d'accueil — PLACEHOLDER build-safe.
- *
- * [Page en attente des arbitrages P0]
- * Le contenu réel (hero, univers, preuves, portfolio, cross-selling, CTA — F-01)
- * sera produit par @fullstack une fois les 5 P0 du checkpoint reviewer résolus
- * (URLs/nav/structure formulaire). Ce placeholder garantit un build statique
- * valide sans préjuger des décisions en cours.
+ * Accueil (/) — F-01, WF-01.
+ * Choix de rendu : SSG (export statique) — page marketing, contenu fixe, zéro
+ * donnée utilisateur. Les seuls éléments interactifs (tracking CTA, cards) sont
+ * isolés en îlots client.
  */
+export const metadata: Metadata = {
+  title: `${SITE_NAME} — Piscines & Jardins haut de gamme, Yvelines et Hauts-de-Seine`,
+  description:
+    "Plus de 30 ans d'expertise dans l'aménagement extérieur sur mesure en 78/92. Piscines, spas, jardins et parcs — un seul interlocuteur pour l'eau et le végétal.",
+  alternates: { canonical: SITE_URL },
+  openGraph: {
+    url: SITE_URL,
+    images: [{ url: absoluteUrl('/og-image.jpg'), width: 1200, height: 630 }],
+  },
+};
+
 export default function HomePage() {
+  const featured = getFeatured();
+
   return (
-    <main className="mx-auto flex min-h-screen max-w-container flex-col items-center justify-center gap-4 px-4 text-center">
-      <p className="text-sm uppercase tracking-widest text-foreground-secondary">
-        {SITE_NAME} <span className="text-foreground-muted">[nom provisoire]</span>
-      </p>
-      <h1 className="text-4xl text-foreground sm:text-5xl">{SITE_TAGLINE}</h1>
-      <p className="rounded-md border border-border bg-background-secondary px-4 py-2 text-sm text-foreground-secondary">
-        [Page en attente des arbitrages P0 — socle technique en place]
-      </p>
-    </main>
+    <>
+      <Hero
+        variant="home"
+        imageSrc={photoSrc('piscine-debordement-foret', '1280w')}
+        imageAlt="Piscine à débordement intégrée dans un parc paysagé bordé de pins, plan d'eau calme reflétant la végétation, fin d'après-midi"
+        title="L'extérieur à la hauteur de votre propriété."
+        subtitle="Un seul interlocuteur pour l'eau et le jardin — depuis plus de 30 ans dans l'ouest parisien."
+        cta={
+          <CtaTrackerLink
+            href="/contact"
+            position="hero"
+            label="Parlez-nous de votre projet →"
+          />
+        }
+      />
+
+      {/* Section 2 — Les deux univers */}
+      <section className="mx-auto max-w-container px-4 py-20 md:px-8 md:py-24">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-0">
+          <article className="lg:border-r lg:border-border lg:pr-12">
+            <p className="mb-2 text-xs font-medium uppercase tracking-[0.1em] text-foreground-accent-water">
+              Aqua System
+            </p>
+            <div className="relative aspect-square w-full overflow-hidden rounded-lg">
+              <Image
+                src={photoSrc('piscine-paroi-verre-travertin', '800w')}
+                alt="Piscine sur mesure à paroi vitrée et margelles en travertin clair, jardinières de graminées, propriété de l'ouest parisien"
+                fill
+                loading="lazy"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+            <h2 className="mt-6 font-serif text-3xl leading-tight text-foreground md:text-4xl">
+              Piscines &amp; Bien-être
+            </h2>
+            <p className="mt-4 max-w-[45ch] text-base leading-8 text-foreground-secondary">
+              Conception, construction et entretien de piscines sur mesure. Spas
+              HotSpring, saunas, hammams. Chaque ouvrage conçu depuis les
+              contraintes réelles du terrain — pas depuis un catalogue.
+            </p>
+            <Link
+              href="/piscines-bien-etre"
+              className="group mt-4 inline-flex items-center gap-2 text-sm font-medium text-foreground-accent-water underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2"
+            >
+              Découvrir
+              <ArrowRight
+                aria-hidden
+                className="h-4 w-4 transition-transform group-hover:translate-x-1"
+              />
+            </Link>
+          </article>
+
+          <article className="lg:pl-12">
+            <p className="mb-2 text-xs font-medium uppercase tracking-[0.1em] text-foreground-accent-forest">
+              en partenariat avec Les Terres Essentielles
+            </p>
+            <div className="relative aspect-square w-full overflow-hidden rounded-lg">
+              <Image
+                src={photoSrc('projet-pool-house-toit-vegetalise', '800w')}
+                alt="Pavillon de jardin à toiture végétalisée et jardin structuré avec massifs fleuris, perspective végétale d'une grande propriété"
+                fill
+                loading="lazy"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+            <h2 className="mt-6 font-serif text-3xl leading-tight text-foreground md:text-4xl">
+              Jardins &amp; Paysage
+            </h2>
+            <p className="mt-4 max-w-[45ch] text-base leading-8 text-foreground-secondary">
+              Bureau d'études paysager, création de parcs et jardins d'exception,
+              entretien. L'eau et le végétal conçus ensemble — au même bureau
+              d'études, avant le premier plan.
+            </p>
+            <Link
+              href="/jardins-paysage"
+              className="group mt-4 inline-flex items-center gap-2 text-sm font-medium text-foreground-accent-forest underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-action-forest-bg)] focus-visible:ring-offset-2"
+            >
+              Découvrir
+              <ArrowRight
+                aria-hidden
+                className="h-4 w-4 transition-transform group-hover:translate-x-1"
+              />
+            </Link>
+          </article>
+        </div>
+      </section>
+
+      {/* Section 3 — Preuves */}
+      <section className="bg-background-secondary">
+        <div className="mx-auto max-w-container px-4 py-12 md:px-8">
+          <ProofBadges />
+        </div>
+      </section>
+
+      {/* Section 4 — Extrait portfolio */}
+      <section className="mx-auto max-w-container px-4 py-20 md:px-8 md:py-24">
+        <SectionHeading
+          eyebrow="Réalisations"
+          title="Quelques propriétés que nous avons transformées."
+          centered
+        />
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {featured.map((r) => (
+            <RealisationCard key={r.slug} realisation={r} silent />
+          ))}
+        </div>
+        <div className="mt-10 text-center">
+          <ButtonLink href="/realisations" variant="ghost" size="md">
+            Voir toutes les réalisations →
+          </ButtonLink>
+        </div>
+      </section>
+
+      {/* Section 5 — CTA final */}
+      <SectionCTA
+        amorce="Un projet d'extérieur mérite une conversation — pas un formulaire."
+        trackPosition="footer"
+      />
+    </>
   );
 }

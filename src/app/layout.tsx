@@ -1,6 +1,8 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
+import Script from 'next/script';
 import { DM_Sans, DM_Serif_Display } from 'next/font/google';
 import { SITE_NAME, SITE_TAGLINE } from '@/lib/constants';
+import { SITE_URL, absoluteUrl, organizationJsonLd } from '@/lib/seo';
 import { NavBar } from '@/components/layout/NavBar';
 import { Footer } from '@/components/layout/Footer';
 import '@/styles/globals.css';
@@ -26,11 +28,12 @@ const dmSerif = DM_Serif_Display({
 });
 
 /**
- * Metadata de base. SITE_NAME provisoire/substituable (cf. constants.ts).
- * Le détail SEO par page (canonical, OG, JSON-LD LocalBusiness) sera ajouté
- * par @fullstack page par page une fois les arbitrages P0 (URLs) résolus.
+ * Metadata de base + favicons + manifest (page-compositions §favicon).
+ * Le SEO par page (title/description/canonical/OG) est surchargé dans chaque
+ * page.tsx via export const metadata. SITE_NAME provisoire/substituable.
  */
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: `${SITE_NAME} — ${SITE_TAGLINE}`,
     template: `%s — ${SITE_NAME}`,
@@ -39,14 +42,63 @@ export const metadata: Metadata = {
     "Piscines sur mesure et jardins d'exception, conçus ensemble pour les belles propriétés de l'ouest parisien. Un seul interlocuteur, plus de 30 ans d'expertise.",
   applicationName: SITE_NAME,
   robots: { index: true, follow: true },
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
+  },
+  manifest: '/site.webmanifest',
+  openGraph: {
+    type: 'website',
+    locale: 'fr_FR',
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} — ${SITE_TAGLINE}`,
+    images: [{ url: absoluteUrl('/og-image.jpg'), width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: [absoluteUrl('/og-image.jpg')],
+  },
 };
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#F5F0E8' },
+    { media: '(prefers-color-scheme: dark)', color: '#1A1510' },
+  ],
+};
+
+const UMAMI_ID = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID;
+const UMAMI_URL = process.env.NEXT_PUBLIC_UMAMI_URL;
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="fr" className={`${dmSans.variable} ${dmSerif.variable}`}>
+      <head>
+        {/* JSON-LD Organization (données réelles constants.ts). */}
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd()),
+          }}
+        />
+      </head>
       <body className="flex min-h-dvh flex-col">
+        {/* E-10 page_view : Umami couvre toutes les pages (afterInteractive).
+            Fail-silent : sans NEXT_PUBLIC_UMAMI_*, aucun script n'est injecté. */}
+        {UMAMI_ID && UMAMI_URL && (
+          <Script
+            src={UMAMI_URL}
+            data-website-id={UMAMI_ID}
+            strategy="afterInteractive"
+          />
+        )}
         <NavBar />
         <main className="flex-1">{children}</main>
         <Footer />
