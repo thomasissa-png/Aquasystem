@@ -36,8 +36,8 @@
 | 1.3 (∥) | @product-manager | docs/product/functional-specs.md | LIVRÉ 2026-06-11 | OK — gates PASS. 11 features, 1455 lignes ; payload POST /api/contact complet ; anti-spam honeypot + rate limit ; 5 hypothèses [À CONFIRMER fondateur] dont délai réponse « 2 j ouvrés » et service email Resend |
 | 1.4 | @creative-strategy | docs/strategy/verbal-identity.md (territoire verbal) | LIVRÉ 2026-06-11 | OK — gates PASS. Lexique propriétaire, 2 métaphores fondatrices, entités SEO/GEO, indépendant du naming final |
 | 1.4b | @data-analyst | tracking-plan v1.1 + dashboard-specs v1.1 (4 gaps UX) | LIVRÉ 2026-06-11 | OK — 4 gaps résolus : 3 requêtes Umami (R-01/02/03) + propriété has_cross_selling sur E-01 (sessionStorage, zéro PII) ; 9 events inchangés |
-| 1.5 | @design | docs/design/art-direction.md, design-tokens.json, design-system.md, page-compositions.md (+ favicons specs) | EN COURS | — |
-| 1.6 | CHECKPOINT specs | @reviewer quick-check functional-specs (« @fullstack peut-il coder sans question ? ») | Bloquant avant Phase 2 | — |
+| 1.5 | @design | docs/design/art-direction.md, design-tokens.json, design-system.md, page-compositions.md (+ favicons specs) | LIVRÉ 2026-06-11 | OK — gates PASS (JSON parsable, 3 tiers, slots photo uniques). DA « Rive privée » : sand #F5F0E8, water #3A6675, forest #3B5240, gold #C4924A ; DM Serif Display + DM Sans ; dark mode différé V2 |
+| 1.6 | CHECKPOINT specs | @reviewer : 11 critères cohérence + codabilité F-01→F-11 + contradictions + consolidation [À CONFIRMER] | EN COURS | — |
 ### Checkpoint specs (entre 1 et 2) : @reviewer quick-check functional-specs.md — À VENIR
 ### Phase 2 — Développement : @infrastructure (setup CF Pages) → @fullstack (boucle visuelle 3 devices obligatoire, gate G26 baselines) → @ux review → @qa → @infrastructure finalisation — À VENIR
 ### Phase 3 — Contenu : @copywriter → @seo ∥ @geo (seo-strategy + keyword-map + geo-strategy distincts) — À VENIR
