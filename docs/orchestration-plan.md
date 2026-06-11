@@ -79,8 +79,19 @@
 | 4.1 (∥) | @growth | acquisition-plan.md + earned-media-plan.md | LIVRÉ 2026-06-11 | OK — prescripteurs canal n°1 (séquence 5 étapes), IG+Houzz, avis 350 clients ; indicateur = taux leads qualifiés > 70% (pas le CAC) ; communiqué FPP budget 0 ; 4 quick wins fondateur |
 | 4.2 (∥) | @social | social-strategy.md | LIVRÉ 2026-06-11 | OK — IG carrousels dominants (saves), LinkedIn « je » Nicolas, FB repurposing 0 min, TikTok écarté ; pilier différenciant « regard de l'expert » local ; transition naming documentée |
 | 4.3 (∥) | @sales-enablement | playbook, proposal-template ×2, objection-handling (11), lead-qualification | LIVRÉ 2026-06-11 | OK — pipeline 11 étapes Nicolas solo, preuves toutes réelles, scoring mappé champs réels formulaire ; [À CONFIRMER : décennale, SLA, seuil budget, clients référents] |
-| 4.4 (∥) | @copywriter (consolidé) | press-release-fpp, prescripteurs-sequence, content-templates + post-register, révision gabarits sales | EN COURS | — |
-| 4.5 (∥) | @fullstack | Scoring lead dans email interne Function (specs sales §7) | EN COURS | — |
+| 4.4 (∥) | @copywriter (consolidé) | press-release-fpp, prescripteurs-sequence, content-templates + post-register, révision gabarits sales | LIVRÉ 2026-06-11 | OK — communiqué publiable hors blocs [À OBTENIR] ; 5 touches prescripteurs avec opt-out ; 8 légendes finales ; Grep propre |
+| 4.5 (∥) | @fullstack | Scoring lead dans email interne Function (specs sales §7) | LIVRÉ 2026-06-11 | OK — [LEAD x/7 — segment] email interne uniquement, étanchéité PII testée, 99 tests verts, contrat public intact |
+
+**Phase 4 : COMPLETE (2026-06-11).**
+
+### Phase 5 — Dernier kilomètre — EN COURS — @qa revue finale
+| Ordre | Agent | Livrables attendus | Statut | Verdict |
+|---|---|---|---|---|
+| 5.1 | @qa | docs/qa/page-review-report.md (21 dims × toutes pages + a11y + cross-browser + cohérence) | EN COURS | — |
+| 5.2 | @fullstack | Correction de TOUS les bugs P0+P1+P2 | Dépend 5.1 | — |
+| 5.3 | @qa re-check + @ux/@design validation | Pages ≥ 19/21, parcours et design system respectés | Dépend 5.2 | — |
+| 5.4 | Checklist jour de lancement + GO/NO-GO fondateur | Consolidation [À CONFIRMER] + checkpoint final | Dépend 5.3 | — |
+| 5.5 | Synthèse finale | docs/project-synthesis.md + lessons-learned + CHANGELOG | Dépend 5.4 | — |
 ### Checkpoint specs (entre 1 et 2) : @reviewer quick-check functional-specs.md — À VENIR
 ### Phase 2 — Développement : @infrastructure (setup CF Pages) → @fullstack (boucle visuelle 3 devices obligatoire, gate G26 baselines) → @ux review → @qa → @infrastructure finalisation — À VENIR
 ### Phase 3 — Contenu : @copywriter → @seo ∥ @geo (seo-strategy + keyword-map + geo-strategy distincts) — À VENIR
