@@ -48,10 +48,10 @@ Drawer ouvert (full-screen overlay, fond sombre 90% opacité) :
 ```
 ┌───────────────────────────────────────────┐
 │                                   [✕ 44px]│
+│  Réalisations                             │
 │  Piscines & Bien-être                     │
 │  Jardins & Paysage                        │
 │  Notre approche                           │
-│  Réalisations                             │
 │  La maison                                │
 │  Architectes                              │
 │  ───────────────────────────────          │
@@ -846,15 +846,15 @@ Ordre des champs (optimisé pour engagement progressif) :
 │ │ 06 12 34 56 78                                                    │  │
 │ └──────────────────────────────────────────────────────────────────┘  │
 │                                                                        │
-│ Votre projet *                                                         │
+│ Votre projet concerne :  (optionnel)                                   │
 │ ┌──────────────────────────────────────────────────────────────┐      │
-│ │ □ Piscine sur mesure                                          │      │
-│ │ □ Spa, sauna ou hammam                                        │      │
-│ │ □ Jardin & paysage                                            │      │
-│ │ □ Projet complet eau + jardin                                 │      │
-│ │ □ Architecte ou prescripteur                                  │      │
+│ │ [Piscine & bien-être]    [Jardin & paysage]                   │      │
+│ │ [Projet complet]         [Je suis prescripteur]               │      │
 │ └──────────────────────────────────────────────────────────────┘      │
-│ (multi-select — au moins 1 obligatoire)                                │
+│ Chips non cochés par défaut. Sélection multiple, aucun obligatoire.    │
+│ Fond brand sobre = chip activé. Contour seul = non sélectionné.        │
+│ Smart default : chip correspondant à la page source pré-activé         │
+│ mais désélectionnable.                                                  │
 │                                                                        │
 │ Commune *                                                              │
 │ ┌──────────────────────────────────────────────────────────────────┐  │
@@ -865,9 +865,8 @@ Ordre des champs (optimisé pour engagement progressif) :
 │ ┌──────────────────────────────────────────────────────────────────┐  │
 │ │ ▾ Sélectionner...                                                │  │
 │ └──────────────────────────────────────────────────────────────────┘  │
-│   Options : Moins de 50 000 € / 50 000 – 100 000 € /                  │
-│             100 000 – 200 000 € / Plus de 200 000 € /                  │
-│             Je préfère en discuter de vive voix                        │
+│   Options : 50 000 – 80 000 € / 80 000 – 150 000 € /                  │
+│             150 000 € et plus / Je préfère en discuter                 │
 │                                                                        │
 │ Décrivez votre projet *                                                │
 │ ┌──────────────────────────────────────────────────────────────────┐  │
@@ -903,17 +902,17 @@ Ordre des champs (optimisé pour engagement progressif) :
 |-------|-----------|----------------------|
 | Prénom et nom | Non vide | "Merci de renseigner votre nom." |
 | Email | Format email valide (RFC basique) | "Format d'email invalide — vérifiez votre adresse." |
-| Téléphone | 10 chiffres (format FR, espaces acceptés) | "Format de téléphone invalide (ex : 06 12 34 56 78)." |
-| Type de projet | ≥ 1 case cochée | "Merci de sélectionner au moins un type de projet." |
+| Téléphone | 10 chiffres (format FR, espaces acceptés) — si rempli seulement | "Format de téléphone invalide (ex : 06 12 34 56 78)." |
 | Commune | Non vide | "Merci d'indiquer votre commune." |
 | Description | ≥ 20 caractères | "Décrivez votre projet en quelques mots (20 caractères minimum)." |
 
 Placement des erreurs : directement sous le champ concerné, couleur d'erreur (rouge accessible, contraste ≥ 4,5:1), icône d'alerte, texte en 14px minimum.
 
-Smart defaults :
-- Si l'utilisateur vient de /prescripteurs → "Architecte ou prescripteur" pré-coché.
-- Si l'utilisateur vient de /piscines-bien-etre → "Piscine sur mesure" pré-coché.
-- Si l'utilisateur vient de /jardins-paysage → "Jardin & paysage" pré-coché.
+Smart defaults (chips) :
+- Si l'utilisateur vient de /prescripteurs → chip "Je suis prescripteur" pré-activé (désélectionnable).
+- Si l'utilisateur vient de /piscines-bien-etre → chip "Piscine & bien-être" pré-activé (désélectionnable).
+- Si l'utilisateur vient de /jardins-paysage → chip "Jardin & paysage" pré-activé (désélectionnable).
+- Arrivée directe sur /contact → aucun chip pré-activé.
 
 ---
 

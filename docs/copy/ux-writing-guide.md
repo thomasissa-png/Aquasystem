@@ -17,66 +17,87 @@
 
 ### Labels et placeholders — Champ par champ
 
-#### Champ 1 — Type de projet
+> Structure arbitrée P0-2 (arbitrations-p0-checkpoint.md) : chips optionnels + texte libre obligatoire.
 
-**Label** : Votre projet
-**Placeholder** : Piscine, jardin, les deux… décrivez librement
-**Note @fullstack** : champ texte libre (pas de menu déroulant forcé — obligation creative-brief.md §9). Texte gris clair (#placeholder), disparaît à la saisie.
-
----
-
-#### Champ 2 — Commune
-
-**Label** : Commune
-**Placeholder** : Le Vésinet, Saint-Nom-la-Bretèche…
-**Note** : Les noms de communes dans le placeholder servent de signal implicite : "on connaît votre territoire". Ne pas écrire "votre adresse" (trop intrusif pour un premier contact).
-
----
-
-#### Champ 3 — Budget (optionnel — formulation non intrusive)
-
-**Label** : Budget envisagé — *facultatif*
-**Type** : liste déroulante (non obligatoire)
-**Options** :
-- *(Choisir si vous le souhaitez)*
-- 50 000 – 80 000 €
-- 80 000 – 150 000 €
-- 150 000 € et plus
-- Je préfère en discuter
-
-**Note** : L'astérisque ou l'indication "facultatif" est obligatoire pour cette cible. Jamais "budget maximum" — la formulation "envisagé" est plus neutre et plus respectueuse. L'option "Je préfère en discuter" permet de ne pas forcer la réponse sans frustrer.
-
----
-
-#### Champ 4 — Description du projet
-
-**Label** : Décrivez-nous votre projet
-**Placeholder** : Ce que vous souhaitez créer, rénover ou transformer — en quelques mots ou en détail, comme vous préférez.
-**Note @fullstack** : textarea, min 3 lignes visibles. Pas de compteur de caractères visible (contraignant pour la cible).
-
----
-
-#### Champ 5 — Prénom et nom
+#### Champ 1 — Prénom et nom
 
 **Label** : Votre nom
 **Placeholder** : Prénom et nom
+**Obligatoire** : oui (marqué d'un astérisque)
 **Note** : un seul champ — ne pas découper en deux champs séparés. La cible est habituée à être traitée comme une personne, pas comme un formulaire administratif.
 
 ---
 
-#### Champ 6 — Email
+#### Champ 2 — Email
 
 **Label** : Email
 **Placeholder** : votre@email.com
+**Obligatoire** : oui (marqué d'un astérisque)
 **Note** : minuscules, ton fonctionnel. Pas de "adresse email professionnelle" — la cible peut utiliser une adresse personnelle.
 
 ---
 
-#### Champ 7 — Téléphone (optionnel)
+#### Champ 3 — Téléphone (optionnel)
 
-**Label** : Téléphone — *facultatif*
+**Label** : Téléphone
 **Placeholder** : 06 xx xx xx xx
-**Note** : facultatif explicite. L'email suffit pour un premier contact. Ne pas forcer le téléphone — certains leads de qualité préfèrent l'email.
+**Obligatoire** : non — pas d'astérisque, pas de mention "facultatif" accolée au label (le champ est simplement non marqué)
+**Note** : L'email suffit pour un premier contact. Ne pas forcer le téléphone — certains leads de qualité préfèrent l'email. Conforme creative-brief.md §9 (qualification douce). Arbitrage P0-2.
+
+---
+
+#### Champ 4 — Type de projet (chips optionnels)
+
+**Label au-dessus des chips** : Votre projet concerne :
+**Type** : chips/boutons pill, sélection multiple, aucun coché par défaut
+**Obligatoire** : non — le formulaire soumet même si aucun chip sélectionné
+**Labels des chips (wording exact — correspondance API)** :
+
+| Label affiché | Valeur API (`type_projet`) |
+|--------------|--------------------------|
+| Piscine & bien-être | `piscine_bien_etre` |
+| Jardin & paysage | `jardin_paysage` |
+| Projet complet | `projet_complet` |
+| Je suis prescripteur | `prescripteur` |
+
+**Note @fullstack** : état non-sélectionné = contour, sélectionné = fond brand couleur sobre. Smart default par page source : si `?source=piscines-bien-etre` → chip "Piscine & bien-être" pré-activé. Labels affichés en français exactement comme ci-dessus. Arbitrage P0-2.
+
+---
+
+#### Champ 5 — Commune
+
+**Label** : Commune
+**Placeholder** : Le Vésinet, Saint-Nom-la-Bretèche…
+**Obligatoire** : oui (marqué d'un astérisque)
+**Note** : Les noms de communes dans le placeholder servent de signal implicite : "on connaît votre territoire". Ne pas écrire "votre adresse" (trop intrusif pour un premier contact).
+
+---
+
+#### Champ 6 — Budget (optionnel — formulation non intrusive)
+
+**Label** : Budget envisagé
+**Type** : liste déroulante (non obligatoire — pas d'astérisque)
+**Obligatoire** : non
+**Options (wording français exact — correspondance API)** :
+
+| Label affiché | Valeur API (`budget_tranche`) |
+|--------------|------------------------------|
+| *(Choisir si vous le souhaitez)* | *(absent du payload)* |
+| 50 à 80 k€ | `50_80k` |
+| 80 à 150 k€ | `80_150k` |
+| Plus de 150 k€ | `150k_plus` |
+| Je préfère en discuter | `prefere_discuter` |
+
+**Note** : Jamais "budget maximum" — la formulation "envisagé" est neutre et respectueuse. L'option "Je préfère en discuter" permet de ne pas bloquer un lead qui ne veut pas se positionner. Pas de palier < 50 k€ (non cohérent avec le ticket minimum qualifié). Arbitrage P0-3.
+
+---
+
+#### Champ 7 — Description du projet
+
+**Label** : Décrivez-nous votre projet
+**Placeholder** : Ce que vous souhaitez créer, rénover ou transformer — en quelques mots ou en détail, comme vous préférez.
+**Obligatoire** : oui (marqué d'un astérisque) — minimum 20 caractères
+**Note @fullstack** : textarea, min 3 lignes visibles. Pas de compteur de caractères visible (contraignant pour la cible — arbitrage P2-1). Message d'erreur uniquement si < 20 chars à la soumission.
 
 ---
 
@@ -306,5 +327,80 @@
 
 ---
 
-*Fichier produit par @copywriter — 2026-06-11*
-*Source : brand-voice.md, brand-platform.md §4, creative-brief.md §8, legal-audit.md §B, rgpd-checklist.md §D, personas.md*
+## 10. Wording corps page /prescripteurs (P1-5)
+
+> Destinataire : Camille — architecte DPLG, architecte paysagiste, décorateur d'intérieur (35-55 ans, cabinet 78/92 ou Paris).
+> Ton : pair à pair, professionnel, sans posture commerciale. Elle juge en 30 secondes. Zéro formule de vente.
+> [Framework : AIDA conviction-first — Attention (reconnaissance entre pairs) → Intérêt (preuves opposables) → Désir (protocole protecteur de sa relation client) → Action douce]
+> [Conscience : Problem-Aware — Camille a été déçue par des exécutants qui dévient du plan ou court-circuitent la relation. Elle cherche une exception.]
+
+---
+
+### H1
+
+> Pour les architectes et paysagistes prescripteurs.
+
+---
+
+### Bloc 1 — Ce que nous apportons
+
+**H2** : Un exécutant qui lit les plans.
+
+> Bureau d'études intégré, 30 ans de chantiers dans le 78 et le 92. Nous travaillons sur votre cahier des charges ou co-concevons en amont — avant le premier plan de masse, si vous le souhaitez.
+>
+> Certification Socotec CSP/ESP-001. Membre du réseau L'Esprit Piscine. [À CONFIRMER : PDF téléchargeables ou disponibles sur demande]
+
+**Note rédaction** : les preuves viennent avant la promesse — c'est l'inverse du discours commercial. Camille lit les certifications avant de lire le pitch.
+
+---
+
+### Bloc 2 — Comment nous travaillons ensemble
+
+**H2** : Votre relation avec votre client reste la vôtre.
+
+> Nous ne parlons pas budget directement à votre client. Toutes les décisions de chantier vous passent par vous — c'est notre protocole, pas une exception accordée sur demande.
+>
+> Interlocuteur technique dédié par chantier. Points d'avancement à la cadence que vous choisissez. Si un problème d'exécution se pose, vous êtes le premier appelé.
+
+**Note rédaction** : ce bloc traite l'objection n°1 de Camille (prestataire qui court-circuite la relation). Le dire explicitement en fait un engagement, pas un argument vague.
+
+---
+
+### Bloc 3 — Nos réalisations dans votre périmètre
+
+**H2** : 30 ans de réalisations en 78/92 — portfolio sur demande.
+
+> Terrains en pente, contraintes PLU, délais de réalisation stricts. Nous connaissons les sols de Saint-Nom-la-Bretèche, les servitudes du Vésinet, les exigences des propriétaires de Ville-d'Avray.
+>
+> Nos références sont locales, identifiables et vérifiables.
+
+**Note rédaction** : nommer les communes crée la reconnaissance. Camille sait si un exécutant connaît vraiment son territoire. "Vérifiables" répond à sa frustration n°4 (manque de lisibilité sur les preuves).
+
+---
+
+### CTA
+
+**Texte du bouton** : Présentons-nous
+
+**Note @fullstack** : le CTA pointe vers le formulaire de contact `/contact` avec `?source=prescripteurs` pour le smart default chip "Je suis prescripteur". Pas de lien séparé — le formulaire unique est suffisant. Texte du bouton : 2 mots, pair à pair, aucune posture commerciale.
+
+**CTA secondaire (optionnel, en lien texte)** : Parlez-nous d'un projet en cours
+
+---
+
+### Note copywriting — Ce qui est délibérément absent
+
+- Pas de mention tarifaire (Camille ne cherche pas son coût, elle cherche la valeur pour son client)
+- Pas de "partenariat" sans définir le cadre (formulation proscrite avant acquisition LTE)
+- Pas de superlatif ("le meilleur", "référence absolue") — les preuves factuelles suffisent
+- Pas d'invitation à "rejoindre notre réseau" — registre franchise incompatible avec le ton pair
+
+---
+
+*Section P1-5 ajoutée par @copywriter — 2026-06-11*
+*Source : personas.md §Camille, brand-voice.md §4d, arbitrations-p0-checkpoint.md P1-5*
+
+---
+
+*Fichier produit par @copywriter — 2026-06-11 | Mise à jour harmonisation P0 — 2026-06-11*
+*Source : brand-voice.md, brand-platform.md §4, creative-brief.md §8, legal-audit.md §B, rgpd-checklist.md §D, personas.md, arbitrations-p0-checkpoint.md*

@@ -38,7 +38,7 @@
 **Desktop (≥ 1024px) — barre horizontale fixe en haut**
 
 ```
-[Logo Aquasystem] | Piscines & Bien-être · Jardins & Paysage · Notre approche · Réalisations · La maison · Architectes | [Parlez-nous de votre projet →]
+[Logo Aquasystem] | Réalisations · Piscines & Bien-être · Jardins & Paysage · Notre approche · La maison · Architectes | [Parlez-nous de votre projet →]
 ```
 
 Règles :
@@ -56,10 +56,10 @@ Règles :
 
 Menu ouvert = drawer plein écran (depuis la droite), fond sombre semi-transparent :
 ```
+  Réalisations
   Piscines & Bien-être
   Jardins & Paysage
   Notre approche
-  Réalisations
   La maison
   Architectes
   ─────────────────────

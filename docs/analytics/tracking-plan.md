@@ -158,6 +158,10 @@ Ces events mesurent directement la NSM ou un signal de conversion critique.
 
 **Note RGPD** : NE PAS inclure nom, email, téléphone, contenu de la description dans l'event.
 
+**Note qualification NSM** : La qualification NSM s'effectue côté dashboard uniquement. `type_projet` est désormais optionnel (null si aucun chip) — il n'entre pas dans le critère de qualification strict. Un lead est qualifié si commune IN [78/92/27/95] ET description ≥ 20 chars. `type_projet` sert à l'enrichissement (répartition par activité) et à mesurer HYP-02/HYP-03, pas à filtrer les leads valides.
+
+**Note double signal de conversion (P0-4)** : Deux signaux mesurent la conversion. (1) `form_submission_success` (E-01) = event de référence, déclenché côté client après confirmation 200 de `/api/contact`. (2) Pageview `/contact/merci` = signal de vérification — compter les pageviews distinctes sur cette URL dans Umami/Plausible. En cas de divergence entre les deux signaux, E-01 prévaut. En cas de divergence avec l'email reçu par Nicolas, l'email fait foi.
+
 **Note Gap 3 (cross-selling → projet_complet)** : La propriété `has_cross_selling` permet de corréler les soumissions avec `type_projet = "projet_complet"` qui proviennent d'une session où l'utilisateur a cliqué sur le composant cross-selling. Alimente la décision HYP-02. Implémentation : lors du déclenchement de `cross_selling_clicked`, @fullstack pose `sessionStorage.setItem('has_cross_selling', 'true')` ; la valeur est lue à la soumission du formulaire.
 
 ---
@@ -166,7 +170,7 @@ Ces events mesurent directement la NSM ou un signal de conversion critique.
 
 **Description** : Utilisateur commence à remplir le formulaire (premier champ focusé).
 
-**Trigger** : Focus sur le premier champ du formulaire (`#form-prenom` ou premier input).
+**Trigger** : Focus sur le premier champ du formulaire (`#prenom_nom`).
 
 **Type** : User
 
@@ -324,7 +328,7 @@ Ces events mesurent directement la NSM ou un signal de conversion critique.
 
 **Type** : User
 
-**Pages** : `/piscines` (F-02), `/jardins` (F-03), `/realisations` (F-05)
+**Pages** : `/piscines-bien-etre` (F-02), `/jardins-paysage` (F-03), `/realisations` (F-05)
 
 **Priorité** : P1 — Mesure directement HYP-02 (réunion des 2 maisons).
 
@@ -332,8 +336,8 @@ Ces events mesurent directement la NSM ou un signal de conversion critique.
 
 | Propriété | Type | Valeurs possibles | Obligatoire | Note RGPD |
 |-----------|------|-------------------|-------------|-----------|
-| `source_univers` | string | `piscines`, `jardins`, `realisations` | Oui | OK |
-| `destination_univers` | string | `piscines`, `jardins`, `contact` | Oui | OK |
+| `source_univers` | string | `piscines-bien-etre`, `jardins-paysage`, `realisations` | Oui | OK |
+| `destination_univers` | string | `piscines-bien-etre`, `jardins-paysage`, `contact` | Oui | OK |
 
 ---
 

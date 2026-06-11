@@ -7,6 +7,10 @@
 
 ---
 
+**v1.2 — 2026-06-11 — Harmonisation post-arbitrages P0**
+- URLs `page_source` mises à jour dans R-02 : `/piscines` → `/piscines-bien-etre`, `/jardins` → `/jardins-paysage` (P0-1).
+- Définition NSM cohérente avec kpi-framework v1.2 : `type_projet non null` retiré des critères stricts.
+
 **v1.1 — 2026-06-11 — Gaps UX intégrés**
 4 requêtes/analyses documentées suite aux gaps @ux :
 - Gap 1 : requête "temps moyen sur /realisations" via Umami natif — voir section "Requêtes analytiques complémentaires".
@@ -398,7 +402,7 @@ Ces requêtes ne nécessitent pas d'events supplémentaires. Elles s'exécutent 
 
 ```
 Étape 1 : page_viewed → page_path = "/"
-Étape 2 : page_viewed → page_path contient "/piscines" OU "/jardins"
+Étape 2 : page_viewed → page_path contient "/piscines-bien-etre" OU "/jardins-paysage"
 Étape 3 : page_viewed → page_path = "/realisations"
 Étape 4 : cta_clicked (event custom)
 Étape 5 : form_submission_success (event custom)

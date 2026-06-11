@@ -7,23 +7,29 @@
 
 ---
 
+**v1.2 — 2026-06-11 — Harmonisation post-arbitrages P0**
+- NSM : `type_projet non null` retiré des critères stricts. Lead qualifié = commune 78/92 + description ≥ 20 chars. `type_projet` = critère d'enrichissement uniquement (chips optionnels P0-2).
+- Formule NSM mise à jour en conséquence.
+
+---
+
 ## 1. North Star Metric (NSM)
 
 ### Définition précise
 
 **Leads entrants qualifiés / mois** — une demande de contact est qualifiée si ET SEULEMENT SI :
 1. La commune renseignée appartient au 78 ou au 92 (ou limitrophe accepté : 27, 95)
-2. Le champ `type_de_projet` contient ≥ 1 valeur parmi : Piscine, Spa-Sauna, Jardin & Parc, Projet complet eau+jardin, Prescripteur-Architecte
-3. Le champ `description` contient ≥ 20 caractères (soumission non vide)
+2. Le champ `description` contient ≥ 20 caractères (soumission non vide)
 
-Un formulaire qui échoue à L'UN de ces 3 critères = lead non qualifié (à signaler séparément à Nicolas Berg, pas compté dans la NSM).
+Un formulaire qui échoue à L'UN de ces 2 critères = lead non qualifié (à signaler séparément à Nicolas Berg, pas compté dans la NSM).
+
+**Note `type_projet`** : Le champ `type_projet` (chips optionnels) n'est PAS un critère de qualification strict. Un lead sans chip sélectionné mais avec une bonne description et une commune 78/92 est qualifié — Nicolas lit la description pour identifier le type de projet. `type_projet` est un critère d'enrichissement utilisé pour la répartition par activité (indicateur V-03, HYP-02, HYP-03) et pour les smart defaults de la page de confirmation, pas pour filtrer les leads valides.
 
 ### Formule de calcul exacte
 
 ```
 NSM(mois M) = COMPTE(form_submission_success)
               où commune IN [78*, 92*, 27*, 95*]
-              ET type_projet ≠ NULL
               ET longueur(description) >= 20
               FENÊTRE = du 1er au dernier jour du mois calendaire M
 ```
