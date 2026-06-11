@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { DM_Sans, DM_Serif_Display } from 'next/font/google';
 import { SITE_NAME, SITE_TAGLINE } from '@/lib/constants';
+import { NavBar } from '@/components/layout/NavBar';
+import { Footer } from '@/components/layout/Footer';
 import '@/styles/globals.css';
 
 /**
@@ -44,7 +46,11 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="fr" className={`${dmSans.variable} ${dmSerif.variable}`}>
-      <body>{children}</body>
+      <body className="flex min-h-dvh flex-col">
+        <NavBar />
+        <main className="flex-1">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

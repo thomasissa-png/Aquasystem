@@ -103,3 +103,26 @@
 **Choix** : le CI GitHub Actions s'arrête à `build` (lint → typecheck → build → vérif `out/`). Pas de job deploy.
 
 **Justification** : (1) tokens Cloudflare non encore configurés ; (2) le déploiement natif Pages↔GitHub couvre déjà l'auto-deploy sur merge `main` + previews par PR — un job wrangler ferait doublon. Jobs Vitest/Playwright/Lighthouse laissés **commentés** pour @qa (ne pas modifier `.github/workflows/` sans cohérence avec la stratégie QA — règle @infrastructure).
+
+---
+
+## D-10 — Tranche A : design system + layout + formulaire (@fullstack, 2026-06-11)
+
+Produit par @fullstack (TRANCHE A). Pages de contenu = tranche B (hors scope).
+
+**Composants UI (`src/components/ui/`)** : `Button` (3 variants/3 tailles/6 états, tokens uniquement), `ButtonLink` (lien Next stylé bouton — préféré au pattern `asChild`/Radix : 2 usages ne justifient pas une dépendance), `FormField` (`InputField`/`TextareaField`/`SelectField`, association a11y label/aria-describedby/aria-invalid intégrée, 6 états), `Chip` (toggle `role=checkbox` aria-checked), `SectionHeading`, `ProofBadges`. Deps ajoutées épinglées (D-08) : `clsx 2.1.1`, `tailwind-merge 3.6.0`, `lucide-react 0.456.0`. Helper `cn()` (`src/lib/cn.ts`).
+
+**Layout (`src/components/layout/`)** : `NavBar` (client — drawer state, lien actif via `usePathname`, E-04 `cta_clicked`), `Footer` (server, HTML pur). Intégrés dans `layout.tsx` (`<main>` entre les deux). Drawer mobile = **bottom-sheet `items-end`** (consigne mission, prévaut sur le « drawer depuis la droite » de design-system §5) : overlay sombre `rgba(26,21,16,0.90)`, focus trap manuel (Tab cyclique + Escape + restitution focus au trigger), scroll body verrouillé (`overflow:hidden`), touch targets ≥ 44px, focus-ring inversé sur fond sombre.
+
+**Formulaire (`src/components/forms/ContactForm.tsx`)** :
+- **Timing E-01 (critique)** : `form_submission_success` est émis **AVANT** `window.location.assign('/contact/merci/')`, dans le bloc `res.ok`. trackEvent est fire-and-forget/fail-silent (lib/analytics) — pas d'`await`, le redirect n'attend pas l'analytics mais l'event part en premier. Double signal de conversion conservé (E-01 + pageview /merci).
+- **sessionStorage `has_cross_selling`** : lu dans `emitSuccessEvent` via `getItem('has_cross_selling') === 'true'`, try/catch (sessionStorage peut être indisponible → `false`). La pose (`setItem`) reviendra au composant cross-selling de la tranche B (CrossSellingBlock).
+- **Smart default `?source=`** : `useSearchParams` (→ page wrappe `ContactForm` dans `<Suspense>`, requis en export statique). Mapping `SOURCE_TO_CHIP` (constants.ts) ; valeur hors enum ignorée. Chip pré-activé reste désélectionnable.
+- **E-02** au premier focus (`onFocus` du `<form>`, garde `startedRef`). **E-03** sur `beforeunload` si start sans succès, avec `derniere_etape` (nom de champ, jamais valeur) + `champs_remplis`.
+- **Validation inline au blur** (`src/lib/contact-validation.ts`) — messages = wording EXACT ux-writing §2. Re-validation complète à la soumission, focus sur le 1er champ en erreur. 400 serveur → re-mappe `fields` sous les champs.
+- **Fallback sans JS** : `<form action="/api/contact" method="POST">` natif + champs cachés (`langue`, `page_source`, miroir caché `type_projet` par chip sélectionné). Honeypot `.honeypot-field` (CSS, jamais `type=hidden`).
+- **Préservation saisie sur erreur 500/timeout** : `submitError` affiché en `role=alert` (focus déplacé), formulaire intact, `AbortController` 10s.
+
+**Function (`functions/api/contact.ts`)** : TODO P0-2/P0-3 levés. Validation complète conforme payload v1.1 (enums type_projet/budget, tel FR `^0[1-9][0-9]{8}$` après nettoyage, description 20..2000), honeypot → 200 silencieux, rate limit KV. **Le content-type pilote le format de réponse** : `application/json` → JSON 200/400/429/500 (wording ux-writing) ; `x-www-form-urlencoded` (sans JS) → redirect **303** (`/contact/merci/` succès, `/contact/` erreur — dégradation acceptable US-08 #9). Email Resend : sujet + corps structuré (specs « Format de l'email »), `reply_to` = email du contact, NSM informative (commune contient « 78 »/« 92 »).
+
+**Boucle visuelle** : Playwright (binaire installé, module `playwright@1.49` en `--no-save` — outil de test, pas dépendance runtime). 6 baselines `tests/screenshots/` (contact + merci × mobile375/tablet768/desktop1280) + `contact-error-state-desktop.png`. Conformité WF-08 vérifiée (split asymétrique, sand-200 form panel, coordonnées en bas de colonne, mobile mono-colonne coordonnées masquées). 0 écart bloquant.

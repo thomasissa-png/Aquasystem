@@ -1,5 +1,5 @@
 import { forwardRef, useId } from 'react';
-import { AlertCircle } from 'lucide-react';
+import { AlertCircle, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/cn';
 
 /**
@@ -225,26 +225,31 @@ export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
           hint={hint}
           hintId={hintId}
         />
-        <select
-          ref={ref}
-          id={fieldId}
-          required={required}
-          aria-required={required || undefined}
-          aria-invalid={error ? true : undefined}
-          aria-describedby={describedBy}
-          defaultValue=""
-          className={fieldClasses(Boolean(error), 'h-11 appearance-none pr-10')}
-          {...props}
-        >
-          <option value="" disabled={required}>
-            {placeholder ?? '—'}
-          </option>
-          {options.map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
+        <div className="relative">
+          <select
+            ref={ref}
+            id={fieldId}
+            required={required}
+            aria-required={required || undefined}
+            aria-invalid={error ? true : undefined}
+            aria-describedby={describedBy}
+            className={fieldClasses(Boolean(error), 'h-11 appearance-none pr-10')}
+            {...props}
+          >
+            <option value="" disabled={required}>
+              {placeholder ?? '—'}
             </option>
-          ))}
-        </select>
+            {options.map((opt) => (
+              <option key={opt.value} value={opt.value}>
+                {opt.label}
+              </option>
+            ))}
+          </select>
+          <ChevronDown
+            aria-hidden
+            className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground-secondary"
+          />
+        </div>
         {error && <ErrorRow id={errorId} message={error} />}
       </div>
     );
