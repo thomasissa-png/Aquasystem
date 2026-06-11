@@ -58,7 +58,16 @@
 | 2.5b (∥) | @design (correctif A11Y) | design-tokens v1.1 contrastes recalculés | LIVRÉ 2026-06-11 | OK — gold.800 texte 3,92:1, proof-label 7,39:1, footer-legal 6,87:1, ratios documentés |
 | 2.5c | @fullstack (application tokens) | Vérif rendu + tests axe + baselines | LIVRÉ 2026-06-11 | OK — BUG-A11Y-1 RÉSOLU (0 violation contraste, 5 pages). Révélé BUG-A11Y-2 préexistant (target-size : inputs 21px, liens footer) → 2.7 |
 | 2.6 (∥) | @infrastructure (finalisation) | Perf budgets réels, _headers, monitoring, runbook déploiement, checklist fondateur | LIVRÉ 2026-06-11 | OK — PRÊT au déploiement côté code. First Load max 114 ko PASS ; cache-control ajoutés ; runbook 11 étapes + rollback ; reco P1 hero mobile srcset → @fullstack ; bloquants restants = fondateur (photos jardins, naming, comptes/secrets) |
-| 2.7 | @fullstack (A11Y-2 + perf hero) | FormField 44px + espacement liens footer + 4 tests axe verts + srcset hero mobile 800w | EN COURS | — |
+| 2.7 | @fullstack (A11Y-2 + perf hero) | Espacement liens footer/nav + 4 tests axe verts + picture/srcset hero mobile 800w | LIVRÉ 2026-06-11 | OK — 28/28 E2E + 89/89 unit verts, 0 fixme ; hero mobile 124 ko (< 130) ; note : inputs étaient déjà 44px (FIXME obsolète), liens renforcés WCAG 2.5.8 |
+
+**Phase 2 : COMPLETE (2026-06-11) — build vert, 117 tests verts, 0 violation axe, PRÊT au déploiement côté code.**
+
+### Phase 3 — Contenu/SEO/GEO — EN COURS — @seo ∥ @geo
+| Ordre | Agent | Livrables attendus | Statut | Verdict |
+|---|---|---|---|---|
+| 3.1 (∥) | @seo | docs/seo/seo-strategy.md (SEO local 78/92), keyword-map.md (≥20 mots-clés réels), metadata-templates.md | EN COURS | — |
+| 3.2 (∥) | @geo | docs/geo/geo-strategy.md (≥10 claims sourcés, llms.txt, audit visibilité IA), content-restructuring.md | EN COURS | — |
+| 3.3 | @fullstack (implémentation SEO/GEO) | sitemap, robots.txt, llms.txt, LocalBusiness/Breadcrumb JSON-LD, metas finales | Dépend 3.1+3.2 | — |
 ### Checkpoint specs (entre 1 et 2) : @reviewer quick-check functional-specs.md — À VENIR
 ### Phase 2 — Développement : @infrastructure (setup CF Pages) → @fullstack (boucle visuelle 3 devices obligatoire, gate G26 baselines) → @ux review → @qa → @infrastructure finalisation — À VENIR
 ### Phase 3 — Contenu : @copywriter → @seo ∥ @geo (seo-strategy + keyword-map + geo-strategy distincts) — À VENIR
