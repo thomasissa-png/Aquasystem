@@ -96,6 +96,12 @@
 
 ---
 
+## Checkpoint Phase 0 — VALIDÉ fondateur (2026-06-11)
+1. **Fondations GO** : positionnement (intégrateur unique eau+jardin haut de gamme ouest parisien), tagline « L'extérieur à la hauteur de votre propriété », personas Alexandre + Camille, scope V1 11 features, décisions légales (éditeur unique SARL AQUA SYSTEM, formulation « en partenariat avec »).
+2. **Naming** : DIFFÉRÉ — nom de travail provisoire « **Aquasystem** » [PROVISOIRE — naming ombrelle final à trancher ; shortlist Orvère/Thalweg/Rive & Clos reste valable ; tout livrable utilise « Aquasystem » de façon substituable (variable/token, jamais en dur dans des assets difficiles à changer)].
+3. **Analytics** : Umami self-hosted (0 €, exempté CNIL, events custom).
+4. **Photos (HYP-04)** : si les sources du book Calameo sont inaccessibles → utiliser les photos des réalisations Aqua System publiées sur https://www.esprit-piscine.fr/aqua-system/ et aqua-system.fr [vérifier : uniquement les réalisations PROPRES d'Aqua System, confirmation droit à l'image au fondateur avant mise en ligne].
+
 ## Décisions de scope validées fondateur (2026-06-11)
 1. Architecture de marque : option (a) marque ombrelle nouvelle, 2 maisons visibles.
 2. Naming : aucune contrainte (pas besoin de « Berg »), équipe force de proposition + check domaines.
