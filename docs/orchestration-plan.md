@@ -57,7 +57,8 @@
 | 2.5 | @qa | qa-strategy + matrice traçabilité + Vitest + Playwright E2E + CI activée | LIVRÉ 2026-06-11 | OK — 113 tests verts (89 unit + 24 E2E ×3 devices), coverage 97,8 % ; BUG-A11Y-1 P1 (contraste gold/proof) → @design+@fullstack ; INFO-1 harmonisé ; M-1→M-7 manuels pré-launch |
 | 2.5b (∥) | @design (correctif A11Y) | design-tokens v1.1 contrastes recalculés | EN COURS | — |
 | 2.5c | @fullstack (application tokens) | Vérif rendu + un-fixme 4 tests axe + baselines | Dépend 2.5b | — |
-| 2.6 (∥) | @infrastructure (finalisation) | Perf budgets réels, _headers, monitoring, runbook déploiement, checklist fondateur | EN COURS | — |
+| 2.6 (∥) | @infrastructure (finalisation) | Perf budgets réels, _headers, monitoring, runbook déploiement, checklist fondateur | LIVRÉ 2026-06-11 | OK — PRÊT au déploiement côté code. First Load max 114 ko PASS ; cache-control ajoutés ; runbook 11 étapes + rollback ; reco P1 hero mobile srcset → @fullstack ; bloquants restants = fondateur (photos jardins, naming, comptes/secrets) |
+| 2.7 | @fullstack (perf hero) | <picture>/srcset hero mobile 800w (reco infra D7) | Dépend 2.5c | — |
 ### Checkpoint specs (entre 1 et 2) : @reviewer quick-check functional-specs.md — À VENIR
 ### Phase 2 — Développement : @infrastructure (setup CF Pages) → @fullstack (boucle visuelle 3 devices obligatoire, gate G26 baselines) → @ux review → @qa → @infrastructure finalisation — À VENIR
 ### Phase 3 — Contenu : @copywriter → @seo ∥ @geo (seo-strategy + keyword-map + geo-strategy distincts) — À VENIR
