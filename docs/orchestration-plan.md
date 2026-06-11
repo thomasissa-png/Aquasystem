@@ -48,8 +48,8 @@
 | Ordre | Agent | Livrables attendus | Statut | Verdict |
 |---|---|---|---|---|
 | 2.1 | @infrastructure (setup) | Socle Next.js statique + functions/api/contact squelette + CI + tokens→Tailwind + infrastructure.md + dev-decisions.md | LIVRÉ 2026-06-11 | OK — build PASS (tsc+lint+next build, re-vérifié par orchestrateur + hook pre-commit actif). Décisions : images.unoptimized (divergence F-11 assumée → AVIF/WebP pré-encodés, à signaler @qa G-PERF) ; rate limit KV ; i18n sans middleware. Validation champs formulaire balisée [BLOQUÉ P0-2/P0-3] |
-| 2.2 (∥) | @fullstack tranche A | Composants UI + NavBar/Footer + ContactForm + /contact + /contact/merci + Function complète + boucle visuelle 2 pages | EN COURS | — |
-| 2.2b (∥) | @copywriter | docs/copy/site-copy.md (copy complet 9 pages, metas provisoires) | EN COURS | — |
+| 2.2 (∥) | @fullstack tranche A | Composants UI + NavBar/Footer + ContactForm + /contact + /contact/merci + Function complète + boucle visuelle 2 pages | LIVRÉ 2026-06-11 | OK — build PASS re-vérifié orchestrateur ; 7 baselines ; E-01 avant redirect ; REPLY_DELAY_TEXT sans délai chiffré [À CONFIRMER fondateur] |
+| 2.2b (∥) | @copywriter | docs/copy/site-copy.md (copy complet 9 pages, metas provisoires) | LIVRÉ 2026-06-11 | OK — 1013 lignes, AIDA conviction-first, template réalisation sans fictif, metas provisoires pour @seo |
 | 2.2c (∥) | @product-manager | functional-specs v1.2 (4 micro-correctifs résiduels) | LIVRÉ 2026-06-11 | OK — 4 correctifs + Grep propre ; contrat dev 100% cohérent avec ux-writing v1.2 |
 | 2.3 | @fullstack tranche B | Pages de contenu + portfolio + photos réelles + boucle visuelle complète | Dépend 2.2 + 2.2b | — |
 ### Checkpoint specs (entre 1 et 2) : @reviewer quick-check functional-specs.md — À VENIR
