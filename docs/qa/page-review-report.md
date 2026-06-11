@@ -203,5 +203,76 @@ Note transversale : **BUG-A11Y-4 (skip link, P1)** et **BUG-A11Y-3 (contraste mu
 
 ## Reprise (anti-timeout)
 Audit **TERMINÉ** — 15 routes auditées (13 pages distinctes + 3 fiches échantillon sur 14), 21 dimensions + a11y (axe-core 13 pages + clavier + skip link + zoom 200%) + cross-browser Chromium/Firefox + cohérence globale. Aucune page restante.
+
+---
+
+# Re-check 5.3 — vérification INDÉPENDANTE des 9 corrections Phase 5.2
+
+> Auteur : @qa — 2026-06-11. **Ne croit PAS le handoff @fullstack (D-14) sur parole : re-mesure indépendante.**
+> Méthode : build de prod réel (`out/`), serveur `next dev` 127.0.0.1:3000, Playwright Chromium/Firefox + axe-core, inspection HTML/CSS générés.
+> Périmètre : les 9 corrections D-14 + la régression complète. Convention `[LIVE]` / `[STATIQUE]` maintenue.
+> Réf bugs d'origine : BUG-A11Y-3 (contraste muted), BUG-A11Y-4 (skip link), INFO-NAV-1, INFO-SEO-1 (titres), sitemap drafts, INFO-VIS-1, INFO-IMG-1, INFO-LINK-1.
+
+## Tableau de synthèse Re-check 5.3
+
+| # | Vérification | Bug d'origine | Preuve mesurée | Statut |
+|---|---|---|---|---|
+| 1 | Axe-core 13 pages (0 violation) | BUG-A11Y-3 + 4 | **13/13 pages axe-core VERT** (Playwright Chromium, tags wcag2a→wcag22aa : `color-contrast` + `target-size` inclus). 0 violation sur jardins-paysage (page la + chargée en muted) `[LIVE]` | **LEVÉ** |
+| 2 | Skip link focus + Enter → #main | BUG-A11Y-4 | 1er `Tab` (/ et /contact/) → focus `Aller au contenu` (href `#main`), visible dans le viewport ; `Enter` → URL `#main`, cible = élément `<main>` `[LIVE]` | **LEVÉ** |
+| 3 | Contraste muted computed `#6b6058` | BUG-A11Y-3 | figcaption muted `getComputedStyle().color` = **`rgb(107, 96, 88)` = `#6b6058`** `[LIVE]` ; ratios WCAG calculés **5.00–5.71:1** sur sand-50/100/200 (PASS AA) vs ancien 3.75–4.29:1 (FAIL) ; CSS buildé `out/` = `#6b6058`, 0 `#7e7468` résiduel | **LEVÉ** |
+| 4 | 14 titres fiches < 60 car. | INFO-SEO-1 | 14 `<title>` de `out/` recomptés en caractères Unicode (entities décodées) : **max 59 car**, 0 fiche ≥ 60. Test unit `realisations.test.ts` VERT `[LIVE/STATIQUE out/]` | **LEVÉ** |
+| 5 | Sitemap 10 URLs, 0 fiche draft + noindex | sitemap drafts | `out/sitemap.xml` = **10 `<loc>`** (8 pages + 2 légales), **0 fiche /[slug]** ; 3 fiches échantillon = `<meta name="robots" content="noindex, follow">` `[STATIQUE out/]` | **LEVÉ** |
+| 6 | Libellés nav/footer prescripteurs | INFO-NAV-1 | HTML rendu live : header `<a href="/prescripteurs/">Architectes`, footer `…>Espace prescripteurs` — **2 libellés distincts assumés** (ux-writing §6). Conforme, pas un bug `[LIVE]` | **LEVÉ (résolu par conception)** |
+| 7 | Régression unit + E2E + build | — | Vitest **102/102** ; Playwright **41/41** (37 desktop dont 13 axe + 4 @main iPad/iPhone) ; `npm run build` PASS **30 routes**, First Load JS max **114 kB** `[LIVE]` | **LEVÉ** |
+| 8 | Validation visuelle baselines | — | 3 baselines desktop re-shootées 5.2 lues (Read) : piscines/jardins/notre-approche — **ni casse de layout ni dérive vs page-compositions**, muted plus foncé lisible (attendu), 0 troncature/chevauchement `[LIVE lecture]` | **LEVÉ** |
+
+> **NOTE faux positif écarté (transparence)** : un premier comptage `bash ${#title}` a renvoyé 63/64 car. pour 2 titres → **artefact de locale POSIX** (`${#}` compte les bytes UTF-8, pas les caractères ; chaque `à/é/è/ê` = 2 bytes). Recompté en vrais caractères Unicode (`node [...title].length`, entities décodées) : **56 et 59 car.** Aucune fiche ≥ 60. Le test unit `realisations.test.ts` avait raison. Leçon : toujours compter les titres accentués en caractères, jamais en bytes.
+
+## Détail des mesures `[LIVE]`
+
+- **Environnement** : `npm run build` (out/ de prod) + `next dev` 127.0.0.1 (port 3000 occupé par un process orphelin → exécuté sur 3001 / Playwright auto-server 3100, même code, équivalent). Node v22.22.2, Next 14.2.15. Commit re-checké : `91f6992` (Phase 5.2, 9 corrections), working tree propre avant édition de ce rapport.
+- **Axe-core (vérif 1)** : `tests/e2e/a11y-all-pages.spec.ts` — boucle paramétrée 13 pages, helper `expectNoA11yViolations` avec tags `wcag2a/wcag2aa/wcag21a/wcag21aa/wcag22aa` (donc `color-contrast` ET `target-size` 2.5.8). Résultat : **13/13 VERT**, dont jardins-paysage (6 nodes muted à l'origine) et la fiche réalisation (figcaption). Le test exige aussi `a.skip-link[href="#main"]` attaché sur chaque page.
+- **Skip link (vérif 2)** : spec interactif (temporaire, supprimé après mesure) — sur `/` et `/contact/`, premier `Tab` depuis le haut → `:focus` = `Aller au contenu`, `href="#main"`, `boundingBox().y ≥ 0` (visible, hors-écran seulement sans focus) ; `Enter` → URL contient `#main`, cible `tagName === 'main'`. 2/2 PASS.
+- **Contraste muted (vérif 3)** : `getComputedStyle(figcaption).color === 'rgb(107, 96, 88)'` PASS `[LIVE]`. Ratios WCAG (méthode sRGB exacte) : 5.71:1 (sand-50), 5.38:1 (sand-100), 5.00:1 (sand-200) — tous ≥ 4.5:1. Confirme le 3.75:1 d'origine (ancien `#7e7468` sur sand-200) et sa résolution.
+- **Titres fiches (vérif 4)** : extraction des 14 `<title>` de `out/realisations/*/index.html`, décodage `&amp;`, comptage `[...title].length`. Distribution 28→59 car. Les 2 plus longs : « Piscine à débordement en lisière de forêt — Réalisations » (56) et « Piscine à paroi vitrée en parement de pierre — Réalisations » (59).
+- **Sitemap + noindex (vérif 5)** : `grep -c "<loc>" out/sitemap.xml` = 10 ; aucune URL `/realisations/<slug>/` ; les 3 fiches échantillon portent `noindex, follow` dans leur `<head>`. Cohérent D-14 (critère `isDraft` partagé robots↔sitemap, 14/14 fiches en draft).
+- **Libellés (vérif 6)** : HTML rendu — header = `Architectes`, footer = `Espace prescripteurs`. Les 2 libellés sont **intentionnels** (ux-writing §6, D-14 §4) : nav courte vs footer explicite. INFO-NAV-1 = WARNING P2 d'harmonisation, tranché « 2 libellés assumés ». Aucune action requise.
+- **Régression (vérif 7)** : Vitest 102/102 ; Playwright `desktop-chrome` 37/37 + `ipad`/`iphone-13` (@main) 4/4 = **41/41** ; build PASS 30 routes.
+- **Visuel (vérif 8)** : lecture Read des 3 desktop re-shootés. jardins-paysage : hero propre + 3 PhotoPlaceholder sobres (P0-1 connu, hors périmètre 5.3) + vraie photo projet + CTA sombre. piscines-bien-etre : vraies photos, MediaSplit alternés, bandeau preuves. notre-approche : timeline 5 étapes alignée + FAQ details. Aucune casse de layout, aucune dérive de palette « Rive privée », muted légèrement plus foncé = conforme à l'attendu.
+
+## Verdict final Re-check 5.3
+
+**Les 9 corrections de la Phase 5.2 sont RE-MESURÉES INDÉPENDAMMENT et TENUES.** 8/8 vérifications LEVÉES, 0 RÉSIDUEL technique neuf.
+
+| Bug d'origine (revue 5.1) | Statut après re-mesure 5.3 |
+|---|---|
+| BUG-A11Y-3 (contraste muted 3.75:1, 6 pages) | **LEVÉ** — `#6b6058`, 5.00–5.71:1, axe 13 pages VERT |
+| BUG-A11Y-4 (skip link absent partout) | **LEVÉ** — focus+Enter→#main vérifiés live |
+| INFO-NAV-1 (libellés prescripteurs) | **LEVÉ (par conception)** — 2 libellés assumés ux-writing §6 |
+| INFO-SEO-1 (titres fiches > 60) | **LEVÉ** — max 59 car. |
+| Sitemap fiches draft (24→10) | **LEVÉ** — 10 URLs, 0 fiche, drafts noindex |
+| INFO-VIS-1 / INFO-IMG-1 / INFO-LINK-1 (P2) | **LEVÉS** — tokens/width-height/trailing slash (D-14 §6-8, build PASS, axe VERT) |
+
+### Verdict technique de lancement : **GO**
+
+Le site est **techniquement prêt au lancement**. Aucun bug P0/P1 résiduel. Toutes les dimensions bloquantes (liens, formulaire, interactions, résilience) étaient déjà PASS en 5.1 et le restent (41/41 E2E). Les 2 P1 a11y qui conditionnaient le « GO conditionnel » de 5.1 sont **levés et re-mesurés**.
+
+### Prérequis NON techniques restants (hors périmètre QA, rappel — ne bloquent pas le verdict technique)
+
+1. **P0-1 photos jardins** (ux-review.md) — `/jardins-paysage` affiche 3 PhotoPlaceholder faute de photos jardins « pures ». **Décision + assets fondateur** + droit à l'image. *Prérequis contenu, pas technique.*
+2. **14 fiches en mode draft** (thin content) — conforme zéro-invention, mais décision @product-manager/@seo : documenter ≥ 3 fiches FEATURED ou garder le noindex actuel (déjà en place).
+3. **`NEXT_PUBLIC_SITE_URL`** à substituer au naming/domaine final (canonical, sitemap, OG, llms.txt) avant deploy prod.
+4. **Tests manuels pré-launch M-1→M-7** (qa-strategy) : email Resend réel, KV preview, Lighthouse en preview Cloudflare — *impossibles en local, `[STATIQUE UNIQUEMENT — env Cloudflare/Resard absent]`*.
+5. **Mentions légales LTE** : gouvernance à finaliser après acquisition (project-context Notes libres).
+
+### Score final du site
+
+**20,5 / 21 (moyenne pondérée des 13 pages, inchangée vs 5.1 mais désormais SANS P1 a11y ouvert).** Toutes les pages ≥ 19/21. Les 2 P1 a11y qui plombaient la colonne « à fixer » de chaque page sont levés → le profil de risque a11y passe de « 2 P1 ouverts » à **0 P1 ouvert**. Plancher `/jardins-paysage` à 19/21 conditionné au seul P0-1 photos (contenu fondateur).
+
+**Verdict : GO technique.** Lancement débloqué côté QA — restent les prérequis contenu/config/manuels ci-dessus, non techniques.
+
+---
+
+_Re-check 5.3 TERMINÉ — 8/8 vérifications avec preuves mesurées `[LIVE]`, verdict GO technique, score 20,5/21._
 </content>
 </invoke>
