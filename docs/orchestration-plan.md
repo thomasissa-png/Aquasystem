@@ -22,8 +22,8 @@
 |---|---|---|---|---|
 | 0.1 (∥ 0.2) | @creative-strategy | docs/strategy/brand-platform.md, personas.md, competitive-benchmark.md, creative-brief.md, naming-proposals.md | LIVRÉ 2026-06-11 | OK — gates PASS. Décisions : Kapferer ; promesse 18 mots ; tagline « L'extérieur à la hauteur de votre propriété » ; VITRINE conviction-first ; naming top 3 Orvère/Thalweg/Rive & Clos [choix fondateur au checkpoint] ; personas Alexandre + Camille (prescripteur) ; section prescripteurs obligatoire en V1 |
 | 0.2 (∥ 0.1) | @legal | docs/legal/legal-audit.md, rgpd-checklist.md, mentions-legales-draft.md, privacy-policy.md | LIVRÉ 2026-06-11 | OK — gates PASS (anti-placeholder, données réelles, blocs [À CONFIRMER]/[POST-ACQUISITION] balisés) |
-| 0.3 | @product-manager | docs/product/product-vision.md, roadmap.md, backlog.md, v1-scope.md (V1 complète, pas MVP) | Dépend 0.1 | — |
-| 0.4 | @data-analyst | docs/analytics/kpi-framework.md, tracking-plan.md, dashboard-specs.md | Dépend 0.3 | — |
+| 0.3 | @product-manager | docs/product/discovery-map.md, assumption-map.md, product-vision.md, roadmap.md, v1-scope.md | LIVRÉ 2026-06-11 | OK — gates PASS. V1 complète 11 features ; NSM défini strictement (commune 78/92 + type projet + description) ; HYP-04 photos Calameo = hypothèse BLOQUANTE Phase 1 ; naming = 1er nœud du chemin critique |
+| 0.4 | @data-analyst | docs/analytics/kpi-framework.md, tracking-plan.md, dashboard-specs.md | EN COURS | À trancher : outil analytics event-compatible exempté CNIL (CF Web Analytics ne fait pas d'events custom) |
 | 0.5 | CHECKPOINT fondateur | positionnement + nom + persona + NSM + scope V1 + contraintes légales | Bloquant | — |
 
 ### Phase 0b — Agents custom — CONDITIONNELLE (si recommandés en 0.1)
