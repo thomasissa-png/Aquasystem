@@ -21,7 +21,7 @@
 | Ordre | Agent | Livrables attendus | Statut | Verdict |
 |---|---|---|---|---|
 | 0.1 (∥ 0.2) | @creative-strategy | docs/strategy/brand-platform.md, personas.md, competitive-benchmark.md, creative-brief.md, naming-proposals.md | À lancer | — |
-| 0.2 (∥ 0.1) | @legal | docs/legal/legal-audit.md, rgpd-checklist.md, mentions-legales-draft.md, privacy-policy.md | À lancer | — |
+| 0.2 (∥ 0.1) | @legal | docs/legal/legal-audit.md, rgpd-checklist.md, mentions-legales-draft.md, privacy-policy.md | LIVRÉ 2026-06-11 | OK — gates PASS (anti-placeholder, données réelles, blocs [À CONFIRMER]/[POST-ACQUISITION] balisés) |
 | 0.3 | @product-manager | docs/product/product-vision.md, roadmap.md, backlog.md, v1-scope.md (V1 complète, pas MVP) | Dépend 0.1 | — |
 | 0.4 | @data-analyst | docs/analytics/kpi-framework.md, tracking-plan.md, dashboard-specs.md | Dépend 0.3 | — |
 | 0.5 | CHECKPOINT fondateur | positionnement + nom + persona + NSM + scope V1 + contraintes légales | Bloquant | — |
@@ -40,6 +40,18 @@
 | 2026-06-11 | Scope validé en 20 Q/R fondateur, GO Phase 0 | cf. project-context.md « Décisions de scope » |
 | 2026-06-11 | @legal lancé dès Phase 0 en parallèle de @creative-strategy | protocole orchestrator + situation d'acquisition en cours à cadrer tôt |
 | 2026-06-11 | naming-proposals.md ajouté aux livrables 0.1 | la marque ombrelle n'a pas de nom — bloquant pour copy/design/SEO/domaine |
+
+## Décisions @legal actées (à respecter par tous les agents aval)
+- Éditeur unique du site : SARL AQUA SYSTEM ; directeur de publication : Nicolas Berg (à valider checkpoint).
+- Formulation LTE avant acquisition : « en partenariat avec Les Terres Essentielles » — formulations sûres/proscrites dans legal-audit.md section B (OBLIGATOIRE pour @copywriter).
+- Formulaire : base légale intérêt légitime, mention d'information prête dans rgpd-checklist.md section D.
+- Analytics : Cloudflare Web Analytics (ou Plausible) — exempté CNIL, pas de bandeau cookie.
+- Dépôt INPI du nom ombrelle (classes 35/37/44) à déclencher dès le choix du nom.
+
+## Infos à demander au fondateur (checkpoint Phase 0)
+- P0 : valider éditeur unique AQUA SYSTEM + formulations « partenariat ».
+- P1 : assureur décennale + n° police ; n° TVA intracom ; greffe RCS ; DPA Cloudflare ; autorisations droit à l'image des photos du book Calameo.
+- P2 : données SAS LTE post-acquisition (capital, greffe, TVA, représentant).
 
 ## P2 résiduels / anomalies
 (aucun)

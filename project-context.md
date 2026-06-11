@@ -117,6 +117,7 @@
 | Agent | Date | Livrable produit | Décisions clés | Pourquoi / Alternatives écartées |
 |-------|------|-----------------|----------------|----------------------------------|
 | (session principale) | 2026-06-11 | Installation framework + project-context.md initial | Scope validé en 20 questions/réponses ; architecture marque (a) ; Cloudflare Pages | VPS écarté (maintenance sans bénéfice pour un site vitrine) ; marque unique (b) écartée (les 2 marques ont un capital existant) |
+| @legal | 2026-06-11 | Audit juridique complet : `docs/legal/legal-audit.md`, `docs/legal/rgpd-checklist.md`, `docs/legal/mentions-legales-draft.md`, `docs/legal/privacy-policy.md` | SARL AQUA SYSTEM désignée éditrice unique (gouvernance LTE incertaine jusqu'à acquisition) ; formulations "partenariat" recommandées jusqu'à l'acte ; Cloudflare encadré par DPF EU-US ; analytics exemptée CNIL recommandée (Cloudflare Web Analytics ou Plausible) ; EU AI Act non applicable | Co-édition écartée (régime non défini LCEN, risque juridique pendant acquisition) ; Google Analytics sans consentement écarté (non exempt CNIL en configuration standard) |
 
 ---
 
