@@ -368,7 +368,76 @@ Légende verdicts :
 
 ---
 
-## Protocole de livraison mensuelle V1 (sans CRM, sans automatisation)
+## Requêtes analytiques complémentaires (Umami — gaps UX v1.1)
+
+Ces requêtes ne nécessitent pas d'events supplémentaires. Elles s'exécutent manuellement dans l'interface Umami (filtres et rapports) lors des revues Dashboard 2.
+
+---
+
+### Requête R-01 — Temps moyen sur /realisations (Gap 1 : signal de conviction portfolio)
+
+**Objectif** : Mesurer si les visiteurs qui cliquent ensuite sur un CTA passent plus de temps sur le portfolio que les visiteurs qui partent sans contacter. Signal de conviction, pas de conversion directe.
+
+**Source** : Umami → rapport "Pages" → filtre sur `/realisations` → colonne "Durée moyenne".
+
+**Lecture** :
+- Durée moyenne < 60 secondes sur /realisations → les photos ne retiennent pas → revoir le shooting ou la présentation de la grille.
+- Durée moyenne > 3 minutes → le portfolio engage, HYP-04 confirmée.
+
+**Limites** : Umami mesure le temps de session par page de manière approximative (différence entre timestamp d'arrivée et prochain event). À traiter comme signal directionnel.
+
+**Décision alimentée** : HYP-04 (photos portfolio suffisantes). Seuil d'alerte : durée moyenne < 60 s sur ≥ 20 sessions.
+
+---
+
+### Requête R-02 — Séquence de conviction accueil → univers → portfolio → contact (Gap 2 : chemin de conviction complet)
+
+**Objectif** : Quantifier la part des sessions qui suivent le chemin de conviction idéal défini par @ux. `cta_clicked.page_source` ne donne que la dernière étape — cette requête restitue la séquence complète.
+
+**Source** : Umami → rapport "Funnels" (fonctionnalité native Umami v2+). Configurer le funnel suivant :
+
+```
+Étape 1 : page_viewed → page_path = "/"
+Étape 2 : page_viewed → page_path contient "/piscines" OU "/jardins"
+Étape 3 : page_viewed → page_path = "/realisations"
+Étape 4 : cta_clicked (event custom)
+Étape 5 : form_submission_success (event custom)
+```
+
+**Lecture** :
+- Taux de complétion étapes 1→5 = taux du chemin de conviction idéal.
+- Point de chute le plus important entre étapes → friction à corriger en priorité.
+- Si < 5% des sessions complètent les 5 étapes → normal (chemin long) ; surveiller l'étape de chute majoritaire.
+
+**Décision alimentée** : Allocation des efforts CRO — si la chute se produit en étape 2 (univers), revoir l'accueil ; si en étape 3 (portfolio), revoir la navigation vers /realisations ; si en étape 4 (CTA), revoir le wording ou le placement du CTA.
+
+**Fréquence** : mensuelle, lors de la revue Dashboard 2.
+
+---
+
+### Requête R-03 — Sessions prescripteur non converties (Gap 4 : Camille sans soumission)
+
+**Objectif** : Distinguer les visiteurs qui ont consulté la page prescripteurs mais n'ont pas soumis de formulaire. Signal pour évaluer si la page convainc de contacter.
+
+**Source** : Umami → "Sessions" avec filtre :
+- Inclure : sessions contenant l'event `prescripteur_page_viewed`
+- Exclure : sessions contenant l'event `form_submission_success` avec `type_projet = "prescripteur"`
+
+**Calcul** :
+```
+Taux de non-conversion prescripteur =
+  sessions(prescripteur_page_viewed) - sessions(form_submission_success[type_projet=prescripteur])
+  ────────────────────────────────────────────────────────────────────────────────────────────────
+                    sessions(prescripteur_page_viewed)
+```
+
+**Lecture** :
+- Taux de non-conversion > 95% → normal en phase de démarrage (les prescripteurs évaluent avant de contacter).
+- Si le ratio `prescripteur_page_viewed` / sessions totales est > 3% mais le taux de soumission prescripteur reste 0 pendant 2 mois → la page ne convainc pas → test qualitatif avec un architecte réel (recommandé dans user-flows.md).
+
+**Décision alimentée** : Revue M+3, HYP-03. Seuil d'alerte : 0 soumission prescripteur à M+3 avec ≥ 5 vues de la page.
+
+---
 
 **Constat** : En V1, il n'y a pas d'email automatisé, pas de Slack, pas de CRM. Le fondateur est la seule personne qui reçoit les leads. Le protocole suivant garantit que les données sont collectées et utilisées, sans infrastructure supplémentaire.
 
