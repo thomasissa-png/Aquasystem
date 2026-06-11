@@ -23,12 +23,12 @@
 | 0.1 (∥ 0.2) | @creative-strategy | docs/strategy/brand-platform.md, personas.md, competitive-benchmark.md, creative-brief.md, naming-proposals.md | LIVRÉ 2026-06-11 | OK — gates PASS. Décisions : Kapferer ; promesse 18 mots ; tagline « L'extérieur à la hauteur de votre propriété » ; VITRINE conviction-first ; naming top 3 Orvère/Thalweg/Rive & Clos [choix fondateur au checkpoint] ; personas Alexandre + Camille (prescripteur) ; section prescripteurs obligatoire en V1 |
 | 0.2 (∥ 0.1) | @legal | docs/legal/legal-audit.md, rgpd-checklist.md, mentions-legales-draft.md, privacy-policy.md | LIVRÉ 2026-06-11 | OK — gates PASS (anti-placeholder, données réelles, blocs [À CONFIRMER]/[POST-ACQUISITION] balisés) |
 | 0.3 | @product-manager | docs/product/discovery-map.md, assumption-map.md, product-vision.md, roadmap.md, v1-scope.md | LIVRÉ 2026-06-11 | OK — gates PASS. V1 complète 11 features ; NSM défini strictement (commune 78/92 + type projet + description) ; HYP-04 photos Calameo = hypothèse BLOQUANTE Phase 1 ; naming = 1er nœud du chemin critique |
-| 0.4 | @data-analyst | docs/analytics/kpi-framework.md, tracking-plan.md, dashboard-specs.md | EN COURS | À trancher : outil analytics event-compatible exempté CNIL (CF Web Analytics ne fait pas d'events custom) |
+| 0.4 | @data-analyst | docs/analytics/kpi-framework.md, tracking-plan.md, dashboard-specs.md | LIVRÉ 2026-06-11 | À trancher : outil analytics event-compatible exempté CNIL (CF Web Analytics ne fait pas d'events custom) |
 | 0.5 | CHECKPOINT fondateur | positionnement + nom + persona + NSM + scope V1 + contraintes légales | VALIDÉ 2026-06-11 | GO. Naming différé → nom de travail « Aquasystem » [PROVISOIRE, substituable] ; Umami self-hosted ; photos fallback esprit-piscine.fr + aqua-system.fr |
 
 ### Phase 0b — Agents custom — SAUTÉE (aucun agent custom recommandé par la Phase 0 ; site vitrine simple, @reviewer + G_PROOF suffisent)
 
-### Phase 1 — Expérience — EN COURS — derniers agents : @ux ∥ @copywriter ∥ @product-manager(specs)
+### Phase 1 — Expérience — COMPLETE (2026-06-11)
 | Ordre | Agent | Livrables attendus | Statut | Verdict |
 |---|---|---|---|---|
 | 1.1 (∥) | @ux | docs/ux/user-flows.md, wireframes.md | LIVRÉ 2026-06-11 | OK — gates PASS. Nav plate 6 liens + CTA sticky ; formulaire 6 champs single-page ; 2 frictions H2 documentées avec solutions ; 4 gaps tracking remontés |
@@ -62,18 +62,18 @@
 
 **Phase 2 : COMPLETE (2026-06-11) — build vert, 117 tests verts, 0 violation axe, PRÊT au déploiement côté code.**
 
-### Phase 3 — Contenu/SEO/GEO — EN COURS — @seo ∥ @geo
+### Phase 3 — Contenu/SEO/GEO — COMPLETE (2026-06-11)
 | Ordre | Agent | Livrables attendus | Statut | Verdict |
 |---|---|---|---|---|
 | 3.1 (∥) | @seo | docs/seo/seo-strategy.md (SEO local 78/92), keyword-map.md (≥20 mots-clés réels), metadata-templates.md | LIVRÉ 2026-06-11 | OK — 28 mots-clés/8 clusters (volumes qualitatifs sourcés SERP) ; GBP 2 fiches (pas d'ombrelle avant naming) ; pages géo reportées V2 (anti-thin-content, seuil 3 réalisations/commune) ; mapping 301 aqua-system.fr (10 URLs, bascule à J+30 stabilité) ; espace libre confirmé « pisciniste paysagiste yvelines » |
-| 3.2b (∥) | @copywriter | docs/copy/faq-geo-copy.md (9 Q/R + 5 avant/après + distinctions FPP/EUSA dans site-copy) | EN COURS | — |
+| 3.2b (∥) | @copywriter | docs/copy/faq-geo-copy.md (9 Q/R + 5 avant/après + distinctions FPP/EUSA dans site-copy) | LIVRÉ 2026-06-11 | — |
 | 3.2 (∥) | @geo | docs/geo/geo-strategy.md (≥10 claims sourcés, llms.txt, audit visibilité IA), content-restructuring.md | LIVRÉ 2026-06-11 | OK — 12 claims 3/3 dont **Trophée Or FPP 2024 (vérifié par orchestrateur)** + EUSA Bronze 2025 ; désinformation swimmy.fr documentée ; FAQ limitées à /notre-approche + /prescripteurs (registre préservé) ; protocole mensuel < 1h |
 | 3.2b | @copywriter | docs/copy/faq-geo-copy.md | LIVRÉ 2026-06-11 | OK — 9 Q/R + 5 avant/après ; arbitrage B.5 tranché par orchestrateur (méta enrichie FPP) |
 | 3.3 | @fullstack (implémentation SEO/GEO) | sitemap, robots.txt, llms.txt, JSON-LD enrichis, metas finales, FAQ intégrées | LIVRÉ 2026-06-11 | OK — build PASS 30 routes, 117 tests verts ; sitemap 24 URLs date fixe ; FAQ details/summary 0 violation axe ; coordonnées GPS vérifiées ; B.5 appliqué par orchestrateur ; Q3 FAQ en attente durée chantier fondateur |
 
 **Phase 3 : COMPLETE (2026-06-11).**
 
-### Phase 4 — Acquisition — EN COURS — @growth ∥ @social ∥ @sales-enablement
+### Phase 4 — Acquisition — COMPLETE (2026-06-11)
 | Ordre | Agent | Livrables attendus | Statut | Verdict |
 |---|---|---|---|---|
 | 4.1 (∥) | @growth | acquisition-plan.md + earned-media-plan.md | LIVRÉ 2026-06-11 | OK — prescripteurs canal n°1 (séquence 5 étapes), IG+Houzz, avis 350 clients ; indicateur = taux leads qualifiés > 70% (pas le CAC) ; communiqué FPP budget 0 ; 4 quick wins fondateur |
@@ -84,25 +84,24 @@
 
 **Phase 4 : COMPLETE (2026-06-11).**
 
-### Phase 5 — Dernier kilomètre — EN COURS — @qa revue finale
+### Phase 5 — Dernier kilomètre — COMPLETE (2026-06-11) — GO technique 20,5/21
 | Ordre | Agent | Livrables attendus | Statut | Verdict |
 |---|---|---|---|---|
 | 5.1 | @qa | docs/qa/page-review-report.md (21 dims × toutes pages + a11y + cross-browser + cohérence) | LIVRÉ 2026-06-11 | GO conditionnel — 0 P0 neuf, 2 P1 (A11Y-3 contraste muted, A11Y-4 skip link), 6 P2 ; toutes pages ≥ 19/21 ; formulaire/résilience/cookies/liens 100% PASS live |
-| 5.1b | @design (token muted) | design-tokens v1.2.0 — muted ≥ 4.5:1 + recalcul TOUTES les paires | EN COURS | — |
+| 5.1b | @design (token muted) | design-tokens v1.2.0 — muted ≥ 4.5:1 + recalcul TOUTES les paires | LIVRÉ 2026-06-11 | OK — muted #6B6058 (4,94/4,58:1), 20 paires recalculées sRGB WCAG exact |
+| 5.2 | @fullstack | Correction de TOUS les bugs P0+P1+P2 + arbitrages | LIVRÉ 2026-06-11 | OK — 9/9 traités, axe 13 pages vert, sitemap 10 URLs (drafts noindex), 102 unit + 41 E2E verts |
+| 5.3 | @qa re-check indépendant | Re-mesure des 9 corrections + validation visuelle | LIVRÉ 2026-06-11 | **GO TECHNIQUE — score 20,5/21, 0 résiduel** ; bloquants restants = fondateur uniquement |
+| 5.4 | Checklist lancement + GO/NO-GO fondateur | Consolidation [À CONFIRMER] | LIVRÉ 2026-06-11 | Checklist consolidée dans docs/project-synthesis.md + infrastructure.md §8 ; GO fondateur = en attente des assets/décisions P0 |
+| 5.5 | Synthèse finale | docs/project-synthesis.md + lessons-learned + CHANGELOG | LIVRÉ 2026-06-11 | 4 learnings v2 consignés, tous propagés (PROPAGATION CHECK PASS) |
 
 ### Arbitrages orchestrateur post-revue (2026-06-11)
 - **INFO-DATA-1 (commune dans l'event Umami)** : décision existante MAINTENUE — tracking-plan v1.2 + rgpd-checklist : la commune seule est une localisation grossière non identifiante, l'outil est exempté CNIL, aucune autre donnée du formulaire ne part en analytics. Documenté, pas de changement.
-- **Fiches réalisations en draft (thin content, 14 pages)** : les fiches en état « en cours de documentation » passent en **noindex + exclusion sitemap** tant que leurs champs [DONNÉES PROJET RÉEL] ne sont pas remplis (conforme anti-thin-content @seo) ; ré-indexation automatique dès documentation. → @fullstack 5.2.
-- **Libellé footer prescripteurs** : aligner sur ux-writing §6 (source de vérité) — cohérence nav/footer. → @fullstack 5.2.
-| 5.2 | @fullstack | Correction de TOUS les bugs P0+P1+P2 | Dépend 5.1 | — |
-| 5.3 | @qa re-check + @ux/@design validation | Pages ≥ 19/21, parcours et design system respectés | Dépend 5.2 | — |
-| 5.4 | Checklist jour de lancement + GO/NO-GO fondateur | Consolidation [À CONFIRMER] + checkpoint final | Dépend 5.3 | — |
-| 5.5 | Synthèse finale | docs/project-synthesis.md + lessons-learned + CHANGELOG | Dépend 5.4 | — |
-### Checkpoint specs (entre 1 et 2) : @reviewer quick-check functional-specs.md — À VENIR
-### Phase 2 — Développement : @infrastructure (setup CF Pages) → @fullstack (boucle visuelle 3 devices obligatoire, gate G26 baselines) → @ux review → @qa → @infrastructure finalisation — À VENIR
-### Phase 3 — Contenu : @copywriter → @seo ∥ @geo (seo-strategy + keyword-map + geo-strategy distincts) — À VENIR
-### Phase 4 — Acquisition : @growth ∥ @social + @sales-enablement (services B2C premium + prescripteurs B2B) + earned media — À VENIR
-### Phase 5 — Conformité & dernier kilomètre : @legal finalisation + revue finale chirurgicale @qa 21 dimensions → @fullstack corrige P0+P1+P2 → re-check → GO/NO-GO lancement — À VENIR
+- **Fiches réalisations en draft (thin content, 14 pages)** : noindex + exclusion sitemap tant que [DONNÉES PROJET RÉEL] non remplis ; ré-indexation automatique dès documentation. Appliqué en 5.2.
+- **Libellé footer prescripteurs** : 2 libellés distincts conformes ux-writing §6 (nav « Architectes » / footer « Espace prescripteurs ») — vérifié conforme, pas un bug.
+
+**TOUTES PHASES COMPLETE (2026-06-11). Reste : décisions/assets fondateur (cf. docs/project-synthesis.md §Bloquants) puis déploiement preview → prod (runbook infrastructure.md §11).**
+
+> Note séquencement (learning n°1) : sur les prochains gros lots, produire les specs détaillées APRÈS les wireframes/ux-writing ou imposer une réconciliation explicite — le parallélisme aveugle specs ∥ UX/copy a coûté une boucle corrective (5 P0).
 
 ## Journal des décisions
 | Date | Décision | Pourquoi |
