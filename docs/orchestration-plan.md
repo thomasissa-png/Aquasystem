@@ -39,8 +39,8 @@
 | 1.5 | @design | docs/design/art-direction.md, design-tokens.json, design-system.md, page-compositions.md (+ favicons specs) | LIVRÉ 2026-06-11 | OK — gates PASS (JSON parsable, 3 tiers, slots photo uniques). DA « Rive privée » : sand #F5F0E8, water #3A6675, forest #3B5240, gold #C4924A ; DM Serif Display + DM Sans ; dark mode différé V2 |
 | 1.6 | CHECKPOINT specs | @reviewer : 11 critères cohérence + codabilité F-01→F-11 + contradictions + consolidation [À CONFIRMER] | LIVRÉ 2026-06-11 | **NO-GO pages / GO conditionnel infra**. 6/7 critères PASS ; FAIL critère 11 (wording en double). 13 findings : 5 P0 (URLs, formulaire, tranches budget, succès, nav — cause racine : specs non réconciliées), 5 P1, 3 P2 |
 | 1.7 | @product-manager (corrective) | docs/product/arbitrations-p0-checkpoint.md + functional-specs v1.1 | LIVRÉ 2026-06-11 | OK — 5 P0 arbitrés : URLs longues ; chips optionnels + texte libre obligatoire (NSM sans type_projet) ; 4 tranches budget (50_80k/80_150k/150k_plus/prefere_discuter) ; page /contact/merci ; nav Réalisations 1er, Contact = CTA |
-| 1.8 | @ux + @copywriter + @data-analyst (harmonisation ∥) | Edits wireframes/ux-writing/tracking v1.2 selon arbitrages | EN COURS | — |
-| 1.9 | @reviewer re-check ciblé | critère 11 + 5 P0 uniquement | Dépend 1.8 | — |
+| 1.8 | @ux + @copywriter + @data-analyst (harmonisation ∥) | Edits wireframes/ux-writing/tracking v1.2 selon arbitrages | LIVRÉ 2026-06-11 | OK — 3 agents, Greps de vérification propres ; + wording /prescripteurs produit (P1-5) |
+| 1.9 | @reviewer re-check ciblé | critère 11 + 5 P0 uniquement (+ scan page-compositions non relancé) | EN COURS | — |
 
 ### Phase 2 — Développement — DÉMARRÉE PARTIELLEMENT (GO conditionnel reviewer)
 | Ordre | Agent | Livrables attendus | Statut | Verdict |
