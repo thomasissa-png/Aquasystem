@@ -68,7 +68,18 @@
 | 3.1 (∥) | @seo | docs/seo/seo-strategy.md (SEO local 78/92), keyword-map.md (≥20 mots-clés réels), metadata-templates.md | LIVRÉ 2026-06-11 | OK — 28 mots-clés/8 clusters (volumes qualitatifs sourcés SERP) ; GBP 2 fiches (pas d'ombrelle avant naming) ; pages géo reportées V2 (anti-thin-content, seuil 3 réalisations/commune) ; mapping 301 aqua-system.fr (10 URLs, bascule à J+30 stabilité) ; espace libre confirmé « pisciniste paysagiste yvelines » |
 | 3.2b (∥) | @copywriter | docs/copy/faq-geo-copy.md (9 Q/R + 5 avant/après + distinctions FPP/EUSA dans site-copy) | EN COURS | — |
 | 3.2 (∥) | @geo | docs/geo/geo-strategy.md (≥10 claims sourcés, llms.txt, audit visibilité IA), content-restructuring.md | LIVRÉ 2026-06-11 | OK — 12 claims 3/3 dont **Trophée Or FPP 2024 (vérifié par orchestrateur)** + EUSA Bronze 2025 ; désinformation swimmy.fr documentée ; FAQ limitées à /notre-approche + /prescripteurs (registre préservé) ; protocole mensuel < 1h |
-| 3.3 | @fullstack (implémentation SEO/GEO) | sitemap, robots.txt, llms.txt, LocalBusiness/Breadcrumb JSON-LD, metas finales | Dépend 3.1+3.2 | — |
+| 3.2b | @copywriter | docs/copy/faq-geo-copy.md | LIVRÉ 2026-06-11 | OK — 9 Q/R + 5 avant/après ; arbitrage B.5 tranché par orchestrateur (méta enrichie FPP) |
+| 3.3 | @fullstack (implémentation SEO/GEO) | sitemap, robots.txt, llms.txt, JSON-LD enrichis, metas finales, FAQ intégrées | LIVRÉ 2026-06-11 | OK — build PASS 30 routes, 117 tests verts ; sitemap 24 URLs date fixe ; FAQ details/summary 0 violation axe ; coordonnées GPS vérifiées ; B.5 appliqué par orchestrateur ; Q3 FAQ en attente durée chantier fondateur |
+
+**Phase 3 : COMPLETE (2026-06-11).**
+
+### Phase 4 — Acquisition — EN COURS — @growth ∥ @social ∥ @sales-enablement
+| Ordre | Agent | Livrables attendus | Statut | Verdict |
+|---|---|---|---|---|
+| 4.1 (∥) | @growth | docs/growth/acquisition-plan.md (3 canaux + programme prescripteurs + quick wins) + earned-media-plan.md (communiqué FPP) | EN COURS | — |
+| 4.2 (∥) | @social | docs/social/social-strategy.md (plateformes, piliers, calendrier 4 sem., transition naming) | EN COURS | — |
+| 4.3 (∥) | @sales-enablement | docs/sales/ : playbook, proposal-template, objection-handling, lead-qualification | EN COURS | — |
+| 4.4 | @copywriter (consolidé) | Templates : communiqué FPP, media kit, posts sociaux, emails types | Dépend 4.1-4.3 | — |
 ### Checkpoint specs (entre 1 et 2) : @reviewer quick-check functional-specs.md — À VENIR
 ### Phase 2 — Développement : @infrastructure (setup CF Pages) → @fullstack (boucle visuelle 3 devices obligatoire, gate G26 baselines) → @ux review → @qa → @infrastructure finalisation — À VENIR
 ### Phase 3 — Contenu : @copywriter → @seo ∥ @geo (seo-strategy + keyword-map + geo-strategy distincts) — À VENIR
