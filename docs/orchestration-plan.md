@@ -40,12 +40,18 @@
 | 1.6 | CHECKPOINT specs | @reviewer : 11 critères cohérence + codabilité F-01→F-11 + contradictions + consolidation [À CONFIRMER] | LIVRÉ 2026-06-11 | **NO-GO pages / GO conditionnel infra**. 6/7 critères PASS ; FAIL critère 11 (wording en double). 13 findings : 5 P0 (URLs, formulaire, tranches budget, succès, nav — cause racine : specs non réconciliées), 5 P1, 3 P2 |
 | 1.7 | @product-manager (corrective) | docs/product/arbitrations-p0-checkpoint.md + functional-specs v1.1 | LIVRÉ 2026-06-11 | OK — 5 P0 arbitrés : URLs longues ; chips optionnels + texte libre obligatoire (NSM sans type_projet) ; 4 tranches budget (50_80k/80_150k/150k_plus/prefere_discuter) ; page /contact/merci ; nav Réalisations 1er, Contact = CTA |
 | 1.8 | @ux + @copywriter + @data-analyst (harmonisation ∥) | Edits wireframes/ux-writing/tracking v1.2 selon arbitrages | LIVRÉ 2026-06-11 | OK — 3 agents, Greps de vérification propres ; + wording /prescripteurs produit (P1-5) |
-| 1.9 | @reviewer re-check ciblé | critère 11 + 5 P0 uniquement (+ scan page-compositions non relancé) | EN COURS | — |
+| 1.9 | @reviewer re-check ciblé | critère 11 + 5 P0 uniquement (+ scan page-compositions non relancé) | LIVRÉ 2026-06-11 | **GO @fullstack** — 5 P0 LEVÉS, critère 11 LEVÉ (états critiques). 4 résiduels (1 P1 labels chips, 3 P2) → micro-correctifs @product-manager. Précédence wording : ux-writing v1.2. Boucle corrective close en 1 itération |
+
+**Phase 1 : COMPLETE (2026-06-11) — checkpoint specs levé.**
 
 ### Phase 2 — Développement — DÉMARRÉE PARTIELLEMENT (GO conditionnel reviewer)
 | Ordre | Agent | Livrables attendus | Statut | Verdict |
 |---|---|---|---|---|
 | 2.1 | @infrastructure (setup) | Socle Next.js statique + functions/api/contact squelette + CI + tokens→Tailwind + infrastructure.md + dev-decisions.md | LIVRÉ 2026-06-11 | OK — build PASS (tsc+lint+next build, re-vérifié par orchestrateur + hook pre-commit actif). Décisions : images.unoptimized (divergence F-11 assumée → AVIF/WebP pré-encodés, à signaler @qa G-PERF) ; rate limit KV ; i18n sans middleware. Validation champs formulaire balisée [BLOQUÉ P0-2/P0-3] |
+| 2.2 (∥) | @fullstack tranche A | Composants UI + NavBar/Footer + ContactForm + /contact + /contact/merci + Function complète + boucle visuelle 2 pages | EN COURS | — |
+| 2.2b (∥) | @copywriter | docs/copy/site-copy.md (copy complet 9 pages, metas provisoires) | EN COURS | — |
+| 2.2c (∥) | @product-manager | functional-specs v1.2 (4 micro-correctifs résiduels) | EN COURS | — |
+| 2.3 | @fullstack tranche B | Pages de contenu + portfolio + photos réelles + boucle visuelle complète | Dépend 2.2 + 2.2b | — |
 ### Checkpoint specs (entre 1 et 2) : @reviewer quick-check functional-specs.md — À VENIR
 ### Phase 2 — Développement : @infrastructure (setup CF Pages) → @fullstack (boucle visuelle 3 devices obligatoire, gate G26 baselines) → @ux review → @qa → @infrastructure finalisation — À VENIR
 ### Phase 3 — Contenu : @copywriter → @seo ∥ @geo (seo-strategy + keyword-map + geo-strategy distincts) — À VENIR

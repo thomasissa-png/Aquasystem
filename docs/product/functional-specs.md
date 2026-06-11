@@ -4,7 +4,7 @@
 > **Contrat product → dev.** Objectif : @fullstack peut coder sans poser une seule question.
 > Références : `docs/product/v1-scope.md` (IDs F-01…F-11), `docs/analytics/tracking-plan.md` (events E-01…E-09), `docs/legal/rgpd-checklist.md` (section D), `docs/product/discovery-map.md`, `docs/product/assumption-map.md`
 > Constante globale : `SITE_NAME` = "Aquasystem" [PROVISOIRE — substituer par le naming validé dans une seule constante `src/config/site.ts`]
-> **v1.1 — réconciliation post-checkpoint, 2026-06-11** : 5 P0 résolus (URLs, formulaire, budget, succès, nav). Arbitrages dans `docs/product/arbitrations-p0-checkpoint.md`. Source de vérité wording erreurs : `docs/copy/ux-writing-guide.md` §2.
+> **v1.2 — micro-correctifs post-re-check, 2026-06-11** : 5 P0 résolus (URLs, formulaire, budget, succès, nav). Arbitrages dans `docs/product/arbitrations-p0-checkpoint.md`. Source de vérité wording erreurs : `docs/copy/ux-writing-guide.md` §2. R-P1-1 (labels chips), R-P2-1 (empty state portfolio), R-P2-2 (4 routes courtes), R-P2-3 (bloc JSON 400) corrigés.
 > Dernière mise à jour : 2026-06-11 | Agent : @product-manager
 
 ---
