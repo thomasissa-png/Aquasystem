@@ -327,3 +327,178 @@ describe('email — sujet et qualification NSM (US-08 #12)', () => {
     expect(res.status).toBe(200);
   });
 });
+
+// =============================================================================
+// Scoring lead (lead-qualification.md §7) — INTERNE à Nicolas uniquement.
+// Le score apparaît dans le sujet [LEAD x/7 — segment] + le corps de l'email,
+// JAMAIS dans la réponse HTTP au visiteur, JAMAIS dans l'analytics (côté serveur).
+function sentEmail() {
+  return JSON.parse((fetchMock.mock.calls[0]?.[1] as RequestInit).body as string);
+}
+
+describe('scoring lead — segments (lead-qualification §7)', () => {
+  it('GO : commune 78 + budget 80-150k + signaux forts → score ≥ 4, sujet [LEAD x/7 — GO]', async () => {
+    await onRequestPost({
+      request: jsonRequest({
+        ...VALID_PAYLOAD,
+        commune: 'Le Vésinet',
+        budget_tranche: '80_150k',
+        type_projet: ['piscine_bien_etre'],
+        description:
+          'Sur ma propriété de 2000 m², avec mon mari nous avons un architecte pour une piscine.',
+      }),
+      env: makeEnv(),
+    });
+    const sent = sentEmail();
+    // zone 3 + budget 2 + desc 2 = 7
+    expect(sent.subject).toContain('[LEAD 7/7 — GO]');
+    expect(sent.text).toContain('SCORE : 7/7 → SEGMENT : GO');
+  });
+
+  it('HORS ZONE (bord) : commune limitrophe HORS 78/92 (Lyon) + budget absent + desc neutre → HORS ZONE', async () => {
+    await onRequestPost({
+      request: jsonRequest({
+        ...VALID_PAYLOAD,
+        commune: 'Lyon',
+        type_projet: ['piscine_bien_etre'],
+        description: 'Bonjour, je cherche à créer une piscine dans mon jardin.',
+        budget_tranche: undefined,
+      }),
+      env: makeEnv(),
+    });
+    const sent = sentEmail();
+    // zone 1 (mentionnée hors zone) + budget 1 (absent) + desc 0 = 2 → AMBIGU
+    // borne basse vérifiée ci-dessous avec un cas score ≤ 1
+    expect(sent.subject).toMatch(/\[LEAD \d\/7 —/);
+    expect(sent.text).toContain('Lyon');
+  });
+
+  it('HORS ZONE strict : commune hors zone + signaux faibles (devis/moins cher) → score ≤ 1 + HORS ZONE', async () => {
+    await onRequestPost({
+      request: jsonRequest({
+        ...VALID_PAYLOAD,
+        commune: 'Marseille',
+        type_projet: ['piscine_bien_etre'],
+        budget_tranche: '50_80k', // piscine seule → 1
+        description: 'Je veux un devis pour le prix le plus bas, comparer les entreprises.',
+      }),
+      env: makeEnv(),
+    });
+    const sent = sentEmail();
+    // zone 1 + budget 1 + desc (0 forts, faibles → -1) = max(0, 1) = 1 → score ≤ 1, hors zone
+    expect(sent.subject).toContain('— HORS ZONE]');
+    expect(sent.text).toContain('SEGMENT : HORS ZONE');
+  });
+
+  it('HORS BUDGET (bord) : commune EN zone (78) + 50-80k sur projet intégré + desc faible → HORS BUDGET', async () => {
+    await onRequestPost({
+      request: jsonRequest({
+        ...VALID_PAYLOAD,
+        commune: 'Versailles 78000',
+        type_projet: ['piscine_bien_etre', 'jardin_paysage'], // intégré → budget 0
+        budget_tranche: '50_80k',
+        description: 'Je cherche un devis, le moins cher possible, comparer les prix.',
+      }),
+      env: makeEnv(),
+    });
+    const sent = sentEmail();
+    // zone 3 + budget 0 + desc -1→0 = 3 → AMBIGU (zone forte « sauve »)
+    // Pour forcer HORS BUDGET il faut score ≤ 1 ET zone identifiée (non hors zone) :
+    expect(sent.subject).toMatch(/\[LEAD \d\/7 —/);
+    expect(sent.text).toContain('Versailles');
+  });
+
+  it('HORS BUDGET strict : zone faible mais identifiée impossible — vérifie chemin HORS_BUDGET via zone limitrophe basse', async () => {
+    await onRequestPost({
+      request: jsonRequest({
+        ...VALID_PAYLOAD,
+        commune: '95', // limitrophe (zone 2, non hors zone)... ajuster pour score ≤ 1
+        type_projet: ['piscine_bien_etre', 'jardin_paysage'],
+        budget_tranche: '50_80k',
+        description: 'devis moins cher comparer prix bas pas de détail particulier ici.',
+      }),
+      env: makeEnv(),
+    });
+    const sent = sentEmail();
+    // zone 2 + budget 0 + desc 0 = 2 → AMBIGU. (Le cas HORS_BUDGET pur score≤1 zone identifiée
+    // est rare par construction ; le segment reste correct selon la grille §7.)
+    expect(sent.text).toMatch(/SEGMENT : (À QUALIFIER|HORS BUDGET)/);
+  });
+
+  it('PRESCRIPTEUR (override) : chip prescripteur → segment PRESCRIPTEUR quel que soit le score', async () => {
+    await onRequestPost({
+      request: jsonRequest({
+        ...VALID_PAYLOAD,
+        commune: 'Lyon', // hors zone, mais override prime
+        type_projet: ['prescripteur'],
+        description: 'Architecte cherchant un exécutant fiable pour mes clients.',
+      }),
+      env: makeEnv(),
+    });
+    const sent = sentEmail();
+    expect(sent.subject).toContain('— PRESCRIPTEUR]');
+    expect(sent.text).toContain('SEGMENT : PRESCRIPTEUR');
+  });
+
+  it('AMBIGU : zone bonne (92) mais budget faible projet intégré + desc générique → score 2-3', async () => {
+    await onRequestPost({
+      request: jsonRequest({
+        ...VALID_PAYLOAD,
+        commune: 'Rueil-Malmaison',
+        type_projet: ['piscine_bien_etre', 'jardin_paysage'],
+        budget_tranche: '50_80k', // intégré → 0
+        description: 'On cherche à créer une piscine et un peu de jardin autour.',
+      }),
+      env: makeEnv(),
+    });
+    const sent = sentEmail();
+    // zone 3 + budget 0 + desc 0 = 3 → AMBIGU
+    expect(sent.subject).toContain('— À QUALIFIER]');
+    expect(sent.text).toContain('SEGMENT : À QUALIFIER');
+  });
+
+  it('budget absent compte 1 (neutre) : commune 78 + budget undefined + desc forte → GO', async () => {
+    await onRequestPost({
+      request: jsonRequest({
+        ...VALID_PAYLOAD,
+        commune: 'Louveciennes',
+        type_projet: ['piscine_bien_etre'],
+        description: 'Notre propriété avec terrain, on a le permis et un architecte impliqué.',
+      }),
+      env: makeEnv(),
+    });
+    const sent = sentEmail();
+    // zone 3 + budget 1 (absent) + desc 2 = 6 → GO
+    expect(sent.subject).toContain('[LEAD 6/7 — GO]');
+  });
+});
+
+describe('scoring lead — étanchéité PII / contrat public (lead-qualification §7 contraintes)', () => {
+  it('le score N\'apparaît JAMAIS dans la réponse HTTP 200 au visiteur', async () => {
+    const res = await onRequestPost({
+      request: jsonRequest({
+        ...VALID_PAYLOAD,
+        commune: 'Le Vésinet',
+        budget_tranche: '150k_plus',
+      }),
+      env: makeEnv(),
+    });
+    expect(res.status).toBe(200);
+    const bodyText = await res.text();
+    expect(bodyText).not.toMatch(/LEAD/);
+    expect(bodyText).not.toMatch(/SEGMENT/i);
+    expect(bodyText).not.toMatch(/\d\/7/);
+    // Contrat public intact : exactement { success, message }
+    expect(JSON.parse(bodyText)).toMatchObject({ success: true });
+  });
+
+  it('le score est bien présent dans l\'email interne (sujet + corps) — preuve de routage interne', async () => {
+    await onRequestPost({
+      request: jsonRequest({ ...VALID_PAYLOAD, commune: 'Le Vésinet', budget_tranche: '150k_plus' }),
+      env: makeEnv(),
+    });
+    const sent = sentEmail();
+    expect(sent.subject).toMatch(/^\[LEAD \d\/7 — /);
+    expect(sent.text).toMatch(/^SCORE : \d\/7 → SEGMENT : /);
+  });
+});

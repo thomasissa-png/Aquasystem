@@ -203,3 +203,19 @@ Sans `absolute`, le template layout `%s — Aquasystem` doublait le suffixe marq
 
 ### Pas de commit
 Working tree laissé non commité (consigne mission). NB : un commit antérieur `ee2bd11 "WIP : SEO/GEO 3.3 en cours"` (hors session) avait déjà figé une version de sitemap/robots/llms/seo/layout/JsonLd identique au résultat final → ces fichiers n'apparaissent pas en diff `git status` mais sont bien dans le code livré.
+
+---
+
+## D-13 — Scoring lead serveur dans l'email interne (@fullstack, 2026-06-11)
+
+**Objet** : implémenter la grille de qualification `lead-qualification.md §7` dans `functions/api/contact.ts`. Score /7 (zone 0-3 + budget 0-2 + signaux description 0-2, borné 0..7) + segment (`GO` / `À QUALIFIER` (AMBIGU) / `PRESCRIPTEUR` / `HORS ZONE` / `HORS BUDGET`). Chip `prescripteur` = override segment.
+
+**Étanchéité (contrainte §7)** : le score/segment vit UNIQUEMENT dans l'email interne Nicolas (`CONTACT_EMAIL_TO`) — sujet préfixé `[LEAD x/7 — segment]`, bloc `SCORE : x/7 → SEGMENT : …` en tête de corps. JAMAIS dans la réponse HTTP au visiteur, JAMAIS dans l'analytics (Umami reste côté client, le scoring est calculé côté serveur dans `buildEmail`, jamais retourné). Tests d'étanchéité PII : la réponse 200 ne contient ni `LEAD`, ni `SEGMENT`, ni `x/7`.
+
+**Mapping enum réel ≠ enum spec §7** : la spec §7 raisonne sur un enum hypothétique (`piscine` / `jardin-paysage` / `je-suis-prescripteur`). Le code réel (D-10) utilise `piscine_bien_etre` / `jardin_paysage` / `projet_complet` / `prescripteur`. Adaptation : « piscine seule » (budget 50_80k → 1 pt) = `[piscine_bien_etre]` uniquement ; « projet intégré » (50_80k → 0 pt) = combinaison ou `projet_complet` ; override prescripteur = chip `prescripteur`. Communes haute-valeur 78/92 de §2 reprises (matching insensible casse, partiel — « saint-nom » matche « Saint-Nom-la-Bretèche »), limitrophes 95/27 = 2 pts.
+
+**Contrat public intact** : aucun changement des réponses 200/400/429/500/303 ni de l'UI. Les 26 tests contact-function préexistants passent SANS modification (le sujet email change mais aucun test existant n'assertait le préfixe ; le test NSM assertait `toContain('Aquasystem — Nouveau contact : …')`, toujours vrai car la chaîne reste présente après le préfixe `[LEAD x/7 — …] `).
+
+**Alternative écartée** : module `functions/lib/scoring.ts` séparé → la Function Cloudflare est mono-fichier (file-based routing Pages, pas de bundler partagé configuré pour `functions/`). Scoring co-localisé dans `contact.ts` (auto-suffisant, conforme D-04). À extraire si réutilisé.
+
+**Vérif** : `tsc --noEmit` PASS (Next) + tsc standalone DOM/Workers PASS (functions) · `next lint` PASS · `build` PASS (30 routes) · **99 tests PASS** (89 → +10 scoring/PII). Pas de commit (consigne).

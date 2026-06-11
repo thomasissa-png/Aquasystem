@@ -80,6 +80,140 @@ const MAX_NAME = 100;
 /** Codes postaux 78/92 → qualification NSM informative (jamais bloquante). */
 const QUALIFYING_DEPTS = ['78', '92'];
 
+// --- Scoring lead (lead-qualification.md §7) — INTERNE Nicolas uniquement -----
+// JAMAIS exposé dans la réponse HTTP au visiteur, JAMAIS dans l'analytics.
+// Matching insensible casse + partiel (« saint-nom » matche « Saint-Nom-la-Bretèche »).
+type Segment = 'GO' | 'AMBIGU' | 'PRESCRIPTEUR' | 'HORS_ZONE' | 'HORS_BUDGET';
+
+/** Communes haute valeur 78/92 (lead-qualification §2 critère 1) + codes dépt. */
+const COMMUNES_ZONE = [
+  '78',
+  '92',
+  'vésinet',
+  'saint-nom',
+  'marnes-la-coquette',
+  'saint-cloud',
+  'ville-d',
+  'chaville',
+  'cernay',
+  'versailles',
+  'marly',
+  "l'étang-la-ville",
+  'etang-la-ville',
+  'louveciennes',
+  'croissy',
+  'bougival',
+  'jouy-en-josas',
+  'freneuse',
+  'neuilly',
+  'rueil',
+  'sèvres',
+  'sevres',
+  'meudon',
+  'garches',
+  'vaucresson',
+  'la celle-saint-cloud',
+];
+/** Limitrophes : Val-d'Oise (95) / Eure (27). */
+const COMMUNES_LIMITROPHES = ['95', '27'];
+
+const SIGNAUX_FORTS = [
+  'propriété',
+  'propriete',
+  'terrain',
+  'superficie',
+  'm²',
+  'm2',
+  'architecte',
+  'recommandé',
+  'recommande',
+  "pour l'été",
+  'avant l’automne',
+  "avant l'automne",
+  'ma femme',
+  'mon mari',
+  'on réfléchit depuis',
+  'on reflechit depuis',
+  'on a le permis',
+  'permis',
+];
+const SIGNAUX_FAIBLES = [
+  'devis',
+  'prix le plus bas',
+  'comparer',
+  'moins cher',
+];
+
+function scoreZone(commune: string): { points: number; horsZone: boolean } {
+  const c = commune.toLowerCase();
+  if (COMMUNES_ZONE.some((m) => c.includes(m))) return { points: 3, horsZone: false };
+  if (COMMUNES_LIMITROPHES.some((m) => c.includes(m)))
+    return { points: 2, horsZone: false };
+  if (c.trim() !== '') return { points: 1, horsZone: true }; // mentionnée mais hors zone
+  return { points: 0, horsZone: true };
+}
+
+function scoreBudget(
+  budget: Budget | undefined,
+  types: TypeProjet[],
+): number {
+  if (budget === '80_150k' || budget === '150k_plus') return 2;
+  if (budget === 'prefere_discuter') return 1;
+  if (budget === undefined) return 1; // qualification douce — neutre
+  if (budget === '50_80k') {
+    // piscine seule = cohérent minimum (1) ; projet intégré = sous le seuil (0).
+    const piscineSeule =
+      types.length === 1 && types[0] === 'piscine_bien_etre';
+    return piscineSeule ? 1 : 0;
+  }
+  return 1;
+}
+
+function scoreDescription(description: string): number {
+  const d = description.toLowerCase();
+  const forts = SIGNAUX_FORTS.filter((s) => d.includes(s)).length;
+  const faibles = SIGNAUX_FAIBLES.filter((s) => d.includes(s)).length;
+  let pts = forts >= 2 ? 2 : forts === 1 ? 1 : 0;
+  if (faibles >= 1) pts -= 1; // signal négatif
+  return pts;
+}
+
+interface LeadScore {
+  score: number; // borné 0..7
+  segment: Segment;
+}
+
+function computeScore(p: CleanPayload): LeadScore {
+  const zone = scoreZone(p.commune);
+  const budget = scoreBudget(p.budget_tranche, p.type_projet);
+  const desc = scoreDescription(p.description);
+  const raw = zone.points + budget + desc;
+  const score = Math.max(0, Math.min(7, raw));
+
+  let segment: Segment;
+  if (p.type_projet.includes('prescripteur')) {
+    segment = 'PRESCRIPTEUR'; // override (lead-qualification §7)
+  } else if (score >= 4) {
+    segment = 'GO';
+  } else if (score === 2 || score === 3) {
+    segment = 'AMBIGU';
+  } else if (zone.horsZone) {
+    segment = 'HORS_ZONE'; // score ≤ 1 + commune hors zone
+  } else {
+    segment = 'HORS_BUDGET';
+  }
+
+  return { score, segment };
+}
+
+const SEGMENT_LABELS: Record<Segment, string> = {
+  GO: 'GO',
+  AMBIGU: 'À QUALIFIER',
+  PRESCRIPTEUR: 'PRESCRIPTEUR',
+  HORS_ZONE: 'HORS ZONE',
+  HORS_BUDGET: 'HORS BUDGET',
+};
+
 // --- Réponses standardisées --------------------------------------------------
 const CORS_HEADERS: Record<string, string> = {
   'Access-Control-Allow-Origin': '*',
@@ -273,7 +407,12 @@ function buildEmail(
       ? p.type_projet.map((t) => TYPE_PROJET_LABELS[t]).join(', ')
       : 'projet à préciser';
 
-  const subject = `${siteName} — Nouveau contact : ${typesLabel} — ${p.commune}`;
+  // Scoring interne (lead-qualification §7) — sujet préfixé [LEAD score/7 — segment].
+  // Réservé à l'email Nicolas : jamais dans la réponse HTTP ni l'analytics.
+  const { score, segment } = computeScore(p);
+  const segmentLabel = SEGMENT_LABELS[segment];
+
+  const subject = `[LEAD ${score}/7 — ${segmentLabel}] ${siteName} — Nouveau contact : ${typesLabel} — ${p.commune}`;
 
   const now = new Date();
   const dateFr = now.toLocaleString('fr-FR', {
@@ -294,6 +433,9 @@ function buildEmail(
   const nsm = isQualified(p.commune, p.description) ? 'OUI' : 'NON';
 
   const text = [
+    `SCORE : ${score}/7 → SEGMENT : ${segmentLabel}`,
+    '(Qualification automatique — outil d\'aide à la décision, jamais d\'envoi auto au prospect.)',
+    '',
     'NOUVEAU MESSAGE DE CONTACT',
     '',
     `Nom : ${p.prenom_nom}`,
