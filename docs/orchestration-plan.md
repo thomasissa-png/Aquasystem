@@ -37,7 +37,15 @@
 | 1.4 | @creative-strategy | docs/strategy/verbal-identity.md (territoire verbal) | LIVRÉ 2026-06-11 | OK — gates PASS. Lexique propriétaire, 2 métaphores fondatrices, entités SEO/GEO, indépendant du naming final |
 | 1.4b | @data-analyst | tracking-plan v1.1 + dashboard-specs v1.1 (4 gaps UX) | LIVRÉ 2026-06-11 | OK — 4 gaps résolus : 3 requêtes Umami (R-01/02/03) + propriété has_cross_selling sur E-01 (sessionStorage, zéro PII) ; 9 events inchangés |
 | 1.5 | @design | docs/design/art-direction.md, design-tokens.json, design-system.md, page-compositions.md (+ favicons specs) | LIVRÉ 2026-06-11 | OK — gates PASS (JSON parsable, 3 tiers, slots photo uniques). DA « Rive privée » : sand #F5F0E8, water #3A6675, forest #3B5240, gold #C4924A ; DM Serif Display + DM Sans ; dark mode différé V2 |
-| 1.6 | CHECKPOINT specs | @reviewer : 11 critères cohérence + codabilité F-01→F-11 + contradictions + consolidation [À CONFIRMER] | EN COURS | — |
+| 1.6 | CHECKPOINT specs | @reviewer : 11 critères cohérence + codabilité F-01→F-11 + contradictions + consolidation [À CONFIRMER] | LIVRÉ 2026-06-11 | **NO-GO pages / GO conditionnel infra**. 6/7 critères PASS ; FAIL critère 11 (wording en double). 13 findings : 5 P0 (URLs, formulaire, tranches budget, succès, nav — cause racine : specs non réconciliées), 5 P1, 3 P2 |
+| 1.7 | @product-manager (corrective) | docs/product/arbitrations-p0-checkpoint.md + functional-specs v1.1 | EN COURS | Boucle corrective itération 1/2 |
+| 1.8 | @ux + @copywriter + @data-analyst (harmonisation) | Edits wireframes/ux-writing/tracking selon arbitrages | Dépend 1.7 | — |
+| 1.9 | @reviewer re-check ciblé | critère 11 + 5 P0 uniquement | Dépend 1.8 | — |
+
+### Phase 2 — Développement — DÉMARRÉE PARTIELLEMENT (GO conditionnel reviewer)
+| Ordre | Agent | Livrables attendus | Statut | Verdict |
+|---|---|---|---|---|
+| 2.1 | @infrastructure (setup) | Socle Next.js statique + functions/api/contact squelette + CI + tokens→Tailwind + infrastructure.md + dev-decisions.md | EN COURS | Pages client et schéma formulaire BLOQUÉS en attente P0 |
 ### Checkpoint specs (entre 1 et 2) : @reviewer quick-check functional-specs.md — À VENIR
 ### Phase 2 — Développement : @infrastructure (setup CF Pages) → @fullstack (boucle visuelle 3 devices obligatoire, gate G26 baselines) → @ux review → @qa → @infrastructure finalisation — À VENIR
 ### Phase 3 — Contenu : @copywriter → @seo ∥ @geo (seo-strategy + keyword-map + geo-strategy distincts) — À VENIR
