@@ -25,8 +25,9 @@
 **Desktop (≥ 1024px)**
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│ [Logo [TOKEN]] col 1-2   [Nav : Piscines · Jardins · Approche · Réalisations│
-│                           · La maison · Architectes] col 3-10               │
+│ [Logo [TOKEN]] col 1-2   [Nav : Réalisations · Piscines & Bien-être ·        │
+│                           Jardins & Paysage · Notre approche ·              │
+│                           La maison · Architectes] col 3-10                 │
 │                           [Bouton primaire : Parlez-nous de votre projet]    │
 │                           col 11-12  (hauteur 64px, padding H 24px)         │
 └─────────────────────────────────────────────────────────────────────────────┘

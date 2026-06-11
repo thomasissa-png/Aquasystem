@@ -82,9 +82,8 @@
 
 #### Bouton d'envoi
 
-**Texte du bouton** : Envoyer ma demande
-**Variante si l'espace le permet** : Parlez-nous de votre projet
-**Note** : jamais "Envoyer", "Valider", "Soumettre" — trop administratif. Jamais "Demander un devis" — registre discount.
+**Texte du bouton** : Parlez-nous de votre projet
+**Note** : jamais "Envoyer ma demande", "Envoyer", "Valider", "Soumettre" — trop administratif. Jamais "Demander un devis" — registre discount. Wording arbitré P1-4 (arbitrations-p0-checkpoint.md).
 
 ---
 
