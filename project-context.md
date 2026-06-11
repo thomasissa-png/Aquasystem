@@ -137,7 +137,7 @@
 
 ## Notes libres
 
-- **⚠️ P0 légal** : confirmer le lien juridique Nicolas Berg ↔ LES TERRES ESSENTIELLES (Pappers : président = Patrick Rouzeval) avant rédaction des mentions légales et de toute formulation « les maisons de Nicolas Berg ».
+- **Légal Terres Essentielles (réponse fondateur 2026-06-11)** : Nicolas Berg est **en train de racheter** LES TERRES ESSENTIELLES (Pappers affiche encore Patrick Rouzeval comme président). Le site est préparé pour l'après-acquisition. Conséquences : (1) mentions légales finalisées seulement une fois l'acquisition actée ; (2) pas de mise en ligne publique mentionnant la gouvernance avant ; (3) le copy peut présenter les « deux maisons » réunies, sans affirmation juridique sur la propriété tant que non finalisé.
 - L'entité SARL AQUA SYSTEM date de 2021 mais la marque revendique 30+ ans d'activité : utiliser « plus de 30 ans d'expertise » (marque), pas « société créée il y a 30 ans » (faux juridiquement).
 - Le book Calameo est protégé par un authid : récupérer les photos sources auprès du fondateur si l'extraction échoue — JAMAIS d'images placeholder identiques labellées différemment dans le portfolio.
 - Zéro fausse promesse dans le copy : ne promettre que ce que le site V1 fait réellement.
