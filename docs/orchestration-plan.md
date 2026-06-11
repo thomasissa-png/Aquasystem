@@ -45,7 +45,7 @@
 ### Phase 2 — Développement — DÉMARRÉE PARTIELLEMENT (GO conditionnel reviewer)
 | Ordre | Agent | Livrables attendus | Statut | Verdict |
 |---|---|---|---|---|
-| 2.1 | @infrastructure (setup) | Socle Next.js statique + functions/api/contact squelette + CI + tokens→Tailwind + infrastructure.md + dev-decisions.md | EN COURS | Pages client et schéma formulaire BLOQUÉS en attente P0 |
+| 2.1 | @infrastructure (setup) | Socle Next.js statique + functions/api/contact squelette + CI + tokens→Tailwind + infrastructure.md + dev-decisions.md | LIVRÉ 2026-06-11 | OK — build PASS (tsc+lint+next build, re-vérifié par orchestrateur + hook pre-commit actif). Décisions : images.unoptimized (divergence F-11 assumée → AVIF/WebP pré-encodés, à signaler @qa G-PERF) ; rate limit KV ; i18n sans middleware. Validation champs formulaire balisée [BLOQUÉ P0-2/P0-3] |
 ### Checkpoint specs (entre 1 et 2) : @reviewer quick-check functional-specs.md — À VENIR
 ### Phase 2 — Développement : @infrastructure (setup CF Pages) → @fullstack (boucle visuelle 3 devices obligatoire, gate G26 baselines) → @ux review → @qa → @infrastructure finalisation — À VENIR
 ### Phase 3 — Contenu : @copywriter → @seo ∥ @geo (seo-strategy + keyword-map + geo-strategy distincts) — À VENIR
