@@ -20,6 +20,13 @@ import {
 const footerLinkClass =
   'rounded-sm underline-offset-4 hover:text-foreground-inverse hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring-inverse)] focus-visible:ring-offset-2';
 
+/**
+ * Liens des listes (navigation + barre légale) — cible WCAG 2.2 AA 2.5.8 :
+ * inline-flex + min-h-6 (24px) + py-1 garantit une zone tactile ≥ 24px de haut
+ * et un espacement suffisant entre cibles (BUG-A11Y-2).
+ */
+const footerListLinkClass = `inline-flex min-h-6 items-center py-1 ${footerLinkClass}`;
+
 export function Footer() {
   const year = new Date().getFullYear();
 
@@ -43,10 +50,10 @@ export function Footer() {
           {/* Bloc 2 — Navigation */}
           <nav aria-label="Navigation secondaire">
             <p className="font-serif text-sm text-sand-400">Navigation</p>
-            <ul className="mt-4 flex flex-col gap-3 text-sm text-sand-300">
+            <ul className="mt-4 flex flex-col gap-2 text-sm text-sand-300">
               {FOOTER_NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className={footerLinkClass}>
+                  <Link href={link.href} className={footerListLinkClass}>
                     {link.label}
                   </Link>
                 </li>
@@ -96,12 +103,12 @@ export function Footer() {
               </p>
             </address>
 
-            <div className="mt-6 flex gap-4">
+            <div className="mt-6 flex gap-x-6">
               <a
                 href={SOCIAL_LINKS.linkedinAS}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={footerLinkClass}
+                className={footerListLinkClass}
               >
                 LinkedIn
               </a>
@@ -109,7 +116,7 @@ export function Footer() {
                 href={SOCIAL_LINKS.facebookLTE}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={footerLinkClass}
+                className={footerListLinkClass}
               >
                 Facebook
               </a>
@@ -123,10 +130,10 @@ export function Footer() {
             © {year} {CONTACT.editor} — SIREN {CONTACT.siren}. Tous droits
             réservés.
           </p>
-          <ul className="flex flex-wrap gap-4">
+          <ul className="flex flex-wrap gap-x-6 gap-y-1">
             {LEGAL_LINKS.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className={footerLinkClass}>
+                <Link href={link.href} className={footerListLinkClass}>
                   {link.label}
                 </Link>
               </li>

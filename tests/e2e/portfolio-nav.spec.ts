@@ -126,10 +126,9 @@ test.describe('Touch targets (P2-3 ux-review)', () => {
 });
 
 test.describe('a11y portfolio', () => {
-  // BUG-A11Y-1 (color-contrast) RÉSOLU par tokens v1.1. Reste FIXME(BUG-A11Y-2) :
-  // target-size WCAG 2.2 AA 2.5.8 (cartes/liens < 24px d'espacement) — distinct,
-  // préexistant, hors périmètre couleurs (retour @ux/@design).
-  test.fixme('axe-core sur /realisations', async ({ page }) => {
+  // BUG-A11Y-2 (target-size WCAG 2.2 AA 2.5.8) RÉSOLU : liens footer/nav py + gap
+  // suffisant. 0 violation axe.
+  test('axe-core sur /realisations', async ({ page }) => {
     await page.goto('/realisations/');
     await expectNoA11yViolations(page, 'realisations');
   });

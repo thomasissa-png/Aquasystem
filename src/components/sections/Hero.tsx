@@ -1,14 +1,16 @@
-import Image from 'next/image';
 import { cn } from '@/lib/cn';
+import { toWidthVariant } from '@/content/realisations';
 
 /**
  * Hero — page-compositions WF-01/WF-02/WF-03/WF-06.
  * Variante `home` (90vh, H1 display 72px) ou `page` (60vh, H1 60px).
  * Photo full-bleed + overlay dégradé bas→haut, texte bas-gauche.
- * Server component. Image `priority` (LCP) — toujours le premier paint.
+ * Server component.
  *
- * Le srcset est fourni par le parent (WebP réel 1280w des réalisations).
- * `sizes="100vw"` : le hero couvre toute la largeur sur tous les breakpoints.
+ * Perf (P1 @infrastructure D7) : `<picture>` sert la 800w (~121 ko) sous 768px
+ * au lieu de la 1280w (~300 ko). Export statique (images.unoptimized) → on émet
+ * un `srcset` natif depuis les variantes pré-générées. `fetchPriority="high"` +
+ * `loading="eager"` conservent le statut LCP (pas de lazy sur le premier paint).
  */
 export interface HeroProps {
   variant?: 'home' | 'page';
@@ -33,6 +35,7 @@ export function Hero({
   cta,
 }: HeroProps) {
   const isHome = variant === 'home';
+  const mobileSrc = toWidthVariant(imageSrc, '800w');
   return (
     <section
       className={cn(
@@ -40,14 +43,20 @@ export function Hero({
         isHome ? 'min-h-[60vh] md:min-h-[90vh]' : 'min-h-[50vh] md:min-h-[60vh]',
       )}
     >
-      <Image
-        src={imageSrc}
-        alt={imageAlt}
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-      />
+      <picture>
+        {mobileSrc && (
+          <source media="(max-width: 767px)" srcSet={mobileSrc} type="image/webp" />
+        )}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          fetchPriority="high"
+          loading="eager"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      </picture>
       {/* Overlay : dégradé sombre en bas → transparent à mi-hauteur (WF-01). */}
       <div
         aria-hidden

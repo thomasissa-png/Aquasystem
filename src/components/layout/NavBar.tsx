@@ -98,7 +98,7 @@ export function NavBar() {
                 href={link.href}
                 aria-current={isActive(link.href) ? 'page' : undefined}
                 className={cn(
-                  'rounded-sm text-sm font-medium underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2',
+                  'inline-flex min-h-6 items-center rounded-sm py-1 text-sm font-medium underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2',
                   isActive(link.href)
                     ? 'text-foreground-accent-water underline'
                     : 'text-foreground',

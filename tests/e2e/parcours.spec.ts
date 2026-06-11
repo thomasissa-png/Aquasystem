@@ -72,10 +72,9 @@ test.describe('Parcours Camille (prescripteur)', () => {
     ).toBeVisible();
   });
 
-  // BUG-A11Y-1 (color-contrast) RÉSOLU par tokens v1.1. Reste FIXME(BUG-A11Y-2) :
-  // target-size WCAG 2.2 AA 2.5.8 — distinct, préexistant, hors périmètre couleurs
-  // (retour @ux/@design).
-  test.fixme('a11y axe-core sur /prescripteurs', async ({ page }) => {
+  // BUG-A11Y-2 (target-size WCAG 2.2 AA 2.5.8) RÉSOLU : liens footer/nav py + gap
+  // suffisant. 0 violation axe.
+  test('a11y axe-core sur /prescripteurs', async ({ page }) => {
     await page.goto('/prescripteurs/');
     await expectNoA11yViolations(page, 'prescripteurs');
   });
@@ -94,10 +93,9 @@ test.describe('Accueil — SEO statique & a11y', () => {
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   });
 
-  // BUG-A11Y-1 (color-contrast) RÉSOLU par tokens v1.1. Reste FIXME(BUG-A11Y-2) :
-  // target-size WCAG 2.2 AA 2.5.8 — distinct, préexistant, hors périmètre couleurs
-  // (retour @ux/@design).
-  test.fixme('a11y axe-core sur l’accueil', async ({ page }) => {
+  // BUG-A11Y-2 (target-size WCAG 2.2 AA 2.5.8) RÉSOLU : liens footer/nav py + gap
+  // suffisant. 0 violation axe.
+  test('a11y axe-core sur l’accueil', async ({ page }) => {
     await page.goto('/');
     await expectNoA11yViolations(page, 'accueil');
   });

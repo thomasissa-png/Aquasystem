@@ -125,11 +125,9 @@ test.describe('Formulaire de contact', () => {
     ).toBeVisible();
   });
 
-  // BUG-A11Y-1 (color-contrast) RÉSOLU par tokens v1.1 : 0 violation color-contrast.
-  // Reste FIXME(BUG-A11Y-2) : target-size WCAG 2.2 AA 2.5.8 — distinct, préexistant,
-  // masqué par l'ancien .fixme. Liens texte footer/nav (17px de haut, espacement
-  // < 24px) + inputs mesurés 21px par axe. Hors périmètre couleurs (retour @ux/@design).
-  test.fixme('a11y axe-core sur /contact', async ({ page }) => {
+  // BUG-A11Y-2 (target-size WCAG 2.2 AA 2.5.8) RÉSOLU : inputs h-11 (44px),
+  // liens footer/légaux py + gap suffisant, nav desktop py. 0 violation axe.
+  test('a11y axe-core sur /contact', async ({ page }) => {
     await page.goto('/contact/');
     await expectNoA11yViolations(page, 'contact');
   });

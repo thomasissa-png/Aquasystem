@@ -76,6 +76,20 @@ export function photoSrc(base: string, size: '400w' | '800w' | '1280w'): string 
   return `${IMG}/${base}-${size}.webp`;
 }
 
+/**
+ * Dérive la variante 800w (mobile, ~121 ko) d'un chemin photo généré par
+ * `photoSrc`, quelle que soit sa taille d'origine. Utilisé par Hero/MediaSplit
+ * pour servir une image plus légère sous 768px (perf P1 @infrastructure D7).
+ * Retourne null si le chemin n'a pas le suffixe de taille attendu.
+ */
+export function toWidthVariant(
+  src: string,
+  size: '400w' | '800w' | '1280w',
+): string | null {
+  const replaced = src.replace(/-(400|800|1280)w\.webp$/, `-${size}.webp`);
+  return replaced === src && !src.includes(`-${size}.webp`) ? null : replaced;
+}
+
 export const REALISATIONS: Realisation[] = [
   {
     slug: 'piscine-debordement-foret',

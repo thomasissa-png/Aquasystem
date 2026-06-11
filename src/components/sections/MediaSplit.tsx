@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import { cn } from '@/lib/cn';
+import { toWidthVariant } from '@/content/realisations';
 
 /**
  * MediaSplit — bloc prestation texte/photo (page-compositions WF-02/WF-03 §2-4).
@@ -7,6 +7,9 @@ import { cn } from '@/lib/cn';
  * `reversed` inverse l'ordre desktop (alternance visuelle). `tone` change le
  * fond de section (sand-100 défaut / sand-200 alterné).
  * Server component. Photo `lazy` (jamais le LCP — toujours sous le hero).
+ *
+ * Perf (P1 @infrastructure D7) : `<picture>` sert la 800w sous 768px quand une
+ * variante plus lourde est passée (export statique → srcset natif).
  */
 export interface MediaSplitProps {
   eyebrow: string;
@@ -31,6 +34,7 @@ export function MediaSplit({
   reversed = false,
   tone = 'default',
 }: MediaSplitProps) {
+  const mobileSrc = toWidthVariant(imageSrc, '800w');
   return (
     <section className={cn(tone === 'alt' && 'bg-background-secondary')}>
       <div className="mx-auto max-w-container px-4 py-16 md:px-8 md:py-20">
@@ -67,14 +71,23 @@ export function MediaSplit({
           </div>
 
           <figure className="relative aspect-[3/2] w-full overflow-hidden rounded-lg">
-            <Image
-              src={imageSrc}
-              alt={imageAlt}
-              fill
-              loading="lazy"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
-            />
+            <picture>
+              {mobileSrc && (
+                <source
+                  media="(max-width: 767px)"
+                  srcSet={mobileSrc}
+                  type="image/webp"
+                />
+              )}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={imageSrc}
+                alt={imageAlt}
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            </picture>
           </figure>
         </div>
       </div>
