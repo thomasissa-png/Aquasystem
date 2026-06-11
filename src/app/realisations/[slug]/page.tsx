@@ -77,9 +77,9 @@ export default function RealisationFiche({
 
       {/* Contenu principal — split 60/40 */}
       <section className="bg-background">
-        <div className="mx-auto grid max-w-container gap-10 px-4 pb-16 md:px-8 lg:grid-cols-12 lg:gap-12">
+        <div className="mx-auto grid max-w-container gap-10 px-4 pb-16 md:px-8 lg:grid-cols-[2fr_1fr] lg:gap-12">
           {/* Galerie */}
-          <div className="lg:col-span-7">
+          <div>
             <figure>
               <div className="relative aspect-video w-full overflow-hidden rounded-lg">
                 <Image
@@ -114,7 +114,7 @@ export default function RealisationFiche({
           </div>
 
           {/* Infos */}
-          <aside className="lg:col-span-5">
+          <aside>
             <h1 className="font-serif text-3xl leading-tight text-foreground md:text-4xl">
               {r.title}
             </h1>
