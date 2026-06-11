@@ -77,17 +77,17 @@ Nicolas Berg est l'unique vendeur. Son avantage : 30 ans d'expertise locale, une
 >
 > Merci pour votre message.
 >
-> [Reformulation du projet en 1-2 phrases : reprendre les mots exacts du formulaire, pas un résumé générique]
+> [Reformulation en 1-2 phrases — reprendre les mots exacts du formulaire, pas un résumé générique. Exemple : "Vous souhaitez créer une piscine sur mesure avec un aménagement paysager cohérent sur votre propriété à [commune]."]
 >
-> C'est un projet que nous abordons régulièrement dans le [commune/secteur] — avec les spécificités que ça implique [mentionner 1 contrainte locale pertinente si connue : nappe phréatique, PLU, pente de terrain, végétation existante].
+> C'est un projet que nous menons régulièrement dans ce secteur — [si pertinent : 1 particularité locale connue : nappe phréatique, PLU, pente de terrain, végétation existante].
 >
 > Pour que notre premier échange soit utile, pourriez-vous me préciser [1 question SPIN Situation au maximum] ?
 >
-> Je vous propose qu'on échange [par téléphone / par email selon préférence indiquée] — je suis disponible [créneau à renseigner].
+> Je vous propose qu'on échange [par téléphone / par email selon préférence indiquée] — je suis disponible [créneau concret à renseigner].
 >
 > Nicolas Berg
 > Aqua System — 01 30 42 26 00
-> [Aquasystem] — L'extérieur à la hauteur de votre propriété.
+> L'extérieur à la hauteur de votre propriété.
 
 **Règles :**
 - Toujours reformuler le projet (signe qu'on a lu)
@@ -232,43 +232,43 @@ Nicolas Berg est l'unique vendeur. Son avantage : 30 ans d'expertise locale, une
 
 *Touch 1 — J+7 après envoi proposition (si pas de retour) :*
 
-> [BROUILLON]
+> [BROUILLON — validation Nicolas avant envoi]
 >
 > Objet : [Prénom] — votre projet [commune]
 >
 > Bonjour [Prénom],
 >
-> Je voulais m'assurer que la proposition vous était bien parvenue et que vous aviez eu le temps d'en prendre connaissance.
+> Je voulais vérifier que la proposition vous était bien parvenue.
 >
-> Si vous avez des questions sur un poste ou sur le planning, je suis disponible pour qu'on en parle.
+> Si vous avez des questions sur un poste, sur le planning, ou sur un aspect technique — je suis disponible.
 >
 > Nicolas Berg — 01 30 42 26 00
 
 *Touch 2 — J+21 (si toujours pas de retour) :*
 
-> [BROUILLON]
+> [BROUILLON — validation Nicolas avant envoi]
 >
-> Objet : Votre projet — un point rapide
+> Objet : Votre projet — un point de ma part
 >
 > Bonjour [Prénom],
 >
-> Je prends de vos nouvelles sans vous presser. Ces décisions méritent le temps qu'elles prennent.
+> Je reprends contact sans vous presser. Ces décisions méritent le temps qu'elles prennent.
 >
-> Si entre-temps vous avez eu de nouvelles questions — sur le planning, sur un aspect technique, sur la manière dont on gère [contrainte spécifique mentionnée en visite] — n'hésitez pas.
+> Si vous avez eu des questions entre-temps — sur le planning, sur [contrainte spécifique mentionnée en visite] — je suis disponible pour en parler.
 >
 > Nicolas Berg
 
 *Touch 3 — J+45 (clôture douce, sans relance ultérieure automatique) :*
 
-> [BROUILLON]
+> [BROUILLON — validation Nicolas avant envoi]
 >
-> Objet : [Prénom] — dernier point de ma part
+> Objet : [Prénom] — dernier message de ma part
 >
 > Bonjour [Prénom],
 >
-> Je ne veux pas vous solliciter indéfiniment. Si votre projet a pris une autre direction, c'est tout à fait normal.
+> Je ne souhaite pas vous solliciter davantage. Si votre projet a pris une autre direction, c'est tout à fait normal.
 >
-> Si un jour vous souhaitez reprendre la conversation — pour ce projet ou pour un autre — je suis là.
+> Si vous souhaitez reprendre la conversation — pour ce projet ou pour un autre — je reste disponible.
 >
 > Nicolas Berg — 01 30 42 26 00
 
@@ -312,14 +312,14 @@ Nicolas Berg est l'unique vendeur. Son avantage : 30 ans d'expertise locale, une
 
 **Brouillon point hebdomadaire :**
 
-> [BROUILLON]
+> [BROUILLON — validation Nicolas avant envoi]
 >
 > Objet : [Prénom] — point chantier semaine [N]
 >
 > Bonjour [Prénom],
 >
-> Voici le point de la semaine :
-> - Ce qui a été réalisé : [à renseigner]
+> Point de la semaine sur votre chantier :
+> - Ce qui a avancé : [à renseigner]
 > - Prochaine étape : [à renseigner] — prévue pour [date]
 > - Point d'attention : [si applicable — sinon supprimer cette ligne]
 >
@@ -339,17 +339,17 @@ Nicolas Berg est l'unique vendeur. Son avantage : 30 ans d'expertise locale, une
 
 **Brouillon demande d'avis :**
 
-> [BROUILLON]
+> [BROUILLON — validation Nicolas avant envoi]
 >
-> Objet : Votre avis sur notre travail
+> Objet : Votre retour sur notre travail
 >
 > Bonjour [Prénom],
 >
-> Quelques semaines après la fin du chantier, j'espère que vous profitez pleinement de [reformulation courte du projet].
+> Quelques semaines après la fin du chantier, j'espère que vous profitez pleinement de [reformulation courte du projet — ex. "votre piscine" / "votre extérieur"].
 >
-> Si vous êtes satisfait de notre travail, votre témoignage aurait beaucoup de valeur pour nous — une phrase sur votre expérience, que nous pourrions utiliser (avec votre accord explicite) sur notre site ou dans nos présentations.
+> Si vous êtes satisfait de notre travail, un témoignage de votre part aurait beaucoup de valeur pour nous — une phrase sur votre expérience, que nous pourrions utiliser avec votre accord explicite sur notre site ou dans nos présentations.
 >
-> Et si des amis ou des voisins évoquent un projet similaire, je suis à leur disposition — une mise en relation de votre part compte plus que n'importe quelle publicité.
+> Et si des proches évoquent un projet similaire, une mise en relation de votre part compte plus que n'importe quelle démarche commerciale.
 >
 > Merci pour votre confiance.
 >
@@ -372,15 +372,15 @@ Nicolas Berg est l'unique vendeur. Son avantage : 30 ans d'expertise locale, une
 
 **Brouillon cross-sell entretien → jardin :**
 
-> [BROUILLON]
+> [BROUILLON — validation Nicolas avant envoi]
 >
 > Objet : [Prénom] — votre extérieur cette saison
 >
 > Bonjour [Prénom],
 >
-> En venant faire la mise en route de votre piscine, j'ai remarqué [observation concrète sur l'état du jardin — ne jamais inventer, noter lors de la visite].
+> En passant pour la mise en route de votre piscine, j'ai remarqué [observation concrète sur l'état du jardin — noter lors de la visite, ne jamais inventer].
 >
-> Notre maison Les Terres Essentielles travaille sur ce type de projet dans le secteur — si vous souhaitez qu'on passe voir ensemble ce qu'on pourrait faire, c'est avec plaisir.
+> Nous travaillons en partenariat avec Les Terres Essentielles sur ce type de projet dans le secteur. Si vous souhaitez qu'on repasse ensemble voir ce qui serait possible, je suis disponible.
 >
 > Nicolas Berg
 
@@ -425,19 +425,19 @@ Le cycle Camille est différent du cycle Alexandre :
 
 **Brouillon email post-chantier Camille :**
 
-> [BROUILLON]
+> [BROUILLON — validation Nicolas avant envoi]
 >
-> Objet : [Projet client] — bilan et photos
+> Objet : [Projet client — commune] — bilan et photos
 >
 > Bonjour [Prénom],
 >
-> Le chantier est terminé. Je tenais à vous faire un retour direct avant tout.
+> Le chantier est terminé. Voici un retour direct.
 >
-> [Points factuels : délais tenus / point d'attention à noter si applicable]
+> [Points factuels : délais tenus ou écarts documentés / point d'attention si applicable — ne pas enjoliver, ne pas minimiser]
 >
-> Les photos sont disponibles si vous souhaitez les intégrer à votre portfolio — nous pourrions envisager une co-signature si vous l'estimez pertinent.
+> Les photos sont disponibles si vous souhaitez les intégrer à votre portfolio. Nous pourrions envisager une co-signature si vous l'estimez pertinent — à votre initiative.
 >
-> Merci pour votre confiance sur ce projet. Je serais ravi de collaborer à nouveau.
+> Merci pour votre confiance sur ce projet.
 >
 > Nicolas Berg
 

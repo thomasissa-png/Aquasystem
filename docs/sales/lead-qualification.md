@@ -193,17 +193,17 @@ Lire la description texte libre. Attribuer 0, 1 ou 2 points selon les signaux pr
 >
 > Merci pour votre message.
 >
-> [Reformulation du projet en 1-2 phrases — reprendre les termes exacts du formulaire. Exemple : "Vous cherchez à créer une piscine sur mesure avec un aménagement paysager cohérent sur votre propriété à [commune]." Ne jamais résumer de façon générique.]
+> [Reformulation en 1-2 phrases — reprendre les mots du formulaire, pas un résumé générique. Exemple : "Vous souhaitez créer une piscine sur mesure avec un aménagement paysager cohérent sur votre propriété à [commune]."]
 >
-> C'est un type de projet que nous menons régulièrement dans ce secteur — [ajouter si pertinent : 1 contrainte ou particularité locale pertinente connue : nappe phréatique, terrain argileux, PLU de la commune, pente, ou réalisation proche].
+> C'est un type de projet que nous menons régulièrement dans ce secteur — [si pertinent : 1 particularité locale connue : sol argileux, nappe phréatique, PLU de la commune, pente de terrain, ou réalisation proche dans le secteur].
 >
-> Pour que notre premier échange soit réellement utile, pourriez-vous me préciser [1 seule question max — choisir selon ce qui manque : "si un architecte est déjà impliqué" / "si vous avez une idée de superficie pour le bassin" / "si le terrain est déjà paysagé ou à créer"] ?
+> Pour que notre premier échange soit utile, pourriez-vous me préciser [1 seule question — choisir la plus décisive selon ce qui manque : "si un architecte est déjà impliqué" / "si vous avez une idée de superficie pour le bassin" / "si le terrain est déjà paysagé ou à créer de zéro"] ?
 >
-> Je vous propose qu'on échange rapidement — par téléphone si vous préférez, ou par email. Je suis disponible [indiquer 1-2 créneaux concrets].
+> Je vous propose qu'on échange — par téléphone si vous préférez, ou par email. Je suis disponible [indiquer 1-2 créneaux concrets].
 >
 > Nicolas Berg
 > Aqua System — 01 30 42 26 00
-> [Aquasystem] — L'extérieur à la hauteur de votre propriété.
+> L'extérieur à la hauteur de votre propriété.
 
 ---
 
@@ -228,9 +228,9 @@ Lire la description texte libre. Attribuer 0, 1 ou 2 points selon les signaux pr
 >
 > Merci pour votre message.
 >
-> Notre zone d'intervention principale est centrée sur les Yvelines (78) et les Hauts-de-Seine (92) — [commune mentionnée] ne fait pas partie de notre secteur habituel, et nous ne serions pas en mesure de vous proposer le niveau de suivi que ce type de projet mérite.
+> Notre zone d'intervention se concentre sur les Yvelines (78) et les Hauts-de-Seine (92). Pour [commune mentionnée], nous ne serions pas en mesure d'assurer le niveau de suivi que ce type de projet mérite.
 >
-> Pour trouver un professionnel qualifié dans votre secteur, vous pouvez consulter l'annuaire du réseau L'Esprit Piscine (esprit-piscine.fr) — les membres sont sélectionnés sur des critères de compétence technique.
+> Si vous cherchez un professionnel dans votre secteur, le réseau L'Esprit Piscine (esprit-piscine.fr) regroupe des membres sélectionnés sur des critères de compétence technique — c'est un bon point de départ.
 >
 > Je vous souhaite une belle réalisation.
 >
@@ -259,11 +259,11 @@ Lire la description texte libre. Attribuer 0, 1 ou 2 points selon les signaux pr
 >
 > Merci pour votre message.
 >
-> Votre projet est dans notre zone — [commune] est un secteur où nous travaillons. Avant d'aller plus loin, je voudrais être honnête avec vous sur le budget.
+> [Commune] est bien dans notre secteur. Avant d'aller plus loin, je préfère être direct sur un point.
 >
-> Les projets que nous portons — piscine sur mesure, aménagement paysager intégré — démarrent généralement à partir de [seuil à indiquer selon type de projet — À CONFIRMER Nicolas Berg]. [Si le budget déclaré est significativement en dessous] : si votre enveloppe est sensiblement en dessous, nous ne serions pas le prestataire le plus adapté, et je préfère vous le dire maintenant plutôt que de vous faire venir pour rien.
+> Les projets que nous portons — piscine sur mesure, aménagement paysager intégré — démarrent généralement à partir de [seuil à indiquer selon type de projet — À CONFIRMER Nicolas Berg]. Si l'enveloppe que vous décrivez est sensiblement en dessous, nous ne serions pas le prestataire le plus adapté — et il vaut mieux le savoir maintenant.
 >
-> Si votre budget est flexible ou si je me trompe sur ce que vous aviez en tête, dites-le moi — j'en tiendrai compte.
+> Si j'ai mal lu votre projet ou si votre budget est plus flexible, dites-le moi.
 >
 > Nicolas Berg
 > Aqua System — 01 30 42 26 00
@@ -290,11 +290,11 @@ Lire la description texte libre. Attribuer 0, 1 ou 2 points selon les signaux pr
 >
 > Merci pour votre prise de contact.
 >
-> [Si projet précis mentionné : "Vous mentionnez un projet [type + commune] — c'est un secteur et un type de projet que nous menons régulièrement."] [Si pas de projet précis : "Je suis toujours heureux d'échanger avec des architectes qui cherchent un exécutant fiable dans le 78/92."]
+> [Si projet précis mentionné : "Vous mentionnez un projet [type + commune] — c'est un secteur et un type de réalisation que nous menons régulièrement."] [Si pas de projet précis : "Je suis toujours disponible pour échanger avec des architectes qui cherchent un exécutant fiable dans le 78/92."]
 >
-> Ce serait utile qu'on se présente mutuellement — 30 minutes en visio ou en présentiel, selon ce qui vous convient. Je vous montrerai notre portfolio dans votre périmètre, nos certifications, et la manière dont nous travaillons avec les maîtres d'œuvre (protocole de communication, respect du cahier des charges, remontée de chantier).
+> Ce serait utile qu'on se présente — 30 minutes en visio ou en présentiel, selon ce qui vous convient. Je vous montrerai notre portfolio dans votre périmètre, nos certifications, et la façon dont nous travaillons avec les maîtres d'œuvre : lecture de plan, respect du cahier des charges, remontée de chantier vers vous.
 >
-> Quelles sont vos disponibilités prochainement ?
+> Quand êtes-vous disponible ?
 >
 > Nicolas Berg
 > Aqua System — 01 30 42 26 00
