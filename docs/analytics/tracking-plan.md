@@ -406,10 +406,12 @@ export function trackEvent(name: EventName, properties?: EventProperties): void 
 
 ### Placement des events dans l'arborescence V1
 
+**Note sessionStorage (Gap 3)** : `sessionStorage` est natif au navigateur, sans cookie, sans PII — conforme CNIL. La valeur est détruite automatiquement à la fermeture de l'onglet. Aucune initialisation requise : l'absence de clé est traitée comme `false` à la lecture.
+
 | Event | Fichier de composant | Déclencheur |
 |-------|---------------------|-------------|
 | `form_start` | `src/components/ContactForm.tsx` | `onFocus` premier champ |
-| `form_submission_success` | `src/components/ContactForm.tsx` | `onSuccess` callback après API 200 |
+| `form_submission_success` | `src/components/ContactForm.tsx` | `onSuccess` callback après API 200 — lire `sessionStorage.getItem('has_cross_selling') === 'true'` pour la propriété `has_cross_selling` |
 | `form_abandonment` | `src/components/ContactForm.tsx` | `useEffect` + `beforeunload` listener |
 | `cta_clicked` | `src/components/CTA.tsx` (composant global) | `onClick` — via prop `data-position` |
 | `portfolio_filter_clicked` | `src/components/PortfolioFilters.tsx` | `onClick` bouton filtre |
@@ -430,7 +432,7 @@ export function trackEvent(name: EventName, properties?: EventProperties): void 
 | `cta_clicked` | FAIBLE | OK |
 | `portfolio_*` | FAIBLE | OK — type et zone géo uniquement |
 | `prescripteur_*` | FAIBLE | OK |
-| `cross_selling_clicked` | FAIBLE | OK |
+| `cross_selling_clicked` | FAIBLE | OK — `has_cross_selling` ne contient pas de valeur saisie |
 | `page_viewed` | GÉRÉ PAR L'OUTIL | Umami/Plausible s'en charge — ne pas re-implémenter |
 
 ---

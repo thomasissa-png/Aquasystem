@@ -7,6 +7,15 @@
 
 ---
 
+**v1.1 — 2026-06-11 — Gaps UX intégrés**
+4 requêtes/analyses documentées suite aux gaps @ux :
+- Gap 1 : requête "temps moyen sur /realisations" via Umami natif — voir section "Requêtes analytiques complémentaires".
+- Gap 2 : requête "séquence de conviction accueil → univers → portfolio → contact" via funnel Umami — voir même section.
+- Gap 3 : vue croisée `has_cross_selling × type_projet = projet_complet` dans Dashboard 2 — voir "Vue Cross-selling".
+- Gap 4 : segment prescripteurs non convertis via filtre `prescripteur_page_viewed` sans `form_submission_success(type_projet=prescripteur)` — voir même section.
+
+---
+
 ## Dashboard 1 — Vue Fondateur (mensuel)
 
 **Audience** : Nicolas Berg — non technicien, lecture ≤ 5 minutes
@@ -232,10 +241,22 @@ LEAD QUALIFIÉ
 │                                                     │
 │  Cible : ≥ 10% des sessions sur une page univers    │
 │  cliquent vers l'autre univers                      │
+│                                                     │
+│  [Gap 3 — Conviction cross-selling mesurée]         │
+│  Soumissions avec has_cross_selling = true          │
+│    dont type_projet = "projet_complet" : X  (X%)   │
+│  Soumissions avec has_cross_selling = false         │
+│    dont type_projet = "projet_complet" : X  (X%)   │
+│                                                     │
+│  Interprétation : si le taux projet_complet est     │
+│  nettement plus élevé dans la cohorte               │
+│  has_cross_selling=true → HYP-02 confirmée.         │
 └─────────────────────────────────────────────────────┘
 ```
 
 **Alerte** : < 3% de clics cross-selling → le composant est invisible ou peu convaincant → revoir placement et wording
+
+**Alerte** : has_cross_selling=true mais type_projet ≠ projet_complet dans > 80% des cas → le composant convainc à cliquer mais pas à demander un projet global → revoir la promesse du composant cross-selling
 
 ---
 
