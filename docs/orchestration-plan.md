@@ -51,7 +51,10 @@
 | 2.2 (∥) | @fullstack tranche A | Composants UI + NavBar/Footer + ContactForm + /contact + /contact/merci + Function complète + boucle visuelle 2 pages | LIVRÉ 2026-06-11 | OK — build PASS re-vérifié orchestrateur ; 7 baselines ; E-01 avant redirect ; REPLY_DELAY_TEXT sans délai chiffré [À CONFIRMER fondateur] |
 | 2.2b (∥) | @copywriter | docs/copy/site-copy.md (copy complet 9 pages, metas provisoires) | LIVRÉ 2026-06-11 | OK — 1013 lignes, AIDA conviction-first, template réalisation sans fictif, metas provisoires pour @seo |
 | 2.2c (∥) | @product-manager | functional-specs v1.2 (4 micro-correctifs résiduels) | LIVRÉ 2026-06-11 | OK — 4 correctifs + Grep propre ; contrat dev 100% cohérent avec ux-writing v1.2 |
-| 2.3 | @fullstack tranche B | Pages de contenu + portfolio + photos réelles + boucle visuelle complète | Dépend 2.2 + 2.2b | — |
+| 2.3 | @fullstack tranche B | Pages de contenu + portfolio + photos réelles + boucle visuelle complète | LIVRÉ 2026-06-11 | OK — build PASS re-vérifié (28 routes) ; 14 photos réelles esprit-piscine.fr (1280px max, aqua-system.fr 403) ; 42 WebP ; 33 baselines ; PhotoPlaceholders jardins/spa/portrait [photos Nicolas attendues] ; droit à l'image P0 fondateur |
+| 2.4 | @ux (review post-implémentation) | docs/ux/ux-review.md (wireframes vs rendu réel, 33 baselines) | EN COURS | — |
+| 2.5 | @qa | Tests Vitest + Playwright E2E, matrice traçabilité US→tests, intègre écarts UX | Dépend 2.4 | — |
+| 2.6 | @infrastructure (finalisation) | Monitoring, perf, sécurité, checklist déploiement | Dépend 2.5 | — |
 ### Checkpoint specs (entre 1 et 2) : @reviewer quick-check functional-specs.md — À VENIR
 ### Phase 2 — Développement : @infrastructure (setup CF Pages) → @fullstack (boucle visuelle 3 devices obligatoire, gate G26 baselines) → @ux review → @qa → @infrastructure finalisation — À VENIR
 ### Phase 3 — Contenu : @copywriter → @seo ∥ @geo (seo-strategy + keyword-map + geo-strategy distincts) — À VENIR
