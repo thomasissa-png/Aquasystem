@@ -118,7 +118,7 @@ export function Footer() {
         </div>
 
         {/* Barre légale */}
-        <div className="mt-12 flex flex-col gap-4 border-t border-sand-800 pt-6 text-xs text-sand-600 md:flex-row md:items-center md:justify-between">
+        <div className="mt-12 flex flex-col gap-4 border-t border-sand-800 pt-6 text-xs text-foreground-footer-legal md:flex-row md:items-center md:justify-between">
           <p>
             © {year} {CONTACT.editor} — SIREN {CONTACT.siren}. Tous droits
             réservés.

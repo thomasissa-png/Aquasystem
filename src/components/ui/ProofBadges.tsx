@@ -46,7 +46,7 @@ export function ProofBadges({
           <span className="font-serif text-4xl leading-none text-foreground-proof lg:text-5xl">
             {item.figure}
           </span>
-          <span className="text-sm leading-5 text-foreground-secondary">
+          <span className="text-sm leading-5 text-foreground-proof-label">
             {item.label}
           </span>
         </li>

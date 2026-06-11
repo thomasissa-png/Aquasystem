@@ -82,6 +82,8 @@ const config: Config = {
           'accent-water': 'var(--color-text-accent-water)',
           'accent-forest': 'var(--color-text-accent-forest)',
           proof: 'var(--color-text-proof)',
+          'proof-label': 'var(--color-text-proof-label)',
+          'footer-legal': 'var(--color-text-footer-legal)',
         },
         border: {
           DEFAULT: 'var(--color-border-default)',
