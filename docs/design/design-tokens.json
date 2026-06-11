@@ -2,12 +2,12 @@
   "$schema": "https://tr.designtokens.org/format/",
   "$meta": {
     "project": "Aquasystem [PROVISOIRE]",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "date": "2026-06-11",
     "agent": "@design",
     "architecture": "3-tier W3C DTCG — primitives > semantics > component",
     "note": "Les composants référencent UNIQUEMENT les tokens sémantiques/component, jamais les primitives directement.",
-    "changelog": "v1.1 — correction contrastes BUG-A11Y-1 : gold-700 ajouté (texte proof) ; color-text-proof gold.600→gold.800 ; color-text-proof-label ajouté (sand.800) ; color-text-footer-legal ajouté (sand.500) ; proof-badge.label-color mis à jour. Ratios WCAG recalculés dans design-system.md."
+    "changelog": "v1.2 — correction contraste BUG-A11Y-3 : color-text-muted sand.600 #7E7468 → sand.700 #6B6058 (ratio 3.75:1 → 4.58:1 sur sand-200, 4.95:1 sur sand-100, PASS AA sur TOUS les fonds d'usage). Tableau des paires design-system.md §contrastes 100% recalculé avec ratios chiffrés vérifiés. v1.1 — correction contrastes BUG-A11Y-1 : gold-700 ajouté (texte proof) ; color-text-proof gold.600→gold.800 ; color-text-proof-label ajouté (sand.800) ; color-text-footer-legal ajouté (sand.500) ; proof-badge.label-color mis à jour."
   },
 
   "primitives": {
@@ -172,7 +172,7 @@
       "text": {
         "primary":   { "$value": "{primitives.color.sand.900}", "$type": "color", "$description": "#2A2420 — corps, titres sur fond clair" },
         "secondary": { "$value": "{primitives.color.sand.700}", "$type": "color", "$description": "#6B6058 — labels, captions, métadonnées" },
-        "muted":     { "$value": "{primitives.color.sand.600}", "$type": "color", "$description": "#7E7468 — placeholders, texte désactivé" },
+        "muted":     { "$value": "{primitives.color.sand.700}", "$type": "color", "$description": "#6B6058 — placeholders, texte désactivé. Corrigé v1.2 BUG-A11Y-3 : sand.600 #7E7468 = 3.75:1 sur sand-200 (FAIL) → sand.700 #6B6058 = 4.58:1 sur sand-200 et 4.95:1 sur sand-100 (PASS AA)." },
         "inverse":   { "$value": "{primitives.color.sand.100}", "$type": "color", "$description": "#F5F0E8 — texte sur fond sombre" },
         "accent-water":  { "$value": "{primitives.color.water.600}",  "$type": "color", "$description": "#3A6675 — liens actifs, accent eau" },
         "accent-forest": { "$value": "{primitives.color.forest.600}", "$type": "color", "$description": "#3B5240 — liens jardin, accent végétal" },

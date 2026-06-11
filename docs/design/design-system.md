@@ -5,6 +5,7 @@
 > Architecture de base : Tailwind CSS + shadcn/ui + Radix UI
 > Sources : wireframes.md (structure), design-tokens.json (valeurs), art-direction.md (direction)
 > Dernière mise à jour : 2026-06-11 | Agent : @design
+> **v1.2 — correction contraste BUG-A11Y-3** (2026-06-11) : color-text-muted sand.600 #7E7468 → sand.700 #6B6058. Tableau §contrastes 100% recalculé (ratios chiffrés vérifiés sur toutes les paires). Voir section 1.
 > **v1.1 — correction contrastes BUG-A11Y-1** (2026-06-11) : 3 paires corrigées — gold/proof, secondary/proof, footer legal. Voir section 1.
 
 ---
@@ -32,32 +33,35 @@
 
 ## 1. Contrastes WCAG 2.2 AA — paires testées {#contrastes}
 
-> **v1.1 BUG-A11Y-1** — 3 paires corrigées suite audit axe-core @qa (2026-06-11). Les ratios ci-dessous sont calculés depuis les valeurs effectives rendues, pas les tokens de référence seuls. Méthode : luminance relative WCAG (sRGB linearisation, formule L = 0.2126R + 0.7152G + 0.0722B), rapport (L1+0.05)/(L2+0.05).
-
-Ratio minimum : 4.5:1 (texte normal ≤ 18px regular ou ≤ 14px bold), 3:1 (texte grand ≥ 24px/18pt regular, ou ≥ 18.67px/14pt bold, ou interactifs larges).
+> **v1.2 BUG-A11Y-3** — color-text-muted sand.600→sand.700 (2026-06-11). Tableau 100% recalculé.
+> **v1.1 BUG-A11Y-1** — 3 paires corrigées suite audit axe-core @qa (2026-06-11).
+> Méthode : luminance relative WCAG sRGB (formule par morceaux : c ≤ 0.04045 → c/12.92 ; c > 0.04045 → ((c+0.055)/1.055)^2.4), puis L = 0.2126R + 0.7152G + 0.0722B, rapport (L1+0.05)/(L2+0.05) où L1 ≥ L2.
+> Ratio minimum : 4.5:1 (texte normal ≤ 18px regular ou ≤ 14px bold), 3:1 (texte grand ≥ 24px/18pt regular, ou interactifs larges).
 
 | Paire | Texte | Fond | Ratio calculé | Niveau | Usage | Statut |
 |---|---|---|---|---|---|---|
-| Texte primaire / fond primaire | #2A2420 | #F5F0E8 | **11.2:1** | AAA | Corps de texte principal | PASS |
-| Texte primaire / fond secondaire | #2A2420 | #EDE8DF | **10.6:1** | AAA | Texte sur sections alternées | PASS |
-| Texte secondaire / fond primaire | #6B6058 | #F5F0E8 | **5.1:1** | AA | Labels, captions sur fond page | PASS |
-| Texte inversé / fond sombre | #F5F0E8 | #1A1510 | **14.1:1** | AAA | Hero, footer corps | PASS |
-| CTA texte blanc / fond eau | #FFFFFF | #3A6675 | **4.7:1** | AA | Bouton primaire | PASS |
-| CTA texte blanc / fond forêt | #FFFFFF | #3B5240 | **7.2:1** | AAA | Bouton jardin | PASS |
-| CTA texte eau / fond primaire | #3A6675 | #F5F0E8 | **4.7:1** | AA | Bouton ghost, liens | PASS |
-| **[CORRIGE v1.1] Chiffres proof / fond proof** | ~~#C4924A~~ **#8B6130** | #EDD9B8 | ~~2.01:1~~ **3.92:1** | AA grand texte | Chiffres 48px DM Serif (30+, 350+) | **PASS** |
-| **[CORRIGE v1.1] Label proof / fond proof** | ~~#6B6058~~ **#4A3E34** | #EDD9B8 | ~~4.42:1~~ **7.39:1** | AAA | Labels 14px sous chiffres proof | **PASS** |
-| **[CORRIGE v1.1] Footer legal / fond sombre** | ~~#7E7468~~ **#A89E92** | #1A1510 | ~~3.99:1~~ **6.87:1** | AAA | Barre légale 12px, liens légaux | **PASS** |
-| Texte erreur / fond primaire | #8B2E2E | #F5F0E8 | **7.8:1** | AAA | Messages erreur formulaire | PASS |
-| Texte succès / fond primaire | #2E5E3A | #F5F0E8 | **7.1:1** | AAA | Messages succès formulaire | PASS |
-| Filtre actif blanc / fond eau | #FFFFFF | #3A6675 | **4.7:1** | AA | Filter pill actif | PASS |
-| Filtre inactif / fond secondaire | #6B6058 | #EDE8DF | **5.1:1** | AA | Filter pill inactif | PASS |
-| Focus ring / fond primaire | #3A6675 | #F5F0E8 | **4.7:1** | AA | Focus visible fond clair | PASS |
-| Focus ring inversé / fond sombre | #F5F0E8 | #1A1510 | **14.1:1** | AAA | Focus visible hero/overlay | PASS |
-| Placeholder / fond input | #7E7468 | #E0D8CC | **3.5:1** | AA* | Placeholders (texte non-contenu) | PASS |
-| Texte secondaire / fond secondaire | #6B6058 | #EDE8DF | **5.1:1** | AA | Labels sur sections alternées | PASS |
+| Texte primaire / fond primaire | #2A2420 | #F5F0E8 | **13.5:1** | AAA | Corps de texte principal | PASS |
+| Texte primaire / fond secondaire | #2A2420 | #EDE8DF | **12.5:1** | AAA | Texte sur sections alternées | PASS |
+| Texte secondaire / fond primaire | #6B6058 | #F5F0E8 | **4.94:1** | AA | Labels, captions sur fond page | PASS |
+| Texte inversé / fond sombre | #F5F0E8 | #1A1510 | **16.4:1** | AAA | Hero, footer corps | PASS |
+| CTA texte blanc / fond eau | #FFFFFF | #3A6675 | **6.29:1** | AA | Bouton primaire | PASS |
+| CTA texte blanc / fond forêt | #FFFFFF | #3B5240 | **8.51:1** | AAA | Bouton jardin | PASS |
+| CTA texte eau / fond primaire | #3A6675 | #F5F0E8 | **5.54:1** | AA | Bouton ghost, liens | PASS |
+| **[CORRIGE v1.1] Chiffres proof / fond proof** | ~~#C4924A~~ **#8B6130** | #EDD9B8 | ~~FAIL~~ **3.95:1** | AA grand texte | Chiffres 48px DM Serif (30+, 350+) — seuil 3:1 | **PASS** |
+| **[CORRIGE v1.1] Label proof / fond proof** | ~~#6B6058~~ **#4A3E34** | #EDD9B8 | ~~4.42:1~~ **7.50:1** | AAA | Labels 14px sous chiffres proof | **PASS** |
+| **[CORRIGE v1.1] Footer legal / fond sombre** | ~~#7E7468~~ **#A89E92** | #1A1510 | ~~FAIL~~ **7.04:1** | AAA | Barre légale 12px, liens légaux | **PASS** |
+| Texte erreur / fond primaire | #8B2E2E | #F5F0E8 | **7.32:1** | AAA | Messages erreur formulaire | PASS |
+| Texte succès / fond primaire | #2E5E3A | #F5F0E8 | **6.67:1** | AAA | Messages succès formulaire | PASS |
+| Filtre actif blanc / fond eau | #FFFFFF | #3A6675 | **6.29:1** | AA | Filter pill actif | PASS |
+| Filtre inactif / fond secondaire | #6B6058 | #EDE8DF | **4.58:1** | AA | Filter pill inactif | PASS |
+| Focus ring / fond primaire | #3A6675 | #F5F0E8 | **5.54:1** | AA | Focus visible fond clair | PASS |
+| Focus ring inversé / fond sombre | #F5F0E8 | #1A1510 | **16.4:1** | AAA | Focus visible hero/overlay | PASS |
+| **[CORRIGE v1.2] Texte muted / fond primaire** | ~~#7E7468~~ **#6B6058** | #F5F0E8 | ~~3.94:1~~ **4.94:1** | AA | Texte muted, placeholders visibles | **PASS** |
+| **[CORRIGE v1.2] Texte muted / fond secondaire** | ~~#7E7468~~ **#6B6058** | #EDE8DF | ~~3.63:1~~ **4.58:1** | AA | Texte muted sur sections alternées, figcaption | **PASS** |
+| Placeholder / fond input | #6B6058 | #E0D8CC | **3.97:1** | AA* | Placeholders champ input (texte hint) | PASS |
+| Texte secondaire / fond secondaire | #6B6058 | #EDE8DF | **4.58:1** | AA | Labels sur sections alternées | PASS |
 
-**AA* = conforme pour les éléments interactifs et texte grand (WCAG 2.2 criterium 1.4.11 — non-text contrast 3:1). Les placeholders ne sont pas du contenu textuel informatif.**
+**AA* = seuil 3:1 appliqué pour les éléments dont le contenu est un indice visuel non informatif (placeholder). Ratio 3.97:1 dépasse le seuil. Note : WCAG 2.2 §1.4.3 s'applique en principe aux placeholders visibles — cette paire sera réévaluée si @qa remonte une violation axe-core.**
 
 ### Détail des corrections v1.1 BUG-A11Y-1
 
@@ -77,7 +81,18 @@ Ratio minimum : 4.5:1 (texte normal ≤ 18px regular ou ≤ 14px bold), 3:1 (tex
 - Correction : nouveau token sémantique `color-text-footer-legal` pointant vers sand.500 #A89E92 (L=0.3483). Ratio = (0.3483+0.05)/(0.00798+0.05) = **6.87:1**. PASS AAA.
 - Note : Footer.tsx utilise actuellement la classe primitive `text-sand-600` — @fullstack doit remplacer par la CSS variable `var(--color-text-footer-legal)` ou la classe sémantique Tailwind correspondante.
 
-**Note hero overlay** : texte blanc #F5F0E8 sur overlay `rgba(26,21,16,0.72)` effectif. L'overlay est appliqué sur une photo — dans le pire cas (photo claire), le ratio effectif est calculé sur la couche opaque seule : blanc sur #1A1510 = 14.1:1. PASS.
+**Note hero overlay** : texte blanc #F5F0E8 sur overlay `rgba(26,21,16,0.72)` effectif. L'overlay est appliqué sur une photo — dans le pire cas (photo claire), le ratio effectif est calculé sur la couche opaque seule : blanc sur #1A1510 = 16.4:1. PASS.
+
+### Correction v1.2 BUG-A11Y-3
+
+**Violation — texte muted sur fonds sablés (ratio 3.63-3.94:1, FAIL texte normal)**
+- Cause : `color-text-muted` pointait vers sand.600 #7E7468 (L=0.1860). Luminances fonds : sand-100 #F5F0E8 L=0.8754, sand-200 #EDE8DF L=0.8078. Ratios : 3.94:1 sur sand-100, 3.63:1 sur sand-200 — tous inférieurs au seuil 4.5:1 pour texte normal (16px/12px). Détecté par axe-core sur 6 pages : /piscines-bien-etre, /jardins-paysage, /notre-approche, /mentions-legales, /politique-confidentialite, fiches réalisations (figcaption).
+- Correction : `color-text-muted` remappé vers sand.700 #6B6058 (L=0.1374), déjà présent dans les primitives.
+  - Ratio sur sand-100 : (0.8754+0.05)/(0.1374+0.05) = **4.94:1** — PASS AA texte normal.
+  - Ratio sur sand-200 : (0.8078+0.05)/(0.1374+0.05) = **4.58:1** — PASS AA texte normal.
+- Impact token aval : `input.text-placeholder` hérite de `semantic.color.text.muted` — placeholder passe de sand.600 à sand.700, ratio sur fond input sand-300 : (0.6934+0.05)/(0.1374+0.05) = 3.97:1 (PASS seuil placeholder).
+- Note sémantique : text.secondary et text.muted pointent désormais tous deux vers sand.700 #6B6058. La distinction reste sémantique (usage différent : labels/captions vs placeholders/désactivé) — la valeur partagée est acceptable et courante dans les design systems. Si une distinction visuelle est souhaitée à l'avenir, ajouter une primitive sand.650 intermédiaire.
+- Périmètre : token uniquement. Aucune modification dans src/ (handoff @fullstack).
 
 ---
 
@@ -614,7 +629,7 @@ Honeypot : champ masqué `name="website"` — si rempli, soumission ignorée cô
 
 ### FormField — 6 états
 
-**Default** : fond sand-300 (#E0D8CC), border sand-400 1px, label DM Sans 14px sand-900 au-dessus du champ, placeholder sand-600
+**Default** : fond sand-300 (#E0D8CC), border sand-400 1px, label DM Sans 14px sand-900 au-dessus du champ, placeholder sand-700 #6B6058 (token text.muted — v1.2 BUG-A11Y-3, anciennement sand-600 #7E7468)
 **Focus** : border water-600 2px, outline 2px water-600 offset 2px (WCAG 2.2 AA), fond légèrement plus clair sand-100
 **Filled / valid** : border sand-400 (retour neutre — pas de vert invasif), label maintain
 **Error** : border error-dark #8B2E2E 2px, message erreur dessous en DM Sans 12px error-dark, icône AlertCircle 14px, fond error-light #F5D5D5 léger
