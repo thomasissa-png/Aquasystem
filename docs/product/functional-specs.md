@@ -834,8 +834,7 @@ HTTP 400
   "fields": {
     "email": "Format d'email invalide.",
     "description": "Décrivez votre projet en quelques mots (20 caractères minimum).",
-    "type_projet": "Veuillez sélectionner au moins un type de projet.",
-    "telephone": "Numéro de téléphone invalide (format français attendu : 06 XX XX XX XX)."
+    "telephone": "Numéro de téléphone invalide (format français attendu : 06 XX XX XX XX) — ou laissez ce champ vide."
   }
 }
 ```
@@ -977,14 +976,16 @@ HTTP 429
 - **@fullstack** : le champ honeypot `website` doit être caché par CSS (`display: none` ou `position: absolute; left: -9999px`) — jamais par `type="hidden"` (les bots lisent les hidden fields).
 - **@fullstack** : timeout client à implémenter avec `AbortController` + `setTimeout(10000)`.
 - **@qa** : scénarios critiques à tester en priorité :
-  1. Soumission valide complète → vérifier email reçu par Nicolas Berg
-  2. Soumission valide sans budget → email reçu avec "Non renseigné"
-  3. Double-clic → 1 seul email reçu
-  4. Honeypot rempli → 0 email reçu, réponse 200
-  5. Rate limit → 429 après 5 tentatives
-  6. Formulaire natif (JS désactivé) → email reçu, redirect `/contact/merci`
-  7. Erreur 500 simulée → formulaire préservé, message d'erreur visible
-  8. Timeout 10s simulé → état erreur, numéro visible
+  1. Soumission valide complète avec chips + téléphone → vérifier email reçu par Nicolas Berg
+  2. Soumission valide sans aucun chip ni téléphone → email reçu avec "Type(s) de projet : Non précisé" + "Téléphone : Non renseigné"
+  3. Soumission valide sans budget → email reçu avec "Budget : Non renseigné"
+  4. Double-clic → 1 seul email reçu
+  5. Honeypot rempli → 0 email reçu, réponse 200
+  6. Rate limit → 429 après 5 tentatives
+  7. Formulaire natif (JS désactivé) → email reçu, redirect `/contact/merci`
+  8. Erreur 500 simulée → formulaire préservé, message d'erreur visible
+  9. Timeout 10s simulé → état erreur, numéro visible
+  10. Smart default depuis `/piscines-bien-etre` → chip "Piscine & Bien-être" pré-activé, désactivable
 - **@ux** : vérifier que la mention RGPD est lisible (contraste, taille) sans gêner l'accès au bouton.
 
 ---
@@ -1147,11 +1148,11 @@ Données issues de `src/config/site.ts` (constantes, pas en dur dans le composan
 
 ```typescript
 interface CrossSellingBlockProps {
-  source: "piscines" | "jardins" | "realisations";
-  destination: "piscines" | "jardins" | "contact";
+  source: "piscines-bien-etre" | "jardins-paysage" | "realisations";
+  destination: "piscines-bien-etre" | "jardins-paysage" | "contact";
   texte: string;         // Fourni par le copy
   cta_label: string;
-  cta_href: string;
+  cta_href: string;      // ex: "/piscines-bien-etre" ou "/jardins-paysage"
 }
 ```
 
