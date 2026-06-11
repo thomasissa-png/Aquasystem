@@ -87,7 +87,13 @@
 ### Phase 5 — Dernier kilomètre — EN COURS — @qa revue finale
 | Ordre | Agent | Livrables attendus | Statut | Verdict |
 |---|---|---|---|---|
-| 5.1 | @qa | docs/qa/page-review-report.md (21 dims × toutes pages + a11y + cross-browser + cohérence) | EN COURS | — |
+| 5.1 | @qa | docs/qa/page-review-report.md (21 dims × toutes pages + a11y + cross-browser + cohérence) | LIVRÉ 2026-06-11 | GO conditionnel — 0 P0 neuf, 2 P1 (A11Y-3 contraste muted, A11Y-4 skip link), 6 P2 ; toutes pages ≥ 19/21 ; formulaire/résilience/cookies/liens 100% PASS live |
+| 5.1b | @design (token muted) | design-tokens v1.2.0 — muted ≥ 4.5:1 + recalcul TOUTES les paires | EN COURS | — |
+
+### Arbitrages orchestrateur post-revue (2026-06-11)
+- **INFO-DATA-1 (commune dans l'event Umami)** : décision existante MAINTENUE — tracking-plan v1.2 + rgpd-checklist : la commune seule est une localisation grossière non identifiante, l'outil est exempté CNIL, aucune autre donnée du formulaire ne part en analytics. Documenté, pas de changement.
+- **Fiches réalisations en draft (thin content, 14 pages)** : les fiches en état « en cours de documentation » passent en **noindex + exclusion sitemap** tant que leurs champs [DONNÉES PROJET RÉEL] ne sont pas remplis (conforme anti-thin-content @seo) ; ré-indexation automatique dès documentation. → @fullstack 5.2.
+- **Libellé footer prescripteurs** : aligner sur ux-writing §6 (source de vérité) — cohérence nav/footer. → @fullstack 5.2.
 | 5.2 | @fullstack | Correction de TOUS les bugs P0+P1+P2 | Dépend 5.1 | — |
 | 5.3 | @qa re-check + @ux/@design validation | Pages ≥ 19/21, parcours et design system respectés | Dépend 5.2 | — |
 | 5.4 | Checklist jour de lancement + GO/NO-GO fondateur | Consolidation [À CONFIRMER] + checkpoint final | Dépend 5.3 | — |
