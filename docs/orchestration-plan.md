@@ -65,7 +65,8 @@
 ### Phase 3 — Contenu/SEO/GEO — EN COURS — @seo ∥ @geo
 | Ordre | Agent | Livrables attendus | Statut | Verdict |
 |---|---|---|---|---|
-| 3.1 (∥) | @seo | docs/seo/seo-strategy.md (SEO local 78/92), keyword-map.md (≥20 mots-clés réels), metadata-templates.md | EN COURS | — |
+| 3.1 (∥) | @seo | docs/seo/seo-strategy.md (SEO local 78/92), keyword-map.md (≥20 mots-clés réels), metadata-templates.md | LIVRÉ 2026-06-11 | OK — 28 mots-clés/8 clusters (volumes qualitatifs sourcés SERP) ; GBP 2 fiches (pas d'ombrelle avant naming) ; pages géo reportées V2 (anti-thin-content, seuil 3 réalisations/commune) ; mapping 301 aqua-system.fr (10 URLs, bascule à J+30 stabilité) ; espace libre confirmé « pisciniste paysagiste yvelines » |
+| 3.2b (∥) | @copywriter | docs/copy/faq-geo-copy.md (9 Q/R + 5 avant/après + distinctions FPP/EUSA dans site-copy) | EN COURS | — |
 | 3.2 (∥) | @geo | docs/geo/geo-strategy.md (≥10 claims sourcés, llms.txt, audit visibilité IA), content-restructuring.md | LIVRÉ 2026-06-11 | OK — 12 claims 3/3 dont **Trophée Or FPP 2024 (vérifié par orchestrateur)** + EUSA Bronze 2025 ; désinformation swimmy.fr documentée ; FAQ limitées à /notre-approche + /prescripteurs (registre préservé) ; protocole mensuel < 1h |
 | 3.3 | @fullstack (implémentation SEO/GEO) | sitemap, robots.txt, llms.txt, LocalBusiness/Breadcrumb JSON-LD, metas finales | Dépend 3.1+3.2 | — |
 ### Checkpoint specs (entre 1 et 2) : @reviewer quick-check functional-specs.md — À VENIR
