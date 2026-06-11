@@ -841,7 +841,7 @@ Ordre des champs (optimisé pour engagement progressif) :
 │ │ votre@email.fr                                                    │  │
 │ └──────────────────────────────────────────────────────────────────┘  │
 │                                                                        │
-│ Téléphone *                                                            │
+│ Téléphone  (optionnel)                                                 │
 │ ┌──────────────────────────────────────────────────────────────────┐  │
 │ │ 06 12 34 56 78                                                    │  │
 │ └──────────────────────────────────────────────────────────────────┘  │
@@ -871,7 +871,7 @@ Ordre des champs (optimisé pour engagement progressif) :
 │                                                                        │
 │ Décrivez votre projet *                                                │
 │ ┌──────────────────────────────────────────────────────────────────┐  │
-│ │ J'ai un terrain de 2 000 m² et...                 [compteur: 0] │  │
+│ │ J'ai un terrain de 2 000 m² et...                               │  │
 │ │                                                                   │  │
 │ │                                                                   │  │
 │ └──────────────────────────────────────────────────────────────────┘  │
@@ -924,7 +924,7 @@ Formulaire vide, labels visibles, placeholder en texte léger.
 
 **État "en cours de remplissage"**
 Champ actif : border focus visible (outline WCAG 2.2, couleur brand, largeur ≥ 2px).
-Compteur caractères actif sur le champ description (affichage dès le 1er caractère).
+Pas de compteur de caractères visible (arbitrage P2-1 : contraignant et administratif pour le persona Alexandre — message d'erreur uniquement si < 20 chars à la soumission).
 Event : form_start (E-02) au focus du premier champ.
 
 **État "soumission en cours" (loading)**
@@ -936,22 +936,24 @@ L'état du formulaire est préservé (pas de reset avant confirmation).
 
 **État "succès"**
 
-La page de formulaire est remplacée par (ou un bloc s'affiche à la place du formulaire) :
+Après soumission réussie, redirect vers la page distincte `/contact/merci` (route statique Next.js). Ce bloc ci-dessous = contenu de cette page — PAS un remplacement inline de `/contact` (arbitrage P0-4 : tracking E-01 fiable, anti-double soumission au refresh).
+
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
 │                                                                        │
-│   Votre message nous est parvenu.                                      │
+│   Votre message est bien parvenu.                                      │
 │                                                                        │
-│   Nous revenons vers vous sous [X] jours ouvrés — par email            │
-│   ou par téléphone selon votre préférence.                             │
+│   Nicolas Berg reviendra vers vous [À CONFIRMER : délai de réponse    │
+│   réel de Nicolas] pour un premier échange autour de votre projet.    │
 │                                                                        │
-│   En attendant : 01 30 42 26 00                                        │
+│   Si votre demande est urgente, appelez-nous directement :            │
+│   01 30 42 26 00                                                       │
 │                                                                        │
 │   [← Retour à l'accueil]                                              │
 │                                                                        │
 └────────────────────────────────────────────────────────────────────────┘
 ```
-Event : form_submission_success (E-01) avec toutes les propriétés.
+Event : form_submission_success (E-01) déclenché AVANT le redirect (ou via useEffect au chargement de `/contact/merci` — décision @fullstack, à documenter).
 
 **État "erreur réseau"** (Pages Function échoue)
 ```

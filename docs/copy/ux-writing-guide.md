@@ -95,7 +95,7 @@
 
 > Les informations recueillies dans ce formulaire sont utilisées exclusivement pour traiter votre demande et établir un éventuel devis. Elles sont conservées 3 ans et ne sont partagées avec aucun tiers commercial. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et d'opposition : contact@aqua-system.fr. [Politique de confidentialité →]
 
-**Note @fullstack** : le lien "Politique de confidentialité →" pointe vers `/politique-de-confidentialite`. Texte en corps 12px, couleur secondaire (gris sobre), jamais en rouge ou en gras — ce n'est pas une alerte, c'est une information.
+**Note @fullstack** : le lien "Politique de confidentialité →" pointe vers `/politique-confidentialite` (URL arbitrée P1-2 — arbitrations-p0-checkpoint.md). Texte en corps 12px, couleur secondaire (gris sobre), jamais en rouge ou en gras — ce n'est pas une alerte, c'est une information.
 
 ---
 
@@ -170,10 +170,10 @@
 
 **Note critique** : la mention `[À CONFIRMER : délai de réponse réel de Nicolas]` est un placeholder balisé obligatoire. Ne jamais promettre "sous 24h" ou "sous 48h" sans confirmation de Nicolas Berg sur sa capacité réelle à tenir ce délai. Si le délai est confirmé, remplacer par : "sous [X] jours ouvrés" — toujours en jours ouvrés, jamais en heures.
 
-**Variante si le délai est confirmé (exemple avec 2 jours ouvrés)** :
-> Nicolas Berg reviendra vers vous dans les 2 jours ouvrés pour un premier échange autour de votre projet.
+**Variante si le délai est confirmé** :
+> Nicolas Berg reviendra vers vous dans les [X] jours ouvrés pour un premier échange autour de votre projet.
 
-**Note @fullstack** : ne pas rediriger vers une autre page — afficher le message dans la même page, à la place du formulaire. Pas de confetti, pas d'animation excessive. Ton sobre.
+**Note @fullstack** : afficher sur la page `/contact/merci` (page statique distincte — P0-4, arbitrations-p0-checkpoint.md). Pas de remplacement inline. Pas de confetti, pas d'animation excessive. Ton sobre.
 
 ---
 
@@ -214,18 +214,18 @@
 
 ## 6. Navigation et footer — Wording exact
 
-### Navigation principale (ordre suggéré)
+### Navigation principale (ordre définitif — arbitrage P0-5)
 
-| Label | URL suggérée | Note |
-|-------|-------------|------|
-| Réalisations | /realisations | Premier niveau — c'est le vecteur de conviction principal (brand-platform.md §6) |
-| Piscines | /piscines | Expertise Aqua System |
-| Jardins | /jardins | Expertise Les Terres Essentielles |
-| Notre approche | /approche | Méthode, les deux maisons, preuves |
-| Architectes | /prescripteurs | Espace Camille — label sobre, pas "Professionnels" |
-| Contact | /contact | Toujours en dernier — conviction avant action |
+| Position | Label | URL | Note |
+|----------|-------|-----|------|
+| 1 | Réalisations | /realisations | Vecteur de conviction principal (brand-platform.md §6) — vient en premier |
+| 2 | Piscines & Bien-être | /piscines-bien-etre | Expertise Aqua System |
+| 3 | Jardins & Paysage | /jardins-paysage | Expertise Les Terres Essentielles |
+| 4 | Notre approche | /notre-approche | Méthode, les deux maisons, preuves |
+| 5 | La maison | /la-maison | Identité, histoire — en fin de parcours de conviction |
+| 6 | Architectes | /prescripteurs | Espace Camille — label sobre, pas "Professionnels" ni "Espace prescripteurs" |
 
-**Note** : pas de "Accueil" dans la navigation (logo = lien home). Pas de "Services" générique — les deux expertises ont chacune leur page.
+**Note** : pas de "Accueil" dans la navigation (logo = lien home). Pas de "Contact" dans la nav principale — "Contact" = bouton CTA "Parlez-nous de votre projet" dans le header. Pas de "Services" générique. Ordre et libellés font autorité (arbitrations-p0-checkpoint.md §P0-5).
 
 ### Footer — Wording exact des sections
 

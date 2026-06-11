@@ -8,6 +8,15 @@
 
 ---
 
+**v1.2 — 2026-06-11 — Harmonisation post-arbitrages P0**
+Edits appliqués suite aux arbitrages actés dans `docs/product/arbitrations-p0-checkpoint.md` :
+- E-01 `type_projet` : `Array<string> | null` (null si aucun chip sélectionné — chips optionnels P0-2)
+- E-01 `budget_tranche` enum : `50_80k / 80_150k / 150k_plus / prefere_discuter` (P0-3)
+- `page_source` enum mis à jour : `piscines-bien-etre`, `jardins-paysage`, `notre-approche`, `la-maison` (P0-1)
+- E-02 trigger : `#form-prenom` → `#prenom_nom` (P2-2)
+- NSM : `type_projet non null` retiré des critères stricts — lead qualifié = commune 78/92 + description ≥ 20 chars. `type_projet` = critère d'enrichissement uniquement.
+- Double signal de conversion documenté : E-01 (event de référence) + pageview `/contact/merci` (signal de vérification P0-4)
+
 **v1.1 — 2026-06-11 — Gaps UX intégrés**
 4 points de décision signalés par @ux traités :
 - Gap 1 (temps portfolio) : couvert par temps de session natif Umami — pas d'event supplémentaire.
@@ -139,12 +148,12 @@ Ces events mesurent directement la NSM ou un signal de conversion critique.
 
 | Propriété | Type | Valeurs possibles | Obligatoire | Note RGPD |
 |-----------|------|-------------------|-------------|-----------|
-| `type_projet` | string | `piscine`, `spa_sauna`, `jardin_parc`, `projet_complet`, `prescripteur` | Oui | OK — catégorie de projet, pas PII |
+| `type_projet` | `Array<string> \| null` | `piscine_bien_etre`, `jardin_paysage`, `projet_complet`, `prescripteur` — `null` si aucun chip sélectionné | Non | OK — catégorie de projet, pas PII. Critère d'enrichissement (pas de qualification). |
 | `commune` | string | Texte libre normalisé (ex: `le_vesinet`, `versailles`) | Oui | OK — commune en clair, jamais adresse complète |
 | `budget_renseigne` | boolean | `true`, `false` | Oui | OK — présence/absence, pas la valeur |
-| `budget_tranche` | string | `moins_50k`, `50_100k`, `100_200k`, `200k_plus`, `prefere_discuter`, `non_renseigne` | Oui | OK — fourchette anonyme |
+| `budget_tranche` | string | `50_80k`, `80_150k`, `150k_plus`, `prefere_discuter`, `non_renseigne` | Non | OK — fourchette anonyme |
 | `has_description` | boolean | `true`, `false` (description ≥ 20 caractères) | Oui | OK — présence/absence, pas le contenu |
-| `page_source` | string | `contact`, `accueil`, `piscines`, `jardins`, `approche`, `realisations`, `prescripteurs`, `about` | Oui | OK |
+| `page_source` | string | `contact`, `accueil`, `piscines-bien-etre`, `jardins-paysage`, `notre-approche`, `realisations`, `prescripteurs`, `la-maison` | Oui | OK |
 | `has_cross_selling` | boolean | `true` si un clic `cross_selling_clicked` a eu lieu dans la même session (sessionStorage), `false` sinon | Oui | OK — flag de comportement de session, zéro PII |
 
 **Note RGPD** : NE PAS inclure nom, email, téléphone, contenu de la description dans l'event.
