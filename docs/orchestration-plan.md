@@ -76,10 +76,11 @@
 ### Phase 4 — Acquisition — EN COURS — @growth ∥ @social ∥ @sales-enablement
 | Ordre | Agent | Livrables attendus | Statut | Verdict |
 |---|---|---|---|---|
-| 4.1 (∥) | @growth | docs/growth/acquisition-plan.md (3 canaux + programme prescripteurs + quick wins) + earned-media-plan.md (communiqué FPP) | EN COURS | — |
-| 4.2 (∥) | @social | docs/social/social-strategy.md (plateformes, piliers, calendrier 4 sem., transition naming) | EN COURS | — |
-| 4.3 (∥) | @sales-enablement | docs/sales/ : playbook, proposal-template, objection-handling, lead-qualification | EN COURS | — |
-| 4.4 | @copywriter (consolidé) | Templates : communiqué FPP, media kit, posts sociaux, emails types | Dépend 4.1-4.3 | — |
+| 4.1 (∥) | @growth | acquisition-plan.md + earned-media-plan.md | LIVRÉ 2026-06-11 | OK — prescripteurs canal n°1 (séquence 5 étapes), IG+Houzz, avis 350 clients ; indicateur = taux leads qualifiés > 70% (pas le CAC) ; communiqué FPP budget 0 ; 4 quick wins fondateur |
+| 4.2 (∥) | @social | social-strategy.md | LIVRÉ 2026-06-11 | OK — IG carrousels dominants (saves), LinkedIn « je » Nicolas, FB repurposing 0 min, TikTok écarté ; pilier différenciant « regard de l'expert » local ; transition naming documentée |
+| 4.3 (∥) | @sales-enablement | playbook, proposal-template ×2, objection-handling (11), lead-qualification | LIVRÉ 2026-06-11 | OK — pipeline 11 étapes Nicolas solo, preuves toutes réelles, scoring mappé champs réels formulaire ; [À CONFIRMER : décennale, SLA, seuil budget, clients référents] |
+| 4.4 (∥) | @copywriter (consolidé) | press-release-fpp, prescripteurs-sequence, content-templates + post-register, révision gabarits sales | EN COURS | — |
+| 4.5 (∥) | @fullstack | Scoring lead dans email interne Function (specs sales §7) | EN COURS | — |
 ### Checkpoint specs (entre 1 et 2) : @reviewer quick-check functional-specs.md — À VENIR
 ### Phase 2 — Développement : @infrastructure (setup CF Pages) → @fullstack (boucle visuelle 3 devices obligatoire, gate G26 baselines) → @ux review → @qa → @infrastructure finalisation — À VENIR
 ### Phase 3 — Contenu : @copywriter → @seo ∥ @geo (seo-strategy + keyword-map + geo-strategy distincts) — À VENIR
