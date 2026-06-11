@@ -66,7 +66,7 @@
 | Ordre | Agent | Livrables attendus | Statut | Verdict |
 |---|---|---|---|---|
 | 3.1 (∥) | @seo | docs/seo/seo-strategy.md (SEO local 78/92), keyword-map.md (≥20 mots-clés réels), metadata-templates.md | EN COURS | — |
-| 3.2 (∥) | @geo | docs/geo/geo-strategy.md (≥10 claims sourcés, llms.txt, audit visibilité IA), content-restructuring.md | EN COURS | — |
+| 3.2 (∥) | @geo | docs/geo/geo-strategy.md (≥10 claims sourcés, llms.txt, audit visibilité IA), content-restructuring.md | LIVRÉ 2026-06-11 | OK — 12 claims 3/3 dont **Trophée Or FPP 2024 (vérifié par orchestrateur)** + EUSA Bronze 2025 ; désinformation swimmy.fr documentée ; FAQ limitées à /notre-approche + /prescripteurs (registre préservé) ; protocole mensuel < 1h |
 | 3.3 | @fullstack (implémentation SEO/GEO) | sitemap, robots.txt, llms.txt, LocalBusiness/Breadcrumb JSON-LD, metas finales | Dépend 3.1+3.2 | — |
 ### Checkpoint specs (entre 1 et 2) : @reviewer quick-check functional-specs.md — À VENIR
 ### Phase 2 — Développement : @infrastructure (setup CF Pages) → @fullstack (boucle visuelle 3 devices obligatoire, gate G26 baselines) → @ux review → @qa → @infrastructure finalisation — À VENIR
