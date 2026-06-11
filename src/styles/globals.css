@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===========================================================================
+ * Tokens sémantiques (tier 2) — CSS variables.
+ * Source : docs/design/design-tokens.json > semantic.color (light mode défaut).
+ * Référencés par tailwind.config.ts (colors.background, .foreground, .action...).
+ * Le dark mode (différé V2) se branchera via [data-theme="dark"] SANS toucher
+ * les composants — seules ces variables changent (voir tokens > darkMode).
+ * ========================================================================= */
+:root {
+  /* background */
+  --color-background-primary: #f5f0e8; /* sand.100 */
+  --color-background-secondary: #ede8df; /* sand.200 */
+  --color-background-tertiary: #e0d8cc; /* sand.300 */
+  --color-background-inverse: #1a1510; /* sand.950 */
+  --color-background-overlay: rgba(26, 21, 16, 0.72);
+  --color-background-accent-water: #b8d4dc; /* water.200 */
+  --color-background-accent-forest: #c4d9c6; /* forest.200 */
+  --color-background-proof: #edd9b8; /* gold.100 */
+
+  /* text */
+  --color-text-primary: #2a2420; /* sand.900 */
+  --color-text-secondary: #6b6058; /* sand.700 */
+  --color-text-muted: #7e7468; /* sand.600 */
+  --color-text-inverse: #f5f0e8; /* sand.100 */
+  --color-text-accent-water: #3a6675; /* water.600 */
+  --color-text-accent-forest: #3b5240; /* forest.600 */
+  --color-text-proof: #c4924a; /* gold.600 */
+  --color-text-error: #8b2e2e;
+  --color-text-success: #2e5e3a;
+
+  /* border */
+  --color-border-default: #d4ccc0; /* sand.400 */
+  --color-border-strong: #a89e92; /* sand.500 */
+  --color-border-muted: #e0d8cc; /* sand.300 */
+
+  /* action (CTA) */
+  --color-action-primary-bg: #3a6675; /* water.600 */
+  --color-action-primary-bg-hover: #5a8a9a; /* water.500 */
+  --color-action-primary-bg-active: #2c4f5c; /* water.700 */
+  --color-action-primary-text: #ffffff;
+  --color-action-forest-bg: #3b5240; /* forest.600 */
+  --color-action-forest-bg-hover: #587a5f; /* forest.500 */
+
+  /* focus */
+  --color-focus-ring: #3a6675; /* water.600 */
+  --color-focus-ring-inverse: #f5f0e8; /* sand.100 */
+}
+
+/* ===========================================================================
+ * Base
+ * ========================================================================= */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif), Georgia, serif;
+  color: var(--color-text-primary);
+}
+
+/* Focus visible cohérent (accessibilité — token focus.ring). */
+:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* ===========================================================================
+ * Honeypot anti-spam (F-08) : champ "website" masqué par CSS, JAMAIS
+ * type="hidden" (les bots lisent les hidden fields). Classe réutilisée par le
+ * ContactForm une fois les arbitrages P0 résolus.
+ * ========================================================================= */
+.honeypot-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ===========================================================================
+ * Respect de prefers-reduced-motion (tokens > motion.reduced-motion).
+ * ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

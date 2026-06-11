@@ -1,0 +1,86 @@
+name: CI
+
+# Pipeline bloquant : lint -> typecheck -> build (export statique).
+# PAS de job deploy pour l'instant (tokens Cloudflare non configurés —
+# marche à suivre dans docs/infra/infrastructure.md > "Déploiement").
+# Tests Vitest/Playwright : jobs commentés ci-dessous, à activer par @qa.
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+    branches: [main]
+
+# Annule les runs obsolètes sur la même branche.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Lint, types et build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint (ESLint)
+        run: npm run lint
+
+      - name: Typecheck (tsc --noEmit)
+        run: npm run typecheck
+
+      - name: Build (Next.js export statique)
+        run: npm run build
+
+      - name: Vérifier la sortie statique
+        run: test -d out && test -f out/index.html
+
+  # ---------------------------------------------------------------------------
+  # JOBS À ACTIVER PAR @qa (laisser commentés tant que les tests n'existent pas).
+  # ---------------------------------------------------------------------------
+  # tests:
+  #   name: Tests unitaires (Vitest)
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: '20'
+  #         cache: 'npm'
+  #     - run: npm ci
+  #     - run: npm run test
+  #
+  # e2e:
+  #   name: Tests E2E (Playwright)
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: '20'
+  #         cache: 'npm'
+  #     - run: npm ci
+  #     - run: npx playwright install --with-deps
+  #     - run: npm run test:e2e
+  #
+  # lighthouse:
+  #   name: Lighthouse CI (desktop + mobile)
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: '20'
+  #         cache: 'npm'
+  #     - run: npm ci && npm run build
+  #     - run: npx @lhci/cli autorun

@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+# Pre-commit — Regle n6 CLAUDE.md.
+# Si des fichiers de src/ sont mis en stage, on exige un build propre AVANT commit.
+# Installation : `npm install` puis `npm run prepare` (husky), ou voir
+# docs/infra/infrastructure.md > "Hook pre-commit".
+
+if git diff --cached --name-only | grep -q '^src/'; then
+  echo "[pre-commit] Modifications dans src/ — verification build..."
+  npx tsc --noEmit && npx next lint && npm run build || {
+    echo "[pre-commit] ECHEC : corrige tsc/lint/build avant de commiter."
+    exit 1
+  }
+  echo "[pre-commit] OK."
+else
+  echo "[pre-commit] Aucun fichier src/ modifie — verification build ignoree."
+fi

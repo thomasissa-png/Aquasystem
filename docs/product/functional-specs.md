@@ -4,6 +4,7 @@
 > **Contrat product → dev.** Objectif : @fullstack peut coder sans poser une seule question.
 > Références : `docs/product/v1-scope.md` (IDs F-01…F-11), `docs/analytics/tracking-plan.md` (events E-01…E-09), `docs/legal/rgpd-checklist.md` (section D), `docs/product/discovery-map.md`, `docs/product/assumption-map.md`
 > Constante globale : `SITE_NAME` = "Aquasystem" [PROVISOIRE — substituer par le naming validé dans une seule constante `src/config/site.ts`]
+> **v1.1 — réconciliation post-checkpoint, 2026-06-11** : 5 P0 résolus (URLs, formulaire, budget, succès, nav). Arbitrages dans `docs/product/arbitrations-p0-checkpoint.md`. Source de vérité wording erreurs : `docs/copy/ux-writing-guide.md` §2.
 > Dernière mise à jour : 2026-06-11 | Agent : @product-manager
 
 ---
@@ -86,7 +87,7 @@ En tant qu'Alexandre, je veux comprendre en un coup d'œil ce que fait [SITE_NAM
 #### Contexte de navigation
 - **Origine** : Google (recherche "pisciniste sur mesure 78/92"), bouche-à-oreille (URL directe), réseaux sociaux
 - **Déclencheur** : chargement de la page
-- **Destination succès** : clic CTA → `/contact`, ou navigation vers `/piscines`, `/jardins`, `/realisations`
+- **Destination succès** : clic CTA → `/contact`, ou navigation vers `/piscines-bien-etre`, `/jardins-paysage`, `/realisations`
 - **Destination échec** : rebond (fermeture onglet, retour Google)
 
 #### Contenu requis (structure de page)
@@ -94,7 +95,7 @@ En tant qu'Alexandre, je veux comprendre en un coup d'œil ce que fait [SITE_NAM
 | Section | Contenu | Règle |
 |---------|---------|-------|
 | Hero | Tagline "L'extérieur à la hauteur de votre propriété" + photo réalisation premium (piscine+jardin) + CTA "Parlez-nous de votre projet" | Photo priorité LCP (`priority` next/image), CTA → `/contact` avec `data-track="cta"` `data-position="hero"` |
-| Deux univers | Blocs Piscines & Bien-être + Jardins & Paysage — appel à l'intégration | Liens vers `/piscines` et `/jardins` |
+| Deux univers | Blocs Piscines & Bien-être + Jardins & Paysage — appel à l'intégration | Liens vers `/piscines-bien-etre` et `/jardins-paysage` |
 | Composant preuves | 30+ ans, 350+ piscines entretenues, Socotec CSP/ESP-001, L'Esprit Piscine | Composant `<ProofPoints />` réutilisable |
 | Extrait portfolio | 3-4 réalisations phares | Données depuis `src/data/realisations.json`, lien "Voir toutes les réalisations" → `/realisations` |
 | Mention prescripteurs | Lien discret vers `/prescripteurs` | Texte sobre, pas CTA principal |
@@ -157,7 +158,7 @@ En tant qu'Alexandre, je veux comprendre en un coup d'œil ce que fait [SITE_NAM
 ## F-02 — Page univers piscines & bien-être
 
 **Persona** : Alexandre
-**URL** : `/piscines`
+**URL** : `/piscines-bien-etre`
 **Lien NSM** : Page de conversion intent piscine
 **Roadmap** : R-08
 
@@ -172,7 +173,7 @@ En tant qu'Alexandre ayant un projet de piscine sur mesure, je veux comprendre p
 #### Contexte de navigation
 - **Origine** : accueil (clic bloc univers piscines), navigation principale, Google
 - **Déclencheur** : intention de projet piscine
-- **Destination succès** : clic CTA → `/contact`, ou cross-selling → `/jardins`
+- **Destination succès** : clic CTA → `/contact`, ou cross-selling → `/jardins-paysage`
 - **Destination échec** : rebond ou retour accueil
 
 #### Contenu requis
@@ -183,7 +184,7 @@ En tant qu'Alexandre ayant un projet de piscine sur mesure, je veux comprendre p
 | Prestations Aqua System | Conception et construction sur mesure, rénovation, spas HotSpring, saunas, hammams, traitement d'eau, robots Dolphin, SAV/entretien annuel | Liste structurée, pas de bullet points génériques |
 | Photos réalisations piscines | 3-5 photos issues du book Calameo / site existant | `next/image` lazy, alt descriptifs |
 | Certifications en contexte | Socotec CSP/ESP-001, L'Esprit Piscine | Intégrées dans le flux de texte, pas en annexe |
-| Composant cross-selling | "Votre piscine mérite un jardin à sa mesure — en partenariat avec Les Terres Essentielles" + CTA vers `/jardins` | `data-track="cross-selling"` `data-source="piscines"` `data-destination="jardins"` |
+| Composant cross-selling | "Votre piscine mérite un jardin à sa mesure — en partenariat avec Les Terres Essentielles" + CTA vers `/jardins-paysage` | `data-track="cross-selling"` `data-source="piscines-bien-etre"` `data-destination="jardins-paysage"` |
 | CTA | "Parlez-nous de votre projet" → `/contact` | `data-track="cta"` `data-position="section_milieu"` et `data-position="footer"` |
 
 **Formulation obligatoire** : "notre maison Aqua System" (vocabulaire prescrit brand-platform.md).
@@ -201,7 +202,7 @@ En tant qu'Alexandre ayant un projet de piscine sur mesure, je veux comprendre p
 #### Critères d'acceptation
 
 **Happy path :**
-1. Given Alexandre arrive sur `/piscines` / When il lit la page / Then le terme "Aqua System" et la mention "conception et construction sur mesure" sont visibles dans le premier écran desktop.
+1. Given Alexandre arrive sur `/piscines-bien-etre` / When il lit la page / Then le terme "Aqua System" et la mention "conception et construction sur mesure" sont visibles dans le premier écran desktop.
 2. Given Alexandre scrolle vers le bas / When il atteint le composant cross-selling / Then il voit "en partenariat avec Les Terres Essentielles" et peut cliquer pour aller vers `/jardins`.
 3. Given Alexandre clique sur le CTA "Parlez-nous de votre projet" / When la navigation se produit / Then il arrive sur `/contact` avec scroll en haut de page.
 
@@ -223,9 +224,9 @@ En tant qu'Alexandre ayant un projet de piscine sur mesure, je veux comprendre p
 
 | Event | Déclencheur | Propriétés clés |
 |-------|-------------|----------------|
-| `page_viewed` (E-10) | Chargement page — auto | `page_path: "/piscines"` |
-| `cross_selling_clicked` (E-09) | Clic composant cross-sell | `source_univers: "piscines"`, `destination_univers: "jardins"` |
-| `cta_clicked` (E-04) | Clic CTA | `page_source: "piscines"`, `position: "section_milieu"` ou `"footer"` |
+| `page_viewed` (E-10) | Chargement page — auto | `page_path: "/piscines-bien-etre"` |
+| `cross_selling_clicked` (E-09) | Clic composant cross-sell | `source_univers: "piscines-bien-etre"`, `destination_univers: "jardins-paysage"` |
+| `cta_clicked` (E-04) | Clic CTA | `page_source: "piscines-bien-etre"`, `position: "section_milieu"` ou `"footer"` |
 
 #### Notes
 
@@ -237,7 +238,7 @@ En tant qu'Alexandre ayant un projet de piscine sur mesure, je veux comprendre p
 ## F-03 — Page univers jardins & paysage
 
 **Persona** : Alexandre
-**URL** : `/jardins`
+**URL** : `/jardins-paysage`
 **Lien NSM** : Page de conversion intent jardin
 **Roadmap** : R-09
 
@@ -252,7 +253,7 @@ En tant qu'Alexandre propriétaire d'un grand terrain, je veux comprendre ce que
 #### Contexte de navigation
 - **Origine** : accueil (bloc univers jardins), cross-selling depuis `/piscines`, navigation principale
 - **Déclencheur** : curiosité pour le paysagisme ou intention jardin directe
-- **Destination succès** : clic CTA → `/contact`, ou cross-selling → `/piscines`
+- **Destination succès** : clic CTA → `/contact`, ou cross-selling → `/piscines-bien-etre`
 - **Destination échec** : rebond
 
 #### Contenu requis
@@ -262,7 +263,7 @@ En tant qu'Alexandre propriétaire d'un grand terrain, je veux comprendre ce que
 | Prestations LTE | Bureau d'études paysager, création de parcs et jardins, entretien, pépinière | Formulation légale obligatoire partout : "en partenariat avec Les Terres Essentielles" |
 | Adresse LTE | CD n°45, Route d'Orgeval, 78580 Les Alluets-le-Roi | Afficher dans le contexte de l'ancrage local |
 | Photos jardins | Issues du book Calameo ou site existant | `next/image` lazy, alt descriptifs |
-| Composant cross-selling | "Votre jardin gagne à naître avec la piscine — [SITE_NAME] conçoit les deux ensemble" + CTA vers `/piscines` | `data-track="cross-selling"` `data-source="jardins"` `data-destination="piscines"` |
+| Composant cross-selling | "Votre jardin gagne à naître avec la piscine — [SITE_NAME] conçoit les deux ensemble" + CTA vers `/piscines-bien-etre` | `data-track="cross-selling"` `data-source="jardins-paysage"` `data-destination="piscines-bien-etre"` |
 | CTA | "Parlez-nous de votre projet" → `/contact` | `data-track="cta"` |
 
 **Formulations INTERDITES** : "notre filiale", "nos deux sociétés", "notre division jardins".
@@ -275,8 +276,8 @@ Identique à F-02 (page statique avec même structure).
 #### Critères d'acceptation
 
 **Happy path :**
-1. Given Alexandre arrive sur `/jardins` / When il lit la page / Then la formulation "en partenariat avec Les Terres Essentielles" apparaît au moins une fois dans le corps de la page (visible, pas seulement dans les meta).
-2. Given Alexandre veut voir les piscines en cross-selling / When il clique sur le composant cross-selling / Then il arrive sur `/piscines` sans perte de contexte navigateur (retour arrière fonctionnel).
+1. Given Alexandre arrive sur `/jardins-paysage` / When il lit la page / Then la formulation "en partenariat avec Les Terres Essentielles" apparaît au moins une fois dans le corps de la page (visible, pas seulement dans les meta).
+2. Given Alexandre veut voir les piscines en cross-selling / When il clique sur le composant cross-selling / Then il arrive sur `/piscines-bien-etre` sans perte de contexte navigateur (retour arrière fonctionnel).
 3. Given Alexandre est intéressé et clique sur le CTA / When la navigation se produit / Then il arrive sur `/contact`.
 
 **Erreurs :**
@@ -297,9 +298,9 @@ Identique à F-02 (page statique avec même structure).
 
 | Event | Déclencheur | Propriétés clés |
 |-------|-------------|----------------|
-| `page_viewed` (E-10) | Chargement — auto | `page_path: "/jardins"` |
-| `cross_selling_clicked` (E-09) | Clic cross-sell | `source_univers: "jardins"`, `destination_univers: "piscines"` |
-| `cta_clicked` (E-04) | Clic CTA | `page_source: "jardins"`, `position: "footer"` |
+| `page_viewed` (E-10) | Chargement — auto | `page_path: "/jardins-paysage"` |
+| `cross_selling_clicked` (E-09) | Clic cross-sell | `source_univers: "jardins-paysage"`, `destination_univers: "piscines-bien-etre"` |
+| `cta_clicked` (E-04) | Clic CTA | `page_source: "jardins-paysage"`, `position: "footer"` |
 
 #### Notes
 
@@ -311,7 +312,7 @@ Identique à F-02 (page statique avec même structure).
 ## F-04 — Page approche / méthode
 
 **Persona** : Alexandre (principal) + Camille (secondaire)
-**URL** : `/approche`
+**URL** : `/notre-approche`
 **Lien NSM** : Convertit les visiteurs en considération active
 **Roadmap** : R-10
 
@@ -347,7 +348,7 @@ Page statique — mêmes états que F-02.
 #### Critères d'acceptation
 
 **Happy path :**
-1. Given Alexandre arrive sur `/approche` / When il lit la page / Then les 5 étapes du processus (écoute, bureau d'études, conception, réalisation, suivi) sont identifiables dans le contenu visible.
+1. Given Alexandre arrive sur `/notre-approche` / When il lit la page / Then les 5 étapes du processus (écoute, bureau d'études, conception, réalisation, suivi) sont identifiables dans le contenu visible.
 2. Given Alexandre cherche une preuve de l'ancrage local / When il lit la page / Then au moins une mention des contraintes locales (78/92, PLU, ou sol argilo-calcaire) est présente.
 3. Given Alexandre clique sur le CTA / When la navigation se produit / Then il arrive sur `/contact`.
 
@@ -360,7 +361,7 @@ Page statique — mêmes états que F-02.
 7. Given Alexandre est sur mobile / When il lit la page / Then le contenu est lisible sans zoom, hiérarchie visuelle maintenue.
 
 **Permissions :**
-8. Given Googlebot crawle `/approche` / When il analyse le HTML / Then la balise `<title>` contient un terme de méthode ou d'expertise (ex: "notre approche", "méthode", "processus").
+8. Given Googlebot crawle `/notre-approche` / When il analyse le HTML / Then la balise `<title>` contient un terme de méthode ou d'expertise (ex: "notre approche", "méthode", "processus").
 
 **Données existantes :**
 9. Given le copy de la page n'est pas encore validé fondateur / When la page est déployée / Then une gate de build ou un composant placeholder indique l'état "contenu en attente" — jamais de texte Lorem Ipsum en production.
@@ -369,8 +370,8 @@ Page statique — mêmes états que F-02.
 
 | Event | Déclencheur | Propriétés clés |
 |-------|-------------|----------------|
-| `page_viewed` (E-10) | Chargement — auto | `page_path: "/approche"` |
-| `cta_clicked` (E-04) | Clic CTA | `page_source: "approche"`, `position: "footer"` |
+| `page_viewed` (E-10) | Chargement — auto | `page_path: "/notre-approche"` |
+| `cta_clicked` (E-04) | Clic CTA | `page_source: "notre-approche"`, `position: "footer"` |
 
 #### Notes
 
@@ -482,7 +483,7 @@ interface Realisation {
 ## F-06 — Page à propos / maison
 
 **Persona** : Alexandre
-**URL** : `/a-propos`
+**URL** : `/la-maison`
 **Lien NSM** : Signal de continuité et de sérieux — réduit le taux de rebond des profils "chercheurs de preuve humaine"
 **Roadmap** : R-11
 
@@ -520,7 +521,7 @@ Page statique — mêmes états que F-02. Cas particulier : si la photo de Nicol
 #### Critères d'acceptation
 
 **Happy path :**
-1. Given Alexandre arrive sur `/a-propos` / When il lit la page / Then le nom "Nicolas Berg", le rôle "gérant" et la formulation "plus de 30 ans d'expertise" sont visibles.
+1. Given Alexandre arrive sur `/la-maison` / When il lit la page / Then le nom "Nicolas Berg", le rôle "gérant" et la formulation "plus de 30 ans d'expertise" sont visibles.
 2. Given Alexandre cherche les preuves de sérieux / When il scrolle / Then au moins 3 des 4 proof points (30+ ans, 350+ piscines, Socotec, L'Esprit Piscine) sont présents sur la page.
 3. Given Alexandre clique sur le CTA / When la navigation se produit / Then il arrive sur `/contact`.
 
@@ -533,7 +534,7 @@ Page statique — mêmes états que F-02. Cas particulier : si la photo de Nicol
 7. Given la relation avec LTE est mentionnée / When @qa vérifie / Then la formulation est "en partenariat avec Les Terres Essentielles" — jamais "filiale" ou "propriété".
 
 **Permissions :**
-8. Given Googlebot crawle `/a-propos` / When il analyse le HTML / Then les données structurées `Person` (Nicolas Berg) sont optionnellement présentes — à minima les meta tags sont corrects.
+8. Given Googlebot crawle `/la-maison` / When il analyse le HTML / Then les données structurées `Person` (Nicolas Berg) sont optionnellement présentes — à minima les meta tags sont corrects.
 
 **Données existantes :**
 9. Given "équipe de 8" est mentionné dans le copy / When la page s'affiche / Then ce chiffre est présent dans le HTML — pas d'invention de chiffre différent sans validation fondateur.
@@ -542,8 +543,8 @@ Page statique — mêmes états que F-02. Cas particulier : si la photo de Nicol
 
 | Event | Déclencheur | Propriétés clés |
 |-------|-------------|----------------|
-| `page_viewed` (E-10) | Chargement — auto | `page_path: "/a-propos"` |
-| `cta_clicked` (E-04) | Clic CTA | `page_source: "about"`, `position: "footer"` |
+| `page_viewed` (E-10) | Chargement — auto | `page_path: "/la-maison"` |
+| `cta_clicked` (E-04) | Clic CTA | `page_source: "la-maison"`, `position: "footer"` |
 
 #### Notes
 
@@ -664,42 +665,48 @@ En tant qu'Alexandre convaincu par le site, je veux décrire mon projet en 2 min
 |-------|---------|------|-------------|-------------------|-------------------|---------|
 | Prénom et Nom | `prenom_nom` | `text` | Oui | Non vide, ≥ 2 caractères | Non vide, trim, max 100 chars | "Alexandre Moreau" |
 | Email | `email` | `email` | Oui | Format RFC 5322 (navigateur natif + regex) | Format email valide (regex serveur) | "a.moreau@domaine.fr" |
-| Téléphone | `telephone` | `tel` | Oui | Format FR : 10 chiffres, commence par 0 — accepter espaces/tirets, normaliser | Regex : `^0[1-9][0-9]{8}$` après nettoyage | "06 12 34 56 78" |
-| Type de projet | `type_projet` | `checkbox` (multi-select) | Oui (≥ 1) | ≥ 1 option cochée | Enum : valeurs valides uniquement | Piscine |
+| Téléphone | `telephone` | `tel` | **Non — facultatif** | Si rempli : Format FR 10 chiffres, commence par 0 — accepter espaces/tirets | Si présent : Regex `^0[1-9][0-9]{8}$` après nettoyage | "06 12 34 56 78" |
+| Votre projet (chips) | `type_projet` | `checkbox` (UI en chips optionnels) | **Non** | Aucun chip obligatoire | Si présent : enum valeurs valides uniquement | `["piscine_bien_etre"]` |
 | Commune | `commune` | `text` | Oui | Non vide | Non vide, trim, max 100 chars | "Le Vésinet" |
-| Budget indicatif | `budget_tranche` | `select` | Non | N/A | Enum ou absent | "50-100k€" |
+| Budget indicatif | `budget_tranche` | `select` | Non | N/A | Enum ou absent | `"50_80k"` |
 | Description du projet | `description` | `textarea` | Oui | ≥ 20 caractères | ≥ 20 chars, ≤ 2000 chars | "J'ai un terrain de 2 000 m² et..." |
 | Honeypot | `website` | `text` (caché CSS) | N/A | N/A | Doit être vide — si rempli : rejet silencieux | _(vide)_ |
-| Langue | _(header HTTP ou champ caché)_ | `hidden` | Auto | N/A | Valeur : `"fr"` | "fr" |
+| Langue | _(champ caché)_ | `hidden` | Auto | N/A | Valeur : `"fr"` | "fr" |
+
+> **Note arbitrage P0-2** : le creative-brief §9 impose « champ "votre projet" (texte libre) — pas de menu déroulant forcé ». La solution retenue honore cette obligation : des chips de qualification OPTIONNELS (sélection visuelle, zéro obligation) + le champ Description en texte libre OBLIGATOIRE. Le formulaire est valide sans aucun chip coché. La qualification fine se fait à la lecture de la description par Nicolas Berg.
 
 #### Valeurs des énumérations
 
-**type_projet** (multi-select, checkboxes) :
+**type_projet** (chips optionnels — aucun chip n'est obligatoire, le formulaire est valide sans sélection) :
+
+| Label affiché (chip) | Valeur API | Smart default (page source) |
+|---------------------|-----------|---------------------------|
+| Piscine & Bien-être | `piscine_bien_etre` | Depuis `/piscines-bien-etre` |
+| Jardin & Paysage | `jardin_paysage` | Depuis `/jardins-paysage` |
+| Projet complet | `projet_complet` | — |
+| Espace prescripteur | `prescripteur` | Depuis `/prescripteurs` |
+| _(aucun coché)_ | _(absent du payload)_ | — |
+
+**budget_tranche** (select, facultatif) :
 
 | Label affiché | Valeur API |
 |--------------|-----------|
-| Piscine | `piscine` |
-| Spa & Sauna | `spa_sauna` |
-| Jardin & Parc | `jardin_parc` |
-| Projet complet eau + jardin | `projet_complet` |
-| Prescripteur / Architecte | `prescripteur` |
-
-**budget_tranche** (select) :
-
-| Label affiché | Valeur API |
-|--------------|-----------|
-| Moins de 50 000 € | `moins_50k` |
-| 50 000 – 100 000 € | `50_100k` |
-| 100 000 – 200 000 € | `100_200k` |
-| 200 000 € et plus | `200k_plus` |
+| _(Choisir si vous le souhaitez)_ | _(absent du payload)_ |
+| 50 000 – 80 000 € | `50_80k` |
+| 80 000 – 150 000 € | `80_150k` |
+| 150 000 € et plus | `150k_plus` |
 | Je préfère en discuter | `prefere_discuter` |
-| _(non sélectionné)_ | _(absent du payload)_ |
+
+> **Note arbitrage P0-3** : grille validée par @copywriter (ux-writing-guide). Le palier "< 50 000 €" est supprimé — cohérent avec le ticket minimum qualifié 70-80k€ (project-context.md). "Je préfère en discuter" maintenu : conforme à l'esprit qualification douce du creative-brief.
 
 #### Pré-remplissage depuis d'autres pages
 
-- Depuis `/prescripteurs` via `?type=prescripteur` : cocher "Prescripteur / Architecte" au chargement côté client.
+- Depuis `/prescripteurs` → activer chip "Espace prescripteur" au chargement côté client (via `?source=prescripteurs` ou smart default sur la route entrante).
+- Depuis `/piscines-bien-etre` → activer chip "Piscine & Bien-être".
+- Depuis `/jardins-paysage` → activer chip "Jardin & Paysage".
 - Lecture du paramètre après hydration (`useSearchParams` + `Suspense`).
 - Si la valeur du paramètre n'est pas dans l'enum : ignorer silencieusement.
+- Un chip activé par smart default reste désactivable par l'utilisateur (pas de pré-sélection forcée).
 
 ---
 
@@ -725,17 +732,17 @@ Content-Type: application/x-www-form-urlencoded   (fallback JS désactivé)
 
 ```typescript
 interface ContactRequest {
-  prenom_nom: string;         // obligatoire, trim, max 100
-  email: string;              // obligatoire, format email
-  telephone: string;          // obligatoire, format FR normalisé
-  type_projet: Array<         // obligatoire, ≥ 1 valeur
-    "piscine" | "spa_sauna" | "jardin_parc" | "projet_complet" | "prescripteur"
+  prenom_nom: string;           // obligatoire, trim, max 100
+  email: string;                // obligatoire, format email
+  telephone?: string;           // OPTIONNEL — si présent, validé format FR ^0[1-9][0-9]{8}$
+  type_projet?: Array<          // OPTIONNEL — chips non cochés = absent du payload
+    "piscine_bien_etre" | "jardin_paysage" | "projet_complet" | "prescripteur"
   >;
-  commune: string;            // obligatoire, trim, max 100
-  budget_tranche?: string;    // optionnel — enum ou absent
-  description: string;        // obligatoire, ≥ 20 chars, ≤ 2000 chars
-  langue: string;             // "fr" — injecté automatiquement
-  website: string;            // honeypot — DOIT être vide string ""
+  commune: string;              // obligatoire, trim, max 100
+  budget_tranche?: string;      // optionnel — enum ou absent
+  description: string;          // obligatoire, ≥ 20 chars, ≤ 2000 chars
+  langue: string;               // "fr" — injecté automatiquement
+  website: string;              // honeypot — DOIT être vide string ""
 }
 ```
 
@@ -743,10 +750,10 @@ interface ContactRequest {
 
 1. `prenom_nom` : non vide après trim, longueur ≤ 100 → sinon 400
 2. `email` : regex email valide → sinon 400
-3. `telephone` : après nettoyage (suppression espaces/tirets/points), regex `^0[1-9][0-9]{8}$` → sinon 400
-4. `type_projet` : tableau non vide, toutes les valeurs dans l'enum → sinon 400
+3. `telephone` : **si présent** — après nettoyage (suppression espaces/tirets/points), regex `^0[1-9][0-9]{8}$` → sinon 400. Si absent : valide (champ optionnel)
+4. `type_projet` : **si présent** — tableau, toutes les valeurs dans l'enum `["piscine_bien_etre", "jardin_paysage", "projet_complet", "prescripteur"]` → sinon 400. Si absent : valide (chips optionnels)
 5. `commune` : non vide après trim → sinon 400
-6. `budget_tranche` : si présent, doit être dans l'enum → sinon 400
+6. `budget_tranche` : si présent, doit être dans l'enum `["50_80k", "80_150k", "150k_plus", "prefere_discuter"]` → sinon 400
 7. `description` : ≥ 20 caractères après trim, ≤ 2000 → sinon 400
 8. `website` (honeypot) : doit être vide string `""` ou absent → si non vide : retourner 200 silencieux (pas de 403 qui indiquerait au bot que le filtre est actif)
 9. Rate limiting : [HYPOTHÈSE : max 5 requêtes/IP/heure via Cloudflare WAF rule ou KV counter — implémenter via Cloudflare Rate Limiting rule sur `/api/contact`, gratuit dans le free tier] → si dépassé : 429
@@ -769,8 +776,9 @@ Justification du choix vs Cloudflare Turnstile :
 **Format de l'email reçu par Nicolas Berg** :
 
 ```
-Sujet : [SITE_NAME] — Nouveau contact : [type_projet(s)] — [commune]
-  Exemple : "Aquasystem — Nouveau contact : Piscine, Projet complet — Le Vésinet"
+Sujet : [SITE_NAME] — Nouveau contact : [type_projet(s) ou "projet à préciser"] — [commune]
+  Exemple avec chips : "Aquasystem — Nouveau contact : Piscine & Bien-être, Projet complet — Le Vésinet"
+  Exemple sans chips : "Aquasystem — Nouveau contact : projet à préciser — Le Vésinet"
 
 De : noreply@[domaine-ombrelle].fr (Reply-To: email du contact)
 À : contact@aqua-system.fr
@@ -780,9 +788,9 @@ NOUVEAU MESSAGE DE CONTACT
 
 Nom : [prenom_nom]
 Email : [email]  ← Reply-To configuré pour permettre réponse directe
-Téléphone : [telephone]
+Téléphone : [telephone ou "Non renseigné"]
 Commune : [commune]
-Type(s) de projet : [type_projet joint par " / "]
+Type(s) de projet : [type_projet joint par " / " ou "Non précisé — voir description"]
 Budget indicatif : [budget_tranche ou "Non renseigné"]
 
 Description du projet :
@@ -791,10 +799,12 @@ Description du projet :
 ---
 Reçu le : [date ISO locale FR] à [heure]
 Source page : [page_source si transmise, sinon "contact direct"]
-Qualifié NSM : [OUI si commune 78/92 ET type_projet non null ET description ≥ 20 chars / NON si hors zone]
+Qualifié NSM : [OUI si commune 78/92 ET description ≥ 20 chars / NON si hors zone]
 ---
 Répondre directement à cet email pour contacter [prenom_nom].
 ```
+
+> **Note arbitrage P0-3** : la qualification NSM n'exige plus `type_projet non null` comme critère strict côté email — la description ≥ 20 chars suffit avec la commune 78/92. La qualification fine (piscine vs jardin) se fait à la lecture par Nicolas.
 
 **Note NSM** : La qualification "lead qualifié" est calculée côté email/analytics uniquement — jamais côté formulaire (un lead hors 78/92 est accepté et transmis, simplement marqué "hors zone" dans l'email).
 
@@ -869,34 +879,42 @@ HTTP 429
 
 | État | Affichage exact |
 |------|----------------|
-| **Défaut** | Formulaire avec 7 champs, mention RGPD version courte, bouton "Parlez-nous de votre projet" (actif, couleur brand) |
+| **Défaut** | Formulaire : chips optionnels "Votre projet concerne :", champ description texte libre obligatoire, téléphone facultatif, sélecteur budget optionnel, mention RGPD version courte, bouton "Parlez-nous de votre projet" (actif, couleur brand) |
 | **Loading** | Bouton désactivé (`disabled`), texte du bouton → "Envoi en cours…", spinner discret. **Aucun autre élément de la page ne change.** Durée max affichée : 10 secondes — si pas de réponse à 10s → basculer en état erreur (timeout). |
-| **Vide (champ requis non rempli)** | Validation inline après `blur` ou tentative de soumission. Message sous le champ concerné : voir tableau messages d'erreur ci-dessous. Bouton reste actif (pas de désactivation préventive). |
-| **Erreur (erreur réseau / 500)** | Formulaire reste visible avec toutes les valeurs saisies. Message en haut du formulaire (rôle `alert` ARIA) : "Une erreur est survenue. Vos informations sont conservées dans cette page — vous pouvez réessayer ou nous appeler directement au [01 30 42 26 00](tel:+33130422600)." Bouton redevient actif. |
-| **Succès (200)** | Redirection vers `/contact/merci` (page distincte, pas un remplacement inline). L'URL change pour permettre le partage et éviter la re-soumission sur refresh. |
+| **Vide (champ requis non rempli)** | Validation inline après `blur` ou tentative de soumission. Message sous le champ concerné : voir tableau messages d'erreur ci-dessous. Source de vérité wording : `docs/copy/ux-writing-guide.md` §2. Bouton reste actif (pas de désactivation préventive). |
+| **Erreur (erreur réseau / 500)** | Formulaire reste visible avec toutes les valeurs saisies. Message en haut du formulaire (rôle `alert` ARIA) : cf. ux-writing-guide.md §2 "Erreur d'envoi — Échec technique". Bouton redevient actif. |
+| **Succès (200)** | Redirection vers `/contact/merci` (page distincte). L'URL change pour permettre le tracking fiable de E-01 et éviter la re-soumission sur refresh. Voir section "Page de confirmation `/contact/merci`" ci-dessous. |
 
 #### Messages d'erreur inline (champ par champ)
 
-| Champ | Message affiché (texte exact) |
+> **Source de vérité : `docs/copy/ux-writing-guide.md` §2.** Les textes ci-dessous sont la version specs — en cas de divergence, le ux-writing-guide prévaut (arbitrage P1-3).
+
+| Champ | Message affiché (texte exact — source ux-writing-guide §2) |
 |-------|-------------------------------|
-| `prenom_nom` vide | "Votre nom est requis." |
-| `email` invalide | "Format d'email invalide (exemple : prenom@domaine.fr)." |
-| `telephone` invalide | "Numéro invalide — format français attendu : 06 12 34 56 78." |
-| `type_projet` non sélectionné | "Veuillez sélectionner au moins un type de projet." |
-| `commune` vide | "Veuillez indiquer votre commune." |
-| `description` < 20 chars | "Décrivez votre projet en quelques mots (20 caractères minimum)." |
+| `prenom_nom` vide | "Votre nom nous permet de vous répondre personnellement." |
+| `email` vide | "Nous avons besoin de votre email pour vous répondre." |
+| `email` invalide | "L'adresse email semble incorrecte — vérifiez le format (exemple : prenom@domaine.fr)." |
+| `telephone` invalide (si rempli) | "Ce numéro ne semble pas valide — vérifiez ou laissez ce champ vide si vous préférez." |
+| `commune` vide | "Précisez votre commune pour que nous puissions répondre de façon pertinente." |
+| `description` vide | "Décrivez votre projet en quelques mots — cela guidera notre premier échange." |
+| `description` < 20 chars | "Décrivez votre projet en quelques mots — cela guidera notre premier échange." |
 | `description` > 2000 chars | "Description trop longue (2000 caractères maximum)." |
 
 ---
 
 ### Page de confirmation `/contact/merci`
 
+> **Arbitrage P0-4** : page distincte retenue (vs bloc inline). Raisons : (1) tracking E-01 fiable — une URL = une conversion propre sans risque de double-comptage ; (2) anti-double soumission sur refresh ; (3) comportement standard attendu pour un formulaire B2B premium.
+
 **Contenu** :
-- Titre : "Votre message nous est bien parvenu."
-- Corps : "Nous revenons vers vous dans les 2 jours ouvrés." [HYPOTHÈSE : délai 2 jours ouvrés — à confirmer avec Nicolas Berg. Si délai différent : remplacer uniquement ici.]
-- Numéro de téléphone : "Besoin d'une réponse plus rapide ? Appelez-nous : 01 30 42 26 00"
-- Lien : "Retour à l'accueil" → `/`
+- Titre : "Votre message est bien parvenu." (source : ux-writing-guide §3)
+- Corps : "Nicolas Berg reviendra vers vous [À CONFIRMER : délai de réponse réel de Nicolas] pour un premier échange autour de votre projet."
+- Numéro de téléphone : "Si votre demande est urgente, vous pouvez aussi nous appeler directement au 01 30 42 26 00."
+- Lien : "← Retour à l'accueil" → `/`
 - **Pas de CTA vers `/contact`** (éviter la re-soumission immédiate).
+- **Pas de confetti, pas d'animation excessive** — ton sobre conforme brand.
+
+> **Note** : le placeholder `[À CONFIRMER]` est maintenu. La valeur "2 jours ouvrés" de la version v1.0 était une hypothèse non validée — retirée. Si Nicolas confirme un délai, remplacer uniquement dans cette section.
 
 **Comportement navigation arrière** : Si l'utilisateur appuie sur "Retour" depuis `/contact/merci`, il revient sur `/contact` avec le formulaire **vide** (pas re-soumission). L'URL `/contact/merci` est accessible directement (pas de redirect guard côté server en export statique) — comportement acceptable.
 
@@ -910,20 +928,22 @@ HTTP 429
 
 > Les informations recueillies dans ce formulaire sont utilisées exclusivement pour traiter votre demande et établir un éventuel devis. Elles sont conservées 3 ans et ne sont partagées avec aucun tiers commercial. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et d'opposition : contact@aqua-system.fr. [Politique de confidentialité →]
 
-**Implémentation** : texte placé entre le dernier champ et le bouton de soumission, style `text-sm text-muted`, lien "Politique de confidentialité" → `/mentions-legales#confidentialite`.
+**Implémentation** : texte placé entre le dernier champ et le bouton de soumission, style `text-sm text-muted`, lien "Politique de confidentialité" → `/politique-confidentialite` (page distincte — arbitrage P1-2).
+
+> **Note arbitrage P1-2** : la politique de confidentialité est une page distincte `/politique-confidentialite`, pas une ancre `#confidentialite` sur `/mentions-legales`. Raison : le lien RGPD du formulaire doit arriver directement sur le contenu de confidentialité sans dépendre du défilement d'une page longue.
 
 ---
 
 ### Critères d'acceptation US-08
 
 **Happy path :**
-1. Given Alexandre remplit tous les champs obligatoires avec des données valides et une description ≥ 20 caractères / When il clique sur "Parlez-nous de votre projet" / Then le bouton passe en loading, la Pages Function est appelée, et Alexandre est redirigé vers `/contact/merci` avec le message "Votre message nous est bien parvenu."
+1. Given Alexandre remplit les champs obligatoires (prenom_nom, email, commune, description ≥ 20 chars) sans sélectionner de chip ni renseigner de téléphone / When il clique sur "Parlez-nous de votre projet" / Then le bouton passe en loading, la Pages Function est appelée avec `type_projet: absent`, et Alexandre est redirigé vers `/contact/merci` avec le titre "Votre message est bien parvenu."
 2. Given Alexandre ne renseigne pas le budget (champ optionnel) / When il soumet le formulaire avec tous les autres champs valides / Then la soumission réussit — l'email reçu par Nicolas indique "Budget : Non renseigné".
-3. Given Alexandre arrive depuis `/prescripteurs?type=prescripteur` / When le formulaire se charge / Then la case "Prescripteur / Architecte" est pré-cochée côté client après hydration.
+3. Given Alexandre arrive depuis `/prescripteurs` / When le formulaire se charge / Then le chip "Espace prescripteur" est activé côté client (smart default) — il reste désactivable par l'utilisateur.
 
 **Erreurs :**
-4. Given Alexandre saisit un email mal formaté (ex: "alexandre.test") / When il tente de soumettre / Then le formulaire ne soumet pas, le message "Format d'email invalide (exemple : prenom@domaine.fr)." apparaît sous le champ email, le focus se positionne sur ce champ.
-5. Given Alexandre saisit une description de 15 caractères / When il tente de soumettre / Then le message "Décrivez votre projet en quelques mots (20 caractères minimum)." apparaît sous le champ description.
+4. Given Alexandre saisit un email mal formaté (ex: "alexandre.test") / When il tente de soumettre / Then le formulaire ne soumet pas, le message "L'adresse email semble incorrecte — vérifiez le format (exemple : prenom@domaine.fr)." apparaît sous le champ email (source : ux-writing-guide §2), le focus se positionne sur ce champ.
+5. Given Alexandre saisit une description de 15 caractères / When il tente de soumettre / Then le message "Décrivez votre projet en quelques mots — cela guidera notre premier échange." apparaît sous le champ description (source : ux-writing-guide §2).
 6. Given la Pages Function retourne une erreur 500 (service email indisponible) / When Alexandre a cliqué "Parlez-nous de votre projet" / Then le formulaire reste visible avec toutes les valeurs saisies, le message "Une erreur est survenue. Vos informations sont conservées dans cette page — vous pouvez réessayer ou nous appeler directement au 01 30 42 26 00." s'affiche en haut du formulaire.
 
 **Cas limites :**
@@ -936,7 +956,8 @@ HTTP 429
 11. Given une IP envoie 6 requêtes en moins d'une heure / When la 6e requête arrive / Then la Function retourne 429 avec le message "Trop de tentatives. Veuillez réessayer dans une heure ou nous appeler au 01 30 42 26 00."
 
 **Données existantes :**
-12. Given Nicolas Berg reçoit un email avec type_projet = "Piscine" et commune = "Versailles" (92) / When il lit l'email / Then le sujet contient "[SITE_NAME] — Nouveau contact : Piscine — Versailles" et le corps contient "Qualifié NSM : OUI" car Versailles est en 92.
+12. Given Nicolas Berg reçoit un email avec type_projet = "Piscine & Bien-être" et commune = "Versailles" (92) / When il lit l'email / Then le sujet contient "[SITE_NAME] — Nouveau contact : Piscine & Bien-être — Versailles" et le corps contient "Qualifié NSM : OUI" car Versailles est en 92.
+13. Given Alexandre soumet le formulaire sans sélectionner aucun chip / When la Pages Function traite la requête / Then la soumission réussit (type_projet absent = valide) — l'email reçu indique "Type(s) de projet : Non précisé — voir description".
 
 #### Events analytics
 
@@ -945,7 +966,7 @@ HTTP 429
 | `page_viewed` (E-10) | Chargement `/contact` — auto | `page_path: "/contact"` |
 | `form_start` (E-02) | Focus sur le premier champ du formulaire (`#prenom_nom`) | `page_source: "contact"`, `device_type` |
 | `form_abandonment` (E-03) | `beforeunload` si `form_start` déclenché ET pas de `form_submission_success` | `derniere_etape: "description"` (dernier champ modifié), `champs_remplis: 5` |
-| `form_submission_success` (E-01) | Réponse HTTP 200 de la Pages Function | `type_projet: ["piscine"]`, `commune: "le_vesinet"`, `budget_renseigne: true`, `budget_tranche: "50_100k"`, `has_description: true`, `page_source: "contact"` |
+| `form_submission_success` (E-01) | Réponse HTTP 200 de la Pages Function | `type_projet: ["piscine_bien_etre"]` ou `null` si aucun chip, `commune: "le_vesinet"`, `budget_renseigne: true`, `budget_tranche: "50_80k"`, `has_description: true`, `page_source: "contact"` |
 | `cta_clicked` (E-04) | Clic sur le bouton "Parlez-nous de votre projet" | `page_source: "contact"`, `position: "footer"` |
 
 **Note RGPD E-01** : les propriétés `type_projet`, `commune`, `budget_tranche` (fourchette), `has_description` (booléen) ne contiennent jamais de valeur personnelle (nom, email, contenu libre). `commune` est la ville en clair — acceptable selon tracking-plan.md.
@@ -968,10 +989,10 @@ HTTP 429
 
 ---
 
-## F-09 — Page mentions légales + politique de confidentialité
+## F-09 — Pages légales (mentions légales + politique de confidentialité)
 
 **Persona** : N/A (conformité légale)
-**URL** : `/mentions-legales`
+**URLs** : `/mentions-legales` + `/politique-confidentialite` (2 pages distinctes — arbitrage P1-2)
 **Lien NSM** : Indirect — protège la mise en ligne publique
 **Roadmap** : R-19
 
@@ -1007,13 +1028,13 @@ En tant que visiteur souhaitant connaître ses droits ou vérifier la légitimit
 | Mention LTE | "Le site présente également les services de Les Terres Essentielles, en partenariat avec SARL AQUA SYSTEM. SAS LES TERRES ESSENTIELLES, SIREN 811 198 217." |
 
 **Section Politique de confidentialité :**
-Source : `docs/legal/privacy-policy.md` (produit par @legal). Inclure :
+> **Arbitrage P1-2** : la politique de confidentialité est une PAGE DISTINCTE à l'URL `/politique-confidentialite`, PAS une ancre sur `/mentions-legales`. Raison : le lien depuis la mention RGPD du formulaire doit arriver directement sur cette page sans dépendre du défilement. La page `/mentions-legales` peut inclure un renvoi "Voir notre politique de confidentialité →" mais ne l'héberge pas.
+
+Source : `docs/legal/privacy-policy.md` (produit par @legal). Contenu de `/politique-confidentialite` :
 - Les 3 traitements : formulaire de contact, logs Cloudflare, analytics (Umami)
 - Droits des personnes (accès, rectification, effacement, opposition)
 - Contact pour exercice des droits : contact@aqua-system.fr
 - Autorité de contrôle : CNIL (www.cnil.fr)
-
-**Ancre CSS** : `id="confidentialite"` sur la section politique de confidentialité (lien depuis mention RGPD formulaire).
 
 #### 5 états UI
 
@@ -1023,7 +1044,7 @@ Page statique — pas d'états dynamiques.
 
 **Happy path :**
 1. Given un visiteur clique sur "Mentions légales" dans le footer / When la page charge / Then SIREN 903 785 327, capital 20 000 €, adresse 45 Route Nationale 78840 Freneuse, directeur Nicolas Berg et hébergeur Cloudflare sont visibles.
-2. Given un visiteur clique sur "Politique de confidentialité" dans le footer / When la page charge (ou ancre `#confidentialite`) / Then les 3 traitements, la durée de conservation (3 ans), et l'adresse contact@aqua-system.fr pour exercice des droits sont visibles.
+2. Given un visiteur clique sur "Politique de confidentialité" dans le footer / When la page `/politique-confidentialite` charge / Then les 3 traitements, la durée de conservation (3 ans), et l'adresse contact@aqua-system.fr pour exercice des droits sont visibles.
 3. Given un visiteur veut exercer son droit d'opposition / When il cherche le contact / Then l'email contact@aqua-system.fr est un lien `<a href="mailto:contact@aqua-system.fr">` cliquable.
 
 **Erreurs :**
@@ -1032,7 +1053,7 @@ Page statique — pas d'états dynamiques.
 
 **Cas limites :**
 6. Given Googlebot crawle `/mentions-legales` / When il analyse / Then la page est indexable (pas de `noindex`) — les moteurs peuvent crawler les mentions légales.
-7. Given le visiteur clique sur le lien "Politique de confidentialité →" depuis la mention RGPD du formulaire / When il arrive / Then le scroll se positionne sur l'ancre `#confidentialite` (section politique de confidentialité).
+7. Given le visiteur clique sur le lien "Politique de confidentialité →" depuis la mention RGPD du formulaire / When il arrive / Then il est sur `/politique-confidentialite`, la page charge directement sur le contenu de confidentialité (pas d'ancrage dans une page longue).
 
 **Permissions :**
 8. Given @legal effectue sa revue finale (gate G-LEGAL) / When il vérifie les informations légales / Then 0 non-conformité P0 détectée — le déploiement public est autorisé.
@@ -1074,7 +1095,7 @@ Page statique — pas d'états dynamiques.
 | Élément | Valeur | Règle |
 |---------|--------|-------|
 | Logo | `SITE_NAME` ombrelle | Lien vers `/` |
-| Navigation desktop | Accueil / Piscines / Jardins / Approche / Réalisations / Architectes / À propos / Contact | Ordre exact — "Architectes" → `/prescripteurs` |
+| Navigation desktop | Réalisations / Piscines & Bien-être / Jardins & Paysage / Notre approche / La maison / Architectes | Ordre exact (arbitrage P0-5) — 6 liens, pas d'"Accueil" (logo = lien home), pas de "Contact" (bouton CTA distinct) — "Architectes" → `/prescripteurs` |
 | Navigation mobile | Menu hamburger | Zone tap ≥ 44px, fermeture au clic extérieur |
 | CTA Header | "Parlez-nous de votre projet" | `data-track="cta"` `data-position="navbar"` — visible desktop, masqué ou réduit mobile |
 
@@ -1087,7 +1108,7 @@ Page statique — pas d'états dynamiques.
 | Logo ombrelle | Lien vers `/` |
 | Aqua System | Adresse, téléphone (lien tel:), email (lien mailto:) |
 | Les Terres Essentielles | "en partenariat avec Les Terres Essentielles" + adresse LTE |
-| Liens légaux | "Mentions légales" → `/mentions-legales`, "Politique de confidentialité" → `/mentions-legales#confidentialite` |
+| Liens légaux | "Mentions légales" → `/mentions-legales`, "Politique de confidentialité" → `/politique-confidentialite` |
 | Certifications | Logo/mention Socotec + L'Esprit Piscine (discret) |
 | Réseaux sociaux | Facebook LTE (`https://www.facebook.com/LesTerresEssentielles/`), LinkedIn Aqua System [URL à fournir par fondateur] |
 | Copyright | © [année auto] [SITE_NAME]. Tous droits réservés. |
@@ -1178,8 +1199,9 @@ Générés à partir de l'identité visuelle (R-02) — dépendance @design.
 5. Given JavaScript est désactivé / When un visiteur navigue / Then le header, footer et tous les liens sont fonctionnels — la navigation est un `<nav>` HTML natif.
 
 **Cas limites :**
-6. Given la page active est `/piscines` / When le visiteur voit le header / Then le lien "Piscines" est en état actif visuellement (ex: souligné, couleur différente) — implémenté via `usePathname`.
+6. Given la page active est `/piscines-bien-etre` / When le visiteur voit le header / Then le lien "Piscines & Bien-être" est en état actif visuellement (ex: souligné, couleur différente) — implémenté via `usePathname`.
 7. Given la page `/prescripteurs` est affichée / When le visiteur voit la navigation / Then le lien "Architectes" est en état actif.
+8. Given la page active est `/la-maison` / When le visiteur voit le header / Then le lien "La maison" est en état actif visuellement.
 
 **Permissions :**
 8. Given Googlebot visite toutes les pages / When il analyse les OG tags / Then chaque page a des `og:title` et `og:description` uniques — pas de doublon entre pages.
@@ -1302,8 +1324,9 @@ N/A — infrastructure sans interactions utilisateur directes.
 
 Un lead est qualifié pour le comptage NSM si ET seulement si (détection côté dashboard Umami, PAS côté formulaire) :
 - `commune` : appartient aux départements 78 (Yvelines) ou 92 (Hauts-de-Seine) — détection manuelle ou par liste de communes [HYPOTHÈSE : liste des communes 78/92 à maintenir dans le dashboard Umami, non automatisée en V1]
-- `type_projet` : au moins une valeur non vide
 - `has_description` = `true` (description ≥ 20 chars)
+
+> **Mise à jour arbitrage P0-2** : le critère `type_projet non null` est retiré de la définition NSM stricte. Les chips sont optionnels — un lead sans chip mais avec description ≥ 20 chars et commune 78/92 est qualifié. La qualification fine (piscine vs jardin) se fait à la lecture par Nicolas Berg. Le critère `type_projet` reste disponible comme filtre optionnel dans le dashboard pour la segmentation.
 
 **Le formulaire n'applique jamais ce filtre** : un lead hors 78/92 est accepté, transmis par email avec la mention "hors zone principale" dans l'email Nicolas, et compté séparément.
 
@@ -1405,7 +1428,7 @@ Justification :
 | US-06 | F-06 À propos | Statique | Absence "société créée 30 ans", photo banque images absente | E-04 |
 | US-07 | F-07 Prescripteurs | Statique | Cross-sell absent, pré-remplissage formulaire, certif "sur demande" | E-07, E-08 |
 | US-08 | F-08 Contact | Interactif (formulaire) | 8 scénarios critiques listés dans Notes @qa — PRIORITÉ P0 | E-01, E-02, E-03, E-04 |
-| US-09 | F-09 Légal | Statique | Présence de tous les champs légaux, ancre #confidentialite | E-10 |
+| US-09 | F-09 Légal | Statique | Présence de tous les champs légaux sur `/mentions-legales` + `/politique-confidentialite` (2 pages) | E-10 |
 | US-10 | F-10 Composants | Transversal | Navigation mobile 3 breakpoints, copyright année auto, liens config | E-04 |
 | US-11 | F-11 Infra | Technique | Build propre, Lighthouse, sitemap, robots, 404, vars env manquantes | — |
 
@@ -1418,15 +1441,21 @@ Justification :
 **Fichiers produits** :
 - `/home/user/Aquasystem/docs/product/functional-specs.md` (ce fichier)
 
-**Décisions prises dans ces specs** :
+**Décisions prises dans ces specs (v1.1 — post-arbitrages checkpoint)** :
 1. Anti-spam : Honeypot + Rate Limiting Cloudflare (pas Turnstile) — décision avec justification dans F-08
-2. Page de confirmation : URL distincte `/contact/merci` (pas d'inline) — pour éviter re-soumission refresh
+2. Page de confirmation : URL distincte `/contact/merci` (pas d'inline) — tracking E-01 fiable + anti-resubmit (arbitrage P0-4)
 3. Filtres portfolio : côté client (état React), HTML statique contient toutes les cartes (SEO + fallback JS)
 4. Sélecteur de langue : absent en V1 (locale EN vide = sélecteur trompeur)
-5. Délai réponse confirmation : "2 jours ouvrés" [HYPOTHÈSE — à confirmer avec Nicolas Berg]
+5. Délai réponse confirmation : `[À CONFIRMER fondateur]` — la valeur "2 jours ouvrés" de v1.0 était une hypothèse non validée (arbitrage P0-4)
 6. Certifications prescripteurs V1 : "disponibles sur demande" si PDF non fournis par fondateur
 7. Timeout formulaire : 10 secondes côté client (AbortController)
-8. Qualification NSM : côté dashboard uniquement, jamais côté formulaire
+8. Qualification NSM : côté dashboard uniquement, jamais côté formulaire — critère `type_projet non null` retiré (arbitrage P0-2)
+9. URLs pages : version longue retenue (arbitrage P0-1) — `/piscines-bien-etre`, `/jardins-paysage`, `/notre-approche`, `/la-maison`
+10. Formulaire : chips optionnels + texte libre obligatoire — téléphone facultatif (arbitrage P0-2)
+11. Budget : 4 tranches `50_80k` / `80_150k` / `150k_plus` / `prefere_discuter` (arbitrage P0-3)
+12. Navigation : 6 liens, ordre Réalisations en premier (arbitrage P0-5)
+13. Politique de confidentialité : page distincte `/politique-confidentialite` (arbitrage P1-2)
+14. Wording erreurs inline : source de vérité = `docs/copy/ux-writing-guide.md` §2 (arbitrage P1-3)
 
 **Points d'attention pour @fullstack** :
 - `trailingSlash: true` dans `next.config.js` — obligatoire Cloudflare Pages
