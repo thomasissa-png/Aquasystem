@@ -872,7 +872,7 @@ HTTP 429
 1. La Pages Function retourne HTTP 500 avec message d'erreur.
 2. Côté client : le formulaire reste visible avec toutes les valeurs saisies.
 3. Le bouton reprend son état normal (fin de loading).
-4. Message d'erreur affiché : "Une erreur est survenue. Vos informations sont conservées dans cette page — vous pouvez réessayer ou nous appeler directement au 01 30 42 26 00."
+4. Message d'erreur affiché : wording exact de ux-writing-guide.md §2 « Erreur d'envoi — Échec technique » (source de vérité — précédence reviewer ; INFO-1 QA harmonisé).
 5. Le numéro de téléphone dans le message d'erreur est un `<a href="tel:+33130422600">` cliquable.
 6. [HYPOTHÈSE : en V1.1, envisager un log Cloudflare KV des soumissions en échec pour audit Nicolas Berg]
 
@@ -947,7 +947,7 @@ HTTP 429
 **Erreurs :**
 4. Given Alexandre saisit un email mal formaté (ex: "alexandre.test") / When il tente de soumettre / Then le formulaire ne soumet pas, le message "L'adresse email semble incorrecte — vérifiez le format (exemple : prenom@domaine.fr)." apparaît sous le champ email (source : ux-writing-guide §2), le focus se positionne sur ce champ.
 5. Given Alexandre saisit une description de 15 caractères / When il tente de soumettre / Then le message "Décrivez votre projet en quelques mots — cela guidera notre premier échange." apparaît sous le champ description (source : ux-writing-guide §2).
-6. Given la Pages Function retourne une erreur 500 (service email indisponible) / When Alexandre a cliqué "Parlez-nous de votre projet" / Then le formulaire reste visible avec toutes les valeurs saisies, le message "Une erreur est survenue. Vos informations sont conservées dans cette page — vous pouvez réessayer ou nous appeler directement au 01 30 42 26 00." s'affiche en haut du formulaire.
+6. Given la Pages Function retourne une erreur 500 (service email indisponible) / When Alexandre a cliqué "Parlez-nous de votre projet" / Then le formulaire reste visible avec toutes les valeurs saisies et le message d'échec technique de ux-writing-guide.md §2 s'affiche en haut du formulaire (rôle alert).
 
 **Cas limites :**
 7. Given Alexandre double-clique sur le bouton de soumission / When le formulaire est en cours d'envoi / Then le bouton est désactivé après le premier clic — une seule requête est envoyée à la Pages Function.
