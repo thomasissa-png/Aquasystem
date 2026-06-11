@@ -2,11 +2,12 @@
   "$schema": "https://tr.designtokens.org/format/",
   "$meta": {
     "project": "Aquasystem [PROVISOIRE]",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "date": "2026-06-11",
     "agent": "@design",
     "architecture": "3-tier W3C DTCG — primitives > semantics > component",
-    "note": "Les composants référencent UNIQUEMENT les tokens sémantiques/component, jamais les primitives directement."
+    "note": "Les composants référencent UNIQUEMENT les tokens sémantiques/component, jamais les primitives directement.",
+    "changelog": "v1.1 — correction contrastes BUG-A11Y-1 : gold-700 ajouté (texte proof) ; color-text-proof gold.600→gold.800 ; color-text-proof-label ajouté (sand.800) ; color-text-footer-legal ajouté (sand.500) ; proof-badge.label-color mis à jour. Ratios WCAG recalculés dans design-system.md."
   },
 
   "primitives": {
@@ -53,8 +54,9 @@
       "gold": {
         "100": { "$value": "#EDD9B8", "$type": "color" },
         "400": { "$value": "#D4A864", "$type": "color" },
-        "600": { "$value": "#C4924A", "$type": "color" },
-        "800": { "$value": "#8B6130", "$type": "color" }
+        "600": { "$value": "#C4924A", "$type": "color", "$description": "Usage décoratif uniquement (filets, ornements) — NE PAS utiliser en texte sur fond proof (ratio 2.01:1 insuffisant, BUG-A11Y-1)" },
+        "700": { "$value": "#9A7035", "$type": "color", "$description": "Ajouté v1.1 BUG-A11Y-1 — texte or moyen si besoin grand texte ≥24px (ratio 3.18:1 sur #EDD9B8)" },
+        "800": { "$value": "#8B6130", "$type": "color", "$description": "Texte or sombre — ratio 3.92:1 sur fond proof #EDD9B8, PASS grand texte ≥24px" }
       },
       "status": {
         "success-dark":  { "$value": "#2E5E3A", "$type": "color" },
@@ -174,7 +176,9 @@
         "inverse":   { "$value": "{primitives.color.sand.100}", "$type": "color", "$description": "#F5F0E8 — texte sur fond sombre" },
         "accent-water":  { "$value": "{primitives.color.water.600}",  "$type": "color", "$description": "#3A6675 — liens actifs, accent eau" },
         "accent-forest": { "$value": "{primitives.color.forest.600}", "$type": "color", "$description": "#3B5240 — liens jardin, accent végétal" },
-        "proof":     { "$value": "{primitives.color.gold.600}", "$type": "color", "$description": "#C4924A — chiffres de preuve (30+, 350+)" },
+        "proof":     { "$value": "{primitives.color.gold.800}", "$type": "color", "$description": "#8B6130 — chiffres de preuve (30+, 350+, 48px DM Serif). Modifié v1.1 BUG-A11Y-1 : gold.600→gold.800 pour ratio 3.92:1 sur #EDD9B8 (grand texte ≥24px, PASS AA). gold.600 réservé décoratif." },
+        "proof-label": { "$value": "{primitives.color.sand.800}", "$type": "color", "$description": "#4A3E34 — labels sous les chiffres proof (14px/medium, texte normal). Ajouté v1.1 BUG-A11Y-1 : ratio 7.39:1 sur #EDD9B8, PASS AAA. Remplace text.secondary (#6B6058 = 4.42:1, insuffisant)." },
+        "footer-legal": { "$value": "{primitives.color.sand.500}", "$type": "color", "$description": "#A89E92 — texte barre légale footer (12px xs) sur fond inverse #1A1510. Ajouté v1.1 BUG-A11Y-1 : ratio 6.87:1, PASS AAA. Remplace text.muted sand.600 = 3.99:1 insuffisant." },
         "error":     { "$value": "{primitives.color.status.error-dark}", "$type": "color" },
         "success":   { "$value": "{primitives.color.status.success-dark}", "$type": "color" }
       },
@@ -415,10 +419,10 @@
       "padding-y":    { "$value": "{semantic.spacing.sm}",    "$type": "dimension" },
       "radius":       { "$value": "{semantic.radius.sm}",     "$type": "dimension" },
       "bg":           { "$value": "{semantic.color.background.proof}", "$type": "color" },
-      "number-size":  { "$value": "{semantic.typography.size.5xl}",    "$type": "dimension", "$description": "48px — chiffres 30+, 350+" },
-      "number-color": { "$value": "{semantic.color.text.proof}",       "$type": "color" },
-      "label-size":   { "$value": "{semantic.typography.size.sm}",     "$type": "dimension" },
-      "label-color":  { "$value": "{semantic.color.text.secondary}",   "$type": "color" }
+      "number-size":  { "$value": "{semantic.typography.size.5xl}",    "$type": "dimension", "$description": "48px — chiffres 30+, 350+. Grand texte >=24px, seuil AA = 3:1" },
+      "number-color": { "$value": "{semantic.color.text.proof}",       "$type": "color", "$description": "Pointe sur gold.800 #8B6130 depuis v1.1 (ratio 3.92:1 sur proof-bg, PASS grand texte)" },
+      "label-size":   { "$value": "{semantic.typography.size.sm}",     "$type": "dimension", "$description": "14px — texte normal, seuil AA = 4.5:1" },
+      "label-color":  { "$value": "{semantic.color.text.proof-label}", "$type": "color", "$description": "v1.1 BUG-A11Y-1 : sand.700->sand.800 via token proof-label. Ratio 7.39:1 sur proof-bg, PASS AAA." }
     },
 
     "hero": {

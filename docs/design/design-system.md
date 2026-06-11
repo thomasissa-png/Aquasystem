@@ -5,6 +5,7 @@
 > Architecture de base : Tailwind CSS + shadcn/ui + Radix UI
 > Sources : wireframes.md (structure), design-tokens.json (valeurs), art-direction.md (direction)
 > Dernière mise à jour : 2026-06-11 | Agent : @design
+> **v1.1 — correction contrastes BUG-A11Y-1** (2026-06-11) : 3 paires corrigées — gold/proof, secondary/proof, footer legal. Voir section 1.
 
 ---
 
@@ -31,27 +32,50 @@
 
 ## 1. Contrastes WCAG 2.2 AA — paires testées {#contrastes}
 
-Ratio minimum : 4.5:1 (texte normal), 3:1 (texte large ≥ 18pt/24px ou 14pt/18.67px bold, interactifs larges).
+> **v1.1 BUG-A11Y-1** — 3 paires corrigées suite audit axe-core @qa (2026-06-11). Les ratios ci-dessous sont calculés depuis les valeurs effectives rendues, pas les tokens de référence seuls. Méthode : luminance relative WCAG (sRGB linearisation, formule L = 0.2126R + 0.7152G + 0.0722B), rapport (L1+0.05)/(L2+0.05).
 
-| Paire | Texte | Fond | Ratio calculé | Niveau | Usage |
-|---|---|---|---|---|---|
-| Texte primaire / fond primaire | #2A2420 | #F5F0E8 | **11.2:1** | AAA | Corps de texte principal |
-| Texte primaire / fond secondaire | #2A2420 | #EDE8DF | **10.6:1** | AAA | Texte sur sections alternées |
-| Texte secondaire / fond primaire | #6B6058 | #F5F0E8 | **5.1:1** | AA | Labels, captions |
-| Texte inversé / fond sombre | #F5F0E8 | #1A1510 | **14.1:1** | AAA | Hero, footer |
-| CTA texte blanc / fond eau | #FFFFFF | #3A6675 | **4.7:1** | AA | Bouton primaire |
-| CTA texte blanc / fond forêt | #FFFFFF | #3B5240 | **7.2:1** | AAA | Bouton jardin |
-| CTA texte eau / fond primaire | #3A6675 | #F5F0E8 | **4.7:1** | AA | Bouton ghost, liens |
-| Texte proof or / fond proof | #C4924A | #EDD9B8 | **3.1:1** | AA* | Chiffres preuve (≥ 48px DM Serif) |
-| Texte erreur / fond primaire | #8B2E2E | #F5F0E8 | **7.8:1** | AAA | Messages erreur formulaire |
-| Texte succès / fond primaire | #2E5E3A | #F5F0E8 | **7.1:1** | AAA | Messages succès formulaire |
-| Filtre actif blanc / fond eau | #FFFFFF | #3A6675 | **4.7:1** | AA | Filter pill actif |
-| Filtre inactif / fond secondaire | #6B6058 | #EDE8DF | **5.1:1** | AA | Filter pill inactif |
-| Focus ring / fond primaire | #3A6675 | #F5F0E8 | **4.7:1** | AA | Focus visible fond clair |
-| Focus ring inversé / fond sombre | #F5F0E8 | #1A1510 | **14.1:1** | AAA | Focus visible hero/overlay |
-| Placeholder / fond input | #7E7468 | #E0D8CC | **3.5:1** | AA* | Placeholders (texte non-contenu) |
+Ratio minimum : 4.5:1 (texte normal ≤ 18px regular ou ≤ 14px bold), 3:1 (texte grand ≥ 24px/18pt regular, ou ≥ 18.67px/14pt bold, ou interactifs larges).
 
-**AA* = conforme pour les éléments interactifs et texte grand (WCAG 2.2 criterium 1.4.11 — non-text contrast 3:1)**
+| Paire | Texte | Fond | Ratio calculé | Niveau | Usage | Statut |
+|---|---|---|---|---|---|---|
+| Texte primaire / fond primaire | #2A2420 | #F5F0E8 | **11.2:1** | AAA | Corps de texte principal | PASS |
+| Texte primaire / fond secondaire | #2A2420 | #EDE8DF | **10.6:1** | AAA | Texte sur sections alternées | PASS |
+| Texte secondaire / fond primaire | #6B6058 | #F5F0E8 | **5.1:1** | AA | Labels, captions sur fond page | PASS |
+| Texte inversé / fond sombre | #F5F0E8 | #1A1510 | **14.1:1** | AAA | Hero, footer corps | PASS |
+| CTA texte blanc / fond eau | #FFFFFF | #3A6675 | **4.7:1** | AA | Bouton primaire | PASS |
+| CTA texte blanc / fond forêt | #FFFFFF | #3B5240 | **7.2:1** | AAA | Bouton jardin | PASS |
+| CTA texte eau / fond primaire | #3A6675 | #F5F0E8 | **4.7:1** | AA | Bouton ghost, liens | PASS |
+| **[CORRIGE v1.1] Chiffres proof / fond proof** | ~~#C4924A~~ **#8B6130** | #EDD9B8 | ~~2.01:1~~ **3.92:1** | AA grand texte | Chiffres 48px DM Serif (30+, 350+) | **PASS** |
+| **[CORRIGE v1.1] Label proof / fond proof** | ~~#6B6058~~ **#4A3E34** | #EDD9B8 | ~~4.42:1~~ **7.39:1** | AAA | Labels 14px sous chiffres proof | **PASS** |
+| **[CORRIGE v1.1] Footer legal / fond sombre** | ~~#7E7468~~ **#A89E92** | #1A1510 | ~~3.99:1~~ **6.87:1** | AAA | Barre légale 12px, liens légaux | **PASS** |
+| Texte erreur / fond primaire | #8B2E2E | #F5F0E8 | **7.8:1** | AAA | Messages erreur formulaire | PASS |
+| Texte succès / fond primaire | #2E5E3A | #F5F0E8 | **7.1:1** | AAA | Messages succès formulaire | PASS |
+| Filtre actif blanc / fond eau | #FFFFFF | #3A6675 | **4.7:1** | AA | Filter pill actif | PASS |
+| Filtre inactif / fond secondaire | #6B6058 | #EDE8DF | **5.1:1** | AA | Filter pill inactif | PASS |
+| Focus ring / fond primaire | #3A6675 | #F5F0E8 | **4.7:1** | AA | Focus visible fond clair | PASS |
+| Focus ring inversé / fond sombre | #F5F0E8 | #1A1510 | **14.1:1** | AAA | Focus visible hero/overlay | PASS |
+| Placeholder / fond input | #7E7468 | #E0D8CC | **3.5:1** | AA* | Placeholders (texte non-contenu) | PASS |
+| Texte secondaire / fond secondaire | #6B6058 | #EDE8DF | **5.1:1** | AA | Labels sur sections alternées | PASS |
+
+**AA* = conforme pour les éléments interactifs et texte grand (WCAG 2.2 criterium 1.4.11 — non-text contrast 3:1). Les placeholders ne sont pas du contenu textuel informatif.**
+
+### Détail des corrections v1.1 BUG-A11Y-1
+
+**Violation 1 — chiffres proof (ancien ratio 2.01:1, FAIL)**
+- Cause : gold.600 #C4924A (L=0.2985) sur gold.100 #EDD9B8 (L=0.7104) = (0.7104+0.05)/(0.2985+0.05) = 2.01:1. Insuffisant même pour grand texte (seuil 3:1).
+- Correction : `color-text-proof` remappé vers gold.800 #8B6130 (L=0.1440). Ratio = (0.7104+0.05)/(0.1440+0.05) = **3.92:1**. PASS grand texte ≥ 24px (seuil 3:1).
+- Préservation DA : gold.600 #C4924A maintenu comme primitif pour filets ornementaux et usages décoratifs non-textuels. Jamais en texte sur fond proof.
+- Nouvelle primitive gold.700 #9A7035 ajoutée (ratio 3.18:1 sur proof-bg) comme option intermédiaire futur usage.
+
+**Violation 2 — labels proof (ancien ratio 4.42:1, FAIL)**
+- Cause : sand.700 #6B6058 (L=0.1222) sur gold.100 #EDD9B8 (L=0.7104) = (0.7104+0.05)/(0.1222+0.05) = 4.42:1. Insuffisant pour texte normal 14px (seuil 4.5:1). Ecart mesuré axe-core = 0.08:1.
+- Correction : nouveau token sémantique `color-text-proof-label` pointant vers sand.800 #4A3E34 (L=0.0529). Ratio = (0.7104+0.05)/(0.0529+0.05) = **7.39:1**. PASS AAA.
+- Le token `color-text-secondary` (#6B6058) reste inchangé pour son usage nominal sur fond primaire/secondaire (5.1:1 PASS).
+
+**Violation 3 — footer barre légale (ancien ratio 3.99:1, FAIL)**
+- Cause : `text-sand-600` #7E7468 (L=0.1816) utilisé en dur dans Footer.tsx pour la barre légale (texte 12px xs) sur fond background-inverse #1A1510 (L=0.00798). Ratio = (0.1816+0.05)/(0.00798+0.05) = 3.99:1. Insuffisant pour texte normal (seuil 4.5:1).
+- Correction : nouveau token sémantique `color-text-footer-legal` pointant vers sand.500 #A89E92 (L=0.3483). Ratio = (0.3483+0.05)/(0.00798+0.05) = **6.87:1**. PASS AAA.
+- Note : Footer.tsx utilise actuellement la classe primitive `text-sand-600` — @fullstack doit remplacer par la CSS variable `var(--color-text-footer-legal)` ou la classe sémantique Tailwind correspondante.
 
 **Note hero overlay** : texte blanc #F5F0E8 sur overlay `rgba(26,21,16,0.72)` effectif. L'overlay est appliqué sur une photo — dans le pire cas (photo claire), le ratio effectif est calculé sur la couche opaque seule : blanc sur #1A1510 = 14.1:1. PASS.
 
@@ -299,7 +323,7 @@ Padding vertical : 64px top, 48px bottom.
 **Colonne 2 — Navigation** : titre DM Serif Display 14px sand-400, liens DM Sans 14px sand-300 hover sand-100, gap 12px entre liens
 **Colonne 3 — Contact** : téléphone, email, adresse, icônes Lucide (Phone, Mail, MapPin) 16px currentColor, liens LinkedIn + Facebook (icônes 20px)
 
-Barre basse : border-top 1px sand-800, padding-top 24px, flex row, copyright gauche, liens légaux droite. DM Sans 12px sand-600.
+Barre basse : border-top 1px sand-800, padding-top 24px, flex row, copyright gauche, liens légaux droite. DM Sans 12px **sand-500 #A89E92** (token `color-text-footer-legal`, ratio 6.87:1 sur fond #1A1510, PASS AAA — v1.1 BUG-A11Y-1, anciennement sand-600 = 3.99:1 FAIL).
 
 ### Structure mobile — stack vertical
 
@@ -542,8 +566,8 @@ Composant 4 preuves en ligne desktop / 2×2 mobile. Utilisé sur accueil, piscin
 ### Structure par badge
 
 ```
-[Nombre — DM Serif Display 48px, gold-600 #C4924A]
-[Label — DM Sans 14px, sand-700, line-height 20px, max 2 lignes]
+[Nombre — DM Serif Display 48px, gold-800 #8B6130]  ← v1.1 BUG-A11Y-1 : gold-600→gold-800, ratio 3.92:1 grand texte PASS
+[Label — DM Sans 14px, sand-800 #4A3E34, line-height 20px, max 2 lignes]  ← v1.1 BUG-A11Y-1 : sand-700→sand-800 via token proof-label, ratio 7.39:1 PASS
 ```
 
 Les 4 preuves :
@@ -556,7 +580,7 @@ Les 4 preuves :
 
 ### 6 états
 
-**Default** : fond proof #EDD9B8 (sand + or), nombre or, label sand
+**Default** : fond proof #EDD9B8, nombre or sombre (#8B6130 ratio 3.92:1), label sand sombre (#4A3E34 ratio 7.39:1)
 **Hover** : n/a (non interactif)
 **Focus-visible** : n/a (non interactif sauf si lien vers page certifications externe)
 **Si lien externe** : focus outline 2px water-600
