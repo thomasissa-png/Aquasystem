@@ -203,7 +203,7 @@ En tant qu'Alexandre ayant un projet de piscine sur mesure, je veux comprendre p
 
 **Happy path :**
 1. Given Alexandre arrive sur `/piscines-bien-etre` / When il lit la page / Then le terme "Aqua System" et la mention "conception et construction sur mesure" sont visibles dans le premier écran desktop.
-2. Given Alexandre scrolle vers le bas / When il atteint le composant cross-selling / Then il voit "en partenariat avec Les Terres Essentielles" et peut cliquer pour aller vers `/jardins`.
+2. Given Alexandre scrolle vers le bas / When il atteint le composant cross-selling / Then il voit "en partenariat avec Les Terres Essentielles" et peut cliquer pour aller vers `/jardins-paysage`.
 3. Given Alexandre clique sur le CTA "Parlez-nous de votre projet" / When la navigation se produit / Then il arrive sur `/contact` avec scroll en haut de page.
 
 **Erreurs :**
@@ -215,7 +215,7 @@ En tant qu'Alexandre ayant un projet de piscine sur mesure, je veux comprendre p
 7. Given Alexandre est sur mobile 375px / When il scrolle / Then le composant cross-selling est entièrement visible sans scroll horizontal, le CTA est tappable (≥ 44px).
 
 **Permissions :**
-8. Given Googlebot crawle `/piscines` / When il analyse le HTML / Then les balises `<title>`, `<meta description>` et `<h1>` contiennent des termes piscine + zone géographique.
+8. Given Googlebot crawle `/piscines-bien-etre` / When il analyse le HTML / Then les balises `<title>`, `<meta description>` et `<h1>` contiennent des termes piscine + zone géographique.
 
 **Données existantes :**
 9. Given aucune photo de piscine n'est disponible (R-04 bloquée) / When la page est déployée / Then la page ne s'affiche pas avec des images placeholder "stock photo" — la section photos est soit absente soit indique [WORDING manquant] en développement. En production : gate G-PHOTO bloque le déploiement (cf. v1-scope.md).
@@ -439,7 +439,7 @@ interface Realisation {
 |------|-----------|
 | **Défaut** | Grille de toutes les réalisations (≥ 8), filtres actifs, filtre "Tous" sélectionné |
 | **Loading** | Skeleton cards (CSS) pendant hydration — visible < 200ms sur connexion standard |
-| **Vide (filtre sans résultat)** | Message : "Aucune réalisation dans cette catégorie pour le moment." + CTA "Voir toutes les réalisations" (reset filtre) |
+| **Vide (filtre sans résultat)** | Message : "Aucune réalisation ne correspond à cette sélection pour le moment." + CTA "Voir toutes les réalisations" (reset filtre) — wording exact `docs/copy/ux-writing-guide.md` §4 (source de vérité, prévaut sur toute autre formulation) |
 | **Erreur image** | Placeholder gris `aspect-ratio: 4/3` avec icône sobre — pas d'image cassée |
 | **Succès filtre** | Nombre de résultats affichés mis à jour visuellement — filtre actif mis en évidence (style actif CSS) |
 
@@ -451,7 +451,7 @@ interface Realisation {
 3. Given Camille cherche des projets intégrés / When elle clique sur "Projets complets eau + jardin" / Then seules les réalisations `projet_complet` s'affichent.
 
 **Erreurs :**
-4. Given Alexandre clique sur un filtre sans réalisation disponible / When le filtre est appliqué / Then le message "Aucune réalisation dans cette catégorie pour le moment." s'affiche avec un CTA "Voir toutes les réalisations".
+4. Given Alexandre clique sur un filtre sans réalisation disponible / When le filtre est appliqué / Then le message "Aucune réalisation ne correspond à cette sélection pour le moment." s'affiche avec un CTA "Voir toutes les réalisations".
 5. Given une image de réalisation ne charge pas / When la grille s'affiche / Then un placeholder gris sobre s'affiche — aucune image cassée, la carte reste lisible (titre, type, zone).
 
 **Cas limites :**
@@ -681,11 +681,13 @@ En tant qu'Alexandre convaincu par le site, je veux décrire mon projet en 2 min
 
 | Label affiché (chip) | Valeur API | Smart default (page source) |
 |---------------------|-----------|---------------------------|
-| Piscine & Bien-être | `piscine_bien_etre` | Depuis `/piscines-bien-etre` |
-| Jardin & Paysage | `jardin_paysage` | Depuis `/jardins-paysage` |
+| Piscine & bien-être | `piscine_bien_etre` | Depuis `/piscines-bien-etre` |
+| Jardin & paysage | `jardin_paysage` | Depuis `/jardins-paysage` |
 | Projet complet | `projet_complet` | — |
-| Espace prescripteur | `prescripteur` | Depuis `/prescripteurs` |
+| Je suis prescripteur | `prescripteur` | Depuis `/prescripteurs` |
 | _(aucun coché)_ | _(absent du payload)_ | — |
+
+> **Note de précédence** : labels affichés ci-dessus conformes à `docs/copy/ux-writing-guide.md` L58-61 (source de vérité copy). L'API ne change pas.
 
 **budget_tranche** (select, facultatif) :
 
