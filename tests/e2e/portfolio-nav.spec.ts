@@ -126,8 +126,7 @@ test.describe('Touch targets (P2-3 ux-review)', () => {
 });
 
 test.describe('a11y portfolio', () => {
-  // FIXME(BUG-A11Y-1) : voir contact-form.spec.ts — contraste gold/proof global.
-  test.fixme('axe-core sur /realisations', async ({ page }) => {
+  test('axe-core sur /realisations', async ({ page }) => {
     await page.goto('/realisations/');
     await expectNoA11yViolations(page, 'realisations');
   });

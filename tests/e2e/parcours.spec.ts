@@ -72,8 +72,7 @@ test.describe('Parcours Camille (prescripteur)', () => {
     ).toBeVisible();
   });
 
-  // FIXME(BUG-A11Y-1) : voir contact-form.spec.ts — contraste gold/proof global.
-  test.fixme('a11y axe-core sur /prescripteurs', async ({ page }) => {
+  test('a11y axe-core sur /prescripteurs', async ({ page }) => {
     await page.goto('/prescripteurs/');
     await expectNoA11yViolations(page, 'prescripteurs');
   });
@@ -92,8 +91,7 @@ test.describe('Accueil — SEO statique & a11y', () => {
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   });
 
-  // FIXME(BUG-A11Y-1) : voir contact-form.spec.ts — contraste gold/proof global.
-  test.fixme('a11y axe-core sur l’accueil', async ({ page }) => {
+  test('a11y axe-core sur l’accueil', async ({ page }) => {
     await page.goto('/');
     await expectNoA11yViolations(page, 'accueil');
   });

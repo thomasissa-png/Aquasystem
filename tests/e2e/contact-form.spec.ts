@@ -125,11 +125,7 @@ test.describe('Formulaire de contact', () => {
     ).toBeVisible();
   });
 
-  // FIXME(BUG-A11Y-1) : violations color-contrast WCAG 2 AA (gold #c4924a sur
-  // fond proof #edd9b8 = 2.01:1, attendu 3:1 ; foreground-secondary 4.42:1
-  // attendu 4.5:1 ; lien gold du footer). Global (footer + badges proof).
-  // Repasse vert après correction tokens @fullstack/@design. Voir handoff QA P1.
-  test.fixme('a11y axe-core sur /contact', async ({ page }) => {
+  test('a11y axe-core sur /contact', async ({ page }) => {
     await page.goto('/contact/');
     await expectNoA11yViolations(page, 'contact');
   });
