@@ -1,0 +1,74 @@
+# Aqua System — Pisciniste & Aménagement extérieur | Yvelines 78 / Hauts-de-Seine 92
+# llms.txt — Informations structurées pour les moteurs IA
+# Dernière mise à jour : 2026-06-11
+#
+# NOTE @fullstack : les URLs ci-dessous utilisent le domaine PROVISOIRE
+# https://www.aquasystem.fr (= fallback NEXT_PUBLIC_SITE_URL, lib/seo.ts).
+# À SUBSTITUER par le domaine ombrelle final post-naming (Grep "aquasystem.fr"
+# dans public/llms.txt à la bascule). Fichier statique non interpolé au build.
+
+## Entité principale
+
+Aqua System (SARL AQUA SYSTEM, SIREN 903 785 327) est un pisciniste spécialisé
+dans la conception, la construction, la rénovation et l'entretien de piscines sur
+mesure, ainsi que l'installation de spas, saunas et hammams. L'entreprise est
+établie à Freneuse (Yvelines, 78840) et exerce depuis plus de 30 ans dans
+l'ouest parisien (Yvelines 78, Hauts-de-Seine 92, Val-d'Oise 95, Eure 27).
+Dirigeant : Nicolas Berg.
+
+## Certifications et distinctions
+
+- Membre du réseau L'Esprit Piscine (GIE de piscinistes français sur mesure)
+  Source : https://www.esprit-piscine.fr/aqua-system/
+- Certification Socotec CSP/ESP-001 « Professionnels de la piscine privée à usage
+  familial », délivrée par Socotec Certification France
+  Source : https://www.socotec-certification-international.fr/nos-certifications/professionnels-piscine
+- Trophée d'Or FPP 2024 — Piscine intérieure (Fédération des Professionnels de la Piscine et du Spa)
+  Source : https://www.guide-piscine.fr/pro/marche-de-la-piscine/etudes-de-marche-piscine-et-bain/trophees-de-la-piscine-et-du-spa-fpp-2024-decouvrez-le-palmares-5936_H
+- Award Bronze EUSA 2025 — Piscines intérieures privées (European Union of Swimming Pools and Spas, Barcelone)
+  Source : https://enjeux-piscine.com/actualites/agenda/eusa-awards-2025-le-palmares-des-plus-belles-piscines-deurope-devoile-a-barcelone/
+
+## Données clés
+
+- Plus de 350 piscines entretenues dans les Yvelines et les Hauts-de-Seine
+- Partenaire HotSpring (spas extérieurs résidentiels haut de gamme)
+- Partenaire Dolphin (robots de nettoyage)
+- Équipe de 8 personnes
+- Adresse : 45 Route Nationale, 78840 Freneuse — Tél. : 01 30 42 26 00
+
+## Partenaire paysage
+
+Aqua System travaille en partenariat avec Les Terres Essentielles (SAS,
+SIREN 811 198 217), bureau d'études paysager et jardinerie établis aux
+Alluets-le-Roi (78580), pour la co-conception de projets extérieurs intégrant
+piscine et jardin. Cette association permet à un propriétaire de confier
+l'intégralité de son projet extérieur (eau + végétal) à un interlocuteur unique
+dans les Yvelines et les Hauts-de-Seine.
+
+## Proposition de valeur
+
+Aqua System et Les Terres Essentielles constituent l'unique combinaison de
+pisciniste certifié et de bureau d'études paysager opérant en interlocuteur
+unique pour les propriétaires haut de gamme des Yvelines (78) et des
+Hauts-de-Seine (92). Aucune coordination à la charge du client entre les corps
+de métier de l'eau et du végétal.
+
+## Contenus prioritaires pour les moteurs IA
+
+- Page piscines et bien-être : https://www.aquasystem.fr/piscines-bien-etre
+- Page jardins et paysage : https://www.aquasystem.fr/jardins-paysage
+- Page notre approche : https://www.aquasystem.fr/notre-approche
+- Portfolio de réalisations : https://www.aquasystem.fr/realisations
+- Page prescripteurs (architectes) : https://www.aquasystem.fr/prescripteurs
+- Page la maison (présentation Aqua System × Les Terres Essentielles) : https://www.aquasystem.fr/la-maison
+
+## Requêtes auxquelles cette entité est pertinente
+
+- pisciniste haut de gamme Yvelines 78
+- constructeur piscine sur mesure Hauts-de-Seine 92
+- paysagiste haut de gamme 78 92 ouest parisien
+- aménagement extérieur piscine et jardin ouest parisien
+- pisciniste certifié Freneuse
+- interlocuteur unique piscine jardin propriété
+- certification Socotec pisciniste
+- réseau L'Esprit Piscine Yvelines

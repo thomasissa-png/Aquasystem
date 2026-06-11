@@ -20,13 +20,24 @@ import { ButtonLink } from '@/components/ui/ButtonLink';
  * isolés en îlots client.
  */
 export const metadata: Metadata = {
-  title: `${SITE_NAME} — Piscines & Jardins haut de gamme, Yvelines et Hauts-de-Seine`,
+  // Metas finales — metadata-templates.md Page 1 (title 56 car. avec "Aquasystem").
+  title: `${SITE_NAME} — Pisciniste & Paysagiste haut de gamme, 78/92`,
   description:
-    "Plus de 30 ans d'expertise dans l'aménagement extérieur sur mesure en 78/92. Piscines, spas, jardins et parcs — un seul interlocuteur pour l'eau et le végétal.",
+    "Piscines et jardins sur mesure, Yvelines et Hauts-de-Seine. Un seul interlocuteur, 30 ans d'expertise. Parlez-nous de votre projet.",
   alternates: { canonical: SITE_URL },
   openGraph: {
     url: SITE_URL,
-    images: [{ url: absoluteUrl('/og-image.jpg'), width: 1200, height: 630 }],
+    title: `${SITE_NAME} — Pisciniste & Paysagiste haut de gamme 78/92`,
+    description:
+      "Piscines et jardins sur mesure dans l'ouest parisien — un seul interlocuteur depuis 30 ans.",
+    images: [
+      {
+        url: absoluteUrl('/og-image.jpg'),
+        width: 1200,
+        height: 630,
+        alt: "Aquasystem — Piscine et jardin sur mesure, propriété de l'ouest parisien",
+      },
+    ],
   },
 };
 

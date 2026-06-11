@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { SITE_URL, absoluteUrl } from '@/lib/seo';
+import { SITE_URL, absoluteUrl, breadcrumbJsonLd } from '@/lib/seo';
 import { photoSrc } from '@/content/realisations';
 import { Hero } from '@/components/sections/Hero';
 import { MediaSplit } from '@/components/sections/MediaSplit';
@@ -7,6 +7,7 @@ import { ProofBadges } from '@/components/ui/ProofBadges';
 import { CrossSellingBlock } from '@/components/sections/CrossSellingBlock';
 import { SectionCTA } from '@/components/sections/SectionCTA';
 import { PhotoPlaceholder } from '@/components/sections/PhotoPlaceholder';
+import { JsonLd } from '@/components/seo/JsonLd';
 
 /**
  * Piscines & Bien-être (/piscines-bien-etre) — F-02, WF-02.
@@ -16,20 +17,35 @@ import { PhotoPlaceholder } from '@/components/sections/PhotoPlaceholder';
  * réelle disponible → PhotoPlaceholder unique (jamais 2 identiques).
  */
 export const metadata: Metadata = {
-  title:
-    'Piscines sur mesure Yvelines & Hauts-de-Seine — Aqua System',
+  // Metas finales — metadata-templates.md Page 2 + description enrichie GEO
+  // (content-restructuring.md §B.5 : distinctions FPP/EUSA injectées).
+  title: 'Piscines sur mesure Yvelines & 92 — Pisciniste Aqua System',
   description:
-    'Conception, construction et entretien de piscines haut de gamme en 78/92. Spas HotSpring, saunas, hammams. Certification Socotec. Plus de 30 ans d’ancrage local.',
+    "Pisciniste certifié Socotec CSP/ESP-001, membre L'Esprit Piscine. Trophée Or FPP 2024. Piscines sur mesure, spas, saunas en Yvelines et Hauts-de-Seine — plus de 30 ans d'ancrage local.",
   alternates: { canonical: absoluteUrl('/piscines-bien-etre/') },
   openGraph: {
     url: `${SITE_URL}/piscines-bien-etre/`,
-    title: 'Piscines sur mesure Yvelines & Hauts-de-Seine — Aqua System',
+    title: 'Piscines sur mesure Yvelines 78/92 — Aqua System',
+    images: [
+      {
+        url: absoluteUrl('/og-image.jpg'),
+        width: 1200,
+        height: 630,
+        alt: 'Piscine sur mesure réalisée par Aqua System dans les Yvelines',
+      },
+    ],
   },
 };
+
+/** Fil d'Ariane (BreadcrumbList JSON-LD) — seo-strategy.md §C.6.3. */
+const BREADCRUMB = breadcrumbJsonLd([
+  { name: 'Piscines & Bien-être', path: '/piscines-bien-etre/' },
+]);
 
 export default function PiscinesBienEtrePage() {
   return (
     <>
+      <JsonLd data={BREADCRUMB} />
       <Hero
         imageSrc={photoSrc('piscine-paroi-verre-travertin', '1280w')}
         imageAlt="Piscine sur mesure à paroi vitrée, margelles en travertin, jardinières de graminées, terrasse bois d'une propriété haut de gamme"
@@ -69,6 +85,20 @@ export default function PiscinesBienEtrePage() {
       <section className="bg-background">
         <div className="mx-auto max-w-container px-4 py-16 md:px-8">
           <ProofBadges />
+          {/* Synthèse texte extractible par les LLM (content-restructuring.md §B.1) —
+              les badges visuels ne sont pas lus par les moteurs IA, ce paragraphe
+              rend les claims sourcés extractibles. Visible (pas sr-only). */}
+          <p className="mx-auto mt-8 max-w-[70ch] text-base leading-8 text-foreground-secondary">
+            Aqua System est certifié Socotec CSP/ESP-001 « Professionnels de la
+            piscine privée à usage familial » et membre du réseau L'Esprit Piscine
+            — groupement de piscinistes français sur mesure. L'entreprise assure
+            l'entretien de plus de 350 piscines dans les Yvelines et les
+            Hauts-de-Seine, depuis plus de 30 ans.
+          </p>
+          <p className="mx-auto mt-4 max-w-[70ch] text-sm font-medium text-foreground-accent-water">
+            Trophée d'Or FPP 2024 — Piscine intérieure&nbsp;| Award Bronze EUSA
+            2025 — Piscines intérieures privées.
+          </p>
         </div>
       </section>
 

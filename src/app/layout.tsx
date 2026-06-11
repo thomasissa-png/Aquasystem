@@ -2,7 +2,12 @@ import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import { DM_Sans, DM_Serif_Display } from 'next/font/google';
 import { SITE_NAME, SITE_TAGLINE } from '@/lib/constants';
-import { SITE_URL, absoluteUrl, organizationJsonLd } from '@/lib/seo';
+import {
+  SITE_URL,
+  absoluteUrl,
+  organizationJsonLd,
+  partnerOrganizationJsonLd,
+} from '@/lib/seo';
 import { NavBar } from '@/components/layout/NavBar';
 import { Footer } from '@/components/layout/Footer';
 import '@/styles/globals.css';
@@ -80,12 +85,22 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${dmSans.variable} ${dmSerif.variable}`}>
       <head>
-        {/* JSON-LD Organization (données réelles constants.ts). */}
+        {/* JSON-LD LocalBusiness Aqua System (enrichi : sameAs, geo, award,
+            hasCredential, memberOf, hasOfferCatalog). */}
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationJsonLd()),
+          }}
+        />
+        {/* JSON-LD LocalBusiness Les Terres Essentielles (entité partenaire —
+            aucune affirmation de propriété commune, acquisition non actée). */}
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(partnerOrganizationJsonLd()),
           }}
         />
       </head>
