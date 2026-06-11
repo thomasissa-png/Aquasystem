@@ -70,10 +70,11 @@ title: 'Pisciniste Yvelines — Piscines sur mesure 78/92 | Aqua System',
 // 58 caractères — PASS
 // Contient : "pisciniste" (requête principale) + "Yvelines" + "piscines sur mesure"
 
-description: 'Aqua System conçoit et construit des piscines sur mesure en Yvelines et Hauts-de-Seine. Spas HotSpring, saunas. Certification Socotec. Parlez-nous de votre projet.',
-// 162 caractères — légèrement long, version courte :
-// 'Construction de piscines sur mesure en 78/92. Spas HotSpring, saunas. Certification Socotec CSP/ESP-001. Parlez-nous de votre projet.'
-// 133 caractères — PASS + CTA
+description: 'Pisciniste certifié Socotec, Trophée Or FPP 2024. Piscines sur mesure en Yvelines (78) et Hauts-de-Seine (92). Parlez-nous de votre projet.',
+// 141 caractères — PASS + CTA. [Arbitrage orchestrateur 2026-06-11, B.5 faq-geo-copy.md :
+// version enrichie GEO retenue — Trophée Or FPP 2024 vérifié = signal CTR différenciant premium.
+// Ancienne version sans distinctions : 'Construction de piscines sur mesure en 78/92. Spas
+// HotSpring, saunas. Certification Socotec CSP/ESP-001. Parlez-nous de votre projet.' (133 car.)]
 
 alternates: { canonical: absoluteUrl('/piscines-bien-etre/') },
 

@@ -567,9 +567,11 @@ Card 3 :
 >
 > Membre du réseau L'Esprit Piscine. Certification Socotec « Professionnels de la piscine » CSP/ESP-001.
 >
+> Trophée d'Or FPP 2024 — Piscine intérieure. Award Bronze EUSA 2025 — Piscines intérieures privées (Barcelone).
+>
 > 45 Route Nationale, 78840 Freneuse — 01 30 42 26 00 — contact@aqua-system.fr
 
-*Note @fullstack : afficher badges Socotec + L'Esprit Piscine (SVG) sous ce bloc, sobrement.*
+*Note @fullstack : afficher badges Socotec + L'Esprit Piscine (SVG) sous ce bloc, sobrement. Distinctions FPP/EUSA en texte sobre (1 ligne), pas de section trophées séparée. Mise à jour 2026-06-11 — @geo.*
 
 ---
 
