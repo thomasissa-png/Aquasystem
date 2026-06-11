@@ -79,7 +79,7 @@ export function RealisationsGrid() {
               aria-label={f.aria}
               onClick={() => selectFilter(f.value)}
               className={cn(
-                'rounded-full border px-4 py-2 text-sm font-medium transition-colors duration-fast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2',
+                'inline-flex min-h-11 items-center rounded-full border px-4 py-2 text-sm font-medium transition-colors duration-fast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2',
                 isActive
                   ? 'border-action-primary bg-action-primary text-action-primary-text'
                   : 'border-border bg-background-secondary text-foreground hover:border-border-strong',

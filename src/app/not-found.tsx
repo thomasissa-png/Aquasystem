@@ -1,3 +1,5 @@
+import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
 import { ButtonLink } from '@/components/ui/ButtonLink';
 
 /**
@@ -24,7 +26,16 @@ export default function NotFound() {
           Vous pouvez retrouver nos réalisations, découvrir notre approche ou nous
           décrire votre projet.
         </p>
-        <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:justify-center">
+        <div className="mt-8">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-sm font-medium text-foreground-accent-water underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2"
+          >
+            <ArrowLeft aria-hidden className="h-4 w-4" />
+            Retour à l'accueil
+          </Link>
+        </div>
+        <div className="mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:justify-center">
           <ButtonLink href="/realisations" variant="ghost" size="md">
             Voir les réalisations →
           </ButtonLink>
