@@ -6,7 +6,6 @@ const OUT = 'docs/reviews/gate-shots';
 const pages = [
   ['home', '/'],
   ['la-maison', '/la-maison/'],
-  ['notre-approche', '/notre-approche/'],
   ['piscines', '/piscines-bien-etre/'],
   ['jardins', '/jardins-paysage/'],
   ['realisations', '/realisations/'],

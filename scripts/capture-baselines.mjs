@@ -20,7 +20,6 @@ const PAGES = [
   ['accueil', '/'],
   ['piscines-bien-etre', '/piscines-bien-etre/'],
   ['jardins-paysage', '/jardins-paysage/'],
-  ['notre-approche', '/notre-approche/'],
   ['la-maison', '/la-maison/'],
   ['realisations', '/realisations/'],
   ['prescripteurs', '/prescripteurs/'],

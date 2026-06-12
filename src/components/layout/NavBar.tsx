@@ -16,7 +16,7 @@ import { ButtonLink } from '@/components/ui/ButtonLink';
 
 /**
  * NavBar — design-system.md §5 + mission.
- * Desktop (≥ lg) : wordmark + 6 liens horizontaux + CTA primary.
+ * Desktop (≥ lg) : wordmark + 5 liens horizontaux + CTA primary.
  * Mobile : wordmark + hamburger → drawer bottom-sheet (items-end), focus trap,
  * scroll body verrouillé, touch targets ≥ 44px, focus-visible inversé sur le
  * fond sombre de l'overlay.
@@ -188,16 +188,9 @@ export function NavBar() {
                     )}
                   >
                     {link.label}
-                    {link.href === '/notre-approche' && (
+                    {link.href === '/la-maison' && (
                       <span className="mt-1 block text-xs font-sans text-foreground-muted">
                         De la vision à la réalisation
-                      </span>
-                    )}
-                    {/* P2-C2 (ux-audit) : lève l'ambiguïté du label « Architectes »
-                        pour les MOE et décorateurs. */}
-                    {link.href === '/prescripteurs' && (
-                      <span className="mt-1 block text-xs font-sans text-foreground-muted">
-                        Maîtres d'œuvre & prescripteurs
                       </span>
                     )}
                   </Link>

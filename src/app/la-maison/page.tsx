@@ -6,30 +6,37 @@ import {
   SITE_URL,
   absoluteUrl,
   breadcrumbJsonLd,
+  faqPageJsonLd,
   nicolasBergJsonLd,
 } from '@/lib/seo';
 import { photoSrc } from '@/content/realisations';
 import { JARDINERIE_PHOTOS, jardinerieSrc } from '@/content/jardinerie';
-import { Hero } from '@/components/sections/Hero';
 import { SectionCTA } from '@/components/sections/SectionCTA';
+import { ButtonLink } from '@/components/ui/ButtonLink';
+import { FaqSection } from '@/components/sections/FaqSection';
 import { JsonLd } from '@/components/seo/JsonLd';
+import { FAQ_NOTRE_APPROCHE, toFaqJsonLd } from '@/content/faq';
 
 /**
- * La maison (/la-maison) — F-06, WF-06.
- * Rendu : SSG. Hero = photo réelle de réalisation (FALLBACK validé : photo
- * Nicolas Berg non disponible, project-context.md Annexe B P1). Section 5 =
- * propriété réelle. Badges Socotec / L'Esprit Piscine rendus en texte sobre
- * (pas de logo SVG fourni — à substituer si assets reçus).
+ * La maison (/la-maison) — F-06, WF-06 + fusion F-04 « Notre approche » (D-25).
+ * Rendu : SSG. Page identité fusionnée : histoire + portrait + méthode 5 étapes
+ * (migrée de notre-approche) + les deux maisons + ancrage local (migré) +
+ * valeurs + photo propriété + FAQ (migrée, FAQPage JSON-LD fusionné).
+ * Hero split (texte + photo). /notre-approche → 301 vers cette page
+ * (public/_redirects Cloudflare — output:'export', pas de next.config redirects).
  */
 export const metadata: Metadata = {
-  // Metas finales — metadata-templates.md Page 5 (title 58 car., « Freneuse » conservé).
-  title: { absolute: "Aqua System — Pisciniste Freneuse (78), 30 ans d'expertise" },
+  // Metas fusionnées (ia-refonte §2) — title identité conservé + intention
+  // méthode. ≤ 65 car. Canonical /la-maison/ (page absorbante).
+  title: {
+    absolute: 'La maison — Pisciniste & paysagiste 30 ans en 78/92, méthode intégrée',
+  },
   description:
-    "Aqua System et Les Terres Essentielles : 30 ans dans le 78/92. Certification Socotec. Membre L'Esprit Piscine. Rencontrons-nous.",
+    'Aqua System et Les Terres Essentielles : 30 ans dans le 78/92, certification Socotec, bureau d\'études intégré. De la vision à la réalisation — un seul interlocuteur.',
   alternates: { canonical: absoluteUrl('/la-maison/') },
   openGraph: {
     url: `${SITE_URL}/la-maison/`,
-    title: "Aqua System — Pisciniste Freneuse (78), 30 ans d'expertise",
+    title: 'La maison — Aqua System & Les Terres Essentielles, 78/92',
     images: [
       {
         url: absoluteUrl('/og-image.jpg'),
@@ -46,6 +53,54 @@ const BREADCRUMB = breadcrumbJsonLd([{ name: 'La maison', path: '/la-maison/' }]
 
 /** Person JSON-LD Nicolas Berg (content-restructuring.md §C.2). */
 const PERSON = nicolasBergJsonLd();
+
+/** FAQPage JSON-LD — migré de notre-approche (content-restructuring.md §C.1). */
+const FAQ_JSONLD = faqPageJsonLd(toFaqJsonLd(FAQ_NOTRE_APPROCHE));
+
+/** Méthode 5 étapes — migrée intégralement de notre-approche (ia-refonte §3). */
+const STEPS = [
+  {
+    title: "L'écoute",
+    body: [
+      "Nous commençons par comprendre ce que vous imaginez : l'espace, les usages, ce que vous souhaitez ressentir. Pas un formulaire à remplir. Une conversation.",
+      "À ce stade, il n'est pas nécessaire d'avoir un plan ou un budget précis. Votre vision est suffisante.",
+    ],
+  },
+  {
+    title: "Le bureau d'études",
+    body: [
+      "Piscine et jardin conçus ensemble dès le premier plan, pas l'un après l'autre. Les deux maisons coordonnent à cette étape : les choix d'implantation, les matériaux, les lignes directrices de l'espace.",
+      "Vous n'avez pas à arbitrer entre deux prestataires qui ne se sont jamais parlé.",
+    ],
+  },
+  {
+    title: 'La réalisation',
+    body: [
+      "Un seul interlocuteur sur le chantier. Nous gérons les corps de métier, les délais, les interfaces techniques. Ce qui se passe sur votre propriété est sous notre responsabilité : vous en êtes informé, vous n'avez pas à le piloter.",
+    ],
+  },
+  {
+    title: 'La livraison',
+    body: [
+      "Réception conjointe de la piscine et du jardin. Votre propriété n'est pas livrée en deux temps, avec six mois de chantier jardin après la piscine. Le projet s'achève quand l'espace est complet.",
+    ],
+  },
+  {
+    title: 'Le suivi annuel',
+    body: [
+      "Votre piscine est entretenue par ceux qui l'ont construite. L'équipe connaît votre équipement : les choix faits au moment du chantier, les spécificités de votre terrain, les réglages propres à votre bassin.",
+      "Vous n'avez pas à tout réexpliquer à chaque saison.",
+    ],
+  },
+];
+
+const COMMUNES = [
+  'Le Vésinet',
+  'Saint-Nom-la-Bretèche',
+  "Ville-d'Avray",
+  'Marnes-la-Coquette',
+  'Saint-Cloud',
+];
 
 const VALEURS = [
   {
@@ -70,18 +125,36 @@ export default function LaMaisonPage() {
     <>
       <JsonLd data={BREADCRUMB} />
       <JsonLd data={PERSON} />
-      {/* Hero — FALLBACK : photo de réalisation (photo Nicolas Berg non fournie).
-          Audit photo §5 #4 (D-24) : terrasse-bois-plongee (4/10, page identité)
-          → interieure-beton-baies (architecture forte). Doublon INTER-page avec
-          le MediaSplit /piscines-bien-etre accepté (pages et formats distincts). */}
-      <Hero
-        imageSrc={photoSrc('piscine-interieure-beton-baies', '1280w')}
-        imageAlt="Piscine intérieure en béton brut ouverte sur le jardin, larges baies vitrées, lumière naturelle — espace bien-être Aqua System"
-        title="La maison"
-        subtitle="Plus de 30 ans d'expertise dans les plus belles propriétés de l'ouest parisien. Une conviction : le détail fait tout."
-      />
+      <JsonLd data={FAQ_JSONLD} />
 
-      {/* Notre histoire */}
+      {/* §1 — Hero split (pattern ex-notre-approche). H1 « La maison » + formule
+          signature « De la vision à la réalisation » en sous-titre (raccords-fusion
+          mot pour mot), visible dès le fold. Photo identité piscine intérieure. */}
+      <section className="bg-background">
+        <div className="mx-auto grid max-w-container items-stretch gap-0 lg:min-h-[70vh] lg:grid-cols-2">
+          <div className="flex flex-col justify-center px-4 py-16 md:px-8 md:py-24">
+            <h1 className="font-serif text-4xl leading-tight text-foreground md:text-5xl lg:text-6xl">
+              La maison
+            </h1>
+            <p className="mt-4 max-w-[45ch] text-lg leading-8 text-foreground-secondary md:text-xl">
+              De la vision à la réalisation : trente ans dans les plus belles
+              propriétés de l'ouest parisien.
+            </p>
+          </div>
+          <figure className="relative min-h-[260px] w-full overflow-hidden lg:min-h-full">
+            <Image
+              src={photoSrc('piscine-interieure-beton-baies', '1280w')}
+              alt="Piscine intérieure en béton brut ouverte sur le jardin, larges baies vitrées, lumière naturelle — espace bien-être Aqua System"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </figure>
+        </div>
+      </section>
+
+      {/* §2 — Notre histoire + portrait Nicolas Berg (conservé tel quel). */}
       <section className="bg-background">
         <div className="mx-auto max-w-3xl px-4 py-20 text-center md:px-8">
           <h2 className="font-serif text-3xl leading-tight text-foreground md:text-4xl">
@@ -102,8 +175,7 @@ export default function LaMaisonPage() {
             </p>
           </div>
           {/* Portrait Nicolas Berg — bloc sobre (portrait fourni fondateur,
-              droits OK, D-16). Remplace le fallback photo de réalisation D-11.
-              400px max : jamais en grand format. */}
+              droits OK, D-16). 400px max : jamais en grand format. */}
           <figure className="mt-10 flex flex-col items-center gap-4">
             <Image
               src="/images/equipe/nicolas-berg-400w.webp"
@@ -123,10 +195,58 @@ export default function LaMaisonPage() {
               </span>
             </figcaption>
           </figure>
+          {/* Raccord 1 (raccords-fusion.md, mot pour mot) — « qui » → « comment ». */}
+          <p className="mt-12 font-serif text-xl italic leading-9 text-foreground md:text-2xl">
+            Voici comment ce projet prend forme, de la première conversation à la
+            livraison.
+          </p>
         </div>
       </section>
 
-      {/* Les deux maisons */}
+      {/* §3 — Notre méthode (timeline 5 étapes, migrée de notre-approche). */}
+      <section className="bg-background">
+        <div className="mx-auto max-w-3xl px-4 pb-20 md:px-8 md:pb-24">
+          <ol className="relative">
+            {STEPS.map((step, i) => (
+              <li key={step.title} className="relative pb-12 pl-16 last:pb-0">
+                {/* Ligne de connexion verticale */}
+                {i < STEPS.length - 1 && (
+                  <span
+                    aria-hidden
+                    className="absolute left-[22px] top-14 h-[calc(100%-2rem)] w-0.5 bg-border"
+                  />
+                )}
+                <span
+                  aria-hidden
+                  className="absolute left-0 top-0 font-serif text-5xl leading-none text-foreground-accent-water lg:text-6xl"
+                >
+                  {i + 1}
+                </span>
+                <h3 className="font-serif text-2xl leading-tight text-foreground lg:text-3xl">
+                  {step.title}
+                </h3>
+                <div className="mt-3 space-y-3">
+                  {step.body.map((p, j) => (
+                    <p
+                      key={j}
+                      className="text-base leading-8 text-foreground-secondary"
+                    >
+                      {p}
+                    </p>
+                  ))}
+                </div>
+              </li>
+            ))}
+          </ol>
+          {/* Raccord 2 (raccords-fusion.md, mot pour mot) — méthode → entités. */}
+          <p className="mt-12 text-center font-serif text-xl italic leading-9 text-foreground md:text-2xl">
+            Derrière cette méthode : deux maisons, deux expertises, un seul
+            interlocuteur.
+          </p>
+        </div>
+      </section>
+
+      {/* §4 — Les deux maisons (conservé tel quel). */}
       <section className="bg-background-secondary">
         <div className="mx-auto grid max-w-container gap-12 px-4 py-20 md:grid-cols-2 md:px-8">
           <article>
@@ -245,9 +365,50 @@ export default function LaMaisonPage() {
         </div>
       </section>
 
-      {/* Valeurs */}
+      {/* §5 — Ancrage local (migré de notre-approche, après les deux maisons).
+          Bloc texte centré : 30 ans 78/92, nappes, PLU, communes, 2 adresses NAP.
+          + CTA mi-parcours conservé. */}
       <section className="bg-background">
+        <div className="mx-auto max-w-3xl px-4 py-20 text-center md:px-8">
+          <h2 className="font-serif text-3xl leading-tight text-foreground md:text-4xl">
+            Nous connaissons ces propriétés, et leurs contraintes.
+          </h2>
+          <div className="mx-auto mt-5 max-w-[60ch] text-left">
+            <p className="text-base leading-8 text-foreground-secondary">
+              30 ans de chantiers dans le 78 et le 92. Nous connaissons les nappes
+              phréatiques, les PLU locaux, les caractéristiques du sol
+              argilo-calcaire de l'ouest parisien. Ce savoir ne se consulte pas en
+              ligne, il s'acquiert en travaillant sur ces terrains depuis des
+              décennies.
+            </p>
+            <p className="mt-6 text-center font-serif text-xl italic text-foreground md:text-2xl">
+              {COMMUNES.join(', ')}
+            </p>
+            {/* Ajout factuel GEO (faq-geo-copy.md §B.2 — wording @copywriter exact) —
+                extractibilité géographique : zone complète + 2 adresses dans le
+                même passage. */}
+            <p className="mt-4 text-base leading-8 text-foreground-secondary">
+              Et l'ensemble des communes des Yvelines (78) et des Hauts-de-Seine
+              (92). Aqua System est établie à Freneuse (Yvelines, 78840), à moins
+              de 60 km de Paris. Les Terres Essentielles, partenaire paysagiste,
+              opère aux Alluets-le-Roi (78580).
+            </p>
+          </div>
+        </div>
+        {/* CTA mi-parcours (design-audit P1-APPROCHE-2) — évite 4 écrans sans CTA. */}
+        <div className="mx-auto max-w-container px-4 pb-20 text-center md:px-8">
+          <ButtonLink href="/contact" variant="ghost" size="md">
+            Parlez-nous de votre projet →
+          </ButtonLink>
+        </div>
+      </section>
+
+      {/* §6 — Nos valeurs (conservé). Raccord 3 : séparation visuelle (changement
+          de fond bg-background-secondary) + H2 lisible — pas de texte (raccords-
+          fusion R3, alternative séparation visuelle retenue). */}
+      <section className="bg-background-secondary">
         <div className="mx-auto max-w-container px-4 py-20 md:px-8">
+          <h2 className="sr-only">Nos valeurs</h2>
           <div className="grid gap-10 md:grid-cols-3">
             {VALEURS.map((v) => (
               <div key={v.titre}>
@@ -261,7 +422,7 @@ export default function LaMaisonPage() {
         </div>
       </section>
 
-      {/* Photo propriété représentative — pleine largeur */}
+      {/* §7 — Photo propriété représentative — pleine largeur (conservé). */}
       <section>
         <div className="relative h-[280px] w-full overflow-hidden md:h-[480px]">
           <Image
@@ -275,8 +436,19 @@ export default function LaMaisonPage() {
         </div>
       </section>
 
+      {/* §8 — FAQ (migrée de notre-approche). FAQPage JSON-LD ci-dessus.
+          Q3 « durée de chantier » omise (placeholder [À CONFIRMER fondateur]). */}
+      <FaqSection
+        heading="Questions fréquentes"
+        items={FAQ_NOTRE_APPROCHE.map((i) => ({ q: i.q, a: i.a }))}
+        tone="default"
+        extraTopSpacing
+      />
+
+      {/* §9 — SectionCTA. */}
       <SectionCTA
-        amorce="Un projet ? Décrivez-nous ce que vous imaginez."
+        amorce="Parlez-nous de votre projet. Nous vous dirons ce qu'on peut faire ensemble."
+        ctaLabel="Décrivez-nous votre projet →"
         trackPosition="footer"
       />
     </>

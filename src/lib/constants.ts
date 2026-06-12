@@ -58,9 +58,7 @@ export const NAV_LINKS = [
   { label: 'Réalisations', href: '/realisations' },
   { label: 'Piscines & Bien-être', href: '/piscines-bien-etre' },
   { label: 'Jardins & Paysage', href: '/jardins-paysage' },
-  { label: 'Notre approche', href: '/notre-approche' },
   { label: 'La maison', href: '/la-maison' },
-  { label: 'Architectes', href: '/prescripteurs' },
 ] as const;
 
 /** CTA de conversion unique de marque (ux-writing-guide §5). */
@@ -72,8 +70,8 @@ export const FOOTER_NAV_LINKS = [
   { label: 'Réalisations', href: '/realisations' },
   { label: 'Piscines & Bien-être', href: '/piscines-bien-etre' },
   { label: 'Jardins & Paysage', href: '/jardins-paysage' },
-  { label: 'Notre approche', href: '/notre-approche' },
-  { label: 'Espace prescripteurs', href: '/prescripteurs' },
+  { label: 'La maison', href: '/la-maison' },
+  { label: 'Espace prescripteurs & architectes', href: '/prescripteurs' },
   { label: 'Contact', href: '/contact' },
 ] as const;
 

@@ -3,6 +3,15 @@
 # Réf. : https://developers.cloudflare.com/pages/configuration/redirects/
 #
 # ─────────────────────────────────────────────────────────────────────────────
+# REDIRECTIONS INTERNES ACTIVES (refonte IA 2026-06-12, D-25)
+# ─────────────────────────────────────────────────────────────────────────────
+# Fusion /notre-approche → /la-maison (ia-refonte-2026-06-12.md §2).
+# En output:'export' il n'y a PAS de next.config redirects — c'est ici que la
+# 301 vit. Variante sans slash + avec slash (Cloudflare ne normalise pas).
+/notre-approche/           /la-maison/             301
+/notre-approche            /la-maison/             301
+#
+# ─────────────────────────────────────────────────────────────────────────────
 # REDIRECTIONS 301 aqua-system.fr → domaine ombrelle (seo-strategy.md §E.2)
 # ─────────────────────────────────────────────────────────────────────────────
 # STATUT : COMMENTÉES — À ACTIVER À LA BASCULE.

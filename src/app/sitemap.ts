@@ -28,7 +28,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: absoluteUrl('/piscines-bien-etre/'), lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.9 },
     { url: absoluteUrl('/jardins-paysage/'), lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.9 },
     { url: absoluteUrl('/realisations/'), lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.85 },
-    { url: absoluteUrl('/notre-approche/'), lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.8 },
     { url: absoluteUrl('/la-maison/'), lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.8 },
     { url: absoluteUrl('/prescripteurs/'), lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.75 },
     { url: absoluteUrl('/contact/'), lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.7 },

@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { test, expect } from '@playwright/test';
 import { stubUmami, getEvents, expectNoA11yViolations } from './helpers';
 

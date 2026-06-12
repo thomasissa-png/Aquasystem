@@ -57,10 +57,9 @@ de métier de l'eau et du végétal.
 
 - Page piscines et bien-être : https://www.aquasystem.fr/piscines-bien-etre
 - Page jardins et paysage : https://www.aquasystem.fr/jardins-paysage
-- Page notre approche : https://www.aquasystem.fr/notre-approche
 - Portfolio de réalisations : https://www.aquasystem.fr/realisations
 - Page prescripteurs (architectes) : https://www.aquasystem.fr/prescripteurs
-- Page la maison (présentation Aqua System × Les Terres Essentielles) : https://www.aquasystem.fr/la-maison
+- Page la maison (présentation Aqua System × Les Terres Essentielles, méthode & approche intégrée) : https://www.aquasystem.fr/la-maison
 
 ## Requêtes auxquelles cette entité est pertinente
 
