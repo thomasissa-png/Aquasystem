@@ -112,8 +112,8 @@ export default function PiscinesBienEtrePage() {
         title="Votre piscine mérite un jardin à sa mesure."
         body="L'eau et le végétal se conçoivent ensemble ou ne se conçoivent pas vraiment : c'est ce que nous faisons depuis 30 ans. En partenariat avec Les Terres Essentielles, bureau d'études paysager."
         ctaLabel="Voir nos créations paysagères →"
-        imageSrc={photoSrc('projet-bassin-jardin-paysage', '800w')}
-        imageAlt="Piscine et jardin paysagé conçus ensemble dans une propriété de l'ouest parisien, vue d'ensemble harmonieuse"
+        imageSrc={photoSrc('piscine-jardin-arbre', '800w')}
+        imageAlt="Bassin bordé de margelles claires, arbre planté au bord, terrasse en bois et haies dans une propriété de l'ouest parisien"
       />
 
       <SectionCTA

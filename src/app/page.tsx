@@ -84,8 +84,8 @@ export default function HomePage() {
             </p>
             <div className="relative aspect-square w-full overflow-hidden rounded-lg">
               <Image
-                src={photoSrc('piscine-terrasse-bois-plongee', '800w')}
-                alt="Vue aérienne d'une piscine rectangulaire et de sa grande terrasse en bois sur gazon, ouvrage Aqua System, propriété de l'ouest parisien"
+                src={photoSrc('piscine-interieure-pierre-poutres', '800w')}
+                alt="Couloir de nage intérieur sous charpente en bois et murs en pierre, perspective sur le bassin — ouvrage Aqua System"
                 fill
                 loading="lazy"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -116,15 +116,20 @@ export default function HomePage() {
             <p className="mb-2 text-xs font-medium uppercase tracking-[0.1em] text-foreground-accent-forest">
               en partenariat avec Les Terres Essentielles
             </p>
-            <div className="relative aspect-square w-full overflow-hidden rounded-lg">
-              <Image
-                src={photoSrc('jardin-bassin-maison-bois', '800w')}
-                alt="Terrasse et jardin d'une propriété contemporaine, bassin de nage, végétation généreuse en arrière-plan — réalisation Les Terres Essentielles"
-                fill
-                loading="lazy"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover object-[center_30%]"
-              />
+            {/* Audit photo §5 (D-24) : aucune photo du stock ne tient au format
+                carré pour représenter « Jardins & Paysage » sans tromperie
+                éditoriale (cf. A3). Option typographique premium — composition
+                sobre, fond vert-forêt, pas de visuel médiocre. */}
+            <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-[#1A2A1A] flex flex-col items-start justify-end p-8">
+              {/* Filet décoratif */}
+              <div className="absolute top-8 left-8 right-8 h-px bg-[#4a7a4a]/40" />
+              {/* Titre de l'univers */}
+              <p className="font-serif text-3xl leading-tight text-sand-100 md:text-4xl">
+                Jardins<br />&amp; Paysage
+              </p>
+              <p className="mt-2 text-xs font-medium uppercase tracking-[0.15em] text-[#7ab87a]/70">
+                Les Terres Essentielles
+              </p>
             </div>
             <h2 className="mt-6 font-serif text-3xl leading-tight text-foreground md:text-4xl">
               Jardins &amp; Paysage

@@ -99,7 +99,11 @@ const PREUVES = [
 ];
 
 const PORTFOLIO_SLUGS = [
-  'piscine-paroi-verre-travertin',
+  // Audit photo §5 #3 (D-24) : lève le doublon intra-page avec le hero split
+  // (paroi-verre-travertin). Signal prescripteur fort, non utilisé ailleurs sur
+  // cette page. (Cette photo arrive aussi sur le bloc Aqua System accueil :
+  // doublon INTER-page accepté, pages distinctes.)
+  'piscine-interieure-pierre-poutres',
   'piscine-couloir-demeure-ancienne',
   'projet-piscine-jardin-banquette',
 ];

@@ -165,20 +165,18 @@ function CreationBlock() {
 }
 
 function PepiniereBlock() {
-  // VRAIE photo : serre de la jardinerie Les Terres Essentielles (honnête —
-  // ambiance pépinière/point de vente, pas une création de jardin).
-  const photo = JARDINERIE_PHOTOS['jardinerie-serre-chrysanthemes'];
+  // Audit photo §5 #7 (D-24) : photo serre-chrysanthemes retirée (panneau
+  // « Mes saisons florales » nuisible, 4/10). Bloc rendu en texte éditorial,
+  // même pattern que BureauEtudesBlock/CreationBlock (D-22). La photo réelle
+  // pourra réintroduire un MediaSplit plus tard.
   return (
-    <MediaSplit
-      accent="forest"
+    <TextBlock
       eyebrow="Entretien & pépinière"
       title="Des végétaux sélectionnés pour durer"
       body={[
         "Un jardin planté pour aujourd'hui et pensé pour dans vingt ans. Les essences que nous recommandons ont fait leurs preuves dans les propriétés de l'ouest parisien, sur les sols et sous les conditions climatiques que nous connaissons.",
         'Entretien régulier, taille de forme, suivi saisonnier. Et une pépinière pour sourcer les végétaux qui correspondent à votre projet.',
       ]}
-      imageSrc={jardinerieSrc(photo.base, '1280w')}
-      imageAlt={photo.alt}
     />
   );
 }

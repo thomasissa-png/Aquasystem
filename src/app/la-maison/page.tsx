@@ -71,11 +71,12 @@ export default function LaMaisonPage() {
       <JsonLd data={BREADCRUMB} />
       <JsonLd data={PERSON} />
       {/* Hero — FALLBACK : photo de réalisation (photo Nicolas Berg non fournie).
-          Arbitrage anti-doublon (2026-06-12) : demeure-ancienne réservée au hero
-          accueil → terrasse-bois-plongee (8/10 au casting) ici. */}
+          Audit photo §5 #4 (D-24) : terrasse-bois-plongee (4/10, page identité)
+          → interieure-beton-baies (architecture forte). Doublon INTER-page avec
+          le MediaSplit /piscines-bien-etre accepté (pages et formats distincts). */}
       <Hero
-        imageSrc={photoSrc('piscine-terrasse-bois-plongee', '1280w')}
-        imageAlt="Vue plongeante sur une piscine et sa large terrasse en bois entourée de végétation — réalisation Aqua System"
+        imageSrc={photoSrc('piscine-interieure-beton-baies', '1280w')}
+        imageAlt="Piscine intérieure en béton brut ouverte sur le jardin, larges baies vitrées, lumière naturelle — espace bien-être Aqua System"
         title="La maison"
         subtitle="Plus de 30 ans d'expertise dans les plus belles propriétés de l'ouest parisien. Une conviction : le détail fait tout."
       />
