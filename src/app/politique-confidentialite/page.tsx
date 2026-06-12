@@ -35,7 +35,7 @@ export default function PolitiqueConfidentialitePage() {
           personnelles au sens du RGPD (Règlement UE 2016/679).
         </p>
         <p className="mt-2">
-          Contact : {CONTACT.email} — {CONTACT.phone}
+          Contact : {CONTACT.email}, {CONTACT.phone}
         </p>
       </Section>
 
@@ -115,8 +115,8 @@ export default function PolitiqueConfidentialitePage() {
           . Nous vous répondrons dans un délai d'un mois.
         </p>
         <p className="mt-2">
-          Vous pouvez introduire une réclamation auprès de la CNIL — 3 place de
-          Fontenoy, TSA 80715, 75334 Paris Cedex 07 — www.cnil.fr.
+          Vous pouvez introduire une réclamation auprès de la CNIL, 3 place de
+          Fontenoy, TSA 80715, 75334 Paris Cedex 07, www.cnil.fr.
         </p>
       </Section>
 
@@ -141,7 +141,7 @@ export default function PolitiqueConfidentialitePage() {
           {CONTACT.address.street}, {CONTACT.address.postalCode}{' '}
           {CONTACT.address.city}
         </p>
-        <p>Email : {CONTACT.email} — Téléphone : {CONTACT.phone}</p>
+        <p>Email : {CONTACT.email}. Téléphone : {CONTACT.phone}</p>
       </Section>
 
       <p className="mt-12 text-sm text-foreground-muted">

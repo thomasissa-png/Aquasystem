@@ -123,7 +123,7 @@ export default function JardinsPaysagePage() {
         destinationUnivers="piscines"
         destinationHref="/piscines-bien-etre"
         title="Un jardin pensé avec la piscine, depuis le même bureau d'études."
-        body="Notre maison Aqua System les conçoit ensemble — un seul interlocuteur, un seul bureau d'études, aucune interface à gérer entre un pisciniste et un paysagiste qui ne se parlent pas."
+        body="Notre maison Aqua System les conçoit ensemble : un seul interlocuteur, un seul bureau d'études, aucune interface à gérer entre un pisciniste et un paysagiste qui ne se parlent pas."
         ctaLabel="Découvrir nos piscines sur mesure →"
         imageSrc={photoSrc('jardin-bassin-maison-bois', '800w')}
         imageAlt="Jardin paysagé dense avec bassin de nage intégré à une terrasse en bois, harmonie eau et végétal d'une propriété 78/92"
@@ -160,7 +160,7 @@ function CreationBlock() {
       eyebrow="Création"
       title="La réalisation, du premier arbre à la dernière pierre"
       body={[
-        "Allées, massifs, pelouses, enrochements, terrasses végétalisées — chaque élément est conçu pour son rapport avec les autres et avec l'architecture de la maison. Chaque projet part du terrain : aucun plan ne ressemble au précédent, parce qu'aucun terrain ne se ressemble.",
+        "Allées, massifs, pelouses, enrochements, terrasses végétalisées : chaque élément est conçu pour son rapport avec les autres et avec l'architecture de la maison. Chaque projet part du terrain : aucun plan ne ressemble au précédent, parce qu'aucun terrain ne se ressemble.",
         'Nos végétaux sont sélectionnés ou issus de notre pépinière. Adaptés au sol argilo-calcaire de l\'ouest parisien.',
       ]}
       placeholder="Chantier de création d'un jardin : ouvriers posant des pavés naturels sur une allée, arbres fraîchement plantés, sol travaillé, après-midi ensoleillé."
@@ -178,7 +178,7 @@ function PepiniereBlock() {
       eyebrow="Entretien & pépinière"
       title="Des végétaux sélectionnés pour durer"
       body={[
-        "Un jardin planté pour aujourd'hui et pensé pour dans vingt ans. Les essences que nous recommandons ont fait leurs preuves dans les propriétés de l'ouest parisien — sur les sols et sous les conditions climatiques que nous connaissons.",
+        "Un jardin planté pour aujourd'hui et pensé pour dans vingt ans. Les essences que nous recommandons ont fait leurs preuves dans les propriétés de l'ouest parisien, sur les sols et sous les conditions climatiques que nous connaissons.",
         'Entretien régulier, taille de forme, suivi saisonnier. Et une pépinière pour sourcer les végétaux qui correspondent à votre projet.',
       ]}
       imageSrc={jardinerieSrc(photo.base, '1280w')}

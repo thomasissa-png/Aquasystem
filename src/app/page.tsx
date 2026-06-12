@@ -98,7 +98,7 @@ export default function HomePage() {
             <p className="mt-4 max-w-[45ch] text-base leading-8 text-foreground-secondary">
               Conception, construction et entretien de piscines sur mesure. Spas
               HotSpring, saunas, hammams. Chaque ouvrage conçu depuis les
-              contraintes réelles du terrain — pas depuis un catalogue.
+              contraintes réelles du terrain, pas depuis un catalogue.
             </p>
             <Link
               href="/piscines-bien-etre"
@@ -131,7 +131,7 @@ export default function HomePage() {
             </h2>
             <p className="mt-4 max-w-[45ch] text-base leading-8 text-foreground-secondary">
               Bureau d'études paysager, création de parcs et jardins sur mesure,
-              entretien. L'eau et le végétal conçus ensemble — au même bureau
+              entretien. L'eau et le végétal conçus ensemble, au même bureau
               d'études, avant le premier plan.
             </p>
             <Link
@@ -154,7 +154,7 @@ export default function HomePage() {
           <ProofBadges />
           {/* P2-GEO-03 : synthèse extractible (point d'entrée LLM sur l'accueil). */}
           <p className="mt-6 max-w-[70ch] text-sm leading-7 text-foreground-secondary">
-            Aqua System — certifié Socotec CSP/ESP-001, membre du réseau
+            Aqua System : certifié Socotec CSP/ESP-001, membre du réseau
             L'Esprit Piscine. Plus de 350 piscines entretenues dans les Yvelines
             et les Hauts-de-Seine depuis plus de 30 ans. Trophée d'Or FPP 2024.
             Award Bronze EUSA 2025.

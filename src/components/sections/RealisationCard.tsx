@@ -47,11 +47,6 @@ export function RealisationCard({ realisation, silent }: RealisationCardProps) {
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
           className="object-cover transition-transform duration-normal ease-out group-hover:scale-[1.03]"
         />
-        {draft && (
-          <span className="absolute bottom-2 left-2 rounded-full bg-background-secondary/95 px-3 py-1 text-xs font-medium text-foreground-muted shadow-sm">
-            En cours de documentation
-          </span>
-        )}
       </div>
       <div className="flex items-end justify-between gap-4 p-5">
         <div>
@@ -59,6 +54,14 @@ export function RealisationCard({ realisation, silent }: RealisationCardProps) {
             {realisation.cardType}
           </p>
           <p className="mt-1 text-base text-foreground">{realisation.zone}</p>
+          {/* P0-D1 (ux-audit) + retour fondateur 2026-06-12 : la mention draft
+              sort de l'image (illisible sur photo) → ligne texte discrète sous le
+              titre. L'info reste, l'image redevient propre. */}
+          {draft && (
+            <p className="mt-1 text-xs text-foreground-muted">
+              Fiche en cours de documentation
+            </p>
+          )}
         </div>
         <span className="inline-flex items-center gap-1 text-sm font-medium text-foreground-accent-water">
           Voir

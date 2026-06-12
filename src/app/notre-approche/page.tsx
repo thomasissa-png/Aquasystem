@@ -52,33 +52,33 @@ const STEPS = [
   {
     title: "L'écoute",
     body: [
-      "Nous commençons par comprendre ce que vous imaginez — l'espace, les usages, ce que vous souhaitez ressentir. Pas un formulaire à remplir. Une conversation.",
+      "Nous commençons par comprendre ce que vous imaginez : l'espace, les usages, ce que vous souhaitez ressentir. Pas un formulaire à remplir. Une conversation.",
       "À ce stade, il n'est pas nécessaire d'avoir un plan ou un budget précis. Votre vision est suffisante.",
     ],
   },
   {
     title: "Le bureau d'études",
     body: [
-      "Piscine et jardin conçus ensemble dès le premier plan — pas l'un après l'autre. Les deux maisons coordonnent à cette étape : les choix d'implantation, les matériaux, les lignes directrices de l'espace.",
+      "Piscine et jardin conçus ensemble dès le premier plan, pas l'un après l'autre. Les deux maisons coordonnent à cette étape : les choix d'implantation, les matériaux, les lignes directrices de l'espace.",
       "Vous n'avez pas à arbitrer entre deux prestataires qui ne se sont jamais parlé.",
     ],
   },
   {
     title: 'La réalisation',
     body: [
-      "Un seul interlocuteur sur le chantier. Nous gérons les corps de métier, les délais, les interfaces techniques. Ce qui se passe sur votre propriété est sous notre responsabilité — vous en êtes informé, vous n'avez pas à le piloter.",
+      "Un seul interlocuteur sur le chantier. Nous gérons les corps de métier, les délais, les interfaces techniques. Ce qui se passe sur votre propriété est sous notre responsabilité : vous en êtes informé, vous n'avez pas à le piloter.",
     ],
   },
   {
     title: 'La livraison',
     body: [
-      "Réception conjointe de la piscine et du jardin. Votre propriété n'est pas livrée en deux temps — avec six mois de chantier jardin après la piscine. Le projet s'achève quand l'espace est complet.",
+      "Réception conjointe de la piscine et du jardin. Votre propriété n'est pas livrée en deux temps, avec six mois de chantier jardin après la piscine. Le projet s'achève quand l'espace est complet.",
     ],
   },
   {
     title: 'Le suivi annuel',
     body: [
-      "Votre piscine est entretenue par ceux qui l'ont construite. L'équipe connaît votre équipement — les choix faits au moment du chantier, les spécificités de votre terrain, les réglages propres à votre bassin.",
+      "Votre piscine est entretenue par ceux qui l'ont construite. L'équipe connaît votre équipement : les choix faits au moment du chantier, les spécificités de votre terrain, les réglages propres à votre bassin.",
       "Vous n'avez pas à tout réexpliquer à chaque saison.",
     ],
   },
@@ -171,7 +171,7 @@ export default function NotreApprochePage() {
               30 ans de chantiers dans le 78 et le 92. Nous connaissons les nappes
               phréatiques, les PLU locaux, les caractéristiques du sol
               argilo-calcaire de l'ouest parisien. Ce savoir ne se consulte pas en
-              ligne — il s'acquiert en travaillant sur ces terrains depuis des
+              ligne, il s'acquiert en travaillant sur ces terrains depuis des
               décennies.
             </p>
             <p className="mt-6 font-serif text-xl italic text-foreground md:text-2xl">

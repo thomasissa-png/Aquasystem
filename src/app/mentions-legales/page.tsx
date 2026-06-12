@@ -48,9 +48,9 @@ export default function MentionsLegalesPage() {
         </p>
         <p>SIREN : {CONTACT.siren}</p>
         <p>
-          RCS : <ToConfirm>à confirmer — greffe d'immatriculation</ToConfirm>
+          RCS : <ToConfirm>à confirmer, greffe d'immatriculation</ToConfirm>
         </p>
-        <p>Code NAF/APE : 4399D — Autres travaux de construction spécialisés</p>
+        <p>Code NAF/APE : 4399D, Autres travaux de construction spécialisés</p>
         <p>
           Numéro de TVA intracommunautaire :{' '}
           <ToConfirm>à confirmer</ToConfirm>
@@ -99,7 +99,7 @@ export default function MentionsLegalesPage() {
           l'aménagement extérieur haut de gamme en Île-de-France :
         </p>
         <p className="mt-2">
-          <span className="font-medium text-foreground">AQUA SYSTEM</span> —
+          <span className="font-medium text-foreground">AQUA SYSTEM</span> :
           Conception, construction et entretien de piscines sur mesure, spas,
           saunas et hammams. Implantée dans les Yvelines depuis plus de 30 ans, au
           service des propriétés de l'ouest parisien.
@@ -108,19 +108,19 @@ export default function MentionsLegalesPage() {
           <span className="font-medium text-foreground">
             En partenariat : LES TERRES ESSENTIELLES
           </span>{' '}
-          — Jardinerie, bureau d'études paysager, création et entretien de parcs
+          : Jardinerie, bureau d'études paysager, création et entretien de parcs
           et jardins, pépinière. Implantée à Les Alluets-le-Roi (78580) depuis
           2015.
         </p>
       </Section>
 
-      <Section title="5. Garanties professionnelles — AQUA SYSTEM">
+      <Section title="5. Garanties professionnelles : AQUA SYSTEM">
         <p>
           SARL AQUA SYSTEM est titulaire d'une assurance de responsabilité
           décennale conformément à l'article L241-1 du Code des assurances.
         </p>
         <p className="mt-2">
-          Assureur : <ToConfirm>à confirmer</ToConfirm> — Numéro de police :{' '}
+          Assureur : <ToConfirm>à confirmer</ToConfirm>. Numéro de police :{' '}
           <ToConfirm>à confirmer</ToConfirm>
         </p>
         <p className="mt-2">

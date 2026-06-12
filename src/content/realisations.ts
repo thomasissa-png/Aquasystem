@@ -95,7 +95,7 @@ export const REALISATIONS: Realisation[] = [
     slug: 'piscine-debordement-foret',
     type: 'piscine_bien_etre',
     filters: ['piscine'],
-    title: 'Piscine à débordement en lisière de forêt — Yvelines',
+    title: 'Piscine à débordement en lisière de forêt, Yvelines',
     cardType: 'Piscine sur mesure',
     zone: 'Yvelines (78)',
     photos: [
@@ -114,7 +114,7 @@ export const REALISATIONS: Realisation[] = [
     slug: 'projet-piscine-jardin-banquette',
     type: 'projet_complet',
     filters: ['projet_complet', 'piscine', 'jardin_parc'],
-    title: 'Piscine et jardin intégrés autour d’une terrasse — Yvelines',
+    title: 'Piscine et jardin intégrés autour d’une terrasse, Yvelines',
     cardType: 'Projet complet eau + jardin',
     zone: 'Yvelines (78)',
     photos: [
@@ -133,7 +133,7 @@ export const REALISATIONS: Realisation[] = [
     slug: 'piscine-couloir-demeure-ancienne',
     type: 'projet_complet',
     filters: ['projet_complet', 'piscine', 'jardin_parc'],
-    title: 'Bassin miroir devant une demeure de caractère — Yvelines',
+    title: 'Bassin miroir devant une demeure de caractère, Yvelines',
     cardType: 'Projet complet eau + jardin',
     zone: 'Yvelines (78)',
     photos: [
@@ -152,7 +152,7 @@ export const REALISATIONS: Realisation[] = [
     slug: 'piscine-paroi-verre-travertin',
     type: 'piscine_bien_etre',
     filters: ['piscine'],
-    title: 'Piscine à paroi vitrée et margelles en travertin — Yvelines',
+    title: 'Piscine à paroi vitrée et margelles en travertin, Yvelines',
     cardType: 'Piscine sur mesure',
     zone: 'Yvelines (78)',
     photos: [
@@ -171,7 +171,7 @@ export const REALISATIONS: Realisation[] = [
     slug: 'piscine-paroi-verre-pierre',
     type: 'piscine_bien_etre',
     filters: ['piscine'],
-    title: 'Piscine à paroi vitrée en parement de pierre — Hauts-de-Seine',
+    title: 'Piscine à paroi vitrée en parement de pierre, Hauts-de-Seine',
     cardType: 'Piscine sur mesure',
     zone: 'Hauts-de-Seine (92)',
     photos: [
@@ -190,7 +190,7 @@ export const REALISATIONS: Realisation[] = [
     slug: 'piscine-jardin-arbre',
     type: 'projet_complet',
     filters: ['projet_complet', 'piscine', 'jardin_parc'],
-    title: 'Piscine intégrée dans un jardin arboré — Yvelines',
+    title: 'Piscine intégrée dans un jardin arboré, Yvelines',
     cardType: 'Projet complet eau + jardin',
     zone: 'Yvelines (78)',
     photos: [
@@ -209,7 +209,7 @@ export const REALISATIONS: Realisation[] = [
     slug: 'piscine-terrasse-bois-plongee',
     type: 'piscine_bien_etre',
     filters: ['piscine'],
-    title: 'Piscine et large terrasse en bois — Hauts-de-Seine',
+    title: 'Piscine et large terrasse en bois, Hauts-de-Seine',
     cardType: 'Piscine sur mesure',
     zone: 'Hauts-de-Seine (92)',
     photos: [
@@ -228,7 +228,7 @@ export const REALISATIONS: Realisation[] = [
     slug: 'piscine-enterree-maison-brique',
     type: 'piscine_bien_etre',
     filters: ['piscine'],
-    title: 'Piscine enterrée au pied d’une maison en brique — Hauts-de-Seine',
+    title: 'Piscine enterrée au pied d’une maison en brique, Hauts-de-Seine',
     cardType: 'Piscine sur mesure',
     zone: 'Hauts-de-Seine (92)',
     photos: [
@@ -247,7 +247,7 @@ export const REALISATIONS: Realisation[] = [
     slug: 'projet-bassin-jardin-paysage',
     type: 'projet_complet',
     filters: ['projet_complet', 'piscine', 'jardin_parc'],
-    title: 'Bassin compact dans un jardin paysagé en terrasses — Hauts-de-Seine',
+    title: 'Bassin compact dans un jardin paysagé en terrasses, Hauts-de-Seine',
     cardType: 'Projet complet eau + jardin',
     zone: 'Hauts-de-Seine (92)',
     photos: [
@@ -266,7 +266,7 @@ export const REALISATIONS: Realisation[] = [
     slug: 'projet-pool-house-toit-vegetalise',
     type: 'projet_complet',
     filters: ['projet_complet', 'jardin_parc'],
-    title: 'Pool-house à toiture végétalisée et jardin structuré — Yvelines',
+    title: 'Pool-house à toiture végétalisée et jardin structuré, Yvelines',
     cardType: 'Projet complet eau + jardin',
     zone: 'Yvelines (78)',
     photos: [
@@ -285,7 +285,7 @@ export const REALISATIONS: Realisation[] = [
     slug: 'piscine-interieure-beton-baies',
     type: 'piscine_bien_etre',
     filters: ['piscine', 'spa_sauna'],
-    title: 'Piscine intérieure en béton brut, ouverte sur le jardin — Yvelines',
+    title: 'Piscine intérieure en béton brut, ouverte sur le jardin, Yvelines',
     cardType: 'Espace bien-être',
     zone: 'Yvelines (78)',
     photos: [
@@ -304,7 +304,7 @@ export const REALISATIONS: Realisation[] = [
     slug: 'piscine-interieure-pierre-poutres',
     type: 'piscine_bien_etre',
     filters: ['piscine', 'spa_sauna'],
-    title: 'Couloir de nage intérieur sous charpente bois — Yvelines',
+    title: 'Couloir de nage intérieur sous charpente bois, Yvelines',
     cardType: 'Espace bien-être',
     zone: 'Yvelines (78)',
     photos: [
@@ -323,7 +323,7 @@ export const REALISATIONS: Realisation[] = [
     slug: 'piscine-interieure-veranda-soir',
     type: 'piscine_bien_etre',
     filters: ['piscine', 'spa_sauna'],
-    title: 'Piscine intérieure sous véranda, ambiance de soirée — Hauts-de-Seine',
+    title: 'Piscine intérieure sous véranda, ambiance de soirée, Hauts-de-Seine',
     cardType: 'Espace bien-être',
     zone: 'Hauts-de-Seine (92)',
     photos: [
@@ -342,7 +342,7 @@ export const REALISATIONS: Realisation[] = [
     slug: 'jardin-bassin-maison-bois',
     type: 'jardin_paysage',
     filters: ['jardin_parc', 'projet_complet', 'piscine'],
-    title: 'Jardin paysagé et bassin de nage devant une maison bois — Hauts-de-Seine',
+    title: 'Jardin paysagé et bassin de nage devant une maison bois, Hauts-de-Seine',
     cardType: 'Jardin & Parc',
     zone: 'Hauts-de-Seine (92)',
     photos: [
@@ -387,7 +387,7 @@ export function getFeatured(): Realisation[] {
  * reste trop long, on retombe sur le type de card (toujours court).
  */
 export function shortTitle(r: Realisation): string {
-  const core = r.title.replace(/\s*[—-]\s*(Yvelines|Hauts-de-Seine).*$/u, '').trim();
+  const core = r.title.replace(/\s*,\s*(Yvelines|Hauts-de-Seine).*$/u, '').trim();
   // « — Réalisations » = 15 car. → tronc max 44 pour rester STRICTEMENT < 60.
   return core.length <= 44 ? core : r.cardType;
 }

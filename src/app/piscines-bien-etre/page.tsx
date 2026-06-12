@@ -59,7 +59,7 @@ export default function PiscinesBienEtrePage() {
         accent="water"
         title="De la feuille blanche à l'inauguration"
         body={[
-          "Chaque piscine commence par l'écoute : la pente du terrain, l'orientation de la maison, les usages de la famille. Notre bureau d'études traduit cette vision en un plan — avant de poser la première pierre.",
+          "Chaque piscine commence par l'écoute : la pente du terrain, l'orientation de la maison, les usages de la famille. Notre bureau d'études traduit cette vision en un plan, avant de poser la première pierre.",
           "De la conception à la livraison, un seul interlocuteur porte votre projet. Vous n'avez pas à gérer les interfaces entre les corps de métier.",
         ]}
         imageSrc={photoSrc('piscine-debordement-foret', '800w')}
@@ -75,7 +75,7 @@ export default function PiscinesBienEtrePage() {
         accent="water"
         title="L'équipe qui connaît votre piscine de l'intérieur"
         body={[
-          "La piscine que vous nous avez demandé de construire, nous la connaissons. L'équipement, les spécificités du terrain, les choix techniques faits au moment du chantier. Quand vous appelez, vous n'expliquez pas — vous continuez.",
+          "La piscine que vous nous avez demandé de construire, nous la connaissons. L'équipement, les spécificités du terrain, les choix techniques faits au moment du chantier. Quand vous appelez, vous n'expliquez pas, vous continuez.",
           'Plus de 350 piscines entretenues dans le 78 et le 92. Robots Dolphin, traitement d\'eau, SAV équipements.',
         ]}
         imageSrc={photoSrc('piscine-interieure-beton-baies', '800w')}
@@ -92,8 +92,8 @@ export default function PiscinesBienEtrePage() {
               Visible (pas sr-only). */}
           <p className="mt-8 max-w-[70ch] text-base leading-8 text-foreground-secondary">
             Aqua System est certifié Socotec CSP/ESP-001 « Professionnels de la
-            piscine privée à usage familial » et membre du réseau L'Esprit Piscine
-            — réseau national de piscinistes professionnels. L'entreprise assure
+            piscine privée à usage familial » et membre du réseau L'Esprit Piscine,
+            réseau national de piscinistes professionnels. L'entreprise assure
             l'entretien de plus de 350 piscines dans les Yvelines et les
             Hauts-de-Seine, depuis plus de 30 ans.
           </p>
@@ -150,13 +150,13 @@ function SpaBlock() {
             </h2>
             <div className="mt-4 space-y-4">
               <p className="max-w-[52ch] text-base leading-8 text-foreground-secondary">
-                Spa extérieur HotSpring, sauna finlandais, hammam — intégrés à
+                Spa extérieur HotSpring, sauna finlandais, hammam, intégrés à
                 l'architecture de votre propriété, pas posés en périphérie. Chaque
                 installation est conçue avec le reste de l'espace : la terrasse,
                 le jardin, les lignes de la maison.
               </p>
               <p className="max-w-[52ch] text-base leading-8 text-foreground-secondary">
-                Partenaire HotSpring pour les spas — une gamme pensée pour le
+                Partenaire HotSpring pour les spas : une gamme pensée pour le
                 résidentiel haut de gamme.
               </p>
             </div>

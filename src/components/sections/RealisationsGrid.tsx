@@ -111,7 +111,7 @@ export function RealisationsGrid() {
             Aucune réalisation ne correspond à cette sélection pour le moment.
           </p>
           <p className="max-w-md text-base text-foreground-secondary">
-            Notre portfolio s'enrichit régulièrement — revenez consulter
+            Notre portfolio s'enrichit régulièrement : revenez consulter
             prochainement, ou découvrez l'ensemble de nos réalisations.
           </p>
           <button

@@ -96,7 +96,7 @@ export default function LaMaisonPage() {
             <p className="text-lg leading-8 text-foreground-secondary">
               Aujourd'hui, nous sommes une équipe de 8. Nous concevons,
               construisons et entretenons des piscines sur mesure. En partenariat
-              avec Les Terres Essentielles, nous portons aussi le végétal — pour
+              avec Les Terres Essentielles, nous portons aussi le végétal, pour
               que l'eau et le jardin ne soient jamais pensés séparément.
             </p>
           </div>

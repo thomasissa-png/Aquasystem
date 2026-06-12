@@ -27,7 +27,7 @@ export const FAQ_NOTRE_APPROCHE = [
   },
   {
     q: 'Comment se déroule la première prise de contact ?',
-    a: "Vous nous décrivez votre projet en quelques mots — sans plan ni budget précis. Nous vous recontactons pour fixer un rendez-vous sur votre propriété. Il n'y a rien à préparer au préalable.",
+    a: "Vous nous décrivez votre projet en quelques mots, sans plan ni budget précis. Nous vous recontactons pour fixer un rendez-vous sur votre propriété. Il n'y a rien à préparer au préalable.",
   },
 ] as const;
 
@@ -42,11 +42,11 @@ export const FAQ_PRESCRIPTEURS = [
   },
   {
     q: 'Comment gérez-vous la relation avec le propriétaire pendant le chantier ?',
-    a: "Vous nous présentez à votre client si vous le souhaitez — ou pas. Nous nous adaptons au protocole que vous définissez. Aucune décision modifiant le plan ou le budget n'est prise sans votre accord préalable.",
+    a: "Vous nous présentez à votre client si vous le souhaitez, ou pas. Nous nous adaptons au protocole que vous définissez. Aucune décision modifiant le plan ou le budget n'est prise sans votre accord préalable.",
   },
   {
     q: 'Intervenez-vous sur des projets intégrant jardin et piscine simultanément ?',
-    a: "Oui. En partenariat avec Les Terres Essentielles, bureau d'études paysager établi aux Alluets-le-Roi (Yvelines, 78), nous assurons la co-conception eau et végétal depuis un interlocuteur unique — piscine et jardin pensés ensemble dès la phase de plan, dans les Yvelines et les Hauts-de-Seine.",
+    a: "Oui. En partenariat avec Les Terres Essentielles, bureau d'études paysager établi aux Alluets-le-Roi (Yvelines, 78), nous assurons la co-conception eau et végétal depuis un interlocuteur unique : piscine et jardin pensés ensemble dès la phase de plan, dans les Yvelines et les Hauts-de-Seine.",
   },
 ] as const;
 

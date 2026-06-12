@@ -245,7 +245,7 @@ export function ContactForm() {
         >
           <p className="flex items-start gap-2 font-medium">
             <AlertCircle aria-hidden className="mt-0.5 h-4 w-4 shrink-0" />
-            Votre message n&apos;a pas pu être envoyé — une erreur technique est
+            Votre message n&apos;a pas pu être envoyé : une erreur technique est
             survenue de notre côté.
           </p>
           <p className="mt-2">
@@ -391,7 +391,7 @@ export function ContactForm() {
         id="description"
         name="description"
         label="Décrivez-nous votre projet"
-        placeholder="Ce que vous souhaitez créer, rénover ou transformer — en quelques mots ou en détail, comme vous préférez."
+        placeholder="Ce que vous souhaitez créer, rénover ou transformer, en quelques mots ou en détail, comme vous préférez."
         required
         rows={4}
         maxLength={2000}

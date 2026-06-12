@@ -41,7 +41,7 @@ export function Footer() {
           <div>
             <p className="font-serif text-xl">{SITE_NAME}</p>
             <p className="mt-3 text-sm leading-6 text-sand-300">
-              {SITE_NAME} — eau, jardin, propriété.
+              {SITE_NAME} : eau, jardin, propriété.
               <br />
               En partenariat avec {PARTNER_NAME}.
             </p>
@@ -137,7 +137,7 @@ export function Footer() {
         {/* Barre légale */}
         <div className="mt-12 flex flex-col gap-4 border-t border-sand-800 pt-6 text-xs text-foreground-footer-legal md:flex-row md:items-center md:justify-between">
           <p>
-            © {year} {CONTACT.editor} — SIREN {CONTACT.siren}. Tous droits
+            © {year} {CONTACT.editor}, SIREN {CONTACT.siren}. Tous droits
             réservés.
           </p>
           <ul className="flex flex-wrap gap-x-6 gap-y-1">

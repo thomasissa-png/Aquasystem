@@ -57,14 +57,14 @@ const VALEURS = [
   {
     titre: 'Un exécutant qui lit les plans.',
     body: [
-      "Bureau d'études intégré, 30 ans de chantiers dans le 78 et le 92. Nous travaillons sur votre cahier des charges ou co-concevons en amont — avant le premier plan de masse, si vous le souhaitez.",
+      "Bureau d'études intégré, 30 ans de chantiers dans le 78 et le 92. Nous travaillons sur votre cahier des charges ou co-concevons en amont, avant le premier plan de masse, si vous le souhaitez.",
       "Certification Socotec CSP/ESP-001. Membre du réseau L'Esprit Piscine.",
     ],
   },
   {
     titre: 'Votre relation avec votre client reste la vôtre.',
     body: [
-      "Nous ne parlons pas budget directement à votre client. Toutes les décisions de chantier vous passent par vous — c'est notre protocole, pas une exception accordée sur demande.",
+      "Nous ne parlons pas budget directement à votre client. Toutes les décisions de chantier vous passent par vous : c'est notre protocole, pas une exception accordée sur demande.",
       "Interlocuteur technique dédié par chantier. Points d'avancement à la cadence que vous choisissez. Si un problème d'exécution se pose, vous êtes le premier appelé.",
     ],
   },
@@ -94,7 +94,7 @@ const PREUVES = [
   },
   {
     titre: "Bureau d'études paysager intégré",
-    desc: 'En partenariat avec Les Terres Essentielles — capacité de projet global eau + végétal depuis un seul bureau d’études.',
+    desc: 'En partenariat avec Les Terres Essentielles : capacité de projet global eau + végétal depuis un seul bureau d’études.',
   },
 ];
 
@@ -124,7 +124,7 @@ export default function PrescripteursPage() {
               honneur à votre prescription.
             </h1>
             <p className="mt-4 max-w-[48ch] text-lg leading-8 text-foreground-secondary">
-              Pour les architectes, paysagistes et décorateurs d'intérieur — un
+              Pour les architectes, paysagistes et décorateurs d'intérieur : un
               exécutant qui travaille sur votre plan et respecte votre relation
               client.
             </p>
@@ -231,7 +231,7 @@ export default function PrescripteursPage() {
       <section className="bg-background-secondary">
         <div className="mx-auto max-w-container px-4 py-20 md:px-8">
           <h2 className="font-serif text-3xl leading-tight text-foreground md:text-4xl">
-            Nos réalisations — références vérifiables
+            Nos réalisations : références vérifiables
           </h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {portfolio.map((r) => (

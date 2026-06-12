@@ -18,7 +18,7 @@ export interface ProofItem {
 export const DEFAULT_PROOFS: ProofItem[] = [
   { figure: '30+', label: "ans d'expertise" },
   { figure: '350+', label: 'piscines entretenues en 78/92' },
-  { figure: 'Socotec', label: 'CSP/ESP-001 — certification technique' },
+  { figure: 'Socotec', label: 'CSP/ESP-001, certification technique' },
   { figure: "L'Esprit Piscine", label: 'réseau professionnel piscinistes' },
 ];
 

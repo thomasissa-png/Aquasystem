@@ -42,7 +42,7 @@ export function generateMetadata({
   // `absolute` (pas le template marque). Le titre long factuel reste le H1.
   return {
     title: { absolute: `${shortTitle(r)} — Réalisations` },
-    description: `${r.cardType} — ${r.zone}. Une réalisation Aqua System dans l'ouest parisien. Parlez-nous de votre projet.`,
+    description: `${r.cardType}, ${r.zone}. Une réalisation Aqua System dans l'ouest parisien. Parlez-nous de votre projet.`,
     // Fiches en draft (sans donnée éditoriale) = thin content → noindex tant que
     // non documentées (arbitrage orchestrateur). Ré-indexation automatique dès
     // que les champs éditoriaux sont remplis (isDraft repasse false).
@@ -121,7 +121,7 @@ export default function RealisationFiche({
                 />
               </div>
               <figcaption className="mt-3 text-sm text-foreground-muted">
-                Réalisation Aqua System, {r.zone} — photo publiée avec
+                Réalisation Aqua System, {r.zone}. Photo publiée avec
                 l'autorisation du propriétaire.
               </figcaption>
             </figure>
@@ -204,7 +204,7 @@ export default function RealisationFiche({
           destinationUnivers="jardins"
           destinationHref="/jardins-paysage"
           title="Votre piscine mérite un jardin à sa mesure."
-          body="L'eau et le végétal se conçoivent ensemble — en partenariat avec Les Terres Essentielles, bureau d'études paysager."
+          body="L'eau et le végétal se conçoivent ensemble, en partenariat avec Les Terres Essentielles, bureau d'études paysager."
           ctaLabel="Voir nos créations paysagères →"
           imageSrc={photoSrc('projet-bassin-jardin-paysage', '800w')}
           imageAlt="Piscine et jardin paysagé conçus ensemble dans une propriété de l'ouest parisien"
@@ -230,8 +230,8 @@ function FicheDraftNotice() {
         Fiche en cours de documentation
       </p>
       <p className="mt-2 text-sm leading-6 text-foreground-secondary">
-        Le récit complet de cette réalisation — l'intention, le parti pris et les
-        choix d'exécution — sera bientôt publié. Les photographies, elles, sont
+        Le récit complet de cette réalisation, l'intention, le parti pris et les
+        choix d'exécution, sera bientôt publié. Les photographies, elles, sont
         bien celles de ce chantier.
       </p>
     </div>

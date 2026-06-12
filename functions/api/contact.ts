@@ -298,7 +298,7 @@ function validate(data: Record<string, unknown>): ValidationResult {
     fields.email = 'Nous avons besoin de votre email pour vous répondre.';
   } else if (!EMAIL_REGEX.test(email)) {
     fields.email =
-      "L'adresse email semble incorrecte — vérifiez le format (exemple : prenom@domaine.fr).";
+      "L'adresse email semble incorrecte. Vérifiez le format : prenom@domaine.fr.";
   }
 
   // Téléphone optionnel.
@@ -308,7 +308,7 @@ function validate(data: Record<string, unknown>): ValidationResult {
     const cleaned = telRaw.replace(/[\s.\-]/g, '');
     if (!PHONE_REGEX.test(cleaned)) {
       fields.telephone =
-        'Ce numéro ne semble pas valide — vérifiez ou laissez ce champ vide si vous préférez.';
+        'Ce numéro ne semble pas valide. Vérifiez-le ou laissez ce champ vide si vous préférez.';
     } else {
       telephone = cleaned;
     }
@@ -351,7 +351,7 @@ function validate(data: Record<string, unknown>): ValidationResult {
   const description = asString(data.description).trim();
   if (description.length < DESCRIPTION_MIN) {
     fields.description =
-      'Décrivez votre projet en quelques mots — cela guidera notre premier échange.';
+      'Décrivez votre projet en quelques mots : cela guidera notre premier échange.';
   } else if (description.length > DESCRIPTION_MAX) {
     fields.description = 'Description trop longue (2000 caractères maximum).';
   }
