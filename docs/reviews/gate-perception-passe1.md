@@ -1,6 +1,17 @@
-# Gate de perception — Aquasystem (13 pages) — Passe 1 → Passe 4 — 2026-06-12
+# Gate de perception — Aquasystem (13 pages) — Passe 1 → Passe 5 — 2026-06-12
 
-## Verdict global ACTUEL (Passe 4) : PRÉSENTABLE AU FONDATEUR — **OUI**
+## Verdict global ACTUEL (Passe 5) : PRÉSENTABLE AU FONDATEUR — **OUI**
+> Passe 5 (2026-06-12, œil dur, recalibrages cumulés) : changements post-passe-4 jugés en viewport
+> réel. /piscines-bien-etre enrichie (3 nouvelles sections : grille « Ce que nous savons construire »
+> 6 cards 4:3 homogènes premium, « Construit pour durer », « La matière qui reste ») — page devenue
+> longue mais **digeste** (alternance MediaSplit / placeholder / grille / texte centré / preuves).
+> /jardins-paysage : bloc « Pierre, végétal, sol » inséré = **fluide**, même registre éditorial.
+> /prescripteurs (D-29, 1re passe) **au standard** : hero pierre-mur titre noir lisible, preuves filets,
+> encart qualification éditorial, cards dont la nocturne premium. Fold accueil mobile sans régression.
+> **Zéro P0.** Un seul P1 éditorial assumé (resserrage piscines, arbitrage de rythme — pas un défaut
+> d'exécution). Détail : section « PASSE 5 ». Captures : `tests/screenshots/perception/p5-*.png`.
+
+## Verdict Passe 4 : PRÉSENTABLE AU FONDATEUR — **OUI**
 > Passe 4 (2026-06-12, recalibrage « juge plus dur ») : 8 changements post-passe-3 jugés en
 > viewport réel. Le fondateur avait rejeté le drawer bottom-sheet et les cartouches de preuves
 > pleins ; les deux sont refondus (drawer latéral droite focus-container, preuves en filets
