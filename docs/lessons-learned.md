@@ -10,6 +10,8 @@
 | 3 | 2026-06-11 | P2 | Sources photos publiques plafonnent à 1280px et aqua-system.fr bloque le scraping (403) — la qualité photo est le risque n°1 d'un site premium | Phase 2 tranche B | @fullstack | Demander les fichiers sources HD au client dès le checkpoint Phase 0 (pas en Phase 2) | Projets futurs | docs/project-synthesis.md (bloquants fondateur) | Mitigée (WebP 1280 acceptable) | propagé (listé bloquants fondateur) |
 | 4 | 2026-06-11 | P2 | L'audit GEO a déterré des preuves majeures inconnues du brief (Trophée Or FPP 2024, EUSA 2025) — l'audit de visibilité externe enrichit le positionnement, pas seulement le référencement | Phase 3 | @geo | Lancer l'audit de visibilité externe (presse/annuaires) dès la Phase 0 stratégie quand la marque a un historique | Projets futurs avec marque existante | — (learning de méthode) | n/a | propagé (consigné ici, TTL 5 sessions) |
 
+| 5 | 2026-06-12 | P1 | Les baselines fullPage écrasent le rendu : la composition above-the-fold mobile (hero accueil illisible) a traversé 3 itérations d'audit sans être vue — c'est le FONDATEUR qui l'a attrapée | Boucle d'audit post-launch | fondateur | Toute boucle visuelle DOIT inclure des captures VIEWPORT du premier écran (fold) par device, relues en taille réelle — le fullPage ne suffit jamais pour juger une composition | @fullstack, @design, @qa | scripts/screenshots.mjs (captures -fold ajoutées) ; baselines tests/screenshots/*-fold.png | En cours (D-20) | propagé (script + baselines fold) |
+
 ## Learnings cross-projets hérités (pré-propagés à l'installation, 2026-06-11)
 
 Déjà intégrés dans les prompts de lancement et project-context.md — pas de propagation en attente :
