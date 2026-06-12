@@ -35,6 +35,7 @@ const PAGES = [
   ['realisations', '/realisations/'],
   ['realisation-fiche', '/realisations/piscine-debordement-foret/'],
   ['prescripteurs', '/prescripteurs/'],
+  ['contact', '/contact/'],
   ['mentions-legales', '/mentions-legales/'],
   ['politique-confidentialite', '/politique-confidentialite/'],
   ['404', '/cette-page-nexiste-pas/'],

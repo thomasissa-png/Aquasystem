@@ -59,9 +59,11 @@ export default function HomePage() {
           md: 'md:object-[center_30%]',
           lg: 'lg:object-[center_35%]',
         }}
-        // Casting-visuels §3b : overlay allégé (0.75 max) — photo lumineuse,
-        // la demeure et le ciel doivent rester lisibles.
-        overlayClassName="bg-gradient-to-t from-[rgba(26,21,16,0.75)] via-[rgba(26,21,16,0.30)] to-transparent"
+        // Casting-visuels §3b + finding mobile 2026-06-12 : overlay renforcé au
+        // mid-stop sur mobile (le H1 ancré bas repose sur la façade claire). Sur
+        // md+ on garde l'overlay allégé (0.75 max) — la demeure et le ciel
+        // doivent rester lisibles sur grand écran.
+        overlayClassName="bg-gradient-to-t from-[rgba(26,21,16,0.82)] via-[rgba(26,21,16,0.55)] via-40% to-transparent md:from-[rgba(26,21,16,0.75)] md:via-[rgba(26,21,16,0.30)] md:via-30%"
         title="L'extérieur à la hauteur de votre propriété."
         subtitle="De la vision à la réalisation — eau, jardin, propriété — un seul interlocuteur, depuis 30 ans dans l'ouest parisien."
         cta={
