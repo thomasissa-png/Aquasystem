@@ -161,15 +161,23 @@ function BureauEtudesBlock() {
 }
 
 function CreationBlock() {
+  // Slot « Création » : photo réelle d'une création plantée LTE (massif
+  // exotique, escalier pierre, paillage minéral — photo fondateur 2026-06-12,
+  // droits accordés). Remplace le TextBlock D-22 (doctrine conversion : une
+  // vraie création convertit mieux qu'un bloc texte). Alt factuel : massif
+  // planté visible, sans revendiquer un chantier complet ni de commune.
   return (
-    <TextBlock
+    <MediaSplit
       tone="alt"
+      accent="forest"
       eyebrow="Création"
       title="La réalisation, du premier arbre à la dernière pierre"
       body={[
         "Allées, massifs, pelouses, enrochements, terrasses végétalisées : chaque élément est conçu pour son rapport avec les autres et avec l'architecture de la maison. Chaque projet part du terrain : aucun plan ne ressemble au précédent, parce qu'aucun terrain ne se ressemble.",
         'Nos végétaux sont sélectionnés ou issus de notre pépinière. Adaptés au sol argilo-calcaire de l\'ouest parisien.',
       ]}
+      imageSrc={photoSrc('massif-exotique-escalier', '1280w')}
+      imageAlt="Massif exotique planté par Les Terres Essentielles : palmiers, yucca et plantes graphiques sur paillage minéral, escalier en pierre montant vers un mur ancien, ouest parisien"
     />
   );
 }

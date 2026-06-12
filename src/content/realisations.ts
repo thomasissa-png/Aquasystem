@@ -598,6 +598,28 @@ export const REALISATIONS: Realisation[] = [
     reponse: null,
     execution: null,
   },
+  // ── Création paysagère LTE (photo fondateur, 2026-06-12 — droits accordés) ───
+  {
+    slug: 'jardin-terrasses-plongee',
+    type: 'projet_complet',
+    filters: ['projet_complet', 'jardin_parc', 'piscine'],
+    title: 'Jardin en terrasses étagées et couloir de nage',
+    cardType: 'Projet complet eau + jardin',
+    zone: 'Ouest parisien', // zone précise [À CONFIRMER Nicolas Berg]
+    photos: [
+      {
+        base: 'jardin-terrasses-plongee',
+        alt: "Vue plongeante sur un jardin en terrasses étagées : terrasse en bois exotique et transats au bord d'un couloir de nage à l'eau sombre en haut, volées d'escaliers en pierre claire et massifs de graminées au centre, sol pavé et plantes graphiques en bas — création paysagère Les Terres Essentielles, ouest parisien",
+        credit: 'Les Terres Essentielles',
+      },
+    ],
+    visualDescription:
+      "Vu de haut, le terrain se lit en plusieurs niveaux reliés par des volées d'escaliers en pierre claire : la terrasse en bois exotique et son couloir de nage à l'eau sombre occupent le palier haut, les paliers intermédiaires sont plantés de graminées et de vivaces, le sol pavé ferme le plan bas. Un jardin en pente comme celui-ci impose de tenir chaque niveau par un mur de soutènement et de caler les marches sur la cote finie de chaque palier, avant la plantation — l'ordre dans lequel les terrasses sont posées conditionne tout le reste. Si votre terrain présente un dénivelé marqué, l'étagement n'est pas une contrainte à effacer mais l'écriture même du jardin.",
+    prestations: null,
+    intention: null,
+    reponse: null,
+    execution: null,
+  },
   {
     slug: 'bien-etre-eclairage-ambiance',
     type: 'piscine_bien_etre',

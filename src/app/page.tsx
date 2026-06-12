@@ -89,12 +89,12 @@ export default function HomePage() {
             </p>
             <div className="relative aspect-square w-full overflow-hidden rounded-lg">
               <Image
-                src={photoSrc('piscine-interieure-pierre-poutres', '800w')}
-                alt="Couloir de nage intérieur sous charpente en bois et murs en pierre, perspective sur le bassin — ouvrage Aqua System"
+                src={'/images/realisations/piscine-interieure-beton-puits-lumiere-800w.webp'}
+                alt="Piscine intérieure en béton brut éclairée par des puits de lumière, plage en bois clair et baies vitrées sur le jardin — ouvrage Aqua System"
                 fill
                 loading="lazy"
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover object-[center_40%]"
+                className="object-cover object-center"
               />
             </div>
             <h2 className="mt-6 font-serif text-3xl leading-tight text-foreground md:text-4xl">
