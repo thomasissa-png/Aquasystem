@@ -1,8 +1,11 @@
-# Gate de perception — Aquasystem (13 pages) — Passe 1 + Passe 2 — 2026-06-12
+# Gate de perception — Aquasystem (13 pages) — Passe 1 + Passe 2 + Passe 3 — 2026-06-12
 
-## Verdict global ACTUEL (Passe 2) : PRÉSENTABLE AU FONDATEUR — **OUI**
-> Passe 1 (historique) : **NON** (4 défauts D1-D4). Passe 2 (2026-06-12) : les 4 corrigés et vérifiés au
-> rendu, aucune régression accueil, favicon 16px tranché lisible → **OUI**. Détail : section « PASSE 2 ».
+## Verdict global ACTUEL (Passe 3) : PRÉSENTABLE AU FONDATEUR — **OUI**
+> Passe 1 : **NON** (4 défauts D1-D4). Passe 2 : 4 corrigés, OUI avec 1 P1 favicon dark-mode.
+> Passe 3 (2026-06-12, refonte IA) : page /la-maison fusionnée jugée en entier (mobile+desktop),
+> placeholders « Visuel à venir » élégants et assumés, nav 5 entrées « Notre maison » non ambiguë,
+> prescripteurs renvoyé au footer, favicon v3 (tuile pleine) **résout** le P1 dark-mode de la passe 2.
+> Zéro P0, zéro P1 bloquant → **OUI**. Détail : section « PASSE 3 ».
 
 ## Verdict Passe 1 (historique) : PRÉSENTABLE AU FONDATEUR — **NON**
 
@@ -111,6 +114,87 @@ par les corrections D1-D4. `p2-home-mobile-fold.png`, `p2-home-desktop-fold.png`
 | Favicon PNG peu contrasté en dark-mode d'onglet | Toutes (onglet) | ⚠ ouvert | **P1 cosmétique** non bloquant |
 
 Zéro P0 restant. Un seul P1 cosmétique (favicon dark-mode) → verdict binaire du gate : **OUI**.
+
+---
+
+## PASSE 3 — Re-jugement de la refonte IA — 2026-06-12
+
+### Verdict Passe 3 : PRÉSENTABLE AU FONDATEUR — **OUI**
+
+Build rebâti (`npm run build`, exit 0) puis servi (`npx serve out -l 3400`). Redirect vérifié :
+`/notre-approche` → `/la-maison` en 301 (présent dans `out/_redirects`), page `/notre-approche`
+absente de `out/`. Captures en viewport réel mobile 390×844 + desktop 1440×900, clips ≤ 880px.
+Captures : `tests/screenshots/perception/p3-*.png` (43 fichiers).
+
+Quatre changements jugés, **aucun défaut de perception** sur le rendu réel. Détail ci-dessous.
+
+#### (1) Page /la-maison fusionnée — jugée EN ENTIER → **OUI, rythme maîtrisé, pas indigeste**
+Mobile (scrollHeight ~8600px) et desktop (~6500px) lus section par section. Enchaînement :
+**hero split** (texte « La maison » gauche / photo spa premium droite) → **Notre histoire** (Aqua
+System née à Freneuse, équipe de 8, partenariat LTE + portrait Nicolas Berg, Associé-Gérant) →
+**méthode 5 étapes** (1. L'écoute, 2. Le bureau d'études, 3. La réalisation, 4. La livraison,
+5. Le suivi annuel — timeline numérotée serif, sobre) → **deux maisons** (« Aqua System » eau +
+« Les Terres Essentielles » végétal, photo pépinière réelle) → **ancrage territoire** (Le Vésinet,
+Saint-Nom-la-Bretèche…, nappes phréatiques, PLU) → **valeurs** (Sur-mesure, confiance, photo
+piscine premium) → **FAQ** (accordéon 4 questions) → **CTA dark**. Malgré la longueur, **jamais
+indigeste** : alternance de fonds clairs/sombres, transitions serif en italique entre blocs, jamais
+deux pavés de texte identiques d'affilée. Heros et corps lisibles sur fond réel (cas #1 OK).
+`p3-lamaison-mobile-y0…8000.png`, `p3-lamaison-desktop-y0…4400.png`.
+
+#### (2) Placeholders « Visuel à venir » restaurés → **ÉLÉGANTS et assumés (pas « inachevé »)**
+Doctrine cohérente sur les 3 emplacements (bloc LTE/Jardins accueil, spa /piscines, pépinière
+/jardins) : **cadre beige sobre + icône image discrète + libellé « VISUEL À VENIR » + caption
+descriptive précise** (ex. « Spa extérieur HotSpring intégré à une terrasse, en soirée — propriété
+78/92 » ; « Allée de la pépinière Les Terres Essentielles, végétaux en conteneurs alignés »), en
+split avec un bloc éditorial soigné. **Ne déclenche PAS le cas canonique #5** : ce n'est pas une
+étiquette technique d'inachevé ni une maquette cassée, mais un emplacement assumé qui annonce le
+visuel à venir. Perçu comme une intention éditoriale, pas comme un manque. `p3-piscines-desktop-y1050.png`,
+`p3-jardins-desktop-y1500.png`, `p3-home-mobile-y1700.png`.
+
+#### (3) Nouvelles photos (blocs accueil pierre-poutres + hero la-maison) → **au standard premium**
+Hero accueil (demeure + piscine miroir) et hero /la-maison (spa pierre-poutres, baie vitrée sur
+jardin) au standard maison premium (cas #4 OK). Bloc Piscines accueil = vraie photo de spa intérieur
+pierre/bois, lumineuse. Aucun visuel hors-niveau ni casting complaisant. `p3-home-desktop-y0.png`,
+`p3-lamaison-desktop-y0.png`.
+
+#### Nav 5 entrées + drawer — « Notre maison » → **NON AMBIGU**, prescripteurs absent
+Nav desktop : « Réalisations · Piscines & Bien-être · Jardins & Paysage · **Notre maison** » + CTA.
+Drawer mobile : mêmes 4 entrées + sous-titre « De la vision à la réalisation » sous « Notre maison ».
+Lu **après** Piscines et Jardins, « Notre maison » n'est plus perçu comme une catégorie de service :
+le sous-titre descriptif et la position finale lèvent toute ambiguïté → c'est clairement la page
+« à propos / maison ». **Prescripteurs absent de la nav** (correctement renvoyé au footer).
+`p3-home-desktop-y0.png`, `p3-drawer-mobile.png`.
+
+#### Footer — lien prescripteurs → **à sa place, discret**
+Footer dark structuré (Aquasystem + certifs + réseaux / Aqua System adresse / Les Terres Essentielles
+adresse) puis ligne légale « **Espace prescripteurs & architectes** · Mentions légales · Politique de
+confidentialité ». Lien prescripteurs dans la ligne utilitaire, ni mis en avant ni perdu. Proportions
+footer maîtrisées mobile ET desktop (cas #6 OK). `p3-foot-desktop.png`, `p3-foot-mobile.png`.
+
+#### (4) Favicon v3 (tuile eau + A sand + filet or) → **RÉSOUT le P1 dark-mode de la passe 2**
+Re-jugé en rendu 1:1, PNG 16/32 sur fonds clair, gris (onglet inactif), sombre et sombre2 + lignes
+d'onglet simulées clair/sombre. La tuile est désormais **pleine bleu-eau** avec « A » serif blanc et
+filet or. À 16px réel : **net et reconnaissable au premier coup d'œil sur fond clair ET sombre** — la
+tuile pleine se détache du noir, le A blanc reste lisible. Le **P1 de la passe 2** (favicon sombre
+quasi invisible en dark-mode d'onglet) est **résolu** par ce fond plein. Aucune bouillie. Détail
+mineur non bloquant : le filet or est peu perceptible à 16px (l'œil voit tuile bleue + A blanc) —
+raffinement de marque sans incidence sur la lisibilité, **pas même un P1**. `p3-favicon-1to1.png`.
+
+#### Synthèse Passe 3
+| Élément jugé | Statut | Sévérité |
+|---|---|---|
+| /la-maison fusionnée (rythme, lisibilité, pas indigeste) | ✅ OUI | — |
+| Placeholders « Visuel à venir » (LTE home, spa, pépinière) | ✅ élégants/assumés | — |
+| Nouvelles photos (heros, blocs accueil) | ✅ standard premium | — |
+| Nav « Notre maison » non ambiguë + prescripteurs au footer | ✅ OUI | — |
+| Favicon v3 tuile pleine (P1 passe 2 dark-mode) | ✅ **résolu** | — |
+
+**Zéro P0, zéro P1 bloquant.** Tous les changements de la refonte IA améliorent ou maintiennent la
+perception. Le seul P1 ouvert de la passe 2 (favicon dark-mode) est corrigé. Verdict binaire : **OUI**.
+
+#### Recommandation Passe 3 : **OUI — présentable au fondateur en l'état.**
+Refonte IA validée au rendu réel. Aucun agent à relancer. (Optionnel, hors gate : @design peut
+épaissir légèrement le filet or du favicon pour le rendre perceptible à 16px — pur raffinement.)
 
 ---
 
