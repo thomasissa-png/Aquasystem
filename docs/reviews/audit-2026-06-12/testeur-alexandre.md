@@ -3,7 +3,9 @@
 > Persona : chef d'entreprise, maison de caractère au Vésinet (78). Projet piscine + réaménagement complet du jardin, budget 120-150 k€. Exigeant, pressé, échaudé par un paysagiste qui a bâclé sa terrasse il y a 5 ans. Arrive sur https://aquasystem.pages.dev via un ami : « regarde, ils font les deux ».
 > Date du test : 12/06/2026. Pages visitées : accueil, piscines-bien-etre, jardins-paysage, realisations + 1 fiche, notre-approche, la-maison, contact.
 
-## VERDICT : _(à compléter en fin de visite)_
+## VERDICT : **J'HÉSITE** — et sans la recommandation de mon ami, je partais.
+
+Le positionnement est exactement le mien (piscine + jardin, un seul responsable, ouest parisien) et le texte est d'un niveau rare — quelqu'un a compris mon problème mieux que moi. Mais au moment de vérifier les actes, le site se dérobe : page réalisations vide, fiches « en cours de documentation », placeholders « Image à remplacer », deux sociétés derrière la promesse « un seul interlocuteur », zéro garantie écrite. Pour un homme qui a déjà payé une terrasse jamais finie, un site inachevé qui promet « bientôt », c'est un déjà-vu insupportable. Je garde l'onglet ouvert à cause de mon ami et des deux prix professionnels ; j'appellerai peut-être, mais c'est LUI qui m'a convaincu, pas le site. Un concurrent avec 15 projets documentés me prend demain.
 
 ---
 
