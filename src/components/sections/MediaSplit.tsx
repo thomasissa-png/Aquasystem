@@ -1,5 +1,6 @@
 import { cn } from '@/lib/cn';
 import { toWidthVariant } from '@/content/realisations';
+import { PhotoPlaceholder } from '@/components/ui/PhotoPlaceholder';
 
 /**
  * MediaSplit — bloc prestation texte/photo (page-compositions WF-02/WF-03 §2-4).
@@ -18,8 +19,14 @@ export interface MediaSplitProps {
   title: string;
   /** Paragraphes du corps (chaque entrée = un <p>). */
   body: string[];
-  imageSrc: string;
-  imageAlt: string;
+  /**
+   * Photo réelle. Optionnelle : si absente et `placeholderSubject` fourni, le
+   * slot rend un PhotoPlaceholder élégant (doctrine photos — conversion d'abord).
+   */
+  imageSrc?: string;
+  imageAlt?: string;
+  /** Sujet attendu — bascule le slot en PhotoPlaceholder « Visuel à venir ». */
+  placeholderSubject?: string;
   reversed?: boolean;
   tone?: 'default' | 'alt';
 }
@@ -31,10 +38,11 @@ export function MediaSplit({
   body,
   imageSrc,
   imageAlt,
+  placeholderSubject,
   reversed = false,
   tone = 'default',
 }: MediaSplitProps) {
-  const mobileSrc = toWidthVariant(imageSrc, '800w');
+  const mobileSrc = imageSrc ? toWidthVariant(imageSrc, '800w') : undefined;
   return (
     <section className={cn(tone === 'alt' && 'bg-background-secondary')}>
       <div className="mx-auto max-w-container px-4 py-16 md:px-8 md:py-20">
@@ -70,27 +78,33 @@ export function MediaSplit({
             </div>
           </div>
 
-          <figure className="relative aspect-[3/2] w-full overflow-hidden rounded-lg">
-            <picture>
-              {mobileSrc && (
-                <source
-                  media="(max-width: 767px)"
-                  srcSet={mobileSrc}
-                  type="image/webp"
+          {imageSrc ? (
+            <figure className="relative aspect-[3/2] w-full overflow-hidden rounded-lg">
+              <picture>
+                {mobileSrc && (
+                  <source
+                    media="(max-width: 767px)"
+                    srcSet={mobileSrc}
+                    type="image/webp"
+                  />
+                )}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={imageSrc}
+                  alt={imageAlt ?? ''}
+                  width={1280}
+                  height={720}
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover"
                 />
-              )}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={imageSrc}
-                alt={imageAlt}
-                width={1280}
-                height={720}
-                loading="lazy"
-                decoding="async"
-                className="absolute inset-0 h-full w-full object-cover"
-              />
-            </picture>
-          </figure>
+              </picture>
+            </figure>
+          ) : (
+            // Doctrine photos : slot photo conservé avec placeholder élégant
+            // plutôt que supprimé (conversion d'abord).
+            <PhotoPlaceholder subject={placeholderSubject ?? imageAlt ?? ''} />
+          )}
         </div>
       </div>
     </section>

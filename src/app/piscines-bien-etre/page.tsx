@@ -12,8 +12,8 @@ import { JsonLd } from '@/components/seo/JsonLd';
  * Piscines & Bien-être (/piscines-bien-etre) — F-02, WF-02.
  * Rendu : SSG. Contenu fixe marketing. Cross-sell + tracking en îlots client.
  * Photos : hero + cross-sell = réalisations réelles ; le bloc spa HotSpring
- * n'a pas de photo réelle disponible → rendu en texte éditorial centré
- * (D-22 : slot image vide retiré, perception premium).
+ * n'a pas de photo réelle disponible → MediaSplit avec PhotoPlaceholder élégant
+ * (D-25 doctrine photos : conversion d'abord, photo demandée au fondateur).
  */
 export const metadata: Metadata = {
   // Metas finales — metadata-templates.md Page 2 (source de vérité @seo).
@@ -66,8 +66,21 @@ export default function PiscinesBienEtrePage() {
       />
 
       {/* Bloc 2 — Spas, saunas, hammams (inversé, fond alterné).
-          Pas de photo réelle de spa HotSpring → placeholder dédié. */}
-      <SpaBlock />
+          D-25 : ré-arbitrage doctrine photos — re-split avec PhotoPlaceholder
+          élégant (conversion d'abord) ; le visuel spa convertirait mieux qu'un
+          bloc texte centré. Photo demandée au fondateur (photos-a-fournir.md). */}
+      <MediaSplit
+        eyebrow="Spa & bien-être"
+        accent="water"
+        title="L'eau chaude dans votre propriété"
+        body={[
+          "Spa extérieur HotSpring, sauna finlandais, hammam, intégrés à l'architecture de votre propriété, pas posés en périphérie. Chaque installation est conçue avec le reste de l'espace : la terrasse, le jardin, les lignes de la maison.",
+          'Partenaire HotSpring pour les spas : une gamme pensée pour le résidentiel haut de gamme.',
+        ]}
+        placeholderSubject="Spa extérieur HotSpring intégré à une terrasse, en soirée — propriété 78/92"
+        reversed
+        tone="alt"
+      />
 
       <MediaSplit
         eyebrow="Suivi annuel"
@@ -125,38 +138,3 @@ export default function PiscinesBienEtrePage() {
   );
 }
 
-/**
- * Bloc spa — texte éditorial pleine largeur (pas de photo réelle de spa
- * HotSpring dans les sources). Fond alterné (WF-02 §3).
- *
- * D-22 (P0 desktop 2026-06-12) : le PhotoPlaceholder « Visuel à venir » était
- * perçu comme une maquette inachevée sur une page commerciale premium
- * (desktop-audit.md Top 5 #1). On supprime le slot image vide ; bloc rendu en
- * texte centré resserré, sans trou visuel.
- */
-function SpaBlock() {
-  return (
-    <section className="bg-background-secondary">
-      <div className="mx-auto max-w-3xl px-4 py-16 text-center md:px-8 md:py-20">
-        <p className="mb-3 text-xs font-medium uppercase tracking-[0.1em] text-foreground-accent-water">
-          Spa &amp; bien-être
-        </p>
-        <h2 className="font-serif text-3xl leading-tight text-foreground md:text-4xl">
-          L'eau chaude dans votre propriété
-        </h2>
-        <div className="mx-auto mt-5 max-w-[60ch] space-y-4 text-left">
-          <p className="text-base leading-8 text-foreground-secondary">
-            Spa extérieur HotSpring, sauna finlandais, hammam, intégrés à
-            l'architecture de votre propriété, pas posés en périphérie. Chaque
-            installation est conçue avec le reste de l'espace : la terrasse, le
-            jardin, les lignes de la maison.
-          </p>
-          <p className="text-base leading-8 text-foreground-secondary">
-            Partenaire HotSpring pour les spas : une gamme pensée pour le
-            résidentiel haut de gamme.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}

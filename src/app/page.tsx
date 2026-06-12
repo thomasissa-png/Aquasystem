@@ -8,6 +8,7 @@ import { getFeatured, photoSrc } from '@/content/realisations';
 import { Hero } from '@/components/sections/Hero';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ProofBadges } from '@/components/ui/ProofBadges';
+import { PhotoPlaceholder } from '@/components/ui/PhotoPlaceholder';
 import { RealisationCard } from '@/components/sections/RealisationCard';
 import { SectionCTA } from '@/components/sections/SectionCTA';
 import { CtaTrackerLink } from '@/components/sections/CtaTrackerLink';
@@ -116,23 +117,16 @@ export default function HomePage() {
             <p className="mb-2 text-xs font-medium uppercase tracking-[0.1em] text-foreground-accent-forest">
               en partenariat avec Les Terres Essentielles
             </p>
-            {/* Audit photo §5 (D-24) : aucune photo du stock ne tient au format
-                carré pour représenter « Jardins & Paysage » sans tromperie
-                éditoriale (cf. A3). Option typographique premium — composition
-                sobre, fond vert-forêt, pas de visuel médiocre. */}
-            <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-[#1A2A1A] flex flex-col items-start justify-end p-8">
-              {/* Filet décoratif */}
-              <div className="absolute top-8 left-8 right-8 h-px bg-[#4a7a4a]/40" />
-              {/* Titre de l'univers */}
-              <p className="font-serif text-3xl leading-tight text-sand-100 md:text-4xl">
-                Jardins<br />&amp; Paysage
-              </p>
-              {/* WCAG 2.2 AA : l'opacité /70 de l'audit tombait à 3.9:1 sur
-                  #1A2A1A — vert plein (≈6:1) pour respecter le 4.5:1 (D-24). */}
-              <p className="mt-2 text-xs font-medium uppercase tracking-[0.15em] text-[#7ab87a]">
-                Les Terres Essentielles
-              </p>
-            </div>
+            {/* D-25 : ré-arbitrage doctrine photos (conversion d'abord). Le bloc
+                typographique D-24 (fond vert-forêt) est remplacé par un slot
+                photo avec PhotoPlaceholder élégant — un visuel jardin/paysage
+                convertirait mieux qu'une composition typo. Format carré pour
+                refléter la carte Piscines voisine. Photo demandée au fondateur
+                (photos-a-fournir.md). */}
+            <PhotoPlaceholder
+              subject="Création paysagère réalisée par Les Terres Essentielles — jardin structuré d'une propriété 78/92"
+              aspect="square"
+            />
             <h2 className="mt-6 font-serif text-3xl leading-tight text-foreground md:text-4xl">
               Jardins &amp; Paysage
             </h2>

@@ -81,6 +81,55 @@ test.describe('Parcours Camille (prescripteur)', () => {
   });
 });
 
+test.describe('Refonte IA — fusion /notre-approche → /la-maison (D-25)', () => {
+  test('nav principale : 5 entrées grand public, sans « Notre approche » ni « Architectes »', async ({
+    page,
+  }) => {
+    await page.goto('/');
+    const nav = page.getByRole('navigation', { name: 'Navigation principale' });
+    await expect(nav.getByRole('link', { name: 'La maison' })).toBeVisible();
+    await expect(nav.getByRole('link', { name: 'Notre approche' })).toHaveCount(0);
+    await expect(nav.getByRole('link', { name: 'Architectes' })).toHaveCount(0);
+  });
+
+  test('/la-maison fusionnée : méthode 5 étapes + FAQ migrées, FAQPage JSON-LD', async ({
+    page,
+  }) => {
+    const resp = await page.goto('/la-maison/');
+    const html = (await resp?.text()) ?? '';
+    // Méthode migrée (timeline) + ancrage local + FAQ — preuves de non-perte.
+    await expect(page.getByRole('heading', { name: "L'écoute" })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Le suivi annuel' })).toBeVisible();
+    await expect(
+      page.getByText('Nous connaissons ces propriétés, et leurs contraintes.'),
+    ).toBeVisible();
+    await expect(page.getByText('Questions fréquentes').first()).toBeVisible();
+    // FAQPage JSON-LD migré.
+    expect(html).toContain('FAQPage');
+    // Formule signature préservée dès le fold.
+    await expect(
+      page.getByText('De la vision à la réalisation', { exact: false }).first(),
+    ).toBeVisible();
+  });
+
+  test('footer : lien « Espace prescripteurs & architectes » présent', async ({
+    page,
+  }) => {
+    await page.goto('/');
+    await expect(
+      page
+        .getByRole('contentinfo')
+        .getByRole('link', { name: 'Espace prescripteurs & architectes' }),
+    ).toBeVisible();
+  });
+
+  test('301 /notre-approche → /la-maison présente dans out/_redirects', () => {
+    // En output:'export', la 301 vit dans public/_redirects (copié dans out/).
+    const redirects = readFileSync('out/_redirects', 'utf8');
+    expect(redirects).toMatch(/\/notre-approche\/?\s+\/la-maison\/\s+301/);
+  });
+});
+
 test.describe('Accueil — SEO statique & a11y', () => {
   test('title, meta description, h1 et JSON-LD LocalBusiness dans le HTML (US-01 #8)', async ({
     page,
