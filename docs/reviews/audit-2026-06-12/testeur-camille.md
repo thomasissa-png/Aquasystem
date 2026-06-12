@@ -9,17 +9,25 @@
 
 ## Verdict
 
-[EN COURS DE VISITE]
+**« Je teste d'abord sur un petit projet. »**
+
+Ce site est, de très loin, le meilleur que j'aie vu chez un pisciniste de la région sur la dimension prescripteur : ils ont un onglet « Architectes » en nav principale, une page qui nomme mes peurs avec mes mots (« nous ne parlons pas budget directement à votre client », « nous travaillons sur votre DCE »), un dirigeant identifié, des prix de profession. Quelqu'un a compris ce qui s'est passé entre les architectes et les piscinistes de ce département.
+
+Mais je recommande avec ma réputation, pas avec ma sympathie. Et aujourd'hui, le site me demande de croire sur parole exactement là où j'ai déjà été brûlée : les engagements anti-court-circuit et pro-DCE sont déclaratifs (aucun cadre contractuel évoqué), les fiches de réalisations sont vides de toute donnée d'exécution (« le récit complet sera bientôt publié »), aucune référence d'architecte n'est citée, la décennale n'est mentionnée nulle part, et les délais — ma troisième peur — sont traités en une demi-phrase. Pour un client à 150 k€, je décroche mon téléphone, je demande à visiter deux chantiers (un en cours, un livré depuis 3 ans), et je commence par un bassin simple ou une rénovation avant de leur confier une maison complète.
+
+C'est un « presque ». Et c'est rageant, parce que les cinq éléments qui manquent sont tous à leur portée.
 
 ## Scores valeur perçue
 
-| # | Question | Score /10 |
-|---|----------|-----------|
-| 1 | Place pour MOI perçue en 30 s ? | — |
-| 2 | Page prescripteurs : mes 3 peurs traitées avec du concret ? | — |
-| 3 | Références : niveau d'exécution jugeable ? | — |
-| 4 | Process de collaboration clair (qui parle à qui, DCE, co-signature) ? | — |
-| 5 | Je recommande à un client 150 k€ sur cette base ? | — |
+| # | Question | Score /10 | Justification |
+|---|----------|-----------|---------------|
+| 1 | Place pour MOI perçue en 30 s ? | **8/10** | « Architectes » en nav principale + footer « Espace prescripteurs ». Quasi inédit dans le métier. Manque 1 ligne sur la home elle-même. |
+| 2 | Page prescripteurs : mes 3 peurs traitées avec du concret ? | **6,5/10** | Court-circuit : excellent (protocole verbalisé). Plans/DCE : bon (vocabulaire juste, bureau d'études). Délais : quasi absent. Tout reste déclaratif — aucun cadre contractuel, aucun nom de confrère. |
+| 3 | Références : niveau d'exécution jugeable ? | **4/10** | Bonnes typologies (débordement, couloir de nage, paroi de verre), belles photos. Mais fiches « bientôt publié » : zéro matériau, contrainte, durée, surface. Aucun projet attribué à un architecte. |
+| 4 | Process de collaboration clair ? | **6/10** | Interlocuteur technique dédié, DCE accepté, accord préalable sur toute modification, cadence de suivi au choix. Mais ni co-signature/contrat-cadre, ni modèle économique (apport d'affaires ? co-traitance ?), et l'architecte est absent du process de /notre-approche. |
+| 5 | Je recommande à un client 150 k€ ? | **5/10** | Pas sans réserve. Assez pour appeler et tester — pas assez pour prescrire directement. Il manque : preuves d'exécution, référence confrère, décennale, cadre contractuel. |
+
+**Score global valeur perçue : 5,9/10 — fort sur l'intention, court sur la preuve.**
 
 ## Monologue par page
 
