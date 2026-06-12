@@ -7,7 +7,7 @@ requetes_secondaires:
   - "piscine intérieure déshumidification"
   - "piscine intérieure coût réel"
 meta_title: "Piscine intérieure : l'hygrométrie, la vraie contrainte — Aqua System"
-meta_description: "4 piscines intérieures construites dans les Yvelines et les Hauts-de-Seine. Nicolas Berg explique ce que l'hygrométrie impose dès la conception — et pourquoi c'est l'enjeu n°1 du projet."
+meta_description: "4 piscines intérieures construites en Yvelines (78) et Hauts-de-Seine (92). Nicolas Berg explique ce que l'hygrométrie impose dès la conception."
 date_publication: "2026-07-15"
 date_modification: "2026-07-15"
 auteur: Nicolas Berg
@@ -21,7 +21,7 @@ maillage_interne:
 
 # Piscine intérieure : ce que l'hygrométrie impose (et ce que personne ne dit)
 
-L'erreur la plus courante dans un projet de piscine intérieure : concentrer toute l'attention sur le bassin et négliger l'air qui l'entoure. Une piscine intérieure génère une évaporation permanente. Sans traitement de l'air dimensionné depuis la conception, les dégradations commencent dans les deux à trois premières années : moisissures, condensation sur les menuiseries, détérioration des structures bois et béton. Nous le voyons sur les chantiers de rénovation. Ce guide explique ce que l'hygrométrie impose, pourquoi c'est l'enjeu n°1 d'un projet de piscine intérieure, et ce que quatre réalisations dans les Yvelines et les Hauts-de-Seine nous ont appris.
+L'erreur la plus courante dans un projet de piscine intérieure : concentrer toute l'attention sur le bassin et négliger l'air qui l'entoure. Une piscine intérieure génère une évaporation permanente. Sans traitement de l'air dimensionné depuis la conception, les dégradations commencent dans les deux à trois premières années : moisissures, condensation sur les menuiseries, détérioration des structures bois et béton. Nous le voyons sur les chantiers de rénovation. Ce guide explique ce que l'hygrométrie impose, pourquoi c'est l'enjeu n°1 d'un projet de piscine intérieure sur mesure dans les Yvelines (78) et les Hauts-de-Seine (92), et ce que quatre réalisations nous ont appris.
 
 ---
 
@@ -92,7 +92,7 @@ Aqua System a réalisé quatre piscines intérieures dans les Yvelines et les Ha
 
 ## Le Trophée d'Or FPP 2024 : ce que la Fédération distingue
 
-Aqua System a reçu le Trophée d'Or FPP 2024 dans la catégorie piscine intérieure. Ce trophée est décerné par la Fédération des Professionnels de la Piscine, qui regroupe les constructeurs de piscines privées en France. Il distingue des réalisations examinées par un jury professionnel sur des critères techniques et esthétiques.
+Aqua System a remporté le Trophée d'Or de la piscine intérieure aux Trophées de la Piscine et du Spa FPP 2024, décernés par la Fédération des Professionnels de la Piscine. Ce prix est attribué par un jury professionnel sur des critères techniques et esthétiques — il distingue des réalisations, pas des déclarations.
 
 Ce que cette distinction signifie concrètement pour un propriétaire : une réalisation de piscine intérieure a été jugée, par des pairs, comme représentative de ce qui se fait de mieux dans la construction. Pas une autoproclamation. Une évaluation par le secteur.
 
