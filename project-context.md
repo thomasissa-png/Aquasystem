@@ -19,7 +19,7 @@
 ### Les deux entités
 | | Aqua System | Les Terres Essentielles |
 |---|---|---|
-| Activité | Conception, construction, rénovation, entretien de piscines sur mesure ; spas (HotSpring), saunas, hammams ; traitement d'eau, robots (Dolphin), SAV | Jardinerie, bureau d'études paysager, création et entretien de parcs & jardins, pépinière |
+| Activité | Conception, construction, rénovation, entretien de piscines sur mesure ; spas (HotSpring), saunas, hammams ; traitement d'eau, robots (Dolphin), SAV | 🪴 Jardinerie (cœur actuel : terre agricole + produits pour le jardin) ; ✍🏼 bureau d'études ; 🌱 création et entretien de parcs & jardins (offre EN CONSTRUCTION — Nicolas recrute un paysagiste) ; 🪨 distribution Kei-Stone (pierre naturelle : dallages, margelles — synergie directe piscines) [précision fondateur 2026-06-12] |
 | Preuves | Réseau L'Esprit Piscine, certification Socotec « Professionnels de la piscine » (CSP/ESP-001), 30+ ans d'activité, 350+ piscines entretenues ouest parisien, équipe de 8 | Bureau d'études intégré, jardinerie physique |
 | Forme juridique | SARL AQUA SYSTEM, SIREN 903 785 327, capital 20 000 €, NAF 4399D, gérant Nicolas Berg | SAS LES TERRES ESSENTIELLES, SIREN 811 198 217, NAF 47.76Z, créée 2015. ⚠️ [À CONFIRMER : Pappers indique Patrick Rouzeval président — lien exact avec Nicolas Berg à clarifier avant mentions légales] |
 | Adresse | 45 Route Nationale, 78840 Freneuse — 01 30 42 26 00 — contact@aqua-system.fr | CD n°45, Route d'Orgeval, 78580 Les Alluets-le-Roi |
@@ -108,7 +108,8 @@
 3. **Délai de réponse** : sous 48 heures — appliqué (constants.ts REPLY_DELAY_TEXT + ux-writing §3).
 4. **Décennale** : reste en placeholder [À CONFIRMER] (non bloquant site — concerne devis/contrats).
 5. **Priorité** : finir + tester le site (déploiement Cloudflare) AVANT les actions communiqué de presse.
-6. **Visuels supplémentaires fournis** par le fondateur (dossier local à transférer — en cours).
+6. **Visuels fournis** par le fondateur : 9 photos jardinerie (intégrées : serre → /jardins-paysage, cagette Orgeval → /la-maison ; 5 en assets sociaux) + portrait N&B de Nicolas Berg (400², à intégrer /la-maison).
+7. **Précision LTE (2026-06-12)** : avant tout une JARDINERIE (terre agricole, produits jardin) + Kei-Stone (pierre naturelle) ; l'offre création paysagère est en construction (paysagiste en recrutement). Pas de belles photos de réalisations jardins pour l'instant — « faisons avec ce qu'on a ». Conséquence copy : l'offre création reste affichée (ambition assumée du positionnement umbrella) mais AUCUNE preuve fictive ; Kei-Stone à intégrer à l'offre (manquait).
 
 ## Décisions de scope validées fondateur (2026-06-11)
 1. Architecture de marque : option (a) marque ombrelle nouvelle, 2 maisons visibles.
