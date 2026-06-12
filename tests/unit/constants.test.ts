@@ -22,20 +22,24 @@ const SERVER_TYPE_ENUM = [
 ];
 const SERVER_BUDGET_ENUM = ['50_80k', '80_150k', '150k_plus', 'prefere_discuter'];
 
-describe('navigation (arbitrage P0-5)', () => {
-  it('expose exactement 6 liens dans l’ordre Réalisations en premier', () => {
+describe('navigation (arbitrage P0-5 + refonte IA D-25)', () => {
+  // Refonte IA 2026-06-12 : « Notre approche » fusionnée dans « La maison »,
+  // « Architectes » sortie du menu (page /prescripteurs conservée, accès footer).
+  // Nav grand public : 4 liens + le CTA « Parlez-nous de votre projet » (séparé)
+  // = 5 éléments visibles (brief : 6→5).
+  it('expose exactement 4 liens dans l’ordre Réalisations en premier', () => {
     expect(NAV_LINKS.map((l) => l.label)).toEqual([
       'Réalisations',
       'Piscines & Bien-être',
       'Jardins & Paysage',
-      'Notre approche',
       'La maison',
-      'Architectes',
     ]);
   });
-  it('Réalisations pointe vers /realisations et Architectes vers /prescripteurs', () => {
+  it('Réalisations pointe vers /realisations ; ni « Notre approche » ni « Architectes » dans la nav', () => {
     expect(NAV_LINKS[0]?.href).toBe('/realisations');
-    expect(NAV_LINKS.find((l) => l.label === 'Architectes')?.href).toBe('/prescripteurs');
+    expect(NAV_LINKS.find((l) => l.label === 'Notre approche')).toBeUndefined();
+    expect(NAV_LINKS.find((l) => l.label === 'Architectes')).toBeUndefined();
+    expect(NAV_LINKS.find((l) => l.href === '/notre-approche')).toBeUndefined();
   });
 });
 
