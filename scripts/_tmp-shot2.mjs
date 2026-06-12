@@ -1,0 +1,13 @@
+import { chromium } from 'playwright';
+const browser = await chromium.launch();
+const ctx = await browser.newContext({ viewport: { width: 375, height: 812 }, deviceScaleFactor: 1, reducedMotion: 'reduce' });
+const page = await ctx.newPage();
+await page.goto('http://127.0.0.1:3000/jardins-paysage/', { waitUntil: 'networkidle', timeout: 30000 });
+await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+await page.waitForTimeout(600);
+const loc = page.getByText("Un projet pensé avant d'être planté");
+await loc.scrollIntoViewIfNeeded();
+await page.waitForTimeout(400);
+await page.screenshot({ path: '/tmp/jardins-h2.png', clip: { x: 0, y: 0, width: 375, height: 812 } });
+await browser.close();
+console.log('ok');
