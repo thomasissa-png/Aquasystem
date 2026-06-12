@@ -57,7 +57,7 @@ Une perte de plus de deux centimètres par jour en l'absence de vent excessif et
 
 Une piscine construite il y a quinze ans a été équipée avec les technologies disponibles à l'époque. La filtration, le volet, l'éclairage : ces équipements vieillissent différemment selon les conditions d'usage et d'entretien.
 
-Une filtration sous-dimensionnée ou vétuste ne maintient plus la qualité de l'eau dans les normes. Un volet hors-sol datant de 2008 peut ne plus être conforme aux normes de sécurité actuelles (NF P90-308). L'absence de volet ou d'un autre dispositif de sécurité agréé est, depuis la loi de 2004, une obligation légale pour les piscines privées enterrées. Une rénovation est l'occasion naturelle de mettre à niveau ces équipements.
+Une filtration sous-dimensionnée ou vétuste ne maintient plus la qualité de l'eau dans les normes. Un volet hors-sol datant de 2008 peut ne plus être conforme à la norme NF P90-308 (sécurité des piscines privées enterrées) — la rénovation est l'occasion de vérifier la conformité du dispositif en place et, si nécessaire, de le remplacer. L'absence de tout dispositif de sécurité agréé (volet, barrière, alarme ou abri) est, depuis la loi de 2004, une obligation légale pour les piscines privées enterrées. Une rénovation est l'occasion naturelle de mettre à niveau ces équipements.
 
 ---
 
@@ -136,8 +136,6 @@ Près de 350 piscines sont actuellement suivies par Aqua System dans l'ouest par
 Votre piscine montre des signes ? L'automne est le bon moment pour y répondre. Aqua System peut réaliser un diagnostic et vous accompagner dans la définition du périmètre de rénovation — avec honnêteté sur ce qui est nécessaire et ce qui ne l'est pas.
 
 **[Parlons-en avant l'hiver →](/contact/)**
-
-Consultez également notre [diagnostic de votre piscine](/contact/) pour une première évaluation.
 
 ---
 

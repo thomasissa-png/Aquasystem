@@ -55,7 +55,7 @@ C'est un argument qui parle particulièrement aux propriétaires qui utilisent p
 
 Un fond remonté au niveau de la plage supprime physiquement l'accès à l'eau. C'est une sécurité passive qui ne dépend pas d'un volet, d'une alarme ou d'une barrière : il n'y a tout simplement pas d'eau accessible quand le fond est en position terrasse.
 
-Cette caractéristique est particulièrement appréciée dans les propriétés avec de jeunes enfants ou des personnes âgées. Elle ne remplace pas les autres dispositifs de sécurité prévus par la réglementation, mais elle constitue un argument fort dans le choix d'un fond mobile.
+Cette caractéristique est particulièrement appréciée dans les propriétés avec de jeunes enfants ou des personnes âgées. À noter : la réglementation (loi de 2004, norme NF P90-308 sur les volets et barrières) impose un dispositif de sécurité agréé sur toute piscine privée enterrée. Le fond mobile en position terrasse est un argument de confort et de sécurité passive, mais il ne se substitue pas à l'obligation d'un dispositif normalisé — volet, barrière, alarme ou abri.
 
 ### L'intégration visuelle : disparaît quand non utilisé
 

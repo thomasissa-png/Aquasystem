@@ -54,6 +54,11 @@ export function organizationJsonLd() {
     sameAs: [
       'https://www.esprit-piscine.fr/aqua-system/',
       SOCIAL_LINKS.linkedinAS,
+      // Identifiants cross-plateforme vérifiés pour le Knowledge Graph (P1-GEO-01, 2026-06-12).
+      // URLs exactes confirmées par WebSearch le 2026-06-12.
+      'https://www.guide-piscine.fr/pisciniste-constructeur/yvelines/aqua-system-l-esprit-piscine-a-freneuse-6055_I',
+      'https://www.idees-piscine.com/listing/aqua-system-solutions-lesprit-piscine/',
+      'https://www.pagesjaunes.fr/pros/08293724',
       // facebookLTE retiré (arbitrage seo-audit P0-2, 2026-06-12) : le profil
       // Facebook de LTE appartient au bloc partnerOrganizationJsonLd — pas à
       // l'entité Aqua System (intégrité du Knowledge Graph).

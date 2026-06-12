@@ -139,7 +139,7 @@ Nos articles connexes :
 
 ---
 
-*Article rédigé par Nicolas Berg, fondateur Aqua System. 30 ans d'ancrage dans l'aménagement extérieur haut de gamme en Yvelines (78) et Hauts-de-Seine (92). Certification Socotec CSP/ESP-001. Trophée d'Or FPP 2024, catégorie piscine intérieure.*
+*Article rédigé par Nicolas Berg, fondateur Aqua System. 30 ans d'ancrage dans l'aménagement extérieur haut de gamme en Yvelines (78) et Hauts-de-Seine (92). Certification Socotec CSP/ESP-001. Trophée d'Or FPP 2024 — Trophées de la Piscine et du Spa, catégorie piscine intérieure.*
 
 ---
 

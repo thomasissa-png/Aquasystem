@@ -1,7 +1,7 @@
 ---
 titre: "Ce qui fait le prix d'une piscine haut de gamme : les vraies raisons"
 slug: investissement-piscine-haut-de-gamme
-meta_title: "Prix d'une piscine haut de gamme : ce qui fait vraiment la différence — Aquasystem"
+meta_title: "Prix d'une piscine haut de gamme : les vraies raisons — Aquasystem"
 meta_description: "Pas de fourchettes inventées : une explication honnête des postes de coût d'une piscine sur mesure en béton armé. Structure, finitions, équipements, garantie décennale."
 requete_cible: "prix piscine sur mesure / combien coûte une piscine sur mesure"
 date_prevue: "2026-08-15"
@@ -15,7 +15,7 @@ auteur: "Nicolas Berg"
 
 C'est la question que tout propriétaire se pose avant de lancer un projet. Pas pour négocier — pour comprendre. Parce que comprendre ce qui compose le coût d'une piscine sur mesure, c'est aussi comprendre ce qu'on achète et ce qu'on protège sur le long terme.
 
-Ce guide ne donne pas de prix fermes. Le coût d'un ouvrage sur mesure dépend de chaque terrain, de chaque configuration, de chaque choix. Ce qu'il fait : décortiquer les variables réelles qui distinguent une piscine à 35 000 euros d'une piscine à 120 000 euros — et pourquoi cette différence existe.
+Ce guide ne donne pas de prix fermes. Le coût d'un ouvrage sur mesure dans les Yvelines et les Hauts-de-Seine dépend de chaque terrain, de chaque configuration, de chaque choix. Ce qu'il fait : décortiquer les variables réelles qui distinguent une piscine à 35 000 euros d'une piscine à 120 000 euros — et pourquoi cette différence existe.
 
 ---
 
@@ -135,7 +135,7 @@ Ces fourchettes sont des données de marché issues de sources sectorielles publ
 |---|---|
 | Piscine béton sur mesure, configuration standard | 30 000 à 60 000 euros TTC |
 | Piscine béton haut de gamme (débordement, miroir, finitions pierre) | 70 000 à 120 000 euros TTC |
-| Piscine béton + fond mobile sur mesure | 80 000 à 130 000 euros TTC |
+| Piscine béton + fond mobile sur mesure | 70 000 à 120 000 euros TTC |
 
 Ces fourchettes ne sont pas les tarifs d'Aqua System. Elles reflètent l'état du marché tel qu'il est documenté par les sources sectorielles. Chaque projet fait l'objet d'une conception spécifique et d'un chiffrage adapté.
 

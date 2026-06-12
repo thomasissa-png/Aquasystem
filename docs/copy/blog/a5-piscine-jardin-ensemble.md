@@ -1,7 +1,7 @@
 ---
 titre: "Piscine et jardin conçus ensemble : ce que ça change"
 slug: piscine-jardin-concevoir-ensemble
-meta_title: "Piscine et jardin conçus ensemble : le regard d'Aqua System × Les Terres Essentielles"
+meta_title: "Piscine et jardin conçus ensemble : ce que ça change — Aquasystem"
 meta_description: "Concevoir la piscine et le jardin depuis le même bureau d'études — pas en deux temps. Ce que ça change dans le résultat final, sur les propriétés de l'ouest parisien."
 requete_cible: "piscine et jardin sur mesure / pisciniste paysagiste Yvelines"
 date_prevue: "2026-09-01"
@@ -99,7 +99,7 @@ Les margelles en travertin ou en pierre naturelle que nous posons autour des bas
 
 Cette continuité n'est pas anecdotique. Elle permet que la pierre autour du bassin soit cohérente avec la pierre du cheminement, la pierre du muret, la pierre de l'escalier qui relie les niveaux. L'espace extérieur se lit comme un tout, pas comme une juxtaposition de matériaux choisis par des intervenants différents.
 
-C'est un des bénéfices concrets de travailler avec deux maisons qui partagent les mêmes approvisionnements et les mêmes références matières. En [partenariat avec Les Terres Essentielles](/jardins-paysage/), nous pouvons garantir cette cohérence depuis la conception jusqu'au poste des matériaux.
+C'est un des bénéfices concrets de travailler avec deux maisons qui partagent des références matières compatibles. En [partenariat avec Les Terres Essentielles](/jardins-paysage/), nous pouvons garantir cette cohérence depuis la conception jusqu'au choix des matériaux.
 
 ---
 
