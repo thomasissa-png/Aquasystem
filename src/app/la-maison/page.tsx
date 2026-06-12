@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 };
 
 /** Fil d'Ariane (BreadcrumbList JSON-LD) — seo-strategy.md §C.6.3. */
-const BREADCRUMB = breadcrumbJsonLd([{ name: 'La maison', path: '/la-maison/' }]);
+const BREADCRUMB = breadcrumbJsonLd([{ name: 'Notre maison', path: '/la-maison/' }]);
 
 /** Person JSON-LD Nicolas Berg (content-restructuring.md §C.2). */
 const PERSON = nicolasBergJsonLd();
