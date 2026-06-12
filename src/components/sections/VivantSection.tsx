@@ -32,10 +32,13 @@ const ENTRIES: VivantEntry[] = [
   {
     title: 'Le choix des essences',
     body: "On ne plante pas pour ce que le jardin est aujourd'hui : on plante pour ce qu'il sera dans vingt ans. Un charme taillé en rideau, un tilleul à grandes feuilles, un liquidambar — chacun a un port à maturité, une envergure, une relation avec la lumière qui ne se lisent pas au moment de la plantation. Choisir la mauvaise essence à cinq mètres d'une façade, c'est un problème en vingt ans, pas maintenant.",
+    // Slot F1 comblé : photo réelle d'un massif planté LTE (palmier, agaves,
+    // plantes graphiques — photo fondateur 2026-06-12, droits accordés).
+    // Alt factuel : essences visibles, sans commune ni détail de chantier.
     visual: {
-      kind: 'placeholder',
-      subject:
-        'Haie de charme ou arbres à port défini, lumière rasante de fin de journée, propriété de l’ouest parisien',
+      kind: 'photo',
+      src: '/images/realisations/massif-palmier-agaves-800w.webp',
+      alt: "Massif planté par Les Terres Essentielles : palmier à tronc fibreux, agaves et yuccas aux ports contrastés sur paillage minéral, haie en arrière-plan, ouest parisien",
     },
   },
   {

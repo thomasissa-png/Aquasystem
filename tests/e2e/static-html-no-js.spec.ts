@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { REALISATIONS } from '@/content/realisations';
+import { ARTICLES } from '@/content/blog';
 
 /**
  * D-17 — Garde anti-régression du bailout CSR en export statique.
@@ -25,6 +26,18 @@ test.describe('HTML statique sans JavaScript (D-17 — anti-bailout CSR)', () =>
     // Compte dérivé du contenu (pas de magic number) : la grille « Tous » rend
     // l'intégralité de REALISATIONS, donc autant de cards que d'entrées publiées.
     await expect(cards).toHaveCount(REALISATIONS.length);
+  });
+
+  test('/notre-regard : toutes les cards articles sont dans le HTML pré-rendu (filtre client)', async ({
+    page,
+  }) => {
+    await page.goto('/notre-regard/');
+    // L'état « Tous » par défaut rend l'intégralité des articles côté serveur :
+    // autant de cards (lien « Lire l'article ») que d'entrées du manifeste.
+    const cards = page
+      .getByRole('main')
+      .getByRole('link', { name: /Lire l'article/ });
+    await expect(cards).toHaveCount(ARTICLES.length);
   });
 
   test('/contact : le formulaire complet est dans le HTML pré-rendu (fallback no-JS)', async ({

@@ -1,7 +1,11 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Mail, MapPin, Phone } from 'lucide-react';
-import { CONTACT, PARTNER_CONTACT } from '@/lib/constants';
+import {
+  CONTACT,
+  ESPRIT_PISCINE_MEMBER_URL,
+  PARTNER_CONTACT,
+} from '@/lib/constants';
 import {
   SITE_URL,
   absoluteUrl,
@@ -293,8 +297,17 @@ export default function LaMaisonPage() {
                 responsable.
               </p>
               <p>
-                Membre du réseau L'Esprit Piscine. Certification Socotec
-                « Professionnels de la piscine » CSP/ESP-001.
+                Membre du{' '}
+                <a
+                  href={ESPRIT_PISCINE_MEMBER_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-sm underline underline-offset-4 decoration-border hover:decoration-current focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2"
+                >
+                  réseau L'Esprit Piscine
+                </a>
+                . Certification Socotec « Professionnels de la piscine »
+                CSP/ESP-001.
               </p>
               {/* Distinctions récentes (faq-geo-copy.md §B.3 — wording @copywriter
                   exact) — faits vérifiables, augmentent la fraîcheur perçue LLM. */}

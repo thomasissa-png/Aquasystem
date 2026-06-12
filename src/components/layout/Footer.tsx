@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Facebook, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import {
   CONTACT,
+  ESPRIT_PISCINE_MEMBER_URL,
   FOOTER_NAV_LINKS,
   LEGAL_LINKS,
   PARTNER_CONTACT,
@@ -73,8 +74,29 @@ export function Footer() {
               <li className="rounded-md border border-sand-800 px-3 py-1.5 text-xs font-medium text-sand-300">
                 Certifié Socotec CSP/ESP-001
               </li>
-              <li className="rounded-md border border-sand-800 px-3 py-1.5 text-xs font-medium text-sand-300">
-                Réseau L'Esprit Piscine
+              {/* Badge réseau = logo officiel cliquable vers la page membre
+                  Aqua System (retour fondateur 2026-06-12, D-39). Logotype noir
+                  inversé en blanc (usage monochrome footer) — membership réel,
+                  usage du logo conforme au statut de membre du GIE. */}
+              <li>
+                <a
+                  href={ESPRIT_PISCINE_MEMBER_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Aqua System, membre du réseau L'Esprit Piscine (ouvre un nouvel onglet)"
+                  className="flex items-center rounded-md border border-sand-800 px-3 py-1.5 transition-colors hover:border-sand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring-inverse)] focus-visible:ring-offset-2 focus-visible:ring-offset-background-inverse"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/partenaires/logo-esprit-piscine.png"
+                    alt=""
+                    aria-hidden
+                    width={215}
+                    height={45}
+                    loading="lazy"
+                    className="h-4 w-auto brightness-0 invert"
+                  />
+                </a>
               </li>
             </ul>
             {/* Réseaux sociaux remontés en col 1 (footer-audit §B) — groupe les

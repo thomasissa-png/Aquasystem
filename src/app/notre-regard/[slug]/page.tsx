@@ -11,6 +11,7 @@ import {
   getRelatedArticles,
   type Article,
 } from '@/content/blog';
+import { categoryLabel } from '@/content/blog-categories';
 import { Hero } from '@/components/sections/Hero';
 import { ArticleBody } from '@/components/blog/ArticleBody';
 import { AuthorBlock } from '@/components/blog/AuthorBlock';
@@ -131,12 +132,20 @@ export default function ArticlePage({
             <ArrowLeft aria-hidden className="h-4 w-4" />
             Tous nos articles
           </Link>
-          <time
-            dateTime={article.datePublished}
-            className="text-sm text-foreground-muted"
-          >
-            Publié le {formatArticleDate(article.datePublished)}
-          </time>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+            <Link
+              href={`/notre-regard/?categorie=${article.category}`}
+              className="text-xs font-medium uppercase tracking-[0.1em] text-foreground-accent-water underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2"
+            >
+              {categoryLabel(article.category)}
+            </Link>
+            <time
+              dateTime={article.datePublished}
+              className="text-sm text-foreground-muted"
+            >
+              Publié le {formatArticleDate(article.datePublished)}
+            </time>
+          </div>
         </div>
       </div>
 

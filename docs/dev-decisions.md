@@ -680,3 +680,42 @@ Application des correctifs P0/P1 des 4 audits (copy/seo/alignements/geo) sur les
 **Vérification** : `tsc --noEmit` PASS · `next lint` 0 warning · `next build` 39 pages PASS · `vitest run` 103/103 · `playwright test` 46/46. out/ : 0 cadratin dans les `<title>`, sitemap 33 URLs, 24 fiches `index, follow`, `@type` array présent, 3 FAQPage @id uniques, bloc GEO + 3 Q/R FAQ visibles. Baselines (fold + fullpage, 9 pages × 3 devices = 54) régénérées via `scripts/capture-baselines.mjs` (serveur statique `serve out` port 3100) et RELUES : realisations (sous-titre 78/92 + bloc GEO), la-maison (axes corrigés), piscines (claims centrés + FAQ), accueil (sous-titre + ancres), jardins (TextBlock centré). NB baselines `-sec1/-sec2` accueil non couvertes par le script (artefacts session antérieure) — non bloquant.
 
 **Fichiers modifiés** : `src/content/realisations.ts`, `src/app/sitemap.ts`, `src/lib/seo.ts`, `src/content/faq.ts`, `src/app/layout.tsx`, `src/app/page.tsx`, `src/app/contact/page.tsx`, `src/app/realisations/page.tsx`, `src/app/realisations/[slug]/page.tsx`, `src/app/jardins-paysage/page.tsx`, `src/app/piscines-bien-etre/page.tsx`, `src/app/la-maison/page.tsx`, `src/app/prescripteurs/page.tsx`, `src/components/sections/TextBlock.tsx`, `src/components/sections/OuvragesSection.tsx`, `tests/unit/realisations.test.ts`.
+
+
+---
+
+## D-37 — Intégration des 6 photos jardins fondateur + casting hero plongeante (2026-06-12)
+
+6 photos jardins fournies par le fondateur (page Facebook/Instagram Les Terres Essentielles, droits accordés 2026-06-12). Triage orchestrateur : 3 SITE (créations paysagères), 3 RÉSERVE SOCIALE (registre jardinerie/ambiance). Toutes ≤ 1900px les deux dimensions à la source (1440×1078 pour les 3 site).
+
+**Optimisation** — `scripts/build-jardins-fondateur-images.mjs` :
+- SITE → `public/images/realisations/` WebP 3 tailles (1280/800/400, qualité 80) : `jardin-terrasses-plongee`, `massif-exotique-escalier`, `massif-palmier-agaves`.
+- RÉSERVE → `assets/social-media/` JPEG mozjpeg q82, fit inside 1900px : `bananiers-serre-jardinerie`, `fleurs-blanches-macro`, `rosiers-jardin`. README social-media mis à jour. Racine nettoyée (6 jpg supprimés ; Grep des noms d'origine → seul le script de build les référence).
+
+**Casting hero /jardins-paysage — DÉCISION : PAS de swap.** La plongeante (469671333) est une composition VERTICALE/diagonale qui se lit de haut en bas (terrasse bois + couloir de nage en haut → escaliers + graminées → pavés en bas). Test empirique : crop au ratio réel du hero desktop (60vh ≈ 2.78:1) à 4 positions verticales (`/tmp/casting/hero-{top,center,pos40,pos65}`). Verdict : le bandeau large **mutile** la composition — `top` ne montre que la terrasse haute (perd l'étagement, le sujet), `center` donne une bande confuse d'escaliers sans sujet lisible. De plus le bloc texte bas-gauche du hero tomberait sur la zone pavée chargée (lisibilité H1 dégradée). Le hero actuel `jardin-bassin-maison-bois` (composition horizontale végétale, validé D-28) est conservé. La plongeante est utilisée là où son format vertical excelle : (1) grille réalisations à son ratio natif, (2) pas de MediaSplit dédié (le slot Création est pris par le massif exotique, plus représentatif d'« une création plantée » que d'une vue d'ensemble).
+
+**Slots comblés (doctrine conversion)** :
+- Slot « Création » /jardins-paysage : `CreationBlock` passe de `TextBlock` à `MediaSplit` (accent forest, tone alt) avec `massif-exotique-escalier` (palmiers, escalier pierre, paillage minéral). Alt factuel « Massif exotique planté par Les Terres Essentielles… » — pas de revendication de chantier complet ni de commune.
+- Slot F1 « essences » de `VivantSection` : placeholder → photo réelle `massif-palmier-agaves` (kind `photo`, rendu OuvrageCard). Alt factuel essences visibles.
+- Slot F2 « entretien » de `VivantSection` : RESTE en PhotoPlaceholder (aucune photo entretien parmi les 6 — zéro invention).
+
+**Manifeste** : `jardin-terrasses-plongee` ajoutée (type `projet_complet`, filtres projet_complet/jardin_parc/piscine). `visualDescription` rédigée au registre D-31 (description visible + réalité d'exécution + clôture conditionnelle « Si votre terrain… »). Crédit `Les Terres Essentielles`. Entre dans la grille (25 fiches) + sitemap.
+
+**Vérification** : `tsc --noEmit` PASS · `next lint` 0 warning · `next build` PASS (25 fiches réalisations, fiche `jardin-terrasses-plongee` générée + au sitemap) · `vitest run` 115/115 · baselines jardins + accueil × 3 devices régénérées (`scripts/screenshots-casting.mjs`, serveur `serve out` port 3000) et RELUES : Création MediaSplit (photo droite OK), VivantSection (essences photo top-left, F2 placeholder conservé, pépinière photo OK). Crops casting archivés `/tmp/casting/` (hors repo).
+
+**Fichiers modifiés** : `scripts/build-jardins-fondateur-images.mjs` (nouveau), `src/content/realisations.ts`, `src/app/jardins-paysage/page.tsx`, `src/components/sections/VivantSection.tsx`, `assets/social-media/README.md`.
+
+---
+
+## D-39 — Dates blog antidatées + logo/lien L'Esprit Piscine (2026-06-12)
+
+**Dates blog (retour fondateur)** : les 6 articles étaient échelonnés VERS LE FUTUR depuis le 2026-06-12 (jusqu'au 2026-08-26) — incohérent pour le visiteur (« on est le 12 juin ») et nocif SEO (Google ignore/déclasse les datePublished futures). Correction : même ordre de publication du programme (A1, A4, A5, A2, A3, A6), même cadence 15 jours, mais en REMONTANT depuis le jour du lancement — le programme est présenté comme déjà en cours. A1 2026-03-29 · A4 2026-04-13 · A5 2026-04-28 · A2 2026-05-13 · A3 2026-05-28 · A6 2026-06-12 (jour J). Prochain article du programme : ~2026-06-27. Règle : JAMAIS de datePublished future. Grep `2026-0[78]` dans src/ → 0 résultat.
+
+**Logo + lien L'Esprit Piscine (retour fondateur « est-on juste ? »)** : OUI, on est juste — adhésion réelle et vérifiée (page membre https://www.esprit-piscine.fr/aqua-system/ HTTP 200, JSON-LD memberOf + sameAs déjà en place, crédits photo fiches). Manquait : logo visible + lien cliquable. Fait :
+- `public/images/partenaires/logo-esprit-piscine.png` (215×45, 989 o, source officielle esprit-piscine.fr, transparent).
+- Footer : badge texte « Réseau L'Esprit Piscine » → badge LOGO cliquable vers la page membre (logotype noir inversé blanc `brightness-0 invert` — usage monochrome footer ; l'usage du logo est conforme au statut de membre du GIE).
+- /la-maison : mention « réseau L'Esprit Piscine » → lien éditorial vers la page membre (preuve tierce directe).
+- Constante unique `ESPRIT_PISCINE_MEMBER_URL` (constants.ts).
+- ProofBadges accueil : INCHANGÉ (harmonie typographique du bandeau de preuves — pas de mélange logo/texte).
+
+**Fichiers modifiés** : `src/content/blog.ts` (dates), `src/lib/constants.ts`, `src/components/layout/Footer.tsx`, `src/app/la-maison/page.tsx`, `public/images/partenaires/logo-esprit-piscine.png` (nouveau).

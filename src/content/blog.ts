@@ -11,16 +11,18 @@
  * génération — brief LOT BLOG 2/2). Vérifié : chaque `heroBase` existe dans
  * /public/images/realisations/ et dans REALISATIONS (src/content/realisations.ts).
  *
- * DATES (échelonnement « lancement plein » — tous publiés en ligne dès maintenant,
- * mais datePublished échelonné dans l'ORDRE de publication du programme :
- * A1, A4, A5, A2, A3, A6 — A1 daté du jour, puis +15 jours) :
- *   A1 2026-06-12 · A4 2026-06-27 · A5 2026-07-12 · A2 2026-07-27 ·
- *   A3 2026-08-11 · A6 2026-08-26
+ * DATES (échelonnement « programme en cours » — tous publiés en ligne au
+ * lancement, datés dans l'ORDRE de publication du programme A1, A4, A5, A2,
+ * A3, A6, à 15 jours d'intervalle, en REMONTANT depuis le jour du lancement.
+ * JAMAIS de date future (retour fondateur 2026-06-12 + pénalité SEO) :
+ *   A1 2026-03-29 · A4 2026-04-13 · A5 2026-04-28 · A2 2026-05-13 ·
+ *   A3 2026-05-28 · A6 2026-06-12 — prochain article : ~2026-06-27.
  *
  * CITATIONS [CITATION À VALIDER NB] : EXCLUES du rendu (non validées). Voir le
  * commentaire dédié dans chaque fichier src/content/blog/<slug>.ts.
  */
 import type { ContentBlock } from './blog/types';
+import type { BlogCategory } from './blog-categories';
 import { a1Body } from './blog/piscine-debordement-terrain-en-pente';
 import { a4Body } from './blog/investissement-piscine-haut-de-gamme';
 import { a5Body } from './blog/piscine-jardin-concevoir-ensemble';
@@ -38,6 +40,8 @@ export interface Article {
   metaDescription: string;
   /** Requête(s) cible(s) SEO — frontmatter requete_cible (documentaire). */
   requeteCible: string;
+  /** Catégorie éditoriale (taxonomie blog-categories.ts) — filtre + eyebrow. */
+  category: BlogCategory;
   /** Date de publication ISO (YYYY-MM-DD) — pilote tri, JSON-LD, RSS. */
   datePublished: string;
   /**
@@ -62,7 +66,8 @@ export const ARTICLES: Article[] = [
     metaDescription:
       "Un terrain en pente dans les Yvelines n'est pas un obstacle. C'est souvent un atout. Nicolas Berg, pisciniste 30 ans en 78/92, explique pourquoi.",
     requeteCible: 'piscine à débordement Yvelines / terrain en pente piscine',
-    datePublished: '2026-06-12',
+    category: 'types-piscine',
+    datePublished: '2026-03-29',
     heroBase: 'piscine-debordement-foret',
     heroAlt:
       "Piscine à débordement bordée d'une terrasse en bois, plan d'eau ouvert sur une forêt de pins, mur en pierre — réalisation Aqua System, ouest parisien",
@@ -79,7 +84,8 @@ export const ARTICLES: Article[] = [
       "Pas de fourchettes inventées : une explication honnête des postes de coût d'une piscine sur mesure béton. Structure, finitions, équipements, garantie.",
     requeteCible:
       'prix piscine sur mesure / investissement piscine haut de gamme',
-    datePublished: '2026-06-27',
+    category: 'investissement-projet',
+    datePublished: '2026-04-13',
     heroBase: 'piscine-couloir-demeure-ancienne',
     heroAlt:
       "Long bassin miroir face à une demeure ancienne en pierre et brique, grande pelouse, arbres adultes — réalisation Aqua System, ouest parisien",
@@ -95,7 +101,8 @@ export const ARTICLES: Article[] = [
       "Concevoir la piscine et le jardin depuis le même bureau d'études — pas en deux temps. Ce que ça change dans le résultat, dans l'ouest parisien.",
     requeteCible:
       'piscine et jardin sur mesure / pisciniste paysagiste Yvelines',
-    datePublished: '2026-07-12',
+    category: 'eau-jardin',
+    datePublished: '2026-04-28',
     heroBase: 'projet-bassin-jardin-paysage',
     heroAlt:
       "Bassin intégré dans un jardin paysagé, margelles claires, massifs plantés et cheminements composés ensemble — projet complet Aqua System, ouest parisien",
@@ -113,7 +120,8 @@ export const ARTICLES: Article[] = [
       "4 piscines intérieures construites dans les Yvelines (78) et les Hauts-de-Seine. Nicolas Berg explique ce que l'hygrométrie impose dès la conception.",
     requeteCible:
       'piscine intérieure sur mesure 78 / piscine intérieure hygrométrie',
-    datePublished: '2026-07-27',
+    category: 'types-piscine',
+    datePublished: '2026-05-13',
     heroBase: 'piscine-interieure-pierre-poutres',
     heroAlt:
       "Couloir de nage intérieur sous charpente en bois et murs en pierre, perspective sur le bassin — réalisation Aqua System, ouest parisien",
@@ -129,7 +137,8 @@ export const ARTICLES: Article[] = [
     metaDescription:
       "Un fond mobile ne s'ajoute pas à une piscine — il se conçoit avec elle. Notre réalisation dans les Yvelines et ce que cet ouvrage change au quotidien.",
     requeteCible: 'piscine fond mobile / fond mobile terrasse piscine',
-    datePublished: '2026-08-11',
+    category: 'types-piscine',
+    datePublished: '2026-05-28',
     heroBase: 'piscine-fond-mobile-terrasse',
     heroAlt:
       "Piscine à fond mobile avec platelage bois affleurant, fond remonté formant une terrasse praticable — réalisation Aqua System, ouest parisien",
@@ -145,7 +154,8 @@ export const ARTICLES: Article[] = [
     metaDescription:
       "Les signes qui imposent une rénovation (et ceux qui ne signalent qu'un entretien insuffisant). Le regard du pisciniste, en Yvelines et Hauts-de-Seine.",
     requeteCible: 'rénovation piscine 78 / rénover piscine béton',
-    datePublished: '2026-08-26',
+    category: 'investissement-projet',
+    datePublished: '2026-06-12',
     heroBase: 'piscine-pierre-mur-ancien',
     heroAlt:
       "Piscine bordée de margelles en pierre claire le long d'un mur ancien restauré, abords minéraux soignés — réalisation Aqua System, ouest parisien",

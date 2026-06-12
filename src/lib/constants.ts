@@ -51,6 +51,14 @@ export const SOCIAL_LINKS = {
 export const PARTNER_NAME = 'Les Terres Essentielles';
 
 /**
+ * Page membre Aqua System sur le site du réseau L'Esprit Piscine (GIE dont
+ * Aqua System est membre — fait vérifié, JSON-LD memberOf/sameAs). Sert de
+ * cible aux liens visibles (footer, /la-maison) : preuve tierce directe.
+ */
+export const ESPRIT_PISCINE_MEMBER_URL =
+  'https://www.esprit-piscine.fr/aqua-system/';
+
+/**
  * Navigation principale — ordre et libellés définitifs (arbitrage P0-5,
  * ux-writing-guide §6). Ne JAMAIS réordonner sans repasser par l'arbitrage.
  */

@@ -18,6 +18,7 @@ export type EventName =
   | 'form_abandonment'
   | 'cta_clicked'
   | 'portfolio_filter_clicked'
+  | 'blog_filter_clicked'
   | 'portfolio_realisation_viewed'
   | 'prescripteur_page_viewed'
   | 'prescripteur_cta_clicked'

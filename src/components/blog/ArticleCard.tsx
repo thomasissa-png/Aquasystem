@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { photoSrc } from '@/content/realisations';
 import { formatArticleDate, type Article } from '@/content/blog';
+import { categoryLabel } from '@/content/blog-categories';
 
 /**
  * ArticleCard — card d'un article (index /notre-regard, teaser accueil, « Pour
@@ -31,12 +32,17 @@ export function ArticleCard({ article }: { article: Article }) {
         />
       </Link>
       <div className="flex flex-1 flex-col p-5 md:p-6">
-        <time
-          dateTime={article.datePublished}
-          className="text-xs font-medium uppercase tracking-[0.1em] text-foreground-accent-water"
-        >
-          {formatArticleDate(article.datePublished)}
-        </time>
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+          <span className="text-xs font-medium uppercase tracking-[0.1em] text-foreground-accent-water">
+            {categoryLabel(article.category)}
+          </span>
+          <time
+            dateTime={article.datePublished}
+            className="text-xs text-foreground-muted"
+          >
+            {formatArticleDate(article.datePublished)}
+          </time>
+        </div>
         <h3 className="mt-3 font-serif text-xl leading-snug text-foreground md:text-2xl">
           <Link
             href={href}

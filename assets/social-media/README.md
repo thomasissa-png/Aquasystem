@@ -24,6 +24,18 @@ page Facebook **Les Terres Essentielles** (https://www.facebook.com/LesTerresEss
 | `bulbes-printemps-jacinthes-narcisses-2.jpg` | Bulbes de printemps (jacinthes, narcisses) sur étals — variante | Social saisonnier (printemps) |
 | `rose-blanche-gros-plan.jpg` | Rose blanche en gros plan | Social (visuel d'ambiance végétal) |
 | `boutique-coffrets-diffuseurs.jpg` | Boutique — coffrets de diffuseurs | Social (registre boutique uniquement) |
+| `bananiers-serre-jardinerie.jpg` | Bananiers en serre à la jardinerie | Social (registre jardinerie / végétal exotique) |
+| `fleurs-blanches-macro.jpg` | Fleurs blanches en gros plan (macro) | Social (visuel d'ambiance végétal) |
+| `rosiers-jardin.jpg` | Rosiers en fleurs au jardin | Social (visuel d'ambiance végétal) |
+
+### Réserve ajoutée le 2026-06-12 (lot photos jardins fondateur)
+
+Trois des six photos jardins fournies ce jour relèvent du registre social, pas du
+site premium : `bananiers-serre-jardinerie` (serre jardinerie), `fleurs-blanches-macro`
+(macro fleurs) et `rosiers-jardin` (rosiers). Optimisées JPEG ≤ 1900px (script :
+`scripts/build-jardins-fondateur-images.mjs`). Les 3 autres (terrasses plongeante,
+massif exotique escalier, massif palmier/agaves) sont des créations paysagères :
+intégrées au site dans `public/images/realisations/`.
 
 ## Photos SITE (rangées ailleurs)
 

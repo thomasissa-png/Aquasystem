@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { SITE_URL, absoluteUrl, breadcrumbJsonLd } from '@/lib/seo';
-import { ARTICLES_BY_DATE } from '@/content/blog';
-import { ArticleCard } from '@/components/blog/ArticleCard';
+import { BlogGrid } from '@/components/blog/BlogGrid';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { SectionCTA } from '@/components/sections/SectionCTA';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -43,12 +42,10 @@ export default function NotreRegardIndex() {
         />
       </section>
 
+      {/* Filtre + grille : grille COMPLÈTE rendue côté serveur (état « Tous » par
+          défaut), filtre client par affichage (D-17, pas de bailout CSR). */}
       <section className="mx-auto max-w-container px-4 pb-20 md:px-8 md:pb-24">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {ARTICLES_BY_DATE.map((article) => (
-            <ArticleCard key={article.slug} article={article} />
-          ))}
-        </div>
+        <BlogGrid />
       </section>
 
       <SectionCTA
