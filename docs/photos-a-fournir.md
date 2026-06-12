@@ -155,5 +155,25 @@ Tant que ces données ne sont pas fournies, le site reste sur « Ouest parisien 
 
 ---
 
+---
+
+## E. Validations techniques (questions oui/non pour Nicolas Berg)
+
+> Ces 5 questions débloquent des affirmations techniques dans le copy public.
+> Tant que la réponse n'est pas confirmée, les éléments correspondants sont exclus
+> du site (statut [À CONFIRMER] dans `savoir-faire-facts.md` §2).
+> Ajouté par @copywriter — 2026-06-12, suite à la strate savoir-faire.
+
+| # | Question | Statut | Impact copy si OUI |
+|---|---|---|---|
+| V1 | Utilisez-vous le procédé Neobloc (CSTB n° 16/22-793, classe A, NF EN 17645) ? | En attente | Enrichir bloc « Construit pour durer » : classe A, −30 % chauffage, bas carbone |
+| V2 | Installez-vous la filtration verre recyclé activé 5 µm (IFTS) ? | En attente | Ajouter proof point dans « Construit pour durer » ou bloc Suivi annuel |
+| V3 | Réalisez-vous des terrasses mobiles coulissantes (distinctes du fond mobile) ? | En attente | Ajouter 7e card « Terrasse mobile » dans la section types d'ouvrage |
+| V4 | Proposez-vous les revêtements PVC armé textures 3D du réseau ? | En attente | Enrichir bloc « La matière qui reste » : couleur d'eau, palette textures |
+| V5 | Photo spa HotSpring / sauna / hammam en contexte propriété disponible ? | En attente | Débloquer slot S2 (ci-dessus §A) et enrichir MediaSplit Spa |
+
+---
+
 *Document produit par @fullstack — 2026-06-12 (D-25, complété D-27).*
+*Section E ajoutée par @copywriter — 2026-06-12 (savoir-faire-copy.md).*
 *Sources : project-context.md §Doctrine photos, casting-visuels.md §4b, design-fixes-fondateur.md Prise 4.*
