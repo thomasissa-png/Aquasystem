@@ -9,6 +9,7 @@ import {
   nicolasBergJsonLd,
 } from '@/lib/seo';
 import { photoSrc } from '@/content/realisations';
+import { JARDINERIE_PHOTOS, jardinerieSrc } from '@/content/jardinerie';
 import { Hero } from '@/components/sections/Hero';
 import { SectionCTA } from '@/components/sections/SectionCTA';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -178,6 +179,29 @@ export default function LaMaisonPage() {
                 climat de l'ouest parisien.
               </p>
             </div>
+            {/* Photo d'ambiance HONNÊTE : la jardinerie LTE (point de vente),
+                pas une réalisation paysagère. Alt 100% factuel. */}
+            {(() => {
+              const photo =
+                JARDINERIE_PHOTOS['jardinerie-cagette-lauriers-orgeval'];
+              return (
+                <figure className="mt-6 overflow-hidden rounded-lg">
+                  <div className="relative aspect-[4/3] w-full">
+                    <Image
+                      src={jardinerieSrc(photo.base, '800w')}
+                      alt={photo.alt}
+                      fill
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <figcaption className="mt-2 text-xs leading-5 text-foreground-muted">
+                    La jardinerie Les Terres Essentielles, route d'Orgeval.
+                  </figcaption>
+                </figure>
+              );
+            })()}
             <address className="mt-5 text-sm not-italic text-foreground-secondary">
               <p className="flex items-start gap-2">
                 <MapPin aria-hidden className="mt-0.5 h-4 w-4 shrink-0" />

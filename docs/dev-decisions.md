@@ -255,3 +255,31 @@ Nouveaux tokens `--color-bg-error: #f5d5d5` + `--color-border-error: #8b2e2e` (c
 
 ### Vérification
 `tsc --noEmit` PASS · `next lint` PASS · `build` PASS (30 routes) · **Vitest 102 PASS** (99 → +3 : titres courts, zone strippée, exclusion drafts) · **Playwright 41 PASS** dont **axe-core 13 pages VERT** (+ 13 nouveaux tests). Vérif `out/` : skip link + `id="main"` présents, fiche `noindex` + `<title>` court, sitemap = 10 URLs, tokens muted/bg-error dans le CSS. **9 baselines re-screenshot** (piscines-bien-etre / jardins-paysage / notre-approche × mobile/tablet/desktop — pages touchées par le muted). Pas de commit (consigne).
+
+---
+
+## D-15 — Intégration des visuels jardinerie fournis par le fondateur (@fullstack, 2026-06-12)
+
+**Contexte** : 9 JPG fournis par le fondateur (page Facebook Les Terres Essentielles, droits accordés 2026-06-12). Ces photos montrent la **JARDINERIE** (point de vente, serres, présentoirs) — **PAS** des réalisations paysagères. Règle d'honnêteté : ne les utiliser QUE là où c'est honnête (ambiance jardinerie/pépinière), jamais comme preuve de création de jardin.
+
+### Tri 4 SITE / 5 SOCIAL
+- **4 photos SITE** → WebP q80 × 3 tailles (1280/800/400w) dans `public/images/jardinerie/` via `scripts/build-jardinerie-images.mjs` (calqué sur `build-realisation-images.mjs`, sharp `--no-save`) :
+  - `jardinerie-serre-chrysanthemes` (serre intérieure, chrysanthèmes) — **utilisée** (/jardins-paysage bloc 3)
+  - `jardinerie-cagette-lauriers-orgeval` (cagette « A. Feroux Orgeval ») — **utilisée** (/la-maison bloc LTE)
+  - `jardinerie-presentoir-exterieur`, `jardinerie-allee-pepiniere` — converties, **disponibles non utilisées** (réserve ambiance honnête)
+- **5 photos SOCIAL** (poinsettias, bulbes ×2, rose blanche, boutique diffuseurs) → originaux JPG déplacés **hors `public/`** dans `assets/social-media/` (jamais shippés dans le build statique) + `README.md` (contenu/usage/source/droits).
+- **9 JPG supprimés de `templates/`** → ne reste que `project-context.md`.
+
+### Manifeste `src/content/jardinerie.ts`
+Typé comme `realisations.ts`. `JARDINERIE_PHOTOS` en `as const satisfies Record<string, JardineriePhoto>` (accès par clé littérale non-optionnel sous `noUncheckedIndexedAccess`). `alt` **100% factuels** (« Serre de la jardinerie Les Terres Essentielles… », jamais « jardin réalisé »). `source` = « Fournie par le fondateur (page Facebook Les Terres Essentielles), droits accordés 2026-06-12 ». Helper `jardinerieSrc(base, size)`.
+
+### Intégrations (copy inchangé, alt factuels)
+- **`/jardins-paysage` bloc 3 « Entretien & pépinière »** : `PhotoPlaceholder` → `MediaSplit` (accent forest, picture/srcset 800w mobile comme les autres) avec `jardinerie-serre-chrysanthemes`. **Blocs 1 (plans) et 2 (chantier) GARDENT leur PhotoPlaceholder** (toujours aucune photo réelle de réalisation).
+- **`/la-maison` bloc « Les Terres Essentielles »** : l'`<article>` n'avait **aucun slot photo** (texte seul). Ajout sobre d'un `figure` next/image avec `jardinerie-cagette-lauriers-orgeval` (explicitement désignée « idéale » pour ce bloc) + légende factuelle « La jardinerie Les Terres Essentielles, route d'Orgeval. ».
+- **§3c ambiance secondaire `/jardins-paysage`** : NON ajoutée — sobriété d'abord, la page a déjà sa photo serre. `presentoir-exterieur`/`allee-pepiniere` restent en réserve dans le manifeste.
+
+### P0-1 PARTIELLEMENT levé
+La pépinière/serre a désormais une vraie photo. **Restent en PhotoPlaceholder / sans photo réelle** : plans de jardin (bloc 1), chantier de création (bloc 2), et toutes les réalisations de jardins (aucune photo réelle de création paysagère). À demander au fondateur : photos de plans, de chantier paysager et de jardins réalisés.
+
+### Vérification
+`tsc --noEmit` PASS · `next lint` PASS · `build` PASS (28 routes) · **Vitest 102 PASS**. Vérif `out/images/jardinerie/` = 12 WebP présents. **6 baselines re-screenshot** (jardins-paysage / la-maison × mobile/tablet/desktop) — vérif visuelle Playwright : bloc serre = vraie photo, blocs 1-2 toujours placeholder, photo cagette visible dans le bloc LTE (desktop + mobile pleine largeur). Pas de commit (consigne).

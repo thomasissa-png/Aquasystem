@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { SITE_URL, absoluteUrl, breadcrumbJsonLd } from '@/lib/seo';
 import { photoSrc } from '@/content/realisations';
+import { JARDINERIE_PHOTOS, jardinerieSrc } from '@/content/jardinerie';
 import { Hero } from '@/components/sections/Hero';
 import { MediaSplit } from '@/components/sections/MediaSplit';
 import { ProofBadges, type ProofItem } from '@/components/ui/ProofBadges';
@@ -12,8 +13,10 @@ import { JsonLd } from '@/components/seo/JsonLd';
 /**
  * Jardins & Paysage (/jardins-paysage) — F-03, WF-03.
  * Rendu : SSG. Photos : hero + cross-sell = réalisations réelles à dominante
- * jardin ; les 3 blocs prestation (plans paysagers / chantier création /
- * serre pépinière) n'ont pas de photo réelle → PhotoPlaceholder unique.
+ * jardin. Blocs prestation : (1) plans paysagers et (2) chantier création
+ * restent en PhotoPlaceholder (aucune photo réelle de réalisation) ; (3) la
+ * serre/pépinière utilise une VRAIE photo de la jardinerie Les Terres
+ * Essentielles (honnête : ambiance pépinière, pas une création de jardin).
  * CrossSellingBlock : CTA forest UNIQUEMENT ici (source=jardins, décision @design).
  */
 export const metadata: Metadata = {
@@ -65,7 +68,7 @@ export default function JardinsPaysagePage() {
       {/* Bloc 2 — Création de parcs et jardins (placeholder : chantier création). */}
       <CreationBlock />
 
-      {/* Bloc 3 — Entretien et pépinière (placeholder : serre pépinière). */}
+      {/* Bloc 3 — Entretien et pépinière : VRAIE photo de la jardinerie LTE. */}
       <PepiniereBlock />
 
       {/* Preuves jardins */}
@@ -126,15 +129,20 @@ function CreationBlock() {
 }
 
 function PepiniereBlock() {
+  // VRAIE photo : serre de la jardinerie Les Terres Essentielles (honnête —
+  // ambiance pépinière/point de vente, pas une création de jardin).
+  const photo = JARDINERIE_PHOTOS['jardinerie-serre-chrysanthemes'];
   return (
-    <PlaceholderSplit
+    <MediaSplit
+      accent="forest"
       eyebrow="Entretien & pépinière"
       title="Des végétaux sélectionnés pour durer"
       body={[
         "Un jardin planté pour aujourd'hui et pensé pour dans vingt ans. Les essences que nous recommandons ont fait leurs preuves dans les propriétés de l'ouest parisien — sur les sols et sous les conditions climatiques que nous connaissons.",
         'Entretien régulier, taille de forme, suivi saisonnier. Et une pépinière pour sourcer les végétaux qui correspondent à votre projet.',
       ]}
-      placeholder="Serre de pépinière Les Terres Essentielles : plants en rangées, végétaux prêts à la plantation, lumière naturelle tamisée, ambiance de production soignée."
+      imageSrc={jardinerieSrc(photo.base, '1280w')}
+      imageAlt={photo.alt}
     />
   );
 }
