@@ -2,12 +2,24 @@ import Link from 'next/link';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import {
   CONTACT,
+  FOOTER_NAV_LINKS,
   LEGAL_LINKS,
   PARTNER_CONTACT,
   PARTNER_NAME,
   SITE_NAME,
   SOCIAL_LINKS,
 } from '@/lib/constants';
+
+/**
+ * Accès permanent à l'espace prescripteurs (refonte IA D-25). « Architectes »
+ * est sortie de la nav principale (friction persona Alexandre, ia-refonte §3) :
+ * le footer devient le point d'entrée visible de Camille si elle arrive hors
+ * lien direct. Lien unique discret — ne ressuscite PAS le bloc nav supprimé
+ * en D-22. Source de vérité : FOOTER_NAV_LINKS.
+ */
+const PRESCRIPTEUR_LINK = FOOTER_NAV_LINKS.find(
+  (l) => l.href === '/prescripteurs',
+);
 
 /**
  * Footer — design-system.md §6 + ux-writing-guide §6.
@@ -129,6 +141,16 @@ export function Footer() {
             réservés. · En partenariat avec {PARTNER_NAME}.
           </p>
           <ul className="flex flex-wrap gap-x-6 gap-y-1">
+            {PRESCRIPTEUR_LINK && (
+              <li key={PRESCRIPTEUR_LINK.href}>
+                <Link
+                  href={PRESCRIPTEUR_LINK.href}
+                  className={footerListLinkClass}
+                >
+                  {PRESCRIPTEUR_LINK.label}
+                </Link>
+              </li>
+            )}
             {LEGAL_LINKS.map((link) => (
               <li key={link.href}>
                 <Link href={link.href} className={footerListLinkClass}>
