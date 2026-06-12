@@ -111,6 +111,7 @@
 Cette doctrine prime sur les arbitrages « perception » antérieurs (D-22 SpaBlock, option typo LTE, TextBlock pépinière) — à ré-arbitrer sous l'angle conversion.
 
 ## Validations fondateur (2026-06-12)
+0. **Chiffre de preuve (décision fondateur 2026-06-12)** : on GARDE « plus de 350 piscines entretenues » — le « plus de 500 piscines construites » de guide-piscine.fr n'est PAS adopté. Aucun agent ne doit l'utiliser.
 1. **Droit à l'image / visuels** : ACCORD GLOBAL donné (« tu as mon accord pour tout utiliser ») — photos esprit-piscine + visuels fournis par le fondateur. Levée du P0 droit à l'image.
 2. **Naming** : « Aquasystem » MAINTENU pour le lancement — bascule globale vers le nom définitif plus tard, en une passe (architecture substituable déjà en place + règle commune n°11 Grep).
 3. **Délai de réponse** : sous 48 heures — appliqué (constants.ts REPLY_DELAY_TEXT + ux-writing §3).
