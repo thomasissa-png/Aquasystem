@@ -585,3 +585,26 @@ Agent : @copywriter | Demande fondateur 2026-06-12.
 Aucun autre fichier `src/` touché.
 
 **Vérifications** : tsc --noEmit PASS · npm test (vitest run) à lancer · relecture croisée variété 24 fiches effectuée.
+
+---
+
+## D-32 — Intégration finale du cycle FOND (jardins + resserrage piscines) (2026-06-12)
+
+Agent : @fullstack | Demande fondateur 2026-06-12. Mise en œuvre de `fond-jardins-copy.md` (copy @copywriter, mot pour mot) + resserrage P1 du bas de /piscines-bien-etre.
+
+**A — /jardins-paysage (3 ajouts)**
+1. **Nouvelle section « Ce que le vivant impose »** (`VivantSection.tsx`) insérée entre `MatieresBlock` et `PepiniereBlock` — pendant jardin de `OuvragesSection`. Grille 2 col desktop / 1 mobile, eyebrow forest. 4 entrées, doctrine photos différenciée par entrée :
+   - Entrée 1 « Le choix des essences » → `PhotoPlaceholder` (slot F1 à fournir).
+   - Entrée 2 « Le sol comme contrainte réelle » → **card texte sur fond neutre, sans visuel forcé** (reco copy §7 : sujet sol peu porteur de conversion). Pas un `TextBlock` pleine largeur mais une card dans la grille (cohérence visuelle de la rangée).
+   - Entrée 3 « L'entretien au bon moment » → `PhotoPlaceholder` (slot F2 à fournir).
+   - Entrée 4 « La pépinière » → `OuvrageCard` avec **photo réelle** `/images/jardinerie/jardinerie-allee-pepiniere-800w.webp` (lieu réel LTE).
+   Card text-only et placeholder forcés en `aspect-[4/3]` (via twMerge) pour aligner la hauteur sur les `OuvrageCard` photo de la rangée.
+2. **BureauEtudesBlock** : ajout du paragraphe §2 (ombres portées / vues depuis la maison / circulations) inséré en **2e position** pour conserver le claim GEO en clôture (4 paragraphes au total).
+3. **PepiniereBlock** (MediaSplit) : `body` remplacé par la version enrichie §3 (effet du geste régulier + sélection sur la plante).
+
+**B — /piscines-bien-etre (resserrage P1, gate passe 5)**
+Fusion ÉDITORIALE des anciens `TextBlock` « Construit pour durer » + « La matière qui reste » en **un seul** `TextBlock` (tone alt, eyebrow « Construction & finitions », titre « Ce qui tient dans le temps », sobre, zéro cadratin). 3 paragraphes : structure béton/CSTB → engagement Socotec/Propiscines/décennale → finitions matières + pont jardin. **Aucun fait perdu** (CSTB, décennale, Socotec CSP/ESP-001, Propiscines, margelles/grès cérame/revêtement, terrasses/allées/soubassements). −1 H2 sur la page (resserrage du bas).
+
+**C — Vérifications** : `tsc --noEmit` PASS · `next lint` PASS (0 warning) · `next build` PASS (39 pages, /jardins-paysage et /piscines-bien-etre = 111 kB First Load JS) · `vitest run` 102/102 · `playwright test` 46/46. Baselines régénérées (`scripts/baselines-fond-d32.mjs`, clip ≤900px, jamais fullPage) pour jardins + piscines (folds + sections clippées 3 devices) + fiche réalisation `piscine-debordement-foret` (vérifie le rendu du texte D-31). Captures RELUES (standard passe 5) : section vivant équilibrée, card sol texte-only distincte, photo pépinière chargée, bloc piscines fusionné sans doublon de titre, texte D-31 bien rendu sur la fiche.
+
+**Fichiers modifiés** : `src/components/sections/VivantSection.tsx` (nouveau), `src/app/jardins-paysage/page.tsx`, `src/app/piscines-bien-etre/page.tsx`, `scripts/baselines-fond-d32.mjs` (nouveau). Copy exact respecté, tokens uniquement, aucun composant partagé modifié (pas de Grep rollout nécessaire — `OuvrageCard`/`PhotoPlaceholder`/`TextBlock` consommés tels quels).

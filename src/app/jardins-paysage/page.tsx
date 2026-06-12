@@ -4,6 +4,7 @@ import { photoSrc } from '@/content/realisations';
 import { Hero } from '@/components/sections/Hero';
 import { MediaSplit } from '@/components/sections/MediaSplit';
 import { TextBlock } from '@/components/sections/TextBlock';
+import { VivantSection } from '@/components/sections/VivantSection';
 import { CrossSellingBlock } from '@/components/sections/CrossSellingBlock';
 import { SectionCTA } from '@/components/sections/SectionCTA';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -85,6 +86,13 @@ export default function JardinsPaysagePage() {
           PepiniereBlock. Pont sobre piscine↔jardin (mêmes pierres). */}
       <MatieresBlock />
 
+      {/* Strate « Ce que le vivant impose » (D-32, fond-jardins-copy §1) —
+          pendant jardin de OuvragesSection. Insérée entre MatieresBlock et
+          PepiniereBlock. 4 entrées en grille 2 col : essences (slot photo),
+          sol (card texte sans visuel forcé), entretien (slot photo), pépinière
+          (photo réelle jardinerie LTE). */}
+      <VivantSection />
+
       {/* Bloc Kei-Stone retiré à la demande du fondateur (2026-06-12) — copy
           conservé dans docs/copy/site-copy.md §v1.1 pour réactivation future. */}
 
@@ -139,6 +147,10 @@ function BureauEtudesBlock() {
       title="Un projet pensé avant d'être planté"
       body={[
         "Tout commence par la lecture du terrain : les ombrages, les masses végétales existantes, les contraintes de sol. Notre bureau d'études, en partenariat avec Les Terres Essentielles, pose le plan avant que la première pelle entre dans la terre.",
+        // §2 fond-jardins-copy (D-32) : preuve par l'exemple concret du process
+        // bureau d'études (ombres portées, vues, circulations). Inséré en 2e
+        // paragraphe pour garder le claim GEO en clôture du bloc.
+        "Concrètement, cela signifie : étudier les ombres portées à différentes heures de la journée, identifier les vues depuis l'intérieur de la maison, cartographier les circulations naturelles sur le terrain avant d'en décider une seule. Un jardin qui ne tient pas compte de la vue depuis la cuisine, ou d'un passage quotidien vers le garage, se reprend.",
         "Quand un projet comporte aussi une piscine, les deux études sont menées au même moment. Le résultat : un espace qui tient ensemble, pas une somme de parties.",
         // Claim GEO (D-28) : intégré ici comme 3e paragraphe au lieu d'une section
         // standalone qui « flottait » au centre d'un vide (retour fondateur).
@@ -186,9 +198,12 @@ function PepiniereBlock() {
       eyebrow="Entretien & pépinière"
       accent="forest"
       title="Des végétaux sélectionnés pour durer"
+      // §3 fond-jardins-copy (D-32) : body enrichi — l'effet du geste régulier
+      // (taille au bon moment, suivi massifs, détection sol) et la sélection
+      // sur la plante remplacent les listes vagues précédentes.
       body={[
-        "Un jardin planté pour aujourd'hui et pensé pour dans vingt ans. Les essences que nous recommandons ont fait leurs preuves dans les propriétés de l'ouest parisien, sur les sols et sous les conditions climatiques que nous connaissons.",
-        'Entretien régulier, taille de forme, suivi saisonnier. Et une pépinière pour sourcer les végétaux qui correspondent à votre projet.',
+        "Un jardin suivi dans la durée ne ressemble pas à un jardin entretenu en urgence. La taille de forme à la bonne période, le suivi des massifs saison après saison, la détection d'un problème de sol avant qu'il devienne visible dans les végétaux : c'est ce que le geste régulier construit, pas le rattrapage ponctuel.",
+        "Notre pépinière aux Alluets-le-Roi nous permet de sélectionner les végétaux sur la plante, pas sur catalogue. Ce qu'un propriétaire reçoit dans son jardin a été choisi pour ses conditions de sol, sa lumière, et l'effet attendu dans dix ans.",
       ]}
       placeholderSubject="Allée de la pépinière Les Terres Essentielles, végétaux en conteneurs alignés"
       reversed

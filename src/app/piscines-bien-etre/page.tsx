@@ -107,26 +107,20 @@ export default function PiscinesBienEtrePage() {
           annuel » et ProofBadges. */}
       <OuvragesSection />
 
-      {/* §2 « Construit pour durer » — TextBlock fond alterné, eyebrow water. */}
+      {/* Resserrage P1 (gate passe 5, D-32) : fusion ÉDITORIALE des anciens
+          §2 « Construit pour durer » + §3 « La matière qui reste » en UN seul
+          TextBlock (tone alt, eyebrow « Construction & finitions »). Aucun fait
+          perdu : CSTB, décennale, Socotec, Propiscines, matières, pont jardin.
+          3 paragraphes : structure → engagement → matières/cohérence. */}
       <TextBlock
         tone="alt"
         accent="water"
-        eyebrow="Construction"
-        title="Construit pour durer"
+        eyebrow="Construction & finitions"
+        title="Ce qui tient dans le temps"
         body={[
           "Chaque piscine est une structure en béton armé, conçue par notre bureau d'études et contrôlée par un organisme tiers avant réception. Le procédé de construction est couvert par un Avis Technique CSTB : c'est la preuve que la structure répond aux normes de l'ouvrage privé, indépendamment de notre propre déclaration.",
           "Un seul marché, un seul responsable : vous signez avec Aqua System, qui engage sa garantie décennale sur l'ensemble de l'ouvrage. Certification de services Socotec CSP/ESP-001 « Professionnels de la piscine privée à usage familial », membre Propiscines Certifié.",
-        ]}
-      />
-
-      {/* §3 « La matière qui reste » — TextBlock neutre, eyebrow water. */}
-      <TextBlock
-        accent="water"
-        eyebrow="Finitions"
-        title="La matière qui reste"
-        body={[
-          "Le choix du matériau n'est pas une option de fin de chantier : il conditionne la lecture de l'ensemble. Margelles en pierre naturelle ou travertin, plages en grès cérame, revêtement dont la teinte compose la couleur d'eau — chaque décision est prise au moment du plan, pas en rattrapage.",
-          'Ces mêmes pierres, nous les travaillons aussi autour de la propriété : terrasses, allées, soubassements. La cohérence entre le bord de bassin et le reste de l\'extérieur vient de là.',
+          "Les finitions se décident au même moment que la structure, pas en fin de chantier : margelles en pierre naturelle ou travertin, plages en grès cérame, revêtement dont la teinte compose la couleur d'eau. Ces mêmes pierres, nous les travaillons aussi autour de la propriété — terrasses, allées, soubassements — et c'est de là que vient la cohérence entre le bord de bassin et le reste de l'extérieur.",
         ]}
       />
 
