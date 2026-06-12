@@ -146,9 +146,10 @@ export default function PolitiqueConfidentialitePage() {
 
       <p className="mt-12 text-sm text-foreground-muted">
         Cette politique a été rédigée en conformité avec le RGPD et la loi
-        Informatique et Libertés. À faire valider par un avocat avant publication
-        définitive.
+        Informatique et Libertés.
       </p>
+      {/* NOTE INTERNE (gate-perception D4, 2026-06-12) — ne pas rendre :
+          à faire valider par un avocat avant publication définitive. */}
     </article>
   );
 }

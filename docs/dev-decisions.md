@@ -385,3 +385,21 @@ La pépinière/serre a désormais une vraie photo. **Restent en PhotoPlaceholder
 **Vérification finale** : `tsc --noEmit` PASS · `next lint` PASS (0 warning) · `build` PASS (30 routes) · **Vitest 102/102** · **Playwright 43/43**. Baselines régénérées fold + fullpage, 10 pages × 3 viewports = 60 PNG (`scripts/capture-baselines.mjs`, dev server 127.0.0.1:3100). Relecture visuelle desktop (jardins/piscines/notre-approche : blocs texte propres sans trou ; mentions sans crochets) + mobile (footer compact ≤ 1 écran). Pas de commit, pas de déploiement (consigne).
 
 ---
+
+## D-23 — Corrections post gate-perception passe 1 (D1-D4) (@fullstack, 2026-06-12)
+
+> Source : `docs/reviews/gate-perception-passe1.md` (verdict NON, défauts D1-D4). Périmètre STRICT, tokens uniquement. Pas de commit, pas de déploiement.
+
+**Décision de fond** : le signal « Fiche en cours de documentation » est une **excuse d'inachevé** rendue côté client. Une fiche draft n'a pas besoin de s'excuser : photos réelles + titre factuel + métadonnées = page galerie sobre, **complète en soi**. On retire le signal, on n'ajoute AUCUN contenu pour combler (règle zéro invention).
+
+**D1-D3 (P0) — suppression du libellé « Fiche en cours de documentation » partout où il était visible.**
+- `RealisationCard.tsx` : ligne texte draft sous le titre **supprimée** (le bloc `{draft && ...}` de la passe précédente / P0-D1). Import `isDraft` + variable `draft` retirés (plus utilisés ici). La carte ne montre plus que photo + type + zone + « Voir → ».
+- `realisations/[slug]/page.tsx` : encart `FicheDraftNotice` (icône FileText + « Fiche en cours de documentation » + paragraphe « récit bientôt publié ») **supprimé entièrement**. Un draft ne rend plus aucun bloc éditorial ni séparateur — la fiche devient photos + H1 + (cardType, zone) + CTA. `FicheEditorial` reste rendu **uniquement** pour les fiches non-draft (texte réel). Import `FileText` retiré. `isDraft` CONSERVÉ (toujours utilisé par `generateMetadata` pour `robots: noindex` + l'exclusion sitemap). **Les drafts restent noindex / hors sitemap — non touché** (logique SEO inchangée).
+
+**D4 (P1) — note interne « avocat » sur `/politique-confidentialite`.** La phrase « À faire valider par un avocat avant publication définitive » **retirée du rendu** et déplacée en **commentaire TSX** (`{/* NOTE INTERNE ... */}`). Grep `/mentions-legales` + toutes pages `src/**/*.tsx` : aucune autre note interne rendue (« à valider », « note interne », « TODO », « À CONFIRMER » → toutes en JSDoc/commentaires uniquement, jamais dans le rendu ; `placeholder=` HTML d'inputs = légitime). Le `[À CONFIRMER]` de mentions-legales avait déjà été neutralisé en D-22 (formulations « sur demande »).
+
+**Tests** : aucune assertion e2e/unit ne référençait les libellés supprimés (`grep` tests/ = 0 pour « en cours de documentation » / « avocat » / « FicheDraftNotice »). `static-html-no-js.spec.ts` asserte le **nombre de cartes** (14) et la structure, inchangés → reste vert sans modification. `realisations.test.ts` teste `isDraft` pour la logique noindex/sitemap (comportement conservé) → reste vert.
+
+**Vérification finale** : `tsc --noEmit` PASS · `next lint` PASS (0 warning) · `build` PASS (30 routes) · **Vitest 102/102** · **Playwright 43/43**. **Grep `out/` : « en cours de documentation » = 0 · « avocat » = 0 · « Fiche en cours » = 0 · « valider » = 0.** Baselines impactées re-capturées (realisations, fiche draft `piscine-debordement-foret`, politique-confidentialite) × 3 viewports = 18 PNG, **fold + clip ≤ 900px, jamais fullPage** (consigne gate). Relecture visuelle : grille réalisations = cartes propres (photo + type + zone + « Voir ») ; fiche draft = page galerie sobre (photo + titre + CTA, zéro encart d'inachevé). Pas de commit, pas de déploiement (consigne).
+
+---

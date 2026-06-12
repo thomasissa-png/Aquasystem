@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, CheckCircle, FileText } from 'lucide-react';
+import { ArrowLeft, CheckCircle } from 'lucide-react';
 import { SITE_URL, absoluteUrl, breadcrumbJsonLd } from '@/lib/seo';
 import {
   REALISATIONS,
@@ -22,8 +22,9 @@ import { JsonLd } from '@/components/seo/JsonLd';
  * pré-générées depuis le manifeste).
  *
  * Données éditoriales RÉELLES non encore fournies (champs null) → la fiche est
- * rendue élégamment comme « fiche en cours de documentation » (jamais de donnée
- * de chantier inventée — règle zéro invention). La photo réelle reste affichée.
+ * une page galerie sobre, complète en soi : photos + titre factuel + métadonnées.
+ * Aucun signal d'inachevé rendu (gate-perception D2/D3, 2026-06-12). Jamais de
+ * donnée de chantier inventée (règle zéro invention). Le draft reste noindex.
  */
 export function generateStaticParams() {
   return REALISATIONS.map((r) => ({ slug: r.slug }));
@@ -172,14 +173,13 @@ export default function RealisationFiche({
               </ul>
             )}
 
-            {/* Texte éditorial OU état "fiche en cours de documentation" */}
-            <div className="mt-6 border-t border-border pt-6">
-              {draft ? (
-                <FicheDraftNotice />
-              ) : (
+            {/* Texte éditorial réel uniquement. Draft (sans texte) → page galerie
+                sobre, aucun encart d'inachevé rendu (gate-perception D2/D3). */}
+            {!draft && (
+              <div className="mt-6 border-t border-border pt-6">
                 <FicheEditorial realisation={r} />
-              )}
-            </div>
+              </div>
+            )}
 
             <div className="mt-8">
               <p className="mb-3 font-serif text-xl text-foreground">
@@ -219,23 +219,6 @@ function ficheSource(r: Realisation): string {
   if (r.type === 'jardin_paysage') return 'jardins-paysage';
   if (r.type === 'projet_complet') return 'projet-complet';
   return 'piscines-bien-etre';
-}
-
-/** Notice sobre quand la fiche n'a pas encore de texte éditorial réel. */
-function FicheDraftNotice() {
-  return (
-    <div className="rounded-lg bg-background-secondary p-5">
-      <p className="flex items-center gap-2 text-sm font-medium text-foreground">
-        <FileText aria-hidden className="h-4 w-4 text-foreground-accent-water" />
-        Fiche en cours de documentation
-      </p>
-      <p className="mt-2 text-sm leading-6 text-foreground-secondary">
-        Le récit complet de cette réalisation, l'intention, le parti pris et les
-        choix d'exécution, sera bientôt publié. Les photographies, elles, sont
-        bien celles de ce chantier.
-      </p>
-    </div>
-  );
 }
 
 /** Texte éditorial Intention → Réponse → Exécution (quand fourni). */

@@ -4,13 +4,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { trackEvent } from '@/lib/analytics';
-import { isDraft, photoSrc, type Realisation } from '@/content/realisations';
+import { photoSrc, type Realisation } from '@/content/realisations';
 
 /**
  * RealisationCard — card du portfolio (page-compositions WF-01 §4 / WF-05 §2).
  * Photo réelle (ratio 4:3), type + zone, lien « Voir → ».
  * Émet portfolio_realisation_viewed (E-06) au clic (îlot client).
  * Image lazy (jamais LCP — toujours en grille sous l'en-tête).
+ * Carte sobre : photo + titre + type uniquement (gate-perception D1, 2026-06-12).
  */
 export interface RealisationCardProps {
   realisation: Realisation;
@@ -21,10 +22,6 @@ export interface RealisationCardProps {
 export function RealisationCard({ realisation, silent }: RealisationCardProps) {
   const photo = realisation.photos[0];
   if (!photo) return null;
-
-  // P0-D1 (ux-audit) : signale les fiches sans données éditoriales AVANT le clic
-  // → l'effet de répétition « Fiche en cours de documentation » ne surprend plus.
-  const draft = isDraft(realisation);
 
   return (
     <Link
@@ -54,14 +51,6 @@ export function RealisationCard({ realisation, silent }: RealisationCardProps) {
             {realisation.cardType}
           </p>
           <p className="mt-1 text-base text-foreground">{realisation.zone}</p>
-          {/* P0-D1 (ux-audit) + retour fondateur 2026-06-12 : la mention draft
-              sort de l'image (illisible sur photo) → ligne texte discrète sous le
-              titre. L'info reste, l'image redevient propre. */}
-          {draft && (
-            <p className="mt-1 text-xs text-foreground-muted">
-              Fiche en cours de documentation
-            </p>
-          )}
         </div>
         <span className="inline-flex items-center gap-1 text-sm font-medium text-foreground-accent-water">
           Voir
