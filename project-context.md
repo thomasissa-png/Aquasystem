@@ -48,6 +48,7 @@
 
 ## Objectifs
 - **Objectif principal à 6 mois** : générer du lead entrant qualifié via le site umbrella.
+- **Ambition réaffirmée fondateur (2026-06-12)** : être LE numéro 1 de la piscine haut de gamme dans tout l'ouest parisien (92, 78…) — le choix n°1 de quiconque veut un projet haut de gamme. Appuis : savoir-faire d'excellence, vraie équipe, vraie expertise, service d'excellence reconnu par les clients. Cette ambition pilote le programme SEO/GEO (blog bimensuel, audits 10/10).
 - **KPI North Star** : **10 leads entrants qualifiés / mois** (demandes de contact projet haut de gamme, toutes activités confondues).
 - **Objectif secondaire** : (1) perception de marque premium alignée sur la réalité des prestations (le site actuel dessert la marque) ; (2) cross-selling mesurable entre les 2 maisons ; (3) référencement local incontournable 78/92.
 - **Ce que le succès ressemble à 12 mois** : le site est LA carte de visite citée en rendez-vous ; flux régulier de leads entrants ≥ 10/mois ; les architectes prescripteurs le partagent ; positions SEO locales fortes sur piscine haut de gamme + paysagiste 78/92.
