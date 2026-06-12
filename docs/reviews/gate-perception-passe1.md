@@ -677,3 +677,93 @@ Tous au séparateur **« | »**, **zéro « — »** : accueil, /notre-regard, /
 Le plus gros lot (SEO/GEO + blog neuf complet + fixes) passe sans réserve. Le blog hisse la perception
 de marque au niveau « maison premium » visé. Ne plus retoucher le périmètre jugé.
 Captures : `tests/screenshots/perception/p8-*.png`.
+
+---
+
+## Passe 9 (2026-06-12) — GATE-P9
+
+Périmètre : 7 surfaces modifiées par 4 lots depuis la passe 8 (OUI). Captures viewport réel
+375 (iPhone) + 1280 (desktop), folds + sections. Jugement perception, specs non lues d'abord.
+
+### Constats par surface
+
+**1. /jardins-paysage — slot « Création » (MediaSplit) + section « vivant »**
+- Hero mobile INCHANGÉ (D-37) : titre « Jardins & Paysage » et sous-titre lisibles sur la photo, OK.
+- Slot Création : eyebrow « CRÉATION » + titre « La réalisation, du premier arbre à la dernière
+  pierre », photo à droite d'un massif exotique (palmiers, agaves, escalier en pierre). Vraie photo
+  de jardin, bien exposée, au niveau premium. Cohérente avec le propos « pierre + végétal ».
+- Section « vivant » (4 réalités) : les slots photo sont passés de placeholder à de vraies images
+  (palmier/agaves, rudbeckias jaunes, feuillages pourpres, pépinière). Castings crédibles, pas de
+  visuel hors-niveau. Lisibilité des textes sur fond clair OK en 375 et 1280.
+- **Aucun défaut.** Premium.
+
+**2. /notre-regard — filtre catégories + eyebrow card + dates échelonnées**
+- Filtre : chips « Tous 6 / Types de piscine 3 / Eau & jardin 1 / Investissement & projet 2 ».
+  Chip actif en teal de marque, autres en pilules claires avec badge compteur. Propre, premium,
+  lisible en mobile (chips passent sur 2 lignes sans casse).
+- Cards : eyebrow catégorie (« TYPES DE PISCINE », « INVESTISSEMENT & PROJET ») + date sur une
+  même ligne discrète. Ex. lu net : « TYPES DE PISCINE · 28 mai 2026 ».
+- Dates : échelonnées, aucune date future visible (plus récente lue = 12 juin 2026 = aujourd'hui,
+  donc dans la borne). Le défaut « dates futures » de passes antérieures est corrigé.
+- **Aucun défaut.**
+
+**3. Article (/notre-regard/renovation-piscine-haut-de-gamme/) — catégorie linkée près de la date**
+- Méta sous le titre : « INVESTISSEMENT & PROJET · Publié le 12 juin 2026 », la catégorie est un
+  lien-chip discret accolé à la date. Back-link « ← Tous nos articles » sobre. Titre éditorial fort.
+- Lisibilité corps sur fond clair OK (375 + 1280). **Aucun défaut.**
+
+**4. Footer — badge LOGO blanc « l'esprit piscine » cliquable**
+- Sur fond sombre, le logotype inversé blanc « l'esprit piscine » est lisible et reconnaissable,
+  posé à côté de la pilule « Certifié Socotec CSP/ESP-001 ». Rend bien en blanc sur sombre, à sa
+  place, lisible en desktop ET mobile.
+- Réserve cosmétique mineure (P1, non bloquante) : léger écart de traitement entre les deux
+  badges — la certif est une pilule bordée, le logo esprit-piscine est posé sans cadre. Cohabitation
+  acceptable au standard premium ; à harmoniser un jour si l'occasion se présente, pas un blocage.
+- Proportions footer mobile : footer long mais NORMAL, n'occupe pas 2 écrans absurdes. OK.
+
+**5. /la-maison — mention « réseau L'Esprit Piscine » devenue lien souligné**
+- Dans la colonne « Aqua System » du bloc certifications, « L'Esprit Piscine » porte un soulignement
+  fin, dans la couleur du texte, discret et premium (pas de bleu lien, pas d'épaisseur criarde).
+  Lecture inline naturelle. **Aucun défaut.**
+
+**6. / (accueil) bloc Aqua System + /piscines-bien-etre spa**
+- Accueil : bande de preuves (30+ / 350+ / Socotec / L'Esprit Piscine) + paragraphe claims propre
+  (déjà au niveau en passe 8, anti-régression OK).
+- /piscines-bien-etre : cartes typologie « Piscine intérieure » (béton brut, puits de lumière),
+  « Fond mobile », « Paroi de verre », « Couloir de nage » — photos réelles, bien exposées, premium.
+- **Aucun défaut.**
+
+**7. /realisations — grille 25 cards + fiche /realisations/jardin-terrasses-plongee/**
+- Grille : rangées homogènes, labels cohérents (« PISCINE SUR MESURE / Ouest parisien »,
+  « PROJET COMPLET EAU + JARDIN »). Aucun placeholder, aucun badge « en cours de documentation »,
+  aucun trou. La 25e fiche s'insère sans casser le rythme.
+- Fiche jardin-terrasses-plongee : photo aérienne forte (terrasses étagées, escaliers pierre,
+  couloir de nage à l'eau sombre, deck bois), eyebrow « PROJET COMPLET EAU + JARDIN », caption
+  « Réalisation Aqua System, Ouest parisien. Photo publiée avec l'autorisation du propriétaire ».
+  Lisibilité corps OK (375 + 1280). Au niveau premium. **Aucun défaut.**
+
+### Croisement specs (parti pris vs défaut)
+- Hero /jardins-paysage inchangé = parti pris assumé documenté (D-37) ; rendu lisible → conforme,
+  pas un défaut.
+- Écart de traitement des deux badges footer : non documenté mais purement cosmétique et mineur →
+  P1 non bloquant, signalé à @design pour harmonisation ultérieure.
+
+### Verdict Passe 9 : **PRÉSENTABLE AU FONDATEUR : OUI**
+Zéro P0 sur les 7 surfaces. Les 6 cas canoniques (hero illisible, tic cadratins, favicon, photos
+hors-niveau, badges d'inachevé, footer 2 écrans) seraient tous attrapés et sont absents ici.
+Les 4 lots depuis la passe 8 améliorent la perception (vraies photos jardin, filtre blog premium,
+dates assainies, logo réseau propre, lien souligné discret) sans régression.
+
+**Correctifs bloquants : aucun.**
+P1 cosmétique non bloquant (à traiter quand l'occasion se présente, n'empêche PAS la présentation) :
+- Footer : harmoniser le traitement visuel des deux badges (pilule Socotec bordée vs logo
+  esprit-piscine sans cadre). → @design.
+
+Captures : `tests/screenshots/perception/p9-*.png`.
+
+---
+
+**Handoff → @orchestrator**
+- Verdict : PRÉSENTABLE OUI
+- P0 : aucun. P1 cosmétique non bloquant : harmonisation badges footer (@design).
+- Captures : `tests/screenshots/perception/p9-*.png`
