@@ -1,8 +1,14 @@
 /**
  * screenshots.mjs — boucle visuelle (mission Tranche B §6).
  * Capture les pages × 3 viewports vers tests/screenshots/.
- * Nommage : <page>-<viewport>.png. Pleine page (full-page) pour comparer le
- * layout complet aux compositions.
+ * Nommage :
+ *   <page>-<viewport>.png        → pleine page (layout complet vs compositions).
+ *   <page>-<viewport>-fold.png   → premier écran SEULEMENT (above-the-fold),
+ *                                  à hauteur réelle du viewport. Indispensable
+ *                                  pour juger les heros (le fullPage écrase la
+ *                                  composition above-the-fold — finding fondateur
+ *                                  2026-06-12 : hero mobile cassé invisible en
+ *                                  fullPage).
  *
  * Lancer (dev server sur 127.0.0.1:3000 requis) :
  *   node scripts/screenshots.mjs
@@ -50,11 +56,19 @@ for (const vp of VIEWPORTS) {
     await page.waitForTimeout(600);
     await page.evaluate(() => window.scrollTo(0, 0));
     await page.waitForTimeout(200);
+    // 1) Above-the-fold à hauteur réelle du viewport (clip = premier écran).
+    await page.screenshot({
+      path: `${OUT}${name}-${vp.name}-fold.png`,
+      clip: { x: 0, y: 0, width: vp.width, height: vp.height },
+    });
+    // 2) Pleine page (comparaison layout complet).
     await page.screenshot({
       path: `${OUT}${name}-${vp.name}.png`,
       fullPage: true,
     });
-    console.log(`${resp?.status() ?? '???'}  ${name}-${vp.name}.png`);
+    console.log(
+      `${resp?.status() ?? '???'}  ${name}-${vp.name}.png + -fold.png`,
+    );
   }
   await ctx.close();
 }

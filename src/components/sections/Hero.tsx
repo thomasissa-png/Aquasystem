@@ -57,8 +57,14 @@ export function Hero({
   return (
     <section
       className={cn(
+        // items-end : le bloc texte est TOUJOURS ancré en bas, y compris mobile,
+        // pour reposer sur la zone forte du dégradé (façade visible au-dessus).
+        // Mobile en `svh` (barre d'URL incluse) + hauteur généreuse pour dégager
+        // la photo au-dessus du texte (finding fondateur 2026-06-12, WF-01 mobile).
         'relative flex w-full items-end overflow-hidden',
-        isHome ? 'min-h-[60vh] md:min-h-[90vh]' : 'min-h-[50vh] md:min-h-[60vh]',
+        isHome
+          ? 'min-h-[85svh] md:min-h-[90vh]'
+          : 'min-h-[72svh] md:min-h-[60vh]',
       )}
     >
       <picture>
