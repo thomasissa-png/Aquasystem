@@ -13,9 +13,10 @@ import { REALISATIONS, isDraft } from '@/content/realisations';
  * Un lastModified qui change à chaque build = signal spam pour Bing Webmaster.
  * À mettre à jour MANUELLEMENT lors d'une vraie modification de contenu.
  *
- * Exclusions : /contact/merci (noindex) ; fiches réalisations EN DRAFT
- * (thin content → noindex, arbitrage orchestrateur) — même critère `isDraft`
- * que le `robots` de la page : ré-inclusion automatique dès documentation.
+ * Exclusions : /contact/merci (noindex). Les 24 fiches réalisations sont
+ * INDEXABLES (D-35, megalot SEO P0-01) : critère `isDraft` = visualDescription
+ * absente (jamais le cas) → toutes incluses (sitemap = 9 statiques + 24 fiches).
+ * Même critère `isDraft` partagé avec le `robots` de la page (cohérence).
  * Les pages légales sont incluses (index:true) en priorité basse.
  */
 export const dynamic = 'force-static';

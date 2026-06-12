@@ -28,13 +28,16 @@ import { FAQ_PRESCRIPTEURS, toFaqJsonLd } from '@/content/faq';
  */
 export const metadata: Metadata = {
   // Metas finales — metadata-templates.md Page 7 (title 55 car., CTA « Présentons-nous »).
-  title: { absolute: 'Espace prescripteurs — Pisciniste & Paysagiste, 78/92' },
+  // Séparateur « | » (megalot §2.1 — décision actée tous titres). Title absent
+  // du tableau §2.1.B (oubli copy) mais soumis à la même règle : substitution du
+  // séparateur de marque, wording inchangé.
+  title: { absolute: 'Espace prescripteurs | Pisciniste & Paysagiste, 78/92' },
   description:
     'Pisciniste & paysagiste haut de gamme 78/92 pour architectes : travail sur votre plan, délais tenus. Présentons-nous.',
   alternates: { canonical: absoluteUrl('/prescripteurs/') },
   openGraph: {
     url: `${SITE_URL}/prescripteurs/`,
-    title: 'Espace prescripteurs — Aqua System, pisciniste 78/92',
+    title: 'Espace prescripteurs | Aqua System, pisciniste 78/92',
     images: [
       {
         url: absoluteUrl('/og-image.jpg'),
@@ -52,7 +55,10 @@ const BREADCRUMB = breadcrumbJsonLd([
 ]);
 
 /** FAQPage JSON-LD — content-restructuring.md §C.1 (Q/R @geo). */
-const FAQ_JSONLD = faqPageJsonLd(toFaqJsonLd(FAQ_PRESCRIPTEURS));
+const FAQ_JSONLD = faqPageJsonLd(
+  toFaqJsonLd(FAQ_PRESCRIPTEURS),
+  absoluteUrl('/prescripteurs/#faq'),
+);
 
 const VALEURS = [
   {
@@ -249,7 +255,9 @@ export default function PrescripteursPage() {
               <RealisationCard key={r.slug} realisation={r} silent />
             ))}
           </div>
-          <div className="mt-8">
+          {/* P2-03 alignements (megalot §6) : CTA ghost de fin de section centré
+              (règle CTA — aucun ghost sans centrage). */}
+          <div className="mt-8 text-center">
             <ButtonLink
               href="/realisations?filter=projet_complet"
               variant="ghost"

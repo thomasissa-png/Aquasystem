@@ -30,15 +30,17 @@ import { FAQ_NOTRE_APPROCHE, toFaqJsonLd } from '@/content/faq';
 export const metadata: Metadata = {
   // Metas fusionnées (ia-refonte §2) — title identité conservé + intention
   // méthode. ≤ 65 car. Canonical /la-maison/ (page absorbante).
+  // Title validé megalot §1.1 (54 car., PASS) + description validée §1.2
+  // (132 car., PASS) — séparateur « | » (§2.1).
   title: {
-    absolute: 'À propos — Pisciniste & paysagiste 30 ans en 78/92, méthode intégrée',
+    absolute: 'À propos | Aqua System, pisciniste 30 ans en 78/92',
   },
   description:
-    'Aqua System et Les Terres Essentielles : 30 ans dans le 78/92, certification Socotec, bureau d\'études intégré. De la vision à la réalisation — un seul interlocuteur.',
+    "Aqua System & Les Terres Essentielles : 30 ans en 78/92, Socotec, bureau d'études intégré. Un seul interlocuteur. Rencontrons-nous.",
   alternates: { canonical: absoluteUrl('/la-maison/') },
   openGraph: {
     url: `${SITE_URL}/la-maison/`,
-    title: 'À propos — Aqua System & Les Terres Essentielles, 78/92',
+    title: 'À propos | Aqua System & Les Terres Essentielles, 78/92',
     images: [
       {
         url: absoluteUrl('/og-image.jpg'),
@@ -57,7 +59,10 @@ const BREADCRUMB = breadcrumbJsonLd([{ name: 'À propos', path: '/la-maison/' }]
 const PERSON = nicolasBergJsonLd();
 
 /** FAQPage JSON-LD — migré de notre-approche (content-restructuring.md §C.1). */
-const FAQ_JSONLD = faqPageJsonLd(toFaqJsonLd(FAQ_NOTRE_APPROCHE));
+const FAQ_JSONLD = faqPageJsonLd(
+  toFaqJsonLd(FAQ_NOTRE_APPROCHE),
+  absoluteUrl('/la-maison/#faq'),
+);
 
 /** Méthode 5 étapes — migrée intégralement de notre-approche (ia-refonte §3). */
 const STEPS = [
@@ -171,7 +176,7 @@ export default function LaMaisonPage() {
           <h2 className="font-serif text-3xl leading-tight text-foreground md:text-4xl">
             Notre histoire
           </h2>
-          <div className="mt-6 space-y-5 text-left">
+          <div className="mt-6 space-y-5">
             <p className="text-lg leading-8 text-foreground-secondary">
               Aqua System est née à Freneuse, dans les Yvelines, il y a plus de 30
               ans. Depuis, nous n'avons pas changé de territoire : le 78 et le 92 :
@@ -263,6 +268,12 @@ export default function LaMaisonPage() {
       <section className="bg-background-secondary">
         <div className="mx-auto grid max-w-container gap-12 px-4 py-20 md:grid-cols-2 md:px-8">
           <article>
+            {/* P1-06 alignements (megalot §6) : eyebrow symétrique de la colonne
+                LTE (« en partenariat avec ») → les 2 colonnes partagent le même
+                schéma typographique tête de bloc. */}
+            <p className="mb-2 text-xs font-medium uppercase tracking-[0.1em] text-foreground-accent-water">
+              Notre maison
+            </p>
             <h2 className="font-serif text-2xl leading-tight text-foreground md:text-3xl">
               Aqua System
             </h2>
@@ -408,7 +419,7 @@ export default function LaMaisonPage() {
           <h2 className="font-serif text-3xl leading-tight text-foreground md:text-4xl">
             Nous connaissons ces propriétés, et leurs contraintes.
           </h2>
-          <div className="mx-auto mt-5 max-w-[60ch] text-left">
+          <div className="mx-auto mt-5 max-w-[60ch]">
             <p className="text-base leading-8 text-foreground-secondary">
               30 ans de chantiers dans le 78 et le 92. Nous connaissons les nappes
               phréatiques, les PLU locaux, les caractéristiques du sol

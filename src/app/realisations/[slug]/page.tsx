@@ -38,10 +38,11 @@ export function generateMetadata({
   if (!r) return { title: 'Réalisation introuvable' };
   const ogImg = absoluteUrl(photoSrc(r.photos[0]!.base, '1280w'));
   // Metas dynamiques — metadata-templates.md Page 9. Le <title> reste < 60 car.
-  // (INFO-SEO-1) : titre COURT (sans suffixe de zone) + « — Réalisations » via
-  // `absolute` (pas le template marque). Le titre long factuel reste le H1.
+  // (INFO-SEO-1) : titre COURT (sans suffixe de zone) + « | Réalisations » via
+  // `absolute` (pas le template marque). Séparateur « | » (megalot §2.1). Le
+  // titre long factuel reste le H1.
   return {
-    title: { absolute: `${shortTitle(r)} — Réalisations` },
+    title: { absolute: `${shortTitle(r)} | Réalisations` },
     description: `${r.cardType}, ${r.zone}. Une réalisation Aqua System dans l'ouest parisien. Parlez-nous de votre projet.`,
     // Fiches en draft (sans donnée éditoriale) = thin content → noindex tant que
     // non documentées (arbitrage orchestrateur). Ré-indexation automatique dès
@@ -53,6 +54,10 @@ export function generateMetadata({
       title: r.title,
       images: [{ url: ogImg, width: 1280, height: 720, alt: r.photos[0]!.alt }],
     },
+    // P1-03 (audit-seo T3) : aligner twitter:image sur la photo de réalisation
+    // (cohérence OG/Twitter) — sans override, le fallback layout pointait vers
+    // /og-image.jpg, signal de qualité faible pour Bing.
+    twitter: { images: [ogImg] },
   };
 }
 
@@ -172,7 +177,9 @@ export default function RealisationFiche({
 
             {/* Description visuelle réelle (D-27 — rédigée d'après la photo,
                 zéro invention) : rendue sur TOUTES les fiches, draft compris. */}
-            <p className="mt-6 max-w-[60ch] border-t border-border pt-6 text-base leading-8 text-foreground-secondary">
+            {/* P1-10 alignements (megalot §6) : max-w-[60ch] retiré — la colonne
+                aside (1fr) borne déjà la mesure, le token ne jouait jamais. */}
+            <p className="mt-6 border-t border-border pt-6 text-base leading-8 text-foreground-secondary">
               {r.visualDescription}
             </p>
 

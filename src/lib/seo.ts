@@ -42,7 +42,9 @@ const FRENEUSE_GEO = { latitude: 49.0482, longitude: 1.6008 } as const;
 export function organizationJsonLd() {
   return {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    // @type double (LocalBusiness + Organization) pour déclencher le Knowledge
+    // Panel et rattacher Organization.logo (audit-seo T2 / P0-01, megalot D-35).
+    '@type': ['LocalBusiness', 'Organization'],
     '@id': `${SITE_URL}/#organization-aquasystem`,
     name: 'Aqua System',
     legalName: CONTACT.editor,
@@ -128,7 +130,8 @@ export function organizationJsonLd() {
 export function partnerOrganizationJsonLd() {
   return {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    // @type double (cohérence avec l'entité Aqua System — Knowledge Panel LTE).
+    '@type': ['LocalBusiness', 'Organization'],
     '@id': `${SITE_URL}/#organization-lte`,
     name: PARTNER_CONTACT.name,
     description:
@@ -207,12 +210,21 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
 /**
  * JSON-LD FAQPage (content-restructuring.md §C.1). `qa` : liste { q, a } —
  * questions/réponses déjà rédigées par @geo (réponses auto-contenues, claims
- * sourcés). À poser sur /notre-approche et /prescripteurs.
+ * sourcés). Posé sur /la-maison, /prescripteurs et /piscines-bien-etre.
+ *
+ * `id` (optionnel) : ancre `@id` du FAQPage. Plusieurs FAQPage coexistent sur le
+ * site (URLs distinctes) — chaque page passe un `@id` ancré sur son URL canonique
+ * pour garantir l'UNICITÉ dans le graphe (megalot chantier 7). Sans `id`, aucun
+ * `@id` n'est émis (rétrocompatible, pas de collision possible).
  */
-export function faqPageJsonLd(qa: { q: string; a: string }[]) {
+export function faqPageJsonLd(
+  qa: { q: string; a: string }[],
+  id?: string,
+) {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
+    ...(id ? { '@id': id } : {}),
     mainEntity: qa.map((item) => ({
       '@type': 'Question',
       name: item.q,

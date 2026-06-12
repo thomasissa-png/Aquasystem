@@ -22,14 +22,14 @@ import { ButtonLink } from '@/components/ui/ButtonLink';
 export const metadata: Metadata = {
   // Metas finales — metadata-templates.md Page 1 (title 56 car. avec "Aquasystem").
   title: {
-    absolute: `${SITE_NAME} — Pisciniste & Paysagiste haut de gamme, 78/92`,
+    absolute: `${SITE_NAME} | Pisciniste & Paysagiste haut de gamme, 78/92`,
   },
   description:
     "Piscines et jardins sur mesure, Yvelines et Hauts-de-Seine. Un seul interlocuteur, 30 ans d'expertise. Parlez-nous de votre projet.",
   alternates: { canonical: SITE_URL },
   openGraph: {
     url: SITE_URL,
-    title: `${SITE_NAME} — Pisciniste & Paysagiste haut de gamme 78/92`,
+    title: `${SITE_NAME} | Pisciniste & Paysagiste haut de gamme 78/92`,
     description:
       "Piscines et jardins sur mesure dans l'ouest parisien — un seul interlocuteur depuis 30 ans.",
     images: [
@@ -65,7 +65,7 @@ export default function HomePage() {
         // la demeure visible sur grand écran.
         overlayClassName="bg-gradient-to-t from-[rgba(26,21,16,0.88)] via-[rgba(26,21,16,0.65)] via-35% to-[rgba(26,21,16,0.15)] md:from-[rgba(26,21,16,0.85)] md:via-[rgba(26,21,16,0.55)] md:via-30% md:to-[rgba(26,21,16,0.10)]"
         title="L'extérieur à la hauteur de votre propriété."
-        subtitle="De la vision à la réalisation : eau, jardin, propriété. Un seul interlocuteur, depuis 30 ans dans l'ouest parisien."
+        subtitle="De la vision à la réalisation : piscines et jardins sur mesure dans les Yvelines et les Hauts-de-Seine. Un seul interlocuteur, depuis 30 ans."
         cta={
           <CtaTrackerLink
             href="/contact"
@@ -95,7 +95,7 @@ export default function HomePage() {
             <h2 className="mt-6 font-serif text-3xl leading-tight text-foreground md:text-4xl">
               Piscines &amp; Bien-être
             </h2>
-            <p className="mt-4 max-w-[45ch] text-base leading-8 text-foreground-secondary">
+            <p className="mt-4 max-w-[52ch] text-base leading-8 text-foreground-secondary">
               Conception, construction et entretien de piscines sur mesure. Spas
               HotSpring, saunas, hammams. Chaque ouvrage conçu depuis les
               contraintes réelles du terrain, pas depuis un catalogue.
@@ -104,7 +104,7 @@ export default function HomePage() {
               href="/piscines-bien-etre"
               className="group mt-4 inline-flex items-center gap-2 text-sm font-medium text-foreground-accent-water underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2"
             >
-              Découvrir
+              Découvrir nos piscines sur mesure
               <ArrowRight
                 aria-hidden
                 className="h-4 w-4 transition-transform group-hover:translate-x-1"
@@ -134,7 +134,7 @@ export default function HomePage() {
             <h2 className="mt-6 font-serif text-3xl leading-tight text-foreground md:text-4xl">
               Jardins &amp; Paysage
             </h2>
-            <p className="mt-4 max-w-[45ch] text-base leading-8 text-foreground-secondary">
+            <p className="mt-4 max-w-[52ch] text-base leading-8 text-foreground-secondary">
               Bureau d'études paysager, création de parcs et jardins sur mesure,
               entretien. L'eau et le végétal conçus ensemble, au même bureau
               d'études, avant le premier plan.
@@ -143,7 +143,7 @@ export default function HomePage() {
               href="/jardins-paysage"
               className="group mt-4 inline-flex items-center gap-2 text-sm font-medium text-foreground-accent-forest underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-action-forest-bg)] focus-visible:ring-offset-2"
             >
-              Découvrir
+              Découvrir nos créations paysagères
               <ArrowRight
                 aria-hidden
                 className="h-4 w-4 transition-transform group-hover:translate-x-1"

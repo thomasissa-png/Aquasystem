@@ -41,7 +41,11 @@ export function TextBlock({
         <h2 className="font-serif text-3xl leading-tight text-foreground md:text-4xl">
           {title}
         </h2>
-        <div className="mx-auto mt-5 max-w-[60ch] space-y-4 text-left">
+        {/* P0-03/P0-04 alignements (megalot §6, règle axe) : pas de text-left
+            explicite. Le bloc max-w-[60ch] est centré (mx-auto) dans le parent
+            max-w-3xl centré ; le texte reste left-aligned À L'INTÉRIEUR du bloc
+            (convention éditoriale premium), sans rupture d'axe avec le titre. */}
+        <div className="mx-auto mt-5 max-w-[60ch] space-y-4">
           {body.map((p, i) => (
             <p key={i} className="text-base leading-8 text-foreground-secondary">
               {p}

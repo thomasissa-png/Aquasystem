@@ -20,13 +20,13 @@ import { JsonLd } from '@/components/seo/JsonLd';
  */
 export const metadata: Metadata = {
   // Metas finales — metadata-templates.md Page 3 (title 50 car., "Paysagiste" en tête).
-  title: { absolute: 'Paysagiste Yvelines — Jardins haut de gamme, 78/92' },
+  title: { absolute: 'Paysagiste Yvelines | Jardins haut de gamme, 78/92' },
   description:
-    "Jardinerie, bureau d'études paysager, jardins et parcs sur mesure en 78/92. Les Terres Essentielles, en partenariat avec Aqua System.",
+    "Paysagiste haut de gamme 78/92 : bureau d'études, création de jardins sur mesure. Les Terres Essentielles, en partenariat avec Aqua System. Parlez-nous de votre projet.",
   alternates: { canonical: absoluteUrl('/jardins-paysage/') },
   openGraph: {
     url: `${SITE_URL}/jardins-paysage/`,
-    title: 'Paysagiste Yvelines — Jardins sur mesure 78/92',
+    title: 'Paysagiste Yvelines | Jardins sur mesure 78/92',
     images: [
       {
         url: absoluteUrl('/og-image.jpg'),
@@ -181,7 +181,7 @@ function MatieresBlock() {
       title="Pierre, végétal, sol : ce que nous assemblons"
       body={[
         "Le jardin tient à ses matières autant qu'à ses plans. La pierre calcaire d'une allée, la teinte d'un grès cérame posé en terrasse, les essences choisies pour leur port à maturité : chaque élément contribue à la cohérence du lieu ou la rompt.",
-        'Nos végétaux sont sélectionnés pour le sol argilo-calcaire de l\'ouest parisien. Les essences à croissance lente, les vivaces qui résistent à la sécheresse, les arbres de haie qui s\'épaississent avec les années — pas les solutions de remplissage.',
+        'Nos végétaux sont sélectionnés pour le sol argilo-calcaire de l\'ouest parisien. Les essences à croissance lente, les vivaces qui résistent à la sécheresse, les arbres de haie qui s\'épaississent avec les années, pas les solutions de remplissage.',
         'Quand un projet associe piscine et jardin, les matières des deux espaces sont choisies au même moment, depuis le même bureau d\'études.',
       ]}
     />

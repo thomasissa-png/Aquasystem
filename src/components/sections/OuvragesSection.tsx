@@ -45,7 +45,7 @@ const OUVRAGES: Ouvrage[] = [
     imageAlt:
       'Piscine intérieure en béton brut ouverte sur le jardin par des baies vitrées — réalisation Aqua System',
     title: 'Piscine intérieure',
-    body: "Baigner toute l'année, sans abri, sans compromis : la piscine est intégrée au bâti, les matériaux choisis pour la durée, l'air traité pour que l'espace reste un lieu de vie. Quatre réalisations dans notre portefeuille, du béton brut aux charpentes bois apparentes — aucune ne ressemble à la précédente.",
+    body: "Baigner toute l'année, sans abri, sans compromis : la piscine est intégrée au bâti, les matériaux choisis pour la durée, l'air traité pour que l'espace reste un lieu de vie. Quatre réalisations dans notre portefeuille, du béton brut aux charpentes bois apparentes. Aucune ne ressemble à la précédente.",
   },
   {
     slug: 'piscine-fond-mobile-terrasse',

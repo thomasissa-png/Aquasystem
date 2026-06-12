@@ -645,23 +645,31 @@ export function getFeatured(): Realisation[] {
  * Les `title` n'incluent plus de suffixe de zone départementale (D-27 : zones
  * passées à « Ouest parisien », jamais affirmées dans le titre). On retire par
  * sécurité un éventuel suffixe géographique résiduel, puis on borne la longueur :
- * combiné avec « — Réalisations » (15 car.) le total doit rester < 60. Si le
+ * combiné avec « | Réalisations » (15 car.) le total doit rester < 60. Si le
  * tronc reste trop long, on retombe sur le type de card (toujours court).
  */
 export function shortTitle(r: Realisation): string {
   const core = r.title
     .replace(/\s*,\s*(Yvelines|Hauts-de-Seine|ouest parisien).*$/iu, '')
     .trim();
-  // « — Réalisations » = 15 car. → tronc max 44 pour rester STRICTEMENT < 60.
+  // « | Réalisations » = 15 car. → tronc max 44 pour rester STRICTEMENT < 60.
   return core.length <= 44 ? core : r.cardType;
 }
 
-/** True si la fiche n'a encore AUCUNE donnée éditoriale réelle. */
+/**
+ * True si la fiche n'est PAS publiable (= sans contenu extractible minimal).
+ *
+ * Règle publiable (D-35, megalot SEO P0-01 / audit-seo T4) : une fiche avec une
+ * `visualDescription` non vide EST indexable. Chaque réalisation possède une
+ * `visualDescription` rédigée d'après la photo (D-27) → les 24 fiches sont donc
+ * indexables (robots index + sitemap). Le contenu éditorial complet
+ * (intention/réponse/exécution/prestations) reste un ENRICHISSEMENT futur, pas un
+ * prérequis d'indexation : ces champs restent disponibles dans le manifeste pour
+ * basculer la fiche sur le rendu FicheEditorial dès que Nicolas Berg les fournit.
+ *
+ * Le critère étant « visualDescription absente » (jamais le cas en pratique),
+ * le mécanisme draft est neutralisé : aucune fiche n'est noindex aujourd'hui.
+ */
 export function isDraft(r: Realisation): boolean {
-  return (
-    r.intention === null &&
-    r.reponse === null &&
-    r.execution === null &&
-    r.prestations === null
-  );
+  return r.visualDescription.trim().length === 0;
 }

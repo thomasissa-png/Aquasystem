@@ -50,6 +50,27 @@ export const FAQ_PRESCRIPTEURS = [
   },
 ] as const;
 
+/**
+ * FAQ /piscines-bien-etre (P1-GEO-03, megalot §4) — 3 Q/R conversationnelles
+ * extractibles : types d'ouvrage, fond mobile, piscine intérieure. Réponses
+ * < 3 phrases, claims sourcés (savoir-faire-facts.md + slugs prouvés). Source de
+ * vérité : docs/copy/validations-megalot.md §4 (wording @copywriter exact).
+ */
+export const FAQ_PISCINES = [
+  {
+    q: 'Quels types de piscines Aqua System réalise-t-il ?',
+    a: "Aqua System réalise six types de bassins : piscines à débordement, bassins miroir, couloirs de nage, piscines intérieures, piscines à fond mobile et piscines à paroi de verre. Tous ces ouvrages ont été réalisés dans les Yvelines et les Hauts-de-Seine. Le bureau d'études intégré adapte chaque type au terrain, à l'architecture et aux usages du propriétaire.",
+  },
+  {
+    q: 'Aqua System réalise-t-il des piscines à fond mobile ?',
+    a: "Oui. Aqua System a réalisé une piscine à fond mobile dans l'ouest parisien : le plancher motorisé permet de transformer le bassin en terrasse de plain-pied et d'ajuster la profondeur selon les usages. C'est l'ouvrage le plus rare du portfolio, qui se décide impérativement en phase de conception, avant le terrassement.",
+  },
+  {
+    q: "Qu'est-ce qu'une piscine intérieure réalisée par Aqua System ?",
+    a: "Une piscine intérieure Aqua System est un bassin intégré au bâti, avec traitement de l'air dimensionné dès la conception pour maîtriser l'hygrométrie. Aqua System compte quatre réalisations de ce type dans l'ouest parisien, en béton brut, sous charpente bois ou sous véranda. La certification Socotec CSP/ESP-001 couvre la construction et l'entretien.",
+  },
+] as const;
+
 /** Adapte une liste FAQ readonly au format attendu par faqPageJsonLd. */
 export function toFaqJsonLd(items: readonly { q: string; a: string }[]) {
   return items.map((i) => ({ q: i.q, a: i.a }));

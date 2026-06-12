@@ -654,3 +654,29 @@ Agent : @fullstack | Retour fondateur 2026-06-12 : « la page s'appelle toujours
 **Fichiers modifiés** : `src/app/la-maison/page.tsx`. Nouveau : `scripts/baselines-la-maison-d34.mjs`.
 
 **Escalade @copywriter (hors périmètre retouche)** : aucune réécriture nécessaire — toutes les retouches réutilisent des formulations sources déjà validées (D-32, savoir-faire-facts, fond-jardins-copy). Si une refonte du panneau LTE était souhaitée (le mettre à parité narrative avec l'AS au-delà du reflet), elle dépasserait la retouche → @copywriter.
+
+---
+
+## D-35 — Méga-lot corrections (1/2) : indexation portfolio, JSON-LD, séparateur « | », GEO, alignements (2026-06-12)
+
+Application des correctifs P0/P1 des 4 audits (copy/seo/alignements/geo) sur les pages EXISTANTES. Aucune route blog créée (lot 2/2 à suivre).
+
+**Chantier 1 — Indexation portfolio (P0-SEO-01 / audit-seo T4)** : `isDraft()` bascule du test « tous champs éditoriaux null » vers « visualDescription absente » (= jamais le cas, chaque fiche en a une). Mécanisme draft neutralisé proprement : les 24 fiches deviennent indexables (robots `index, follow` + incluses au sitemap). Champs éditoriaux (intention/réponse/exécution/prestations) CONSERVÉS dans le manifeste pour bascule future sur FicheEditorial. `sitemap.ts` inchangé (filtre `!isDraft` déjà en place) → **sitemap passe de 10 à 33 URLs** (9 statiques + 24 fiches). NB : le brief annonçait 34 ; le compte réel est 33 (24 fiches confirmées par Grep `^    slug: '`). Tests adaptés : `realisations.test.ts` (2 it réécrites : isDraft faux dès visualDescription présente ; bloc « 24 fiches indexables »). Les e2e (static-html, parcours) n'avaient aucune assertion noindex/count à modifier (la grille assertait déjà `REALISATIONS.length`). La 301 /notre-approche est dans `_redirects`, indépendante.
+
+**Chantier 2 — JSON-LD** : `'@type': ['LocalBusiness', 'Organization']` dans `organizationJsonLd()` ET `partnerOrganizationJsonLd()` (Knowledge Panel, audit-seo T2 / P0-01). Vérifié dans out/index.html.
+
+**Chantier 3 — Metas validées (megalot §1)** : title /la-maison (54 car.), desc /la-maison (132 car.), desc /piscines (154 car.), desc /jardins (152 car. + CTA), ancres « Découvrir nos piscines sur mesure » / « Découvrir nos créations paysagères » accueil, sous-titre P1 accueil (« …dans les Yvelines et les Hauts-de-Seine. Un seul interlocuteur, depuis 30 ans. » — tagline H1 intouchée), sous-titre /realisations (§1.7).
+
+**Chantier 4 — Séparateur « | »** : template layout `%s | ${SITE_NAME}` + title.default + OG title. Tous les title absolus migrés `—`→`|` (contact, realisations, fiches `${shortTitle} | Réalisations`, jardins, accueil, piscines, la-maison) + **prescripteurs** (absent du tableau copy §2.1.B — oubli, soumis à la même règle actée). OG titles migrés aussi. Vérif out/ : **0 « — » dans les `<title>`** (grep `<title>[^<]*—` = vide). Le `name` du JSON-LD ImageObject fiche garde `—` (non-title, conforme note copy §2.1.B). Tests `realisations.test.ts` shortTitle adaptés (« | Réalisations », 15 car. = identique).
+
+**Chantier 5 — Sweep cadratins §2.2** : 3 remplacements dans le copy rendu (piscines L127 « : … . », jardins MatieresBlock virgule, OuvragesSection piscine intérieure point).
+
+**Chantier 6 — Alignements (audit-alignements)** : `TextBlock.tsx` text-left retiré L44 (corrige P0-03/P0-04, tous les TextBlock) ; claims GEO /piscines fusionnés en 1 § centré sous filet max-w-[72ch] (pattern accueil, P0-01) ; la-maison text-left retiré §2 histoire + §5 ancrage local (P1-02/P1-01) ; eyebrow « Notre maison » ajouté avant H2 Aqua System §4 (P1-06, symétrie LTE) ; prescripteurs CTA portfolio `text-center` (P2-03) ; accueil articles `max-w-[45ch]`→`52ch` (P1-05) ; fiche aside `max-w-[60ch]` retiré (P1-10). Écartés (screenshots obsolètes documentés dans l'audit) : P0-05, P1-03, P1-09.
+
+**Chantier 7 — GEO** : bloc extractible sous H1 /realisations (texte §3, 24 réalisations + 6 ouvrages + zones + bureau d'études) ; FAQ /piscines 3 Q/R (§4) en `FAQ_PISCINES` (faq.ts) → `FaqSection` visible (heading « Questions fréquentes », tone alt, après TextBlock + Preuves) + `faqPageJsonLd` avec `@id` ancré URL. `faqPageJsonLd(qa, id?)` étendu avec `@id` optionnel : les 3 FAQPage du site (la-maison, prescripteurs, piscines) portent désormais chacun un `@id` unique ancré sur leur URL canonique (`/…/#faq`) — unicité vérifiée dans out/.
+
+**Chantier 8 — P1 SEO restants** : P1-03 twitter:image fiches aligné sur og:image (audit T3). P1-01 IndexNow (clé Bing requise) et P1-02 footer nav (annule D-22, validation @design/@regard-fondateur) NON appliqués → handoff.
+
+**Vérification** : `tsc --noEmit` PASS · `next lint` 0 warning · `next build` 39 pages PASS · `vitest run` 103/103 · `playwright test` 46/46. out/ : 0 cadratin dans les `<title>`, sitemap 33 URLs, 24 fiches `index, follow`, `@type` array présent, 3 FAQPage @id uniques, bloc GEO + 3 Q/R FAQ visibles. Baselines (fold + fullpage, 9 pages × 3 devices = 54) régénérées via `scripts/capture-baselines.mjs` (serveur statique `serve out` port 3100) et RELUES : realisations (sous-titre 78/92 + bloc GEO), la-maison (axes corrigés), piscines (claims centrés + FAQ), accueil (sous-titre + ancres), jardins (TextBlock centré). NB baselines `-sec1/-sec2` accueil non couvertes par le script (artefacts session antérieure) — non bloquant.
+
+**Fichiers modifiés** : `src/content/realisations.ts`, `src/app/sitemap.ts`, `src/lib/seo.ts`, `src/content/faq.ts`, `src/app/layout.tsx`, `src/app/page.tsx`, `src/app/contact/page.tsx`, `src/app/realisations/page.tsx`, `src/app/realisations/[slug]/page.tsx`, `src/app/jardins-paysage/page.tsx`, `src/app/piscines-bien-etre/page.tsx`, `src/app/la-maison/page.tsx`, `src/app/prescripteurs/page.tsx`, `src/components/sections/TextBlock.tsx`, `src/components/sections/OuvragesSection.tsx`, `tests/unit/realisations.test.ts`.

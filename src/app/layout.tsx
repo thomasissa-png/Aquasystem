@@ -40,8 +40,8 @@ const dmSerif = DM_Serif_Display({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — ${SITE_TAGLINE}`,
-    template: `%s — ${SITE_NAME}`,
+    default: `${SITE_NAME} | ${SITE_TAGLINE}`,
+    template: `%s | ${SITE_NAME}`,
   },
   description:
     "Piscines sur mesure et jardins conçus ensemble pour les belles propriétés de l'ouest parisien. Un seul interlocuteur, plus de 30 ans d'expertise.",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     siteName: SITE_NAME,
-    title: `${SITE_NAME} — ${SITE_TAGLINE}`,
+    title: `${SITE_NAME} | ${SITE_TAGLINE}`,
     images: [{ url: absoluteUrl('/og-image.jpg'), width: 1200, height: 630 }],
   },
   twitter: {

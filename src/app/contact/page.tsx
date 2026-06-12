@@ -16,7 +16,7 @@ import { JsonLd } from '@/components/seo/JsonLd';
 export const metadata: Metadata = {
   // Metas finales — metadata-templates.md Page 8 (title enrichi + CTA + géo ;
   // canonical absolu avec trailing slash, conforme trailingSlash:true).
-  title: { absolute: 'Parlez-nous de votre projet — Contact, Yvelines 78/92' },
+  title: { absolute: 'Parlez-nous de votre projet | Contact, Yvelines 78/92' },
   description:
     "Décrivez-nous votre projet extérieur : piscine, jardin ou les deux. Un seul interlocuteur pour les belles propriétés du 78/92. Nous vous répondons.",
   alternates: { canonical: absoluteUrl('/contact/') },

@@ -108,9 +108,16 @@ describe('helpers', () => {
   it('getRealisation(slug inconnu) → undefined', () => {
     expect(getRealisation('nope')).toBeUndefined();
   });
-  it('isDraft vrai tant que champs éditoriaux null', () => {
-    const draft = REALISATIONS.find((r) => r.intention === null) as Realisation;
-    expect(isDraft(draft)).toBe(true);
+  it('isDraft faux dès qu\'une visualDescription est présente (D-35)', () => {
+    // Règle publiable D-35 : visualDescription non vide = fiche indexable.
+    // Les champs éditoriaux null ne rendent plus une fiche draft.
+    const documented = REALISATIONS.find((r) => r.intention === null) as Realisation;
+    expect(documented.visualDescription.trim().length).toBeGreaterThan(0);
+    expect(isDraft(documented)).toBe(false);
+  });
+  it('isDraft vrai uniquement si visualDescription vide', () => {
+    const stub = { ...REALISATIONS[0]!, visualDescription: '   ' } as Realisation;
+    expect(isDraft(stub)).toBe(true);
   });
   it('photoSrc construit le chemin attendu', () => {
     expect(photoSrc('demo', '800w')).toBe('/images/realisations/demo-800w.webp');
@@ -118,9 +125,9 @@ describe('helpers', () => {
 });
 
 describe('SEO fiche — titre court < 60 car. (INFO-SEO-1)', () => {
-  it('shortTitle + suffixe « — Réalisations » reste < 60 caractères', () => {
+  it('shortTitle + suffixe « | Réalisations » reste < 60 caractères', () => {
     for (const r of REALISATIONS) {
-      const fullTitle = `${shortTitle(r)} — Réalisations`;
+      const fullTitle = `${shortTitle(r)} | Réalisations`;
       expect(fullTitle.length, `${r.slug} : "${fullTitle}"`).toBeLessThan(60);
     }
   });
@@ -132,14 +139,14 @@ describe('SEO fiche — titre court < 60 car. (INFO-SEO-1)', () => {
   });
 });
 
-describe('exclusion sitemap des fiches en draft (arbitrage orchestrateur)', () => {
+describe('indexation portfolio — toutes les fiches publiables (D-35)', () => {
   // Le sitemap (src/app/sitemap.ts) et le robots de la page utilisent le MÊME
-  // critère isDraft : une fiche non documentée est noindex + hors sitemap.
-  it('toutes les fiches actuellement en draft sont exclues du jeu indexable', () => {
+  // critère isDraft : une fiche avec visualDescription est indexable (sitemap +
+  // robots index). Les 24 fiches ayant toutes une visualDescription, elles sont
+  // TOUTES indexables (P0-SEO-01 megalot — portfolio rendu visible aux moteurs).
+  it('aucune fiche en draft : les 24 réalisations sont indexables', () => {
     const indexable = REALISATIONS.filter((r) => !isDraft(r));
-    // État actuel : 14 fiches toutes en draft → 0 indexable (pas de thin content soumis).
-    expect(indexable.length).toBe(REALISATIONS.filter((r) => !isDraft(r)).length);
-    // Invariant : aucune fiche indexable ne doit être un draft.
+    expect(indexable.length).toBe(REALISATIONS.length);
     for (const r of indexable) {
       expect(isDraft(r)).toBe(false);
     }
