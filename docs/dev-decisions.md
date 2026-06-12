@@ -555,3 +555,33 @@ Finitions partagent le registre conception/bureau d'études — pas un doublon d
 le récit du processus, l'autre la preuve structurelle/matière), mais la page est désormais longue.
 Si @ux/@design jugent la redondance gênante, candidat naturel : resserrer le body du MediaSplit
 « Conception ». Aucune suppression effectuée (consigne).
+
+---
+
+## D-31 — Réécriture des 24 visualDescription de realisations.ts (2026-06-12)
+
+Agent : @copywriter | Demande fondateur 2026-06-12.
+
+**Problème** : les `visualDescription` des 24 réalisations étaient de courtes descriptions visuelles
+(2-3 phrases purement descriptives) sans fond métier ni accroche CTA. Valeur pour le visiteur : faible.
+
+**Décision** : réécriture intégrale des 24 champs `visualDescription` avec la grille suivante :
+1. Ce qu'on voit nommé avec le vocabulaire juste (type d'ouvrage, matériau identifié sur la photo)
+2. Ce que ça révèle du métier — contrainte technique impliquée par le visible, sans rien inventer
+3. Ouverture vers le projet du visiteur (phrase qui transpose vers sa propriété, amorce du CTA)
+
+**Matière source** : photos lues par lots de 3 (800w) + `savoir-faire-facts.md` (21 termes, 7 différenciants)
++ `savoir-faire-copy.md` (registre des 6 ouvrages — pas de répétition de leurs formulations) + `brand-voice.md`.
+
+**Contraintes respectées** :
+- Chaque texte est unique (aucune phrase d'ouverture ou de clôture partagée entre fiches)
+- Zéro intention client inventée, zéro commune, zéro durée, zéro budget
+- Techniques mentionnées uniquement si elles sont impliquées par le visible (ex. fond mobile → mécanisme de levage ; volet immergé → coffre de roulement intégré à la structure)
+- Zéro technique [À CONFIRMER AS] affirmée (Neobloc, PVC armé spécifique, filtration 5 µm)
+- Registre brand-voice soutenu-accessible — aucun superlatif creux, aucun cadratin en début
+- Textes 3-4 phrases (légèrement plus longs que les originaux : la richesse technique le justifie)
+
+**Fichier modifié** : `src/content/realisations.ts` — champ `visualDescription` uniquement.
+Aucun autre fichier `src/` touché.
+
+**Vérifications** : tsc --noEmit PASS · npm test (vitest run) à lancer · relecture croisée variété 24 fiches effectuée.

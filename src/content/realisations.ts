@@ -359,7 +359,7 @@ export const REALISATIONS: Realisation[] = [
       },
     ],
     visualDescription:
-      "Le couloir de nage intérieur est délimité par des murs en moellons de pierre calcaire apparente et coiffé d'une charpente bois dont les solives rythment la longueur de la pièce ; le dallage en travertin clair unifie le sol du bord de bassin jusqu'aux chaises longues. Les matières choisies — pierre, bois, travertin — supportent sans traitement spécifique l'atmosphère humide d'un espace de nage couvert, ce qui est précisément leur raison d'être ici. Si vous disposez d'un bâtiment existant ou d'une dépendance à reconvertir, ce type d'espace montre ce qu'une structure ancienne peut accueillir.",
+      "Le couloir de nage intérieur est délimité par des murs en moellons de pierre calcaire apparente et coiffé d'une charpente bois dont les solives rythment la longueur de la pièce ; le dallage en travertin clair unifie le sol du bord de bassin jusqu'aux chaises longues. Pierre, bois, travertin : ces matières supportent sans traitement spécifique l'atmosphère humide d'un espace de nage couvert, ce qui est précisément leur raison d'être ici. Si vous disposez d'un bâtiment existant ou d'une dépendance à reconvertir, ce type d'espace montre ce qu'une structure ancienne peut accueillir.",
     prestations: null,
     intention: null,
     reponse: null,
@@ -445,7 +445,7 @@ export const REALISATIONS: Realisation[] = [
       },
     ],
     visualDescription:
-      "Le bassin à l'eau sombre, équipé d'un volet immergé sous ses margelles claires, est posé à fleur d'une pelouse rase qui vient lécher la pierre. À droite, une plage minérale longe une maison aux enduits ocre, l'ensemble contenu par une haie taillée et un mur de clôture coloré.",
+      "Les margelles de pierre calcaire blanche affleurent au niveau de la pelouse, si bien que le bassin à l'eau sombre semble posé à même l'herbe : le volet immergé se loge sous les margelles et disparaît entièrement, sans coffre apparent. Un volet à plage immergée exige que la première marche du bassin soit conçue pour accueillir le coffre de roulement sous le niveau d'eau, ce qui se décide lors du dimensionnement du bassin. Si vous voulez que la couverture de votre piscine ne s'impose pas visuellement, il faut l'intégrer à la structure dès l'origine.",
     prestations: null,
     intention: null,
     reponse: null,
@@ -466,7 +466,7 @@ export const REALISATIONS: Realisation[] = [
       },
     ],
     visualDescription:
-      "Le bassin à l'eau sombre s'encastre dans une large terrasse de bois qui se déploie devant une maison à lucarnes ouverte de plain-pied. De hautes graminées et un rideau de verdure ferment les côtés, pendant qu'au premier plan une assise basse et un bac planté animent le platelage.",
+      "Le couloir de nage en grès anthracite est encadré d'une terrasse en bois gris clair aux lames larges, avec une main courante en inox discret côté entrée : l'ensemble est compact, chaque centimètre est utilisé. Ce type de bassin allongé dans un espace contraint demande de calibrer la largeur utile de nage, la profondeur et la position des refoulements pour garantir un courant de nage réel, pas seulement une forme. Si votre propriété est limitée en surface mais que vous pratiquez la natation régulièrement, les proportions du couloir sont la variable à travailler en premier.",
     prestations: null,
     intention: null,
     reponse: null,
@@ -487,7 +487,7 @@ export const REALISATIONS: Realisation[] = [
       },
     ],
     visualDescription:
-      "Au centre d'une vaste pelouse, le bassin aux margelles de pierre claire fait face à une demeure beige coiffée de lucarnes. Des massifs et des arbres adultes encadrent la perspective, laissant la maison et son reflet capter toute la lumière du jardin.",
+      "Le bassin est centré dans la pelouse, ses margelles en pierre beige très claire donnant à l'ensemble une sobriété qui laisse toute la place à la demeure ancienne en fond de jardin. L'eau bleu-ciel clair trahit un revêtement de teinte pâle : la couleur d'eau est le reflet direct du choix de l'étanchéité intérieure, et ici elle a été choisie pour ne pas dominer le jardin. Si votre propriété a une architecture forte que vous souhaitez mettre en valeur plutôt qu'en concurrence, le bassin peut s'effacer — à condition que ce soit une décision consciente.",
     prestations: null,
     intention: null,
     reponse: null,
@@ -508,7 +508,7 @@ export const REALISATIONS: Realisation[] = [
       },
     ],
     visualDescription:
-      "Le bassin aux margelles de pierre claire repose à même la pelouse, le long d'un mur de pierre ancienne où court une vigne palissée. Un bouleau au feuillage léger et un grand conifère encadrent la scène, deux transats rayés posés sur une plage minérale en retrait.",
+      "Le bassin en eau turquoise vive est bordé de larges margelles et d'une plage en pierre calcaire beige-crème, posées le long d'un mur de pierre ancienne où une vigne s'est palissée : la pierre du bassin et celle du mur sont de la même famille, séparées seulement par la pelouse. Choisir une margelle calcaire qui répond au mur existant n'est pas seulement esthétique : c'est s'assurer que la même teinte vieillit de la même façon, sans créer un décalage dans dix ans. Si votre jardin possède déjà des murs en pierre, la margelle est le joint entre deux patrimoines.",
     prestations: null,
     intention: null,
     reponse: null,
@@ -529,7 +529,7 @@ export const REALISATIONS: Realisation[] = [
       },
     ],
     visualDescription:
-      "Un muret de rondins de bois sépare la pelouse de la plage du bassin, où quatre transats blancs s'alignent face à l'eau. Derrière, un mur de brique et le feuillage retombant d'un grand saule referment le jardin, la lumière filtrant à travers les arbres.",
+      "La palissade de bois brut sépare la pelouse basse de la plage du bassin surélevée : c'est un muret de soutènement de terre maçonné derrière le bois, pas un simple habillage. Cette coexistence de deux niveaux de pelouse et d'une plage dallée autour d'un même bassin oblige à concevoir les relevés de terrain et les évacuations des eaux de pluie dès le plan de masse. Si votre jardin comporte plusieurs niveaux naturels, la piscine peut s'y inscrire sans que le terrain ne soit uniformisé.",
     prestations: null,
     intention: null,
     reponse: null,
@@ -550,7 +550,7 @@ export const REALISATIONS: Realisation[] = [
       },
     ],
     visualDescription:
-      "Au crépuscule, le long bassin tend une surface parfaitement immobile au milieu d'une grande pelouse, ses margelles minérales nettes sur l'herbe. Une banquette latérale soulignée d'un éclairage chaud accompagne la rive, tandis que dépendances et arbres se découpent en silhouette sur le ciel encore clair.",
+      "Ce couloir de nage extérieur est très long, ses margelles en grès gris foncé réduites au strict nécessaire pour que la surface d'eau domine la pelouse comme un miroir horizontal. Une banquette éclairée en bande chaude côtoie la rive : l'éclairage rasant à cette heure révèle que les margelles affleurent exactement au niveau de l'herbe, sur tout le périmètre. Ce résultat suppose une mise en œuvre en deux temps : fondations et structure coulées au niveau calculé, puis margelles posées à la côte finie en s'alignant sur la hauteur du gazon. Si votre terrain est plat et que vous souhaitez un bassin qui s'efface dans le paysage, ce type de calage au sol mérite une conversation de plan.",
     prestations: null,
     intention: null,
     reponse: null,
@@ -571,7 +571,7 @@ export const REALISATIONS: Realisation[] = [
       },
     ],
     visualDescription:
-      "Cadré sur un angle, le bassin déploie une eau turquoise très claire d'où émerge un escalier immergé aux marches généreuses. La margelle et la plage de pierre claire conduisent à un transat rayé, sur fond de rosiers grimpants en fleurs et d'un mur de pierre ancienne.",
+      "La plage et les margelles en pierre calcaire blanc-crème sont très larges, donnant au bord du bassin la générosité d'une terrasse à part entière ; dans l'angle, un escalier immergé à deux marches larges facilite l'entrée dans l'eau et offre une assise immergée pour une mi-saison. Maçonner un escalier immergé dans l'angle d'un bassin en béton armé se décide au ferraillage : les marches sont coulées dans la masse, pas posées après. Si vous avez des enfants ou envisagez d'utiliser le bassin comme espace de détente autant que de nage, la position et la largeur de l'escalier méritent d'être pensées avant la forme du bassin.",
     prestations: null,
     intention: null,
     reponse: null,
@@ -592,7 +592,7 @@ export const REALISATIONS: Realisation[] = [
       },
     ],
     visualDescription:
-      "La surface du bassin disparaît sous un platelage de bois affleurant, le fond mobile remonté transformant l'eau en terrasse praticable au ras des margelles de pierre claire. Des massifs d'hortensias et une maison à volets bleus encadrent la scène, deux fines colonnes métalliques marquant l'accès.",
+      "Ce qu'on voit est une terrasse de bois ordinaire : des lames d'ipé posées sur une surface plane, deux poteaux inox discrets marquant l'accès, des hortensias de chaque côté. Sous ce platelage, le fond mobile est remonté au niveau des margelles en pierre claire et cache un bassin de pleine profondeur. Réaliser un fond mobile suppose d'intégrer le mécanisme de levage, son motoréducteur et les guides dans la structure béton du bassin avant coulage : l'ouvrage est avant tout mécanique et hydraulique. Si vous avez un terrain où l'espace extérieur sert autant de lieu de vie que de bassin, ce type d'ouvrage peut vous amener à ne pas choisir.",
     prestations: null,
     intention: null,
     reponse: null,
@@ -613,7 +613,7 @@ export const REALISATIONS: Realisation[] = [
       },
     ],
     visualDescription:
-      "Dans une pièce aux enduits sombres, le bassin diffuse une lumière d'ambiance verte qui se propage sur les murs et la surface de l'eau. Une rangée de transats blancs s'aligne sous de larges suspensions noires, face à une porte vitrée qui referme l'espace sur son atmosphère feutrée.",
+      "La lumière immergée verte inonde les parois et le plafond d'une teinte uniforme : le bassin couloir intérieur est ici un élément scénographique autant qu'un outil de nage, avec des suspensions design, des transats blancs épurés et un dallage anthracite mat. En piscine intérieure, la couleur de l'éclairage immergé peut être pilotée par domotique et modifie radicalement l'ambiance de la pièce selon les usages — un outil que l'on câble lors du gros-œuvre, pas en retouche. Si vous concevez un espace bien-être où la piscine et l'atmosphère forment un tout, l'éclairage chromatique est l'une des rares variables que vous pourrez ajuster à vie.",
     prestations: null,
     intention: null,
     reponse: null,
