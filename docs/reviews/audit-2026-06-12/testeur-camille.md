@@ -52,16 +52,38 @@ Le CTA « Présentons-nous » avec promesse d'envoyer « portfolio, références
 **Verdict page : la meilleure page prescripteurs que j'aie vue chez un pisciniste. Mais elle me demande encore de croire sur parole là où j'engage ma réputation.**
 
 ### /realisations
-[à compléter]
+
+C'est ici que je juge un exécutant — pas sur ses promesses, sur ses chantiers. La grille montre de belles typologies : débordement en lisière de forêt, couloir de nage sur demeure ancienne, paroi de verre avec travertin, projet piscine + jardin avec banquette. Les sujets sont les bons : ce sont exactement les programmes que je dessine. La photo du débordement en forêt est de niveau éditorial.
+
+J'ouvre la fiche du débordement, et là, douche froide : « Le récit complet de cette réalisation — l'intention, le parti pris et les choix d'exécution — sera bientôt publié. » Sur TOUTES les fiches que j'ouvre. Titre, type, « Yvelines (78) », photos — et c'est tout. Pas de matériaux, pas de contraintes de terrain, pas de durée de chantier, pas de surface, pas de maître d'œuvre. Je ne peux pas juger une margelle en pierre sur une photo en 800 px : il me faut le détail d'exécution, le calepinage, la gestion de la goulotte du débordement. Et surtout : **aucun projet n'indique avoir été mené avec un architecte**. Pour la page qui devait me prouver leur niveau, c'est une vitrine à moitié installée.
+
+Honnêteté du site notée : ils n'inventent rien (« bientôt publié » plutôt que du faux contenu). Je préfère ça à des fiches bidonnées — mais ça ne m'aide pas à recommander aujourd'hui.
+
+**Verdict page : belles photos, bons programmes, zéro profondeur technique. Je repars sans pouvoir juger l'exécution.**
 
 ### /notre-approche
-[à compléter]
+
+Cinq étapes claires : écoute, bureau d'études, réalisation, livraison, suivi annuel. « Piscine et jardin conçus ensemble dès le premier plan — pas l'un après l'autre » : c'est exactement l'argument que je sers à mes clients quand je plaide pour une conception globale. « Un seul interlocuteur sur le chantier. Nous gérons les corps de métier, les délais, les interfaces techniques » : bon réflexe de maîtrise d'œuvre d'exécution. « Votre piscine est entretenue par ceux qui l'ont construite » : argument que je peux reprendre tel quel devant un client — l'après-livraison est ce qui m'épargne les appels SAV deux ans plus tard.
+
+Mais ce process est écrit pour le particulier. Moi, je n'y figure nulle part : à l'étape 2, qui conçoit quand il y a déjà un architecte ? Leur bureau d'études s'efface-t-il derrière mon DCE comme le promet la page prescripteurs ? Les deux pages ne se répondent pas. Et toujours : **aucune mention de la décennale ni des assurances**, sur cette page ni ailleurs sur le site. Pour un ouvrage de 150 k€, c'est la première ligne de ma due diligence. La FAQ (4 questions) est utile mais grand public.
+
+**Verdict page : process rassurant côté client final, muet sur ma place dedans, et silence assurantiel gênant.**
 
 ### /la-maison
-[à compléter]
+
+La page que je lis pour savoir À QUI je confie mon client. Nicolas Berg, associé-gérant, avec photo : bien — je sais qui appeler, et qui porte la responsabilité. Équipe de 8, née à Freneuse il y a plus de 30 ans, restée sur son territoire : c'est le profil que je cherche, l'entreprise ancrée qui sera encore là dans dix ans pour l'entretien. Trophée d'Or FPP 2024 et Award Bronze EUSA 2025 : des prix de profession, vérifiables — ça pèse plus qu'un carrousel de témoignages. « Pas de standard, pas de catalogue », « Nous construisons pour la pérennité — pas pour la saison » : le discours est aligné avec ce que j'ai vu sur le reste du site, pas de dissonance.
+
+L'articulation avec Les Terres Essentielles (« en partenariat avec ») est honnête — on sent que le volet paysage est plus jeune que le volet piscine, et je préfère qu'on me le laisse deviner plutôt qu'on me le maquille. Pour le jardin d'un client, je voudrais quand même voir des réalisations paysagères avant de prescrire ce volet-là.
+
+**Verdict page : la meilleure page du site avec /prescripteurs. Une maison, un visage, des prix de profession. Confiance réelle.**
 
 ### /contact
-[à compléter]
+
+Sobre, coordonnées complètes (01 30 42 26 00, contact@aqua-system.fr, Freneuse) — je peux appeler directement, c'est ce que je ferai de toute façon. Le formulaire propose un chip « Je suis prescripteur », pré-sélectionné quand j'arrive depuis ma page : petit détail, mais il prouve que le parcours prescripteur a été pensé jusqu'au bout, pas plaqué. « Quelques mots sur ce que vous imaginez suffisent pour démarrer » : bon ton, pas de tunnel de qualification agressif.
+
+Deux réserves : aucun délai de réponse annoncé (« reviennent vers vous » — quand ?), et pour une prise de contact B2B je m'attendais à une ligne ou un email différencié (je ne veux pas que ma demande de partenariat atterrisse dans la même boîte que les demandes de devis spa).
+
+**Verdict page : propre et fonctionnel. Le chip prescripteur sauve la généricité du canal.**
 
 ## Top 5 des changements pour une recommandation sans réserve
 
