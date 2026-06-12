@@ -6,15 +6,14 @@ import { MediaSplit } from '@/components/sections/MediaSplit';
 import { ProofBadges } from '@/components/ui/ProofBadges';
 import { CrossSellingBlock } from '@/components/sections/CrossSellingBlock';
 import { SectionCTA } from '@/components/sections/SectionCTA';
-import { PhotoPlaceholder } from '@/components/sections/PhotoPlaceholder';
 import { JsonLd } from '@/components/seo/JsonLd';
 
 /**
  * Piscines & Bien-être (/piscines-bien-etre) — F-02, WF-02.
  * Rendu : SSG. Contenu fixe marketing. Cross-sell + tracking en îlots client.
- * Photos : hero + cross-sell = réalisations réelles ; les 3 blocs prestation
- * (chantier carrelage / spa HotSpring / technicien SAV) n'ont pas de photo
- * réelle disponible → PhotoPlaceholder unique (jamais 2 identiques).
+ * Photos : hero + cross-sell = réalisations réelles ; le bloc spa HotSpring
+ * n'a pas de photo réelle disponible → rendu en texte éditorial centré
+ * (D-22 : slot image vide retiré, perception premium).
  */
 export const metadata: Metadata = {
   // Metas finales — metadata-templates.md Page 2 (source de vérité @seo).
@@ -127,40 +126,35 @@ export default function PiscinesBienEtrePage() {
 }
 
 /**
- * Bloc spa — variante de MediaSplit avec PhotoPlaceholder (pas de photo réelle
- * de spa HotSpring dans les sources). Inversé + fond alterné (WF-02 §3).
+ * Bloc spa — texte éditorial pleine largeur (pas de photo réelle de spa
+ * HotSpring dans les sources). Fond alterné (WF-02 §3).
+ *
+ * D-22 (P0 desktop 2026-06-12) : le PhotoPlaceholder « Visuel à venir » était
+ * perçu comme une maquette inachevée sur une page commerciale premium
+ * (desktop-audit.md Top 5 #1). On supprime le slot image vide ; bloc rendu en
+ * texte centré resserré, sans trou visuel.
  */
 function SpaBlock() {
   return (
     <section className="bg-background-secondary">
-      <div className="mx-auto max-w-container px-4 py-16 md:px-8 md:py-20">
-        <div className="grid items-center gap-8 md:gap-12 lg:grid-cols-2">
-          <figure className="lg:order-first">
-            <PhotoPlaceholder
-              ratioClassName="aspect-[3/2]"
-              description="Spa HotSpring encastré dans une terrasse en bois exotique, entourage en pierre naturelle, jardin en arrière-plan, ambiance de soirée."
-            />
-          </figure>
-          <div className="lg:order-last">
-            <p className="mb-3 text-xs font-medium uppercase tracking-[0.1em] text-foreground-accent-water">
-              Spa &amp; bien-être
-            </p>
-            <h2 className="font-serif text-3xl leading-tight text-foreground md:text-4xl">
-              L'eau chaude dans votre propriété
-            </h2>
-            <div className="mt-4 space-y-4">
-              <p className="max-w-[52ch] text-base leading-8 text-foreground-secondary">
-                Spa extérieur HotSpring, sauna finlandais, hammam, intégrés à
-                l'architecture de votre propriété, pas posés en périphérie. Chaque
-                installation est conçue avec le reste de l'espace : la terrasse,
-                le jardin, les lignes de la maison.
-              </p>
-              <p className="max-w-[52ch] text-base leading-8 text-foreground-secondary">
-                Partenaire HotSpring pour les spas : une gamme pensée pour le
-                résidentiel haut de gamme.
-              </p>
-            </div>
-          </div>
+      <div className="mx-auto max-w-3xl px-4 py-16 text-center md:px-8 md:py-20">
+        <p className="mb-3 text-xs font-medium uppercase tracking-[0.1em] text-foreground-accent-water">
+          Spa &amp; bien-être
+        </p>
+        <h2 className="font-serif text-3xl leading-tight text-foreground md:text-4xl">
+          L'eau chaude dans votre propriété
+        </h2>
+        <div className="mx-auto mt-5 max-w-[60ch] space-y-4 text-left">
+          <p className="text-base leading-8 text-foreground-secondary">
+            Spa extérieur HotSpring, sauna finlandais, hammam, intégrés à
+            l'architecture de votre propriété, pas posés en périphérie. Chaque
+            installation est conçue avec le reste de l'espace : la terrasse, le
+            jardin, les lignes de la maison.
+          </p>
+          <p className="text-base leading-8 text-foreground-secondary">
+            Partenaire HotSpring pour les spas : une gamme pensée pour le
+            résidentiel haut de gamme.
+          </p>
         </div>
       </div>
     </section>

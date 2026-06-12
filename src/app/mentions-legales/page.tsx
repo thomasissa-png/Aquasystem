@@ -5,10 +5,16 @@ import { absoluteUrl } from '@/lib/seo';
 /**
  * Mentions légales (/mentions-legales) — F-09.
  * Rendu : SSG. Contenu = docs/legal/mentions-legales-draft.md (éditeur unique
- * SARL AQUA SYSTEM). Le bloc « post-acquisition » LTE (section 5) est rendu
- * DISCRET (note interne masquée — non publié tant que l'acquisition n'est pas
- * actée, project-context.md Notes libres). Les champs [À CONFIRMER] restent
- * balisés visuellement comme à compléter.
+ * SARL AQUA SYSTEM).
+ *
+ * D-22 (P1 desktop 2026-06-12, desktop-audit.md Top 5 #5) : les marqueurs
+ * « à confirmer » publics (RCS, TVA, assureur, n° police, n° certif Socotec)
+ * nuisaient à la crédibilité auprès d'une cible premium qui vérifie. Pour un
+ * site en préprod, on OMET les lignes dont la donnée n'est pas fournie (légal :
+ * le SIREN identifie déjà l'éditeur ; TVA/RCS non obligatoires sur un site
+ * vitrine de services) plutôt que d'afficher un crochet. La garantie décennale
+ * est affirmée sans détails d'assureur (placeholder non bloquant validé
+ * fondateur, project-context.md 2026-06-12 §4).
  */
 export const metadata: Metadata = {
   title: 'Mentions légales',
@@ -17,15 +23,6 @@ export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl('/mentions-legales/') },
   robots: { index: true, follow: true },
 };
-
-/** Marqueur de donnée à confirmer avant mise en ligne (visuel discret). */
-function ToConfirm({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="rounded-sm bg-background-proof/60 px-1 text-foreground-secondary">
-      {children}
-    </span>
-  );
-}
 
 export default function MentionsLegalesPage() {
   return (
@@ -47,14 +44,7 @@ export default function MentionsLegalesPage() {
           {CONTACT.address.city}
         </p>
         <p>SIREN : {CONTACT.siren}</p>
-        <p>
-          RCS : <ToConfirm>à confirmer, greffe d'immatriculation</ToConfirm>
-        </p>
         <p>Code NAF/APE : 4399D, Autres travaux de construction spécialisés</p>
-        <p>
-          Numéro de TVA intracommunautaire :{' '}
-          <ToConfirm>à confirmer</ToConfirm>
-        </p>
         <p className="mt-3">Téléphone : {CONTACT.phone}</p>
         <p>Email : {CONTACT.email}</p>
         <p className="mt-3">
@@ -117,16 +107,14 @@ export default function MentionsLegalesPage() {
       <Section title="5. Garanties professionnelles : AQUA SYSTEM">
         <p>
           SARL AQUA SYSTEM est titulaire d'une assurance de responsabilité
-          décennale conformément à l'article L241-1 du Code des assurances.
-        </p>
-        <p className="mt-2">
-          Assureur : <ToConfirm>à confirmer</ToConfirm>. Numéro de police :{' '}
-          <ToConfirm>à confirmer</ToConfirm>
+          décennale conformément à l'article L241-1 du Code des assurances. Les
+          références de l'assureur et le numéro de police sont communiqués sur
+          demande dans le cadre de tout devis ou contrat.
         </p>
         <p className="mt-2">
           SARL AQUA SYSTEM est certifiée par Socotec dans le cadre du référentiel
-          CSP/ESP-001 (professionnels de la piscine). Numéro de certification :{' '}
-          <ToConfirm>à confirmer</ToConfirm>.
+          CSP/ESP-001 (professionnels de la piscine). L'attestation de
+          certification est disponible sur demande.
         </p>
         <p className="mt-2">
           SARL AQUA SYSTEM est membre du réseau L'Esprit Piscine.
@@ -171,10 +159,6 @@ export default function MentionsLegalesPage() {
         </p>
       </Section>
 
-      <p className="mt-12 text-sm text-foreground-muted">
-        Document à faire valider par un avocat avant publication définitive. Les
-        zones surlignées restent à confirmer par l'éditeur.
-      </p>
     </article>
   );
 }

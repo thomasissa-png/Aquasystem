@@ -352,3 +352,36 @@ La pépinière/serre a désormais une vraie photo. **Restent en PhotoPlaceholder
 
 ---
 
+
+## D-21 — Révision typographique cadratin (reprise après interruption) (@fullstack, 2026-06-12)
+
+> Reprise du lot cadratin interrompu. Source : `docs/copy/dash-revision.md` (34 RÉÉCRIRE, décision fondateur). Tokens uniquement. Pas de commit, pas de déploiement.
+
+**Vérification ligne par ligne du tableau des 34 réécritures** : à la reprise, l'intégralité des 34 RÉÉCRIRE était **déjà appliquée en source** (vérifié fichier par fichier sur les lignes du tableau) — y compris la regex `realisations.ts` L390 (`/\s*,\s*(Yvelines|Hauts-de-Seine).*$/u`, virgule à la place du cadratin), les 14 titres de fiches (virgule avant la zone), les 2 amorces SectionCTA (`page.tsx` L186 + `realisations/page.tsx` L58 → virgule), les sous-titres hero, H2, meta-descriptions, FAQ (`faq.ts`) et messages d'erreur (`contact-validation.ts`). Les GARDER (meta-titles SEO `— SITE_NAME`, OG titles, alt OG, JSON-LD `seo.ts` L96/106/107) sont intacts.
+
+**Preuve out/ (après build)** : analyse Python du rendu `out/**/*.html` — on retire `<head>` + `<script>` (zones GARDER : title/meta/OG/JSON-LD), puis on classe chaque cadratin du body en « attribut » (alt/aria-label = GARDER) vs « texte visible ». Résultat : **41 cadratins body, 41 dans des attributs, 0 en texte visible**. Décompte indépendant : `grep "—"` sur HTML = 27 fichiers, mais **0 cadratin hors-liste dans le texte rendu**. Critère done (1) MET.
+
+**Tests** : 3 specs e2e `contact-form.spec.ts` asséraient l'ancien copy avec cadratin (email invalide L78, description courte L95, alerte 500 L112) — **mises à jour** vers le copy approuvé (`:` / `.`), car la source ContactForm.tsx + contact-validation.ts portent déjà la ponctuation révisée. Aucune autre régression (les cadratins restants en tests = descriptions de specs + sujets/corps email INTERNES `[LEAD x/7 — segment]` + suffixe meta `« — Réalisations »`, tous GARDER).
+
+---
+
+## D-22 — Lot P0 desktop (placeholders) + footer + P1 mentions légales (@fullstack, 2026-06-12)
+
+> Source : `desktop-audit.md` (4 P0 + 12 P1) + `footer-audit.md`. Tokens uniquement. Pas de commit, pas de déploiement.
+
+**P0 ×4 — blocs « Visuel à venir » vides (Piscines ×1, Jardins ×2, Notre approche ×1).** Diagnostic : le composant `PhotoPlaceholder` n'avait PAS de bug CSS (tokens `bg-background-secondary` #ede8df, `border-border-muted` #e0d8cc, `text-foreground-muted` #6b6058 tous définis dans `globals.css` + `tailwind.config.ts` — la boîte se rendait bien). Le vrai problème est de **perception** (desktop-audit Top 5 #1, répété L117/320/335) : un emplacement d'image vide affiché sur une page commerciale premium = « maquette inachevée ». **Reco du rapport appliquée : masquer le placeholder tant qu'aucune photo n'existe.** Solution : suppression des slots image vides, rendu des sections concernées en **texte éditorial centré resserré** (`max-w-3xl` centré + corps `max-w-[60ch] text-left`) — lecture délibérée, zéro trou visuel.
+- `jardins-paysage` : `PlaceholderSplit` (grille 2 col + figure placeholder) → `TextBlock` (colonne unique centrée). 2 blocs convertis (Bureau d'études, Création).
+- `piscines-bien-etre` : `SpaBlock` (grille 2 col + placeholder) → bloc texte centré.
+- `notre-approche` : section ancrage local (grille 2 col + placeholder drone) → colonne unique centrée (communes serif italic centrées).
+- `PhotoPlaceholder.tsx` **supprimé** (plus aucune référence ; D-18 NF-1 devient caduque — le placeholder n'est plus affiché du tout, ce qui dépasse l'intention NF-1). Imports retirés des 3 pages, doc-comments mis à jour.
+**Preuve out/** : `grep "Visuel à venir"` sur `out/` = **0 occurrence**. Critère done (2) MET.
+
+**Footer — refonte `footer-audit.md` (composant global, toutes pages).** Bloc navigation dupliqué **SUPPRIMÉ** (`<nav aria-label="Navigation secondaire">` + 6 liens — redondant avec la navbar sticky). Grille `md:grid-cols-3` → `md:grid-cols-[2fr_1fr_1fr]` (identité large + 2 blocs adresses). Réseaux sociaux (LinkedIn/Facebook) remontés en col 1 sous les badges. Mention partenariat (paragraphe 2 lignes) retirée de la col 1 → fusionnée dans la barre légale (`· En partenariat avec {PARTNER_NAME}.`). Spacing resserré : `pt-16→pt-10`, `pb-12→pb-8`, `gap-12→gap-6 md:gap-8`, `mt-12→mt-8`, `pt-6→pt-5`, badges `mt-5→mt-4`. Adresses sur 1 ligne (virgule + CP/ville, `<br>` supprimé). `FOOTER_NAV_LINKS` reste exporté dans `constants.ts` (non utilisé mais inoffensif, pas de test cassé). **Mesure réelle** : footer mobile (375px) = **589 px = 0.73× écran** (≤ 1 écran, critère done (3) MET) ; footer desktop (1280px) = **274 px** (cible audit ~300-310px atteinte).
+
+**P1 #5 — placeholders légaux publics « à confirmer » (`mentions-legales`).** Reco brief : formulations neutres sans crochets. Appliqué : lignes **RCS** et **TVA intracommunautaire OMISES** (SIREN identifie déjà l'éditeur ; TVA/RCS non obligatoires sur un site vitrine de services). Section 5 garanties : décennale affirmée + « références de l'assureur et numéro de police communiqués sur demande » ; certification Socotec + « attestation disponible sur demande » (n° de certif omis). Composant `ToConfirm` + note de bas de page « à faire valider par un avocat » **supprimés**. **Preuve out/** : `grep -i "à confirmer"` sur `out/` = **0 occurrence**. Décennale reste un placeholder validé non bloquant côté devis/contrat (project-context.md 2026-06-12 §4) — non affiché en crochet public.
+
+**P1 restants — statut.** Déjà résolus en sessions antérieures (confirmés par relecture code + brief) : contraste sous-titres hero (overlay renforcé `OVERLAY_DEFAULT` 0.85→0.50→0.15 + text-shadow 3 couches H1 / 2 couches sous-titre, design-fixes-fondateur §A.2/§A.4) ; badges « en cours de documentation » sortis de l'image → ligne texte discrète sous le titre (`RealisationCard.tsx`, P0-D1) ; trio cartes services jardins → cartes `bg-background-secondary` + `border-l-2` + titres DM Sans semibold (D-18 NF-2). **[BLOQUÉ FONDATEUR]** (nécessitent de NOUVEAUX assets, hors code) : photo « partenariat LTE » accueil hors-sujet végétal (archi verre/piscine au lieu de jardinerie/pierre) ; photos jardinerie « retail » en écart de gamme (cagette Orgeval /la-maison, serre chrysanthèmes /jardins-paysage) → reshoot/retouche ou cadrage Kei-Stone à fournir. P2 non traités (hors périmètre lot).
+
+**Vérification finale** : `tsc --noEmit` PASS · `next lint` PASS (0 warning) · `build` PASS (30 routes) · **Vitest 102/102** · **Playwright 43/43**. Baselines régénérées fold + fullpage, 10 pages × 3 viewports = 60 PNG (`scripts/capture-baselines.mjs`, dev server 127.0.0.1:3100). Relecture visuelle desktop (jardins/piscines/notre-approche : blocs texte propres sans trou ; mentions sans crochets) + mobile (footer compact ≤ 1 écran). Pas de commit, pas de déploiement (consigne).
+
+---

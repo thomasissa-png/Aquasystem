@@ -75,7 +75,7 @@ test.describe('Formulaire de contact', () => {
 
     await expect(
       page.getByText(
-        "L'adresse email semble incorrecte — vérifiez le format (exemple : prenom@domaine.fr).",
+        "L'adresse email semble incorrecte. Vérifiez le format : prenom@domaine.fr.",
       ),
     ).toBeVisible();
     await expect(page.getByLabel(/^Email/)).toBeFocused();
@@ -92,7 +92,7 @@ test.describe('Formulaire de contact', () => {
 
     await expect(
       page.getByText(
-        'Décrivez votre projet en quelques mots — cela guidera notre premier échange.',
+        'Décrivez votre projet en quelques mots : cela guidera notre premier échange.',
       ),
     ).toBeVisible();
   });
@@ -109,7 +109,7 @@ test.describe('Formulaire de contact', () => {
     const formAlert = page.getByRole('main').getByRole('alert');
     await expect(formAlert).toBeVisible();
     await expect(formAlert).toContainText(
-      "Votre message n'a pas pu être envoyé — une erreur technique est survenue de notre côté.",
+      "Votre message n'a pas pu être envoyé : une erreur technique est survenue de notre côté.",
     );
     await expect(formAlert).toContainText('01 30 42 26 00');
     await expect(page.getByLabel('Votre nom')).toHaveValue('Alexandre Dupont');

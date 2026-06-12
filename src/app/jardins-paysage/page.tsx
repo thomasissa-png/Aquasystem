@@ -6,16 +6,15 @@ import { Hero } from '@/components/sections/Hero';
 import { MediaSplit } from '@/components/sections/MediaSplit';
 import { CrossSellingBlock } from '@/components/sections/CrossSellingBlock';
 import { SectionCTA } from '@/components/sections/SectionCTA';
-import { PhotoPlaceholder } from '@/components/sections/PhotoPlaceholder';
 import { JsonLd } from '@/components/seo/JsonLd';
 
 /**
  * Jardins & Paysage (/jardins-paysage) — F-03, WF-03.
  * Rendu : SSG. Photos : hero + cross-sell = réalisations réelles à dominante
- * jardin. Blocs prestation : (1) plans paysagers et (2) chantier création
- * restent en PhotoPlaceholder (aucune photo réelle de réalisation) ; (3) la
- * serre/pépinière utilise une VRAIE photo de la jardinerie Les Terres
- * Essentielles (honnête : ambiance pépinière, pas une création de jardin).
+ * jardin. Blocs prestation : (1) bureau d'études et (2) création sont rendus en
+ * texte éditorial centré (D-22 : slots image vides retirés, aucune photo réelle
+ * de réalisation) ; (3) la serre/pépinière utilise une VRAIE photo de la
+ * jardinerie Les Terres Essentielles (honnête : ambiance pépinière).
  * CrossSellingBlock : CTA forest UNIQUEMENT ici (source=jardins, décision @design).
  */
 export const metadata: Metadata = {
@@ -72,7 +71,7 @@ export default function JardinsPaysagePage() {
         subtitle="En partenariat avec Les Terres Essentielles : bureau d'études paysager, création et entretien de parcs et jardins sur mesure."
       />
 
-      {/* Bloc 1 — Bureau d'études paysager (placeholder : plans de jardin). */}
+      {/* Bloc 1 — Bureau d'études paysager (texte éditorial, D-22). */}
       <BureauEtudesBlock />
 
       {/* P2-GEO-01 : phrase de synthèse auto-contenue extractible (claim 8 —
@@ -88,7 +87,7 @@ export default function JardinsPaysagePage() {
         </div>
       </section>
 
-      {/* Bloc 2 — Création de parcs et jardins (placeholder : chantier création). */}
+      {/* Bloc 2 — Création de parcs et jardins (texte éditorial, D-22). */}
       <CreationBlock />
 
       {/* Bloc Kei-Stone retiré à la demande du fondateur (2026-06-12) — copy
@@ -140,30 +139,27 @@ export default function JardinsPaysagePage() {
 
 function BureauEtudesBlock() {
   return (
-    <PlaceholderSplit
+    <TextBlock
       eyebrow="Bureau d'études"
       title="Un projet pensé avant d'être planté"
       body={[
         "Tout commence par la lecture du terrain : les ombrages, les masses végétales existantes, les contraintes de sol. Notre bureau d'études, en partenariat avec Les Terres Essentielles, pose le plan avant que la première pelle entre dans la terre.",
         "Quand un projet comporte aussi une piscine, les deux études sont menées au même moment. Le résultat : un espace qui tient ensemble, pas une somme de parties.",
       ]}
-      placeholder="Plans de jardin déroulés sur une grande table, réglettes et crayons, mains d'un paysagiste au travail, lumière de bureau naturelle."
     />
   );
 }
 
 function CreationBlock() {
   return (
-    <PlaceholderSplit
+    <TextBlock
       tone="alt"
-      reversed
       eyebrow="Création"
       title="La réalisation, du premier arbre à la dernière pierre"
       body={[
         "Allées, massifs, pelouses, enrochements, terrasses végétalisées : chaque élément est conçu pour son rapport avec les autres et avec l'architecture de la maison. Chaque projet part du terrain : aucun plan ne ressemble au précédent, parce qu'aucun terrain ne se ressemble.",
         'Nos végétaux sont sélectionnés ou issus de notre pépinière. Adaptés au sol argilo-calcaire de l\'ouest parisien.',
       ]}
-      placeholder="Chantier de création d'un jardin : ouvriers posant des pavés naturels sur une allée, arbres fraîchement plantés, sol travaillé, après-midi ensoleillé."
     />
   );
 }
@@ -187,50 +183,45 @@ function PepiniereBlock() {
   );
 }
 
-/** MediaSplit avec PhotoPlaceholder à la place de la photo (slots jardins sans
- *  photo réelle). Accent forest. */
-function PlaceholderSplit({
+/**
+ * Bloc prestation jardins SANS photo réelle disponible.
+ *
+ * D-22 (P0 desktop 2026-06-12) : les PhotoPlaceholder « Visuel à venir » étaient
+ * perçus comme une maquette inachevée sur une page commerciale premium
+ * (desktop-audit.md Top 5 #1 — reco : « masquer le placeholder tant qu'aucune
+ * image n'est fournie »). On supprime le slot image vide et on rend le bloc en
+ * texte éditorial pleine largeur, centré et resserré : lecture délibérée, aucun
+ * trou visuel. La photo réelle pourra réintroduire un MediaSplit plus tard.
+ */
+function TextBlock({
   eyebrow,
   title,
   body,
-  placeholder,
-  reversed = false,
   tone = 'default',
 }: {
   eyebrow: string;
   title: string;
   body: string[];
-  placeholder: string;
-  reversed?: boolean;
   tone?: 'default' | 'alt';
 }) {
   return (
     <section className={tone === 'alt' ? 'bg-background-secondary' : undefined}>
-      <div className="mx-auto max-w-container px-4 py-16 md:px-8 md:py-20">
-        <div className="grid items-center gap-8 md:gap-12 lg:grid-cols-2">
-          <div className={reversed ? 'lg:order-last' : undefined}>
-            <p className="mb-3 text-xs font-medium uppercase tracking-[0.1em] text-foreground-accent-forest">
-              {eyebrow}
+      <div className="mx-auto max-w-3xl px-4 py-16 text-center md:px-8 md:py-20">
+        <p className="mb-3 text-xs font-medium uppercase tracking-[0.1em] text-foreground-accent-forest">
+          {eyebrow}
+        </p>
+        <h2 className="font-serif text-3xl leading-tight text-foreground md:text-4xl">
+          {title}
+        </h2>
+        <div className="mx-auto mt-5 max-w-[60ch] space-y-4 text-left">
+          {body.map((p, i) => (
+            <p
+              key={i}
+              className="text-base leading-8 text-foreground-secondary"
+            >
+              {p}
             </p>
-            <h2 className="font-serif text-3xl leading-tight text-foreground md:text-4xl">
-              {title}
-            </h2>
-            <div className="mt-4 space-y-4">
-              {body.map((p, i) => (
-                <p
-                  key={i}
-                  className="max-w-[52ch] text-base leading-8 text-foreground-secondary"
-                >
-                  {p}
-                </p>
-              ))}
-            </div>
-          </div>
-          <figure className={reversed ? 'lg:order-first' : undefined}>
-            {/* min-h-64 (design-audit P1-JARDINS-2) : plus de rupture visuelle,
-                page jardins moins dense sur mobile. */}
-            <PhotoPlaceholder description={placeholder} className="min-h-64" />
-          </figure>
+          ))}
         </div>
       </div>
     </section>

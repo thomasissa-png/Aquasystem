@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import {
   CONTACT,
-  FOOTER_NAV_LINKS,
   LEGAL_LINKS,
   PARTNER_CONTACT,
   PARTNER_NAME,
@@ -13,9 +12,16 @@ import {
 /**
  * Footer — design-system.md §6 + ux-writing-guide §6.
  * Fond sombre (sand-950), texte clair, focus ring inversé (clair).
- * 4 blocs : identité + partenariat / navigation / coordonnées des 2 maisons /
- * liens légaux. Année du copyright calculée au build (jamais hardcodée).
+ * 3 blocs : identité (wordmark + badges + réseaux) / coordonnées Aqua System /
+ * coordonnées Les Terres Essentielles + barre légale (copyright + partenariat).
+ * Année du copyright calculée au build (jamais hardcodée).
  * Server component — HTML pur, fonctionne sans JS.
+ *
+ * D-22 (footer-audit.md 2026-06-12) : bloc navigation dupliqué SUPPRIMÉ (la nav
+ * sticky le rend redondant), spacing resserré (pt-10/pb-8/mt-8/gap-6 mobile),
+ * grille 2fr/1fr/1fr, réseaux sociaux remontés en col 1, mention partenariat
+ * fusionnée dans la barre légale, adresses sur 1 ligne mobile. Cible : footer
+ * mobile ≤ 1 écran.
  */
 const footerLinkClass =
   'rounded-sm underline-offset-4 hover:text-foreground-inverse hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring-inverse)] focus-visible:ring-offset-2';
@@ -35,19 +41,14 @@ export function Footer() {
       aria-label="Pied de page"
       className="bg-background-inverse text-foreground-inverse print:bg-transparent print:text-black"
     >
-      <div className="mx-auto max-w-container px-4 pb-12 pt-16 md:px-8">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
-          {/* Bloc 1 — Identité + partenariat + badges de qualité (P1-N2) */}
+      <div className="mx-auto max-w-container px-4 pb-8 pt-10 md:px-8">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-[2fr_1fr_1fr] md:gap-8">
+          {/* Bloc 1 — Identité + badges de qualité + réseaux sociaux (P1-N2) */}
           <div>
             <p className="font-serif text-xl">{SITE_NAME}</p>
-            <p className="mt-3 text-sm leading-6 text-sand-300">
-              {SITE_NAME} : eau, jardin, propriété.
-              <br />
-              En partenariat avec {PARTNER_NAME}.
-            </p>
             {/* Badges Socotec + Esprit Piscine sur toutes les pages (ux-audit
                 P1-N2) — signal de qualité premium constant. */}
-            <ul className="mt-5 flex flex-wrap gap-2">
+            <ul className="mt-4 flex flex-wrap gap-2">
               <li className="rounded-md border border-sand-800 px-3 py-1.5 text-xs font-medium text-sand-300">
                 Certifié Socotec CSP/ESP-001
               </li>
@@ -55,65 +56,9 @@ export function Footer() {
                 Réseau L'Esprit Piscine
               </li>
             </ul>
-          </div>
-
-          {/* Bloc 2 — Navigation */}
-          <nav aria-label="Navigation secondaire">
-            <p className="font-serif text-sm text-sand-400">Navigation</p>
-            <ul className="mt-4 flex flex-col gap-2 text-sm text-sand-300">
-              {FOOTER_NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className={footerListLinkClass}>
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          {/* Bloc 3 — Coordonnées des 2 maisons */}
-          <div className="text-sm text-sand-300">
-            <p className="font-serif text-sm text-sand-400">Nous trouver</p>
-            <address className="mt-4 not-italic">
-              <p className="font-medium text-foreground-inverse">Aqua System</p>
-              <p className="mt-1 flex items-start gap-2">
-                <MapPin aria-hidden className="mt-0.5 h-4 w-4 shrink-0" />
-                <span>
-                  {CONTACT.address.street}
-                  <br />
-                  {CONTACT.address.postalCode} {CONTACT.address.city}
-                </span>
-              </p>
-              <p className="mt-2 flex items-center gap-2">
-                <Phone aria-hidden className="h-4 w-4 shrink-0" />
-                <a href={`tel:${CONTACT.phoneE164}`} className={footerLinkClass}>
-                  {CONTACT.phone}
-                </a>
-              </p>
-              <p className="mt-2 flex items-center gap-2">
-                <Mail aria-hidden className="h-4 w-4 shrink-0" />
-                <a href={`mailto:${CONTACT.email}`} className={footerLinkClass}>
-                  {CONTACT.email}
-                </a>
-              </p>
-            </address>
-
-            <address className="mt-6 not-italic">
-              <p className="font-medium text-foreground-inverse">
-                {PARTNER_CONTACT.name}
-              </p>
-              <p className="mt-1 flex items-start gap-2">
-                <MapPin aria-hidden className="mt-0.5 h-4 w-4 shrink-0" />
-                <span>
-                  {PARTNER_CONTACT.address.street}
-                  <br />
-                  {PARTNER_CONTACT.address.postalCode}{' '}
-                  {PARTNER_CONTACT.address.city}
-                </span>
-              </p>
-            </address>
-
-            <div className="mt-6 flex gap-x-6">
+            {/* Réseaux sociaux remontés en col 1 (footer-audit §B) — groupe les
+                signaux de marque, équilibre les hauteurs de colonnes. */}
+            <div className="mt-4 flex gap-x-4 text-sm text-sand-300">
               <a
                 href={SOCIAL_LINKS.linkedinAS}
                 target="_blank"
@@ -132,13 +77,56 @@ export function Footer() {
               </a>
             </div>
           </div>
+
+          {/* Bloc 2 — Coordonnées Aqua System */}
+          <div className="text-sm text-sand-300">
+            <address className="not-italic">
+              <p className="font-medium text-foreground-inverse">Aqua System</p>
+              <p className="mt-2 flex items-start gap-2">
+                <MapPin aria-hidden className="mt-0.5 h-4 w-4 shrink-0" />
+                <span>
+                  {CONTACT.address.street}, {CONTACT.address.postalCode}{' '}
+                  {CONTACT.address.city}
+                </span>
+              </p>
+              <p className="mt-2 flex items-center gap-2">
+                <Phone aria-hidden className="h-4 w-4 shrink-0" />
+                <a href={`tel:${CONTACT.phoneE164}`} className={footerLinkClass}>
+                  {CONTACT.phone}
+                </a>
+              </p>
+              <p className="mt-2 flex items-center gap-2">
+                <Mail aria-hidden className="h-4 w-4 shrink-0" />
+                <a href={`mailto:${CONTACT.email}`} className={footerLinkClass}>
+                  {CONTACT.email}
+                </a>
+              </p>
+            </address>
+          </div>
+
+          {/* Bloc 3 — Coordonnées Les Terres Essentielles */}
+          <div className="text-sm text-sand-300">
+            <address className="not-italic">
+              <p className="font-medium text-foreground-inverse">
+                {PARTNER_CONTACT.name}
+              </p>
+              <p className="mt-2 flex items-start gap-2">
+                <MapPin aria-hidden className="mt-0.5 h-4 w-4 shrink-0" />
+                <span>
+                  {PARTNER_CONTACT.address.street},{' '}
+                  {PARTNER_CONTACT.address.postalCode}{' '}
+                  {PARTNER_CONTACT.address.city}
+                </span>
+              </p>
+            </address>
+          </div>
         </div>
 
-        {/* Barre légale */}
-        <div className="mt-12 flex flex-col gap-4 border-t border-sand-800 pt-6 text-xs text-foreground-footer-legal md:flex-row md:items-center md:justify-between">
+        {/* Barre légale — mention partenariat fusionnée ici (footer-audit §E) */}
+        <div className="mt-8 flex flex-col gap-3 border-t border-sand-800 pt-5 text-xs text-foreground-footer-legal md:flex-row md:items-center md:justify-between">
           <p>
             © {year} {CONTACT.editor}, SIREN {CONTACT.siren}. Tous droits
-            réservés.
+            réservés. · En partenariat avec {PARTNER_NAME}.
           </p>
           <ul className="flex flex-wrap gap-x-6 gap-y-1">
             {LEGAL_LINKS.map((link) => (

@@ -9,7 +9,6 @@ import {
 import { photoSrc } from '@/content/realisations';
 import { SectionCTA } from '@/components/sections/SectionCTA';
 import { ButtonLink } from '@/components/ui/ButtonLink';
-import { PhotoPlaceholder } from '@/components/sections/PhotoPlaceholder';
 import { FaqSection } from '@/components/sections/FaqSection';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { FAQ_NOTRE_APPROCHE, toFaqJsonLd } from '@/content/faq';
@@ -18,7 +17,7 @@ import { FAQ_NOTRE_APPROCHE, toFaqJsonLd } from '@/content/faq';
  * Notre approche (/notre-approche) — F-04, WF-04.
  * Rendu : SSG. Hero split (texte + photo, pas d'overlay plein écran),
  * timeline 5 étapes, ancrage local. Photo hero = réalisation réelle ;
- * vue aérienne (ancrage) sans photo réelle → PhotoPlaceholder.
+ * section ancrage local rendue en texte centré (D-22 : slot image vide retiré).
  */
 export const metadata: Metadata = {
   // Metas finales — metadata-templates.md Page 4 (title 59 car., ancrage géo).
@@ -160,21 +159,25 @@ export default function NotreApprochePage() {
         </div>
       </section>
 
-      {/* Ancrage local — split 50/50 */}
+      {/* Ancrage local — bloc texte centré.
+          D-22 (P0 desktop 2026-06-12) : le PhotoPlaceholder « Visuel à venir »
+          (vue aérienne drone) était perçu comme une maquette inachevée
+          (desktop-audit.md Top 5 #1). Slot image vide supprimé ; section rendue
+          en colonne unique centrée, sans trou visuel. */}
       <section className="bg-background-secondary">
-        <div className="mx-auto grid max-w-container items-center gap-8 px-4 py-20 md:grid-cols-2 md:gap-12 md:px-8">
-          <div>
-            <h2 className="font-serif text-3xl leading-tight text-foreground md:text-4xl">
-              Nous connaissons ces propriétés, et leurs contraintes.
-            </h2>
-            <p className="mt-4 max-w-[52ch] text-base leading-8 text-foreground-secondary">
+        <div className="mx-auto max-w-3xl px-4 py-20 text-center md:px-8">
+          <h2 className="font-serif text-3xl leading-tight text-foreground md:text-4xl">
+            Nous connaissons ces propriétés, et leurs contraintes.
+          </h2>
+          <div className="mx-auto mt-5 max-w-[60ch] text-left">
+            <p className="text-base leading-8 text-foreground-secondary">
               30 ans de chantiers dans le 78 et le 92. Nous connaissons les nappes
               phréatiques, les PLU locaux, les caractéristiques du sol
               argilo-calcaire de l'ouest parisien. Ce savoir ne se consulte pas en
               ligne, il s'acquiert en travaillant sur ces terrains depuis des
               décennies.
             </p>
-            <p className="mt-6 font-serif text-xl italic text-foreground md:text-2xl">
+            <p className="mt-6 text-center font-serif text-xl italic text-foreground md:text-2xl">
               {COMMUNES.join(', ')}
             </p>
             {/* Ajout factuel GEO (faq-geo-copy.md §B.2 — wording @copywriter exact) —
@@ -187,12 +190,6 @@ export default function NotreApprochePage() {
               opère aux Alluets-le-Roi (78580).
             </p>
           </div>
-          <figure>
-            <PhotoPlaceholder
-              ratioClassName="aspect-[4/3]"
-              description="Vue aérienne d'une commune de l'ouest parisien : propriétés avec jardins et piscines dans un quartier résidentiel arboré, prise de vue drone."
-            />
-          </figure>
         </div>
         {/* CTA mi-parcours (design-audit P1-APPROCHE-2) — évite 4 écrans sans CTA. */}
         <div className="mx-auto max-w-container px-4 pb-20 text-center md:px-8">
