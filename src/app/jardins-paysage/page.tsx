@@ -4,7 +4,6 @@ import { photoSrc } from '@/content/realisations';
 import { JARDINERIE_PHOTOS, jardinerieSrc } from '@/content/jardinerie';
 import { Hero } from '@/components/sections/Hero';
 import { MediaSplit } from '@/components/sections/MediaSplit';
-import { ProofBadges, type ProofItem } from '@/components/ui/ProofBadges';
 import { CrossSellingBlock } from '@/components/sections/CrossSellingBlock';
 import { SectionCTA } from '@/components/sections/SectionCTA';
 import { PhotoPlaceholder } from '@/components/sections/PhotoPlaceholder';
@@ -44,11 +43,17 @@ const BREADCRUMB = breadcrumbJsonLd([
   { name: 'Jardins & Paysage', path: '/jardins-paysage/' },
 ]);
 
-/** ProofBadges adaptés jardins (3 preuves — WF-03 §5). */
-const JARDINS_PROOFS: ProofItem[] = [
-  { figure: "Bureau d'études", label: 'paysager intégré' },
-  { figure: 'Pépinière', label: 'propre' },
-  { figure: 'Jardinerie & expertise', label: 'depuis 2015' },
+/**
+ * Services jardins (3 — WF-03 §5).
+ * NF-2 (re-audit-iteration2 §3, D-18) : ce sont des SERVICES fonctionnels, pas
+ * des preuves chiffrées → NE PAS réutiliser ProofBadges (fond doré + chiffres
+ * serif). Spec design-audit P1-JARDINS-1 + P1-HIERAR-1 : fond secondaire neutre,
+ * bordure gauche, sous-titres DM Sans semibold (libère la hiérarchie des H2).
+ */
+const JARDINS_SERVICES: { title: string; detail: string }[] = [
+  { title: "Bureau d'études", detail: 'paysager intégré' },
+  { title: 'Pépinière', detail: 'propre' },
+  { title: 'Jardinerie & expertise', detail: 'depuis 2015' },
 ];
 
 export default function JardinsPaysagePage() {
@@ -87,10 +92,24 @@ export default function JardinsPaysagePage() {
       {/* Bloc 4 — Entretien et pépinière : VRAIE photo de la jardinerie LTE. */}
       <PepiniereBlock />
 
-      {/* Preuves jardins */}
+      {/* Services jardins (NF-2) — cartes neutres, sous-titres DM Sans semibold. */}
       <section className="bg-background">
         <div className="mx-auto max-w-container px-4 py-16 md:px-8">
-          <ProofBadges items={JARDINS_PROOFS} className="md:grid-cols-3" />
+          <ul className="grid grid-cols-1 gap-3 sm:grid-cols-3 md:gap-4">
+            {JARDINS_SERVICES.map((service) => (
+              <li
+                key={service.title}
+                className="rounded-md border-l-2 border-border-default bg-background-secondary p-5"
+              >
+                <p className="font-sans text-lg font-semibold leading-snug text-foreground">
+                  {service.title}
+                </p>
+                <p className="mt-1 text-sm leading-6 text-foreground-secondary">
+                  {service.detail}
+                </p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

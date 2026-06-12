@@ -59,6 +59,18 @@ export function ContactForm() {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // NF-3 : l'utilisateur a-t-il commencé à remplir le formulaire ? Dérivé de
+  // `values` (aucun hook supplémentaire). Tant que false, le submit reste en
+  // flux normal et ne flotte pas par-dessus le textarea obligatoire.
+  const hasInteracted =
+    values.prenom_nom !== '' ||
+    values.email !== '' ||
+    values.telephone !== '' ||
+    values.commune !== '' ||
+    values.budget_tranche !== '' ||
+    values.description !== '' ||
+    values.type_projet.length > 0;
+
   // Refs pour focus a11y (premier champ en erreur, bloc d'erreur serveur).
   const fieldRefs = useRef<
     Partial<Record<ContactFieldName, HTMLInputElement | HTMLTextAreaElement>>
@@ -405,8 +417,19 @@ export function ContactForm() {
 
       {/* P1-F1 (ux-audit) : sur mobile, le bouton reste visible (sticky bas) le
           temps de remplir le textarea — le CTA n'est jamais perdu hors écran.
+          NF-3 (re-audit-iteration2 §3, D-18) : le sticky ne s'active qu'APRÈS la
+          première interaction (`hasInteracted`). Avant interaction — et sans JS —
+          le bouton reste en flux normal (`static`), donc jamais rendu par-dessus
+          le textarea obligatoire. A11y/no-JS préservés (même markup, même ordre
+          DOM ; seules les classes de positionnement changent).
           Sur desktop : flux normal en bas de formulaire. */}
-      <div className="sticky bottom-3 z-10 -mx-6 mt-1 bg-background-secondary/95 px-6 pb-1 pt-2 backdrop-blur md:static md:mx-0 md:bg-transparent md:px-0 md:pb-0 md:pt-0 md:backdrop-blur-none">
+      <div
+        className={
+          hasInteracted
+            ? 'sticky bottom-3 z-10 -mx-6 mt-1 bg-background-secondary/95 px-6 pb-1 pt-2 backdrop-blur md:static md:mx-0 md:bg-transparent md:px-0 md:pb-0 md:pt-0 md:backdrop-blur-none'
+            : 'mt-1'
+        }
+      >
         <Button
           type="submit"
           variant="primary"
