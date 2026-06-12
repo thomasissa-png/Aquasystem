@@ -37,9 +37,14 @@ export interface HeroProps {
   overlayClassName?: string;
 }
 
-/** Overlay standard (WF-01) — fort en bas, transparent à mi-hauteur. */
+/**
+ * Overlay standard (WF-01) — fort en bas, lisible à mi-hauteur.
+ * Renforcé (design-fixes-fondateur §A.4) : mid-stop 0.30→0.50 (zone H1),
+ * from 0.78→0.85 (zone CTA). Calibré pour ne pas tuer les photos sombres
+ * (0.15 en haut laisse respirer).
+ */
 const OVERLAY_DEFAULT =
-  'bg-gradient-to-t from-[rgba(26,21,16,0.78)] via-[rgba(26,21,16,0.30)] to-transparent';
+  'bg-gradient-to-t from-[rgba(26,21,16,0.85)] via-[rgba(26,21,16,0.50)] via-35% to-[rgba(26,21,16,0.15)]';
 
 export function Hero({
   variant = 'page',
@@ -110,14 +115,25 @@ export function Hero({
                 ? 'text-5xl leading-tight md:text-6xl lg:text-display lg:leading-[1.05]'
                 : 'text-4xl leading-tight md:text-5xl lg:text-6xl',
             )}
-            style={{ ['--reveal-delay' as string]: '0ms' }}
+            style={{
+              ['--reveal-delay' as string]: '0ms',
+              // design-fixes-fondateur §A.2 : text-shadow 3 couches (sand-950)
+              // pour garantir le 4.5:1 sur zones claires de la photo.
+              textShadow:
+                '0 1px 4px rgba(26,21,16,0.60), 0 2px 16px rgba(26,21,16,0.45), 0 4px 40px rgba(26,21,16,0.25)',
+            }}
           >
             {title}
           </h1>
           {subtitle && (
             <p
               className="reveal mt-4 max-w-[45ch] text-base leading-8 text-sand-100/90 md:text-lg lg:text-xl"
-              style={{ ['--reveal-delay' as string]: '100ms' }}
+              style={{
+                ['--reveal-delay' as string]: '100ms',
+                // design-fixes-fondateur §A.2 : text-shadow 2 couches sous-titre.
+                textShadow:
+                  '0 1px 3px rgba(26,21,16,0.55), 0 2px 12px rgba(26,21,16,0.35)',
+              }}
             >
               {subtitle}
             </p>

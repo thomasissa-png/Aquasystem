@@ -69,7 +69,7 @@ export default function JardinsPaysagePage() {
         // Overlay un peu plus marqué que l'accueil (photo lumineuse).
         overlayClassName="bg-gradient-to-t from-[rgba(26,21,16,0.65)] via-[rgba(26,21,16,0.28)] to-transparent"
         title="Jardins & Paysage"
-        subtitle="En partenariat avec Les Terres Essentielles — bureau d'études paysager, création et entretien de parcs et jardins sur mesure."
+        subtitle="En partenariat avec Les Terres Essentielles : bureau d'études paysager, création et entretien de parcs et jardins sur mesure."
       />
 
       {/* Bloc 1 — Bureau d'études paysager (placeholder : plans de jardin). */}
@@ -122,7 +122,7 @@ export default function JardinsPaysagePage() {
         sourceUnivers="jardins"
         destinationUnivers="piscines"
         destinationHref="/piscines-bien-etre"
-        title="Un jardin pensé avec la piscine — depuis le même bureau d'études."
+        title="Un jardin pensé avec la piscine, depuis le même bureau d'études."
         body="Notre maison Aqua System les conçoit ensemble — un seul interlocuteur, un seul bureau d'études, aucune interface à gérer entre un pisciniste et un paysagiste qui ne se parlent pas."
         ctaLabel="Découvrir nos piscines sur mesure →"
         imageSrc={photoSrc('jardin-bassin-maison-bois', '800w')}
@@ -144,7 +144,7 @@ function BureauEtudesBlock() {
       eyebrow="Bureau d'études"
       title="Un projet pensé avant d'être planté"
       body={[
-        "Tout commence par la lecture du terrain : les ombrages, les masses végétales existantes, les contraintes de sol. Notre bureau d'études — en partenariat avec Les Terres Essentielles — pose le plan avant que la première pelle entre dans la terre.",
+        "Tout commence par la lecture du terrain : les ombrages, les masses végétales existantes, les contraintes de sol. Notre bureau d'études, en partenariat avec Les Terres Essentielles, pose le plan avant que la première pelle entre dans la terre.",
         "Quand un projet comporte aussi une piscine, les deux études sont menées au même moment. Le résultat : un espace qui tient ensemble, pas une somme de parties.",
       ]}
       placeholder="Plans de jardin déroulés sur une grande table, réglettes et crayons, mains d'un paysagiste au travail, lumière de bureau naturelle."

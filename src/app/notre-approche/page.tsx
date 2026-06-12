@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   // Metas finales — metadata-templates.md Page 4 (title 59 car., ancrage géo).
   title: { absolute: 'Notre méthode — Piscine, jardin, extérieur complet en 78/92' },
   description:
-    "Aqua System et Les Terres Essentielles portent ensemble votre projet d'extérieur en 78/92 — de la conception au suivi. Un seul interlocuteur.",
+    "Aqua System et Les Terres Essentielles portent ensemble votre projet d'extérieur en 78/92, de la conception au suivi. Un seul interlocuteur.",
   alternates: { canonical: absoluteUrl('/notre-approche/') },
   openGraph: {
     url: `${SITE_URL}/notre-approche/`,
@@ -105,7 +105,7 @@ export default function NotreApprochePage() {
               De la vision à la réalisation
             </h1>
             <p className="mt-4 max-w-[45ch] text-lg leading-8 text-foreground-secondary md:text-xl">
-              Comment nous portons un projet d'extérieur de bout en bout — et
+              Comment nous portons un projet d'extérieur de bout en bout, et
               pourquoi cela change tout.
             </p>
           </div>
@@ -165,7 +165,7 @@ export default function NotreApprochePage() {
         <div className="mx-auto grid max-w-container items-center gap-8 px-4 py-20 md:grid-cols-2 md:gap-12 md:px-8">
           <div>
             <h2 className="font-serif text-3xl leading-tight text-foreground md:text-4xl">
-              Nous connaissons ces propriétés — et leurs contraintes.
+              Nous connaissons ces propriétés, et leurs contraintes.
             </h2>
             <p className="mt-4 max-w-[52ch] text-base leading-8 text-foreground-secondary">
               30 ans de chantiers dans le 78 et le 92. Nous connaissons les nappes
@@ -175,13 +175,13 @@ export default function NotreApprochePage() {
               décennies.
             </p>
             <p className="mt-6 font-serif text-xl italic text-foreground md:text-2xl">
-              {COMMUNES.join(' — ')}
+              {COMMUNES.join(', ')}
             </p>
             {/* Ajout factuel GEO (faq-geo-copy.md §B.2 — wording @copywriter exact) —
                 extractibilité géographique : zone complète + 2 adresses dans le
                 même passage. */}
             <p className="mt-4 text-base leading-8 text-foreground-secondary">
-              — et l'ensemble des communes des Yvelines (78) et des Hauts-de-Seine
+              Et l'ensemble des communes des Yvelines (78) et des Hauts-de-Seine
               (92). Aqua System est établie à Freneuse (Yvelines, 78840), à moins
               de 60 km de Paris. Les Terres Essentielles, partenaire paysagiste,
               opère aux Alluets-le-Roi (78580).

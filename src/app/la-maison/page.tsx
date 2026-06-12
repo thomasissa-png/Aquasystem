@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   // Metas finales — metadata-templates.md Page 5 (title 58 car., « Freneuse » conservé).
   title: { absolute: "Aqua System — Pisciniste Freneuse (78), 30 ans d'expertise" },
   description:
-    "Aqua System et Les Terres Essentielles — 30 ans dans le 78/92. Certification Socotec. Membre L'Esprit Piscine. Rencontrons-nous.",
+    "Aqua System et Les Terres Essentielles : 30 ans dans le 78/92. Certification Socotec. Membre L'Esprit Piscine. Rencontrons-nous.",
   alternates: { canonical: absoluteUrl('/la-maison/') },
   openGraph: {
     url: `${SITE_URL}/la-maison/`,
@@ -51,17 +51,17 @@ const VALEURS = [
   {
     titre: 'Exigence',
     corps:
-      "Pas de standard, pas de catalogue. Chaque terrain est différent — chaque réalisation l'est aussi. L'exigence, c'est refuser le compromis qui ferait tenir un projet dans une offre existante.",
+      "Pas de standard, pas de catalogue. Chaque terrain est différent : chaque réalisation l'est aussi. L'exigence, c'est refuser le compromis qui ferait tenir un projet dans une offre existante.",
   },
   {
     titre: 'Confiance',
     corps:
-      "Nous construisons pour la pérennité — pas pour la saison. Le client dont la piscine a été construite il y a 15 ans : nous connaissons encore chaque équipement sans rouvrir un dossier. C'est ça, la confiance.",
+      "Nous construisons pour la pérennité, pas pour la saison. Le client dont la piscine a été construite il y a 15 ans : nous connaissons encore chaque équipement sans rouvrir un dossier. C'est ça, la confiance.",
   },
   {
     titre: 'Sur-mesure',
     corps:
-      "Aucune piscine ne ressemble à la précédente — parce qu'aucun terrain ne se ressemble. Le sur-mesure n'est pas une option : c'est la seule façon de bien faire.",
+      "Aucune piscine ne ressemble à la précédente, parce qu'aucun terrain ne se ressemble. Le sur-mesure n'est pas une option : c'est la seule façon de bien faire.",
   },
 ];
 
@@ -77,7 +77,7 @@ export default function LaMaisonPage() {
         imageSrc={photoSrc('piscine-terrasse-bois-plongee', '1280w')}
         imageAlt="Vue plongeante sur une piscine et sa large terrasse en bois entourée de végétation — réalisation Aqua System"
         title="La maison"
-        subtitle="Plus de 30 ans d'expertise dans les plus belles propriétés de l'ouest parisien — et une conviction : le détail fait tout."
+        subtitle="Plus de 30 ans d'expertise dans les plus belles propriétés de l'ouest parisien. Une conviction : le détail fait tout."
       />
 
       {/* Notre histoire */}
@@ -89,7 +89,7 @@ export default function LaMaisonPage() {
           <div className="mt-6 space-y-5 text-left">
             <p className="text-lg leading-8 text-foreground-secondary">
               Aqua System est née à Freneuse, dans les Yvelines, il y a plus de 30
-              ans. Depuis, nous n'avons pas changé de territoire : le 78 et le 92 —
+              ans. Depuis, nous n'avons pas changé de territoire : le 78 et le 92 :
               ces communes où les propriétés ont du caractère et où les
               propriétaires ont des exigences que le standard ne satisfait pas.
             </p>
@@ -145,8 +145,8 @@ export default function LaMaisonPage() {
               {/* Distinctions récentes (faq-geo-copy.md §B.3 — wording @copywriter
                   exact) — faits vérifiables, augmentent la fraîcheur perçue LLM. */}
               <p>
-                Trophée d'Or FPP 2024 — Piscine intérieure. Award Bronze EUSA 2025
-                — Piscines intérieures privées (Barcelone).
+                Trophée d'Or FPP 2024, Piscine intérieure. Award Bronze EUSA 2025,
+                Piscines intérieures privées (Barcelone).
               </p>
               {/* P2-GEO-02 : claim 11 (Charte GdC) rendu extractible en texte
                   visible, pas seulement en JSON-LD sameAs. */}

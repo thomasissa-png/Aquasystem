@@ -51,7 +51,7 @@ export default function PiscinesBienEtrePage() {
         imageSrc={photoSrc('piscine-paroi-verre-travertin', '1280w')}
         imageAlt="Piscine sur mesure à paroi vitrée, margelles en travertin, jardinières de graminées, terrasse bois d'une propriété haut de gamme"
         title="Piscines & Bien-être"
-        subtitle="Notre maison Aqua System — conception sur mesure depuis plus de 30 ans en Yvelines et Hauts-de-Seine."
+        subtitle="Notre maison Aqua System : conception sur mesure depuis plus de 30 ans en Yvelines et Hauts-de-Seine."
       />
 
       <MediaSplit
@@ -98,8 +98,8 @@ export default function PiscinesBienEtrePage() {
             Hauts-de-Seine, depuis plus de 30 ans.
           </p>
           <p className="mt-4 max-w-[70ch] text-sm leading-7 text-foreground-secondary">
-            Trophée d'Or FPP 2024 — Piscine intérieure (Fédération des
-            Professionnels de la Piscine et du Spa)&nbsp;| Award Bronze EUSA 2025 —
+            Trophée d'Or FPP 2024, Piscine intérieure (Fédération des
+            Professionnels de la Piscine et du Spa). Award Bronze EUSA 2025,
             Piscines intérieures privées (European Union of Swimming Pools and
             Spas, Barcelone).
           </p>
@@ -111,7 +111,7 @@ export default function PiscinesBienEtrePage() {
         destinationUnivers="jardins"
         destinationHref="/jardins-paysage"
         title="Votre piscine mérite un jardin à sa mesure."
-        body="L'eau et le végétal se conçoivent ensemble ou ne se conçoivent pas vraiment — c'est ce que nous faisons depuis 30 ans. En partenariat avec Les Terres Essentielles, bureau d'études paysager."
+        body="L'eau et le végétal se conçoivent ensemble ou ne se conçoivent pas vraiment : c'est ce que nous faisons depuis 30 ans. En partenariat avec Les Terres Essentielles, bureau d'études paysager."
         ctaLabel="Voir nos créations paysagères →"
         imageSrc={photoSrc('projet-bassin-jardin-paysage', '800w')}
         imageAlt="Piscine et jardin paysagé conçus ensemble dans une propriété de l'ouest parisien, vue d'ensemble harmonieuse"

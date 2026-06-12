@@ -16,14 +16,15 @@ const SAND_950 = '#1A1510';
 const SAND_400 = '#D4CCC0';
 const SAND_600 = '#7E7468';
 
-// SVG de l'icône en fill clair (light mode) — base des rasters PNG.
-// Sur les apple/android, on remplit l'initiale en sand-950 sur fond clair.
-const iconPath = `
-  M32 8 L48 56 L40 56 L36.2 43.2 L27.8 43.2 L24 56 L16 56 Z
-  M30 22 L28.9 37.4 L35.1 37.4 L34 22 Z`;
-const serifs = `
-  <rect x="13.5" y="55" width="9" height="2.6"/>
-  <rect x="41.5" y="55" width="9" height="2.6"/>`;
+// Géométrie "A" serif v2 (design-fixes-fondateur §B) — lisible à 16px :
+// jambages épais en polygones, barre transversale renforcée, empattements
+// massifs. Source unique partagée avec public/favicon.svg.
+const iconShapes = `
+  <polygon points="29,9 35,9 18,54 11,54"/>
+  <polygon points="35,9 29,9 46,54 53,54"/>
+  <rect x="18" y="33" width="28" height="7"/>
+  <rect x="6" y="52" width="16" height="5"/>
+  <rect x="42" y="52" width="16" height="5"/>`;
 
 function iconSvg({ size, fg, bg, padding = 0 }) {
   const inner = 64;
@@ -31,7 +32,7 @@ function iconSvg({ size, fg, bg, padding = 0 }) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
     ${bg ? `<rect width="${size}" height="${size}" fill="${bg}"/>` : ''}
     <g transform="translate(${padding},${padding}) scale(${scale})" fill="${fg}">
-      <path d="${iconPath}"/>${serifs}
+      ${iconShapes}
     </g>
   </svg>`;
 }
@@ -63,7 +64,7 @@ console.log('OK favicon.ico (32x32 PNG)');
 const og = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <rect width="1200" height="630" fill="${SAND_950}"/>
   <g transform="translate(560,150) scale(2.5)" fill="${SAND_100}">
-    <path d="${iconPath}"/>${serifs}
+    ${iconShapes}
   </g>
   <text x="600" y="400" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="56" fill="${SAND_100}">Aquasystem</text>
   <text x="600" y="455" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="26" fill="${SAND_400}">L'extérieur à la hauteur de votre propriété.</text>

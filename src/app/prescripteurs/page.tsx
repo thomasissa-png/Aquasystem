@@ -69,7 +69,7 @@ const VALEURS = [
     ],
   },
   {
-    titre: '30 ans de réalisations en 78/92 — portfolio sur demande.',
+    titre: '30 ans de réalisations en 78/92. Portfolio sur demande.',
     body: [
       "Terrains en pente, contraintes PLU, délais de réalisation stricts. Nous connaissons les sols de Saint-Nom-la-Bretèche, les servitudes du Vésinet, les exigences des propriétaires de Ville-d'Avray.",
       'Nos références sont locales, identifiables et vérifiables.',

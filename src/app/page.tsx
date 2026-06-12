@@ -59,13 +59,13 @@ export default function HomePage() {
           md: 'md:object-[center_30%]',
           lg: 'lg:object-[center_35%]',
         }}
-        // Casting-visuels §3b + finding mobile 2026-06-12 : overlay renforcé au
-        // mid-stop sur mobile (le H1 ancré bas repose sur la façade claire). Sur
-        // md+ on garde l'overlay allégé (0.75 max) — la demeure et le ciel
-        // doivent rester lisibles sur grand écran.
-        overlayClassName="bg-gradient-to-t from-[rgba(26,21,16,0.82)] via-[rgba(26,21,16,0.55)] via-40% to-transparent md:from-[rgba(26,21,16,0.75)] md:via-[rgba(26,21,16,0.30)] md:via-30%"
+        // design-fixes-fondateur §A.1 : overlay renforcé par breakpoint pour
+        // garantir le 4.5:1 sur la façade claire et le ciel. Mobile from 0.88 /
+        // via 0.65 (35%) / to 0.15 ; desktop allégé via 0.55 (30%) pour garder
+        // la demeure visible sur grand écran.
+        overlayClassName="bg-gradient-to-t from-[rgba(26,21,16,0.88)] via-[rgba(26,21,16,0.65)] via-35% to-[rgba(26,21,16,0.15)] md:from-[rgba(26,21,16,0.85)] md:via-[rgba(26,21,16,0.55)] md:via-30% md:to-[rgba(26,21,16,0.10)]"
         title="L'extérieur à la hauteur de votre propriété."
-        subtitle="De la vision à la réalisation — eau, jardin, propriété — un seul interlocuteur, depuis 30 ans dans l'ouest parisien."
+        subtitle="De la vision à la réalisation : eau, jardin, propriété. Un seul interlocuteur, depuis 30 ans dans l'ouest parisien."
         cta={
           <CtaTrackerLink
             href="/contact"
@@ -84,12 +84,12 @@ export default function HomePage() {
             </p>
             <div className="relative aspect-square w-full overflow-hidden rounded-lg">
               <Image
-                src={photoSrc('piscine-paroi-verre-travertin', '800w')}
-                alt="Piscine sur mesure à paroi vitrée et margelles en travertin clair, jardinières de graminées, propriété de l'ouest parisien"
+                src={photoSrc('piscine-terrasse-bois-plongee', '800w')}
+                alt="Vue aérienne d'une piscine rectangulaire et de sa grande terrasse en bois sur gazon, ouvrage Aqua System, propriété de l'ouest parisien"
                 fill
                 loading="lazy"
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
+                className="object-cover object-[center_40%]"
               />
             </div>
             <h2 className="mt-6 font-serif text-3xl leading-tight text-foreground md:text-4xl">
@@ -118,12 +118,12 @@ export default function HomePage() {
             </p>
             <div className="relative aspect-square w-full overflow-hidden rounded-lg">
               <Image
-                src={photoSrc('projet-pool-house-toit-vegetalise', '800w')}
-                alt="Pavillon de jardin à toiture végétalisée et jardin structuré avec massifs fleuris, perspective végétale d'une grande propriété"
+                src={photoSrc('jardin-bassin-maison-bois', '800w')}
+                alt="Terrasse et jardin d'une propriété contemporaine, bassin de nage, végétation généreuse en arrière-plan — réalisation Les Terres Essentielles"
                 fill
                 loading="lazy"
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
+                className="object-cover object-[center_30%]"
               />
             </div>
             <h2 className="mt-6 font-serif text-3xl leading-tight text-foreground md:text-4xl">
@@ -183,7 +183,7 @@ export default function HomePage() {
 
       {/* Section 5 — CTA final */}
       <SectionCTA
-        amorce="Un projet d'extérieur mérite une conversation — pas un formulaire."
+        amorce="Un projet d'extérieur mérite une conversation, pas un formulaire."
         trackPosition="footer"
       />
     </>

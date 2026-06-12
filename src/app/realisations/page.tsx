@@ -55,7 +55,7 @@ export default function RealisationsPage() {
       </section>
 
       <SectionCTA
-        amorce="Un projet d'extérieur mérite une conversation — pas un formulaire."
+        amorce="Un projet d'extérieur mérite une conversation, pas un formulaire."
         trackPosition="footer"
       />
     </>
