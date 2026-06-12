@@ -17,12 +17,12 @@ export const ERROR_MESSAGES = {
   prenom_nom: 'Votre nom nous permet de vous répondre personnellement.',
   email_empty: 'Nous avons besoin de votre email pour vous répondre.',
   email_invalid:
-    "L'adresse email semble incorrecte — vérifiez le format (exemple : prenom@domaine.fr).",
+    "L'adresse email semble incorrecte. Vérifiez le format : prenom@domaine.fr.",
   telephone_invalid:
-    'Ce numéro ne semble pas valide — vérifiez ou laissez ce champ vide si vous préférez.',
+    'Ce numéro ne semble pas valide. Vérifiez-le ou laissez ce champ vide si vous préférez.',
   commune: 'Précisez votre commune pour que nous puissions répondre de façon pertinente.',
   description:
-    'Décrivez votre projet en quelques mots — cela guidera notre premier échange.',
+    'Décrivez votre projet en quelques mots : cela guidera notre premier échange.',
   description_long: 'Description trop longue (2000 caractères maximum).',
 } as const;
 

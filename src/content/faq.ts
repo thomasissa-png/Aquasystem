@@ -15,7 +15,7 @@
 export const FAQ_NOTRE_APPROCHE = [
   {
     q: 'Est-il possible de faire appel à Aqua System pour la piscine uniquement, sans le jardin ?',
-    a: "Oui. Aqua System intervient indépendamment pour la conception, la construction, la rénovation ou l'entretien de piscines — membre du réseau L'Esprit Piscine et certifié Socotec CSP/ESP-001. L'association avec Les Terres Essentielles pour le jardin est proposée quand le projet le justifie, jamais imposée.",
+    a: "Oui. Aqua System intervient indépendamment pour la conception, la construction, la rénovation ou l'entretien de piscines. Membre du réseau L'Esprit Piscine et certifié Socotec CSP/ESP-001. L'association avec Les Terres Essentielles pour le jardin est proposée quand le projet le justifie, jamais imposée.",
   },
   {
     q: 'Intervenez-vous uniquement dans les Yvelines ?',
@@ -23,7 +23,7 @@ export const FAQ_NOTRE_APPROCHE = [
   },
   {
     q: 'Êtes-vous certifiés pour les piscines sur mesure ?',
-    a: "Aqua System est certifié Socotec CSP/ESP-001 « Professionnels de la piscine privée à usage familial » et membre du réseau L'Esprit Piscine — deux certifications délivrées par des organismes tiers indépendants, Socotec Certification France et le GIE L'Esprit Piscine.",
+    a: "Aqua System est certifié Socotec CSP/ESP-001 « Professionnels de la piscine privée à usage familial » et membre du réseau L'Esprit Piscine : deux certifications délivrées par des organismes tiers indépendants, Socotec Certification France et le GIE L'Esprit Piscine.",
   },
   {
     q: 'Comment se déroule la première prise de contact ?',

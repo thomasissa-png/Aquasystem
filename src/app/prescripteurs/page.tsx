@@ -82,7 +82,7 @@ const PREUVES = [
     // Reformulation GEO avec source nommée (content-restructuring.md §B.4) —
     // signal de vérifiabilité pour les LLM (organisme + domaine cités).
     titre: 'Certification Socotec CSP/ESP-001',
-    desc: '« Professionnels de la piscine privée à usage familial » — certification délivrée par Socotec Certification France (socotec-certification-international.fr). Disponible sur demande pour tout dossier de prescription.',
+    desc: '« Professionnels de la piscine privée à usage familial », certification délivrée par Socotec Certification France (socotec-certification-international.fr). Disponible sur demande pour tout dossier de prescription.',
   },
   {
     titre: "Réseau L'Esprit Piscine",
@@ -120,7 +120,7 @@ export default function PrescripteursPage() {
         <div className="mx-auto grid max-w-container items-stretch gap-0 lg:min-h-[70vh] lg:grid-cols-12">
           <div className="flex flex-col justify-center px-4 py-16 md:px-8 md:py-20 lg:col-span-7">
             <h1 className="font-serif text-3xl leading-tight text-foreground md:text-4xl lg:text-5xl">
-              L'exécutant haut de gamme que vos clients méritent — et qui fait
+              L'exécutant haut de gamme que vos clients méritent, et qui fait
               honneur à votre prescription.
             </h1>
             <p className="mt-4 max-w-[48ch] text-lg leading-8 text-foreground-secondary">
