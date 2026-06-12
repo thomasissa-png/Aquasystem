@@ -1,6 +1,23 @@
-# Gate de perception — Aquasystem (13 pages) — Passe 1 → Passe 5 — 2026-06-12
+# Gate de perception — Aquasystem (13 pages) — Passe 1 → Passe 6 — 2026-06-12
 
-## Verdict global ACTUEL (Passe 5) : PRÉSENTABLE AU FONDATEUR — **OUI**
+## Verdict global ACTUEL (Passe 6) : PRÉSENTABLE AU FONDATEUR — **NON**
+> Passe 6 (2026-06-12, œil dur, recalibrages cumulés) : cycle « fond jardins + textes réalisations
+> + resserrage piscines » jugé en viewport réel. **Le fond est là, l'exécution éditoriale aussi** —
+> mais un **défaut de perception P0 systématique** sur les **4 fiches réalisations** bloque le verdict :
+> le **même CTA est rendu DEUX FOIS de suite**, accolé (titre serif clair « Ce projet vous inspire ?
+> Parlons du vôtre. » + bouton « Parlez-nous de votre projet », IMMÉDIATEMENT suivi du bloc CTA sombre
+> pleine largeur reprenant EXACTEMENT le même titre + le même bouton, ~80px d'écart, sans contenu
+> intercalaire). Un client premium pressé lit « template mal monté / doublon d'affichage ». Présent sur
+> les 4 fiches jugées (debordement-foret, fond-mobile-terrasse, interieure-pierre-poutres,
+> nocturne-murets). **C'est un défaut d'intégration** (`src/app/realisations/[slug]/page.tsx` : `<aside>`
+> CTA inline l.187-199 + `<SectionCTA amorce="Ce projet vous inspire ?…">` l.208 → même amorce).
+> **Tout le reste du cycle est au standard** : /jardins-paysage enrichie a du FOND réel sans fausse
+> promesse, /piscines-bien-etre resserrée respire mieux sans fait perdu, textes D-31 donnent envie de
+> contacter, zéro régression accueil/piscines. **Verdict binaire → NON** tant que le double-CTA des fiches
+> est visible. Correctif trivial (retirer l'aside OU différencier l'amorce). Détail : section « PASSE 6 ».
+> Captures : `tests/screenshots/perception/p6-*.png`.
+
+## Verdict Passe 5 : PRÉSENTABLE AU FONDATEUR — **OUI**
 > Passe 5 (2026-06-12, œil dur, recalibrages cumulés) : changements post-passe-4 jugés en viewport
 > réel. /piscines-bien-etre enrichie (3 nouvelles sections : grille « Ce que nous savons construire »
 > 6 cards 4:3 homogènes premium, « Construit pour durer », « La matière qui reste ») — page devenue
