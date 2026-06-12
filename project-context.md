@@ -102,6 +102,13 @@
 3. **Analytics** : Umami self-hosted (0 €, exempté CNIL, events custom).
 4. **Photos (HYP-04)** : si les sources du book Calameo sont inaccessibles → utiliser les photos des réalisations Aqua System publiées sur https://www.esprit-piscine.fr/aqua-system/ et aqua-system.fr [vérifier : uniquement les réalisations PROPRES d'Aqua System, confirmation droit à l'image au fondateur avant mise en ligne].
 
+## Doctrine photos (fondateur, 2026-06-12 — PRIORITAIRE)
+**L'objectif des photos = CONVERSION visiteur → lead.** Règle d'arbitrage par emplacement :
+1. Si une photo convertirait mieux que son absence → garder un SLOT avec placeholder élégant (« Visuel à venir » sobre) + photo demandée au fondateur (liste consolidée) — plutôt que supprimer le slot ou le remplacer par un bloc texte.
+2. Le bloc texte/typographique n'est retenu QUE si l'on pense qu'une photo n'apporterait pas de conversion à cet endroit.
+3. Hero accueil (demeure ancienne) : APPROUVÉ fondateur — intouchable.
+Cette doctrine prime sur les arbitrages « perception » antérieurs (D-22 SpaBlock, option typo LTE, TextBlock pépinière) — à ré-arbitrer sous l'angle conversion.
+
 ## Validations fondateur (2026-06-12)
 1. **Droit à l'image / visuels** : ACCORD GLOBAL donné (« tu as mon accord pour tout utiliser ») — photos esprit-piscine + visuels fournis par le fondateur. Levée du P0 droit à l'image.
 2. **Naming** : « Aquasystem » MAINTENU pour le lancement — bascule globale vers le nom définitif plus tard, en une passe (architecture substituable déjà en place + règle commune n°11 Grep).
