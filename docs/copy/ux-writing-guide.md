@@ -183,13 +183,13 @@
 
 > **Votre message est bien parvenu.**
 >
-> Nicolas Berg reviendra vers vous [À CONFIRMER : délai de réponse réel de Nicolas] pour un premier échange autour de votre projet.
+> Nicolas Berg reviendra vers vous sous 48 heures pour un premier échange autour de votre projet.
 >
 > Si votre demande est urgente, vous pouvez aussi nous appeler directement au **01 30 42 26 00**.
 
 ---
 
-**Note critique** : la mention `[À CONFIRMER : délai de réponse réel de Nicolas]` est un placeholder balisé obligatoire. Ne jamais promettre "sous 24h" ou "sous 48h" sans confirmation de Nicolas Berg sur sa capacité réelle à tenir ce délai. Si le délai est confirmé, remplacer par : "sous [X] jours ouvrés" — toujours en jours ouvrés, jamais en heures.
+**Note** : délai CONFIRMÉ par le fondateur (2026-06-12) : sous 48 heures. Si la capacité réelle change, mettre à jour REPLY_DELAY_TEXT (constants.ts) et cette section ensemble.
 
 **Variante si le délai est confirmé** :
 > Nicolas Berg reviendra vers vous dans les [X] jours ouvrés pour un premier échange autour de votre projet.
@@ -319,7 +319,7 @@
 
 ## 9. Points d'attention avant mise en ligne
 
-1. **[À CONFIRMER : délai de réponse réel de Nicolas]** — le message de succès du formulaire contient ce placeholder. Le texte exact ne peut être finalisé qu'avec ce délai confirmé par Nicolas Berg.
+1. ~~Délai de réponse~~ — CONFIRMÉ fondateur 2026-06-12 : sous 48 heures (appliqué dans constants.ts et le message de succès).
 2. **Formulation LTE** — vérifier par Grep avant publication : "groupe", "nos sociétés", "filiales", "même propriétaire". Formulations autorisées rappelées dans brand-voice.md §3.
 3. **Mention RGPD** — intégrer le texte exact de rgpd-checklist.md §D sans modification. L'email contact@aqua-system.fr doit être opérationnel au lancement.
 4. **Budget du formulaire** — le champ budget (optionnel) avec liste déroulante nécessite une validation @product-manager sur les tranches retenues.

@@ -102,6 +102,14 @@
 3. **Analytics** : Umami self-hosted (0 €, exempté CNIL, events custom).
 4. **Photos (HYP-04)** : si les sources du book Calameo sont inaccessibles → utiliser les photos des réalisations Aqua System publiées sur https://www.esprit-piscine.fr/aqua-system/ et aqua-system.fr [vérifier : uniquement les réalisations PROPRES d'Aqua System, confirmation droit à l'image au fondateur avant mise en ligne].
 
+## Validations fondateur (2026-06-12)
+1. **Droit à l'image / visuels** : ACCORD GLOBAL donné (« tu as mon accord pour tout utiliser ») — photos esprit-piscine + visuels fournis par le fondateur. Levée du P0 droit à l'image.
+2. **Naming** : « Aquasystem » MAINTENU pour le lancement — bascule globale vers le nom définitif plus tard, en une passe (architecture substituable déjà en place + règle commune n°11 Grep).
+3. **Délai de réponse** : sous 48 heures — appliqué (constants.ts REPLY_DELAY_TEXT + ux-writing §3).
+4. **Décennale** : reste en placeholder [À CONFIRMER] (non bloquant site — concerne devis/contrats).
+5. **Priorité** : finir + tester le site (déploiement Cloudflare) AVANT les actions communiqué de presse.
+6. **Visuels supplémentaires fournis** par le fondateur (dossier local à transférer — en cours).
+
 ## Décisions de scope validées fondateur (2026-06-11)
 1. Architecture de marque : option (a) marque ombrelle nouvelle, 2 maisons visibles.
 2. Naming : aucune contrainte (pas besoin de « Berg »), équipe force de proposition + check domaines.

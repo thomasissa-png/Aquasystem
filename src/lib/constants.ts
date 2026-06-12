@@ -129,10 +129,6 @@ export const BUDGET_PLACEHOLDER = 'Choisir si vous le souhaitez';
 
 /**
  * Délai de réponse affiché sur /contact/merci.
- * TODO FONDATEUR : [À CONFIRMER : délai de réponse réel de Nicolas Berg].
- * Tant que non confirmé, on n'affiche AUCUN délai chiffré (ux-writing §3 :
- * jamais promettre "sous 24/48h" sans confirmation). Phrase volontairement
- * sans engagement de délai. Si Nicolas confirme : remplacer par
- * "dans les [X] jours ouvrés" (toujours en jours ouvrés, jamais en heures).
+ * Délai CONFIRMÉ fondateur (2026-06-12) : réponse sous 48 heures.
  */
-export const REPLY_DELAY_TEXT = 'reviendra vers vous';
+export const REPLY_DELAY_TEXT = 'reviendra vers vous sous 48 heures';
