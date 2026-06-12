@@ -1,6 +1,10 @@
-# Gate de perception — Aquasystem (13 pages) — Passe 1 COMPLÈTE — 2026-06-12
+# Gate de perception — Aquasystem (13 pages) — Passe 1 + Passe 2 — 2026-06-12
 
-## Verdict global : PRÉSENTABLE AU FONDATEUR — **NON**
+## Verdict global ACTUEL (Passe 2) : PRÉSENTABLE AU FONDATEUR — **OUI**
+> Passe 1 (historique) : **NON** (4 défauts D1-D4). Passe 2 (2026-06-12) : les 4 corrigés et vérifiés au
+> rendu, aucune régression accueil, favicon 16px tranché lisible → **OUI**. Détail : section « PASSE 2 ».
+
+## Verdict Passe 1 (historique) : PRÉSENTABLE AU FONDATEUR — **NON**
 
 Passe 1 terminée : **13 pages jugées** en viewport réel mobile 390×844 + desktop 1440×900, fold + sections.
 
@@ -43,133 +47,104 @@ Politique de confidentialité : OUI avec réserve P1 (D4).
 
 ---
 
-## Détail par page
+## PASSE 2 — Re-vérification ciblée après corrections D1-D4 — 2026-06-12
+
+### Verdict Passe 2 : PRÉSENTABLE AU FONDATEUR — **OUI**
+
+Les 4 défauts D1-D4 de la passe 1 sont corrigés et vérifiés **au rendu visuel** (pas seulement au HTML).
+Aucune régression sur l'accueil. Cas canonique #3 (favicon 16px) tranché : lisible, **pas un NON**.
+Reste un seul point cosmétique **P1 non bloquant** (favicon PNG peu contrasté en dark-mode d'onglet,
+voir #3). Verdict binaire du gate (zéro P0, P1 cosmétique assumé) → **OUI**.
+
+Build rebâti (`npm run build`, exit 0) puis servi (`npx serve out -l 3300`). Contrôle HTML préalable :
+zéro occurrence de « en cours de documentation » / « sera bientôt publié » sur la home, la grille
+/realisations et les 3 fiches testées ; zéro « valider par un avocat » sur /politique-confidentialite.
+Le jugement ci-dessous porte sur le **rendu visuel** (captures viewport réel, contrainte clip ≤ 900px).
+
+Captures passe 2 : `tests/screenshots/perception/p2-*.png`.
+
+#### D1/D2 — /realisations (cartes) → **CORRIGÉ**
+Grille desktop + mobile : chaque carte n'affiche plus que **type + zone + « Voir → »** (ex. « PROJET
+COMPLET EAU + JARDIN / Yvelines (78) »). **Zéro occurrence** de « Fiche en cours de documentation ».
+Photos au standard maison premium, grille équilibrée, fold + filtres propres. Idem section home (HTML
+vérifié : 0 libellé). `p2-realisations-desktop-fold/grid.png`, `p2-realisations-mobile-grid.png`.
+
+#### D3 — Fiche draft (galerie sobre) → **CORRIGÉ — digne, pas « page cassée »**
+Fiche `piscine-debordement-foret` (tous champs éditoriaux `null`). Desktop : split 60/40, grande photo
+premium + caption « Photo publiée avec l'autorisation du propriétaire », à droite titre serif + type +
+zone + accroche « Ce projet vous inspire ? Parlons du vôtre. » + CTA. Mobile : photo, titre, type, zone,
+CTA pleine largeur. **Aucun encart d'inachevé, aucun blanc cassé** ; le cross-sell « Votre piscine mérite
+un jardin à sa mesure » enchaîne proprement. Perçu comme « belle réalisation présentée simplement », pas
+comme une fiche vide. `p2-fiche-draft-desktop-fold.png`, `p2-fiche-draft-mobile-fold/info.png`.
+
+#### D4 — /politique-confidentialite → **CORRIGÉ**
+Tout-bas de page (mobile + desktop) : la mention finale est désormais « Cette politique a été rédigée en
+conformité avec le RGPD et la loi Informatique et Libertés. » La phrase **« À faire valider par un avocat
+avant publication définitive » a été retirée**. Section 8. Contact complète. Présentable.
+`p2-confid-mobile-toutbas.png`, `p2-confid-desktop-toutbas.png`.
+
+#### Cas canonique #3 — Favicon à 16px réels → **TRANCHÉ : lisible (pas un NON)**
+Page de test 1:1 (PNG 16/32 + SVG, fonds clair ET sombre, capture 320px) + composites x10 au plus proche
+voisin pour juger le contraste réel. **Sur fond clair** (cas dominant : barre d'onglet claire de
+Chrome/Edge/Firefox, onglet actif blanc) : le « A » sérigraphié est **net et reconnaissable au premier
+coup d'œil**, formes franches, aucune bouillie → cas #3 (logo détaillé illisible réduit) **ne déclenche
+pas**. La ligne d'onglet simulée affiche « A + Aquasystem — Pisciniste & p… » lisible.
+**Réserve P1 (non bloquante)** : le favicon PNG/ICO est figé en couleur sombre (#1A1510) et **quasi
+invisible sur une barre d'onglet en dark-mode** (le SVG, lui, bascule en clair via `prefers-color-scheme`,
+mais les navigateurs privilégient l'ICO/PNG pour l'onglet). Recommandation @fullstack : générer un PNG
+dark-mode (ou un « A » avec léger contour/halo) pour couvrir le thème sombre. Impact perception : faible
+(barre claire majoritaire) → P1 cosmétique, pas P0. `p2-favicon-1to1.png`,
+`p2-favicon16-on-light-x10.png`, `p2-favicon16-on-dark-x10.png`.
+
+#### Régression accueil → **AUCUNE**
+Fold mobile : titre serif blanc « L'extérieur à la hauteur de votre propriété. » lisible sur la façade
+(overlay/text-shadow tient — cas #1 reste corrigé), sous-titre + CTA nets. Fold desktop : demeure +
+piscine miroir, titre lisible sur zone sombre, premium. Identique à passe 1, aucune dégradation introduite
+par les corrections D1-D4. `p2-home-mobile-fold.png`, `p2-home-desktop-fold.png`.
+
+#### Synthèse Passe 2
+| Défaut P1 | Page(s) | Statut | Sévérité |
+|---|---|---|---|
+| D1/D2 « Fiche en cours de documentation » (cartes) | Home + Réalisations | ✅ corrigé | — |
+| D3 encart d'inachevé fiche détail | Fiche draft | ✅ corrigé (galerie sobre digne) | — |
+| D4 note « valider par un avocat » | Politique de confidentialité | ✅ corrigé | — |
+| Favicon PNG peu contrasté en dark-mode d'onglet | Toutes (onglet) | ⚠ ouvert | **P1 cosmétique** non bloquant |
+
+Zéro P0 restant. Un seul P1 cosmétique (favicon dark-mode) → verdict binaire du gate : **OUI**.
+
+---
+
+## Détail par page (Passe 1)
 
 ### Home — OUI (hors D1/D2)
-- **Hero mobile + desktop** : OK. Le retravail text-shadow/overlay fonctionne — le titre blanc « L'extérieur
-  à la hauteur de votre propriété » reste lisible sur la façade claire (cas canonique #1 = corrigé).
-  Desktop : demeure + piscine miroir, premium. `home-mobile-fold.png`, `home-desktop-fold.png`.
-- **Sections services** (Piscines / Jardins & Paysage) : visuels au niveau, deux colonnes équilibrées,
-  partenariat Les Terres Essentielles affiché proprement. `home-desktop-sec1.png`.
-- **Bloc chiffres** (30+ / 350+ / Socotec / L'Esprit Piscine) : cartes beige lisibles, hiérarchie crédible.
-- **Bloc CTA dark** « Un projet d'extérieur mérite une conversation, pas un formulaire » : élégant, bon contraste.
-- **Drawer mobile** : `home-mobile-drawer.png` — propre, typo serif lisible, sous-libellés, CTA pleine largeur. RAS.
-- **D1 (P0)** : libellé d'inachevé sur les cartes réalisations (voir synthèse).
+Hero mobile + desktop OK (text-shadow/overlay corrigé, titre lisible sur façade claire — cas #1 corrigé).
+Sections services au niveau, bloc chiffres lisible, CTA dark élégant, drawer mobile propre. D1 (P0) :
+libellé d'inachevé sur les cartes réalisations.
 
 ### Réalisations — NON (D2 P0)
-- **Fold desktop + mobile** : titre « Réalisations » + « 30 ans de chantiers dans les propriétés de
-  l'ouest parisien », filtres (Tous / Piscine / Spa & Sauna / Jardin & Parc / Projet complet eau+jardin)
-  en pills. Hiérarchie propre, premium. `realisations-desktop-fold.png`, `realisations-mobile-fold.png`.
-- **Grille (sec1/sec2/sec3)** : ~17 cartes, photos de piscines/demeures au standard maison premium
-  (casting, lumière, cadrage OK — cas canonique #4 = sain). Catégorie + localisation (Yvelines 78 /
-  Hauts-de-Seine 92) crédibles.
-- **D2 (P0)** : « Fiche en cours de documentation » sous **CHAQUE** carte (~17). Cas canonique #5,
-  répété en masse. La page-preuve du savoir-faire affiche « rien à documenter » partout → NON.
-- **Bloc CTA dark** « Un projet d'extérieur mérite une conversation » en pied : élégant, bon contraste.
+Fold + filtres premium. Grille ~17 cartes, photos au standard maison premium (cas #4 sain). D2 (P0) :
+« Fiche en cours de documentation » sous CHAQUE carte → NON.
 
 ### Réalisation détail — NON (D3 P0, requalifié de P1)
-- **Fold desktop + mobile** : grande photo (piscine à débordement en lisière de forêt, Yvelines) au
-  niveau, titre serif élégant, mention « Photo publiée avec l'autorisation du propriétaire » (rassurant).
-- **D3 (requalifié P0)** : encart boxé **« Fiche en cours de documentation »** + « Le récit complet de
-  cette réalisation… sera bientôt publié. Les photographies, elles, sont bien celles de ce chantier. » —
-  placé AVANT le CTA, au centre de la fiche, sur mobile ET desktop. C'est un aveu d'inachevé explicite
-  sur la page la plus engageante (celle qu'on ouvre pour être convaincu). Cas #5 → **P0**, pas P1.
-  `realisation-detail-desktop-fold.png`, `realisation-detail-mobile-fold.png`.
-- **Cross-sell** « Votre piscine mérite un jardin à sa mesure » (partenariat Les Terres Essentielles) :
-  bien amené, photo au niveau. `realisation-detail-desktop-sec1.png`.
+Grande photo au niveau, mention autorisation propriétaire rassurante. D3 (P0) : encart boxé « Fiche en
+cours de documentation — sera bientôt publié » avant le CTA, sur la page la plus engageante.
 
-### Piscines & Bien-être — OUI
-- **Hero desktop + mobile** : photo piscine + terrasse premium, titre serif blanc « Piscines & Bien-être »
-  lisible sur la zone sombre du bassin, sous-titre gris lisible. Cas #1 OK. `piscines-desktop-fold.png`.
-- **Sections éditoriales** (De la feuille blanche à l'inauguration / L'eau chaude dans votre propriété /
-  Suivi annuel) : mise en page magazine, photos au niveau, partenaire HotSpring cité proprement.
-- **Bloc crédentiels** (30+ / 350+ / Socotec / L'Esprit Piscine) : cartes beige lisibles, crédibles.
-- **Footer** : compact, dark, structuré (Aquasystem / Aqua System contact / Les Terres Essentielles),
-  proportions maîtrisées desktop ET mobile (cas #6 OK — pas de footer 2 écrans). `piscines-mobile-sec5.png`.
-- **Note marque** : header « Aquasystem » (marque) vs « Aqua System » + `aqua-system.fr` (raison sociale) :
-  split cohérent et constant partout, **pas un défaut** (parti pris assumé).
-
-### Jardins & Paysage — OUI
-- **Hero desktop + mobile** : demeure brique + jardin + piscine, titre serif blanc « Jardins & Paysage »
-  lisible sur zone sombre, sous-titre (partenariat Les Terres Essentielles) lisible. `jardins-desktop-fold.png`.
-- **Sections** (Un projet pensé avant d'être planté / La réalisation, du premier arbre à la dernière pierre /
-  pépinière) : éditorial soigné, photo pépinière au niveau, tuiles crédentiels (Bureau d'études / Pépinière /
-  Jardinerie & expertise depuis 2015). Aucun inachevé.
-- **Footer / CTA dark** : cohérent avec les autres pages. `jardins-desktop-sec3.png`. RAS.
-
-### Notre approche — OUI
-- **Fold desktop + mobile** : titre serif « De la vision à la réalisation », sous-titre lisible (texte
-  foncé sur fond clair), photo piscine premium. `notre-approche-desktop-fold.png`.
-- **Process numéroté** (1. L'écoute / …) : hiérarchie claire, lisible.
-- **Bloc territoire** « Nous connaissons ces propriétés, et leurs contraintes » + communes citées
-  (Le Vésinet, Saint-Nom-la-Bretèche…) : crédibilise l'ancrage local. `notre-approche-desktop-sec2.png`.
-- **FAQ accordéon** (certifications, première prise de contact) : propre, lisible. Aucun inachevé. RAS.
-
-### La maison — OUI
-- **Hero desktop + mobile** : photo aérienne piscine/terrasse premium, titre « La maison » blanc lisible
-  sur zone sombre, sous-titre lisible. `la-maison-desktop-fold.png`.
-- **Notre histoire** (texte foncé sur fond clair) + valeurs (Exigence / Confiance / Sur-mesure) : lisible,
-  ton premium assumé. `la-maison-desktop-sec2.png`.
-- **Photo jardinerie Les Terres Essentielles** (enseigne « La Ferroux Orgeval ») : branding partenaire
-  légitime, pas un défaut.
-- **CTA dark final + photo piscine** au niveau. Aucun inachevé. RAS.
-
-### Architectes / Prescripteurs — OUI
-- **Fold desktop + mobile** : titre « L'exécutant haut de gamme que vos clients méritent… », ton B2B
-  juste, photo piscine premium, badges crédentiels + CTA « Présentons-nous ». Lisible. `prescripteurs-desktop-fold.png`.
-- **Encart** « Dossier de qualification complet disponible sur demande » : positif, **pas** un libellé
-  d'inachevé (à ne pas confondre avec cas #5). `prescripteurs-desktop-sec2.png`.
-- **FAQ B2B** (DCE, certifications, gestion relation propriétaire) + CTA dark « Travaillons ensemble » :
-  propre. Aucun inachevé. RAS.
-
-### Contact — OUI
-- **Fold desktop + mobile** : titre « Parlez-nous de votre projet », sous-titre rassurant (« Nicolas Berg
-  reviendra vers vous sous 48 heures »). Formulaire structuré : labels + astérisques requis, pills type de
-  projet, select budget. Lisible, premium. `contact-desktop-fold.png`, `contact-mobile-fold.png`.
-- **État focus** : anneau de focus net sur le champ (a11y OK). `contact-desktop-focus.png`.
-- **Mention RGPD** + coordonnées (01 30 42 26 00 / contact@aqua-system.fr / 45 Route Nationale Freneuse) :
-  complet, lisible. Aucun inachevé. RAS.
-
-### Merci (confirmation) — OUI
-- **Fold desktop + mobile** : « Votre message est bien parvenu », message rassurant 48h, lien téléphone
-  pour urgence, « Retour à l'accueil ». Lisible, ton premium. `merci-desktop-fold.png`, `merci-mobile-fold.png`.
-- **Footer** complet (SARL Aqua System, SIREN 903 785 327, partenariat Les Terres Essentielles) :
-  proportions maîtrisées, pas de footer 2 écrans (cas #6 OK). Aucun inachevé. RAS.
-
-### Mentions légales — OUI
-- **Fold desktop + mobile** : titre serif « Mentions légales », contenu complet et lisible (SARL Aqua
-  System, capital 20 000 €, SIREN 903 785 327, NAF 4399D, hébergeur Cloudflare). `mentions-desktop-fold.png`.
-- **Sections 6/7/8** (données/cookies, limitation de responsabilité, droit applicable) : propres, lien
-  interne vers politique de confidentialité. RAS.
-- **Note** : sur le fold desktop downscalé, l'email apparaît « aqua-systemfr » (point fin avalé par le
-  rééchantillonnage 2880→1440) ; le mobile pleine taille affiche bien « aqua-system.fr ». Artefact de
-  capture, **pas un défaut**.
+### Piscines, Jardins, Notre approche, La maison, Architectes, Contact, Merci, Mentions — OUI
+Heros lisibles sur fond réel, sections éditoriales soignées, footers maîtrisés desktop ET mobile (cas #6
+OK), split marque « Aquasystem » / raison sociale « Aqua System » cohérent. Aucun inachevé.
 
 ### Politique de confidentialité — OUI (avec D4 P1)
-- **Fold + sections desktop + mobile** : politique RGPD complète et bien structurée (qui sommes-nous,
-  données collectées, durée de conservation, droits, CNIL, cookies, sécurité HTTPS/Cloudflare ISO 27001).
-  Lisible, premium. `confidentialite-mobile-fold.png`.
-- **D4 (P1 — NOUVEAU défaut, cas #5)** : note interne **rendue en prod** juste avant le footer :
-  « Cette politique a été rédigée en conformité avec le RGPD et la loi Informatique et Libertés. **À faire
-  valider par un avocat avant publication définitive.** » Aveu d'inachevé visible par le client. Page
-  secondaire (faible trafic) → P1, mais **à supprimer** avant mise au fondateur. `confidentialite-mobile-sec4.png`,
-  `confidentialite-desktop-sec2.png`.
+Politique RGPD complète et lisible. D4 (P1) : note interne « À faire valider par un avocat avant
+publication définitive » rendue en prod avant le footer.
 
 ---
 
 ## Croisement specs (parti pris assumé vs vrai défaut)
-- **Libellé « Fiche en cours de documentation » (D1/D2/D3)** : non couvert par les compositions/copy comme
-  un état assumé — c'est un placeholder de contenu, pas un parti pris éditorial. Reste un défaut P0.
-- **Note « à faire valider par un avocat » (D4)** : commentaire de rédaction @legal laissé dans le rendu
-  public. Aucun spec ne demande de l'afficher. Défaut P1.
-- **Split « Aquasystem » (marque) / « Aqua System » (raison sociale)** : cohérent et systématique → parti
-  pris assumé, **pas** un défaut de cohérence de marque (cas canonique de nom incohérent NON déclenché).
+- Libellé « Fiche en cours de documentation » (D1/D2/D3) : placeholder de contenu non documenté → défaut P0.
+- Note « à faire valider par un avocat » (D4) : commentaire @legal laissé en prod → défaut P1.
+- Split « Aquasystem » / « Aqua System » : cohérent et systématique → parti pris assumé, pas un défaut.
 
-## Recommandation : **NON** (re-soumettre après correction)
-Corrections requises avant passage au fondateur (toutes textuelles, zéro retouche design) :
-1. **@copywriter / @fullstack** : supprimer le libellé « Fiche en cours de documentation » des cartes
-   réalisation (home + page Réalisations) et l'encart de la fiche détail. Remplacer par rien, ou par une
-   métadonnée valorisante (lieu + type, déjà présents).
-2. **@fullstack / @legal** : retirer la note « À faire valider par un avocat avant publication définitive »
-   du rendu de la Politique de confidentialité.
-3. **Passe 2** : capturer l'onglet/favicon à 16px (cas #3 non tranché) + re-vérifier les 3 pages corrigées.
+## Recommandation Passe 1 : **NON** (re-soumettre après correction)
+1. Supprimer le libellé « Fiche en cours de documentation » (cartes + encart fiche détail).
+2. Retirer la note « À faire valider par un avocat » de la Politique de confidentialité.
+3. Passe 2 : capturer l'onglet/favicon à 16px (cas #3 non tranché) + re-vérifier les 3 pages corrigées.
