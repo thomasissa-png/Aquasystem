@@ -1,8 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
-import Link from 'next/link';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useMemo, useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { trackEvent } from '@/lib/analytics';
@@ -11,8 +9,10 @@ import { RealisationCard } from './RealisationCard';
 
 /**
  * RealisationsGrid — grille filtrable du portfolio (WF-05).
- * Client component (filtre via useSearchParams) — wrappé dans <Suspense> par la
- * page (requis par useSearchParams en export statique).
+ * Client component. Le filtre est lu depuis l'URL (?filter=…) APRÈS le montage
+ * (window.location.search), PAS via useSearchParams (D-17) : ce dernier force le
+ * bailout CSR en export statique, vidant la grille du HTML pré-rendu. Le rendu
+ * serveur affiche donc l'état « tous » COMPLET (14 cartes) dans le HTML statique.
  *
  * État du filtre dans l'URL (?filter=…) : partageable + présélection depuis
  * /prescripteurs (?filter=projet_complet). Filtre « Tous » par défaut.
@@ -34,11 +34,16 @@ const FILTERS: { label: string; value: FilterValue; aria: string }[] = [
 const VALID = new Set<FilterValue>(FILTERS.map((f) => f.value));
 
 export function RealisationsGrid() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
+  // État par défaut « tous » au rendu serveur → grille complète dans le HTML
+  // statique. Le filtre éventuel de l'URL est appliqué après montage (D-17).
+  const [active, setActive] = useState<FilterValue>('tous');
 
-  const raw = searchParams.get('filter') as FilterValue | null;
-  const active: FilterValue = raw && VALID.has(raw) ? raw : 'tous';
+  useEffect(() => {
+    const raw = new URLSearchParams(window.location.search).get(
+      'filter',
+    ) as FilterValue | null;
+    if (raw && VALID.has(raw)) setActive(raw);
+  }, []);
 
   const visible = useMemo(() => {
     if (active === 'tous') return REALISATIONS;
@@ -53,12 +58,14 @@ export function RealisationsGrid() {
         ? REALISATIONS.length
         : REALISATIONS.filter((r) => r.filters.includes(value)).length,
     });
+    setActive(value);
+    // URL partageable mise à jour sans navigation (history API natif — pas de
+    // router Next, pour ne pas réintroduire de dépendance useSearchParams).
     const params = new URLSearchParams();
     if (value !== 'tous') params.set('filter', value);
     const qs = params.toString();
-    router.replace(qs ? `/realisations/?${qs}` : '/realisations/', {
-      scroll: false,
-    });
+    const url = qs ? `/realisations/?${qs}` : '/realisations/';
+    window.history.replaceState(null, '', url);
   }
 
   return (

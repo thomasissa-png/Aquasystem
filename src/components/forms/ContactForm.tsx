@@ -1,7 +1,6 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
 import { AlertCircle } from 'lucide-react';
 import { trackEvent } from '@/lib/analytics';
 import {
@@ -55,8 +54,6 @@ function detectDevice(): 'desktop' | 'mobile' | 'tablet' {
 }
 
 export function ContactForm() {
-  const searchParams = useSearchParams();
-
   const [values, setValues] = useState<ContactFormValues>(EMPTY);
   const [errors, setErrors] = useState<ContactErrors>({});
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -73,9 +70,11 @@ export function ContactForm() {
   const succeededRef = useRef(false);
   const lastFieldRef = useRef<string>('prenom_nom');
 
-  // Smart default depuis ?source= (après hydration — useSearchParams).
+  // Smart default depuis ?source= — lu APRÈS le montage via window.location
+  // (PAS useSearchParams, qui force le bailout CSR et vide le <form> du HTML
+  // statique en export — D-17). Le formulaire complet est ainsi pré-rendu.
   useEffect(() => {
-    const source = searchParams.get('source');
+    const source = new URLSearchParams(window.location.search).get('source');
     if (!source) return;
     const chip = SOURCE_TO_CHIP[source];
     if (chip) {
@@ -85,7 +84,7 @@ export function ContactForm() {
           : { ...prev, type_projet: [...prev.type_projet, chip] },
       );
     }
-  }, [searchParams]);
+  }, []);
 
   // E-03 form_abandonment : start sans succès → beforeunload.
   useEffect(() => {

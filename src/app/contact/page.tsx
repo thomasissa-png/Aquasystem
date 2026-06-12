@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { CONTACT } from '@/lib/constants';
@@ -8,9 +7,10 @@ import { JsonLd } from '@/components/seo/JsonLd';
 
 /**
  * /contact — page formulaire de conversion (F-08).
- * Rendu : statique (export). Le ContactForm est un Client Component interactif,
- * enveloppé dans <Suspense> car il consomme useSearchParams (smart default
- * ?source=) — requis par Next en export statique (dev-decisions infra).
+ * Rendu : statique (export). Le ContactForm est un Client Component interactif
+ * dont le <form> COMPLET est pré-rendu dans le HTML statique (fallback no-JS
+ * opérationnel). Le smart default ?source= est lu après montage via
+ * window.location — PAS useSearchParams, qui viderait le form du HTML (D-17).
  * Composition : WF-08 — split asymétrique conviction-first sobre.
  */
 export const metadata: Metadata = {
