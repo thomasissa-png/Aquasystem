@@ -95,4 +95,18 @@ Deux réserves : aucun délai de réponse annoncé (« reviennent vers vous » �
 
 ## Top 5 des changements pour une recommandation sans réserve
 
-[à compléter]
+1. **Compléter 3 fiches de réalisations en profondeur technique** (matériaux, contraintes du terrain, durée de chantier, détails d'exécution : margelles, goulotte de débordement, local technique — photos de détail en haute définition). Trois fiches complètes valent mieux que quatorze « bientôt publié ». C'est LE blocage n°1 : sans ça, je ne peux pas juger leur niveau, donc je ne peux pas prescrire.
+
+2. **Une référence prescripteur vérifiable** : un chantier documenté « mené sur plan d'architecte » montrant le plan du confrère et le résultat livré côte à côte — avec le nom de l'agence (accord obtenu) ou a minima « architecte mandataire, agence du 78, référence communiquée sur demande ». Une seule suffit à transformer toutes les promesses déclaratives de /prescripteurs en preuve.
+
+3. **Formaliser le cadre de collaboration** : une charte prescripteur d'une page (téléchargeable ou envoyée au premier contact) reprenant noir sur blanc le protocole anti-court-circuit, le respect du DCE, et clarifiant le modèle économique (sous-traitance, co-traitance, et s'il n'y a pas de commission d'apport — le dire, c'est un argument de transparence). Ce qui est écrit et signable n'est plus une promesse.
+
+4. **Afficher la décennale et traiter les délais** : assureur et n° de police décennale visibles (en pied de /notre-approche ou /prescripteurs) [le contexte projet indique décennale en placeholder À CONFIRMER — bloquant pour ce persona], plus une donnée de délai honnête par typologie (« un bassin maçonné : X à Y mois, planning partagé dès la signature »). Mes deux due diligences de base, aujourd'hui introuvables sur le site.
+
+5. **Faire exister l'architecte dans /notre-approche et différencier le canal de contact B2B** : une ligne à l'étape « Bureau d'études » (« Votre projet a déjà un architecte ? Nous exécutons son plan — voir notre espace prescripteurs ») pour que les deux pages se répondent ; un délai de réponse affiché ; idéalement un contact direct dédié prescripteurs. Bonus technique relevé en passant : la grille de réalisations et le formulaire ne sont pas dans le HTML statique (rendus en JS) — invisible pour moi, mais pas pour les moteurs et les IA qui me recommanderaient ce site.
+
+---
+
+## Note de méthode
+
+Visite réalisée le 2026-06-12 sur https://aquasystem.pages.dev (accueil, /prescripteurs, /realisations + 1 fiche, /notre-approche, /la-maison, /contact), en persona « Camille » (architecte DPLG prescriptrice, 78/92, historique de court-circuit et de plans non respectés). Constats factuels vérifiés sur le HTML déployé : fiches réalisations en placeholder éditorial, chip « Je suis prescripteur » présent dans le formulaire (rendu client), absence du mot « décennale » et de tout délai chiffré sur les pages visitées, grille portfolio et formulaire absents du HTML pré-rendu.
