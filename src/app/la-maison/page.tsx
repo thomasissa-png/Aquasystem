@@ -332,7 +332,7 @@ export default function LaMaisonPage() {
                 <Phone aria-hidden className="h-4 w-4 shrink-0" />
                 <a
                   href={`tel:${CONTACT.phoneE164}`}
-                  className="underline-offset-2 hover:underline"
+                  className="underline-offset-2 hover:underline rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2"
                 >
                   {CONTACT.phone}
                 </a>
@@ -341,7 +341,7 @@ export default function LaMaisonPage() {
                 <Mail aria-hidden className="h-4 w-4 shrink-0" />
                 <a
                   href={`mailto:${CONTACT.email}`}
-                  className="underline-offset-2 hover:underline"
+                  className="underline-offset-2 hover:underline rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2"
                 >
                   {CONTACT.email}
                 </a>
