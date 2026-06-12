@@ -1,6 +1,16 @@
-# Gate de perception — Aquasystem (13 pages) — Passe 1 → Passe 7 — 2026-06-12
+# Gate de perception — Aquasystem (14 pages) — Passe 1 → Passe 8 — 2026-06-12
 
-## Verdict global ACTUEL (Passe 7) : PRÉSENTABLE AU FONDATEUR — **OUI**
+## Verdict global ACTUEL (Passe 8) : PRÉSENTABLE AU FONDATEUR — **OUI**
+> Passe 8 (2026-06-12, œil dur, recalibrages cumulés) : jugement du plus gros lot — méga-lot SEO/GEO,
+> **BLOG complet entièrement neuf**, fixes primitives + alignements. Le blog (/notre-regard index + 2
+> articles longs entiers + teaser accueil + footer) est jugé **digne d'un magazine de maison** : typographie
+> de lecture maîtrisée, encadrés GEO propres, AuthorBlock crédible (Nicolas Berg + preuves Socotec/30 ans),
+> « À lire également », CTA cohérent. Les 3 cas fondateur post-fix passent : claims GEO piscines centrés sur
+> axe propre, TextBlocks jardins/la-maison alignés, **bloc LTE désormais arrondi = cohérent avec le bloc AS
+> voisin**, cross-sell mobile arrondi. Titres d'onglet : « | » partout, zéro « — ». Anti-régression OK.
+> **Zéro P0. Aucun défaut bloquant.** Section détaillée : « PASSE 8 » en bas de fichier.
+
+## Verdict global précédent (Passe 7) : PRÉSENTABLE AU FONDATEUR — **OUI**
 > Passe 7 (2026-06-12) : re-vérif ciblée post-corrections (doublon CTA fiches levé via D-33, lot CTA
 > système, 2 photos fondateur insérées). Les 3 cas nommés du fondateur + le P0 + les photos sont jugés
 > en viewport réel — **tout passe**. Le P0 bloquant de la passe 6 (double-CTA fiches) est **résolu**.
@@ -610,3 +620,60 @@ Mobile, ~2100-2240px chacune (3 bandes), **longueur OK mobile**.
 ### Recommandation Passe 7 : **OUI — présentable au fondateur.**
 Les 3 cas nommés du fondateur sont corrigés, le P0 levé, les 2 photos fondateur au standard maison. Ne plus
 retoucher le périmètre jugé. Captures : `tests/screenshots/perception/p7-*.png` (17 fichiers).
+
+---
+
+# PASSE 8 — Méga-lot SEO/GEO + BLOG complet + fixes primitives & alignements (2026-06-12)
+
+> Œil dur, recalibrages cumulés. Jugé en viewport réel (`npm run build && npx serve out -l 3900`).
+> Contraintes respectées : images ≤1900px, viewport/clip ≤900px, jamais fullPage, lots ≤3.
+
+## Verdict Passe 8 : PRÉSENTABLE AU FONDATEUR — **OUI**
+
+## 1. BLOG (entièrement neuf — jugement complet)
+
+| Élément | Device | Jugement | Sév. | Capture |
+|---|---|---|---|---|
+| /notre-regard index | desktop+mobile | Grille ArticleCard 3 col (desktop) / 1 col (mobile), eyebrow « NOTRE REGARD », titre serif « Le regard d'un pisciniste sur les projets d'exception. », intro, date + excerpt + « Lire l'article → ». Photos premium. **Premium, oui.** | OK | `p8-blog-index-{desktop,mobile}-{fold,grid}.png` |
+| Article a1 (débordement terrain en pente) | desktop+mobile | Hero bandeau pleine largeur + titre serif overlay lisible + fil d'Ariane + date. Typo de lecture **magazine** : mesure ~75 car. (desktop) / ~38 (mobile), interlignes généreux, H2/H3 serif, lead-ins gras. Encadré GEO (bord accent gauche, fond beige, format question). AuthorBlock « L'AUTEUR / Nicolas Berg / Fondateur Aqua System… Socotec CSP/ESP-001 ». « À lire également » (2 cards). CTA final propre. Crédit photo italique + droit à l'image. | OK | `p8-a1-*.png` |
+| Article a4 (investissement / prix) | desktop+mobile | Hero manoir + titre serif. Contenu expert dense (béton vs coque, génie civil, bureau d'études). **Fourchettes prix avec disclaimer explicite** « Ces fourchettes ne sont pas les tarifs d'Aqua System… sources sectorielles » (anti-invention conforme). Liens internes cross-sell. AuthorBlock + CTA « une conversation, pas un formulaire ». | OK | `p8-a4-*.png` |
+| Teaser accueil | desktop+mobile | 2 ArticleCards (même composant que l'index) avant le CTA final, intro « NOTRE REGARD / Ce que trente ans de chantiers nous apprennent. » + bouton « Lire tous nos articles → ». **S'intègre, ne dépareille pas.** | OK | `p8-home-twin.png`, `p8-home-AS-LTE.png` |
+| Lien footer | desktop | « Notre regard » présent dans le footer (+ confirmé dans le HTML home). | OK | `p8-footer-link.png` |
+
+**Blog = digne d'un magazine de maison premium.** Fond éditorial réel, preuves factuelles, GEO bien intégré, zéro Lorem / placeholder / badge technique.
+
+## 2. ALIGNEMENTS post-fix
+
+| Page | Élément | Jugement | Capture |
+|---|---|---|---|
+| /piscines-bien-etre | Claims GEO « Ce qui tient dans le temps » (CAS FONDATEUR initial) | 4 claims (30+ ans / 350+ piscines 78/92 / Socotec / L'Esprit Piscine) **centrés sur axe propre**, séparateurs verticaux réguliers, chiffres et labels alignés. Paragraphe support centré équilibré. **Axe propre — défaut initial corrigé.** | `p8-pisc-1.png` |
+| /jardins-paysage | TextBlock « Un projet pensé avant d'être planté » | H2 centré + eyebrow + corps centré, axe propre. | `p8-jard-0.png` |
+| /la-maison | TextBlocks « Notre histoire » + timeline numérotée | Portrait + nom centrés, pull-quote serif centrée, timeline 1→5 avec filet vertical aligné. Axes propres. | `p8-lm-{0,1}.png` |
+
+## 3. PRIMITIVES
+
+| Cas | Jugement | Capture |
+|---|---|---|
+| Accueil bloc LTE (Jardins & Paysage) vs bloc AS (Piscines & Bien-être) — **LE cas fondateur** | Les deux cartes « expertise maison » ont désormais **le même arrondi** (photos top arrondies identiques, cartes cohérentes). Défaut LTE carré/AS arrondi **résolu.** | `p8-home-AS-LTE.png`, `p8-home-AS-LTE-m.png` |
+| Cross-sell mobile (« Votre piscine mérite un jardin à sa mesure ») | Carte photo **4 coins arrondis** + copy cross-sell + « Voir nos créations paysagères → ». Arrondi cohérent design system. | `p8-xsell-card2.png` |
+
+## 4. Titres d'onglet — spot-check (6 pages vérifiées dans le HTML)
+Tous au séparateur **« | »**, **zéro « — »** : accueil, /notre-regard, /piscines-bien-etre, /la-maison,
+/realisations, article a4. ✅
+
+## 5. Anti-régression
+- Accueil fold desktop : photo manoir+piscine, titre serif blanc lisible (contraste OK, pas de cas n°1). ✅ `p8-home-desktop-fold.png`
+- Réalisations grille (24) : 3 col, cards arrondies, tags catégorie, photos premium, espacement régulier. ✅ `p8-realisations-grid.png`
+- La-maison fold mobile : eyebrow double-marque, « À propos », ligne de preuve, photo piscine intérieure. ✅ `p8-lamaison-mobile-fold.png`
+- Footer : proportions saines (pas 2 écrans mobiles), 2 entités + adresses + liens légaux + « Notre regard ». ✅ `p8-footer-link.png`
+
+## Défauts Passe 8
+
+| Page | Device | Défaut perçu | Sévérité | Capture |
+|---|---|---|---|---|
+| — | — | **Aucun défaut P0/P1.** Les 3 cas fondateur post-fix (claims GEO centrés, LTE arrondi cohérent avec AS, cross-sell arrondi) sont corrigés. Blog au standard magazine. Anti-régression propre. | — | — |
+
+## Recommandation Passe 8 : **OUI — présentable au fondateur.**
+Le plus gros lot (SEO/GEO + blog neuf complet + fixes) passe sans réserve. Le blog hisse la perception
+de marque au niveau « maison premium » visé. Ne plus retoucher le périmètre jugé.
+Captures : `tests/screenshots/perception/p8-*.png`.
