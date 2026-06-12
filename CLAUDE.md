@@ -93,13 +93,14 @@ Pour toute règle/learning ajouté en fin de session, une obsolète doit être s
 | Juridique | @legal |
 | Review qualité | @reviewer |
 | Audit stratégique | @elon |
+| Gate de perception (avant déploiement front) | @regard-fondateur |
 | Créer un agent | @agent-factory |
 
 Agents dans `.claude/agents/`. Ambiguïté de domaine → trancher soi-même (founder-preferences), ne pas demander.
 
 ## Modèles
 
-- **Opus** : orchestrator, agent-factory, reviewer, elon, fullstack, ia, qa, infrastructure
+- **Opus** : orchestrator, agent-factory, reviewer, elon, fullstack, ia, qa, infrastructure, regard-fondateur
 - **Sonnet** : copywriter, creative-strategy, data-analyst, design, geo, growth, legal, product-manager, sales-enablement, seo, social, ux
 
 ## Références
