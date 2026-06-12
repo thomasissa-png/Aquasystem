@@ -1,0 +1,14 @@
+import { chromium } from 'playwright';
+const browser = await chromium.launch();
+const ctx = await browser.newContext({ viewport: { width: 375, height: 780 } });
+const page = await ctx.newPage();
+await page.goto('http://127.0.0.1:3000/', { waitUntil: 'domcontentloaded' });
+await page.waitForTimeout(1500);
+await page.screenshot({ path: '/tmp/home-mobile-raw.png' });
+const btn = page.locator('button[aria-label="Ouvrir le menu"]');
+console.log('count', await btn.count());
+const box = await btn.first().boundingBox().catch(e => 'no box: ' + e.message);
+console.log('box', JSON.stringify(box));
+const visible = await btn.first().isVisible();
+console.log('isVisible', visible);
+await browser.close();
