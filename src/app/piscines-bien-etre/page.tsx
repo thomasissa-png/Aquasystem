@@ -75,7 +75,10 @@ export default function PiscinesBienEtrePage() {
         imageAlt="Piscine intérieure sur mesure dans un espace bien-être — bassin éclairé, transats alignés sur sol ardoise, ambiance feutrée — réalisation Aqua System dans les Yvelines"
         objectPosition={{ base: 'object-center' }}
         title="Piscines & Bien-être"
-        subtitle="Notre maison Aqua System : conception sur mesure depuis plus de 30 ans en Yvelines et Hauts-de-Seine."
+        // P1 gate passe 10 : « Aqua System » retiré du sous-titre — télescopage
+        // avec le wordmark « Aquasystem » du header dans le même fold (sensibilité
+        // fondateur sur la cohérence du nom).
+        subtitle="Conception sur mesure depuis plus de 30 ans, dans les Yvelines et les Hauts-de-Seine."
       />
 
       <MediaSplit

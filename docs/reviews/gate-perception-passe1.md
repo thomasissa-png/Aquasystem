@@ -767,3 +767,46 @@ Captures : `tests/screenshots/perception/p9-*.png`.
 - Verdict : PRÉSENTABLE OUI
 - P0 : aucun. P1 cosmétique non bloquant : harmonisation badges footer (@design).
 - Captures : `tests/screenshots/perception/p9-*.png`
+
+---
+
+## Passe 10 (2026-06-12) — GATE-P10
+
+**Lots jugés** : D-40 (heros haute résolution 1920px + photo entretien), D-41/D-42 (FAQ jardins + FAQ articles + maillage fiches/services). Build prod `/out/`. Méthode protocole : captures viewport réel 375 + 1280, fold + zooms piqué, LU avant lecture specs. Captures `tests/screenshots/perception/p10-*`.
+
+### Constats par surface
+
+**1. / (accueil) — hero demeure ancienne servi en 1920px — NETTETÉ**
+Desktop 1280 (`p10-accueil-desktop-fold` + zoom serré `p10-accueil-desktop-zoom`) et mobile 375 (`p10-accueil-mobile-fold`). Le piqué est FRANC : pierre, encadrements de fenêtres, feuillage et margelle nets au zoom 1:1, aucun flou perçu. Le défaut fondateur « photos floues » est levé sur ce hero. H1 « L'extérieur à la hauteur de votre propriété. » lisible (texte clair sur la masse sombre de la façade/bassin), sous-titre lisible. **OK.**
+
+**2. /piscines-bien-etre — hero ENTIÈREMENT NOUVEAU (Spa Corniche)**
+Desktop 1280 (`p10-piscines-desktop-fold` + zoom) + mobile 375 (`p10-piscines-mobile-fold`). Bassin intérieur d'ambiance, transats, suspensions noires : **premium, net, registre vitrine tenu.** H1 « Piscines & Bien-être » lisible sur la zone sombre du bassin, sous-titre lisible (desktop ET mobile). Cohérent avec l'intitulé de page. Le remplacement du couloir pierre-poutres est une montée en gamme nette. **OK** — sous réserve P1 nom de marque ci-dessous.
+
+**3. /jardins-paysage**
+- Hero nouveau cadrage maison-bois 16:9 (`p10-jardins-desktop-fold` + zoom, `p10-jardins-mobile-fold`) : **net, premium**, plein format propre, H1 « Jardins & Paysage » + sous-titre lisibles sur l'overlay sombre bas (desktop + mobile). **OK.**
+- Section « Ce que le vivant impose » / « La réalisation, du premier arbre… » — 4 slots photos (`p10-jardins-vivant`, `p10-jardins-entretien`) : la **nouvelle photo « L'entretien au bon moment »** (transats alignés, pelouse tondue ras, soutènement traverses bois, bassin) est **nette et au niveau maison premium**. Pépinière, essences, terrasses étagées : toutes nettes, castées juste. **OK.**
+- Nouvelle section « Questions fréquentes » (`p10-jardins-faq2`) : titre serif, accordéon sobre, chevrons accent forest discrets, questions au registre client haut de gamme, placée avant le cross-sell. **Registre premium tenu. OK.**
+
+**4. Article /notre-regard/fond-mobile-terrasse-piscine/ — bloc « Questions fréquentes » fin d'article**
+`p10-article-faq2` : intégré après l'encart auteur Nicolas Berg, même typographie de lecture, accordéon identique, aucune rupture de registre. **OK.**
+
+**5. /piscines-bien-etre cards « ouvrages » (Ce que nous savons construire)**
+`p10-piscines-ouvrages` + hover `p10-piscines-ouvrages-hover` : 3 des 6 cards (Piscine intérieure, Fond mobile, Paroi de verre) portent un lien « Voir cette réalisation → » discret, en bas du corps de card, style accent muté. **Discret et propre. OK.**
+
+**6. Fiche /realisations/piscine-fond-mobile-terrasse/ — lien « Notre savoir-faire »**
+`p10-fiche-savoirfaire3` : eyebrow « NOTRE SAVOIR-FAIRE » + lien « Piscines & Bien-être » placé après le corps descriptif, avant le CTA de clôture. **À sa place, sobre. OK.**
+
+### Croisement specs (parti pris assumé vs vrai défaut)
+
+**P1 — Nom de marque : cohabitation « Aquasystem » (header) / « Aqua System » (sous-titre hero piscines).**
+Sur le NOUVEAU fold piscines, le wordmark header « Aquasystem » (un mot) et la 1re ligne du sous-titre « Notre maison Aqua System » (deux mots) coexistent à ~50 px. Vérif specs : `project-context.md` documente « Aquasystem » comme wordmark ombrelle PROVISOIRE, tandis que l'entité légale est « SARL AQUA SYSTEM » (JSON-LD `legalName`/`name` = « Aqua System ») — la cohabitation est donc un **parti pris documenté**, déjà présent en passe 9 (corps jardins/fiches) et validé. **Ce n'est PAS une invention ni une régression de fond.** MAIS c'est la 1re fois que les deux graphies se télescopent dans un même FOLD vitrine (hero piscines neuf). Un client premium pressé peut le percevoir comme une hésitation. **Non bloquant** (convention intentionnelle), signalé en P1 cosmétique → @copywriter : envisager de retirer « Aqua System » de cette ligne de hero (« Notre maison conçoit sur mesure depuis plus de 30 ans… ») pour éviter le télescopage header/sous-titre, en attendant la bascule naming finale.
+
+Aucun autre écart : aucun flou, aucun badge d'inachevé, aucun placeholder, aucune proportion absurde, footer non recapturé (inchangé, validé passe 8/9). Favicon inchangé (validé passe antérieures).
+
+### Verdict
+
+## PRÉSENTABLE AU FONDATEUR : **OUI**
+
+Zéro P0. Les 6 surfaces livrées sont au standard maison premium : heros nets (défaut « photos floues » levé), nouveau hero piscines premium et lisible, nouvelle photo entretien au niveau, FAQ et maillage intégrés sans rupture de registre. Seule réserve : 1 P1 cosmétique non bloquant (télescopage Aquasystem/Aqua System dans le fold piscines) — parti pris documenté, à arbitrer @copywriter.
+
+**Recommandation** : OUI, déployable. Relance par défaut → @copywriter (P1 nom de marque hero piscines, à traiter au fil de l'eau, sans bloquer le déploiement).
