@@ -174,6 +174,21 @@ Tant que ces données ne sont pas fournies, le site reste sur « Ouest parisien 
 
 ---
 
+## F. Slots nouveaux — Section « Ce que le vivant impose » (/jardins-paysage)
+
+> Demande : @copywriter — 2026-06-12 (fond-jardins-copy.md).
+> Ces 2 slots alimentent la nouvelle section OuvrageCard insérée entre MatieresBlock et PepiniereBlock.
+> Le slot F3 est déjà couvert par S3 ci-dessus (allée pépinière) — aucun doublon.
+
+| # | Card | Sujet exact attendu | Cadrage | Format | Lumière recommandée | Priorité |
+|---|---|---|---|---|---|---|
+| F1 | « Le choix des essences » | Haie de charme ou alignement d'arbres à port défini dans une propriété 78/92. Jardin structuré mature, végétal dominant. Pas de contenants jardinerie, pas de piscine visible. | Plan large, perspective depuis l'angle d'un massif ou d'une haie, profondeur de champ | Paysage 3:2 ou carré 1:1 | Fin d'après-midi 16h-18h, ombres longues, lumière chaude rasante | P1 |
+| F2 | « L'entretien au bon moment » | Geste de taille en cours : jardinier de profil ou de dos (non identifiable), végétaux en plein port, outil visible. Contexte propriété 78/92 (haie, arbuste d'ornement, massif). | Tir à mi-hauteur, sujet légèrement décentré, végétaux en plein cadre | Paysage 3:2 | Lumière douce, ciel légèrement voilé, pas de midi dur | P2 |
+| F3 | « La pépinière » | Déjà couvert par **S3** (§A ci-dessus) : allée de la pépinière LTE, végétaux en conteneurs alignés, perspective. Aucune action requise ici. | — | — | — | — (S3) |
+
+---
+
 *Document produit par @fullstack — 2026-06-12 (D-25, complété D-27).*
 *Section E ajoutée par @copywriter — 2026-06-12 (savoir-faire-copy.md).*
+*Section F ajoutée par @copywriter — 2026-06-12 (fond-jardins-copy.md).*
 *Sources : project-context.md §Doctrine photos, casting-visuels.md §4b, design-fixes-fondateur.md Prise 4.*

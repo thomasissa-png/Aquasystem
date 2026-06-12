@@ -125,7 +125,7 @@ export const REALISATIONS: Realisation[] = [
       },
     ],
     visualDescription:
-      "Le plan d'eau s'arrête net sur la forêt de pins, sa lame de débordement prolongée par le reflet sombre des arbres. Une terrasse en bois et une bande de pelouse rase tiennent le bassin contre un long mur de pierre claire, où quelques transats s'alignent.",
+      "La lame de débordement disparaît dans une goulotte invisible le long du mur de pierre calcaire appareillée : l'eau semble continuer jusqu'à la forêt de pins, sans limite perçue. Ce parti pris suppose un terrain en dénivelé suffisant pour que le trop-plein soit géré par un bac tampon dissimulé, et une terrasse en bois qui absorbe la transition entre les niveaux. Si votre terrain présente une pente et une vue à valoriser, le débordement est souvent la réponse la plus juste.",
     prestations: null,
     intention: null,
     reponse: null,
@@ -146,7 +146,7 @@ export const REALISATIONS: Realisation[] = [
       },
     ],
     visualDescription:
-      "Le bassin rectangulaire occupe le cœur d'un jardin clos, posé entre une pelouse tondue et une terrasse de bois ponctuée d'un parasol rouge. Les massifs de graminées et de bambous referment l'espace, tandis que les toits d'une demeure ancienne apparaissent au-dessus de la végétation.",
+      "Le bassin à l'eau sombre est enchâssé dans une terrasse en bois multi-niveaux dont les margelles en grès gris affleurent le platelage : l'eau et le bois forment un seul plan horizontal, sans rupture. Concevoir ce type de transition demande de coordonner la hauteur finie du bassin, la cote de la terrasse et l'assise des marches au même moment, depuis le bureau d'études. Si vous souhaitez que la piscine disparaisse dans la continuité d'une terrasse, la question du niveau relatif des deux ouvrages se pose dès le plan.",
     prestations: null,
     intention: null,
     reponse: null,
@@ -167,7 +167,7 @@ export const REALISATIONS: Realisation[] = [
       },
     ],
     visualDescription:
-      "Face à une demeure de caractère aux façades enduites et aux volets bordeaux, le bassin renvoie la silhouette de la maison dans une eau parfaitement calme. La pelouse vient au ras des margelles, encadrée d'arbres adultes qui tiennent le jardin à distance de toute clôture visible.",
+      "Devant la villa Belle-Époque, le bassin miroir est cerné de margelles en brique ancienne qui reprennent exactement le matériau de la façade : la continuité est totale, le bassin semble avoir toujours été là. Un effet miroir aussi net exige des tolérances de niveau millimétriques sur le pourtour de la plage, pour que l'eau affleure sans jamais déborder. Si votre demeure a du caractère, le choix de la margelle est ce qui fait qu'un bassin dialogue avec elle ou lui tourne le dos.",
     prestations: null,
     intention: null,
     reponse: null,
@@ -188,7 +188,7 @@ export const REALISATIONS: Realisation[] = [
       },
     ],
     visualDescription:
-      "Surélevé, le bassin laisse voir son eau à travers une paroi de verre encadrée de travertin clair. Des jardinières de graminées et de buis taillés courent au pied du muret, prolongées par une terrasse de bois où patientent quelques assises basses, le tout adossé à la baie vitrée de la maison.",
+      "Le bassin est surélevé hors-sol sur un muret de travertin dont une face est remplacée par une paroi de verre : on voit le volume d'eau depuis le jardin, à hauteur d'œil. Ce type d'ouvrage implique un soubassement maçonné capable de porter la charge de l'eau et la pression exercée sur la vitre, les joints devant rester étanches sur la durée. Si vous envisagez un bassin compact intégré à l'architecture de la maison, le travertin et le verre offrent une densité visuelle difficile à atteindre avec d'autres matières.",
     prestations: null,
     intention: null,
     reponse: null,
@@ -209,7 +209,7 @@ export const REALISATIONS: Realisation[] = [
       },
     ],
     visualDescription:
-      "Le bassin émerge de la pelouse, sa paroi de verre posée sur un soubassement de pierre grise appareillée en strates. Derrière, un salon de jardin abrité d'un parasol installe une zone de détente au pied de la maison, la lumière rasante accusant le relief du parement.",
+      "Le soubassement en pierre grise ardoisée, appareillée en assises régulières, porte une paroi de verre qui dévoile l'eau turquoise depuis la pelouse : le bassin surélevé s'offre à lire comme une sculpture. La pierre à strates donne au muret la même lisibilité que les couches géologiques d'un mur de jardin ancien — une cohérence entre le bâti et la nature du sol qu'on ne produit pas avec un enduit. Si votre propriété comporte déjà des murs en pierre naturelle, ce type de paroi de verre prolonge leur logique plutôt qu'elle ne la contredit.",
     prestations: null,
     intention: null,
     reponse: null,
@@ -230,7 +230,7 @@ export const REALISATIONS: Realisation[] = [
       },
     ],
     visualDescription:
-      "Vu de haut, le bassin à l'eau sombre est cerné de margelles claires et d'une terrasse de bois qui descend vers une pelouse en contrebas. Une banquette maçonnée garnie de coussins suit le retrait du jardin, les toits d'une demeure ancienne fermant l'horizon derrière une haie épaisse.",
+      "Le jardin est strictement composé : muret enduit terracotta, buis taillés en boule, pelouse géométrique et bassin à margelles minérales sur un même axe, le tout dans l'enceinte d'un ancien mur de brique. La banquette en bois massif au premier plan est maçonnée dans la continuité de la terrasse, pas ajoutée après coup. Quand le bassin et le jardin sont conçus ensemble, le mobilier fixe trouve naturellement sa place dans la structure : c'est ce que permet un même bureau d'études pour les deux ouvrages.",
     prestations: null,
     intention: null,
     reponse: null,
@@ -251,7 +251,7 @@ export const REALISATIONS: Realisation[] = [
       },
     ],
     visualDescription:
-      "Prise en surplomb, l'image révèle un bassin rectangulaire enchâssé dans une vaste terrasse de bois qui se déploie en plusieurs niveaux. Des fauteuils filaires et des plantes en pot ponctuent le platelage, qu'une pelouse et un rideau d'arbres viennent ceinturer.",
+      "La terrasse en bois clair s'étend de chaque côté du bassin en plusieurs plans décalés, les margelles en grès sombre se fondant dans le platelage sans saillie perceptible : l'ensemble est une seule surface travaillée. Ce résultat demande de définir la trame des lames de bois, la profondeur des margelles et la cote de fond de bassin dans un ordre précis, avant tout coulage. Si votre extérieur est aujourd'hui une succession de zones disparates, ce type d'ouvrage montre ce qu'une conception unifiée produit.",
     prestations: null,
     intention: null,
     reponse: null,
@@ -272,7 +272,7 @@ export const REALISATIONS: Realisation[] = [
       },
     ],
     visualDescription:
-      "Adossé à un muret de brique qui rattrape le dénivelé du terrain, le bassin à l'eau verte est ceint de margelles de pierre. Une terrasse haute équipée de transats domine le jardin, où la brique et le bois de la maison répondent à une haie dense qui clôt la parcelle.",
+      "Un muret de brique maçonné en plein air rattrape le dénivelé entre la maison et la pelouse, le bassin en eau turquoise posé dans la poche ainsi créée, cerné d'une plage bois et d'un dallage minéral. Le bambou dense côté fond assure l'intimité sans réduire la luminosité, complétant le travail du muret. Si votre terrain présente un dénivelé à absorber, cette solution de soubassement appareillé montre qu'une contrainte de terrain peut devenir une écriture architecturale.",
     prestations: null,
     intention: null,
     reponse: null,
@@ -294,7 +294,7 @@ export const REALISATIONS: Realisation[] = [
       },
     ],
     visualDescription:
-      "Le jardin se lit en plusieurs paliers tenus par des murets enduits d'ocre, le bassin rectangulaire calé sur le niveau intermédiaire entre des haies basses taillées au cordeau. Au premier plan, une longue banquette de bois garnie de coussins prolonge la terrasse, ouverte sur les toits du voisinage.",
+      "Le jardin est organisé en trois niveaux distincts tenus par des murets enduits couleur terracotta : terrasse bois en bas, pelouse et bassin au centre, zone de repos avec transats en haut contre le mur de végétation. La géométrie des buis en boule et des haies taillées sert à articuler chaque palier sans que rien ne semble forcé. Travailler un jardin en terrasses suppose de placer le bassin sur le bon niveau dès le plan : trop bas, il s'isole ; trop haut, il domine et perd la pelouse.",
     prestations: null,
     intention: null,
     reponse: null,
@@ -316,7 +316,7 @@ export const REALISATIONS: Realisation[] = [
       },
     ],
     visualDescription:
-      "Des volumes blancs décalés s'ouvrent par de larges baies sur le bassin abrité, reliés au jardin par une passerelle de verre affleurant la pelouse au-dessus de l'eau. De part et d'autre du cheminement, des rosiers rouges et des bandes engazonnées soulignent la géométrie, que la lumière de fin de journée vient réchauffer.",
+      "Le pool-house conçu par l'architecte SKP est composé de volumes blancs décalés reliés par une passerelle vitrée qui court au ras de la pelouse au-dessus du bassin couvert : on voit l'eau directement sous ses pieds. Cette passerelle est une verrière zénithale intégrée à la structure, pas un ajout décoratif, ce qui suppose une coordination étroite entre l'architecte, le bureau d'études piscine et le gros-œuvre. Si votre projet associe une architecture signée et un bassin couvert, la bonne question à poser en amont est : qui coordonne les deux ?",
     prestations: null,
     intention: null,
     reponse: null,
@@ -338,7 +338,7 @@ export const REALISATIONS: Realisation[] = [
       },
     ],
     visualDescription:
-      "Le béton brut habille murs et plafond, ce dernier percé d'une trame régulière de puits de lumière qui se reflètent à la surface du bassin. Des baies vitrées courent de chaque côté, ouvrant la pièce sur le jardin, tandis qu'un liseré de lames de bois adoucit le pourtour de l'eau jusqu'à un coin salon bas.",
+      "La dalle de béton armé brut, visible en plafond avec ses traces de coffrage, est percée d'une trame de puits de lumière zénithaux qui projettent des carrés de soleil à la surface du couloir de nage. Les baies vitrées sur trois côtés évacuent l'humidité et maintiennent le lien visuel avec le jardin : en piscine intérieure, la maîtrise de l'hygrométrie et l'apport de lumière naturelle sont les deux contraintes qui conditionnent tous les autres choix. Si vous envisagez un espace de nage couvert et ouvert sur votre jardin, la question du traitement de l'air mérite d'être posée avant celle du revêtement.",
     prestations: null,
     intention: null,
     reponse: null,
@@ -359,7 +359,7 @@ export const REALISATIONS: Realisation[] = [
       },
     ],
     visualDescription:
-      "Le couloir de nage file sous une charpente de bois apparente, encadré de murs en moellons de pierre où s'ouvrent de hautes fenêtres. Un dallage de travertin clair court le long du bassin jusqu'à des transats alignés, la pierre et le bois réchauffant la longueur de la pièce.",
+      "Le couloir de nage intérieur est délimité par des murs en moellons de pierre calcaire apparente et coiffé d'une charpente bois dont les solives rythment la longueur de la pièce ; le dallage en travertin clair unifie le sol du bord de bassin jusqu'aux chaises longues. Les matières choisies — pierre, bois, travertin — supportent sans traitement spécifique l'atmosphère humide d'un espace de nage couvert, ce qui est précisément leur raison d'être ici. Si vous disposez d'un bâtiment existant ou d'une dépendance à reconvertir, ce type d'espace montre ce qu'une structure ancienne peut accueillir.",
     prestations: null,
     intention: null,
     reponse: null,
@@ -381,7 +381,7 @@ export const REALISATIONS: Realisation[] = [
       },
     ],
     visualDescription:
-      "Sous une véranda à charpente noire et toit vitré incliné, le bassin baigne dans une lumière de soirée qui détache la pierre ancienne d'un mur en fond. Le platelage de bois ceinture l'eau bleutée, des appliques chaudes posant des halos sur les moellons et sur les baies sombres.",
+      "La véranda à charpente métallique noire et toit vitré en deux pentes prolonge la maison et abrite le bassin sur sa plage de bois massif, le mur de moellons anciens servant de fond de scène éclairé en soirée. Ce type de structure métallique vitrée, adossée au bâti existant, est un ouvrage de second-œuvre qui demande d'articuler l'étanchéité de la jonction toit/mur, la ventilation et le chauffage du volume. Si vous souhaitez nager en toute saison sans construire un bâtiment à part entière, la véranda de piscine est la réponse architecturale la plus économe d'emprise.",
     prestations: null,
     intention: null,
     reponse: null,
@@ -402,7 +402,7 @@ export const REALISATIONS: Realisation[] = [
       },
     ],
     visualDescription:
-      "Le bassin à l'eau sombre se love au pied d'une maison à grandes baies coiffée d'un bardage de bois patiné, posé sur une pelouse que cernent des arbres adultes. La terrasse de bois et quelques transats tiennent la rive côté maison, le jardin boisé refermant complètement la perspective.",
+      "Le bassin à l'eau sombre côtoie une maison mid-century à grandes baies vitrées et bardage bois foncé : les margelles en grès anthracite reprennent la palette de la façade, la terrasse en bois assure la continuité jusqu'aux baies de plain-pied. Ce dialogue entre la couleur d'eau et les matières de la maison n'est pas un hasard : la teinte du revêtement intérieur du bassin est le premier choix à faire, car elle détermine tout ce qu'on voit depuis les fenêtres. Si vous rénovez une maison contemporaine avec un projet de piscine, la cohérence de palette entre les deux ouvrages vaut mieux qu'un catalogue.",
     prestations: null,
     intention: null,
     reponse: null,
@@ -424,7 +424,7 @@ export const REALISATIONS: Realisation[] = [
       },
     ],
     visualDescription:
-      "À la tombée du jour, le bassin rayonne d'un bleu profond au centre d'une terrasse minérale claire. Un éclairage indirect souligne le pied des murets et les bandes de pelouse, détachant en arrière-plan un mur de pierre ancienne tendu de treillages, tandis qu'une banquette à coussins occupe le premier plan.",
+      "À la nuit tombée, la terrasse minérale et les murets enduits clairs sont révélés par une ligne de lumière indirecte qui souligne leur base : les buis taillés en boule deviennent des volumes, le bassin illuminé en bleu devient le centre optique de l'ensemble. Ce type de scénographie lumière se câble lors du gros-œuvre, les gaines passant sous les murets et les dalles avant coulage : c'est la raison pour laquelle l'éclairage d'extérieur ne s'ajoute pas en fin de chantier. Si vous envisagez votre jardin comme un espace de vie en soirée, les choix d'éclairage appartiennent au plan, pas aux finitions.",
     prestations: null,
     intention: null,
     reponse: null,
