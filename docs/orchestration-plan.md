@@ -101,6 +101,14 @@
 
 **TOUTES PHASES COMPLETE (2026-06-11). Reste : décisions/assets fondateur (cf. docs/project-synthesis.md §Bloquants) puis déploiement preview → prod (runbook infrastructure.md §11).**
 
+### Post-livraison (2026-06-12) — Déploiement + Board d'audit 10/10
+| Item | Statut | Détail |
+|---|---|---|
+| Déploiement Cloudflare Pages | ✅ EN LIGNE | https://aquasystem.pages.dev — déploiement DIRECT via wrangler (le build git du fondateur échouait, contourné) ; projet `aquasystem`, KV RATE_LIMIT_KV lié, env CONTACT_EMAIL_* posées, NEXT_PUBLIC_SITE_URL injecté au build. Resend NON configuré (formulaire → 500 propre) — clé fondateur attendue |
+| Kei-Stone | ✅ Retiré du rendu (fondateur 2026-06-12) | Copy archivé dans site-copy.md §v1.1 pour réactivation |
+| Recalibrage LTE + portrait Nicolas | ✅ Appliqué et déployé | Badge « depuis 2015 », alt OG corrigé, portrait /la-maison |
+| Board d'audit 10/10 (itération 1) | EN COURS — 8 agents ∥ | @ux, @design, @copywriter, @seo (live), @geo, @qa (Lighthouse live), testeur Alexandre, testeur Camille → docs/reviews/audit-2026-06-12/ ; @reviewer consolidera → corrections @fullstack → re-audit jusqu'à 10/10 |
+
 > Note séquencement (learning n°1) : sur les prochains gros lots, produire les specs détaillées APRÈS les wireframes/ux-writing ou imposer une réconciliation explicite — le parallélisme aveugle specs ∥ UX/copy a coûté une boucle corrective (5 P0).
 
 ## Journal des décisions
