@@ -131,4 +131,50 @@ Texte gauche + **photo jardinerie réelle (chrysanthèmes en pots, serre, pannea
 
 ---
 
+## 4. Notre approche `/notre-approche` — 6 sections (s05/s06 = doublon CTA+footer)
+
+### En-tête « De la vision à la réalisation » (s01)
+**Pas de hero pleine image** : titre serif noir sur crème à gauche, **photo (piscine + jardin) à droite**. Contraste **excellent** (texte noir/gris sur crème). Photo nette, premium. Bonne composition asymétrique. **OK** — c'est le modèle de hero le plus lisible du site.
+
+### Process numéroté 1→5 (s01 bas / s02 / s03 haut)
+Étapes « L'écoute / Le bureau d'études / La réalisation / La livraison / Le suivi annuel » : gros chiffres serif pétrole + filet vertical reliant les étapes + titres + texte. Contraste OK, rythme clair, **très lisible et premium**. Lignes ~70ch côté texte → confortable. **OK.**
+
+### « Nous connaissons ces propriétés » + **« Visuel à venir »** (s03 bas / s04 haut)
+Texte gauche (communes en italique : Le Vésinet, Saint-Nom-la-Bretèche…) + **boîte grise vide « Visuel à venir » / « Vue aérienne d'une commune… prise de vue drone »** à droite. **P0** (3e type de placeholder vide, ici sur une page de réassurance).
+
+### CTA intermédiaire + FAQ (s04) : bouton outline « Parlez-nous… » + accordéon « Questions fréquentes » (filets fins, chevrons). Propre, lisible. **OK.**
+
+### CTA final + Footer (s05/s06)
+CTA spécifique : « Parlez-nous de votre projet. Nous vous dirons ce qu'on peut faire ensemble. » + bouton « Décrivez-nous votre projet → ». Sombre, contraste excellent. **OK.**
+
+### Note page Notre approche : **7.5/10**
+Page la mieux construite (process clair, lisibilité parfaite, pas de souci de contraste hero car pas de hero image). Seul accroc : le **placeholder vide (P0)**.
+
+---
+
+## 5. La maison `/la-maison` — 5 sections
+
+### Hero (s01) — contraste
+Photo : vue plongeante piscine + terrasse bois + fauteuils filaires colorés + pelouse. Nette. H1 « La maison » serif blanc sur **terrasse bois moyen + eau** → OK ; sous-titre « Plus de 30 ans d'expertise… le détail fait tout. » sur **terrasse bois clair ensoleillée** → **faible** (même symptôme). **P1.**
+
+### « Notre histoire » + portrait Nicolas Berg (s01 bas / s02)
+Texte centré (contraste OK) + **portrait N&B circulaire de Nicolas Berg, « Associé-Gérant, Aqua System »**. Photo propre, sobre, incarne la marque → **excellent point premium / confiance**. **OK.**
+
+### Bloc « Aqua System » / « En partenariat avec Les Terres Essentielles » (s02 bas / s03 haut)
+Deux colonnes texte. Contraste OK. **Photo LTE = la jardinerie (cagette « FÉROUX ORGEVAL » + lauriers-roses)**, légende « La jardinerie Les Terres Essentielles, route d'Orgeval. »
+> **Constat fondateur #5** : photo **authentique mais de niveau retail** (cagette usée, porte bleue défraîchie en fond). Sur une page « La maison » premium, à côté du portrait soigné et des piscines léchées, **l'écart de gamme est visible**. Honnête (vraie jardinerie) mais pas flatteur. **P1.**
+
+### Badges + coordonnées (s03) : pastilles sable « Certification Socotec / Réseau L'Esprit Piscine / Trophée Or FPP 2024 » + adresses. Lisibles. **OK.**
+
+### Valeurs « Exigence / Confiance / Sur-mesure » (s03 bas / s04 haut) : 3 colonnes serif + texte. Contraste OK. **OK.**
+
+### Image pleine largeur (s04) : superbe piscine + jardin clos (murs ocre, haies, banquette coussins). **Très premium.** **OK.**
+
+### CTA + Footer (s05) : « Un projet ? Décrivez-nous ce que vous imaginez. » Sombre, OK.
+
+### Note page La maison : **7/10**
+Belle page incarnée (portrait, histoire, valeurs, grande image finale). Deux accrocs : contraste sous-titre hero (P1) + photo jardinerie en écart de gamme (P1).
+
+---
+
 <!-- SECTIONS SUIVANTES AJOUTÉES INCRÉMENTALEMENT -->
