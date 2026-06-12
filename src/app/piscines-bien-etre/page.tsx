@@ -65,11 +65,15 @@ export default function PiscinesBienEtrePage() {
       <JsonLd data={BREADCRUMB} />
       <JsonLd data={FAQ_JSONLD} />
       <Hero
-        imageSrc={photoSrc('piscine-interieure-pierre-poutres', '1280w')}
-        imageAlt="Couloir de nage intérieur sur mesure — charpente bois apparente, murs en pierre de pays, lumière naturelle — réalisation Aqua System dans les Yvelines"
-        // Crop-first (D-28) : la photo travertin restait « catalogue » à tous les
-        // cadrages testés → swap spec. center_35% cadre l'axe du couloir.
-        objectPosition={{ base: 'object-[center_35%]' }}
+        imageSrc={photoSrc('piscine-interieure-spa-transats', '1280w')}
+        // CAS B (D-40) : le hero pierre-poutres n'existait qu'en 1280w (upscalé,
+        // flou). Remplacé par un original 1920 du même registre (piscine intérieure
+        // premium Aqua System) : bassin intérieur + transats, composition horizontale
+        // qui survit au bandeau, zone basse-gauche calme pour le H1. Palier 1920w servi
+        // sur desktop large (anti-flou).
+        imageSrc1920="/images/realisations/piscine-interieure-spa-transats-1920w.webp"
+        imageAlt="Piscine intérieure sur mesure dans un espace bien-être — bassin éclairé, transats alignés sur sol ardoise, ambiance feutrée — réalisation Aqua System dans les Yvelines"
+        objectPosition={{ base: 'object-center' }}
         title="Piscines & Bien-être"
         subtitle="Notre maison Aqua System : conception sur mesure depuis plus de 30 ans en Yvelines et Hauts-de-Seine."
       />

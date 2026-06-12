@@ -134,6 +134,10 @@ export function partnerOrganizationJsonLd() {
     '@type': ['LocalBusiness', 'Organization'],
     '@id': `${SITE_URL}/#organization-lte`,
     name: PARTNER_CONTACT.name,
+    // SITE-03 (re-audit GEO) : identifiants légaux publics (SIREN immatriculé
+    // 2015 — pappers.fr/societe.com, croisés par les LLM).
+    foundingDate: '2015',
+    taxID: '811198217',
     description:
       "Paysagiste et bureau d'études paysager en Yvelines. Création et entretien de parcs et jardins sur mesure pour les belles propriétés de l'ouest parisien.",
     address: {

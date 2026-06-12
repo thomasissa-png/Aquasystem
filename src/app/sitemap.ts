@@ -18,7 +18,8 @@ import { ARTICLES } from '@/content/blog';
  * INDEXABLES (D-35, megalot SEO P0-01) : critère `isDraft` = visualDescription
  * absente (jamais le cas) → toutes incluses (sitemap = 9 statiques + 24 fiches).
  * Même critère `isDraft` partagé avec le `robots` de la page (cohérence).
- * Les pages légales sont incluses (index:true) en priorité basse.
+ * Pages légales EXCLUES + noindex (R-06, re-audit SEO : aucun intérêt de
+ * crawl, diluent le budget — standard sites vitrine).
  */
 export const dynamic = 'force-static';
 
@@ -34,8 +35,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: absoluteUrl('/prescripteurs/'), lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.75 },
     { url: absoluteUrl('/notre-regard/'), lastModified: LAST_MODIFIED, changeFrequency: 'weekly', priority: 0.75 },
     { url: absoluteUrl('/contact/'), lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.7 },
-    { url: absoluteUrl('/mentions-legales/'), lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.2 },
-    { url: absoluteUrl('/politique-confidentialite/'), lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.2 },
   ];
 
   // Fiches réalisations — itère sur le manifeste (slugs réels). Les fiches en

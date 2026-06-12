@@ -13,7 +13,8 @@ export const metadata: Metadata = {
   description:
     'Comment SARL AQUA SYSTEM traite vos données personnelles : finalités, durées de conservation, droits RGPD, hébergement Cloudflare.',
   alternates: { canonical: absoluteUrl('/politique-confidentialite/') },
-  robots: { index: true, follow: true },
+  // R-06 (re-audit SEO) : page légale hors sitemap + noindex (budget crawl).
+  robots: { index: false, follow: true },
 };
 
 export default function PolitiqueConfidentialitePage() {

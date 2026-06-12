@@ -11,10 +11,12 @@ import { PhotoPlaceholder } from '@/components/ui/PhotoPlaceholder';
  * Eyebrow forest (univers jardins). Server component.
  *
  * Doctrine photos (fond-jardins-copy §7) :
- * - Entrée 1 (essences)  : slot F1 [Photo à fournir] → PhotoPlaceholder.
+ * - Entrée 1 (essences)  : photo RÉELLE massif planté LTE (D-37).
  * - Entrée 2 (sol)       : SANS visuel forcé (sujet peu porteur de conversion) →
  *   card texte sur fond neutre, pas de cadre image.
- * - Entrée 3 (entretien) : slot F2 [Photo à fournir] → PhotoPlaceholder.
+ * - Entrée 3 (entretien) : photo RÉELLE d'abords paysagés entretenus (D-40) —
+ *   pelouse nette + massifs taillés illustrent honnêtement « l'entretien » ; l'alt
+ *   décrit la photo, le texte du slot porte le propos (zéro prestation inventée).
  * - Entrée 4 (pépinière) : photo RÉELLE jardinerie LTE (allée pépinière).
  */
 
@@ -49,10 +51,14 @@ const ENTRIES: VivantEntry[] = [
   {
     title: "L'entretien au bon moment",
     body: "Un jardin bien planté demande les bons gestes à la bonne période. Les arbustes à floraison estivale (buddleia, althéa, potentille) se taillent en mars, avant la reprise de végétation, pour stimuler la floraison de l'été. Les arbustes à floraison printanière (lilas, forsythia, weigela) attendent la fin de leur floraison pour être taillés — les couper avant, c'est supprimer les fleurs de l'année suivante. Ce calendrier précis, suivi rigoureusement, fait la différence entre un jardin qui se refait chaque saison et un jardin qui s'affirme avec les années.",
+    // Slot F2 comblé (D-40) : photo réelle d'abords paysagés manifestement
+    // entretenus (pelouse impeccable, massifs taillés, traverses bois). Alt
+    // FACTUEL décrivant la photo — pas de revendication de prestation d'entretien
+    // sur CE jardin précis (le texte du slot porte déjà le propos entretien).
     visual: {
-      kind: 'placeholder',
-      subject:
-        'Geste de taille en cours, végétaux en plein port, profil de dos — entretien Les Terres Essentielles',
+      kind: 'photo',
+      src: '/images/realisations/jardin-paysage-abords-entretenus-800w.webp',
+      alt: "Abords d'une piscine dans un jardin entretenu : pelouse tondue ras, massifs taillés, soutènement en traverses de bois et transats alignés le long du bassin, ouest parisien",
     },
   },
   {

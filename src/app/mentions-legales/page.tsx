@@ -21,7 +21,8 @@ export const metadata: Metadata = {
   description:
     'Mentions légales du site. Éditeur : SARL AQUA SYSTEM, Freneuse (78). Hébergeur : Cloudflare, Inc.',
   alternates: { canonical: absoluteUrl('/mentions-legales/') },
-  robots: { index: true, follow: true },
+  // R-06 (re-audit SEO) : page légale hors sitemap + noindex (budget crawl).
+  robots: { index: false, follow: true },
 };
 
 export default function MentionsLegalesPage() {

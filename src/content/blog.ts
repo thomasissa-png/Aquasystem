@@ -61,8 +61,7 @@ export const ARTICLES: Article[] = [
   {
     slug: 'piscine-debordement-terrain-en-pente',
     title: 'Piscine à débordement : comment un terrain en pente devient un atout',
-    metaTitle:
-      'Piscine à débordement sur terrain en pente | Aqua System 78/92',
+    metaTitle: 'Piscine à débordement sur terrain en pente | Aqua System',
     metaDescription:
       "Un terrain en pente dans les Yvelines n'est pas un obstacle. C'est souvent un atout. Nicolas Berg, pisciniste 30 ans en 78/92, explique pourquoi.",
     requeteCible: 'piscine à débordement Yvelines / terrain en pente piscine',
@@ -78,8 +77,7 @@ export const ARTICLES: Article[] = [
   {
     slug: 'investissement-piscine-haut-de-gamme',
     title: 'Ce qui fait le prix d’une piscine haut de gamme : les vraies raisons',
-    metaTitle:
-      'Prix d’une piscine haut de gamme : les vraies raisons | Aquasystem',
+    metaTitle: 'Prix d’une piscine haut de gamme | Aqua System',
     metaDescription:
       "Pas de fourchettes inventées : une explication honnête des postes de coût d'une piscine sur mesure béton. Structure, finitions, équipements, garantie.",
     requeteCible:

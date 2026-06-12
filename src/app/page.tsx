@@ -56,6 +56,10 @@ export default function HomePage() {
       <Hero
         variant="home"
         imageSrc={photoSrc('piscine-couloir-demeure-ancienne', '1280w')}
+        // CAS A (D-40) : même visuel fondateur-approuvé, régénéré depuis l'original
+        // 1920 → palier desktop large servi au-dessus de 1280px (anti-flou). Alt et
+        // cadrage inchangés (aucune perception modifiée).
+        imageSrc1920="/images/realisations/piscine-couloir-demeure-ancienne-1920w.webp"
         imageAlt="Demeure ancienne en pierre et brique encadrée d'arbres adultes, long bassin miroir reflétant la façade, grande pelouse — propriété de caractère dans les Yvelines"
         // Casting-visuels §3a : cadrage par viewport pour garder la demeure
         // (centre-haut) et le bassin (centre-bas) dans le cadre.

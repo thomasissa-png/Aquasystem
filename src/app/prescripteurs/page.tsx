@@ -97,7 +97,9 @@ const PREUVES = [
   },
   {
     titre: 'Plus de 30 ans d’activité en 78/92',
-    desc: "Connaissance des sols, des PLU, des contraintes propres aux propriétés de l'ouest parisien. Des références locales, identifiables, vérifiables.",
+    // SITE-02 (re-audit GEO) : assertion extractible des 6 types d'ouvrage
+    // maîtrisés — signal de capacité technique directe pour les prescripteurs.
+    desc: "Connaissance des sols, des PLU, des contraintes propres aux propriétés de l'ouest parisien. Six types d'ouvrage réalisés et vérifiables en portfolio : piscine à débordement, bassin miroir, couloir de nage, piscine intérieure (4 construites), fond mobile, paroi de verre.",
   },
   {
     titre: "Bureau d'études paysager intégré",

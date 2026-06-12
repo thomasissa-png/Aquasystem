@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { SITE_URL, absoluteUrl, breadcrumbJsonLd } from '@/lib/seo';
+import { ARTICLES_BY_DATE } from '@/content/blog';
 import { BlogGrid } from '@/components/blog/BlogGrid';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { SectionCTA } from '@/components/sections/SectionCTA';
@@ -15,13 +16,46 @@ export const metadata: Metadata = {
   title: { absolute: 'Notre regard | Le blog d’Aqua System' },
   description:
     "Le regard d'un pisciniste haut de gamme sur la conception, la construction et la rénovation de piscines sur mesure dans les Yvelines et les Hauts-de-Seine.",
-  alternates: { canonical: absoluteUrl('/notre-regard/') },
+  alternates: {
+    canonical: absoluteUrl('/notre-regard/'),
+    // R-05 (re-audit SEO) : autodiscovery RSS dans le <head>.
+    types: { 'application/rss+xml': absoluteUrl('/notre-regard/rss.xml') },
+  },
   openGraph: {
     url: `${SITE_URL}/notre-regard/`,
-    title: 'Notre regard — le blog d’Aqua System',
+    title: 'Notre regard | Le blog d’Aqua System',
     description:
       "Conception, prix, hygrométrie, rénovation : le regard d'expert d'Aqua System sur les piscines sur mesure de l'ouest parisien.",
+    // R-04 (re-audit SEO) : og:image explicite (l'index n'en héritait aucune).
+    images: [
+      {
+        url: absoluteUrl('/og-image.jpg'),
+        width: 1200,
+        height: 630,
+        alt: "Aquasystem — Piscine et jardin sur mesure, propriété de l'ouest parisien",
+      },
+    ],
   },
+};
+
+/**
+ * Blog JSON-LD (SITE-06, re-audit GEO) : déclare la rubrique comme entité Blog
+ * rattachée à l'Organization (publisher @id du layout), avec ses BlogPosting.
+ */
+const BLOG_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  '@id': absoluteUrl('/notre-regard/#blog'),
+  name: "Notre regard | Le blog d'Aqua System",
+  url: absoluteUrl('/notre-regard/'),
+  inLanguage: 'fr-FR',
+  publisher: { '@id': `${SITE_URL}/#organization-aquasystem` },
+  blogPost: ARTICLES_BY_DATE.map((a) => ({
+    '@type': 'BlogPosting',
+    headline: a.title,
+    url: absoluteUrl(`/notre-regard/${a.slug}/`),
+    datePublished: a.datePublished,
+  })),
 };
 
 export default function NotreRegardIndex() {
@@ -32,6 +66,7 @@ export default function NotreRegardIndex() {
   return (
     <>
       <JsonLd data={breadcrumb} />
+      <JsonLd data={BLOG_LD} />
 
       <section className="mx-auto max-w-container px-4 pb-8 pt-16 md:px-8 md:pt-20">
         <SectionHeading

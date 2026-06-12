@@ -21,8 +21,9 @@ import { JsonLd } from '@/components/seo/JsonLd';
 export const metadata: Metadata = {
   // Metas finales — metadata-templates.md Page 3 (title 50 car., "Paysagiste" en tête).
   title: { absolute: 'Paysagiste Yvelines | Jardins haut de gamme, 78/92' },
+  // R-01 (re-audit SEO) : description ramenée ≤ 155 caractères.
   description:
-    "Paysagiste haut de gamme 78/92 : bureau d'études, création de jardins sur mesure. Les Terres Essentielles, en partenariat avec Aqua System. Parlez-nous de votre projet.",
+    "Paysagiste haut de gamme 78/92 : bureau d'études, création de jardins sur mesure. Les Terres Essentielles. Parlez-nous de votre projet.",
   alternates: { canonical: absoluteUrl('/jardins-paysage/') },
   openGraph: {
     url: `${SITE_URL}/jardins-paysage/`,
@@ -61,13 +62,18 @@ export default function JardinsPaysagePage() {
     <>
       <JsonLd data={BREADCRUMB} />
       <Hero
-        imageSrc={photoSrc('jardin-bassin-maison-bois', '1280w')}
-        imageAlt="Jardin sur mesure avec bassin intégré, végétation dense et maison contemporaine à ossature bois — réalisation Les Terres Essentielles dans l'ouest parisien"
-        // Crop-first (D-28) : la photo brique-piscine restait sémantiquement « une
-        // piscine sur une page jardin » à tous les cadrages → swap spec. La candidate
-        // jardin-bassin a une dominante végétale franche. center_40% garde la maison.
-        objectPosition={{ base: 'object-[center_40%]' }}
-        // Overlay allégé (60%) : la photo est plus sombre en bas (végétaux).
+        imageSrc={photoSrc('jardin-bassin-maison-bois-paysage', '1280w')}
+        // CAS B (D-40) : le hero maison-bois n'existait qu'en 1280w (crop 3/4 upscalé,
+        // flou). Remplacé par l'original 1920 DU MÊME PROJET, cadrage frontal recadré
+        // en 16:9 (maison + bassin centrés, pelouse généreuse en bas pour le H1).
+        // Palier 1920w servi sur desktop large (anti-flou). Dominante végétale franche
+        // conservée (registre jardins). object-center : l'image est déjà cadrée pour
+        // le bandeau.
+        imageSrc1920="/images/realisations/jardin-bassin-maison-bois-paysage-1920w.webp"
+        imageAlt="Jardin paysagé avec bassin intégré aux margelles sombres, pelouse soignée et maison à bardage bois habillée de plantes grimpantes, cyprès et massifs — réalisation Les Terres Essentielles dans l'ouest parisien"
+        objectPosition={{ base: 'object-center' }}
+        // Overlay allégé (60%) : la photo est claire en bas (pelouse) mais le H1 doit
+        // rester lisible — le dégradé bas renforce la zone texte.
         overlayClassName="bg-gradient-to-t from-[rgba(26,21,16,0.60)] via-[rgba(26,21,16,0.22)] to-transparent"
         title="Jardins & Paysage"
         subtitle="En partenariat avec Les Terres Essentielles : bureau d'études paysager, création et entretien de parcs et jardins sur mesure."

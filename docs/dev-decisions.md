@@ -719,3 +719,54 @@ Application des correctifs P0/P1 des 4 audits (copy/seo/alignements/geo) sur les
 - ProofBadges accueil : INCHANGÉ (harmonie typographique du bandeau de preuves — pas de mélange logo/texte).
 
 **Fichiers modifiés** : `src/content/blog.ts` (dates), `src/lib/constants.ts`, `src/components/layout/Footer.tsx`, `src/app/la-maison/page.tsx`, `public/images/partenaires/logo-esprit-piscine.png` (nouveau).
+
+---
+
+## D-40 — Heros nets (palier 1920w) + slot entretien F2 comblé (@fullstack, 2026-06-12)
+
+**Contexte (retour fondateur)** : heros FLOUS sur /piscines-bien-etre et /jardins-paysage. Diagnostic : WebP 1280×720 affichés full-bleed → sur desktop 1440-1920px upscalés ~1,5× → flou perçu. Les sources esprit-piscine plafonnaient à 1280px. Le fondateur a fourni les **originaux pro 1920px** de son site aqua-system.fr (droits OK — c'est son site ; ~50 fichiers 1920px dans `/tmp/hero-hr/`, mapping `urls.txt`, crédits photographes dans les noms de fichiers : Philippe Leroy / Fred Pieau / Architecte Jonny Sturari SKP).
+
+### Casting (previews 800px lues par lots de 3, jamais d'original >1900px lu directement)
+Identification du même visuel que les heros actuels parmi les 60 :
+- **Hero ACCUEIL — CAS A** : `img42` (SAI07, Photo Philippe Leroy) = MÊME visuel que `piscine-couloir-demeure-ancienne` (demeure ancienne pierre/brique + bassin couloir, FONDATEUR-APPROVED) en 1920×1292. → set régénéré SOUS LE MÊME NOM DE BASE (4 tailles), alt + cadrage INCHANGÉS, aucune perception modifiée, juste de la netteté. Bénéficie aussi à la fiche réalisation homonyme + au hero blog (même base).
+- **Hero PISCINES — CAS B** : le couloir intérieur `piscine-interieure-pierre-poutres` (pierre + charpente bois) N'EXISTE PAS en 1920 dans le gisement. Meilleur candidat 1920 du même registre premium : `img17` (série « Spa Corniche » Aqua System) — piscine intérieure bien-être, transats bas-gauche (zone calme H1) + bassin éclairé à droite, composition horizontale qui survit au bandeau (crop 2.6:1 testé). → **nouveau set** `piscine-interieure-spa-transats`, alt factuel réécrit, `object-center`. L'ancien `pierre-poutres` reste utilisé ailleurs (fiche, OuvragesSection, blog, prescripteurs) — fichiers conservés.
+- **Hero JARDINS — CAS B** : `img41` (TOU32, Photo Philippe Leroy) = MÊME PROJET maison-bois que l'actuel `jardin-bassin-maison-bois`, mais **cadrage frontal différent** (la 1280w actuelle était un crop 3/4). Un cadrage différent = changement de perception → traité en CAS B (nom distinct, honnête) plutôt qu'en CAS A. → **nouveau set** `jardin-bassin-maison-bois-paysage`, alt factuel révisé (maison à bardage bois, pas « contemporaine à ossature bois »), `object-center`. L'ancien `jardin-bassin-maison-bois` reste utilisé (fiche, grille) — fichiers conservés.
+
+### Optimisation (`scripts/build-hero-1920-images.mjs`, réutilisable)
+4 tailles WebP (1920/1280/800/400). Qualité 80 sur ≤1280w (qualité conservée mobile/tablet) ; **q66 sur la 1920w** (le palier desktop large) pour tenir la cible poids. Poids 1920w finaux : accueil **333 Ko**, piscines **73 Ko**, jardins **366 Ko**. Le hero jardins (feuillage très dense, original 4:3 1920×1440) pesait >450 Ko même à q52 → **recadré en 16:9** (`crop169`, ratio bandeau réellement affiché par le hero, q60) : 366 Ko + meilleure compo (maison+bassin centrés, pelouse en bas pour le H1). Le « ~5 % au-dessus de 350 Ko » est assumé : descendre la qualité dégraderait la netteté, objet même de la correction ; hero unique en `fetchPriority=high`.
+
+### Système Hero étendu (`Hero.tsx` + `realisations.ts`)
+- Prop optionnelle **`imageSrc1920`** (chemin explicite, pas de dérivation magique). Si fournie → `<source media="(min-width: 1280px)" srcSet={imageSrc1920} type="image/webp">` émis AVANT l'`<img>` (premier `<source>` qui matche gagne ; sous 1280px on retombe sur l'img 1280w ; sous 768px la source mobile 800w prévaut, ordre préservé). `width/height` de l'img inchangés (1280×720). Les heros sans 1920w (autres pages) restent strictement en 1280w — zéro régression.
+- `toWidthVariant` étendu pour accepter `1920w` (type `PhotoSize`), robustesse.
+- 3 pages mises à jour : `/` (CAS A, prop ajoutée seule), `/piscines-bien-etre` + `/jardins-paysage` (CAS B : nouveau base name + `imageSrc1920` + alt + object-position).
+
+### Slot entretien F2 de `VivantSection.tsx` (D-37 l'avait laissé en PhotoPlaceholder)
+Le fondateur voulait « quelque chose de bien qu'on a ». Retenu parmi les 60 : `img34` (GAU24, Photo Philippe Leroy) — abords d'un bassin dans un **jardin manifestement entretenu** (pelouse tondue ras, massifs taillés, soutènement en traverses de bois, transats alignés). Légitime pour illustrer « l'entretien ». → set 3 tailles `jardin-paysage-abords-entretenus` (PAS de 1920w : rendu en OuvrageCard 800w max). Placeholder → `kind: 'photo'`. **Alt FACTUEL décrivant la photo** (registre D-31), zéro revendication de prestation d'entretien sur CE jardin précis (le texte du slot porte déjà le propos). Plus AUCUN placeholder « Visuel à venir » sur /jardins-paysage (vérifié out/ : 0).
+
+### Vérifications
+`tsc --noEmit` PASS · `next lint` 0 warning · `npm run build` PASS (48 pages, clean depuis `.next` vide — un échec `collect-build-traces` nft.json venait d'un cache concurrent, non bloquant en export statique) · `vitest run` **115/115** · `playwright test` **55/55** (a11y axe-core inclus). out/ : 3 `<source min-width:1280px>` 1920w présents (accueil/piscines/jardins), photo entretien rendue, 0 placeholder F2. Captures AVANT/APRÈS RELUES (clips ≤900px, jamais fullPage) dans `tests/screenshots/AFTER-hero-*` + `AFTER-vivant-entretien-*` : netteté visiblement meilleure desktop 1280, H1 lisibles (overlay préservé), VivantSection homogène 4 visuels.
+
+### Crédits / sources (gisement aqua-system.fr, droits fondateur)
+img42→`piscine-couloir-demeure-ancienne` (P. Leroy, SAI07) · img17→`piscine-interieure-spa-transats` (série Spa Corniche AS) · img41→`jardin-bassin-maison-bois-paysage` (P. Leroy, TOU32) · img34→`jardin-paysage-abords-entretenus` (P. Leroy, GAU24).
+
+**Fichiers modifiés** : `scripts/build-hero-1920-images.mjs` (nouveau), `src/components/sections/Hero.tsx`, `src/content/realisations.ts` (toWidthVariant + type PhotoSize), `src/app/page.tsx`, `src/app/piscines-bien-etre/page.tsx`, `src/app/jardins-paysage/page.tsx`, `src/components/sections/VivantSection.tsx`, + 15 WebP dans `public/images/realisations/` (4×accueil/piscines/jardins-hero + 3×entretien).
+
+**Grep rollout** : anciens base names hero (`piscine-interieure-pierre-poutres`, `jardin-bassin-maison-bois`) — Grep src/ : trouvés dans fiches/blog/OuvragesSection/prescripteurs, **non touchés** (usages légitimes hors hero, fichiers conservés). Nouveaux base names — Grep src/ : présents uniquement aux points d'intégration voulus.
+
+---
+
+## D-41 — Correctifs P1 des ré-audits SEO (8.9/10) et GEO (8.6/10) (2026-06-12)
+
+Re-scoring page par page livré (`docs/seo/re-audit-scoring.md`, `docs/geo/re-audit-scoring.md`) suite à la question fondateur « as-tu bien itéré jusqu'à 10/10 ? ». SEO 6.7 → 8.9 ; GEO 7.1 → 8.6 (verdict : le site fait tout ce qu'un site peut faire ; le reste = bloqué fondateur ou structurel/temps).
+
+Correctifs appliqués dans la foulée (session principale, éditions mineures) :
+- R-02/R-03 : metaTitle A4 → « Prix d'une piscine haut de gamme | Aqua System » (46 c., brand unifiée « Aqua System ») ; A1 → suppression « 78/92 » (57 c.).
+- R-04/R-05 : /notre-regard — og:image explicite + autodiscovery RSS (`alternates.types`) + cadratin du og:title remplacé par « | ».
+- R-06 : mentions légales + politique de confidentialité passées `index:false, follow:true` et RETIRÉES du sitemap (budget crawl).
+- SITE-03 : `partnerOrganizationJsonLd` + `foundingDate: '2015'` + `taxID: '811198217'` (données légales publiques pappers/societe.com).
+- SITE-04/R-08 : ItemList JSON-LD sur /realisations (25 fiches, positions = ordre manifeste) + compteur du bloc GEO visible passé de « 24 » codé en dur à `ITEM_LIST.numberOfItems` (la D-37 avait porté la grille à 25 sans ce texte).
+- SITE-05 : llms.txt — ligne dirigeant enrichie (signataire Charte Pro Gens de Confiance + URL profil).
+- SITE-06 : Blog JSON-LD sur /notre-regard (publisher @id organization, 6 BlogPosting).
+- SITE-02 : /prescripteurs — assertion extractible des 6 types d'ouvrage (intérieure : 4 construites) dans la preuve « 30 ans ».
+
+EN ATTENTE (conflit de fichiers avec le lot heros D-40 en cours) : R-01 (meta description /jardins-paysage 168 → ≤155 c.). REPORTÉS au lot P2 : R-07 (FAQPage /jardins-paysage), R-10 (FAQPage articles), R-11/R-12 (maillage fiches ↔ pages services). REJETÉ : R-09 (5 liens nav footer) — contredit D-22 (suppression nav footer validée fondateur) ; ne pas réintroduire sans nouvel arbitrage.

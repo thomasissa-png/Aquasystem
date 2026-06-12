@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { SITE_URL, absoluteUrl, breadcrumbJsonLd } from '@/lib/seo';
+import { REALISATIONS, isDraft } from '@/content/realisations';
 import { RealisationsGrid } from '@/components/sections/RealisationsGrid';
 import { SectionCTA } from '@/components/sections/SectionCTA';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -36,10 +37,30 @@ const BREADCRUMB = breadcrumbJsonLd([
   { name: 'Réalisations', path: '/realisations/' },
 ]);
 
+/**
+ * ItemList JSON-LD (R-08 SEO / SITE-04 GEO, re-audits 2026-06-12) : déclare la
+ * collection des fiches indexables aux moteurs et aux LLM (position = ordre du
+ * manifeste, le même que la grille en état « tous »).
+ */
+const ITEM_LIST = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  '@id': absoluteUrl('/realisations/#itemlist'),
+  name: 'Réalisations Aqua System — piscines et jardins sur mesure (78/92)',
+  numberOfItems: REALISATIONS.filter((r) => !isDraft(r)).length,
+  itemListElement: REALISATIONS.filter((r) => !isDraft(r)).map((r, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: r.title,
+    url: absoluteUrl(`/realisations/${r.slug}/`),
+  })),
+};
+
 export default function RealisationsPage() {
   return (
     <>
       <JsonLd data={BREADCRUMB} />
+      <JsonLd data={ITEM_LIST} />
       <section className="bg-background">
         <div className="mx-auto max-w-container px-4 pb-12 pt-16 md:px-8">
           <h1 className="font-serif text-4xl leading-tight text-foreground md:text-5xl lg:text-6xl">
@@ -50,10 +71,11 @@ export default function RealisationsPage() {
             Hauts-de-Seine.
           </p>
           {/* Bloc extractible GEO (P0-GEO-01, megalot §3) — texte visible et
-              auto-contenu pour les LLM : 24 réalisations + 6 types d'ouvrage
-              nommés + zones + différenciateur bureau d'études intégré. */}
+              auto-contenu pour les LLM : compteur réel du manifeste + 6 types
+              d'ouvrage nommés + zones + différenciateur bureau d'études. */}
           <p className="mt-6 max-w-[72ch] text-base leading-8 text-foreground-secondary">
-            24 réalisations Aqua System dans les Yvelines et les Hauts-de-Seine :
+            {ITEM_LIST.numberOfItems} réalisations Aqua System dans les Yvelines
+            et les Hauts-de-Seine :
             piscines à débordement, bassins miroir, couloirs de nage, piscines
             intérieures, fond mobile, paroi de verre, et des projets associant
             piscine et jardin conçus depuis le même bureau d'études. Chaque

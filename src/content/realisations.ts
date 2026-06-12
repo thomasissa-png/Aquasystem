@@ -90,22 +90,23 @@ export interface Realisation {
 
 const IMG = '/images/realisations';
 
+/** Tailles WebP disponibles. 1920w réservé aux heros full-bleed (palier desktop, D-40). */
+type PhotoSize = '400w' | '800w' | '1280w' | '1920w';
+
 /** Construit le srcset multi-tailles d'une photo (WebP, images.unoptimized). */
 export function photoSrc(base: string, size: '400w' | '800w' | '1280w'): string {
   return `${IMG}/${base}-${size}.webp`;
 }
 
 /**
- * Dérive la variante 800w (mobile, ~121 ko) d'un chemin photo généré par
- * `photoSrc`, quelle que soit sa taille d'origine. Utilisé par Hero/MediaSplit
- * pour servir une image plus légère sous 768px (perf P1 @infrastructure D7).
+ * Dérive une variante de largeur d'un chemin photo généré par `photoSrc`, quelle
+ * que soit sa taille d'origine. Utilisé par Hero/MediaSplit pour servir une image
+ * plus légère sous 768px (800w, perf P1 @infrastructure D7) ou plus nette sur
+ * desktop large (1920w, anti-flou D-40).
  * Retourne null si le chemin n'a pas le suffixe de taille attendu.
  */
-export function toWidthVariant(
-  src: string,
-  size: '400w' | '800w' | '1280w',
-): string | null {
-  const replaced = src.replace(/-(400|800|1280)w\.webp$/, `-${size}.webp`);
+export function toWidthVariant(src: string, size: PhotoSize): string | null {
+  const replaced = src.replace(/-(400|800|1280|1920)w\.webp$/, `-${size}.webp`);
   return replaced === src && !src.includes(`-${size}.webp`) ? null : replaced;
 }
 
