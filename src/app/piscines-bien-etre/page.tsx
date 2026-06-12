@@ -3,6 +3,8 @@ import { SITE_URL, absoluteUrl, breadcrumbJsonLd } from '@/lib/seo';
 import { photoSrc } from '@/content/realisations';
 import { Hero } from '@/components/sections/Hero';
 import { MediaSplit } from '@/components/sections/MediaSplit';
+import { OuvragesSection } from '@/components/sections/OuvragesSection';
+import { TextBlock } from '@/components/sections/TextBlock';
 import { ProofBadges } from '@/components/ui/ProofBadges';
 import { CrossSellingBlock } from '@/components/sections/CrossSellingBlock';
 import { SectionCTA } from '@/components/sections/SectionCTA';
@@ -20,8 +22,12 @@ export const metadata: Metadata = {
   // Arbitrage B.5 (orchestrateur, 2026-06-11) : version enrichie GEO retenue —
   // Trophée Or FPP 2024 vérifié, signal CTR différenciant premium (141 car.).
   title: { absolute: 'Piscines sur mesure Yvelines & 92 — Pisciniste Aqua System' },
+  // Description enrichie (savoir-faire-copy §5, D-30) : intègre les 6 types
+  // d'ouvrage comme qualificatif de confiance + alimente le CTR longue traîne
+  // (« piscine intérieure 78 », « fond mobile »). 158 car., sous le seuil 160.
+  // Title actuel conservé (proposition enrichie §5 optionnelle, arbitrage @seo).
   description:
-    'Pisciniste certifié Socotec, Trophée Or FPP 2024. Piscines sur mesure en Yvelines (78) et Hauts-de-Seine (92). Parlez-nous de votre projet.',
+    'Pisciniste certifié Socotec, Trophée Or FPP 2024. Débordement, miroir, piscine intérieure, fond mobile — 6 types d’ouvrage, tous réalisés en 78/92. Parlez-nous de votre projet.',
   alternates: { canonical: absoluteUrl('/piscines-bien-etre/') },
   openGraph: {
     url: `${SITE_URL}/piscines-bien-etre/`,
@@ -95,6 +101,33 @@ export default function PiscinesBienEtrePage() {
         ]}
         imageSrc={photoSrc('piscine-interieure-beton-baies', '800w')}
         imageAlt="Piscine intérieure en béton brut ouverte sur le jardin — entretien et suivi Aqua System"
+      />
+
+      {/* Strate savoir-faire (D-30, savoir-faire-copy §1-3) — entre « Suivi
+          annuel » et ProofBadges. */}
+      <OuvragesSection />
+
+      {/* §2 « Construit pour durer » — TextBlock fond alterné, eyebrow water. */}
+      <TextBlock
+        tone="alt"
+        accent="water"
+        eyebrow="Construction"
+        title="Construit pour durer"
+        body={[
+          "Chaque piscine est une structure en béton armé, conçue par notre bureau d'études et contrôlée par un organisme tiers avant réception. Le procédé de construction est couvert par un Avis Technique CSTB : c'est la preuve que la structure répond aux normes de l'ouvrage privé, indépendamment de notre propre déclaration.",
+          "Un seul marché, un seul responsable : vous signez avec Aqua System, qui engage sa garantie décennale sur l'ensemble de l'ouvrage. Certification de services Socotec CSP/ESP-001 « Professionnels de la piscine privée à usage familial », membre Propiscines Certifié.",
+        ]}
+      />
+
+      {/* §3 « La matière qui reste » — TextBlock neutre, eyebrow water. */}
+      <TextBlock
+        accent="water"
+        eyebrow="Finitions"
+        title="La matière qui reste"
+        body={[
+          "Le choix du matériau n'est pas une option de fin de chantier : il conditionne la lecture de l'ensemble. Margelles en pierre naturelle ou travertin, plages en grès cérame, revêtement dont la teinte compose la couleur d'eau — chaque décision est prise au moment du plan, pas en rattrapage.",
+          'Ces mêmes pierres, nous les travaillons aussi autour de la propriété : terrasses, allées, soubassements. La cohérence entre le bord de bassin et le reste de l\'extérieur vient de là.',
+        ]}
       />
 
       {/* Preuves */}

@@ -515,3 +515,43 @@ Agent interrompu en fin de mission — travail vérifié et finalisé par l'orch
 (registre architectural, object center_45%, voile bas 0.22) ; preuves cartouches pleins → filets
 éditoriaux (point médian) ; encart qualification cartouche beige → ligne éditoriale sous filet
 (pattern claim GEO accueil) ; cards portfolio rafraîchies (doublon travertin levé, nocturne ajoutée).
+
+## D-30 — Intégration de la strate savoir-faire piscines & jardins (2026-06-12)
+Source copy : `docs/copy/savoir-faire-copy.md` (mot pour mot). Étape 3 chaîne « fond ».
+
+**Nouveaux composants** (`src/components/sections/`) :
+- `OuvrageCard.tsx` — card type d'ouvrage : photo 4:3 + titre serif (h3) + corps.
+  Server component, NON cliquable → volontairement distincte de `RealisationCard`
+  (qui émet E-06 et pointe une fiche). Standard passe 4 : pas de cartouche plein
+  beige — photo en tête, texte sur le fond de section.
+- `OuvragesSection.tsx` — section « Ce que nous savons construire » : SectionHeading
+  centré (eyebrow water natif) + intro 2 phrases + grille 6 cards (1/2/3 col selon
+  breakpoint, gap-x 24px / gap-y 48px). 6 slugs PROUVÉS du copy (débordement, miroir
+  crépuscule, couloir intérieur pierre-poutres, intérieure béton-baies, fond mobile,
+  paroi verre travertin), photoSrc 800w.
+- `TextBlock.tsx` — EXTRAIT du local de `/jardins-paysage` en composant partagé
+  (anti-duplication, Grep rollout). Ajout prop `accent` ('forest' défaut | 'water')
+  pour aligner l'eyebrow sur l'univers. Le local de jardins est supprimé.
+
+**`/piscines-bien-etre`** : insertion entre MediaSplit « Suivi annuel » et ProofBadges —
+(a) `<OuvragesSection/>` ; (b) TextBlock « Construit pour durer » (tone alt, accent water,
+eyebrow Construction) ; (c) TextBlock « La matière qui reste » (neutre, accent water,
+eyebrow Finitions). Rythme validé au rendu : alternance fond sable/sable-alt entre les
+2 TextBlocks puis ProofBadges — respiration nette, pas de doublon visuel.
+**Meta description enrichie** (savoir-faire §5, verdict explicite copywriter) : intègre les
+types d'ouvrage (158 car.). Title inchangé (proposition §5 optionnelle → arbitrage @seo).
+
+**`/jardins-paysage`** : TextBlock « Pierre, végétal, sol » (neutre, eyebrow Matières) inséré
+entre `CreationBlock` et `PepiniereBlock`.
+
+**Validation** : tsc + lint + build (First Load 111 kB piscines & jardins, < 130 kB) +
+102 tests vitest + 46 E2E Playwright PASS. Boucle visuelle 3 devices (clip ≤900px, jamais
+fullPage) lue et jugée standard passe 4 ; baselines piscines/jardins régénérées en fold +
+sections clippées (anciennes fullPage supprimées — incompatibles contrainte ≤900px).
+
+**Point d'attention (signalé, NON corrigé)** : le MediaSplit « Conception sur mesure » (haut de
+page, body « bureau d'études traduit cette vision en un plan ») et les nouveaux blocs Construction/
+Finitions partagent le registre conception/bureau d'études — pas un doublon de contenu (l'un est
+le récit du processus, l'autre la preuve structurelle/matière), mais la page est désormais longue.
+Si @ux/@design jugent la redondance gênante, candidat naturel : resserrer le body du MediaSplit
+« Conception ». Aucune suppression effectuée (consigne).

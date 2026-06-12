@@ -3,6 +3,7 @@ import { SITE_URL, absoluteUrl, breadcrumbJsonLd } from '@/lib/seo';
 import { photoSrc } from '@/content/realisations';
 import { Hero } from '@/components/sections/Hero';
 import { MediaSplit } from '@/components/sections/MediaSplit';
+import { TextBlock } from '@/components/sections/TextBlock';
 import { CrossSellingBlock } from '@/components/sections/CrossSellingBlock';
 import { SectionCTA } from '@/components/sections/SectionCTA';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -78,6 +79,11 @@ export default function JardinsPaysagePage() {
 
       {/* Bloc 2 — Création de parcs et jardins (texte éditorial, D-22). */}
       <CreationBlock />
+
+      {/* Bloc 3 — Matières (strate savoir-faire D-30, savoir-faire-copy §4).
+          TextBlock neutre, eyebrow « Matières », entre CreationBlock et
+          PepiniereBlock. Pont sobre piscine↔jardin (mêmes pierres). */}
+      <MatieresBlock />
 
       {/* Bloc Kei-Stone retiré à la demande du fondateur (2026-06-12) — copy
           conservé dans docs/copy/site-copy.md §v1.1 pour réactivation future. */}
@@ -156,6 +162,20 @@ function CreationBlock() {
   );
 }
 
+function MatieresBlock() {
+  return (
+    <TextBlock
+      eyebrow="Matières"
+      title="Pierre, végétal, sol : ce que nous assemblons"
+      body={[
+        "Le jardin tient à ses matières autant qu'à ses plans. La pierre calcaire d'une allée, la teinte d'un grès cérame posé en terrasse, les essences choisies pour leur port à maturité : chaque élément contribue à la cohérence du lieu ou la rompt.",
+        'Nos végétaux sont sélectionnés pour le sol argilo-calcaire de l\'ouest parisien. Les essences à croissance lente, les vivaces qui résistent à la sécheresse, les arbres de haie qui s\'épaississent avec les années — pas les solutions de remplissage.',
+        'Quand un projet associe piscine et jardin, les matières des deux espaces sont choisies au même moment, depuis le même bureau d\'études.',
+      ]}
+    />
+  );
+}
+
 function PepiniereBlock() {
   // D-25 : ré-arbitrage doctrine photos (conversion d'abord). La pépinière est
   // un lieu physique réel (LTE) : un visuel y convertit mieux qu'un bloc texte.
@@ -176,47 +196,3 @@ function PepiniereBlock() {
   );
 }
 
-/**
- * Bloc prestation jardins SANS photo réelle disponible.
- *
- * D-22 (P0 desktop 2026-06-12) : les PhotoPlaceholder « Visuel à venir » étaient
- * perçus comme une maquette inachevée sur une page commerciale premium
- * (desktop-audit.md Top 5 #1 — reco : « masquer le placeholder tant qu'aucune
- * image n'est fournie »). On supprime le slot image vide et on rend le bloc en
- * texte éditorial pleine largeur, centré et resserré : lecture délibérée, aucun
- * trou visuel. La photo réelle pourra réintroduire un MediaSplit plus tard.
- */
-function TextBlock({
-  eyebrow,
-  title,
-  body,
-  tone = 'default',
-}: {
-  eyebrow: string;
-  title: string;
-  body: string[];
-  tone?: 'default' | 'alt';
-}) {
-  return (
-    <section className={tone === 'alt' ? 'bg-background-secondary' : undefined}>
-      <div className="mx-auto max-w-3xl px-4 py-16 text-center md:px-8 md:py-20">
-        <p className="mb-3 text-xs font-medium uppercase tracking-[0.1em] text-foreground-accent-forest">
-          {eyebrow}
-        </p>
-        <h2 className="font-serif text-3xl leading-tight text-foreground md:text-4xl">
-          {title}
-        </h2>
-        <div className="mx-auto mt-5 max-w-[60ch] space-y-4 text-left">
-          {body.map((p, i) => (
-            <p
-              key={i}
-              className="text-base leading-8 text-foreground-secondary"
-            >
-              {p}
-            </p>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
