@@ -205,7 +205,11 @@ function PepiniereBlock() {
         "Un jardin suivi dans la durée ne ressemble pas à un jardin entretenu en urgence. La taille de forme à la bonne période, le suivi des massifs saison après saison, la détection d'un problème de sol avant qu'il devienne visible dans les végétaux : c'est ce que le geste régulier construit, pas le rattrapage ponctuel.",
         "Notre pépinière aux Alluets-le-Roi nous permet de sélectionner les végétaux sur la plante, pas sur catalogue. Ce qu'un propriétaire reçoit dans son jardin a été choisi pour ses conditions de sol, sa lumière, et l'effet attendu dans dix ans.",
       ]}
-      placeholderSubject="Allée de la pépinière Les Terres Essentielles, végétaux en conteneurs alignés"
+      // Photo CHOISIE PAR LE FONDATEUR (2026-06-12) pour ce slot — bulbes de
+      // printemps de la jardinerie (495354275). Droits accordés. Remplace le
+      // PhotoPlaceholder ; original conservé dans assets/social-media/.
+      imageSrc="/images/jardinerie/jardinerie-bulbes-printemps-800w.webp"
+      imageAlt="Bulbes de printemps en pots à la jardinerie Les Terres Essentielles : narcisses et jacinthes sur les étals, palissade de bois en arrière-plan"
       reversed
     />
   );

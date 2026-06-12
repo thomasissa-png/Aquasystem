@@ -12,7 +12,6 @@ import {
   shortTitle,
   type Realisation,
 } from '@/content/realisations';
-import { ButtonLink } from '@/components/ui/ButtonLink';
 import { SectionCTA } from '@/components/sections/SectionCTA';
 import { JsonLd } from '@/components/seo/JsonLd';
 
@@ -184,19 +183,9 @@ export default function RealisationFiche({
               </div>
             )}
 
-            <div className="mt-8">
-              <p className="mb-3 font-serif text-xl text-foreground">
-                Ce projet vous inspire ? Parlons du vôtre.
-              </p>
-              <ButtonLink
-                href={`/contact?source=${ficheSource(r)}`}
-                variant="primary"
-                size="lg"
-                className="w-full sm:w-auto"
-              >
-                Parlez-nous de votre projet →
-              </ButtonLink>
-            </div>
+            {/* P0 gate passe 6 : CTA inline retiré — il dupliquait mot pour mot
+                le SectionCTA sombre qui suit (~80px plus bas). Un seul CTA de
+                fin de fiche : le SectionCTA. */}
           </aside>
         </div>
       </section>
@@ -214,12 +203,6 @@ export default function RealisationFiche({
   );
 }
 
-/** Map type de fiche → smart default chip du formulaire. */
-function ficheSource(r: Realisation): string {
-  if (r.type === 'jardin_paysage') return 'jardins-paysage';
-  if (r.type === 'projet_complet') return 'projet-complet';
-  return 'piscines-bien-etre';
-}
 
 /** Texte éditorial Intention → Réponse → Exécution (quand fourni). */
 function FicheEditorial({ realisation: r }: { realisation: Realisation }) {

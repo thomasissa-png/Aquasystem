@@ -608,3 +608,24 @@ Fusion ÉDITORIALE des anciens `TextBlock` « Construit pour durer » + « La ma
 **C — Vérifications** : `tsc --noEmit` PASS · `next lint` PASS (0 warning) · `next build` PASS (39 pages, /jardins-paysage et /piscines-bien-etre = 111 kB First Load JS) · `vitest run` 102/102 · `playwright test` 46/46. Baselines régénérées (`scripts/baselines-fond-d32.mjs`, clip ≤900px, jamais fullPage) pour jardins + piscines (folds + sections clippées 3 devices) + fiche réalisation `piscine-debordement-foret` (vérifie le rendu du texte D-31). Captures RELUES (standard passe 5) : section vivant équilibrée, card sol texte-only distincte, photo pépinière chargée, bloc piscines fusionné sans doublon de titre, texte D-31 bien rendu sur la fiche.
 
 **Fichiers modifiés** : `src/components/sections/VivantSection.tsx` (nouveau), `src/app/jardins-paysage/page.tsx`, `src/app/piscines-bien-etre/page.tsx`, `scripts/baselines-fond-d32.mjs` (nouveau). Copy exact respecté, tokens uniquement, aucun composant partagé modifié (pas de Grep rollout nécessaire — `OuvrageCard`/`PhotoPlaceholder`/`TextBlock` consommés tels quels).
+
+---
+
+## D-33 — Audit + fix de tous les CTA : zéro retour à la ligne (2026-06-12)
+
+Agent : @fullstack | Retour fondateur (capture 2026-06-12) : le CTA « Parlez-nous de votre projet » se cassait sur 2 lignes dans le drawer mobile (panneau latéral étroit, 80 %) — « pas propre ».
+
+**Diagnostic (audit exhaustif, captures 390 + 320 + 1440)** : tous les CTA de type bouton dérivent de 2 composants partagés (`Button`, `ButtonLink`). Aucun n'avait `whitespace-nowrap` → le libellé long (28-30 car.) wrappait dans tout conteneur étroit (drawer) et, une fois `nowrap` posé, débordait l'horizontale à 320px sur les CTA `size="lg"` (hero accueil, SectionCTA, fiche réalisation, submit formulaire).
+
+**Règle système retenue (pas de cas par cas)** :
+1. **`whitespace-nowrap` ajouté aux classes de base de `Button` ET `ButtonLink`** → un CTA bouton ne wrappe JAMAIS, partout.
+2. **Taille `lg` rendue fluide** (`px-[clamp(1rem,4vw,2rem)]` + `text-[clamp(0.9375rem,3.9vw,1.125rem)]`) dans les deux composants → les libellés longs rétrécissent légèrement < 400px au lieu de déborder ; valeurs pleines (px-8 / text-lg) dès ~400px. Couvre hero, SectionCTA, submit, CTA final prescripteurs en un seul endroit.
+3. **Drawer (worst case, panneau ≥ 320px)** : passage de `size="lg"` à `size="md"` + `px-4` + `text-[clamp(0.8125rem,3.6vw,1rem)]` (le bouton est `w-full`, donc seuls texte/padding pilotent le fit) → tient sur 1 ligne à 320px ET 390px.
+
+**Uniformisation des incohérences trouvées** : la flèche « → » manquait sur la navbar desktop ET le drawer alors que tous les CTA de page (hero, SectionCTA, 404, fiche) l'avaient → flèche ajoutée aux 2 CTA navbar pour cohérence du système. Tailles/gaps/padding désormais homogènes (gap-2, rounded-md, clamp partagé).
+
+**Vérification** : `tsc --noEmit` PASS · `next lint` PASS (0 warning) · `next build` PASS · `vitest run` 102/102 · `playwright test` 46/46 (dont a11y axe-core + test drawer mobile). Contrôle programmatique d'overflow horizontal à **320px ET 390px** sur 5 pages (drawer ouvert inclus) : `scrollWidth === clientWidth` partout, **zéro bouton dépassant le viewport**. Re-captures (`docs/reviews/cta-audit/`, clips ≤ 900px) RELUES : drawer 320/390 sur 1 ligne, hero/SectionCTA/404 alignés avec flèche cohérente.
+
+**Baselines** : régénérées via `scripts/baselines-cta-d33.mjs` (clips ≤ 900px, jamais fullPage) — folds des 7 pages publiques (navbar + hero), section CTA sombre accueil, fold 404, sur les 3 devices (375/768/1280).
+
+**Fichiers modifiés** : `src/components/ui/Button.tsx`, `src/components/ui/ButtonLink.tsx`, `src/components/layout/NavBar.tsx`. Nouveaux : `scripts/baselines-cta-d33.mjs`, `tests/cta-audit-shots.mjs`. Aucune autre instance de CTA à modifier (le fix vit dans les 2 composants partagés → couverture totale par héritage, pas de Grep rollout par fichier nécessaire).

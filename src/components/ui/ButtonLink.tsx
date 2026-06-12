@@ -20,11 +20,13 @@ const VARIANT_CLASSES: Record<ButtonVariant, string> = {
 const SIZE_CLASSES: Record<ButtonSize, string> = {
   sm: 'h-9 px-4 text-sm',
   md: 'h-11 px-6 text-base',
-  lg: 'h-[52px] px-8 text-lg',
+  // lg : libellés longs (« Parlez-nous de votre projet → ») + whitespace-nowrap →
+  // padding/texte fluides pour ne JAMAIS déborder ≥ 320px (D-33), valeurs pleines
+  // dès 400px (text-lg = 1.125rem, px-8 = 2rem).
+  lg: 'h-[52px] px-[clamp(1rem,4vw,2rem)] text-[clamp(0.9375rem,3.9vw,1.125rem)]',
 };
 
-export interface ButtonLinkProps
-  extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+export interface ButtonLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
   variant?: ButtonVariant;
   size?: ButtonSize;
@@ -44,7 +46,7 @@ export function ButtonLink({
     <Link
       href={href}
       className={cn(
-        'inline-flex items-center justify-center gap-2 rounded-md font-medium tracking-[0.01em]',
+        'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium tracking-[0.01em]',
         'transition-colors duration-fast ease-out',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
         inverseFocus

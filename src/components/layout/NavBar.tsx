@@ -6,12 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { trackEvent } from '@/lib/analytics';
-import {
-  CONTACT_PATH,
-  CTA_LABEL,
-  NAV_LINKS,
-  SITE_NAME,
-} from '@/lib/constants';
+import { CONTACT_PATH, CTA_LABEL, NAV_LINKS, SITE_NAME } from '@/lib/constants';
 import { ButtonLink } from '@/components/ui/ButtonLink';
 
 /**
@@ -123,7 +118,7 @@ export function NavBar() {
             data-track="cta"
             onClick={() => trackCta('navbar')}
           >
-            {CTA_LABEL}
+            {CTA_LABEL} →
           </ButtonLink>
         </div>
 
@@ -160,9 +155,7 @@ export function NavBar() {
             className="drawer-panel relative flex h-full w-[80%] max-w-sm flex-col bg-background px-6 pb-8 pt-4 shadow-2xl focus:outline-none"
           >
             <div className="flex items-center justify-between border-b border-border-muted pb-4">
-              <span className="font-serif text-xl text-foreground">
-                {SITE_NAME}
-              </span>
+              <span className="font-serif text-xl text-foreground">{SITE_NAME}</span>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
@@ -173,25 +166,17 @@ export function NavBar() {
               </button>
             </div>
 
-            <nav
-              aria-label="Navigation"
-              className="flex-1 overflow-y-auto pt-2"
-            >
+            <nav aria-label="Navigation" className="flex-1 overflow-y-auto pt-2">
               <ul className="flex flex-col">
                 {NAV_LINKS.map((link) => (
-                  <li
-                    key={link.href}
-                    className="border-b border-border-muted/60"
-                  >
+                  <li key={link.href} className="border-b border-border-muted/60">
                     <Link
                       href={link.href}
                       aria-current={isActive(link.href) ? 'page' : undefined}
                       onClick={() => setOpen(false)}
                       className={cn(
                         'block min-h-11 py-4 font-serif text-2xl leading-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2',
-                        isActive(link.href)
-                          ? 'text-foreground-accent-water'
-                          : 'text-foreground',
+                        isActive(link.href) ? 'text-foreground-accent-water' : 'text-foreground',
                       )}
                     >
                       {link.label}
@@ -206,18 +191,23 @@ export function NavBar() {
               </ul>
             </nav>
 
+            {/* Drawer CTA (D-33) : panneau étroit (80%, ≥ 320px) → le libellé long
+                « Parlez-nous de votre projet » ne doit JAMAIS wrapper (whitespace-nowrap
+                hérité du ButtonLink). On descend en size md + texte fluide clamp pour
+                tenir dans le panneau jusqu'à 320px sans débordement, et on aligne la
+                flèche → comme les autres CTA. px réduit pour gagner la marge utile. */}
             <ButtonLink
               href={CONTACT_PATH}
               variant="primary"
-              size="lg"
+              size="md"
               data-track="cta"
               onClick={() => {
                 trackCta('navbar');
                 setOpen(false);
               }}
-              className="mt-6 w-full"
+              className="mt-6 w-full px-4 text-[clamp(0.8125rem,3.6vw,1rem)]"
             >
-              {CTA_LABEL}
+              {CTA_LABEL} →
             </ButtonLink>
           </div>
         </div>

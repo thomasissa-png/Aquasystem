@@ -11,8 +11,7 @@ import { cn } from '@/lib/cn';
 export type ButtonVariant = 'primary' | 'ghost' | 'forest';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
   loading?: boolean;
@@ -32,57 +31,57 @@ const VARIANT_CLASSES: Record<ButtonVariant, string> = {
 const SIZE_CLASSES: Record<ButtonSize, string> = {
   sm: 'h-9 px-4 text-sm', // 36px
   md: 'h-11 px-6 text-base', // 44px — touch target WCAG 2.5.8
-  lg: 'h-[52px] px-8 text-lg', // 52px — CTA hero / formulaire
+  // 52px — CTA hero / formulaire. Padding/texte fluides : libellés longs +
+  // whitespace-nowrap ne débordent jamais ≥ 320px (D-33). Pleines valeurs ≥ 400px.
+  lg: 'h-[52px] px-[clamp(1rem,4vw,2rem)] text-[clamp(0.9375rem,3.9vw,1.125rem)]',
 };
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  function Button(
-    {
-      variant = 'primary',
-      size = 'md',
-      loading = false,
-      inverseFocus = false,
-      disabled,
-      type = 'button',
-      className,
-      children,
-      ...props
-    },
-    ref,
-  ) {
-    const isInert = disabled || loading;
-    return (
-      <button
-        ref={ref}
-        type={type}
-        // On garde l'élément dans le tab order (a11y) : aria-disabled plutôt que
-        // disabled seul, sauf en loading où on bloque réellement le double-submit.
-        disabled={loading ? true : disabled}
-        aria-disabled={isInert || undefined}
-        aria-busy={loading || undefined}
-        className={cn(
-          'inline-flex items-center justify-center gap-2 rounded-md font-medium tracking-[0.01em]',
-          'transition-colors duration-fast ease-out',
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
-          inverseFocus
-            ? 'focus-visible:ring-[var(--color-focus-ring-inverse)]'
-            : 'focus-visible:ring-[var(--color-focus-ring)]',
-          'disabled:cursor-not-allowed disabled:bg-background-tertiary disabled:text-foreground-muted disabled:border-transparent',
-          VARIANT_CLASSES[variant],
-          SIZE_CLASSES[size],
-          className,
-        )}
-        {...props}
-      >
-        {loading ? (
-          <>
-            <Loader2 aria-hidden className="h-4 w-4 animate-spin" />
-            <span>Envoi en cours…</span>
-          </>
-        ) : (
-          children
-        )}
-      </button>
-    );
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
+  {
+    variant = 'primary',
+    size = 'md',
+    loading = false,
+    inverseFocus = false,
+    disabled,
+    type = 'button',
+    className,
+    children,
+    ...props
   },
-);
+  ref,
+) {
+  const isInert = disabled || loading;
+  return (
+    <button
+      ref={ref}
+      type={type}
+      // On garde l'élément dans le tab order (a11y) : aria-disabled plutôt que
+      // disabled seul, sauf en loading où on bloque réellement le double-submit.
+      disabled={loading ? true : disabled}
+      aria-disabled={isInert || undefined}
+      aria-busy={loading || undefined}
+      className={cn(
+        'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium tracking-[0.01em]',
+        'transition-colors duration-fast ease-out',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
+        inverseFocus
+          ? 'focus-visible:ring-[var(--color-focus-ring-inverse)]'
+          : 'focus-visible:ring-[var(--color-focus-ring)]',
+        'disabled:cursor-not-allowed disabled:bg-background-tertiary disabled:text-foreground-muted disabled:border-transparent',
+        VARIANT_CLASSES[variant],
+        SIZE_CLASSES[size],
+        className,
+      )}
+      {...props}
+    >
+      {loading ? (
+        <>
+          <Loader2 aria-hidden className="h-4 w-4 animate-spin" />
+          <span>Envoi en cours…</span>
+        </>
+      ) : (
+        children
+      )}
+    </button>
+  );
+});
