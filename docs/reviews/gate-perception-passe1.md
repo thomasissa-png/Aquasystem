@@ -469,3 +469,82 @@ publication définitive » rendue en prod avant le footer.
 1. Supprimer le libellé « Fiche en cours de documentation » (cartes + encart fiche détail).
 2. Retirer la note « À faire valider par un avocat » de la Politique de confidentialité.
 3. Passe 2 : capturer l'onglet/favicon à 16px (cas #3 non tranché) + re-vérifier les 3 pages corrigées.
+
+---
+
+## PASSE 6 — Jugement du cycle « fond jardins + textes réalisations + resserrage piscines » (œil dur) — 2026-06-12
+
+### Verdict Passe 6 : PRÉSENTABLE AU FONDATEUR — **NON** (1 P0 systématique sur les fiches)
+
+Build rebâti (`npm run build`, exit 0) puis servi (`npx serve out -l 3700`). Routes 200 vérifiées :
+`/jardins-paysage`, `/piscines-bien-etre`, 4 fiches, `/`. Captures viewport réel mobile 390×844 +
+desktop 1440×900, clips ≤ 900px (viewport bandé, jamais fullPage), images ≤ 1900px. Lots ≤ 3.
+Captures : `tests/screenshots/perception/p6-*.png`. Recalibrages cumulés appliqués (juge dur).
+
+#### (1) /jardins-paysage ENRICHIE — du FOND, sans fausse promesse → **OK premium**
+Page jugée EN ENTIER, mobile (~8870px) et desktop (~5990px), section par section.
+- **Hero** lisible (titre serif clair sur zone sombre de la photo, contraste réel OK — cas #1 OK).
+- **Bureau d'études (4 §)** : « Un projet pensé avant d'être planté » → texte concret et crédible
+  (lecture du terrain, ombres portées, vues depuis l'intérieur, circulations, co-étude piscine+jardin,
+  bureau intégré aux Alluets-le-Roi). Du **fond réel**, aucune promesse creuse. Cas #5 OK.
+- **« Ce que le vivant impose »** (eyebrow LE VIVANT, grille 4 entrées) : placeholders « Visuel à venir »
+  **sobres, bien dimensionnés, légendés descriptivement** (« Haie de charme… lumière rasante… »), titres
+  « Le choix des essences » / « Le sol comme contrainte réelle » (entrée **text-only** assumée, alignée
+  haut, pas de trou perçu) / « L'entretien au bon moment ». Textes concrets (essences à maturité, sol
+  argilo-calcaire 78/92, calendrier de taille). Rythme alterné **digeste** (placeholder ↔ titre ↔ texte).
+- **Pépinière réécrite** : photo réelle de pépinière + « Des végétaux sélectionnés pour durer » (sélection
+  sur la plante pas sur catalogue) + preuves filets (Bureau d'études / Pépinière / Jardinerie depuis 2015)
+  + photo piscine-jardin (cross-sell). Cohérent, pas de fausse promesse.
+- **Cross-sell + CTA + footer** : « Découvrir nos piscines sur mesure » → CTA conversation → footer maîtrisé
+  (ne déborde pas mobile — cas #6 OK). **Verdict page : du fond, rythme bon, zéro fausse promesse → OK.**
+
+#### (2) /piscines-bien-etre RESSERRÉE — fusion « Ce qui tient dans le temps » → **respire mieux, zéro fait perdu**
+Page jugée EN ENTIER, mobile (~10205px) et desktop (~5842px).
+- **« Ce qui tient dans le temps »** (eyebrow CONSTRUCTION & FINITIONS) **fusionne** construction (béton
+  armé, bureau d'études, **Avis Technique CSTB**), responsabilité (un seul marché, **garantie décennale**,
+  **Socotec CSP/ESP-001**, **Propiscines Certifié**) et finitions (margelles pierre/travertin, grès cérame,
+  teinte d'eau, cross-sell pierre). **Aucun fait perdu** vs l'ancien découpage : décennale, CSTB, Socotec,
+  Propiscines, 30 ans, 350 piscines tous présents. Bloc dense mais structuré (3 § thématiques).
+- **Bas de page** : preuves chiffrées filets (30+ / 350+ / Socotec / L'Esprit Piscine) → cross-sell jardin
+  avec photo réelle « Votre piscine mérite un jardin à sa mesure » → CTA conversation → footer. Plus de
+  bloc redondant en fin de page : **le bas respire mieux**. Anti-régression piscines mobile **OK**.
+
+#### (3) FICHES réalisations (4 jugées) — textes D-31 excellents MAIS double-CTA → **P0**
+Mobile, ~2100-2240px chacune (3 bandes), **longueur OK mobile**.
+- **Textes D-31** (debordement-foret, fond-mobile-terrasse, interieure-pierre-poutres, nocturne-murets) :
+  concrets, narratifs, techniques justes (lame de débordement + bac tampon ; motoréducteur + guides béton ;
+  moellons + charpente + travertin + atmosphère humide ; scénographie lumière câblée au gros-œuvre). Chacun
+  **se termine par une projection vers le lecteur** (« Si vous disposez… », « Si vous envisagez… ») →
+  **donnent envie de contacter.** Eyebrows variés (Piscine sur mesure / Espace bien-être / Projet complet
+  eau + jardin). Photos réelles au standard maison (cas #4 OK). **Le fond éditorial est au niveau.**
+- **DÉFAUT P0 (perception, cas #2 répétition / #5 inachevé) — sur les 4 fiches** : le **même CTA rendu
+  DEUX FOIS accolé**. Titre serif clair « Ce projet vous inspire ? Parlons du vôtre. » + bouton
+  « Parlez-nous de votre projet → », **IMMÉDIATEMENT suivi** (sans contenu intercalaire, ~80px) du bloc
+  CTA sombre pleine largeur reprenant **EXACTEMENT** le même titre + le même bouton. Vérifié en bande
+  continue (`p6-fiche-cta-zoom.png`) : ce n'est pas un artefact de scroll. Source :
+  `src/app/realisations/[slug]/page.tsx` → `<aside>` CTA inline (l.187-199) **+** `<SectionCTA
+  amorce="Ce projet vous inspire ? Parlons du vôtre.">` (l.208) = même amorce + même bouton.
+  Un client premium pressé lit « doublon d'affichage / template mal monté ». **Pas un parti pris crédible**
+  (personne ne pose volontairement deux CTA identiques collés). **Correctif d'intégration trivial**
+  (@fullstack) : retirer l'`<aside>` inline OU différencier l'amorce du `SectionCTA`.
+
+#### (4) Anti-régression — **OK**
+- **Folds accueil** mobile (~5393px) + desktop (~3621px) : hero « L'extérieur à la hauteur de votre
+  propriété. » lisible sur fond réel (cas #1 OK), bloc Piscines premium, nom de marque « Aquasystem »
+  uniforme. **Zéro régression.**
+- **Piscines mobile** : aucune régression de fold ni de footer (cas #6 OK).
+
+### Défauts Passe 6
+| Page | Device | Défaut perçu | Sévérité | Capture |
+|---|---|---|---|---|
+| 4 fiches réalisations | mobile (et desktop) | CTA dédoublé : même titre « Ce projet vous inspire ? Parlons du vôtre. » + même bouton, rendus 2× accolés (~80px) | **P0** | `p6-fiche-*-mobile-01.png`, `p6-fiche-cta-zoom.png` |
+| /jardins-paysage | desktop | Entrée text-only de la grille « Ce que le vivant impose » laisse un grand vide sous le texte vs card placeholder voisine plus haute | P1 cosmétique (parti pris grille hauteurs naturelles — non bloquant) | `p6-jardins-desktop-03.png` |
+
+### Recommandation Passe 6 : **NON** → relancer @fullstack
+1. **P0 bloquant** : supprimer le dédoublement CTA des fiches (`src/app/realisations/[slug]/page.tsx`).
+   Garder UN seul CTA en bas de fiche (le `SectionCTA` sombre suffit), ou différencier nettement l'amorce
+   de l'aside inline si les deux doivent coexister. Re-soumettre les 4 fiches en passe 7.
+2. **P1 (optionnel)** : équilibrer la hauteur de l'entrée text-only de la grille jardins desktop (centrer
+   verticalement le texte dans la cellule, ou borner la hauteur) — non bloquant pour le verdict.
+3. Tout le reste du cycle (jardins enrichie, piscines resserrée, textes D-31, accueil) est **au standard** :
+   ne pas y retoucher.
