@@ -207,6 +207,115 @@ Refonte IA validée au rendu réel. Aucun agent à relancer. (Optionnel, hors ga
 
 ---
 
+## PASSE 4 — Jugement « plus dur » des changements post-passe-3 — 2026-06-12
+
+### Verdict Passe 4 : PRÉSENTABLE AU FONDATEUR — **OUI**
+
+**Recalibrage appliqué** (nouveaux cas canoniques transmis) : un pattern « app mobile » n'est PAS un
+pattern site premium (le fondateur a rejeté le drawer bottom-sheet validé en passe 2/3) ; des cartouches
+pleins ne sont PAS un code éditorial (il a rejeté le bloc preuves en cartouches). J'ai donc jugé ces deux
+refontes au standard maison premium, sans indulgence — et le reste avec le même œil dur.
+
+Build rebâti (`npm run build`, exit 0) puis servi (`npx serve out -l 3500`). Routes réelles vérifiées :
+`/piscines-bien-etre`, `/jardins-paysage`, `/la-maison` (les slugs `/piscines` et `/jardins` n'existent
+pas — 404 attendus, hors périmètre). 24 fiches réalisations générées (et non 17). Captures viewport réel
+mobile 390×844 + desktop 1440×900, clips ≤ 900px. Captures : `tests/screenshots/perception/p4-*.png`.
+
+#### (2 & 4) DRAWER MOBILE refondu — latéral droite, focus-container → **OUI, premium (plus un bottom-sheet)**
+Le drawer n'est plus une feuille qui remonte du bas (pattern « app ») : c'est un **panneau latéral droit**
+qui couvre ~85% de la largeur, overlay sombre à gauche, focus dans le conteneur. En-tête « Aquasystem »
+serif + **croix de fermeture SANS anneau ni cercle par défaut** (simple X top-right, conforme à la
+consigne). Hiérarchie : 4 entrées serif séparées par filets fins (« Réalisations · Piscines & Bien-être ·
+Jardins & Paysage · À propos »), **« À propos » en 4e position avec sous-titre « De la vision à la
+réalisation »**, puis CTA pleine largeur « Parlez-nous de votre projet » ancré en bas. Lu APRÈS Piscines
+et Jardins, « À propos » ne prête à **aucune ambiguïté** (page maison/à-propos, pas une catégorie de
+service). Animation sobre, pas d'effet « app ». `p4-drawer-mobile.png`.
+
+#### (4 bis) NAV « À propos » DESKTOP → **NON AMBIGU**
+Barre desktop : « Réalisations · Piscines & Bien-être · Jardins & Paysage · À propos » + CTA. Même
+lecture : « À propos » en fin de liste après les deux métiers = clairement la page maison. `p4-home-desktop-y0.png`.
+
+#### (1) ACCUEIL — photo fondateur parasols sur le bloc LTE → **DIGNE et équilibrée**
+Bloc à deux colonnes carrées de taille égale : gauche **Aqua System** (piscine intérieure pierre-poutres,
+lumineuse, premium) ; droite **« EN PARTENARIAT AVEC LES TERRES ESSENTIELLES »** + photo fondateur
+(terrasse à parasols en chaume, salon lounge, bassin, jardin mature, lumière chaude — vraie scène
+extérieure haut de gamme, pas un cliché stock). `object` ~60% bien cadré, sujet centré. **Équilibre tenu**
+avec le bloc Piscines pierre-poutres voisin : même format, même poids visuel, même niveau premium — aucun
+des deux n'écrase l'autre. Cas #4 OK. `p4-home-desktop-lte-y780.png`, `p4-parasols-zoom.png`,
+`p4-home-mobile-lte.png`.
+*P1 cosmétique non bloquant* : l'eyebrow « EN PARTENARIAT AVEC LES TERRES ESSENTIELLES » est petit/discret
+sur le coin de la photo — lisible mais pourrait gagner en présence. Sans incidence sur le verdict.
+
+#### (8) Bloc preuves éditorial (filets) + claim GEO recomposé → **TENUE confirmée**
+Bloc 4 colonnes séparées par **filets verticaux fins** (« 30+ ANS D'EXPERTISE · 350+ PISCINES ENTRETENUES
+EN 78/92 · SOCOTEC CERTIFICATION CSP/ESP-001 · L'ESPRIT PISCINE RÉSEAU PISCINISTE ») — **code éditorial
+en filets, PAS de cartouches pleins** (la correction demandée par le fondateur est appliquée). Dessous,
+filet horizontal puis **claim GEO en ligne centrée, créditée** : « Aqua System : certifié Socotec CSP/ESP-001,
+membre du réseau L'Esprit Piscine. Plus de 350 piscines entretenues… Trophée d'Or FPP 2024 (Piscine
+intérieure, FPP). Award Bronze EUSA 2025… ». Recomposition lisible, sobre, factuelle, parfaitement cohérente
+avec le bloc filets au-dessus. `p4-home-desktop-y2100.png`, `p4-home-mobile-geo.png`.
+
+#### (3) HÉROS /piscines-bien-etre · /jardins-paysage · /la-maison → **« cheap » RÉSOLU (desktop + mobile)**
+- **/piscines-bien-etre** : photo pierre-poutres (piscine intérieure, ~35% crop), titre serif blanc
+  « Piscines & Bien-être » + sous-titre lisibles sur la zone basse plus sombre. Cas #1 OK.
+- **/jardins-paysage** : photo jardin-bassin (maison + jardin + bassin, ~40%), titre blanc sur la zone
+  végétale sombre, sous-titre lisible. Vraie scène, premium.
+- **/la-maison** : split — colonne texte sur crème (eyebrow « AQUA SYSTEM × LES TERRES ESSENTIELLES »,
+  titre « La maison », sous-titre, **ligne de preuve « 30 ans · Équipe de 8 · Yvelines & Hauts-de-Seine »
+  + filet**) / photo veranda-soir (piscine sous véranda au crépuscule, lumière chaude). Traitement
+  éditorial soigné.
+  Les 3 heros tiennent aussi **en mobile** (texte sur bande suffisamment sombre ou empilé sur crème).
+  Le « cheap » des passes antérieures n'est plus perçu. `p4-piscines-hero-desktop.png`,
+  `p4-jardins-hero-desktop/mobile.png`, `p4-lamaison-hero-desktop/mobile.png`.
+
+#### (5) FICHE réalisation draft → **PAGE DIGNE (visualDescription rendue + CTA contact)**
+Fiche `piscine-debordement-foret`. Desktop split : grande photo premium gauche + caption « Réalisation
+Aqua System, Ouest parisien. Photo publiée avec l'autorisation du propriétaire. » ; droite titre serif
+« Piscine à débordement en lisière de forêt », type « PISCINE SUR MESURE », zone « Ouest parisien », puis
+**un vrai paragraphe descriptif rendu** (visualDescription : « Le plan d'eau s'étend en lisière de forêt,
+de plain-pied… un débordement prolongé par le reflet sombre des arbres. Une terrasse en bois et une bande
+de pierre claire, où quelques transats s'alignent. ») — **texte réel, pas un placeholder**. Puis « Ce projet
+vous inspire ? Parlons du vôtre. » + **CTA contact propre** (« Parlez-nous de votre projet »), à la place
+du cross-sell. Aucun encart d'inachevé. Perçu comme une belle réalisation présentée simplement. Cas #5
+OK. `p4-fiche-draft-desktop.png`, `p4-fiche-draft-desktop-low.png`, `p4-fiche-draft-mobile.png`.
+
+#### (6) /realisations — grille 24 cartes (dont 10 nouvelles photos) → **HOMOGÈNE, rien d'indigne**
+24 cartes (énumérées via DOM), 3 colonnes, filtres « Tous · Piscine · Spa & Sauna · Bassin & Parc · Projet
+complet eau+jardin ». Libellés **consistants** : type (PISCINE SUR MESURE / PROJET COMPLET EAU + JARDIN /
+ESPACE BIEN-ÊTRE / JARDIN & PARC) + zone « Ouest parisien » + « Voir → ». **Zéro libellé d'inachevé.**
+Qualité homogène au standard premium : piscines extérieures, intérieures pierre-poutres, scènes eau+jardin,
+demeures (brique, ancienne). Les candidates « à risque » (carte teintée chaude au crépuscule, demeure de
+brique) inspectées en zoom = vraies propriétés haut de gamme, pas de photo hors-niveau. Cas #4 OK.
+`p4-realisations-y0/y850/y1700/y2550.png`, `p4-real-zoom1.png`.
+
+#### (7) FOOTER — icônes LinkedIn / Facebook → **PROPRES**
+Deux icônes monochromes en traits fins (glyphe « in » LinkedIn + « f » Facebook), 36px, bien espacées sous
+les badges « Certifié Socotec CSP/ESP-001 » / « Réseau L'Esprit Piscine ». Liens vérifiés : LinkedIn →
+`linkedin.com/company/aqua-system`, Facebook → `facebook.com/LesTerresEssentielles/`, **aria-labels
+explicites** + ouverture nouvel onglet. Reconnaissables, non cassées, non génériques. `p4-footer-icons.png`.
+
+#### Synthèse Passe 4
+| # | Changement jugé (œil dur) | Statut | Sévérité |
+|---|---|---|---|
+| 2/4 | Drawer mobile latéral droite, croix sans anneau, « À propos » non ambigu | ✅ premium (plus un bottom-sheet) | — |
+| 4 | Nav « À propos » desktop | ✅ non ambigu | — |
+| 1 | Photo fondateur parasols bloc LTE (équilibre pierre-poutres) | ✅ digne | P1 cosmétique (eyebrow petit) |
+| 8 | Bloc preuves filets éditoriaux + claim GEO recomposé | ✅ tenue (plus de cartouches pleins) | — |
+| 3 | Heros /piscines · /jardins · /la-maison (eyebrow/preuve/filet) | ✅ « cheap » résolu | — |
+| 5 | Fiche draft (visualDescription rendue + CTA contact) | ✅ page digne | — |
+| 6 | Grille 24 cartes (10 nouvelles photos) | ✅ homogène, rien d'indigne | — |
+| 7 | Footer icônes LinkedIn/Facebook | ✅ propres | — |
+
+**Zéro P0. Un seul P1 cosmétique non bloquant** (eyebrow LTE petit). Les deux patterns rejetés par le
+fondateur (drawer bottom-sheet, cartouches preuves) sont **corrigés** et tiennent au standard premium.
+Verdict binaire du gate (zéro P0, P1 cosmétique assumé) → **OUI**.
+
+#### Recommandation Passe 4 : **OUI — présentable au fondateur en l'état.**
+Aucun agent à relancer en bloquant. (Optionnel, hors gate : @design peut renforcer légèrement la présence
+de l'eyebrow « EN PARTENARIAT AVEC LES TERRES ESSENTIELLES » sur le bloc LTE — pur raffinement.)
+
+---
+
 ## Détail par page (Passe 1)
 
 ### Home — OUI (hors D1/D2)
