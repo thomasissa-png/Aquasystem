@@ -105,7 +105,7 @@ Ces fourchettes sont des données de marché, pas les tarifs d'Aqua System. Elle
 
 ---
 
-La [piscine à fond mobile sur mesure](/piscines-bien-etre/) est l'ouvrage le plus rare de notre portfolio. Si vous envisagez ce type de projet, la conversation doit commencer avant les plans. Notre [bureau d'études intégré, de la conception à l'entretien](/notre-approche/), porte l'ensemble depuis le premier échange.
+La [piscine à fond mobile sur mesure](/piscines-bien-etre/) est l'ouvrage le plus rare de notre portfolio. Si vous envisagez ce type de projet, la conversation doit commencer avant les plans. Notre [bureau d'études intégré, de la conception à l'entretien](/la-maison/), porte l'ensemble depuis le premier échange.
 
 **[Parlez-nous de votre projet avant les plans →](/contact/)**
 

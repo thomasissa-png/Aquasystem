@@ -151,7 +151,7 @@ Ces fourchettes ne sont pas les tarifs d'Aqua System. Elles reflètent l'état d
 
 Comprendre les postes de coût est un début. Comprendre ce que valent ces postes pour votre terrain, votre configuration, votre vision : c'est une autre conversation.
 
-Pour les propriétaires qui envisagent un projet dans les Yvelines ou les Hauts-de-Seine, notre approche commence par une lecture du terrain, pas par une liste de prix. Retrouvez nos [réalisations de piscines sur mesure](/piscines-bien-etre/) pour calibrer le niveau d'ouvrage, et [notre approche du bureau d'études intégré](/notre-approche/) pour comprendre ce qu'un interlocuteur unique change dans le résultat.
+Pour les propriétaires qui envisagent un projet dans les Yvelines ou les Hauts-de-Seine, notre approche commence par une lecture du terrain, pas par une liste de prix. Retrouvez nos [réalisations de piscines sur mesure](/piscines-bien-etre/) pour calibrer le niveau d'ouvrage, et [notre bureau d'études intégré, de la vision au suivi annuel,](/la-maison/) pour comprendre ce qu'un interlocuteur unique change dans le résultat.
 
 **[Parlons de votre projet](/contact/)**
 

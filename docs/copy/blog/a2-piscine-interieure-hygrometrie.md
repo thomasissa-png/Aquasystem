@@ -125,7 +125,7 @@ Un projet de piscine intérieure bien conduit commence par les bonnes questions.
 
 ---
 
-Un projet de piscine intérieure dans les Yvelines ou les Hauts-de-Seine mérite une conversation avant les plans. Nos [réalisations de piscines intérieures](/piscines-bien-etre/) sont accessibles en portfolio. Notre [bureau d'études intégré, de la conception à l'entretien](/notre-approche/), porte l'ensemble du projet depuis le premier plan.
+Un projet de piscine intérieure dans les Yvelines ou les Hauts-de-Seine mérite une conversation avant les plans. Nos [réalisations de piscines intérieures](/piscines-bien-etre/) sont accessibles en portfolio. Notre [bureau d'études intégré, de la conception à l'entretien](/la-maison/), porte l'ensemble du projet depuis le premier plan.
 
 **[Parlons de votre projet avant les plans →](/contact/)**
 

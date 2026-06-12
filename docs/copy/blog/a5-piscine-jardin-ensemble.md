@@ -127,7 +127,7 @@ La promesse n'est pas de faire deux choses à la fois : c'est de faire une seule
 
 Concevoir [une piscine sur mesure](/piscines-bien-etre/) et un jardin depuis le même bureau d'études commence par une conversation sur votre terrain, votre architecture, vos usages. Pas par deux devis séparés.
 
-Retrouvez [notre approche intégrée](/notre-approche/) et les réalisations où piscine et jardin ont été pensés ensemble depuis le premier plan.
+Retrouvez [notre méthode intégrée eau et jardin](/la-maison/) et les réalisations où piscine et jardin ont été pensés ensemble depuis le premier plan.
 
 **[Décrivez-nous votre projet](/contact/)**
 
