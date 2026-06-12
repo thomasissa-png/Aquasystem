@@ -348,13 +348,15 @@ Note de naming : "L'extérieur" et "votre propriété" sont des noms communs —
 
 | Critère | Verdict | Justification |
 |---------|---------|---------------|
-| Mémorable | PASS | Structure binaire avec progression (vision → réalisation), tiret cadratin comme élément stylistique de marque. Facile à retenir dans la forme complète. |
+| Mémorable | PASS | Structure binaire avec progression (vision → réalisation). Facile à retenir dans la forme complète. |
 | Différenciante | PASS | Absent du benchmark (competitive-benchmark.md). Le mot "vision" comme point de départ du projet est un angle absent chez tous les concurrents. |
 | Vraie | PASS | L'offre va bien de la conception (bureau d'études, première conversation) à la réalisation (construction, livraison) et jusqu'au suivi annuel. Promesse tenue. |
 
 **Verdict global : PASS — Promesse de marque confirmée.**
 Usage : sous-titre de hero, page méthode, boilerplate presse. Ne pas abréger (brand-voice.md §3 Glossaire).
 Note de naming : aucune dépendance au nom provisoire.
+
+> **Décision fondateur 2026-06-12** : la formule `De la vision à la réalisation` est signature intouchable. En revanche, les cadratins qui l'entourent ou la suivent ne sont plus un élément stylistique de marque. Dans un sous-titre de hero, la ponctuation correcte est le deux-points ou le point, non le cadratin répété. Exemple canonique : `De la vision à la réalisation : eau, jardin, propriété. Un seul interlocuteur, depuis 30 ans dans l'ouest parisien.`
 
 ---
 
@@ -376,7 +378,7 @@ Note de naming : aucune dépendance au nom provisoire.
 
 | Critère | Verdict | Justification |
 |---------|---------|---------------|
-| Mémorable | PASS | Narration micro-format, rupture ("descendait" / "on a choisi"), tiret cadratin de marque, image mentale forte. Reste en tête. |
+| Mémorable | PASS | Narration micro-format, rupture ("descendait" / "on a choisi"), image mentale forte. Reste en tête. |
 | Différenciante | PASS | Absent du benchmark. Registre narratif ancré dans la réalité du terrain — introuvable dans les copys techniques des concurrents. |
 | Vraie | PASS | Illustre une approche sur mesure réelle (réponse au terrain plutôt qu'aplanie) — pas une abstraction. Cohérent avec la réalisation citée dans brand-voice.md §4b. |
 
@@ -408,9 +410,11 @@ Note de naming : "Deux maisons" est un terme propriétaire (lexique §1.1) — a
 
 **Proposition B : "Nous connaissons ces propriétés — et leurs contraintes."**
 
+> **Note 2026-06-12** : cette formule est PASS en corps de texte narratif. En titre (H2), elle doit être réécrite sans cadratin : `Nous connaissons ces propriétés, et leurs contraintes.` (virgule). Voir dash-revision.md et brand-voice.md §5.
+
 | Critère | Verdict | Justification |
 |---------|---------|---------------|
-| Mémorable | PASS | Le tiret cadratin crée une attente, "leurs contraintes" résout la tension. Structure en deux temps mémorable. |
+| Mémorable | PASS | La structure en deux temps ("propriétés" / "et leurs contraintes") crée une attente et la résout. Mémorable. |
 | Différenciante | PASS | Absent du benchmark. L'ancrage comme connaissance pratique (nappes phréatiques, PLU, sols) est l'espace libre n°2 identifié (competitive-benchmark.md). |
 | Vraie | PASS | 30 ans de réalisations locales en 78/92 — la connaissance des contraintes est une preuve factuelle, pas une abstraction (brand-platform.md §3 pilier 3 RTB). |
 
@@ -481,9 +485,9 @@ Une piscine construite il y a 15 ans dont l'équipe connaît chaque équipement.
 | "L'extérieur à la hauteur de votre propriété." | Aucune | Oui — noms communs uniquement |
 | "De la vision à la réalisation." | Aucune | Oui — verbes et noms communs |
 | "Un projet, un interlocuteur." | Aucune | Oui — structure nominale générique |
-| "Le terrain descendait — on a choisi de travailler avec lui." | Aucune | Oui — narration situationnelle |
+| "Le terrain descendait — on a choisi de travailler avec lui." | Aucune | Oui — narration situationnelle (cadratin toléré : corps narratif uniquement, jamais en titre) |
 | "Deux maisons, une vision." | Aucune | Oui — désigne les deux maisons, pas le nom ombrelle |
-| "Nous connaissons ces propriétés — et leurs contraintes." | Aucune | Oui — pronom "nous" substituable |
+| "Nous connaissons ces propriétés, et leurs contraintes." | Aucune | Oui — pronom "nous" substituable (virgule en titre, cadratin en corps narratif seulement) |
 
 **Vérification des 13 termes du lexique**
 Aucun terme du lexique (§1) ne contient ni le nom provisoire "Aquasystem" ni les noms candidats Orvère/Thalweg/Rive & Clos. Tous sont des noms communs ou des formulations de marque ombrelle agnostiques du nom.
@@ -506,11 +510,12 @@ La formule "en partenariat avec Les Terres Essentielles" (lexique §1.12) ne dé
 | Mots autorisés (§3) : propriété, réalisation, ouvrage, bureau d'études, vision, ancrage, pérennité, sur mesure | Tous présents dans le lexique §1 avec définitions et usages |
 | Mots interdits (§3) : premium, devis gratuit, équipe passionnée, superlatifs creux | Tous traités dans les formulations bannies §2 |
 | Formulations légales LTE (§3) | "En partenariat avec Les Terres Essentielles" dans lexique §1.12 ; aucune formulation proscrite |
-| Tiret cadratin comme élément stylistique | Employé dans les phrases signature §3.4, §3.5B |
+| Tiret cadratin — règle typographique (décision fondateur 2026-06-12) | INTERDIT dans les titres/sous-titres/hero/metas. Toléré avec parcimonie dans le corps (max ~1 par section, vraie incise). Voir brand-voice.md §5 et §7 (cadratin), dash-revision.md. Les phrases signature §3.4 et §3.5B conservent leur cadratin uniquement en usage corps de texte (caption, corps narratif) — jamais en titre. |
 | Zéro mention de concurrent nommé | Aucun nom de concurrent dans ce document — références à competitive-benchmark.md uniquement |
 | Zéro dépendance au nom provisoire | Vérifiée en §5 |
 
 ---
 
 *Fichier produit par @creative-strategy — 2026-06-11*
+*Mis à jour par @copywriter — 2026-06-12 (décision fondateur : règle cadratin — voir §3.2, §3.5B, §6)*
 *Sources : brand-voice.md, brand-platform.md, personas.md, competitive-benchmark.md, project-context.md*

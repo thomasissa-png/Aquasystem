@@ -320,8 +320,33 @@ Ce qui fait la réalisation : les choix techniques concrets, les contraintes sur
 - Un seul point d'exclamation par texte maximum — et seulement si l'émotion le justifie
 - Jamais "!!" ni "!!!" — registre promotionnel incompatible
 - Point d'interrogation : autorisé pour les titres de sections engageantes, avec parcimonie
-- Tirets cadratifs (—) : autorisés et recommandés pour les formules propriétaires (style brand-platform.md)
 - Points de suspension (...) : usage rare, jamais en fin de CTA
+
+### Tiret cadratin (—) — Règle fondateur 2026-06-12 (remplace la règle précédente)
+
+**INTERDIT** dans :
+- Tous les titres (H1, H2, H3)
+- Sous-titres de hero et sous-titres de section
+- Meta-titles (exception : le séparateur conventionnel `Titre — Marque` dans les balises `<title>` est TOLÉRÉ — convention SEO universelle, non visible dans la page rendue)
+- Amorces de SectionCTA (affichées en grand, statut fonctionnel de titre)
+
+**TOLÉRÉ avec parcimonie** dans le corps de texte uniquement :
+- Maximum 1 cadratin par section
+- Uniquement quand une vraie incise longue ou une rupture de registre le justifie
+- Sinon : utiliser le deux-points (pour introduire une précision ou une conséquence), la virgule (pour une incise courte), ou couper en deux phrases
+
+**Avant / Après — exemples de la décision**
+
+| Avant (tic) | Après (correct) | Ponctuation choisie |
+|-------------|-----------------|---------------------|
+| `De la vision à la réalisation — eau, jardin, propriété — un seul interlocuteur` | `De la vision à la réalisation : eau, jardin, propriété. Un seul interlocuteur` | Deux-points + point |
+| `Notre maison Aqua System — conception sur mesure depuis plus de 30 ans` | `Notre maison Aqua System : conception sur mesure depuis plus de 30 ans` | Deux-points |
+| `Un jardin pensé avec la piscine — depuis le même bureau d'études.` | `Un jardin pensé avec la piscine, depuis le même bureau d'études.` | Virgule |
+| `30 ans de réalisations en 78/92 — portfolio sur demande.` | `30 ans de réalisations en 78/92. Portfolio sur demande.` | Point |
+| `Nous construisons pour la pérennité — pas pour la saison.` | `Nous construisons pour la pérennité, pas pour la saison.` | Virgule |
+| `Un projet d'extérieur mérite une conversation — pas un formulaire.` | `Un projet d'extérieur mérite une conversation, pas un formulaire.` | Virgule |
+
+**Note** : la formule signature `De la vision à la réalisation` est INTOUCHABLE dans sa formulation. Seule la ponctuation autour change.
 
 ### Emojis
 
