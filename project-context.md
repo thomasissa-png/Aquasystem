@@ -223,6 +223,8 @@ Cette doctrine prime sur les arbitrages « perception » antérieurs (D-22 SpaBl
 - **Messages** : 1 (silencieux sur les manques) → 5 (tous les manques signalés)
 - **Spécificité** : 1 (générique) → 5 (100% taillé pour ce projet)
 
+| @copywriter | 2026-06-12 | `docs/copy/raccords-fusion.md` — 3 raccords de transition page fusionnée /la-maison + sous-titre hero ajusté (formule signature préservée, zéro cadratin, zéro superlatif). Prêts à coller. |
+
 | @ux | 2026-06-12 | `docs/ux/ia-refonte-2026-06-12.md` — Refonte architecture navigation (demande fondateur) : fusion /notre-approche + /la-maison → page unique /la-maison (301 propre), sortie du menu principal de /prescripteurs (option a — lien footer conservé), nav réduite à 5 entrées grand public. | URL survivante : /la-maison (SEO identité + absorption du contenu méthode) ; formule « De la vision à la réalisation » préservée en sous-titre hero + drawer mobile ; zéro perte de contenu factuel (FAQ, certifications, distinctions, portrait, valeurs, ancrage géo migrés) ; asset prescripteurs inchangé (URL, events E-07/E-08, séquence outreach) ; 3 raccords copy demandés à @copywriter uniquement. | Nav 6 → 5 entrées : « Notre approche » fusionnée dans « La maison », « Architectes » sorti du menu (label provoque friction persona Alexandre) ; Statu quo écarté (friction Nielsen documentée) ; fusion dans Contact ou La maison écarté (destructure le tracking prescripteur + rend la page composite illisible). |
 
 ---
