@@ -69,13 +69,19 @@ Honnêtement ? Le parti pris « une conversation, pas un formulaire » me plaît
 
 | # | Critère | Note /10 | Justification |
 |---|---|---|---|
-| 1 | Première impression (5 s) | _ | _ |
-| 2 | Crédibilité (preuves, photos) | _ | _ |
-| 3 | Réponse à MA situation (piscine+jardin intégré) | _ | _ |
-| 4 | Réassurance anti-risque | _ | _ |
-| 5 | Passage à l'acte (formulaire) | _ | _ |
-| 6 | Irritants / raisons de partir | _ | _ |
+| 1 | Première impression (5 s) | **8,5** | Promesse exacte de mon besoin en une ligne, ton sobre, chiffres locaux vérifiables. Quasi parfait — il manque juste une photo de projet complet eau+jardin dès le hero. |
+| 2 | Crédibilité (preuves, photos) | **4** | Les awards et Socotec sont réels, MAIS : page réalisations vide, 2 fiches sur 3 « en cours de documentation », 3-4 vraies photos sur tout le site, plusieurs « Image à remplacer ». Le discours dit 9, la preuve dit 3. |
+| 3 | Réponse à MA situation (piscine+jardin intégré) | **7** | « Les deux études menées au même moment », « aucune interface entre un pisciniste et un paysagiste qui ne se parlent pas » : écrit pour moi. Moins 3 points : la découverte de DEUX sociétés derrière « un seul interlocuteur » sème le doute exact que je voulais fuir. |
+| 4 | Réassurance anti-risque | **3,5** | Zéro garantie écrite, zéro témoignage client, zéro délai, zéro mot sur décennale/assurances/réception. Le suivi annuel et les 350 piscines aident, mais pour un homme échaudé, rien de contractuel = rien. |
+| 5 | Passage à l'acte | **5,5** | Le « pas de formulaire » est un beau parti pris cohérent, et Nicolas Berg est nommé. Mais aucun engagement de délai de réponse, pas de prise de RDV, et pas assez de preuve en amont pour mériter mon appel. |
+| 6 | Irritants / risque de fuite | **3** | Trois moments où je ferme l'onglet sans la reco de mon ami : la page réalisations vide, le 1er « Image à remplacer », le 2e « fiche en cours de documentation ». Plus les chrysanthèmes et le flou bicéphale. |
+
+**Moyenne : 5,3/10. Le verbe est à 8, la preuve est à 3.**
 
 ## Top 5 pour que je contacte SANS hésiter
 
-_(à compléter)_
+1. **Remplir la page /realisations et finir les fiches.** C'est LE trou qui tue : le hub est vide alors que 3 fiches existent (accessibles uniquement depuis l'accueil), et les fiches n'ont ni récit, ni durée, ni contraintes, ni avant/après. Une seule fiche racontée à fond (terrain, problème, solution, délai tenu, photo avant/après) me convertirait à elle seule. Dépublier les fiches « en cours de documentation » en attendant : une étagère vide en boutique de luxe fait fuir.
+2. **Zéro placeholder visible, nulle part.** Chaque « Image à remplacer » contredit frontalement « le détail fait tout ». Publier moins, mais fini — exactement ce qu'on exige d'eux sur un chantier.
+3. **Clarifier qui signe et qui est responsable.** Un encadré net : « Votre contrat unique est signé avec X. Garantie décennale n° …, assurance …, Les Terres Essentielles intervient comme … ». Sans ça, « un seul interlocuteur » reste un slogan — et c'est pile ma blessure de 2021.
+4. **De la réassurance contractuelle et humaine** : 2-3 témoignages clients attribuables (commune + année), garanties écrites, engagement de délais, photo de l'équipe chantier. Le mot d'un client du Vésinet vaut plus que l'award de Barcelone.
+5. **Page contact : un engagement de réponse** (« Nicolas Berg vous rappelle sous 24 h ouvrées ») et idéalement un créneau d'échange à réserver. Garder le « pas de formulaire », mais l'élégance sans engagement de délai, c'est de la friction. Au passage : remplacer la photo de chrysanthèmes par des sujets de pépinière dignes d'un « jardin d'exception ».
