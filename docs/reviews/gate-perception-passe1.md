@@ -1,6 +1,15 @@
-# Gate de perception — Aquasystem (13 pages) — Passe 1 + Passe 2 + Passe 3 — 2026-06-12
+# Gate de perception — Aquasystem (13 pages) — Passe 1 → Passe 4 — 2026-06-12
 
-## Verdict global ACTUEL (Passe 3) : PRÉSENTABLE AU FONDATEUR — **OUI**
+## Verdict global ACTUEL (Passe 4) : PRÉSENTABLE AU FONDATEUR — **OUI**
+> Passe 4 (2026-06-12, recalibrage « juge plus dur ») : 8 changements post-passe-3 jugés en
+> viewport réel. Le fondateur avait rejeté le drawer bottom-sheet et les cartouches de preuves
+> pleins ; les deux sont refondus (drawer latéral droite focus-container, preuves en filets
+> éditoriaux). Photo fondateur parasols sur le bloc LTE digne et équilibrée, 3 heros « cheap »
+> résolus, fiche draft désormais page digne (visualDescription rendue + CTA contact), grille 24
+> cartes homogène, footer LinkedIn/Facebook propres. **Zéro P0**, un seul P1 cosmétique
+> non bloquant (eyebrow LTE petit). Détail : section « PASSE 4 ». Captures : `tests/screenshots/perception/p4-*.png`.
+
+## Verdict Passe 3 : PRÉSENTABLE AU FONDATEUR — **OUI**
 > Passe 1 : **NON** (4 défauts D1-D4). Passe 2 : 4 corrigés, OUI avec 1 P1 favicon dark-mode.
 > Passe 3 (2026-06-12, refonte IA) : page /la-maison fusionnée jugée en entier (mobile+desktop),
 > placeholders « Visuel à venir » élégants et assumés, nav 5 entrées « Notre maison » non ambiguë,
