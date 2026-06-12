@@ -327,6 +327,97 @@ de l'eyebrow « EN PARTENARIAT AVEC LES TERRES ESSENTIELLES » sur le bloc LTE �
 
 ---
 
+## PASSE 5 — Jugement des changements post-passe-4 (œil dur) — 2026-06-12
+
+### Verdict Passe 5 : PRÉSENTABLE AU FONDATEUR — **OUI**
+
+Build rebâti (`npm run build`, exit 0) puis servi (`npx serve out -l 3600`). Routes vérifiées 200 :
+`/piscines-bien-etre`, `/jardins-paysage`, `/prescripteurs`, `/`. Captures viewport réel mobile 390×844
++ desktop 1440×900, clips ≤ 900px, images ≤ 1900px. Captures : `tests/screenshots/perception/p5-*.png`.
+Recalibrages cumulés appliqués (pattern app-mobile ≠ premium ; cartouches pleins ≠ éditorial ; juge dur).
+
+#### (1) /piscines-bien-etre ENRICHIE — 3 nouvelles sections + rythme global → **DIGESTE, pas indigeste**
+Page longue jugée EN ENTIER, desktop (~6140px) et mobile (~10470px), section par section.
+- **« Ce que nous savons construire »** (grille 6 cards) → **OK premium.** 3 colonnes × 2 rangées, 6 ouvrages
+  (Piscine à débordement · Bassin miroir · Couloir de nage · Piscine intérieure · Paroi de verre + 1) :
+  **photo 4:3 + titre serif + paragraphe** par card. Les 6 photos sont **homogènes et au standard maison
+  premium** (piscine pierre-poutres, bassin miroir sur demeure, couloir de nage pergola, paroi de verre sur
+  travertin) — aucune hors-niveau, grille équilibrée, hiérarchie crédible (titre serif > corps). Cas #4 OK.
+- **« Construit pour durer »** (eyebrow CONSTRUCTION) → bloc texte centré sobre, factuel (béton armé, Avis
+  Technique CSTB, garantie décennale, Socotec). Lisible sur fond crème, pas un pavé indigeste.
+- **« La matière qui reste »** → texte pierres/teinte d'eau/terrasses, enchaîne sur le bloc preuves filets
+  (30+ / 350+ / Socotec / L'Esprit Piscine) + claim GEO crédité — cohérent avec la home (cas #2/#8 OK).
+- **Rythme GLOBAL** : malgré la longueur, **alternance soutenue** (MediaSplit Conception → placeholder spa →
+  MediaSplit Suivi → grille 6 cards → texte Construction centré → texte Matière → preuves filets → cross-sell
+  dark). Jamais deux blocs de même nature d'affilée. **Lecture réelle digeste**, pas de sensation de tunnel.
+- **Redondance signalée (MediaSplit Conception vs Construction)** : en lecture réelle, « De la feuille blanche
+  à l'inauguration » (CONCEPTION — parcours, 1 interlocuteur, écoute du terrain) et « Construit pour durer »
+  (CONSTRUCTION — structure béton/CSTB/décennale) traitent d'**angles distincts** (parcours vs garantie
+  technique). Proximité thématique légère mais **ne gêne pas la lecture** ; les deux sont séparés par la grille
+  6 cards et le placeholder. → **arbitrage éditorial, pas un défaut d'exécution.**
+  `p5-piscines-bien-etre-desktop-hero…y5400.png`, `p5-piscines-grid-r1/r2.png`, `p5-piscines-mobile-00…11.png`.
+- **P1 éditorial assumé (non bloquant)** : la page est dense (2 blocs « matière/durée » + grille + 3 MediaSplit) ;
+  un **resserrage** possible (fusionner « Construit pour durer » et « La matière qui reste », ou alléger un
+  MediaSplit) gagnerait en nervosité. C'est un **arbitrage de rythme @copywriter/@product**, pas un défaut
+  visible. N'affecte pas le verdict.
+
+#### (2) /jardins-paysage — bloc « Pierre, végétal, sol : ce que nous assemblons » → **FLUIDE, pas une rupture**
+Inséré entre « La réalisation, du premier arbre à la dernière pierre » (CRÉATION) et « Des végétaux
+sélectionnés pour durer » (ENTRETIEN & PÉPINIÈRE). **Même registre éditorial** que les autres sections (eyebrow
+MATIÈRES + titre serif centré + 3 paragraphes sur crème), jumeau du bloc « matière » de piscines. Enchaînement
+logique CRÉATION → MATIÈRES → ENTRETIEN, transition de fond douce. **Pas de rupture perçue**, desktop ET mobile.
+Léger recouvrement lexical avec le bloc suivant (sol argilo-calcaire / essences à croissance lente) — à
+surveiller mais **invisible à la lecture**. `p5-jardins-pvs-before/block/after.png`, `p5-jardins-pvs-mobile.png`.
+
+#### (3) /prescripteurs (D-29, 1re passe en gate) — page ENTIÈRE → **AU STANDARD**
+Mobile (~6300px) + desktop (~4020px) jugés en entier.
+- **Hero pierre-mur-ancien** : titre serif **noir** « L'exécutant haut de gamme que vos clients méritent… »
+  sur la **zone crème à gauche** (la photo demeure/piscine/mur de pierre est confinée à droite) → **net,
+  aucun texte clair sur fond clair de photo**, cas #1 sain. Sous-titre + eyebrow preuves filets (Socotec /
+  L'Esprit Piscine) propres. `p5-presc-hero-zoom.png`.
+- **Preuves filets** : 3 colonnes (« Un exécutant qui lit les plans » / « Votre relation… reste la vôtre » /
+  « 30 ans de réalisations 78/92 ») séparées par filets — **code éditorial, pas de cartouches pleins** (recalibrage
+  fondateur respecté). `p5-prescripteurs-desktop-01.png`.
+- **Encart qualification éditorial** (« Ce qui nous qualifie ») : liste en filets horizontaux (Socotec / 30 ans /
+  bureau d'études paysager) + « Dossier de qualification complet disponible sur demande » + CTA « Présentons-nous ».
+  Sobre, éditorial. FAQ accordéon 4 questions en filets fins. `p5-prescripteurs-desktop-02/03.png`.
+- **Cards « Nos réalisations : références vérifiables »** (dont la NOCTURNE) → **au standard premium.** 3 cards :
+  bien-être pierre-poutres (clair) · **projet complet eau+jardin NOCTURNE** (piscine éclairée le soir, banquettes
+  lumineuses, ambiance bleu/ambre — vraie scène crépusculaire haut de gamme, **pas un cliché sombre/bruité**) ·
+  projet eau+jardin extérieur. Libellés cohérents (type + « Ouest parisien » + « Voir → »), zéro inachevé.
+  Cas #4 OK. `p5-presc-nocturne2.png`.
+- **CTA dark « Travaillons ensemble » + footer** cohérent (Aquasystem / Aqua System / Les Terres Essentielles,
+  icônes LinkedIn/Facebook). Mobile : hero titre noir lisible, qualification empilée propre, CTA pleine largeur.
+  `p5-prescripteurs-mobile-00/04.png`, `p5-prescripteurs-desktop-04.png`.
+
+#### (4) Anti-régression — fold accueil mobile → **AUCUNE RÉGRESSION**
+Façade demeure, titre serif blanc « L'extérieur à la hauteur de votre propriété. » lisible (overlay/text-shadow
+tient — cas #1 reste corrigé), sous-titre + CTA nets. Identique aux passes antérieures. `p5-home-mobile-fold.png`.
+
+#### Synthèse Passe 5
+| # | Changement jugé (œil dur) | Statut | Sévérité |
+|---|---|---|---|
+| 1 | /piscines enrichie — grille 6 cards 4:3 + 2 blocs matière/durée | ✅ homogène premium | — |
+| 1 | /piscines — rythme global page longue (digestibilité) | ✅ digeste | **P1 éditorial** (resserrage, assumé) |
+| 1 | /piscines — redondance Conception/Construction | ✅ angles distincts, ne gêne pas | — |
+| 2 | /jardins — bloc « Pierre, végétal, sol » inséré | ✅ fluide (pas une rupture) | — |
+| 3 | /prescripteurs — hero pierre-mur titre noir lisible | ✅ cas #1 sain | — |
+| 3 | /prescripteurs — preuves filets + encart qualification | ✅ éditorial (pas de cartouches) | — |
+| 3 | /prescripteurs — cards dont nocturne | ✅ standard premium | — |
+| 4 | Anti-régression fold accueil mobile | ✅ aucune régression | — |
+
+**Zéro P0. Un seul P1 éditorial assumé** (resserrage du rythme de /piscines — arbitrage @copywriter/@product,
+pas un défaut d'exécution visible). Tous les changements améliorent ou maintiennent la perception. Les deux
+patterns rejetés par le fondateur (app-mobile, cartouches pleins) restent absents. Verdict binaire du gate
+(zéro P0, P1 assumé) → **OUI**.
+
+#### Recommandation Passe 5 : **OUI — présentable au fondateur en l'état.**
+Aucun agent à relancer en bloquant. (Optionnel, hors gate : @copywriter/@product peut resserrer le bas de
+/piscines-bien-etre — fusion possible « Construit pour durer » + « La matière qui reste » — pur arbitrage de
+rythme.)
+
+---
+
 ## Détail par page (Passe 1)
 
 ### Home — OUI (hors D1/D2)
