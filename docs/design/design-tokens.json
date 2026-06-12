@@ -2,12 +2,12 @@
   "$schema": "https://tr.designtokens.org/format/",
   "$meta": {
     "project": "Aquasystem [PROVISOIRE]",
-    "version": "1.2.0",
-    "date": "2026-06-11",
-    "agent": "@design",
+    "version": "1.3.0",
+    "date": "2026-06-12",
+    "agent": "@fullstack",
     "architecture": "3-tier W3C DTCG — primitives > semantics > component",
     "note": "Les composants référencent UNIQUEMENT les tokens sémantiques/component, jamais les primitives directement.",
-    "changelog": "v1.2 — correction contraste BUG-A11Y-3 : color-text-muted sand.600 #7E7468 → sand.700 #6B6058 (ratio 3.75:1 → 4.58:1 sur sand-200, 4.95:1 sur sand-100, PASS AA sur TOUS les fonds d'usage). Tableau des paires design-system.md §contrastes 100% recalculé avec ratios chiffrés vérifiés. v1.1 — correction contrastes BUG-A11Y-1 : gold-700 ajouté (texte proof) ; color-text-proof gold.600→gold.800 ; color-text-proof-label ajouté (sand.800) ; color-text-footer-legal ajouté (sand.500) ; proof-badge.label-color mis à jour."
+    "changelog": "v1.3 — REFONTE ProofBadges (D-26) : suppression cartouche dorée, figures sur fond nu + filets verticaux hairline gold.600/30 (rule-color), distinction chiffres (number-color sand.900, number-size) vs noms propres (name-size 2xl/xl 1 ligne), libellés petites-caps tracking (label-color sand.700 PASS AA). Tokens cartouche conservés obsolètes pour rétrocompat. v1.2 — correction contraste BUG-A11Y-3 : color-text-muted sand.600 #7E7468 → sand.700 #6B6058 (ratio 3.75:1 → 4.58:1 sur sand-200, 4.95:1 sur sand-100, PASS AA sur TOUS les fonds d'usage). Tableau des paires design-system.md §contrastes 100% recalculé avec ratios chiffrés vérifiés. v1.1 — correction contrastes BUG-A11Y-1 : gold-700 ajouté (texte proof) ; color-text-proof gold.600→gold.800 ; color-text-proof-label ajouté (sand.800) ; color-text-footer-legal ajouté (sand.500) ; proof-badge.label-color mis à jour."
   },
 
   "primitives": {
@@ -415,14 +415,17 @@
     },
 
     "proof-badge": {
-      "padding-x":    { "$value": "{semantic.spacing.md}",    "$type": "dimension" },
-      "padding-y":    { "$value": "{semantic.spacing.sm}",    "$type": "dimension" },
-      "radius":       { "$value": "{semantic.radius.sm}",     "$type": "dimension" },
-      "bg":           { "$value": "{semantic.color.background.proof}", "$type": "color" },
-      "number-size":  { "$value": "{semantic.typography.size.5xl}",    "$type": "dimension", "$description": "48px — chiffres 30+, 350+. Grand texte >=24px, seuil AA = 3:1" },
-      "number-color": { "$value": "{semantic.color.text.proof}",       "$type": "color", "$description": "Pointe sur gold.800 #8B6130 depuis v1.1 (ratio 3.92:1 sur proof-bg, PASS grand texte)" },
-      "label-size":   { "$value": "{semantic.typography.size.sm}",     "$type": "dimension", "$description": "14px — texte normal, seuil AA = 4.5:1" },
-      "label-color":  { "$value": "{semantic.color.text.proof-label}", "$type": "color", "$description": "v1.1 BUG-A11Y-1 : sand.700->sand.800 via token proof-label. Ratio 7.39:1 sur proof-bg, PASS AAA." }
+      "$description": "REFONTE D-26 (v1.3) — direction éditoriale « Rive privée ». Plus de cartouche dorée pleine : les figures sont posées sur le fond NU de la section (sand-100 accueil-secondaire / sand-100 piscines), séparées par des FILETS verticaux hairline (gold.600 à ~30% — décoratif, exempté contraste WCAG). Les tokens bg/radius/padding du cartouche sont CONSERVÉS pour rétrocompat mais ne sont plus consommés par le composant.",
+      "rule-color":   { "$value": "{primitives.color.gold.600}", "$type": "color", "$description": "#C4924A filet vertical (et horizontal mobile) — opacité 25-30% appliquée en classe (gold-600/30). Décoratif, exempté WCAG (D-26)." },
+      "padding-x":    { "$value": "{semantic.spacing.md}",    "$type": "dimension", "$description": "[OBSOLÈTE cartouche — conservé rétrocompat]" },
+      "padding-y":    { "$value": "{semantic.spacing.sm}",    "$type": "dimension", "$description": "[OBSOLÈTE cartouche — conservé rétrocompat]" },
+      "radius":       { "$value": "{semantic.radius.sm}",     "$type": "dimension", "$description": "[OBSOLÈTE cartouche — coins supprimés en D-26]" },
+      "bg":           { "$value": "{semantic.color.background.proof}", "$type": "color", "$description": "[OBSOLÈTE cartouche — fond doré supprimé en D-26, figures sur fond de section]" },
+      "number-size":  { "$value": "{semantic.typography.size.5xl}",    "$type": "dimension", "$description": "48px desktop (text-5xl), 36px mobile (text-4xl) — chiffres kind:'number' (30+, 350+). Grand texte >=24px." },
+      "number-color": { "$value": "{semantic.color.text.primary}",     "$type": "color", "$description": "D-26 : gold.800 → sand.900 #2A2420 (serif Didone sombre sur fond sand). Ratio >12:1, PASS AAA." },
+      "name-size":    { "$value": "{semantic.typography.size.2xl}",     "$type": "dimension", "$description": "D-26 ajouté — 24px desktop (text-2xl) / 20px mobile (text-xl) pour kind:'name' (Socotec, L'Esprit Piscine) : corps réduit pour tenir sur UNE ligne (whitespace-nowrap)." },
+      "label-size":   { "$value": "{semantic.typography.size.xs}",     "$type": "dimension", "$description": "D-26 : 12px desktop / 11px mobile, petites capitales, tracking 0.16em. Texte normal, seuil AA = 4.5:1." },
+      "label-color":  { "$value": "{semantic.color.text.secondary}",   "$type": "color", "$description": "D-26 : sand.700 #6B6058 sur sand-100/200. Ratio 4.95:1 (sand-100) / 4.58:1 (sand-200), PASS AA." }
     },
 
     "hero": {

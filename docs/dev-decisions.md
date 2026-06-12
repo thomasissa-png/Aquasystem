@@ -431,3 +431,25 @@ La pépinière/serre a désormais une vraie photo. **Restent en PhotoPlaceholder
 **Vérification finale** : `tsc --noEmit` PASS · `next lint` PASS (0 warning) · `build` PASS (30 routes) · **Vitest 102/102** · **Playwright 43/43** (color-contrast accueil corrigé). Baselines impactées régénérées (accueil, prescripteurs, la-maison, piscines-bien-etre, jardins-paysage) × 3 viewports, **fold clip = hauteur viewport ≤ 812px (< 900px)** + fullpage (`scripts/screenshots.mjs`, export statique servi sur 127.0.0.1:3000). Baselines non impactées restaurées (`git checkout`) pour limiter le diff au périmètre. Relecture visuelle : accueil (Aqua = pool intérieur pierre, LTE = tableau typo vert lisible), la-maison hero (béton/baies), jardins (pépinière en bloc texte, cross-sell piscine-jardin-arbre). Pas de commit, pas de déploiement (consigne).
 
 ---
+
+## D-26 — Refonte éditoriale du bloc preuves ProofBadges (@fullstack, 2026-06-12)
+
+> Retour fondateur (capture) : « est-ce que ce bloc est suffisamment haut de gamme ? ». Diagnostic orchestrateur : 4 cartouches beiges pleins à coins arrondis = pattern template ; « L'Esprit Piscine » casse en 2 lignes (désaligne hauteurs/lignes de base) ; chiffres et noms propres traités identiquement alors qu'ils sont de natures différentes. Périmètre STRICT : `ProofBadges.tsx` (tokens uniquement) + tokens proof-badge. Pas de commit, pas de déploiement.
+
+**Direction (imposée brief).** Suppression des cartouches pleins. Figures posées sur le **fond NU de la section**, séparées par des **filets verticaux fins** (hairline gold.600 `#C4924A` à ~30 % — `border-gold-600/30`, décoratif). **Ligne de base commune** : hauteur réservée (`min-h-[3rem]` mobile / `[3.5rem]` desktop) sur laquelle la figure s'ancre en bas (`items-end`), libellé sous la ligne. Libellés en **petites capitales espacées** (`uppercase tracking-[0.16em]`, 11px mobile / 12px desktop).
+
+**Gestion de la différence de nature** (nouveau champ `kind` sur `ProofItem`, défaut `'number'`, API `items` inchangée) :
+- `kind:'number'` (30+, 350+) : serif Didone grand corps (`text-4xl` mobile → `text-5xl` desktop).
+- `kind:'name'` (Socotec, L'Esprit Piscine) : serif corps réduit (`text-xl`→`text-2xl`) + `whitespace-nowrap` → tient sur **UNE ligne**. Sous-libellés abrégés pour la respiration (« certification CSP/ESP-001 », « réseau pisciniste »).
+
+**Responsive.** 4 colonnes desktop (filets verticaux seulement, 1 rangée) → 2×2 mobile avec **filets adaptés** : vertical sur la colonne de droite + **filet horizontal** entre les 2 rangées (`border-t gold-600/25`, supprimé en `md`). Croix de hairlines centrée, deux rangées alignées sur leur baseline respective.
+
+**Contraste (libellés ≥ 4.5:1, filets exemptés).** Chiffres `text-foreground` (sand.900 `#2A2420`) > 12:1. Libellés `text-foreground-secondary` (sand.700 `#6B6058`) : 4.95:1 sur sand-100 (piscines) et 4.58:1 sur sand-200 (accueil), **PASS AA**. Filets gold décoratifs exemptés WCAG.
+
+**Usages vérifiés.** `/` (accueil, section preuves sur `bg-background-secondary`) et `/piscines-bien-etre` (sur `bg-background`). `/jardins-paysage` n'utilise PAS ProofBadges (bloc services dédié, D-18) → hors impact. Tokens cartouche (`bg`/`radius`/`padding`) conservés dans design-tokens.json marqués **obsolètes (rétrocompat)** ; ajout `rule-color`, `name-size` ; tokens passés v1.3.
+
+**Boucle visuelle.** Build + export statique servi (127.0.0.1:3100), captures **clippées** du bloc (`scripts/shot-proof.mjs`, jamais fullPage, ≤ 1900px) × {mobile 375, desktop 1280} × {accueil, piscines} → lecture + jugement → 1 itération (ajout filet horizontal mobile + padding vertical des rangées pour équilibrer). Résultat jugé digne d'un site d'architecte (alignements stricts, respiration, aucun déséquilibre). Baselines clippées dans `tests/screenshots/proof-block/` ; baselines fullpage impactées (accueil, piscines-bien-etre, prescripteurs) régénérées × 3 viewports.
+
+**Vérification finale** : `tsc --noEmit` PASS · `next lint` PASS (0 warning) · `build` PASS · **Vitest 102/102**. Pas de commit, pas de déploiement (consigne).
+
+---
