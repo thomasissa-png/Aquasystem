@@ -32,7 +32,7 @@ describe('navigation (arbitrage P0-5 + refonte IA D-25)', () => {
       'Réalisations',
       'Piscines & Bien-être',
       'Jardins & Paysage',
-      'Notre maison',
+      'À propos',
     ]);
   });
   it('Réalisations pointe vers /realisations ; ni « Notre approche » ni « Architectes » dans la nav', () => {

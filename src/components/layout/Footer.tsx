@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { Facebook, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import {
   CONTACT,
   FOOTER_NAV_LINKS,
@@ -69,23 +69,29 @@ export function Footer() {
               </li>
             </ul>
             {/* Réseaux sociaux remontés en col 1 (footer-audit §B) — groupe les
-                signaux de marque, équilibre les hauteurs de colonnes. */}
-            <div className="mt-4 flex gap-x-4 text-sm text-sand-300">
+                signaux de marque, équilibre les hauteurs de colonnes.
+                D-28 : icônes lucide (h-5 w-5) au lieu des liens texte (standard
+                premium 2026). aria-label FR + texte sr-only. */}
+            <div className="mt-4 flex gap-x-3">
               <a
                 href={SOCIAL_LINKS.linkedinAS}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={footerListLinkClass}
+                aria-label="Aqua System sur LinkedIn (ouvre un nouvel onglet)"
+                className="flex h-9 w-9 items-center justify-center rounded-sm text-sand-400 transition-colors hover:text-foreground-inverse focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring-inverse)] focus-visible:ring-offset-2 focus-visible:ring-offset-background-inverse"
               >
-                LinkedIn
+                <Linkedin aria-hidden className="h-5 w-5" />
+                <span className="sr-only">LinkedIn — Aqua System</span>
               </a>
               <a
                 href={SOCIAL_LINKS.facebookLTE}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={footerListLinkClass}
+                aria-label="Les Terres Essentielles sur Facebook (ouvre un nouvel onglet)"
+                className="flex h-9 w-9 items-center justify-center rounded-sm text-sand-400 transition-colors hover:text-foreground-inverse focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring-inverse)] focus-visible:ring-offset-2 focus-visible:ring-offset-background-inverse"
               >
-                Facebook
+                <Facebook aria-hidden className="h-5 w-5" />
+                <span className="sr-only">Facebook — Les Terres Essentielles</span>
               </a>
             </div>
           </div>

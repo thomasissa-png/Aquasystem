@@ -8,7 +8,6 @@ import { getFeatured, photoSrc } from '@/content/realisations';
 import { Hero } from '@/components/sections/Hero';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ProofBadges } from '@/components/ui/ProofBadges';
-import { PhotoPlaceholder } from '@/components/ui/PhotoPlaceholder';
 import { RealisationCard } from '@/components/sections/RealisationCard';
 import { SectionCTA } from '@/components/sections/SectionCTA';
 import { CtaTrackerLink } from '@/components/sections/CtaTrackerLink';
@@ -117,16 +116,21 @@ export default function HomePage() {
             <p className="mb-2 text-xs font-medium uppercase tracking-[0.1em] text-foreground-accent-forest">
               en partenariat avec Les Terres Essentielles
             </p>
-            {/* D-25 : ré-arbitrage doctrine photos (conversion d'abord). Le bloc
-                typographique D-24 (fond vert-forêt) est remplacé par un slot
-                photo avec PhotoPlaceholder élégant — un visuel jardin/paysage
-                convertirait mieux qu'une composition typo. Format carré pour
-                refléter la carte Piscines voisine. Photo demandée au fondateur
-                (photos-a-fournir.md). */}
-            <PhotoPlaceholder
-              subject="Création paysagère réalisée par Les Terres Essentielles — jardin structuré d'une propriété 78/92"
-              aspect="square"
-            />
+            {/* Photo FOURNIE PAR LE FONDATEUR (2026-06-12) pour ce slot —
+                remplace le PhotoPlaceholder D-25. Droits accordés. */}
+            <figure className="relative aspect-square w-full overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/accueil/jardin-piscine-parasols-800w.webp"
+                srcSet="/images/accueil/jardin-piscine-parasols-800w.webp 800w, /images/accueil/jardin-piscine-parasols-1280w.webp 1280w"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                alt="Jardin paysagé autour d'une piscine : parasols en paille, fauteuils suspendus, muret en pierre sèche et massifs plantés — l'eau et le végétal composés ensemble"
+                width={1394}
+                height={1044}
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover object-[center_60%]"
+              />
+            </figure>
             <h2 className="mt-6 font-serif text-3xl leading-tight text-foreground md:text-4xl">
               Jardins &amp; Paysage
             </h2>
@@ -153,13 +157,17 @@ export default function HomePage() {
       <section className="bg-background-secondary">
         <div className="mx-auto max-w-container px-4 py-12 md:px-8">
           <ProofBadges />
-          {/* P2-GEO-03 : synthèse extractible (point d'entrée LLM sur l'accueil). */}
-          <p className="mt-6 max-w-[70ch] text-sm leading-7 text-foreground-secondary">
-            Aqua System : certifié Socotec CSP/ESP-001, membre du réseau
-            L'Esprit Piscine. Plus de 350 piscines entretenues dans les Yvelines
-            et les Hauts-de-Seine depuis plus de 30 ans. Trophée d'Or FPP 2024.
-            Award Bronze EUSA 2025.
-          </p>
+          {/* P2-GEO-03 (D-28) : synthèse extractible (point d'entrée LLM) en ligne
+              de crédit centrée sous filet — statut secondaire assumé vs les badges. */}
+          <div className="mt-8 border-t border-border-muted pt-5 text-center">
+            <p className="mx-auto max-w-[72ch] text-sm leading-7 text-foreground-muted">
+              Aqua System : certifié Socotec CSP/ESP-001, membre du réseau
+              L'Esprit Piscine. Plus de 350 piscines entretenues dans les Yvelines
+              et les Hauts-de-Seine depuis plus de 30 ans. Trophée d'Or FPP 2024
+              (Piscine intérieure, FPP). Award Bronze EUSA 2025, Piscines
+              intérieures privées (Barcelone).
+            </p>
+          </div>
         </div>
       </section>
 

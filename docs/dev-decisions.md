@@ -484,3 +484,27 @@ La pépinière/serre a désormais une vraie photo. **Restent en PhotoPlaceholder
 `npx tsc --noEmit` **PASS** · slugs **24 uniques** · `bases` photos uniques · **0 fichier image manquant** (24 × 3 tailles présents) · **Vitest `realisations.test.ts` 19/19 PASS**. Boucle visuelle : remplacements HD relus (gain net confirmé). Pas de `next lint`/`build` complet exécuté (périmètre = 1 fichier data + assets, pas de page modifiée ; l'agent pages lancera le pre-commit complet). Pas de commit, pas de déploiement (consigne).
 
 ---
+
+## D-28 — Lot design V2 (retours fondateur 2026-06-12, 7 points) (@fullstack, 2026-06-12)
+
+**Périmètre** : `design-fixes-fondateur-2.md` (7 points) + retours additionnels fondateur. Interdiction stricte de toucher `src/content/realisations.ts` / `public/images/realisations/` (autre agent, D-27).
+
+**1. Menu « Notre maison » → « À propos »** (DÉCISION FONDATEUR — *override* du point 7 de la spec qui proposait « La maison », signalé comme erreur dans le brief). `NAV_LINKS` + `FOOTER_NAV_LINKS` (constants.ts), breadcrumb JSON-LD `/la-maison`, `constants.test.ts`, `parcours.spec.ts`. Sous-libellé drawer conditionné sur `link.href === '/la-maison'` → propagé automatiquement, conservé. Grep `À propos` : 0 collision préexistante. Les occurrences « Notre maison Aqua System » dans les copys (piscines/jardins subtitle, BureauEtudes) = **expression de marque de l'entité**, PAS un libellé de menu → non touchées (intentionnel).
+
+**2. Drawer mobile refonte** : bottom-sheet → **panneau latéral glissant depuis la droite** (design-system §5 d'origine : 80% largeur, `max-w-sm`, panneau sand). Animation sobre (keyframes `drawer-overlay-in` 200ms fade + `drawer-panel-in` 280ms translateX, globals.css ; reduced-motion couvert par le `@media` global). **Focus initial sur le CONTENEUR** (`tabIndex={-1}` + `focus:outline-none`) au lieu de la croix → plus d'anneau par défaut (focus-visible au clavier uniquement). Fermeture croix + Escape + tap overlay conservée ; focus trap inchangé (boucle croix↔CTA). Hiérarchie raffinée (header sous filet, entrées serif, filets `border-border-muted/60`, CTA pleine largeur en bas).
+
+**3. Héros /piscines-bien-etre & /jardins-paysage — doctrine CROP-FIRST** : 2-3 variantes de recadrage de la photo actuelle capturées et **lues** avant tout swap (captures `docs/reviews/hero-crops/`). Verdict : aucun recadrage ne sauve les photos actuelles (`paroi-verre-travertin` reste « catalogue résidentiel » à tous crops ; `enterree-maison-brique` reste « une piscine sur une page jardin »). → **swaps spec appliqués** : piscines = `piscine-interieure-pierre-poutres` center_35% (overlay défaut) ; jardins = `jardin-bassin-maison-bois` center_40% + overlay allégé 60%.
+
+**4. Cross-sells** : `border-t border-border-muted` sur le wrapper `<section>` de `CrossSellingBlock`. **Retrait complet du CrossSellingBlock des fiches `/realisations/[slug]`** (retour fondateur « cheveu sur la soupe ») → remplacé par `SectionCTA` (amorce « Ce projet vous inspire ? Parlons du vôtre. », href `/contact?source=realisations`, `trackPosition="realisation_detail"`). `showCrossSell` (mort) supprimé. **Tracking E-09 `cross_selling_clicked` ne vit plus que sur les pages univers** /piscines-bien-etre et /jardins-paysage — comportement attendu.
+
+**5. Claims GEO** : (4a) accueil — bloc texte sous ProofBadges → ligne de crédit centrée sous filet (`border-t pt-5 text-center`, `text-sm text-foreground-muted max-w-[72ch]`), texte complet FPP/EUSA fusionné en 1 paragraphe. (4b) /jardins-paysage — section GEO standalone supprimée, claim LTE intégré comme **3e paragraphe du `body[]` du BureauEtudesBlock**.
+
+**6. /la-maison hero** : colonne texte enrichie (eyebrow water + ligne de preuve « 30 ans · Équipe de 8 · Yvelines & Hauts-de-Seine » + filet `h-px w-12 bg-foreground-accent-water`, pb 16→14 / py 24→20). Photo : `piscine-interieure-veranda-soir` **vérifiée visuellement en split** (capture lue) → retenue (plus chaleureuse/identité que `beton-baies` industriel ; **libère le doublon** beton-baies ↔ MediaSplit /piscines-bien-etre ; 0 doublon). §5 CTA ghost `pb-20→pb-12`.
+
+**7. Footer réseaux** : liens texte LinkedIn/Facebook → icônes `lucide-react` (`Linkedin`, `Facebook` — présents en 0.456.0), `h-9 w-9` zone tactile, `h-5 w-5` icône, `aria-label` FR + `sr-only`, hover sand-400→foreground-inverse, focus-ring inverse.
+
+**Test e2e adapté** : `static-html-no-js.spec.ts` assertait `toHaveCount(14)` (magic number obsolète depuis D-27 = 24 fiches) → dérivé de `REALISATIONS.length` (import `@/content/realisations`, résolu par Playwright via tsconfig paths). Donnée non modifiée.
+
+**Vérification finale** : `tsc --noEmit` **PASS** · `next lint` **PASS** (0 warning) · `npm run build` **PASS** (toutes routes < 200KB First Load JS) · **Vitest 102/102 PASS** · **Playwright 46/46 PASS** (dont drawer ouverture/Escape/focus-trigger + a11y axe-core /realisations + parcours « À propos » 3 devices). Baselines régénérées (fold + sections + footer + fiche SectionCTA, **jamais fullPage**, ≤1900px) dans `tests/screenshots/` et relues. Captures de jugement crop-first / drawer / la-maison dans `docs/reviews/hero-crops/`. Pas de commit, pas de déploiement (consigne).
+
+---

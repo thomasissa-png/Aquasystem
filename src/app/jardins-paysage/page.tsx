@@ -59,32 +59,22 @@ export default function JardinsPaysagePage() {
     <>
       <JsonLd data={BREADCRUMB} />
       <Hero
-        imageSrc={photoSrc('piscine-enterree-maison-brique', '1280w')}
-        imageAlt="Maison contemporaine en brique et bois encadrée d'une haie dense, piscine enterrée bordée de pierre au premier plan, terrasse haute avec parasols — propriété des Hauts-de-Seine"
-        // Casting-visuels §5 swap 2 : cadrage center 40% pour garder la maison
-        // et la haie dans le cadre, pas seulement la piscine.
+        imageSrc={photoSrc('jardin-bassin-maison-bois', '1280w')}
+        imageAlt="Jardin sur mesure avec bassin intégré, végétation dense et maison contemporaine à ossature bois — réalisation Les Terres Essentielles dans l'ouest parisien"
+        // Crop-first (D-28) : la photo brique-piscine restait sémantiquement « une
+        // piscine sur une page jardin » à tous les cadrages → swap spec. La candidate
+        // jardin-bassin a une dominante végétale franche. center_40% garde la maison.
         objectPosition={{ base: 'object-[center_40%]' }}
-        // Overlay un peu plus marqué que l'accueil (photo lumineuse).
-        overlayClassName="bg-gradient-to-t from-[rgba(26,21,16,0.65)] via-[rgba(26,21,16,0.28)] to-transparent"
+        // Overlay allégé (60%) : la photo est plus sombre en bas (végétaux).
+        overlayClassName="bg-gradient-to-t from-[rgba(26,21,16,0.60)] via-[rgba(26,21,16,0.22)] to-transparent"
         title="Jardins & Paysage"
         subtitle="En partenariat avec Les Terres Essentielles : bureau d'études paysager, création et entretien de parcs et jardins sur mesure."
       />
 
-      {/* Bloc 1 — Bureau d'études paysager (texte éditorial, D-22). */}
+      {/* Bloc 1 — Bureau d'études paysager (texte éditorial, D-22).
+          Le claim GEO LTE (P2-GEO-01) est désormais le 3e paragraphe du body
+          (D-28) — section standalone supprimée. */}
       <BureauEtudesBlock />
-
-      {/* P2-GEO-01 : phrase de synthèse auto-contenue extractible (claim 8 —
-          bureau d'études LTE). Réponse directe pour les LLM en 40-60 mots. */}
-      <section className="bg-background">
-        <div className="mx-auto max-w-container px-4 pb-8 md:px-8">
-          <p className="max-w-[70ch] text-base leading-8 text-foreground-secondary">
-            Les Terres Essentielles dispose d'un bureau d'études paysager intégré
-            aux Alluets-le-Roi (Yvelines, 78580), permettant la co-conception de
-            projets extérieurs associant piscine et jardin dès la phase de plan,
-            dans les Yvelines et les Hauts-de-Seine.
-          </p>
-        </div>
-      </section>
 
       {/* Bloc 2 — Création de parcs et jardins (texte éditorial, D-22). */}
       <CreationBlock />
@@ -144,6 +134,9 @@ function BureauEtudesBlock() {
       body={[
         "Tout commence par la lecture du terrain : les ombrages, les masses végétales existantes, les contraintes de sol. Notre bureau d'études, en partenariat avec Les Terres Essentielles, pose le plan avant que la première pelle entre dans la terre.",
         "Quand un projet comporte aussi une piscine, les deux études sont menées au même moment. Le résultat : un espace qui tient ensemble, pas une somme de parties.",
+        // Claim GEO (D-28) : intégré ici comme 3e paragraphe au lieu d'une section
+        // standalone qui « flottait » au centre d'un vide (retour fondateur).
+        "Les Terres Essentielles dispose d'un bureau d'études paysager intégré aux Alluets-le-Roi (Yvelines, 78580), permettant la co-conception de projets extérieurs associant piscine et jardin dès la phase de plan, dans les Yvelines et les Hauts-de-Seine.",
       ]}
     />
   );

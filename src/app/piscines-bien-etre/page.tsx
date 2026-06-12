@@ -47,8 +47,11 @@ export default function PiscinesBienEtrePage() {
     <>
       <JsonLd data={BREADCRUMB} />
       <Hero
-        imageSrc={photoSrc('piscine-paroi-verre-travertin', '1280w')}
-        imageAlt="Piscine sur mesure à paroi vitrée, margelles en travertin, jardinières de graminées, terrasse bois d'une propriété haut de gamme"
+        imageSrc={photoSrc('piscine-interieure-pierre-poutres', '1280w')}
+        imageAlt="Couloir de nage intérieur sur mesure — charpente bois apparente, murs en pierre de pays, lumière naturelle — réalisation Aqua System dans les Yvelines"
+        // Crop-first (D-28) : la photo travertin restait « catalogue » à tous les
+        // cadrages testés → swap spec. center_35% cadre l'axe du couloir.
+        objectPosition={{ base: 'object-[center_35%]' }}
         title="Piscines & Bien-être"
         subtitle="Notre maison Aqua System : conception sur mesure depuis plus de 30 ans en Yvelines et Hauts-de-Seine."
       />

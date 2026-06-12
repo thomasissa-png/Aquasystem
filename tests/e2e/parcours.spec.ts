@@ -87,7 +87,7 @@ test.describe('Refonte IA — fusion /notre-approche → /la-maison (D-25)', () 
   }) => {
     await page.goto('/');
     const nav = page.getByRole('navigation', { name: 'Navigation principale' });
-    await expect(nav.getByRole('link', { name: 'Notre maison' })).toBeVisible();
+    await expect(nav.getByRole('link', { name: 'À propos' })).toBeVisible();
     await expect(nav.getByRole('link', { name: 'Notre approche' })).toHaveCount(0);
     await expect(nav.getByRole('link', { name: 'Architectes' })).toHaveCount(0);
   });

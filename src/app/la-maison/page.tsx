@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 };
 
 /** Fil d'Ariane (BreadcrumbList JSON-LD) — seo-strategy.md §C.6.3. */
-const BREADCRUMB = breadcrumbJsonLd([{ name: 'Notre maison', path: '/la-maison/' }]);
+const BREADCRUMB = breadcrumbJsonLd([{ name: 'À propos', path: '/la-maison/' }]);
 
 /** Person JSON-LD Nicolas Berg (content-restructuring.md §C.2). */
 const PERSON = nicolasBergJsonLd();
@@ -132,7 +132,12 @@ export default function LaMaisonPage() {
           mot pour mot), visible dès le fold. Photo identité piscine intérieure. */}
       <section className="bg-background">
         <div className="mx-auto grid max-w-container items-stretch gap-0 lg:min-h-[70vh] lg:grid-cols-2">
-          <div className="flex flex-col justify-center px-4 py-16 md:px-8 md:py-24">
+          <div className="flex flex-col justify-center px-4 py-14 md:px-8 md:py-20">
+            {/* D-28 : eyebrow + ligne de preuve + filet aqua pour combler le vide
+                de la colonne texte et ancrer la confiance dès le fold. */}
+            <p className="mb-3 text-xs font-medium uppercase tracking-[0.1em] text-foreground-accent-water">
+              Aqua System & Les Terres Essentielles
+            </p>
             <h1 className="font-serif text-4xl leading-tight text-foreground md:text-5xl lg:text-6xl">
               La maison
             </h1>
@@ -140,11 +145,15 @@ export default function LaMaisonPage() {
               De la vision à la réalisation : trente ans dans les plus belles
               propriétés de l'ouest parisien.
             </p>
+            <p className="mt-6 text-sm font-medium text-foreground-secondary">
+              30 ans · Équipe de 8 · Yvelines &amp; Hauts-de-Seine
+            </p>
+            <div className="mt-6 h-px w-12 bg-foreground-accent-water" />
           </div>
           <figure className="relative min-h-[260px] w-full overflow-hidden lg:min-h-full">
             <Image
-              src={photoSrc('piscine-interieure-beton-baies', '1280w')}
-              alt="Piscine intérieure en béton brut ouverte sur le jardin, larges baies vitrées, lumière naturelle — espace bien-être Aqua System"
+              src={photoSrc('piscine-interieure-veranda-soir', '1280w')}
+              alt="Piscine intérieure sous véranda à la tombée du jour, lumière chaude et tamisée, ambiance feutrée — réalisation Aqua System"
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -395,8 +404,9 @@ export default function LaMaisonPage() {
             </p>
           </div>
         </div>
-        {/* CTA mi-parcours (design-audit P1-APPROCHE-2) — évite 4 écrans sans CTA. */}
-        <div className="mx-auto max-w-container px-4 pb-20 text-center md:px-8">
+        {/* CTA mi-parcours (design-audit P1-APPROCHE-2) — évite 4 écrans sans CTA.
+            D-28 : pb-20→pb-12, le CTA ghost flottait isolé en bas de section. */}
+        <div className="mx-auto max-w-container px-4 pb-12 text-center md:px-8">
           <ButtonLink href="/contact" variant="ghost" size="md">
             Parlez-nous de votre projet →
           </ButtonLink>

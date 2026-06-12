@@ -17,9 +17,11 @@ import { ButtonLink } from '@/components/ui/ButtonLink';
 /**
  * NavBar — design-system.md §5 + mission.
  * Desktop (≥ lg) : wordmark + 5 liens horizontaux + CTA primary.
- * Mobile : wordmark + hamburger → drawer bottom-sheet (items-end), focus trap,
- * scroll body verrouillé, touch targets ≥ 44px, focus-visible inversé sur le
- * fond sombre de l'overlay.
+ * Mobile : wordmark + hamburger → drawer latéral glissant depuis la DROITE
+ * (design-system §5 : 80% de largeur, panneau sand-100, overlay rgba(26,21,16,.90)).
+ * Focus trap WCAG 2.2 ; focus initial sur le CONTENEUR (tabIndex=-1) → pas d'anneau
+ * par défaut sur la croix (focus-visible au clavier uniquement). Fermeture : croix,
+ * Escape, tap hors panneau. Animation sobre (translate/fade, reduced-motion OK).
  * Client component : état du drawer + lien actif (usePathname) + tracking E-04.
  */
 export function NavBar() {
@@ -59,8 +61,10 @@ export function NavBar() {
     }
 
     document.addEventListener('keydown', onKeyDown);
-    // Focus le premier élément du drawer à l'ouverture.
-    drawerRef.current?.querySelector<HTMLElement>('a[href], button')?.focus();
+    // Focus le CONTENEUR du drawer (tabIndex=-1) à l'ouverture, pas la croix :
+    // évite l'anneau de focus par défaut visible dès l'ouverture (le ring ne
+    // s'affiche qu'au clavier via focus-visible). Le focus trap reste actif.
+    drawerRef.current?.focus();
 
     return () => {
       document.body.style.overflow = previousOverflow;
@@ -137,18 +141,13 @@ export function NavBar() {
         </button>
       </nav>
 
-      {/* Drawer bottom-sheet */}
+      {/* Drawer latéral glissant depuis la droite (design-system §5) */}
       {open && (
-        <div
-          className="fixed inset-0 z-drawer flex flex-col justify-end lg:hidden"
-          // Overlay sombre — fermeture au tap extérieur.
-          onClick={(e) => {
-            if (e.target === e.currentTarget) setOpen(false);
-          }}
-        >
+        <div className="fixed inset-0 z-drawer flex justify-end lg:hidden">
+          {/* Overlay sombre — fermeture au tap extérieur */}
           <div
             aria-hidden
-            className="absolute inset-0 bg-[rgba(26,21,16,0.90)]"
+            className="drawer-overlay absolute inset-0 bg-[rgba(26,21,16,0.90)]"
             onClick={() => setOpen(false)}
           />
           <div
@@ -157,9 +156,10 @@ export function NavBar() {
             role="dialog"
             aria-modal="true"
             aria-label="Menu navigation"
-            className="relative max-h-[85vh] overflow-y-auto rounded-t-xl bg-background px-6 pb-8 pt-4"
+            tabIndex={-1}
+            className="drawer-panel relative flex h-full w-[80%] max-w-sm flex-col bg-background px-6 pb-8 pt-4 shadow-2xl focus:outline-none"
           >
-            <div className="mb-4 flex items-center justify-between">
+            <div className="flex items-center justify-between border-b border-border-muted pb-4">
               <span className="font-serif text-xl text-foreground">
                 {SITE_NAME}
               </span>
@@ -167,36 +167,44 @@ export function NavBar() {
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Fermer le menu"
-                className="flex h-11 w-11 items-center justify-center rounded-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2"
+                className="-mr-2 flex h-11 w-11 items-center justify-center rounded-sm text-foreground-secondary transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2"
               >
                 <X aria-hidden className="h-6 w-6" />
               </button>
             </div>
 
-            <ul className="flex flex-col">
-              {NAV_LINKS.map((link) => (
-                <li key={link.href} className="border-b border-border-muted">
-                  <Link
-                    href={link.href}
-                    aria-current={isActive(link.href) ? 'page' : undefined}
-                    onClick={() => setOpen(false)}
-                    className={cn(
-                      'block min-h-11 py-4 font-serif text-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2',
-                      isActive(link.href)
-                        ? 'text-foreground-accent-water'
-                        : 'text-foreground',
-                    )}
+            <nav
+              aria-label="Navigation"
+              className="flex-1 overflow-y-auto pt-2"
+            >
+              <ul className="flex flex-col">
+                {NAV_LINKS.map((link) => (
+                  <li
+                    key={link.href}
+                    className="border-b border-border-muted/60"
                   >
-                    {link.label}
-                    {link.href === '/la-maison' && (
-                      <span className="mt-1 block text-xs font-sans text-foreground-muted">
-                        De la vision à la réalisation
-                      </span>
-                    )}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                    <Link
+                      href={link.href}
+                      aria-current={isActive(link.href) ? 'page' : undefined}
+                      onClick={() => setOpen(false)}
+                      className={cn(
+                        'block min-h-11 py-4 font-serif text-2xl leading-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2',
+                        isActive(link.href)
+                          ? 'text-foreground-accent-water'
+                          : 'text-foreground',
+                      )}
+                    >
+                      {link.label}
+                      {link.href === '/la-maison' && (
+                        <span className="mt-1 block font-sans text-xs text-foreground-muted">
+                          De la vision à la réalisation
+                        </span>
+                      )}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
 
             <ButtonLink
               href={CONTACT_PATH}

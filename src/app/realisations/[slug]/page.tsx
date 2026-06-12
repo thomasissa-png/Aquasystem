@@ -13,7 +13,7 @@ import {
   type Realisation,
 } from '@/content/realisations';
 import { ButtonLink } from '@/components/ui/ButtonLink';
-import { CrossSellingBlock } from '@/components/sections/CrossSellingBlock';
+import { SectionCTA } from '@/components/sections/SectionCTA';
 import { JsonLd } from '@/components/seo/JsonLd';
 
 /**
@@ -67,8 +67,6 @@ export default function RealisationFiche({
 
   const main = r.photos[0]!;
   const draft = isDraft(r);
-  // Cross-sell conditionnel : seulement si piscine "seule" (pas projet complet).
-  const showCrossSell = r.type === 'piscine_bien_etre';
 
   // BreadcrumbList JSON-LD (3 niveaux) — seo-strategy.md §C.6.3.
   const breadcrumb = breadcrumbJsonLd([
@@ -173,8 +171,13 @@ export default function RealisationFiche({
               </ul>
             )}
 
-            {/* Texte éditorial réel uniquement. Draft (sans texte) → page galerie
-                sobre, aucun encart d'inachevé rendu (gate-perception D2/D3). */}
+            {/* Description visuelle réelle (D-27 — rédigée d'après la photo,
+                zéro invention) : rendue sur TOUTES les fiches, draft compris. */}
+            <p className="mt-6 max-w-[60ch] border-t border-border pt-6 text-base leading-8 text-foreground-secondary">
+              {r.visualDescription}
+            </p>
+
+            {/* Texte éditorial complet uniquement si renseigné (non-draft). */}
             {!draft && (
               <div className="mt-6 border-t border-border pt-6">
                 <FicheEditorial realisation={r} />
@@ -198,18 +201,15 @@ export default function RealisationFiche({
         </div>
       </section>
 
-      {showCrossSell && (
-        <CrossSellingBlock
-          sourceUnivers="piscines"
-          destinationUnivers="jardins"
-          destinationHref="/jardins-paysage"
-          title="Votre piscine mérite un jardin à sa mesure."
-          body="L'eau et le végétal se conçoivent ensemble, en partenariat avec Les Terres Essentielles, bureau d'études paysager."
-          ctaLabel="Voir nos créations paysagères →"
-          imageSrc={photoSrc('projet-bassin-jardin-paysage', '800w')}
-          imageAlt="Piscine et jardin paysagé conçus ensemble dans une propriété de l'ouest parisien"
-        />
-      )}
+      {/* Retour fondateur (D-28) : le CrossSellingBlock faisait « cheveu sur la
+          soupe » en bas de fiche → remplacé par un SectionCTA contact sobre.
+          Tracking E-09 (cross_selling_clicked) ne vit plus que sur les pages
+          univers /piscines-bien-etre et /jardins-paysage — comportement attendu. */}
+      <SectionCTA
+        amorce="Ce projet vous inspire ? Parlons du vôtre."
+        href="/contact?source=realisations"
+        trackPosition="realisation_detail"
+      />
     </>
   );
 }
