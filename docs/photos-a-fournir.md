@@ -105,5 +105,55 @@ priorité — chaque slot rempli supprime un placeholder et renforce la conversi
 
 ---
 
-*Document produit par @fullstack — 2026-06-12 (D-25).*
+## D. Données à confirmer — localisation des réalisations (D-27, 2026-06-12)
+
+> Demande **textuelle** (pas une photo), mais bloquante pour l'honnêteté du
+> portfolio. À renseigner par Nicolas Berg, réalisation par réalisation.
+
+**Contexte** : les 24 fiches du portfolio (`src/content/realisations.ts`)
+affichent aujourd'hui la zone **« Ouest parisien »** — vraie pour toutes (zone
+d'activité documentée), mais volontairement large. L'attribution précédente
+« Yvelines (78) » / « Hauts-de-Seine (92) » par réalisation n'était **pas
+vérifiée projet par projet** (attribution par défaut) : elle a été retirée pour
+ne rien affirmer de non vérifié (règle zéro invention).
+
+**Ce qui est demandé** : pour chaque réalisation que vous souhaitez localiser
+plus finement, indiquer la **commune** (ou au minimum le **département**). Cela
+permettra de :
+- enrichir le titre et l'alt (SEO local 78/92 — objectif référencement),
+- nourrir les futures fiches projet (`intention` / `réponse` / `exécution`).
+
+| Slug réalisation | Commune / département réel | Remarque éventuelle |
+|---|---|---|
+| piscine-debordement-foret | _à compléter_ | |
+| projet-piscine-jardin-banquette | _à compléter_ | |
+| piscine-couloir-demeure-ancienne | _à compléter_ | (hero accueil) |
+| piscine-paroi-verre-travertin | _à compléter_ | |
+| piscine-paroi-verre-pierre | _à compléter_ | |
+| piscine-jardin-arbre | _à compléter_ | |
+| piscine-terrasse-bois-plongee | _à compléter_ | |
+| piscine-enterree-maison-brique | _à compléter_ | |
+| projet-bassin-jardin-paysage | _à compléter_ | |
+| projet-pool-house-toit-vegetalise | _à compléter_ | (architecte SKP) |
+| piscine-interieure-beton-baies | _à compléter_ | |
+| piscine-interieure-pierre-poutres | _à compléter_ | |
+| piscine-interieure-veranda-soir | _à compléter_ | |
+| jardin-bassin-maison-bois | _à compléter_ | |
+| piscine-nocturne-murets-eclaires | _à compléter_ | (ajout galerie) |
+| piscine-terrasse-engazonnee-volet | _à compléter_ | (ajout galerie) |
+| piscine-terrasse-bois-mur-vegetal | _à compléter_ | (ajout galerie) |
+| piscine-pierre-demeure-beige | _à compléter_ | (ajout galerie) |
+| piscine-pierre-mur-ancien | _à compléter_ | (ajout galerie) |
+| piscine-mur-brique-jardin | _à compléter_ | (ajout galerie) |
+| bassin-miroir-crepuscule | _à compléter_ | (ajout galerie) |
+| bassin-pierre-rosiers | _à compléter_ | (ajout galerie) |
+| piscine-fond-mobile-terrasse | _à compléter_ | (ajout galerie, fond mobile Aqualift) |
+| bien-etre-eclairage-ambiance | _à compléter_ | (ajout galerie) |
+
+Tant que ces données ne sont pas fournies, le site reste sur « Ouest parisien »
+(aucun risque d'affirmation fausse).
+
+---
+
+*Document produit par @fullstack — 2026-06-12 (D-25, complété D-27).*
 *Sources : project-context.md §Doctrine photos, casting-visuels.md §4b, design-fixes-fondateur.md Prise 4.*

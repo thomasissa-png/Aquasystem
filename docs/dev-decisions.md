@@ -453,3 +453,34 @@ La pépinière/serre a désormais une vraie photo. **Restent en PhotoPlaceholder
 **Vérification finale** : `tsc --noEmit` PASS · `next lint` PASS (0 warning) · `build` PASS · **Vitest 102/102**. Pas de commit, pas de déploiement (consigne).
 
 ---
+
+## D-27 — Moisson galerie aqua-system.fr + zones honnêtes + descriptions visuelles (@fullstack, 2026-06-12)
+
+> Brief fondateur : enrichir le portfolio depuis https://www.aqua-system.fr/galerie (droits accordés « tu as mon accord pour tout utiliser »), rendre les zones honnêtes, doter chaque réalisation d'une description du VISIBLE. Périmètre STRICT : `src/content/realisations.ts`, `public/images/realisations/`, scripts images, `docs/`. **Aucune page/composant touché** (autre agent). Pas de commit, pas de déploiement.
+
+### 1. Moisson galerie (bilan chiffré)
+- **Récupérées** : 64 URLs d'images originales extraites du HTML galerie (`curl -A` navigateur, HTTP 200), téléchargées en pleine résolution depuis `cdn.website-editor.net/.../multi/`. La plupart en **1920px** (vs 1280px du set esprit-piscine initial). Variantes `/opt/-640w/-1920w/-2880w` et `cache_*` (thumbnails < 800px) ignorées.
+- **Dédoublonnage visuel** (lecture des 14 thumbs existants + des 55 candidats HD, lots ≤ 3, aperçus 700px) → cartographie réalisation par réalisation via les codes chantier des noms de fichiers (ADL, ARN, ABA, SOL, GIR, TOU, DEV, JUB, NOG, GAU, PER, GIL, Corniche…).
+- **Ajoutées (10 nouvelles réalisations)**, absentes du set initial : `piscine-nocturne-murets-eclaires` (IMG_1313, vue nocturne plongeante), `piscine-terrasse-engazonnee-volet` (maison ocre, volet immergé), `piscine-terrasse-bois-mur-vegetal` (PER/Garches), `piscine-pierre-demeure-beige` (JUB), `piscine-pierre-mur-ancien` (ST NOM), `piscine-mur-brique-jardin` (GAU), `bassin-miroir-crepuscule` (DEV14), `bassin-pierre-rosiers` (NOG36), `piscine-fond-mobile-terrasse` (GIL/Aqualift — fond mobile, différenciant technique), `bien-etre-eclairage-ambiance` (Corniche, spa intérieur chromothérapie).
+- **Remplacées (4 fichiers HD, mêmes slugs/noms)** car même réalisation mais résolution 1920 + meilleur cadrage : `projet-pool-house-toit-vegetalise` (GIR60, passerelle vitrée frontale crépuscule), `piscine-interieure-veranda-soir` (SOL25, mur de pierre éclairé), `piscine-interieure-beton-baies` (ABA10, bassin en eau), `projet-bassin-jardin-paysage` (ARN26, vue d'ensemble). Alts ré-écrits pour décrire la nouvelle photo.
+- **Écartées** :
+  - **Watermark réseau incrustée** « l'esprit piscine » → toute la série `l-esprit-piscine_..._Photo-Philippe-Leroy_*` (CHA, KRI, ENN, g50) — un crop pour la retirer dégraderait. Inutilisables (~16 fichiers).
+  - **Nommage générique réseau non attribuable** `Swimming-Pool-FRANCE-00XX` (g03/g04/g05) — pas de preuve de réalisation PROPRE Aqua System ; g05 montre des montagnes (hors ouest parisien) → cohérence zone.
+  - **Logos** (Logo.png, Aqua-system-solutions-logo.png).
+  - **Doublons d'angle** des réalisations déjà retenues (TOU13, GIR53/56, SOL02/10, ABA04/06, ADL01/34/43, ARN12, DEV04/26, JUB33, PER07, corn_spa 0559/0585/0615 → 1 angle gardé par réalisation).
+  - **< 1000px** : `cache_*` (8 fichiers, 407–800px). Note : `piscine-pierre-mur-ancien` (1038px) et `piscine-pierre-demeure-beige` (1000px) retenues car ≥ 1000px et sujet net (générées sans upscale, `withoutEnlargement`).
+- **Résultat manifeste** : 14 → **24 réalisations** ; **42 nouveaux fichiers WebP** (3 tailles × 14 entrées traitées : 10 ajouts + 4 remplacements) via `scripts/build-new-realisation-images.mjs` (sharp, q80, ≤ 1280w). Source documentée dans chaque crédit (`aqua-system.fr / Aqua System` pour les ajouts).
+
+### 2. Zones honnêtes
+- Toutes les `zone` passées de `'Yvelines (78)'` / `'Hauts-de-Seine (92)'` (attribution **par défaut, non vérifiée projet par projet**) à **`'Ouest parisien'`** (zone d'activité documentée — toujours vraie), + commentaire TSX par entrée `// zone précise [À CONFIRMER Nicolas Berg]`.
+- **Alts** : toutes les mentions « Yvelines (78) » / « Hauts-de-Seine (92) » par photo remplacées par « ouest parisien ». Au passage, 2 alts corrigés pour coller au visible réel (`piscine-jardin-arbre` : pas de « parasol orange / maison contemporaine » → demeure ancienne + banquette ; `jardin-bassin-maison-bois` : pas de « grande table conviviale »).
+- **Titres** : suffixes géographiques (« , Yvelines » etc.) retirés des `title` (plus aucune commune/département affirmé). `shortTitle()` mis à jour (regex inclut « ouest parisien » par sécurité, test SEO < 60 car. toujours PASS).
+- **Doc** : section D ajoutée à `docs/photos-a-fournir.md` (tableau 24 slugs, demande « préciser commune/département par réalisation »).
+
+### 3. Descriptions visuelles
+- Nouveau champ **`visualDescription: string`** (non-nullable) sur l'interface `Realisation`, renseigné sur **100 % (24/24)** des entrées. Chaque texte rédigé après **lecture de la photo**, 2-3 phrases, ton brand-voice soutenu-accessible, **UNIQUE** (aucune formule répétée), décrivant UNIQUEMENT le visible (matériaux, implantation, lumière, rapport jardin/maison). Zéro intention client / durée / commune / technique non visible. **Zéro cadratin** dans les textes (vérifié par Grep).
+
+### Vérification finale
+`npx tsc --noEmit` **PASS** · slugs **24 uniques** · `bases` photos uniques · **0 fichier image manquant** (24 × 3 tailles présents) · **Vitest `realisations.test.ts` 19/19 PASS**. Boucle visuelle : remplacements HD relus (gain net confirmé). Pas de `next lint`/`build` complet exécuté (périmètre = 1 fichier data + assets, pas de page modifiée ; l'agent pages lancera le pre-commit complet). Pas de commit, pas de déploiement (consigne).
+
+---
