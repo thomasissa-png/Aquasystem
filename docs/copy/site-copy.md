@@ -1013,3 +1013,206 @@ Termes interdits à vérifier dans ce fichier :
 *Sources : brand-voice.md, ux-writing-guide.md v1.2, verbal-identity.md, wireframes.md v1.1, page-compositions.md, project-context.md, legal-audit.md §B*
 *Framework : AIDA conviction-first | Conscience : Alexandre Solution-Aware, Camille Problem-Aware*
 *Objections traitées : 7 (voir Tableau objections en tête de document)*
+
+---
+
+---
+
+## RECALIBRAGE v1.1 — LTE réalité jardinerie + Kei-Stone (2026-06-12)
+
+> Contexte : précision fondateur du 2026-06-12 (project-context.md §"Validations fondateur" point 7).
+> LTE est avant tout une JARDINERIE + bureau d'études + distribution Kei-Stone (pierre naturelle).
+> L'offre création paysagère reste affichée (ambition assumée, validée fondateur) mais AUCUNE formulation
+> ne peut laisser croire à un historique de réalisations paysagères livrées.
+> Les 30 ans d'ancrage sont côté Aqua System, pas côté LTE.
+> Recrutement paysagiste en cours : ne pas mentionner sur le site (règle : pas de recrutement en cours sur site client).
+>
+> Source Kei-Stone vérifiée par WebSearch : kei-stone.fr — fabricant/importateur et distributeur de pierre
+> naturelle (dallages, margelles, carrelage, parements) depuis 2001 ; gamme spécifique piscine (dallages plage +
+> margelles Saint-Côme, Montfort, Bleu d'Asie, Gris d'Asie, Bluestone) ; réseau de magasins propres en PACA +
+> concessionnaires en France. [À CONFIRMER : nature exacte du partenariat LTE ↔ Kei-Stone — "distributeur
+> agréé", "concessionnaire" ou autre — avant publication de ce bloc.]
+
+### Périmètre des modifications
+
+| # | Page / Section | Élément | Avant | Après | Criticité |
+|---|---------------|---------|-------|-------|-----------|
+| 1 | /jardins-paysage (WF-03 §5) | ProofBadge 3 | "Plus de 30 ans / en 78/92" | "Jardinerie & expertise / depuis 2015" | P0 — le badge 30 ans est faux pour LTE |
+| 2 | /jardins-paysage (WF-03 §3) | Bloc Création — corps §2 | "Aucune réalisation ne ressemble à la précédente, parce qu'aucun terrain ne se ressemble." | "Chaque projet est pensé depuis la contrainte réelle du terrain : aucun plan ne ressemble au précédent." | P1 — "réalisation" sous-entend un historique livré |
+| 3 | /jardins-paysage (WF-03 §3) | Nouveau bloc entre Création et Pépinière | — (absent) | Bloc "Pierre naturelle — Kei-Stone" (voir copie complète ci-dessous) | P1 — offre réelle non représentée |
+| 4 | /la-maison (WF-06 §3) | Bloc LTE corps §1 | "Bureau d'études paysager, création et entretien de parcs et jardins, pépinière." | "Jardinerie, bureau d'études paysager, création et entretien de parcs et jardins, pépinière. Distribution de pierre naturelle Kei-Stone." | P1 — jardinerie absente, Kei-Stone absent |
+| 5 | /jardins-paysage meta OG imageAlt (TSX) | alt OG image | "Jardin sur mesure réalisé par Les Terres Essentielles dans les Yvelines" | "Jardin et terrasse en pierre naturelle dans une propriété des Yvelines — Les Terres Essentielles" | P0 — "réalisé par LTE" = fausse promesse directe ; à corriger dans page.tsx |
+| 6 | /jardins-paysage meta description | description | "Bureau d'études paysager, jardins et parcs sur mesure en 78/92. Les Terres Essentielles, en partenariat avec Aqua System. Contactez-nous." | "Jardinerie, bureau d'études paysager et pierre naturelle Kei-Stone en 78/92. Les Terres Essentielles, en partenariat avec Aqua System." | P1 — intégrer la réalité jardinerie + Kei-Stone sans sur-promettre |
+
+---
+
+### Édits site-copy.md — texte de référence modifié
+
+#### Édit 1 — ProofBadges /jardins-paysage (WF-03 §5)
+
+**REMPLACE** dans "Page 3 — Jardins & Paysage", section "WF-03 / Section 5 — Preuves (ProofBadges jardins)" :
+
+| Badge | Ligne 1 | Ligne 2 |
+|-------|---------|---------|
+| 1 | Bureau d'études | paysager intégré |
+| 2 | Pépinière | propre |
+| ~~3~~ | ~~Plus de 30 ans~~ | ~~en 78/92~~ |
+| 3 (nouveau) | Jardinerie & expertise | depuis 2015 |
+
+> Justification : "Plus de 30 ans en 78/92" est la preuve d'Aqua System. LTE est créée en 2015 (SIREN 811 198 217,
+> project-context.md). Utiliser "depuis 2015" est factuel et n'invente rien. L'ancrage 78/92 reste dans
+> "bureau d'études paysager intégré" (Alluets-le-Roi, 78580 — connu du persona).
+
+---
+
+#### Édit 2 — Bloc Création (WF-03 §3) — corps §1 seul
+
+**REMPLACE** dans "WF-03 / Section 3 — Bloc 2 : Création de parcs et jardins", paragraphe 1 du Corps :
+
+AVANT :
+> Allées, massifs, pelouses, enrochements, terrasses végétalisées — chaque élément est choisi pour son rapport avec les autres et avec l'architecture de la maison. Aucune réalisation ne ressemble à la précédente, parce qu'aucun terrain ne se ressemble.
+
+APRÈS :
+> Allées, massifs, pelouses, enrochements, terrasses végétalisées — chaque élément est conçu pour son rapport avec les autres et avec l'architecture de la maison. Chaque projet part du terrain : aucun plan ne ressemble au précédent, parce qu'aucun terrain ne se ressemble.
+
+> Justification : "chaque élément est choisi" → "est conçu" (plus juste pour une offre en construction d'équipe) ;
+> "Aucune réalisation ne ressemble" → "Chaque projet part du terrain : aucun plan ne ressemble" — on parle de
+> conception, pas de chantiers livrés. Changement minimal, ton identique, reformulation chirurgicale.
+
+---
+
+#### Édit 3 — Nouveau bloc "Pierre naturelle — Kei-Stone" (WF-03, entre §3 et §4)
+
+**INSÉRER** après la section "WF-03 / Section 3 — Bloc 2 : Création de parcs et jardins" et avant "WF-03 / Section 4 — Bloc 3 : Entretien et pépinière" :
+
+---
+
+### WF-03 / Section 3b — Bloc Pierre naturelle : Kei-Stone
+
+[Photo : dallage en pierre naturelle autour d'une plage de piscine — margelles posées à ras, surface calcaire beige-gris, harmonie avec la végétation en bordure — à obtenir : photo de réalisation ou visuel fournisseur Kei-Stone]
+
+**Surtitre** (DM Sans 12px forest-600 uppercase) :
+> Pierre naturelle
+
+**H2** :
+> La pierre comme trait d'union entre l'eau et le jardin
+
+**Corps** (3 lignes, 70 mots max) :
+> Dallages de plage, margelles de piscine, allées et pas japonais — la pierre naturelle est le matériau qui fait tenir ensemble l'eau et le végétal. Elle vieillit avec la propriété, absorbe la lumière, et ne ressemble à rien de standard.
+>
+> Les Terres Essentielles distribuent les pierres naturelles Kei-Stone [À CONFIRMER : nature exacte du partenariat LTE ↔ Kei-Stone] — une gamme pensée pour les extérieurs haut de gamme : travertin, calcaire, bluestone, pierre grise d'Asie. Disponibles pour vos projets d'aménagement.
+
+*Note copy : "distribuent" peut être remplacé par "proposent en partenariat avec" ou "sont concessionnaires de" selon la confirmation fondateur. Ne pas écrire "vendent" (trop commercial, hors registre). Kei-Stone est une marque réelle, vérifiée kei-stone.fr — fabricant/importateur de pierre naturelle, réseau de concessionnaires en France depuis 2001.*
+
+*Note @fullstack : ce bloc s'insère entre CreationBlock et PepiniereBlock dans src/app/jardins-paysage/page.tsx. Même composant PlaceholderSplit que Bureau d'études (accent forest, photo placeholder jusqu'à obtention d'une photo réelle). Le slot photo "à obtenir" est P1 — ne bloque pas la mise en ligne.*
+
+---
+
+#### Édit 4 — Bloc LTE dans /la-maison (WF-06 §3)
+
+**REMPLACE** dans "Page 5 — La maison", section "WF-06 / Section 3 — Les deux maisons", colonne droite, Corps §1 :
+
+AVANT :
+> Bureau d'études paysager, création et entretien de parcs et jardins, pépinière. Des végétaux sélectionnés pour les sols et le climat de l'ouest parisien.
+
+APRÈS :
+> Jardinerie, bureau d'études paysager, création et entretien de parcs et jardins, pépinière. Pierre naturelle Kei-Stone [À CONFIRMER]. Des végétaux et des matériaux sélectionnés pour les propriétés de l'ouest parisien.
+
+> Justification : "Jardinerie" en premier (réalité fondateur, cœur de l'activité LTE actuelle) ; "Pierre naturelle
+> Kei-Stone" ajoutée sobrement ; "Des végétaux et des matériaux" — élargissement du périmètre sans rupture de ton.
+> Modification minimale : 2 ajouts, 1 substitution de fin de phrase. Le reste du bloc est inchangé.
+
+---
+
+### Éléments à corriger dans src/ (pour @fullstack)
+
+#### Fix 1 — src/app/jardins-paysage/page.tsx : alt OG image (ligne 37)
+
+FICHIER : `src/app/jardins-paysage/page.tsx`
+AVANT (ligne 37) :
+```
+alt: 'Jardin sur mesure réalisé par Les Terres Essentielles dans les Yvelines',
+```
+APRÈS :
+```
+alt: 'Jardin et terrasse en pierre naturelle dans une propriété des Yvelines — Les Terres Essentielles',
+```
+
+#### Fix 2 — src/app/jardins-paysage/page.tsx : meta description (ligne 26-27)
+
+FICHIER : `src/app/jardins-paysage/page.tsx`
+AVANT (lignes 26-27) :
+```
+description:
+    "Bureau d'études paysager, jardins et parcs sur mesure en 78/92. Les Terres Essentielles, en partenariat avec Aqua System. Contactez-nous.",
+```
+APRÈS :
+```
+description:
+    "Jardinerie, bureau d'études paysager et pierre naturelle Kei-Stone en 78/92. Les Terres Essentielles, en partenariat avec Aqua System.",
+```
+
+#### Fix 3 — src/app/jardins-paysage/page.tsx : JARDINS_PROOFS (ligne 48-52)
+
+FICHIER : `src/app/jardins-paysage/page.tsx`
+AVANT (ligne 50-52) :
+```
+  { figure: "Bureau d'études", label: 'paysager intégré' },
+  { figure: 'Pépinière', label: 'propre' },
+  { figure: '30+', label: 'ans en 78/92' },
+```
+APRÈS :
+```
+  { figure: "Bureau d'études", label: 'paysager intégré' },
+  { figure: 'Pépinière', label: 'propre' },
+  { figure: 'Jardinerie & expertise', label: 'depuis 2015' },
+```
+
+#### Fix 4 — src/app/jardins-paysage/page.tsx : nouveau bloc KeiStone (après CreationBlock, avant PepiniereBlock)
+
+FICHIER : `src/app/jardins-paysage/page.tsx`
+INSÉRER après la ligne `{/* Bloc 2 — Création de parcs et jardins (placeholder : chantier création). */}` et son composant `<CreationBlock />` :
+
+```tsx
+{/* Bloc 3b — Pierre naturelle Kei-Stone (distributeur LTE — synergie piscines/jardins). */}
+<KeiStoneBlock />
+```
+
+ET ajouter la fonction composant suivante dans le fichier (avant `PlaceholderSplit`) :
+
+```tsx
+function KeiStoneBlock() {
+  return (
+    <PlaceholderSplit
+      eyebrow="Pierre naturelle"
+      title="La pierre comme trait d'union entre l'eau et le jardin"
+      body={[
+        "Dallages de plage, margelles de piscine, allées et pas japonais — la pierre naturelle est le matériau qui fait tenir ensemble l'eau et le végétal. Elle vieillit avec la propriété, absorbe la lumière, et ne ressemble à rien de standard.",
+        "Les Terres Essentielles distribuent les pierres naturelles Kei-Stone — une gamme pensée pour les extérieurs haut de gamme : travertin, calcaire, bluestone, pierre grise d'Asie.",
+      ]}
+      placeholder="Dallage en pierre naturelle autour d'une plage de piscine — margelles posées à ras, surface calcaire beige-gris, harmonie avec la végétation en bordure. [Photo à obtenir — fournisseur Kei-Stone ou réalisation LTE]"
+    />
+  );
+}
+```
+
+> Note @fullstack : "distribuent" dans le corps peut être ajusté une fois la nature du partenariat confirmée
+> par le fondateur [À CONFIRMER]. Le composant PlaceholderSplit existant est réutilisé sans modification.
+> Renommer les numéros de blocs dans les commentaires : ancien Bloc 3 Pépinière → Bloc 4.
+
+---
+
+### Critères de done — vérification post-application
+
+- [ ] Zéro badge "30+ ans" sur /jardins-paysage (les 30 ans restent sur l'accueil et /piscines-bien-etre où ils désignent Aqua System)
+- [ ] Bloc Kei-Stone présent entre Création et Pépinière — factuel, sourcé, [À CONFIRMER partenariat] visible
+- [ ] "réalisé par Les Terres Essentielles" absent de tous les alt/meta publics
+- [ ] Bloc LTE /la-maison : "Jardinerie" en premier mot
+- [ ] Grep "réalisation" sur /jardins-paysage : seules occurrences acceptables = "Aucun plan ne ressemble au précédent" (contexte conception) et cross-sell (vers piscines, hors périmètre LTE)
+- [ ] build/tsc/lint PASS post-édits
+
+---
+
+*Section v1.1 produite par @copywriter — 2026-06-12*
+*Framework : audit anti-fausse-promesse + AIDA | Conscience : Alexandre Solution-Aware*
+*Source Kei-Stone : kei-stone.fr (WebSearch 2026-06-12) — fabricant/importateur pierre naturelle, réseau concessionnaires France*
