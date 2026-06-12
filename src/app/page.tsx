@@ -50,8 +50,18 @@ export default function HomePage() {
     <>
       <Hero
         variant="home"
-        imageSrc={photoSrc('piscine-debordement-foret', '1280w')}
-        imageAlt="Piscine à débordement intégrée dans un parc paysagé bordé de pins, plan d'eau calme reflétant la végétation, fin d'après-midi"
+        imageSrc={photoSrc('piscine-couloir-demeure-ancienne', '1280w')}
+        imageAlt="Demeure ancienne en pierre et brique encadrée d'arbres adultes, long bassin miroir reflétant la façade, grande pelouse — propriété de caractère dans les Yvelines"
+        // Casting-visuels §3a : cadrage par viewport pour garder la demeure
+        // (centre-haut) et le bassin (centre-bas) dans le cadre.
+        objectPosition={{
+          base: 'object-[40%_30%]',
+          md: 'md:object-[center_30%]',
+          lg: 'lg:object-[center_35%]',
+        }}
+        // Casting-visuels §3b : overlay allégé (0.75 max) — photo lumineuse,
+        // la demeure et le ciel doivent rester lisibles.
+        overlayClassName="bg-gradient-to-t from-[rgba(26,21,16,0.75)] via-[rgba(26,21,16,0.30)] to-transparent"
         title="L'extérieur à la hauteur de votre propriété."
         subtitle="De la vision à la réalisation — eau, jardin, propriété — un seul interlocuteur, depuis 30 ans dans l'ouest parisien."
         cta={

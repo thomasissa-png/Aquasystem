@@ -70,10 +70,12 @@ export default function LaMaisonPage() {
     <>
       <JsonLd data={BREADCRUMB} />
       <JsonLd data={PERSON} />
-      {/* Hero — FALLBACK : photo de réalisation (photo Nicolas Berg non fournie). */}
+      {/* Hero — FALLBACK : photo de réalisation (photo Nicolas Berg non fournie).
+          Arbitrage anti-doublon (2026-06-12) : demeure-ancienne réservée au hero
+          accueil → terrasse-bois-plongee (8/10 au casting) ici. */}
       <Hero
-        imageSrc={photoSrc('piscine-couloir-demeure-ancienne', '1280w')}
-        imageAlt="Bassin miroir devant une demeure de caractère de l'ouest parisien — réalisation Aqua System"
+        imageSrc={photoSrc('piscine-terrasse-bois-plongee', '1280w')}
+        imageAlt="Vue plongeante sur une piscine et sa large terrasse en bois entourée de végétation — réalisation Aqua System"
         title="La maison"
         subtitle="Plus de 30 ans d'expertise dans les plus belles propriétés de l'ouest parisien — et une conviction : le détail fait tout."
       />

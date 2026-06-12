@@ -61,8 +61,13 @@ export default function JardinsPaysagePage() {
     <>
       <JsonLd data={BREADCRUMB} />
       <Hero
-        imageSrc={photoSrc('projet-pool-house-toit-vegetalise', '1280w')}
-        imageAlt="Jardin structuré d'une grande propriété : massifs fleuris, pelouse, pavillon à toiture végétalisée, perspective paysagère"
+        imageSrc={photoSrc('piscine-enterree-maison-brique', '1280w')}
+        imageAlt="Maison contemporaine en brique et bois encadrée d'une haie dense, piscine enterrée bordée de pierre au premier plan, terrasse haute avec parasols — propriété des Hauts-de-Seine"
+        // Casting-visuels §5 swap 2 : cadrage center 40% pour garder la maison
+        // et la haie dans le cadre, pas seulement la piscine.
+        objectPosition={{ base: 'object-[center_40%]' }}
+        // Overlay un peu plus marqué que l'accueil (photo lumineuse).
+        overlayClassName="bg-gradient-to-t from-[rgba(26,21,16,0.65)] via-[rgba(26,21,16,0.28)] to-transparent"
         title="Jardins & Paysage"
         subtitle="En partenariat avec Les Terres Essentielles — bureau d'études paysager, création et entretien de parcs et jardins sur mesure."
       />

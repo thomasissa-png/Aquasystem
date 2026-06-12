@@ -23,7 +23,23 @@ export interface HeroProps {
   subtitle?: string;
   /** Slot CTA (ButtonLink) — accueil uniquement. */
   cta?: React.ReactNode;
+  /**
+   * Cadrage `object-position` de l'image, par viewport (casting-visuels §5).
+   * Classes Tailwind `object-[...]` (mobile/tablet/desktop). Optionnel et
+   * rétro-compatible : sans valeur, le cadrage par défaut `object-center` est
+   * conservé pour toutes les autres pages.
+   */
+  objectPosition?: { base?: string; md?: string; lg?: string };
+  /**
+   * Override du dégradé d'overlay (classes Tailwind `bg-gradient-*`). Optionnel :
+   * sans valeur, l'overlay standard (0.78 → 0.30 → transparent) est conservé.
+   */
+  overlayClassName?: string;
 }
+
+/** Overlay standard (WF-01) — fort en bas, transparent à mi-hauteur. */
+const OVERLAY_DEFAULT =
+  'bg-gradient-to-t from-[rgba(26,21,16,0.78)] via-[rgba(26,21,16,0.30)] to-transparent';
 
 export function Hero({
   variant = 'page',
@@ -33,6 +49,8 @@ export function Hero({
   title,
   subtitle,
   cta,
+  objectPosition,
+  overlayClassName,
 }: HeroProps) {
   const isHome = variant === 'home';
   const mobileSrc = toWidthVariant(imageSrc, '800w');
@@ -56,13 +74,18 @@ export function Hero({
           fetchPriority="high"
           loading="eager"
           decoding="async"
-          className="absolute inset-0 h-full w-full object-cover"
+          className={cn(
+            'absolute inset-0 h-full w-full object-cover',
+            objectPosition?.base ?? 'object-center',
+            objectPosition?.md,
+            objectPosition?.lg,
+          )}
         />
       </picture>
       {/* Overlay : dégradé sombre en bas → transparent à mi-hauteur (WF-01). */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-t from-[rgba(26,21,16,0.78)] via-[rgba(26,21,16,0.30)] to-transparent"
+        className={cn('absolute inset-0', overlayClassName ?? OVERLAY_DEFAULT)}
       />
       <div className="relative mx-auto w-full max-w-container px-4 pb-12 md:px-8 md:pb-16">
         <div className={cn('max-w-2xl', isHome ? 'lg:max-w-3xl' : '')}>

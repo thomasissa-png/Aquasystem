@@ -362,7 +362,9 @@ export const REALISATIONS: Realisation[] = [
 /** Réalisations mises en avant sur l'accueil (3 phares, types variés). */
 export const FEATURED_SLUGS = [
   'piscine-debordement-foret',
-  'piscine-couloir-demeure-ancienne',
+  // casting-visuels §5 swap 3 : remplace `piscine-couloir-demeure-ancienne`
+  // (passée en hero accueil) — évite le doublon hero/card sur la même session.
+  'piscine-enterree-maison-brique',
   'projet-piscine-jardin-banquette',
 ] as const;
 
