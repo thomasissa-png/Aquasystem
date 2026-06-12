@@ -127,7 +127,9 @@ export default function HomePage() {
               <p className="font-serif text-3xl leading-tight text-sand-100 md:text-4xl">
                 Jardins<br />&amp; Paysage
               </p>
-              <p className="mt-2 text-xs font-medium uppercase tracking-[0.15em] text-[#7ab87a]/70">
+              {/* WCAG 2.2 AA : l'opacité /70 de l'audit tombait à 3.9:1 sur
+                  #1A2A1A — vert plein (≈6:1) pour respecter le 4.5:1 (D-24). */}
+              <p className="mt-2 text-xs font-medium uppercase tracking-[0.15em] text-[#7ab87a]">
                 Les Terres Essentielles
               </p>
             </div>

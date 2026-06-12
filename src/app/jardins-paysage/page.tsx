@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
 import { SITE_URL, absoluteUrl, breadcrumbJsonLd } from '@/lib/seo';
 import { photoSrc } from '@/content/realisations';
-import { JARDINERIE_PHOTOS, jardinerieSrc } from '@/content/jardinerie';
 import { Hero } from '@/components/sections/Hero';
-import { MediaSplit } from '@/components/sections/MediaSplit';
 import { CrossSellingBlock } from '@/components/sections/CrossSellingBlock';
 import { SectionCTA } from '@/components/sections/SectionCTA';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -11,10 +9,9 @@ import { JsonLd } from '@/components/seo/JsonLd';
 /**
  * Jardins & Paysage (/jardins-paysage) — F-03, WF-03.
  * Rendu : SSG. Photos : hero + cross-sell = réalisations réelles à dominante
- * jardin. Blocs prestation : (1) bureau d'études et (2) création sont rendus en
- * texte éditorial centré (D-22 : slots image vides retirés, aucune photo réelle
- * de réalisation) ; (3) la serre/pépinière utilise une VRAIE photo de la
- * jardinerie Les Terres Essentielles (honnête : ambiance pépinière).
+ * jardin. Blocs prestation : bureau d'études, création ET pépinière sont rendus
+ * en texte éditorial centré (D-22 / D-24 : slots image vides ou photos nuisibles
+ * retirés, aucune photo réelle de réalisation premium disponible).
  * CrossSellingBlock : CTA forest UNIQUEMENT ici (source=jardins, décision @design).
  */
 export const metadata: Metadata = {
@@ -165,20 +162,18 @@ function CreationBlock() {
 }
 
 function PepiniereBlock() {
-  // VRAIE photo : serre de la jardinerie Les Terres Essentielles (honnête —
-  // ambiance pépinière/point de vente, pas une création de jardin).
-  const photo = JARDINERIE_PHOTOS['jardinerie-serre-chrysanthemes'];
+  // Audit photo §5 #7 (D-24) : photo serre-chrysanthemes retirée (panneau
+  // « Mes saisons florales » nuisible, 4/10). Bloc rendu en texte éditorial,
+  // même pattern que BureauEtudesBlock/CreationBlock (D-22). La photo réelle
+  // pourra réintroduire un MediaSplit plus tard.
   return (
-    <MediaSplit
-      accent="forest"
+    <TextBlock
       eyebrow="Entretien & pépinière"
       title="Des végétaux sélectionnés pour durer"
       body={[
         "Un jardin planté pour aujourd'hui et pensé pour dans vingt ans. Les essences que nous recommandons ont fait leurs preuves dans les propriétés de l'ouest parisien, sur les sols et sous les conditions climatiques que nous connaissons.",
         'Entretien régulier, taille de forme, suivi saisonnier. Et une pépinière pour sourcer les végétaux qui correspondent à votre projet.',
       ]}
-      imageSrc={jardinerieSrc(photo.base, '1280w')}
-      imageAlt={photo.alt}
     />
   );
 }

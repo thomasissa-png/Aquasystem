@@ -1,11 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Aquasystem">
-  <style>
-    .s { fill: #1A1510; }
-    @media (prefers-color-scheme: dark) { .s { fill: #F5F0E8; } }
-  </style>
-  <polygon class="s" points="29,9 35,9 18,54 11,54" />
-  <polygon class="s" points="35,9 29,9 46,54 53,54" />
-  <rect class="s" x="18" y="33" width="28" height="7" />
-  <rect class="s" x="6" y="52" width="16" height="5" />
-  <rect class="s" x="42" y="52" width="16" height="5" />
+  <!-- Monogramme v3 "Rive privée" : "A" serif (DM Serif Display-like) sand
+       inversé sur tuile eau arrondie, filet or discret. La tuile garantit la
+       visibilité sur barre d'onglet claire ET sombre (résout le P1 dark-mode).
+       Le "A" (#glyphA) est substituable si le naming final change. -->
+  <rect x="0.7" y="0.7" width="62.6" height="62.6" rx="14" ry="14" fill="#3A6675" stroke="#C4924A" stroke-width="1.4"/>
+  <path id="glyphA" fill="#F5F0E8" fill-rule="evenodd" transform="translate(8.32,8.32) scale(0.74)" d="M 31.4 8 L 39.2 8 L 51.6 51 L 58 51 L 58 55.4 L 38.2 55.4 L 38.2 51 L 43.6 51 L 41.0 41.4 L 24.6 41.4 L 22.0 51 L 28 51 L 28 55.4 L 9.4 55.4 L 9.4 51 L 14.9 51 L 26.9 8 Z M 33.0 15.6 L 25.8 36.6 L 39.8 36.6 Z"/>
 </svg>
