@@ -71,6 +71,7 @@ export const FOOTER_NAV_LINKS = [
   { label: 'Piscines & Bien-être', href: '/piscines-bien-etre' },
   { label: 'Jardins & Paysage', href: '/jardins-paysage' },
   { label: 'À propos', href: '/la-maison' },
+  { label: 'Notre regard', href: '/notre-regard' },
   { label: 'Espace prescripteurs & architectes', href: '/prescripteurs' },
   { label: 'Contact', href: '/contact' },
 ] as const;

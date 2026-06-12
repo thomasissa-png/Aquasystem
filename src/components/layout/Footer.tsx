@@ -22,6 +22,15 @@ const PRESCRIPTEUR_LINK = FOOTER_NAV_LINKS.find(
 );
 
 /**
+ * Lien « Notre regard » (blog) dans la barre légale du footer — déblocage prévu
+ * de faq-homepage-arbitrage.md : le blog arrivant plein (6 articles dès le
+ * lancement), le lien footer devient justifié. Source : FOOTER_NAV_LINKS.
+ */
+const NOTRE_REGARD_LINK = FOOTER_NAV_LINKS.find(
+  (l) => l.href === '/notre-regard',
+);
+
+/**
  * Footer — design-system.md §6 + ux-writing-guide §6.
  * Fond sombre (sand-950), texte clair, focus ring inversé (clair).
  * 3 blocs : identité (wordmark + badges + réseaux) / coordonnées Aqua System /
@@ -147,6 +156,16 @@ export function Footer() {
             réservés. · En partenariat avec {PARTNER_NAME}.
           </p>
           <ul className="flex flex-wrap gap-x-6 gap-y-1">
+            {NOTRE_REGARD_LINK && (
+              <li key={NOTRE_REGARD_LINK.href}>
+                <Link
+                  href={NOTRE_REGARD_LINK.href}
+                  className={footerListLinkClass}
+                >
+                  {NOTRE_REGARD_LINK.label}
+                </Link>
+              </li>
+            )}
             {PRESCRIPTEUR_LINK && (
               <li key={PRESCRIPTEUR_LINK.href}>
                 <Link

@@ -90,7 +90,7 @@ piscine+jardin intégré.
 
 ## Blog — Notre Regard
 
-Lancement prévu juillet 2026 sur https://www.aquasystem.fr/notre-regard
+En ligne sur https://www.aquasystem.fr/notre-regard (6 articles au lancement, flux RSS : https://www.aquasystem.fr/notre-regard/rss.xml).
 Auteur : Nicolas Berg (Associé-Gérant Aqua System).
 Sujets couverts : construction piscine béton, maîtrise d'ouvrage extérieure, réglementation PLU/piscine,
 entretien annuel, intégration piscine+jardin, choix finitions (liner, carrelage, béton ciré).

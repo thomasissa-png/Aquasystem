@@ -23,6 +23,11 @@ const PAGES: { name: string; path: string }[] = [
   { name: 'fiche-realisation', path: '/realisations/piscine-debordement-foret/' },
   { name: 'la-maison', path: '/la-maison/' },
   { name: 'prescripteurs', path: '/prescripteurs/' },
+  { name: 'notre-regard', path: '/notre-regard/' },
+  {
+    name: 'article-blog',
+    path: '/notre-regard/piscine-debordement-terrain-en-pente/',
+  },
   { name: 'contact', path: '/contact/' },
   { name: 'contact-merci', path: '/contact/merci/' },
   { name: 'mentions-legales', path: '/mentions-legales/' },
@@ -30,7 +35,7 @@ const PAGES: { name: string; path: string }[] = [
   { name: '404', path: '/cette-page-nexiste-pas/' },
 ];
 
-test.describe('a11y axe-core — 12 pages (BUG-A11Y-3 / BUG-A11Y-4)', () => {
+test.describe('a11y axe-core — 14 pages (BUG-A11Y-3 / BUG-A11Y-4)', () => {
   for (const { name, path } of PAGES) {
     test(`axe-core sur ${name}`, async ({ page }) => {
       await stubUmami(page);

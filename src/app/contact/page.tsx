@@ -47,7 +47,7 @@ export default function ContactPage() {
               <Phone aria-hidden className="h-4 w-4 shrink-0" />
               <a
                 href={`tel:${CONTACT.phoneE164}`}
-                className="hover:text-foreground"
+                className="hover:text-foreground rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2"
               >
                 {CONTACT.phone}
               </a>
@@ -56,7 +56,7 @@ export default function ContactPage() {
               <Mail aria-hidden className="h-4 w-4 shrink-0" />
               <a
                 href={`mailto:${CONTACT.email}`}
-                className="hover:text-foreground"
+                className="hover:text-foreground rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2"
               >
                 {CONTACT.email}
               </a>

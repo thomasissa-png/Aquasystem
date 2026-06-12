@@ -57,7 +57,7 @@ export function CrossSellingBlock({
   return (
     <section className="border-t border-border-muted">
       <div className="grid lg:grid-cols-2">
-        <figure className="relative aspect-[4/3] w-full overflow-hidden lg:aspect-auto lg:min-h-[420px]">
+        <figure className="relative aspect-[4/3] w-full overflow-hidden rounded-lg lg:aspect-auto lg:min-h-[420px] lg:rounded-none">
           <Image
             src={imageSrc}
             alt={imageAlt}

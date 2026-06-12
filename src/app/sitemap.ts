@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { SITE_URL, absoluteUrl } from '@/lib/seo';
 import { REALISATIONS, isDraft } from '@/content/realisations';
+import { ARTICLES } from '@/content/blog';
 
 /**
  * Sitemap (/sitemap.xml) — seo-strategy.md §C.1 (P0-SEO-1).
@@ -31,6 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: absoluteUrl('/realisations/'), lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.85 },
     { url: absoluteUrl('/la-maison/'), lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.8 },
     { url: absoluteUrl('/prescripteurs/'), lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.75 },
+    { url: absoluteUrl('/notre-regard/'), lastModified: LAST_MODIFIED, changeFrequency: 'weekly', priority: 0.75 },
     { url: absoluteUrl('/contact/'), lastModified: LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.7 },
     { url: absoluteUrl('/mentions-legales/'), lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.2 },
     { url: absoluteUrl('/politique-confidentialite/'), lastModified: LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.2 },
@@ -47,5 +49,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...realisationPages];
+  // Articles du blog « Notre regard » — itère sur le manifeste (6 articles
+  // publiés). `lastModified` = date de publication fixe (jamais new Date()).
+  const blogPages: MetadataRoute.Sitemap = ARTICLES.map((a) => ({
+    url: absoluteUrl(`/notre-regard/${a.slug}/`),
+    lastModified: new Date(a.datePublished),
+    changeFrequency: 'monthly',
+    priority: 0.65,
+  }));
+
+  return [...staticPages, ...realisationPages, ...blogPages];
 }

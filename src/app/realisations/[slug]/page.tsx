@@ -123,7 +123,7 @@ export default function RealisationFiche({
                   className="object-cover"
                 />
               </div>
-              <figcaption className="mt-3 text-sm text-foreground-muted">
+              <figcaption className="mt-3 text-xs leading-5 text-foreground-muted">
                 Réalisation Aqua System, {r.zone}. Photo publiée avec
                 l'autorisation du propriétaire.
               </figcaption>

@@ -5,10 +5,12 @@ import { ArrowRight } from 'lucide-react';
 import { SITE_NAME } from '@/lib/constants';
 import { SITE_URL, absoluteUrl } from '@/lib/seo';
 import { getFeatured, photoSrc } from '@/content/realisations';
+import { ARTICLES_BY_DATE } from '@/content/blog';
 import { Hero } from '@/components/sections/Hero';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ProofBadges } from '@/components/ui/ProofBadges';
 import { RealisationCard } from '@/components/sections/RealisationCard';
+import { ArticleCard } from '@/components/blog/ArticleCard';
 import { SectionCTA } from '@/components/sections/SectionCTA';
 import { CtaTrackerLink } from '@/components/sections/CtaTrackerLink';
 import { ButtonLink } from '@/components/ui/ButtonLink';
@@ -45,6 +47,9 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   const featured = getFeatured();
+  // Teaser « Notre regard » : 2 derniers articles (blog-program.md §1.4 —
+  // section visible dès ≥ 2 articles publiés ; le blog lance plein à 6).
+  const latestArticles = ARTICLES_BY_DATE.slice(0, 2);
 
   return (
     <>
@@ -118,7 +123,7 @@ export default function HomePage() {
             </p>
             {/* Photo FOURNIE PAR LE FONDATEUR (2026-06-12) pour ce slot —
                 remplace le PhotoPlaceholder D-25. Droits accordés. */}
-            <figure className="relative aspect-square w-full overflow-hidden">
+            <figure className="relative aspect-square w-full overflow-hidden rounded-lg">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/accueil/jardin-piscine-parasols-800w.webp"
@@ -190,7 +195,30 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Section 5 — CTA final */}
+      {/* Section 5 — Teaser « Notre regard » (blog-program.md §1.4) */}
+      {latestArticles.length >= 2 && (
+        <section className="bg-background-secondary">
+          <div className="mx-auto max-w-container px-4 py-20 md:px-8 md:py-24">
+            <SectionHeading
+              eyebrow="Notre regard"
+              title="Ce que trente ans de chantiers nous apprennent."
+              subtitle="Conception, prix, rénovation : nos sujets traités sans détour, par ceux qui construisent."
+            />
+            <div className="grid gap-6 sm:grid-cols-2">
+              {latestArticles.map((article) => (
+                <ArticleCard key={article.slug} article={article} />
+              ))}
+            </div>
+            <div className="mt-10 text-center">
+              <ButtonLink href="/notre-regard" variant="ghost" size="md">
+                Lire tous nos articles →
+              </ButtonLink>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Section 6 — CTA final */}
       <SectionCTA
         amorce="Un projet d'extérieur mérite une conversation, pas un formulaire."
         trackPosition="footer"
