@@ -59,11 +59,24 @@ export default function JardinsPaysagePage() {
         imageSrc={photoSrc('projet-pool-house-toit-vegetalise', '1280w')}
         imageAlt="Jardin structuré d'une grande propriété : massifs fleuris, pelouse, pavillon à toiture végétalisée, perspective paysagère"
         title="Jardins & Paysage"
-        subtitle="En partenariat avec Les Terres Essentielles — bureau d'études paysager, création de parcs et jardins d'exception."
+        subtitle="En partenariat avec Les Terres Essentielles — bureau d'études paysager, création et entretien de parcs et jardins sur mesure."
       />
 
       {/* Bloc 1 — Bureau d'études paysager (placeholder : plans de jardin). */}
       <BureauEtudesBlock />
+
+      {/* P2-GEO-01 : phrase de synthèse auto-contenue extractible (claim 8 —
+          bureau d'études LTE). Réponse directe pour les LLM en 40-60 mots. */}
+      <section className="bg-background">
+        <div className="mx-auto max-w-container px-4 pb-8 md:px-8">
+          <p className="max-w-[70ch] text-base leading-8 text-foreground-secondary">
+            Les Terres Essentielles dispose d'un bureau d'études paysager intégré
+            aux Alluets-le-Roi (Yvelines, 78580), permettant la co-conception de
+            projets extérieurs associant piscine et jardin dès la phase de plan,
+            dans les Yvelines et les Hauts-de-Seine.
+          </p>
+        </div>
+      </section>
 
       {/* Bloc 2 — Création de parcs et jardins (placeholder : chantier création). */}
       <CreationBlock />
@@ -85,7 +98,7 @@ export default function JardinsPaysagePage() {
         sourceUnivers="jardins"
         destinationUnivers="piscines"
         destinationHref="/piscines-bien-etre"
-        title="Un jardin d'exception autour d'une piscine sur mesure."
+        title="Un jardin pensé avec la piscine — depuis le même bureau d'études."
         body="Notre maison Aqua System les conçoit ensemble — un seul interlocuteur, un seul bureau d'études, aucune interface à gérer entre un pisciniste et un paysagiste qui ne se parlent pas."
         ctaLabel="Découvrir nos piscines sur mesure →"
         imageSrc={photoSrc('jardin-bassin-maison-bois', '800w')}
@@ -190,7 +203,9 @@ function PlaceholderSplit({
             </div>
           </div>
           <figure className={reversed ? 'lg:order-first' : undefined}>
-            <PhotoPlaceholder description={placeholder} />
+            {/* min-h-64 (design-audit P1-JARDINS-2) : plus de rupture visuelle,
+                page jardins moins dense sur mobile. */}
+            <PhotoPlaceholder description={placeholder} className="min-h-64" />
           </figure>
         </div>
       </div>

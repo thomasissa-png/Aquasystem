@@ -37,8 +37,8 @@ export default function ContactPage() {
           </h1>
           <p className="mt-6 max-w-[48ch] text-lg leading-8 text-foreground-secondary">
             Quelques mots sur ce que vous imaginez suffisent pour démarrer.
-            Nicolas Berg et son équipe reviennent vers vous pour un premier
-            échange, sans engagement.
+            Nicolas Berg reviendra vers vous sous 48 heures pour un premier
+            échange.
           </p>
 
           {/* Coordonnées — masquées sur mobile (accessibles via footer) */}
@@ -75,25 +75,10 @@ export default function ContactPage() {
         {/* Colonne droite — formulaire */}
         <div className="lg:col-span-7">
           <div className="rounded-xl bg-background-secondary p-6 md:p-8">
-            <Suspense fallback={<FormSkeleton />}>
-              <ContactForm />
-            </Suspense>
+            <ContactForm />
           </div>
         </div>
       </div>
-    </div>
-  );
-}
-
-/** Squelette de chargement (fallback Suspense) — préserve la hauteur. */
-function FormSkeleton() {
-  return (
-    <div className="flex animate-pulse flex-col gap-5" aria-hidden>
-      {Array.from({ length: 6 }).map((_, i) => (
-        <div key={i} className="h-16 rounded-md bg-background-tertiary" />
-      ))}
-      <div className="h-32 rounded-md bg-background-tertiary" />
-      <div className="h-[52px] rounded-md bg-background-tertiary" />
     </div>
   );
 }

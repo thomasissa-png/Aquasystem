@@ -82,7 +82,7 @@ const PREUVES = [
     // Reformulation GEO avec source nommée (content-restructuring.md §B.4) —
     // signal de vérifiabilité pour les LLM (organisme + domaine cités).
     titre: 'Certification Socotec CSP/ESP-001',
-    desc: '« Professionnels de la piscine privée à usage familial » — certification délivrée par Socotec Certification France (socotec-certification-international.fr). Disponible sur demande pour tout dossier de prescription.',
+    desc: '« Professionnels de la piscine privée à usage familial » — certification délivrée par Socotec Certification France (socotec-certification-international.fr). Disponible sur demande pour tout dossier de prescription.',
   },
   {
     titre: "Réseau L'Esprit Piscine",
@@ -125,7 +125,8 @@ export default function PrescripteursPage() {
             </h1>
             <p className="mt-4 max-w-[48ch] text-lg leading-8 text-foreground-secondary">
               Pour les architectes, paysagistes et décorateurs d'intérieur — un
-              partenaire qui travaille sur votre plan.
+              exécutant qui travaille sur votre plan et respecte votre relation
+              client.
             </p>
             <ul className="mt-6 flex flex-wrap gap-2">
               <li className="rounded-md bg-background-proof px-3 py-1.5 text-xs font-medium text-foreground">
@@ -200,6 +201,21 @@ export default function PrescripteursPage() {
               </li>
             ))}
           </ul>
+
+          {/* P0-C1 (ux-audit) : signal explicite de qualification active pour
+              Camille — transforme la page en outil de qualification, pas
+              seulement en vitrine. Wording exact ux-audit §FRICTION C1. */}
+          <div className="mt-8 flex flex-col gap-4 rounded-lg bg-background-proof px-5 py-5 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-base font-medium text-foreground">
+              Dossier de qualification complet disponible sur demande.
+            </p>
+            <PrescripteurCtaLink
+              href="/contact?source=prescripteurs"
+              position="milieu_page"
+              label="Présentons-nous →"
+              size="md"
+            />
+          </div>
         </div>
       </section>
 

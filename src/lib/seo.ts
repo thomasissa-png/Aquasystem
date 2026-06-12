@@ -54,7 +54,9 @@ export function organizationJsonLd() {
     sameAs: [
       'https://www.esprit-piscine.fr/aqua-system/',
       SOCIAL_LINKS.linkedinAS,
-      SOCIAL_LINKS.facebookLTE,
+      // facebookLTE retiré (arbitrage seo-audit P0-2, 2026-06-12) : le profil
+      // Facebook de LTE appartient au bloc partnerOrganizationJsonLd — pas à
+      // l'entité Aqua System (intégrité du Knowledge Graph).
     ],
     logo: {
       '@type': 'ImageObject',
@@ -135,7 +137,13 @@ export function partnerOrganizationJsonLd() {
       addressCountry: 'FR',
     },
     areaServed: AREA_SERVED.map((a) => ({ '@type': 'AdministrativeArea', name: a })),
-    sameAs: [SOCIAL_LINKS.facebookLTE],
+    // P1-GEO-02 : graphe LTE enrichi — identifiants légaux publics croisés par
+    // les LLM (pas de site propre en V1, SIREN 811 198 217).
+    sameAs: [
+      SOCIAL_LINKS.facebookLTE,
+      'https://www.pappers.fr/entreprise/les-terres-essentielles-811198217',
+      'https://www.societe.com/societe/les-terres-essentielles-811198217.html',
+    ],
   };
 }
 

@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     template: `%s — ${SITE_NAME}`,
   },
   description:
-    "Piscines sur mesure et jardins d'exception, conçus ensemble pour les belles propriétés de l'ouest parisien. Un seul interlocuteur, plus de 30 ans d'expertise.",
+    "Piscines sur mesure et jardins conçus ensemble pour les belles propriétés de l'ouest parisien. Un seul interlocuteur, plus de 30 ans d'expertise.",
   applicationName: SITE_NAME,
   robots: { index: true, follow: true },
   icons: {

@@ -8,6 +8,7 @@ import {
 } from '@/lib/seo';
 import { photoSrc } from '@/content/realisations';
 import { SectionCTA } from '@/components/sections/SectionCTA';
+import { ButtonLink } from '@/components/ui/ButtonLink';
 import { PhotoPlaceholder } from '@/components/sections/PhotoPlaceholder';
 import { FaqSection } from '@/components/sections/FaqSection';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -193,6 +194,12 @@ export default function NotreApprochePage() {
             />
           </figure>
         </div>
+        {/* CTA mi-parcours (design-audit P1-APPROCHE-2) — évite 4 écrans sans CTA. */}
+        <div className="mx-auto max-w-container px-4 pb-20 text-center md:px-8">
+          <ButtonLink href="/contact" variant="ghost" size="md">
+            Parlez-nous de votre projet →
+          </ButtonLink>
+        </div>
       </section>
 
       {/* FAQ GEO — content-restructuring.md §A.1 (après la timeline, avant le CTA).
@@ -201,6 +208,7 @@ export default function NotreApprochePage() {
         heading="Questions fréquentes"
         items={FAQ_NOTRE_APPROCHE.map((i) => ({ q: i.q, a: i.a }))}
         tone="default"
+        extraTopSpacing
       />
 
       <SectionCTA

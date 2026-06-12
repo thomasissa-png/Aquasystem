@@ -53,7 +53,7 @@ export default function HomePage() {
         imageSrc={photoSrc('piscine-debordement-foret', '1280w')}
         imageAlt="Piscine à débordement intégrée dans un parc paysagé bordé de pins, plan d'eau calme reflétant la végétation, fin d'après-midi"
         title="L'extérieur à la hauteur de votre propriété."
-        subtitle="Un seul interlocuteur pour l'eau et le jardin — depuis plus de 30 ans dans l'ouest parisien."
+        subtitle="De la vision à la réalisation — eau, jardin, propriété — un seul interlocuteur, depuis 30 ans dans l'ouest parisien."
         cta={
           <CtaTrackerLink
             href="/contact"
@@ -118,7 +118,7 @@ export default function HomePage() {
               Jardins &amp; Paysage
             </h2>
             <p className="mt-4 max-w-[45ch] text-base leading-8 text-foreground-secondary">
-              Bureau d'études paysager, création de parcs et jardins d'exception,
+              Bureau d'études paysager, création de parcs et jardins sur mesure,
               entretien. L'eau et le végétal conçus ensemble — au même bureau
               d'études, avant le premier plan.
             </p>
@@ -140,6 +140,13 @@ export default function HomePage() {
       <section className="bg-background-secondary">
         <div className="mx-auto max-w-container px-4 py-12 md:px-8">
           <ProofBadges />
+          {/* P2-GEO-03 : synthèse extractible (point d'entrée LLM sur l'accueil). */}
+          <p className="mt-6 max-w-[70ch] text-sm leading-7 text-foreground-secondary">
+            Aqua System — certifié Socotec CSP/ESP-001, membre du réseau
+            L'Esprit Piscine. Plus de 350 piscines entretenues dans les Yvelines
+            et les Hauts-de-Seine depuis plus de 30 ans. Trophée d'Or FPP 2024.
+            Award Bronze EUSA 2025.
+          </p>
         </div>
       </section>
 

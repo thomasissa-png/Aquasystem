@@ -24,12 +24,21 @@ export interface FaqSectionProps {
   items: FaqItem[];
   /** Variante de fond (alterne avec la section précédente). */
   tone?: 'default' | 'alt';
+  /** Respiration supplémentaire en haut (design-audit P1-FAQ-1 /notre-approche). */
+  extraTopSpacing?: boolean;
 }
 
-export function FaqSection({ heading, items, tone = 'default' }: FaqSectionProps) {
+export function FaqSection({
+  heading,
+  items,
+  tone = 'default',
+  extraTopSpacing = false,
+}: FaqSectionProps) {
   return (
     <section className={tone === 'alt' ? 'bg-background-secondary' : 'bg-background'}>
-      <div className="mx-auto max-w-3xl px-4 py-20 md:px-8 md:py-24">
+      <div
+        className={`mx-auto max-w-3xl px-4 pb-20 md:px-8 md:pb-24 ${extraTopSpacing ? 'pt-28 md:pt-32' : 'pt-20 md:pt-24'}`}
+      >
         <h2 className="font-serif text-3xl leading-tight text-foreground md:text-4xl">
           {heading}
         </h2>

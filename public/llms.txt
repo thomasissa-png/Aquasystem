@@ -1,6 +1,6 @@
 # Aqua System — Pisciniste & Aménagement extérieur | Yvelines 78 / Hauts-de-Seine 92
 # llms.txt — Informations structurées pour les moteurs IA
-# Dernière mise à jour : 2026-06-11
+# Dernière mise à jour : 2026-06-12
 #
 # NOTE @fullstack : les URLs ci-dessous utilisent le domaine PROVISOIRE
 # https://www.aquasystem.fr (= fallback NEXT_PUBLIC_SITE_URL, lib/seo.ts).

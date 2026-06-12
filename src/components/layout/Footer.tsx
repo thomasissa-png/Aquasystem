@@ -37,7 +37,7 @@ export function Footer() {
     >
       <div className="mx-auto max-w-container px-4 pb-12 pt-16 md:px-8">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
-          {/* Bloc 1 — Identité + partenariat */}
+          {/* Bloc 1 — Identité + partenariat + badges de qualité (P1-N2) */}
           <div>
             <p className="font-serif text-xl">{SITE_NAME}</p>
             <p className="mt-3 text-sm leading-6 text-sand-300">
@@ -45,6 +45,16 @@ export function Footer() {
               <br />
               En partenariat avec {PARTNER_NAME}.
             </p>
+            {/* Badges Socotec + Esprit Piscine sur toutes les pages (ux-audit
+                P1-N2) — signal de qualité premium constant. */}
+            <ul className="mt-5 flex flex-wrap gap-2">
+              <li className="rounded-md border border-sand-800 px-3 py-1.5 text-xs font-medium text-sand-300">
+                Certifié Socotec CSP/ESP-001
+              </li>
+              <li className="rounded-md border border-sand-800 px-3 py-1.5 text-xs font-medium text-sand-300">
+                Réseau L'Esprit Piscine
+              </li>
+            </ul>
           </div>
 
           {/* Bloc 2 — Navigation */}

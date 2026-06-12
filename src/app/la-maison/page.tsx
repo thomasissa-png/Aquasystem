@@ -146,6 +146,9 @@ export default function LaMaisonPage() {
                 Trophée d'Or FPP 2024 — Piscine intérieure. Award Bronze EUSA 2025
                 — Piscines intérieures privées (Barcelone).
               </p>
+              {/* P2-GEO-02 : claim 11 (Charte GdC) rendu extractible en texte
+                  visible, pas seulement en JSON-LD sameAs. */}
+              <p>Nicolas Berg, signataire de la Charte Pro Gens de Confiance.</p>
             </div>
             <ul className="mt-5 flex flex-wrap gap-2">
               <li className="rounded-md bg-background-proof px-3 py-1.5 text-xs font-medium text-foreground">

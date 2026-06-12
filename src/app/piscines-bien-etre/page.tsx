@@ -93,7 +93,7 @@ export default function PiscinesBienEtrePage() {
           <p className="mt-8 max-w-[70ch] text-base leading-8 text-foreground-secondary">
             Aqua System est certifié Socotec CSP/ESP-001 « Professionnels de la
             piscine privée à usage familial » et membre du réseau L'Esprit Piscine
-            — groupement de piscinistes français sur mesure. L'entreprise assure
+            — réseau national de piscinistes professionnels. L'entreprise assure
             l'entretien de plus de 350 piscines dans les Yvelines et les
             Hauts-de-Seine, depuis plus de 30 ans.
           </p>

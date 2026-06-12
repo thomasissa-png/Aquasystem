@@ -34,7 +34,12 @@ export const CONTACT = {
  * Zone de chalandise (areaServed des données structurées + copy SEO local).
  * Source : project-context.md > Pays de commercialisation.
  */
-export const AREA_SERVED = ['Yvelines (78)', 'Hauts-de-Seine (92)'] as const;
+export const AREA_SERVED = [
+  'Yvelines (78)',
+  'Hauts-de-Seine (92)',
+  "Val-d'Oise (95)",
+  'Eure (27)',
+] as const;
 
 /** Réseaux sociaux existants (footer). */
 export const SOCIAL_LINKS = {
@@ -65,8 +70,8 @@ export const CONTACT_PATH = '/contact';
 /** Navigation footer (ux-writing-guide §6 — section 2). */
 export const FOOTER_NAV_LINKS = [
   { label: 'Réalisations', href: '/realisations' },
-  { label: 'Piscines et spas', href: '/piscines-bien-etre' },
-  { label: 'Jardins et parcs', href: '/jardins-paysage' },
+  { label: 'Piscines & Bien-être', href: '/piscines-bien-etre' },
+  { label: 'Jardins & Paysage', href: '/jardins-paysage' },
   { label: 'Notre approche', href: '/notre-approche' },
   { label: 'Espace prescripteurs', href: '/prescripteurs' },
   { label: 'Contact', href: '/contact' },

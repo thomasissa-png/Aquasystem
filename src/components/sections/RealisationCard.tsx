@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { trackEvent } from '@/lib/analytics';
-import { photoSrc, type Realisation } from '@/content/realisations';
+import { isDraft, photoSrc, type Realisation } from '@/content/realisations';
 
 /**
  * RealisationCard — card du portfolio (page-compositions WF-01 §4 / WF-05 §2).
@@ -21,6 +21,10 @@ export interface RealisationCardProps {
 export function RealisationCard({ realisation, silent }: RealisationCardProps) {
   const photo = realisation.photos[0];
   if (!photo) return null;
+
+  // P0-D1 (ux-audit) : signale les fiches sans données éditoriales AVANT le clic
+  // → l'effet de répétition « Fiche en cours de documentation » ne surprend plus.
+  const draft = isDraft(realisation);
 
   return (
     <Link
@@ -43,6 +47,11 @@ export function RealisationCard({ realisation, silent }: RealisationCardProps) {
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
           className="object-cover transition-transform duration-normal ease-out group-hover:scale-[1.03]"
         />
+        {draft && (
+          <span className="absolute bottom-2 left-2 rounded-full bg-background-secondary/95 px-3 py-1 text-xs font-medium text-foreground-muted shadow-sm">
+            En cours de documentation
+          </span>
+        )}
       </div>
       <div className="flex items-end justify-between gap-4 p-5">
         <div>

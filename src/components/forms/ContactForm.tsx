@@ -238,7 +238,8 @@ export function ContactForm() {
           </p>
           <p className="mt-2">
             Vos informations sont conservées dans cette page. Vous pouvez
-            réessayer dans quelques instants, ou nous contacter directement :
+            réessayer dans quelques instants, ou nous contacter directement par
+            email ou téléphone :
           </p>
           <p className="mt-2 font-medium">
             <a
@@ -402,9 +403,20 @@ export function ContactForm() {
 
       <NoticeRGPD />
 
-      <Button type="submit" variant="primary" size="lg" loading={isSubmitting}>
-        {CTA_LABEL}
-      </Button>
+      {/* P1-F1 (ux-audit) : sur mobile, le bouton reste visible (sticky bas) le
+          temps de remplir le textarea — le CTA n'est jamais perdu hors écran.
+          Sur desktop : flux normal en bas de formulaire. */}
+      <div className="sticky bottom-3 z-10 -mx-6 mt-1 bg-background-secondary/95 px-6 pb-1 pt-2 backdrop-blur md:static md:mx-0 md:bg-transparent md:px-0 md:pb-0 md:pt-0 md:backdrop-blur-none">
+        <Button
+          type="submit"
+          variant="primary"
+          size="lg"
+          loading={isSubmitting}
+          className="w-full"
+        >
+          {CTA_LABEL}
+        </Button>
+      </div>
     </form>
   );
 }

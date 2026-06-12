@@ -193,6 +193,13 @@ export function NavBar() {
                         De la vision à la réalisation
                       </span>
                     )}
+                    {/* P2-C2 (ux-audit) : lève l'ambiguïté du label « Architectes »
+                        pour les MOE et décorateurs. */}
+                    {link.href === '/prescripteurs' && (
+                      <span className="mt-1 block text-xs font-sans text-foreground-muted">
+                        Maîtres d'œuvre & prescripteurs
+                      </span>
+                    )}
                   </Link>
                 </li>
               ))}

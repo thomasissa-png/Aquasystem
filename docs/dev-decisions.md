@@ -283,3 +283,35 @@ La pépinière/serre a désormais une vraie photo. **Restent en PhotoPlaceholder
 
 ### Vérification
 `tsc --noEmit` PASS · `next lint` PASS · `build` PASS (28 routes) · **Vitest 102 PASS**. Vérif `out/images/jardinerie/` = 12 WebP présents. **6 baselines re-screenshot** (jardins-paysage / la-maison × mobile/tablet/desktop) — vérif visuelle Playwright : bloc serre = vraie photo, blocs 1-2 toujours placeholder, photo cagette visible dans le bloc LTE (desktop + mobile pleine largeur). Pas de commit (consigne).
+
+---
+
+## D-17 — Correction bailout CSR export statique + lot audit 10/10 itération 1 (@fullstack, 2026-06-12)
+
+**Contexte** : boucle d'audit 10/10. 6 rapports (`docs/reviews/audit-2026-06-12/`). P0 RACINE confirmé en live : `/realisations/` et `/contact/` sortaient VIDES du HTML pré-rendu (curl : 0 carte, 0 `<form>`).
+
+### Cause racine et correctif (P0)
+`useSearchParams()` de `next/navigation` provoque le **bailout client de TOUTE la page** en `output: 'export'` : tout le sous-arbre sous `<Suspense>` est retiré du HTML statique (grille + formulaire). Conséquence : invisible pour Google/Bing/LLM **et** fallback no-JS cassé.
+
+**Stratégie retenue** (la plus simple — pas de hook abstrait, lecture inline `window.location.search`) :
+- `RealisationsGrid.tsx` : `useSearchParams()` → état local `active` (défaut `'tous'`) + lecture du `?filter=` dans un `useEffect` après montage. Le filtre clic met à jour `setActive` + `window.history.replaceState` (URL partageable, sans router Next). **Le rendu serveur émet la grille COMPLÈTE (14 cartes) dans le HTML statique.**
+- `ContactForm.tsx` : `useSearchParams()` → lecture du `?source=` via `window.location.search` dans le `useEffect` existant. **Le `<form>` COMPLET (tous les champs + honeypot + action POST native) est dans le HTML statique** → fallback no-JS réellement opérationnel.
+- `realisations/page.tsx` + `contact/page.tsx` : `<Suspense>` + fallbacks (`GridFallback`/`FormSkeleton`) supprimés (devenus inutiles — plus de composant suspendant).
+- Hook `useQueryParam` créé puis **supprimé** (orphelin : les 2 lectures inline de 3 lignes valent mieux qu'un helper partagé non réutilisé ailleurs).
+
+**Preuve out/** : `grep` → `out/realisations/index.html` = **14 liens fiches** ; `out/contact/index.html` = **1 `<form>`** avec prenom_nom/email/telephone/commune/budget_tranche/description/langue/page_source/website. Garde anti-régression : `tests/e2e/static-html-no-js.spec.ts` (JS désactivé → 14 cartes + form complet). **Aucun autre `useSearchParams` dans `src/`** (seul usage était ces 2 composants).
+
+### Lot audit (P0/P1/P2 traités — wording strictement audits)
+- **ux P0-D1** : badge sobre « En cours de documentation » sur `RealisationCard` si `isDraft` (tokens `bg-background-secondary/95` + `text-foreground-muted`, bottom-left). 14 badges dans out/.
+- **ux P0-C1 / copy F1-03** : encart « Dossier de qualification complet disponible sur demande. » + CTA « Présentons-nous → » dans « Ce qui nous qualifie » (/prescripteurs). Hero subtitle « partenaire » → « exécutant qui travaille sur votre plan et respecte votre relation client. »
+- **copy P1** : « d'exception » ×4 supprimés (layout fallback, page.tsx jardins, jardins-paysage hero, CrossSellingBlock) → grep `d.exception` = **0** dans src/ ET out/ ; espaces insécables U+00A0 avant `?` dans `faq.ts` (8 questions, vérif out/ = NBSP rendu) + avant `—` Socotec (/prescripteurs) ; footer `constants.ts` « Piscines & Bien-être » / « Jardins & Paysage » ; hero accueil = phrase signature ; description layout sans « d'exception ». P2 : contact intro 48h (sans « sans engagement »), erreur ContactForm « par email ou téléphone », /piscines « réseau national de piscinistes professionnels ».
+- **geo P1** : `AREA_SERVED` + Val-d'Oise (95) + Eure (27) (propagé seo.ts org + partner) ; sameAs LTE enrichi (Pappers + societe.com) ; date llms.txt → 2026-06-12. P2 : `<p>` synthèse accueil (post-ProofBadges) + bureau d'études /jardins (post-BureauEtudesBlock) + Charte Gens de Confiance /la-maison (texte visible).
+- **design P1** : `pt-28/32` (extraTopSpacing) sur FAQ /notre-approche ; PhotoPlaceholders jardins `min-h-64` ; CTA mi-page ghost /notre-approche ; sous-titres services /jardins déjà en MediaSplit (la structure « encadrés fond doré » de l'audit était obsolète — page déjà refactorée). `max-w-2xl` /notre-approche : texte déjà dans une colonne 50% avec `max-w-[52ch]` + PhotoPlaceholder → déjà mitigé.
+- **ux P1/P2** : badges Socotec + Esprit Piscine en colonne 1 du footer (toutes pages) ; bouton submit sticky-bottom mobile sur /contact (P1-F1, un seul bouton, pas de second submit → zéro ambiguïté a11y) ; sous-titre drawer « Maîtres d'œuvre & prescripteurs » sous « Architectes » (P2-C2).
+
+### REPORTÉ (dépendance fondateur — hors périmètre code)
+- ux P1-M1 / design P0-PHOTO-1/2 / testeurs : photos réalisations jardins, hero jardins paysager, vérif chaises longues, fiches documentées, décennale, délais chiffrés, référence prescripteur, charte signable → **[BLOQUÉ FONDATEUR]** (assets/données non fournis). Le badge draft + la ligne qualification mitigent en attendant.
+- ux P1-A1 (cardType home) : **déjà conforme** — `RealisationCard` (utilisé sur l'accueil) affiche déjà `cardType`.
+
+### Vérification finale
+`tsc --noEmit` PASS · `next lint` PASS · `build` PASS (30 routes) · **Vitest 102/102** · **Playwright 43/43** (41 existants intacts + 2 no-JS). Baselines re-screenshot : 11 pages × 3 viewports (`scripts/screenshots.mjs`) + contact × 3. Pas de commit (consigne). Pas de déploiement (orchestrateur).
