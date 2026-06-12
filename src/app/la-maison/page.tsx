@@ -98,6 +98,28 @@ export default function LaMaisonPage() {
               que l'eau et le jardin ne soient jamais pensés séparément.
             </p>
           </div>
+          {/* Portrait Nicolas Berg — bloc sobre (portrait fourni fondateur,
+              droits OK, D-16). Remplace le fallback photo de réalisation D-11.
+              400px max : jamais en grand format. */}
+          <figure className="mt-10 flex flex-col items-center gap-4">
+            <Image
+              src="/images/equipe/nicolas-berg-400w.webp"
+              alt="Nicolas Berg, gérant d'Aqua System"
+              width={160}
+              height={160}
+              loading="lazy"
+              sizes="160px"
+              className="h-40 w-40 rounded-full object-cover grayscale"
+            />
+            <figcaption className="text-center">
+              <span className="block font-serif text-lg text-foreground">
+                Nicolas Berg
+              </span>
+              <span className="block text-sm text-foreground-secondary">
+                Associé-Gérant, Aqua System
+              </span>
+            </figcaption>
+          </figure>
         </div>
       </section>
 
@@ -173,10 +195,13 @@ export default function LaMaisonPage() {
               Les Terres Essentielles
             </h2>
             <div className="mt-4 space-y-4 text-base leading-8 text-foreground-secondary">
+              {/* [À CONFIRMER : partenariat] nature exacte LTE ↔ Kei-Stone
+                  (distributeur agréé / concessionnaire) avant publication. */}
               <p>
-                Bureau d'études paysager, création et entretien de parcs et
-                jardins, pépinière. Des végétaux sélectionnés pour les sols et le
-                climat de l'ouest parisien.
+                Jardinerie, bureau d'études paysager, création et entretien de
+                parcs et jardins, pépinière. Pierre naturelle Kei-Stone. Des
+                végétaux et des matériaux sélectionnés pour les propriétés de
+                l'ouest parisien.
               </p>
             </div>
             {/* Photo d'ambiance HONNÊTE : la jardinerie LTE (point de vente),

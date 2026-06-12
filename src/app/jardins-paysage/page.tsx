@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   // Metas finales — metadata-templates.md Page 3 (title 50 car., "Paysagiste" en tête).
   title: { absolute: 'Paysagiste Yvelines — Jardins haut de gamme, 78/92' },
   description:
-    "Bureau d'études paysager, jardins et parcs sur mesure en 78/92. Les Terres Essentielles, en partenariat avec Aqua System. Contactez-nous.",
+    'Jardinerie, bureau d\'études paysager et pierre naturelle Kei-Stone en 78/92. Les Terres Essentielles, en partenariat avec Aqua System.',
   alternates: { canonical: absoluteUrl('/jardins-paysage/') },
   openGraph: {
     url: `${SITE_URL}/jardins-paysage/`,
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
         url: absoluteUrl('/og-image.jpg'),
         width: 1200,
         height: 630,
-        alt: 'Jardin sur mesure réalisé par Les Terres Essentielles dans les Yvelines',
+        alt: 'Jardin et terrasse en pierre naturelle dans une propriété des Yvelines — Les Terres Essentielles',
       },
     ],
   },
@@ -48,7 +48,7 @@ const BREADCRUMB = breadcrumbJsonLd([
 const JARDINS_PROOFS: ProofItem[] = [
   { figure: "Bureau d'études", label: 'paysager intégré' },
   { figure: 'Pépinière', label: 'propre' },
-  { figure: '30+', label: 'ans en 78/92' },
+  { figure: 'Jardinerie & expertise', label: 'depuis 2015' },
 ];
 
 export default function JardinsPaysagePage() {
@@ -68,7 +68,10 @@ export default function JardinsPaysagePage() {
       {/* Bloc 2 — Création de parcs et jardins (placeholder : chantier création). */}
       <CreationBlock />
 
-      {/* Bloc 3 — Entretien et pépinière : VRAIE photo de la jardinerie LTE. */}
+      {/* Bloc 3b — Pierre naturelle Kei-Stone (distributeur LTE — synergie piscines/jardins). */}
+      <KeiStoneBlock />
+
+      {/* Bloc 4 — Entretien et pépinière : VRAIE photo de la jardinerie LTE. */}
       <PepiniereBlock />
 
       {/* Preuves jardins */}
@@ -120,7 +123,7 @@ function CreationBlock() {
       eyebrow="Création"
       title="La réalisation, du premier arbre à la dernière pierre"
       body={[
-        "Allées, massifs, pelouses, enrochements, terrasses végétalisées — chaque élément est choisi pour son rapport avec les autres et avec l'architecture de la maison. Aucune réalisation ne ressemble à la précédente, parce qu'aucun terrain ne se ressemble.",
+        "Allées, massifs, pelouses, enrochements, terrasses végétalisées — chaque élément est conçu pour son rapport avec les autres et avec l'architecture de la maison. Chaque projet part du terrain : aucun plan ne ressemble au précédent, parce qu'aucun terrain ne se ressemble.",
         'Nos végétaux sont sélectionnés ou issus de notre pépinière. Adaptés au sol argilo-calcaire de l\'ouest parisien.',
       ]}
       placeholder="Chantier de création d'un jardin : ouvriers posant des pavés naturels sur une allée, arbres fraîchement plantés, sol travaillé, après-midi ensoleillé."
@@ -143,6 +146,24 @@ function PepiniereBlock() {
       ]}
       imageSrc={jardinerieSrc(photo.base, '1280w')}
       imageAlt={photo.alt}
+    />
+  );
+}
+
+function KeiStoneBlock() {
+  // [À CONFIRMER : partenariat] nature exacte du lien LTE ↔ Kei-Stone
+  // ("distributeur agréé", "concessionnaire" ou autre) avant publication —
+  // ajuster "distribuent" dans le corps une fois confirmé par le fondateur.
+  // Photo : [Photo : dallage/margelles pierre naturelle — à obtenir].
+  return (
+    <PlaceholderSplit
+      eyebrow="Pierre naturelle"
+      title="La pierre comme trait d'union entre l'eau et le jardin"
+      body={[
+        "Dallages de plage, margelles de piscine, allées et pas japonais — la pierre naturelle est le matériau qui fait tenir ensemble l'eau et le végétal. Elle vieillit avec la propriété, absorbe la lumière, et ne ressemble à rien de standard.",
+        'Les Terres Essentielles distribuent les pierres naturelles Kei-Stone — une gamme pensée pour les extérieurs haut de gamme : travertin, calcaire, bluestone, pierre grise d\'Asie.',
+      ]}
+      placeholder="Dallage en pierre naturelle autour d'une plage de piscine — margelles posées à ras, surface calcaire beige-gris, harmonie avec la végétation en bordure. [Photo à obtenir — fournisseur Kei-Stone ou réalisation LTE]"
     />
   );
 }

@@ -149,6 +149,7 @@ export function nicolasBergJsonLd() {
     '@type': 'Person',
     name: 'Nicolas Berg',
     jobTitle: 'Associé-Gérant',
+    image: absoluteUrl('/images/equipe/nicolas-berg-400w.webp'),
     worksFor: {
       '@type': 'LocalBusiness',
       name: 'Aqua System',
