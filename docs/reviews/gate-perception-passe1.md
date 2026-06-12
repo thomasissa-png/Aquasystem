@@ -1,6 +1,12 @@
-# Gate de perception — Aquasystem (13 pages) — Passe 1 → Passe 6 — 2026-06-12
+# Gate de perception — Aquasystem (13 pages) — Passe 1 → Passe 7 — 2026-06-12
 
-## Verdict global ACTUEL (Passe 6) : PRÉSENTABLE AU FONDATEUR — **NON**
+## Verdict global ACTUEL (Passe 7) : PRÉSENTABLE AU FONDATEUR — **OUI**
+> Passe 7 (2026-06-12) : re-vérif ciblée post-corrections (doublon CTA fiches levé via D-33, lot CTA
+> système, 2 photos fondateur insérées). Les 3 cas nommés du fondateur + le P0 + les photos sont jugés
+> en viewport réel — **tout passe**. Le P0 bloquant de la passe 6 (double-CTA fiches) est **résolu**.
+> Section détaillée : « PASSE 7 » en bas de fichier.
+
+## Verdict global précédent (Passe 6) : PRÉSENTABLE AU FONDATEUR — **NON**
 > Passe 6 (2026-06-12, œil dur, recalibrages cumulés) : cycle « fond jardins + textes réalisations
 > + resserrage piscines » jugé en viewport réel. **Le fond est là, l'exécution éditoriale aussi** —
 > mais un **défaut de perception P0 systématique** sur les **4 fiches réalisations** bloque le verdict :
@@ -548,3 +554,59 @@ Mobile, ~2100-2240px chacune (3 bandes), **longueur OK mobile**.
    verticalement le texte dans la cellule, ou borner la hauteur) — non bloquant pour le verdict.
 3. Tout le reste du cycle (jardins enrichie, piscines resserrée, textes D-31, accueil) est **au standard** :
    ne pas y retoucher.
+
+---
+
+## PASSE 7 — Re-vérification ciblée post-corrections (doublon levé, lot CTA D-33, 2 photos fondateur) — 2026-06-12
+
+### Verdict Passe 7 : PRÉSENTABLE AU FONDATEUR — **OUI**
+> Build `npm run build` OK (export statique 24 fiches + pages), `npx serve out -l 3800`. Re-jugement en
+> viewport réel des **3 cas nommés du fondateur + le P0 passe 6 + les 2 photos fondateur + anti-régression**.
+> Contraintes respectées (clips ≤900px, jamais fullPage, lots ≤3, images sources ≤800w). **Zéro P0 restant.**
+
+#### (1) Drawer mobile 390 ET 320 — **OK**
+- **390×844** (`p7-drawer-390.png`) : burger ouvert, menu « Aquasystem / Réalisations / Piscines & Bien-être /
+  Jardins & Paysage / À propos », CTA sombre pleine largeur **« Parlez-nous de votre projet → » sur UNE ligne**,
+  flèche collée au texte. Propre.
+- **320×640** (`p7-drawer-320.png`) : à la largeur la plus contrainte, le **CTA tient toujours sur UNE seule
+  ligne** (seul l'item de menu « Piscines & Bien-être » wrappe sur 2 lignes — comportement normal et lisible
+  d'un item long à 320px, pas un défaut). **Cas validé.**
+
+#### (2) Fiches réalisation (debordement-foret + fond-mobile) mobile — **UN SEUL CTA, doublon levé — OK**
+- `p7-fiche-foret-pre-390.png` → `p7-fiche-foret-cta-390.png` → `p7-fiche-foret-end-390.png` (bande continue) et
+  idem fond-mobile (`p7-fiche-fondmobile-cta-390.png` / `-end-390.png`) : le texte éditorial se termine
+  (« …le débordement est souvent la réponse la plus juste. ») puis **directement le bloc sombre unique**
+  « Ce projet vous inspire ? Parlons du vôtre. » + bouton « Parlez-nous de votre projet → », **suivi du footer**.
+  **Aucun CTA inline intercalaire.** Confirmé en source : l'`<aside>` CTA inline est retiré (commentaire l.186-188),
+  un seul `SectionCTA` subsiste (l.197-201). **Le P0 bloquant de la passe 6 est résolu.**
+
+#### (3) /prescripteurs — flèche orpheline du « Voir toutes les réalisations » — **OK**
+- Desktop (`p7-prescripteurs-voir-desktop.png`) : sous la grille 3 cartes, lien ghost
+  **« Voir toutes les réalisations → » sur UNE ligne**, flèche collée. Pas d'orphelin.
+- Mobile (`p7-prescripteurs-voir-mobile.png`) : bouton ghost centré, **texte + flèche sur UNE ligne**.
+  **Plus de flèche seule en 2e ligne. Cas validé.**
+
+#### (4) Photos fondateur — **bien rendues, cadrage digne — OK**
+- **Bulbes printemps** (jardins, bloc « Entretien & pépinière ») `p7-photo-bulbes-desktop.png` /
+  `-mobile.png` : narcisses jaunes + jacinthes bleues en pots sur étals, palissade bois, photo nette,
+  couleurs vives, registre jardinerie authentique. Sert la preuve « pépinière propre ». Source 800w (≤1900px). Digne.
+- **Pavillon crépuscule** (piscines, bloc « Spa & bien-être ») `p7-photo-pavillon-desktop.png` /
+  `-mobile.png` : pavillon vitré, intérieur éclairé chaud, vu de l'extérieur sur pelouse à la tombée du
+  jour. Registre architectural premium, lumière soignée, cadrage propre. alt descriptif correct. Digne.
+- Aucune distorsion, aucun placeholder résiduel, intégration 2-col desktop / stacked mobile propre.
+
+#### (5) Anti-régression (clamp lg) — **OK, rien de cassé**
+- **Accueil fold mobile** (`p7-accueil-fold-mobile.png`) : hero « L'extérieur à la hauteur de votre
+  propriété. » lisible sur bandeau dégradé, sous-titre net, CTA sur une ligne. Titre serif en taille mobile
+  cohérente — le clamp lg ne casse pas le fold.
+- **Piscines fold mobile** (`p7-piscines-fold-mobile.png`) : hero « Piscines & Bien-être » lisible sur photo,
+  bloc « De la feuille blanche à l'inauguration » net. Aucune coupure, aucun débordement.
+
+### Défauts Passe 7
+| Page | Device | Défaut | Sévérité |
+|---|---|---|---|
+| — | — | Aucun défaut P0/P1 nouveau. P0 doublon CTA fiches (passe 6) **résolu**. P1 hauteur entrée text-only grille jardins desktop reste **non bloquant** (parti pris hauteurs naturelles, hors périmètre passe 7). | — |
+
+### Recommandation Passe 7 : **OUI — présentable au fondateur.**
+Les 3 cas nommés du fondateur sont corrigés, le P0 levé, les 2 photos fondateur au standard maison. Ne plus
+retoucher le périmètre jugé. Captures : `tests/screenshots/perception/p7-*.png` (17 fichiers).

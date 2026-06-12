@@ -629,3 +629,28 @@ Agent : @fullstack | Retour fondateur (capture 2026-06-12) : le CTA « Parlez-no
 **Baselines** : régénérées via `scripts/baselines-cta-d33.mjs` (clips ≤ 900px, jamais fullPage) — folds des 7 pages publiques (navbar + hero), section CTA sombre accueil, fold 404, sur les 3 devices (375/768/1280).
 
 **Fichiers modifiés** : `src/components/ui/Button.tsx`, `src/components/ui/ButtonLink.tsx`, `src/components/layout/NavBar.tsx`. Nouveaux : `scripts/baselines-cta-d33.mjs`, `tests/cta-audit-shots.mjs`. Aucune autre instance de CTA à modifier (le fix vit dans les 2 composants partagés → couverture totale par héritage, pas de Grep rollout par fichier nécessaire).
+
+---
+
+## D-34 — Nommage /la-maison aligné « À propos » + reflets d'expertise (2026-06-12)
+
+Agent : @fullstack | Retour fondateur 2026-06-12 : « la page s'appelle toujours La maison [alors que le menu dit À propos] ; relis bien que tout notre travail d'expertise amené sur les autres pages soit également reflété sur cette page de manière cohérente. »
+
+**A — Décision nommage (3 lignes).** La nav et le breadcrumb disaient déjà « À propos » (choix fondateur, override de la reco « Notre maison » de `nav-label-arbitrage.md`) ; seuls le H1 et les metas restaient sur « La maison » → écart visible signalé. **H1 retenu : « À propos » sobre** (pas « La maison Aquasystem ») : le candidat 4 de l'arbitrage échouait sur la dépendance au nom PROVISOIRE [Aquasystem] (coder le nom de marque dans le H1 = dette au checkpoint naming) et l'eyebrow « Aqua System & Les Terres Essentielles » + le sous-titre signature portent déjà l'identité au-dessus du H1. Alignement total nav = H1 = breadcrumb = metas. **URL `/la-maison/` INCHANGÉE** (pas de nouvelle 301). Le terme « maison »/« les deux maisons » reste libre en corps (§4 conservé).
+
+**B — Reflets d'expertise (retouches éditoriales sourcées, zéro fait nouveau).** Audit section par section au rendu (build + serve statique + captures 3 devices) :
+1. **§2 Notre histoire** : la phrase « piscines sur mesure » générique → précisée par la gamme d'ouvrage PROUVÉE (débordement, intérieures, paroi de verre, fond mobile — `savoir-faire-facts.md` §3, tous illustrés en photo).
+2. **§4 panneau Aqua System** : ajout d'un reflet de la preuve structure déjà LIVE sur /piscines-bien-etre (D-32, « Ce qui tient dans le temps ») — béton armé, Avis Technique CSTB, bureau d'études, marché unique → garantie décennale. Formulation condensée, register-matched (pas de duplication). Nouvelle chip « Avis Technique CSTB » dans la rangée de preuves.
+3. **§4 panneau Les Terres Essentielles** : panneau plus mince que l'AS et muet sur le vivant → ajout d'un reflet de la maîtrise LIVE sur /jardins-paysage (D-32, PepiniereBlock §3, `fond-jardins-copy.md`) — pépinière des Alluets-le-Roi, sélection sur la plante, sol argilo-calcaire. Substance prouvée LTE, **aucune création paysagère livrée revendiquée** (contrainte d'honnêteté project-context respectée).
+4. **§3 méthode (étape « Le bureau d'études »)** : NON modifiée — la section méthode est au registre « rassurant, structuré, humain » (brand-voice §2), pas catalogue technique ; le langage « implantation / matériaux / lignes directrices » y est déjà juste. Sur-techniciser violerait la voix.
+5. **§6 valeurs / distinctions FPP-EUSA** : laissées en place — valeurs déjà au registre des 3 mots de marque (Exigence/Confiance/Sur-mesure), distinctions à leur meilleure place dans le panneau AS (faits validés faq-geo-copy §B.3).
+
+**Garde-fous** : CSTB et FPP/EUSA déjà validés et live ailleurs (D-32 + faq-geo-copy) → reflet, pas invention. Neobloc/classe A/filtration 5 µm [À CONFIRMER AS] NON introduits. Tokens uniquement, zéro composant partagé touché (pas de Grep rollout : seul `la-maison/page.tsx` modifié + libellé déjà unifié dans constants/tests).
+
+**Tests label** : aucune adaptation nécessaire — `constants.test.ts` et `parcours.spec.ts` assertaient déjà « À propos » (nav/breadcrumb antérieurs) ; aucun test n'assertait le H1 « La maison » (commentaire seul). Tests verts inchangés.
+
+**Vérification** : `tsc --noEmit` PASS · `next lint` PASS (0 warning) · `next build` PASS (39 pages) · `vitest run` 102/102 · `playwright test` 46/46. Grep `« La maison »` dans `src/` après coup : 0 occurrence (tout migré). Baselines `/la-maison` régénérées via `scripts/baselines-la-maison-d34.mjs` (clip ≤ 900px, jamais fullPage ; anciennes baselines fullPage `la-maison-{device}.png` supprimées). RELUES (3 devices) : fold H1 « À propos » sobre + eyebrow identité + signature préservée ; panneau AS avec reflet CSTB/décennale et chip CSTB ; panneau LTE avec reflet pépinière des Alluets — les deux maisons désormais équilibrées en substance.
+
+**Fichiers modifiés** : `src/app/la-maison/page.tsx`. Nouveau : `scripts/baselines-la-maison-d34.mjs`.
+
+**Escalade @copywriter (hors périmètre retouche)** : aucune réécriture nécessaire — toutes les retouches réutilisent des formulations sources déjà validées (D-32, savoir-faire-facts, fond-jardins-copy). Si une refonte du panneau LTE était souhaitée (le mettre à parité narrative avec l'AS au-delà du reflet), elle dépasserait la retouche → @copywriter.

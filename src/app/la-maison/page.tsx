@@ -18,7 +18,9 @@ import { JsonLd } from '@/components/seo/JsonLd';
 import { FAQ_NOTRE_APPROCHE, toFaqJsonLd } from '@/content/faq';
 
 /**
- * La maison (/la-maison) — F-06, WF-06 + fusion F-04 « Notre approche » (D-25).
+ * À propos (/la-maison) — F-06, WF-06 + fusion F-04 « Notre approche » (D-25).
+ * Nommage aligné nav/H1/metas/breadcrumb sur « À propos » (D-34). URL inchangée
+ * (pas de nouvelle 301). Le terme « maison »/« les deux maisons » reste en corps.
  * Rendu : SSG. Page identité fusionnée : histoire + portrait + méthode 5 étapes
  * (migrée de notre-approche) + les deux maisons + ancrage local (migré) +
  * valeurs + photo propriété + FAQ (migrée, FAQPage JSON-LD fusionné).
@@ -29,14 +31,14 @@ export const metadata: Metadata = {
   // Metas fusionnées (ia-refonte §2) — title identité conservé + intention
   // méthode. ≤ 65 car. Canonical /la-maison/ (page absorbante).
   title: {
-    absolute: 'La maison — Pisciniste & paysagiste 30 ans en 78/92, méthode intégrée',
+    absolute: 'À propos — Pisciniste & paysagiste 30 ans en 78/92, méthode intégrée',
   },
   description:
     'Aqua System et Les Terres Essentielles : 30 ans dans le 78/92, certification Socotec, bureau d\'études intégré. De la vision à la réalisation — un seul interlocuteur.',
   alternates: { canonical: absoluteUrl('/la-maison/') },
   openGraph: {
     url: `${SITE_URL}/la-maison/`,
-    title: 'La maison — Aqua System & Les Terres Essentielles, 78/92',
+    title: 'À propos — Aqua System & Les Terres Essentielles, 78/92',
     images: [
       {
         url: absoluteUrl('/og-image.jpg'),
@@ -127,7 +129,7 @@ export default function LaMaisonPage() {
       <JsonLd data={PERSON} />
       <JsonLd data={FAQ_JSONLD} />
 
-      {/* §1 — Hero split (pattern ex-notre-approche). H1 « La maison » + formule
+      {/* §1 — Hero split (pattern ex-notre-approche). H1 « À propos » (D-34) + formule
           signature « De la vision à la réalisation » en sous-titre (raccords-fusion
           mot pour mot), visible dès le fold. Photo identité piscine intérieure. */}
       <section className="bg-background">
@@ -139,7 +141,7 @@ export default function LaMaisonPage() {
               Aqua System & Les Terres Essentielles
             </p>
             <h1 className="font-serif text-4xl leading-tight text-foreground md:text-5xl lg:text-6xl">
-              La maison
+              À propos
             </h1>
             <p className="mt-4 max-w-[45ch] text-lg leading-8 text-foreground-secondary md:text-xl">
               De la vision à la réalisation : trente ans dans les plus belles
@@ -178,9 +180,11 @@ export default function LaMaisonPage() {
             </p>
             <p className="text-lg leading-8 text-foreground-secondary">
               Aujourd'hui, nous sommes une équipe de 8. Nous concevons,
-              construisons et entretenons des piscines sur mesure. En partenariat
-              avec Les Terres Essentielles, nous portons aussi le végétal, pour
-              que l'eau et le jardin ne soient jamais pensés séparément.
+              construisons et entretenons des piscines sur mesure : du
+              débordement ouvert sur le paysage aux piscines intérieures, de la
+              paroi de verre au fond mobile. En partenariat avec Les Terres
+              Essentielles, nous portons aussi le végétal, pour que l'eau et le
+              jardin ne soient jamais pensés séparément.
             </p>
           </div>
           {/* Portrait Nicolas Berg — bloc sobre (portrait fourni fondateur,
@@ -268,6 +272,15 @@ export default function LaMaisonPage() {
                 mesure. Spas extérieurs HotSpring, saunas, hammams. Traitement
                 d'eau, robots Dolphin, SAV équipements.
               </p>
+              {/* Reflet (D-34) de la preuve structure live sur /piscines-bien-etre
+                  (D-32, « Ce qui tient dans le temps ») : béton armé, Avis Technique
+                  CSTB, bureau d'études, marché unique → décennale. Aucun fait nouveau. */}
+              <p>
+                Chaque piscine est une structure en béton armé conçue par notre
+                bureau d'études, couverte par un Avis Technique CSTB et engagée
+                sous notre garantie décennale : un seul marché, un seul
+                responsable.
+              </p>
               <p>
                 Membre du réseau L'Esprit Piscine. Certification Socotec
                 « Professionnels de la piscine » CSP/ESP-001.
@@ -285,6 +298,9 @@ export default function LaMaisonPage() {
             <ul className="mt-5 flex flex-wrap gap-2">
               <li className="rounded-md bg-background-proof px-3 py-1.5 text-xs font-medium text-foreground">
                 Certification Socotec CSP/ESP-001
+              </li>
+              <li className="rounded-md bg-background-proof px-3 py-1.5 text-xs font-medium text-foreground">
+                Avis Technique CSTB
               </li>
               <li className="rounded-md bg-background-proof px-3 py-1.5 text-xs font-medium text-foreground">
                 Réseau L'Esprit Piscine
@@ -335,6 +351,16 @@ export default function LaMaisonPage() {
                 Jardinerie, bureau d'études paysager, création et entretien de
                 parcs et jardins, pépinière. Des végétaux et des matériaux
                 sélectionnés pour les propriétés de l'ouest parisien.
+              </p>
+              {/* Reflet (D-34) de la maîtrise du vivant live sur /jardins-paysage
+                  (D-32, PepiniereBlock §3) : pépinière aux Alluets-le-Roi, sélection
+                  sur la plante, sol argilo-calcaire. Substance prouvée LTE, aucune
+                  création paysagère livrée revendiquée. Aucun fait nouveau. */}
+              <p>
+                À la pépinière des Alluets-le-Roi, les végétaux sont sélectionnés
+                sur la plante, pas sur catalogue : choisis pour le sol
+                argilo-calcaire et le climat de l'ouest parisien, pour ce qu'ils
+                deviendront dans dix ou vingt ans.
               </p>
             </div>
             {/* Photo d'ambiance HONNÊTE : la jardinerie LTE (point de vente),
