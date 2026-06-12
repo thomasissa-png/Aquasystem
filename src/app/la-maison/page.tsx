@@ -195,13 +195,11 @@ export default function LaMaisonPage() {
               Les Terres Essentielles
             </h2>
             <div className="mt-4 space-y-4 text-base leading-8 text-foreground-secondary">
-              {/* [À CONFIRMER : partenariat] nature exacte LTE ↔ Kei-Stone
-                  (distributeur agréé / concessionnaire) avant publication. */}
+              {/* Kei-Stone passé sous silence (fondateur 2026-06-12). */}
               <p>
                 Jardinerie, bureau d'études paysager, création et entretien de
-                parcs et jardins, pépinière. Pierre naturelle Kei-Stone. Des
-                végétaux et des matériaux sélectionnés pour les propriétés de
-                l'ouest parisien.
+                parcs et jardins, pépinière. Des végétaux et des matériaux
+                sélectionnés pour les propriétés de l'ouest parisien.
               </p>
             </div>
             {/* Photo d'ambiance HONNÊTE : la jardinerie LTE (point de vente),

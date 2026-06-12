@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   // Metas finales — metadata-templates.md Page 3 (title 50 car., "Paysagiste" en tête).
   title: { absolute: 'Paysagiste Yvelines — Jardins haut de gamme, 78/92' },
   description:
-    'Jardinerie, bureau d\'études paysager et pierre naturelle Kei-Stone en 78/92. Les Terres Essentielles, en partenariat avec Aqua System.',
+    "Jardinerie, bureau d'études paysager, jardins et parcs sur mesure en 78/92. Les Terres Essentielles, en partenariat avec Aqua System.",
   alternates: { canonical: absoluteUrl('/jardins-paysage/') },
   openGraph: {
     url: `${SITE_URL}/jardins-paysage/`,
@@ -68,8 +68,8 @@ export default function JardinsPaysagePage() {
       {/* Bloc 2 — Création de parcs et jardins (placeholder : chantier création). */}
       <CreationBlock />
 
-      {/* Bloc 3b — Pierre naturelle Kei-Stone (distributeur LTE — synergie piscines/jardins). */}
-      <KeiStoneBlock />
+      {/* Bloc Kei-Stone retiré à la demande du fondateur (2026-06-12) — copy
+          conservé dans docs/copy/site-copy.md §v1.1 pour réactivation future. */}
 
       {/* Bloc 4 — Entretien et pépinière : VRAIE photo de la jardinerie LTE. */}
       <PepiniereBlock />
@@ -146,24 +146,6 @@ function PepiniereBlock() {
       ]}
       imageSrc={jardinerieSrc(photo.base, '1280w')}
       imageAlt={photo.alt}
-    />
-  );
-}
-
-function KeiStoneBlock() {
-  // [À CONFIRMER : partenariat] nature exacte du lien LTE ↔ Kei-Stone
-  // ("distributeur agréé", "concessionnaire" ou autre) avant publication —
-  // ajuster "distribuent" dans le corps une fois confirmé par le fondateur.
-  // Photo : [Photo : dallage/margelles pierre naturelle — à obtenir].
-  return (
-    <PlaceholderSplit
-      eyebrow="Pierre naturelle"
-      title="La pierre comme trait d'union entre l'eau et le jardin"
-      body={[
-        "Dallages de plage, margelles de piscine, allées et pas japonais — la pierre naturelle est le matériau qui fait tenir ensemble l'eau et le végétal. Elle vieillit avec la propriété, absorbe la lumière, et ne ressemble à rien de standard.",
-        'Les Terres Essentielles distribuent les pierres naturelles Kei-Stone — une gamme pensée pour les extérieurs haut de gamme : travertin, calcaire, bluestone, pierre grise d\'Asie.',
-      ]}
-      placeholder="Dallage en pierre naturelle autour d'une plage de piscine — margelles posées à ras, surface calcaire beige-gris, harmonie avec la végétation en bordure. [Photo à obtenir — fournisseur Kei-Stone ou réalisation LTE]"
     />
   );
 }
