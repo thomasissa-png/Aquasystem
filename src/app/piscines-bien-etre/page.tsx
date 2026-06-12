@@ -98,11 +98,11 @@ export default function PiscinesBienEtrePage() {
           "Spa extérieur HotSpring, sauna finlandais, hammam, intégrés à l'architecture de votre propriété, pas posés en périphérie. Chaque installation est conçue avec le reste de l'espace : la terrasse, le jardin, les lignes de la maison.",
           'Partenaire HotSpring pour les spas : une gamme pensée pour le résidentiel haut de gamme.',
         ]}
-        // Photo DÉSIGNÉE PAR LE FONDATEUR (2026-06-12) : pavillon bien-être
-        // vitré au crépuscule, réalisation Aqua System (78), arch. SKP,
-        // photo Philippe Leroy (source esprit-piscine). Remplace le placeholder.
-        imageSrc="/images/realisations/bien-etre-pavillon-crepuscule-800w.webp"
-        imageAlt="Pavillon bien-être vitré au crépuscule, piscine intérieure éclairée visible à travers les baies, terrasse en bois et jardin — réalisation Aqua System dans les Yvelines"
+        // Photo DÉSIGNÉE PAR LE FONDATEUR (2026-06-12) : bassin balnéo en remous
+        // (fond mobile Aqualift, 78), photo Magazine Ambiance piscines, source
+        // esprit-piscine. Remplace le pavillon crépuscule (resté dispo en assets).
+        imageSrc="/images/realisations/spa-remous-terrasse-bois-800w.webp"
+        imageAlt="Bassin de balnéothérapie en remous intégré à une terrasse en bois, transats et coussins, mur ocre et végétation en arrière-plan — réalisation Aqua System dans les Yvelines"
         reversed
         tone="alt"
       />
