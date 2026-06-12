@@ -810,3 +810,9 @@ Champ optionnel `faq?: { q; a }[]` ajouté au type `Article` (`src/content/blog.
 **Fichiers modifiés** : `src/content/faq.ts`, `src/content/blog.ts`, `src/components/sections/FaqSection.tsx`, `src/components/sections/MediaSplit.tsx`, `src/components/sections/OuvrageCard.tsx`, `src/components/sections/OuvragesSection.tsx`, `src/app/jardins-paysage/page.tsx`, `src/app/notre-regard/[slug]/page.tsx`, `src/app/realisations/[slug]/page.tsx` + 4 captures `tests/screenshots/P2-*`.
 
 NON COMMITTÉ, NON DÉPLOYÉ (consigne brief).
+
+---
+
+## D-43 — Hero /piscines-bien-etre : choix fondateur candidat A (2026-06-12)
+
+Le hero spa-transats (D-40 cas B) REFUSÉ par le fondateur (« je trouve pas la piscine vraiment belle »). Casting soumis au fondateur : 3 crops au ratio bandeau réel (A jardin clos soleil img24/ARN26 Pieau · B paroi de verre crépuscule img46 · C intérieure verrière img20). **Choix fondateur : A.** Set `piscine-jardin-clos-murs-anciens` 4 tailles (1920w q70 = 366 Ko), `object-[center_45%]`, alt factuel. Assets spa-transats supprimés (zéro référence restante), mapping du script build-hero-1920-images.mjs mis à jour. Folds 1280 + 375 capturés et relus (H1 lisible). Leçon : un REMPLACEMENT de visuel hero (vs même visuel plus net) repasse par une validation fondateur sur propositions croppées au ratio réel.

@@ -65,15 +65,15 @@ export default function PiscinesBienEtrePage() {
       <JsonLd data={BREADCRUMB} />
       <JsonLd data={FAQ_JSONLD} />
       <Hero
-        imageSrc={photoSrc('piscine-interieure-spa-transats', '1280w')}
-        // CAS B (D-40) : le hero pierre-poutres n'existait qu'en 1280w (upscalé,
-        // flou). Remplacé par un original 1920 du même registre (piscine intérieure
-        // premium Aqua System) : bassin intérieur + transats, composition horizontale
-        // qui survit au bandeau, zone basse-gauche calme pour le H1. Palier 1920w servi
-        // sur desktop large (anti-flou).
-        imageSrc1920="/images/realisations/piscine-interieure-spa-transats-1920w.webp"
-        imageAlt="Piscine intérieure sur mesure dans un espace bien-être — bassin éclairé, transats alignés sur sol ardoise, ambiance feutrée — réalisation Aqua System dans les Yvelines"
-        objectPosition={{ base: 'object-center' }}
+        imageSrc="/images/realisations/piscine-jardin-clos-murs-anciens-1280w.webp"
+        // CHOIX FONDATEUR (2026-06-12, D-43) : le hero spa-transats (D-40 cas B)
+        // a été refusé (« je trouve pas la piscine vraiment belle »). Remplacé par
+        // le candidat A validé sur 3 propositions : bassin au soleil dans un
+        // jardin clos de murs anciens en brique (original 1920 ARN26, photo
+        // Fred Pieau). Bande utile centrée à ~45 % de hauteur.
+        imageSrc1920="/images/realisations/piscine-jardin-clos-murs-anciens-1920w.webp"
+        imageAlt="Piscine au revêtement gris-bleu en plein soleil dans un jardin clos de murs anciens en brique, terrasses en pierre claire, transats et massifs taillés — réalisation Aqua System, ouest parisien"
+        objectPosition={{ base: 'object-[center_45%]' }}
         title="Piscines & Bien-être"
         // P1 gate passe 10 : « Aqua System » retiré du sous-titre — télescopage
         // avec le wordmark « Aquasystem » du header dans le même fold (sensibilité

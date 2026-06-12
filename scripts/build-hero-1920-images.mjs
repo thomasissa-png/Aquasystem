@@ -48,7 +48,9 @@ const HEROS = [
   { src: 'img42.jpg', name: 'piscine-couloir-demeure-ancienne', hero: true },
   // CAS B — hero piscines : spa intérieur premium (transats + bassin), composition
   // horizontale, zone basse-gauche calme pour le H1.
-  { src: 'img17.jpg', name: 'piscine-interieure-spa-transats', hero: true },
+  // img17 spa-transats RETIRÉ (D-43) : hero refusé fondateur, remplacé par
+  // img24 (ARN26, Photo Fred Pieau) — candidat A validé sur 3 propositions.
+  { src: 'img24.jpg', name: 'piscine-jardin-clos-murs-anciens', hero: true },
   // CAS B — hero jardins : même projet maison-bois que l'actuel mais cadrage frontal
   // HR (la version 1280 actuelle était un crop 3/4 différent → nom distinct, honnête).
   // crop169 : la source 4:3 (1920×1440) pèse > 450 Ko même à q52 (feuillage très
