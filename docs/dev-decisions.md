@@ -403,3 +403,31 @@ La pépinière/serre a désormais une vraie photo. **Restent en PhotoPlaceholder
 **Vérification finale** : `tsc --noEmit` PASS · `next lint` PASS (0 warning) · `build` PASS (30 routes) · **Vitest 102/102** · **Playwright 43/43**. **Grep `out/` : « en cours de documentation » = 0 · « avocat » = 0 · « Fiche en cours » = 0 · « valider » = 0.** Baselines impactées re-capturées (realisations, fiche draft `piscine-debordement-foret`, politique-confidentialite) × 3 viewports = 18 PNG, **fold + clip ≤ 900px, jamais fullPage** (consigne gate). Relecture visuelle : grille réalisations = cartes propres (photo + type + zone + « Voir ») ; fiche draft = page galerie sobre (photo + titre + CTA, zéro encart d'inachevé). Pas de commit, pas de déploiement (consigne).
 
 ---
+
+## D-24 — Application audit photo (P0/P1/P2) (@fullstack, 2026-06-12)
+
+> Source : `docs/reviews/audit-2026-06-12/photo-audit-exhaustif.md` §5 (tableau avant→après). Périmètre STRICT (liste brief), tokens uniquement. Hero accueil VERROUILLÉ fondateur (intouché). Pas de commit, pas de déploiement.
+
+**P0 — blocs maisons accueil (`page.tsx`).**
+- Bloc **Aqua System** : `piscine-terrasse-bois-plongee` (4/10, vue aérienne sans identité) → **`piscine-interieure-pierre-poutres`** (9.5/10, couloir de nage pierre+poutres, non utilisée ailleurs), cadrage `object-[center_40%]` conservé. Alt refait (factuel).
+- Bloc **Les Terres Essentielles** : aucune photo du stock ne tient au format carré sans tromperie éditoriale (A3) → **option TYPOGRAPHIQUE** (TSX fourni par l'audit §5) : `<div>` carré `bg-[#1A2A1A]`, filet `#4a7a4a/40`, titre serif « Jardins & Paysage » sand-100 + label vert. `<Image>` LTE supprimé. **Correctif WCAG 2.2 AA** : le label `text-[#7ab87a]/70` de l'audit rendait 3.9:1 sur #1A2A1A (axe-core color-contrast, échec gate e2e) → opacité retirée (`text-[#7ab87a]` plein ≈6:1). Filet décoratif non concerné (élément non textuel).
+
+**P1/P2 — autres pages.**
+- `/prescripteurs` PORTFOLIO_SLUGS[0] : `piscine-paroi-verre-travertin` (doublon intra-page avec hero split) → **`piscine-interieure-pierre-poutres`**. Doublon INTER-page avec le bloc Aqua accueil ACCEPTÉ (pages distinctes). Doublon intra-page levé.
+- `/la-maison` hero : `piscine-terrasse-bois-plongee` (4/10) → **`piscine-interieure-beton-baies`** + alt. Doublon INTER-page avec MediaSplit /piscines accepté (formats/rôles distincts).
+- `/piscines-bien-etre` CrossSelling : `projet-bassin-jardin-paysage` (3/10) → **`piscine-jardin-arbre`** + alt.
+- `/jardins-paysage` CrossSelling : `jardin-bassin-maison-bois` (3/10) → **`piscine-jardin-arbre`** + alt. Vérif intra-page : aucune autre occurrence sur la page → pas de doublon.
+- `/jardins-paysage` MediaSplit **Pépinière** : photo `jardinerie-serre-chrysanthemes` (panneau « Mes saisons florales » nuisible, 4/10) **SUPPRIMÉE** → bloc rendu en `TextBlock` (même pattern que BureauEtudes/Creation, D-22). Imports morts retirés (`MediaSplit`, `JARDINERIE_PHOTOS`, `jardinerieSrc`), doc-comment de page mis à jour.
+
+**Hors périmètre brief (NON traité, signalé)** : audit §5 #8 (cross-sell intra-fiche `realisations.ts`, slug `piscine_bien_etre`, `projet-bassin-jardin-paysage` → `piscine-jardin-arbre`) n'est PAS dans la liste du brief (« rien d'autre ») → laissé en l'état. À traiter dans un lot ultérieur si souhaité.
+
+**Anti-doublon (vérif finale, Grep `photoSrc(`/`jardinerieSrc(` par page).**
+- `/` : hero couloir-demeure-ancienne · Aqua interieure-pierre-poutres · LTE typo (0 photo) · featured (debordement-foret, enterree-maison-brique, projet-piscine-jardin-banquette). **0 doublon intra-page.**
+- `/la-maison` : interieure-beton-baies · cagette-lauriers-orgeval · nicolas-berg · piscine-jardin-arbre. **0 doublon.**
+- `/piscines-bien-etre` : paroi-verre-travertin · debordement-foret · interieure-beton-baies · piscine-jardin-arbre. **0 doublon.**
+- `/jardins-paysage` : enterree-maison-brique · piscine-jardin-arbre. **0 doublon.**
+- `/prescripteurs` : paroi-verre-travertin (hero) · interieure-pierre-poutres + couloir-demeure-ancienne + projet-piscine-jardin-banquette (cards). **0 doublon intra-page** (doublon levé).
+
+**Vérification finale** : `tsc --noEmit` PASS · `next lint` PASS (0 warning) · `build` PASS (30 routes) · **Vitest 102/102** · **Playwright 43/43** (color-contrast accueil corrigé). Baselines impactées régénérées (accueil, prescripteurs, la-maison, piscines-bien-etre, jardins-paysage) × 3 viewports, **fold clip = hauteur viewport ≤ 812px (< 900px)** + fullpage (`scripts/screenshots.mjs`, export statique servi sur 127.0.0.1:3000). Baselines non impactées restaurées (`git checkout`) pour limiter le diff au périmètre. Relecture visuelle : accueil (Aqua = pool intérieur pierre, LTE = tableau typo vert lisible), la-maison hero (béton/baies), jardins (pépinière en bloc texte, cross-sell piscine-jardin-arbre). Pas de commit, pas de déploiement (consigne).
+
+---
