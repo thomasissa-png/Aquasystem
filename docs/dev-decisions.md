@@ -508,3 +508,10 @@ La pépinière/serre a désormais une vraie photo. **Restent en PhotoPlaceholder
 **Vérification finale** : `tsc --noEmit` **PASS** · `next lint` **PASS** (0 warning) · `npm run build` **PASS** (toutes routes < 200KB First Load JS) · **Vitest 102/102 PASS** · **Playwright 46/46 PASS** (dont drawer ouverture/Escape/focus-trigger + a11y axe-core /realisations + parcours « À propos » 3 devices). Baselines régénérées (fold + sections + footer + fiche SectionCTA, **jamais fullPage**, ≤1900px) dans `tests/screenshots/` et relues. Captures de jugement crop-first / drawer / la-maison dans `docs/reviews/hero-crops/`. Pas de commit, pas de déploiement (consigne).
 
 ---
+
+## D-29 — Mise au niveau /prescripteurs (2026-06-12)
+Agent interrompu en fin de mission — travail vérifié et finalisé par l'orchestrateur (tsc/lint/build/102 tests PASS).
+Écarts corrigés au standard passe 4 : hero travertin (« catalogue ») → piscine-pierre-mur-ancien
+(registre architectural, object center_45%, voile bas 0.22) ; preuves cartouches pleins → filets
+éditoriaux (point médian) ; encart qualification cartouche beige → ligne éditoriale sous filet
+(pattern claim GEO accueil) ; cards portfolio rafraîchies (doublon travertin levé, nocturne ajoutée).

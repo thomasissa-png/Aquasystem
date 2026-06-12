@@ -22,8 +22,9 @@ import { FAQ_PRESCRIPTEURS, toFaqJsonLd } from '@/content/faq';
  * Rendu : SSG. E-07 prescripteur_page_viewed au montage (îlot client).
  * E-08 prescripteur_cta_clicked sur les 2 CTA « Présentons-nous ».
  * Wording : ux-writing-guide §10 (exact) + site-copy WF-07.
- * Photo hero (détail finition) sans photo réelle → réalisation à finition
- * irréprochable réutilisée (paroi verre travertin).
+ * Photo hero (D-29) : piscine-pierre-mur-ancien — registre architectural
+ * (lignes pures, pierre appareillée, mur ancien), traitée d'un voile bas léger.
+ * Remplace la travertin jugée « catalogue » (alignement standard passe 4).
  */
 export const metadata: Metadata = {
   // Metas finales — metadata-templates.md Page 7 (title 55 car., CTA « Présentons-nous »).
@@ -99,12 +100,12 @@ const PREUVES = [
 ];
 
 const PORTFOLIO_SLUGS = [
-  // Audit photo §5 #3 (D-24) : lève le doublon intra-page avec le hero split
-  // (paroi-verre-travertin). Signal prescripteur fort, non utilisé ailleurs sur
-  // cette page. (Cette photo arrive aussi sur le bloc Aqua System accueil :
-  // doublon INTER-page accepté, pages distinctes.)
+  // D-29 : hero = piscine-pierre-mur-ancien (plus le travertin) → le doublon
+  // intra-page D-24 n'existe plus. Rafraîchi avec une nouvelle réalisation
+  // (piscine-nocturne-murets-eclaires) pour porter un signal « réalisations
+  // récentes » côté architecte, aux côtés de deux références premium intemporelles.
   'piscine-interieure-pierre-poutres',
-  'piscine-couloir-demeure-ancienne',
+  'piscine-nocturne-murets-eclaires',
   'projet-piscine-jardin-banquette',
 ];
 
@@ -132,13 +133,12 @@ export default function PrescripteursPage() {
               exécutant qui travaille sur votre plan et respecte votre relation
               client.
             </p>
-            <ul className="mt-6 flex flex-wrap gap-2">
-              <li className="rounded-md bg-background-proof px-3 py-1.5 text-xs font-medium text-foreground">
-                Certification Socotec CSP/ESP-001
-              </li>
-              <li className="rounded-md bg-background-proof px-3 py-1.5 text-xs font-medium text-foreground">
-                Réseau L'Esprit Piscine
-              </li>
+            {/* Preuves en filets éditoriaux (passe 4) — plus de cartouches pleins.
+                Deux signaux séparés par un point médian, statut secondaire. */}
+            <ul className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs font-medium uppercase tracking-[0.08em] text-foreground-accent-water">
+              <li>Certification Socotec CSP/ESP-001</li>
+              <li aria-hidden className="text-border">·</li>
+              <li>Réseau L'Esprit Piscine</li>
             </ul>
             <div className="mt-8">
               <PrescripteurCtaLink
@@ -150,13 +150,20 @@ export default function PrescripteursPage() {
             </div>
           </div>
           <figure className="relative min-h-[260px] w-full overflow-hidden lg:col-span-5 lg:min-h-full">
+            {/* Hero traité (D-29) : swap travertin → pierre-mur-ancien (registre
+                architectural, lignes pures) + voile bas léger pour ancrer la
+                figure au standard des heros montés des autres pages. */}
             <Image
-              src={photoSrc('piscine-paroi-verre-travertin', '1280w')}
-              alt="Détail de finition haut de gamme : margelles en travertin posées avec précision, paroi vitrée, joint parfait — travail artisanal Aqua System"
+              src={photoSrc('piscine-pierre-mur-ancien', '1280w')}
+              alt="Piscine aux margelles de pierre claire appareillée, bassin rectangulaire bordé d'un mur ancien et d'un bouleau, propriété de l'ouest parisien — réalisation Aqua System"
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 42vw"
-              className="object-cover"
+              className="object-cover object-[center_45%]"
+            />
+            <div
+              aria-hidden
+              className="absolute inset-0 bg-gradient-to-t from-[rgba(26,21,16,0.22)] via-transparent to-transparent"
             />
           </figure>
         </div>
@@ -206,11 +213,11 @@ export default function PrescripteursPage() {
             ))}
           </ul>
 
-          {/* P0-C1 (ux-audit) : signal explicite de qualification active pour
-              Camille — transforme la page en outil de qualification, pas
-              seulement en vitrine. Wording exact ux-audit §FRICTION C1. */}
-          <div className="mt-8 flex flex-col gap-4 rounded-lg bg-background-proof px-5 py-5 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-base font-medium text-foreground">
+          {/* P0-C1 (ux-audit) : signal de qualification active pour Camille.
+              D-29 : cartouche plein → ligne éditoriale sous filet (pattern
+              claim GEO accueil passe 4), plus de bloc beige rejeté. */}
+          <div className="mt-8 flex flex-col gap-4 border-t border-border-muted pt-6 sm:flex-row sm:items-center sm:justify-between">
+            <p className="max-w-[40ch] text-base font-medium text-foreground">
               Dossier de qualification complet disponible sur demande.
             </p>
             <PrescripteurCtaLink
