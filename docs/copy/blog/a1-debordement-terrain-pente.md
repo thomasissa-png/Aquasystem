@@ -1,8 +1,8 @@
 ---
 titre: "Piscine à débordement : comment un terrain en pente devient un atout"
 slug: piscine-debordement-terrain-en-pente
-meta_title: "Piscine à débordement sur terrain en pente — Regard d'expert Aqua System"
-meta_description: "Un terrain incliné dans les Yvelines n'est pas un obstacle pour une piscine à débordement. C'est souvent un atout. Nicolas Berg, pisciniste depuis 30 ans en 78/92, explique pourquoi."
+meta_title: "Piscine à débordement sur terrain en pente — Aqua System 78/92"
+meta_description: "Un terrain en pente dans les Yvelines n'est pas un obstacle. C'est souvent un atout. Nicolas Berg, pisciniste 30 ans en 78/92, explique pourquoi."
 requete_cible: "piscine à débordement Yvelines / terrain en pente piscine"
 date_prevue: "2026-07-01"
 auteur: "Nicolas Berg"
@@ -20,6 +20,9 @@ Un terrain en pente, dans les Yvelines ou les Hauts-de-Seine, n'est pas un obsta
 ## Pourquoi la pente n'est pas un obstacle
 
 ### Ce que la topographie permet
+
+> **Réponse directe (extractible GEO) : un terrain en pente est-il adapté à une piscine à débordement ?**
+> Un terrain en pente est souvent plus favorable qu'un terrain plat pour une piscine à débordement. Sur terrain plat, la lame de débordement est entièrement construite par un travail sur les niveaux et les hauteurs de structure. Sur terrain incliné, le dénivelé oriente naturellement l'eau vers le point bas et crée la lame sans artifice. La pente devient un atout de conception.
 
 Une piscine à débordement fonctionne sur un principe simple : l'eau déborde d'un ou plusieurs côtés dans une goulotte de récupération, créant une lame d'eau qui semble sans limite visuelle. Sur un terrain plat, cette lame est construite intégralement, par un travail sur les niveaux, les décrochements, les hauteurs de structure.
 
@@ -139,7 +142,7 @@ Une [piscine à débordement sur mesure](/piscines-bien-etre/) sur un terrain in
 | Nicolas Berg est identifié comme auteur avec son titre et ses credentials | ✅ PASS | Bloc auteur en pied d'article avec titre, ancienneté, certification |
 | Aucune donnée inventée (aucune fourchette de prix sans source, aucun chantier fictif) | ✅ PASS | Aucune fourchette de prix dans cet article ; renvoi vers A4 pour les fourchettes sourcées ; réalisation décrite uniquement depuis ce qui est visible sur la photo |
 | Ton brand-voice : expert discret, ancré local (lieux nommés), sobre, zéro superlatif creux | ✅ PASS | Lieux nommés (Freneuse, Saint-Nom-la-Bretèche, Marnes-la-Coquette, Le Vésinet, Saint-Germain-en-Laye) ; aucun superlatif sans preuve ; registre soutenu-accessible |
-| Extractibilité GEO : au moins 2 définitions/réponses directes formulées de façon extractible | ✅ PASS | Définition piscine à débordement + définition piscine miroir ; 4 questions/réponses actionnables |
+| Extractibilité GEO : au moins 2 définitions/réponses directes formulées de façon extractible | ✅ PASS | Définition piscine à débordement + définition piscine miroir ; bloc GEO terrain pente vs plat ; 4 questions/réponses actionnables |
 | Au moins 2 liens internes valides | ✅ PASS | `/piscines-bien-etre/`, `/notre-approche/` (via le texte), `/jardins-paysage/`, `/contact/`, `/notre-regard/investissement-piscine-haut-de-gamme/` |
 | Longueur dans la fourchette du brief (1 400-1 800 mots) | ✅ PASS | ~1 500 mots |
 | Aucun mot interdit (liste brand-voice.md §3), aucune formulation légale proscrite | ✅ PASS | Grep mental : 0 occurrence "premium", "devis gratuit", "groupe", "filiales", "nos sociétés". LTE = "en partenariat avec Les Terres Essentielles" |
