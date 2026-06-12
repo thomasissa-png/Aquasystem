@@ -16,6 +16,13 @@ interface Ouvrage {
   imageAlt: string;
   title: string;
   body: string;
+  /**
+   * Slug de fiche réalisation emblématique (R-12) — rend un lien texte discret
+   * vers /realisations/<realisationSlug>. Posé uniquement sur les ouvrages dont
+   * une fiche individuelle illustre précisément le type (fond mobile, couloir de
+   * nage, piscine intérieure). Le slug photo EST le slug de la fiche.
+   */
+  realisationSlug?: string;
 }
 
 const OUVRAGES: Ouvrage[] = [
@@ -39,6 +46,7 @@ const OUVRAGES: Ouvrage[] = [
       'Couloir de nage intérieur sur mesure, charpente bois apparente et margelles en travertin — réalisation Aqua System',
     title: 'Couloir de nage',
     body: "Un bassin conçu pour la nage, pas pour l'esthétique seule : les proportions allongées, la largeur calibrée, le fond plat sur toute la longueur. La pratique sportive à domicile, intégrée à l'architecture de la propriété sans rien sacrifier aux lignes.",
+    realisationSlug: 'piscine-interieure-pierre-poutres',
   },
   {
     slug: 'piscine-interieure-beton-baies',
@@ -46,6 +54,7 @@ const OUVRAGES: Ouvrage[] = [
       'Piscine intérieure en béton brut ouverte sur le jardin par des baies vitrées — réalisation Aqua System',
     title: 'Piscine intérieure',
     body: "Baigner toute l'année, sans abri, sans compromis : la piscine est intégrée au bâti, les matériaux choisis pour la durée, l'air traité pour que l'espace reste un lieu de vie. Quatre réalisations dans notre portefeuille, du béton brut aux charpentes bois apparentes. Aucune ne ressemble à la précédente.",
+    realisationSlug: 'piscine-interieure-beton-baies',
   },
   {
     slug: 'piscine-fond-mobile-terrasse',
@@ -53,6 +62,7 @@ const OUVRAGES: Ouvrage[] = [
       'Piscine à fond mobile, terrasse en bois affleurante avec fond remonté — réalisation Aqua System',
     title: 'Fond mobile',
     body: "Le plancher du bassin monte, la terrasse reprend ses droits. Il redescend, la piscine redevient piscine. La profondeur s'ajuste, l'accès aux enfants se contrôle, l'espace extérieur se transforme selon les usages du moment. Un ouvrage rare, que nous avons réalisé.",
+    realisationSlug: 'piscine-fond-mobile-terrasse',
   },
   {
     slug: 'piscine-paroi-verre-travertin',
@@ -80,6 +90,11 @@ export function OuvragesSection() {
               imageAlt={o.imageAlt}
               title={o.title}
               body={o.body}
+              realisationHref={
+                o.realisationSlug
+                  ? `/realisations/${o.realisationSlug}`
+                  : undefined
+              }
             />
           ))}
         </div>

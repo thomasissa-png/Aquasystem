@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
-import { SITE_URL, absoluteUrl, breadcrumbJsonLd } from '@/lib/seo';
+import { SITE_URL, absoluteUrl, breadcrumbJsonLd, faqPageJsonLd } from '@/lib/seo';
 import { photoSrc } from '@/content/realisations';
+import { FAQ_JARDINS, toFaqJsonLd } from '@/content/faq';
 import { Hero } from '@/components/sections/Hero';
 import { MediaSplit } from '@/components/sections/MediaSplit';
 import { TextBlock } from '@/components/sections/TextBlock';
 import { VivantSection } from '@/components/sections/VivantSection';
+import { FaqSection } from '@/components/sections/FaqSection';
 import { CrossSellingBlock } from '@/components/sections/CrossSellingBlock';
 import { SectionCTA } from '@/components/sections/SectionCTA';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -45,6 +47,16 @@ const BREADCRUMB = breadcrumbJsonLd([
 ]);
 
 /**
+ * FAQPage JSON-LD (R-07 re-audit SEO) — 4 Q/R paysagisme. `@id` ancré sur l'URL
+ * canonique pour garantir l'unicité dans le graphe (chaque FAQPage du site porte
+ * son propre @id). Source = FAQ_JARDINS, MÊMES données que la FaqSection visible.
+ */
+const FAQ_JSONLD = faqPageJsonLd(
+  toFaqJsonLd(FAQ_JARDINS),
+  absoluteUrl('/jardins-paysage/#faq'),
+);
+
+/**
  * Services jardins (3 — WF-03 §5).
  * NF-2 (re-audit-iteration2 §3, D-18) : ce sont des SERVICES fonctionnels, pas
  * des preuves chiffrées → NE PAS réutiliser ProofBadges (fond doré + chiffres
@@ -61,6 +73,7 @@ export default function JardinsPaysagePage() {
   return (
     <>
       <JsonLd data={BREADCRUMB} />
+      <JsonLd data={FAQ_JSONLD} />
       <Hero
         imageSrc={photoSrc('jardin-bassin-maison-bois-paysage', '1280w')}
         // CAS B (D-40) : le hero maison-bois n'existait qu'en 1280w (crop 3/4 upscalé,
@@ -126,6 +139,15 @@ export default function JardinsPaysagePage() {
         </div>
       </section>
 
+      {/* FAQ jardins (R-07 re-audit SEO) — 4 Q/R extractibles, après les Services
+          (fond default) → tone alt pour alterner. Accent forest (univers jardins). */}
+      <FaqSection
+        heading="Questions fréquentes"
+        items={[...FAQ_JARDINS]}
+        tone="alt"
+        accent="forest"
+      />
+
       <CrossSellingBlock
         sourceUnivers="jardins"
         destinationUnivers="piscines"
@@ -184,6 +206,12 @@ function CreationBlock() {
       ]}
       imageSrc={photoSrc('massif-exotique-escalier', '1280w')}
       imageAlt="Massif exotique planté par Les Terres Essentielles : palmiers, yucca et plantes graphiques sur paillage minéral, escalier en pierre montant vers un mur ancien, ouest parisien"
+      // R-12 (re-audit SEO) : le corps évoque enrochements et terrasses
+      // végétalisées → maillage vers la fiche jardin en terrasses étagées.
+      link={{
+        href: '/realisations/jardin-terrasses-plongee',
+        label: 'Voir un jardin en terrasses étagées',
+      }}
     />
   );
 }

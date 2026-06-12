@@ -12,8 +12,27 @@ import {
   shortTitle,
   type Realisation,
 } from '@/content/realisations';
+import { ArrowRight } from 'lucide-react';
 import { SectionCTA } from '@/components/sections/SectionCTA';
 import { JsonLd } from '@/components/seo/JsonLd';
+
+/**
+ * Maillage fiche → page(s) service (R-11 re-audit SEO). Mapping discret depuis le
+ * `cardType` de la fiche vers la ou les pages univers correspondantes :
+ *  - Piscine / Espace bien-être → /piscines-bien-etre
+ *  - Jardin & Parc → /jardins-paysage
+ *  - Projet complet eau + jardin → les deux
+ * Aucune donnée nouvelle : libellés génériques univers.
+ */
+function serviceLinks(cardType: string): { href: string; label: string }[] {
+  const PISCINE = { href: '/piscines-bien-etre', label: 'Piscines & Bien-être' };
+  const JARDIN = { href: '/jardins-paysage', label: 'Jardins & Paysage' };
+  const t = cardType.toLowerCase();
+  if (t.includes('projet complet')) return [PISCINE, JARDIN];
+  if (t.includes('jardin') || t.includes('parc')) return [JARDIN];
+  // Piscine sur mesure + Espace bien-être → piscines.
+  return [PISCINE];
+}
 
 /**
  * Fiche réalisation (/realisations/[slug]) — F-05b, WF-05b.
@@ -193,6 +212,33 @@ export default function RealisationFiche({
             {/* P0 gate passe 6 : CTA inline retiré — il dupliquait mot pour mot
                 le SectionCTA sombre qui suit (~80px plus bas). Un seul CTA de
                 fin de fiche : le SectionCTA. */}
+
+            {/* Maillage discret vers la/les page(s) service (R-11 re-audit SEO),
+                selon le cardType. Lien texte sobre, pas un bloc lourd. */}
+            <nav
+              aria-label="Notre savoir-faire"
+              className="mt-6 border-t border-border pt-6"
+            >
+              <p className="text-xs font-medium uppercase tracking-[0.1em] text-foreground-muted">
+                Notre savoir-faire
+              </p>
+              <ul className="mt-3 space-y-2">
+                {serviceLinks(r.cardType).map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="group inline-flex items-center gap-2 text-sm font-medium text-foreground-accent-water underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2"
+                    >
+                      {link.label}
+                      <ArrowRight
+                        aria-hidden
+                        className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5"
+                      />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </aside>
         </div>
       </section>

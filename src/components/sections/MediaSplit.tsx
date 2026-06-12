@@ -1,3 +1,5 @@
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { toWidthVariant } from '@/content/realisations';
 import { PhotoPlaceholder } from '@/components/ui/PhotoPlaceholder';
@@ -29,6 +31,12 @@ export interface MediaSplitProps {
   placeholderSubject?: string;
   reversed?: boolean;
   tone?: 'default' | 'alt';
+  /**
+   * Lien texte discret rendu sous le corps (R-12 re-audit SEO) — maillage vers
+   * une fiche réalisation quand le bloc évoque un ouvrage précis. Optionnel :
+   * sans lien, le bloc reste inchangé.
+   */
+  link?: { href: string; label: string };
 }
 
 export function MediaSplit({
@@ -41,6 +49,7 @@ export function MediaSplit({
   placeholderSubject,
   reversed = false,
   tone = 'default',
+  link,
 }: MediaSplitProps) {
   const mobileSrc = imageSrc ? toWidthVariant(imageSrc, '800w') : undefined;
   return (
@@ -76,6 +85,23 @@ export function MediaSplit({
                 </p>
               ))}
             </div>
+            {link && (
+              <Link
+                href={link.href}
+                className={cn(
+                  'group mt-5 inline-flex items-center gap-2 text-sm font-medium underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2',
+                  accent === 'water'
+                    ? 'text-foreground-accent-water'
+                    : 'text-foreground-accent-forest',
+                )}
+              >
+                {link.label}
+                <ArrowRight
+                  aria-hidden
+                  className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5"
+                />
+              </Link>
+            )}
           </div>
 
           {imageSrc ? (

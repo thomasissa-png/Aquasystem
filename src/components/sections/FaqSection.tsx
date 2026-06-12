@@ -24,6 +24,8 @@ export interface FaqSectionProps {
   items: FaqItem[];
   /** Variante de fond (alterne avec la section précédente). */
   tone?: 'default' | 'alt';
+  /** Couleur d'accent du chevron : water (piscines, défaut) ou forest (jardins). */
+  accent?: 'water' | 'forest';
   /** Respiration supplémentaire en haut (design-audit P1-FAQ-1 /notre-approche). */
   extraTopSpacing?: boolean;
 }
@@ -32,6 +34,7 @@ export function FaqSection({
   heading,
   items,
   tone = 'default',
+  accent = 'water',
   extraTopSpacing = false,
 }: FaqSectionProps) {
   return (
@@ -52,7 +55,11 @@ export function FaqSection({
                   </span>
                   <ChevronDown
                     aria-hidden
-                    className="h-5 w-5 shrink-0 text-foreground-accent-water transition-transform group-open:rotate-180"
+                    className={`h-5 w-5 shrink-0 transition-transform group-open:rotate-180 ${
+                      accent === 'forest'
+                        ? 'text-foreground-accent-forest'
+                        : 'text-foreground-accent-water'
+                    }`}
                   />
                 </summary>
                 <p className="max-w-[68ch] pb-4 text-base leading-8 text-foreground-secondary">

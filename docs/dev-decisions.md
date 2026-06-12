@@ -770,3 +770,43 @@ Correctifs appliqués dans la foulée (session principale, éditions mineures) :
 - SITE-02 : /prescripteurs — assertion extractible des 6 types d'ouvrage (intérieure : 4 construites) dans la preuve « 30 ans ».
 
 EN ATTENTE (conflit de fichiers avec le lot heros D-40 en cours) : R-01 (meta description /jardins-paysage 168 → ≤155 c.). REPORTÉS au lot P2 : R-07 (FAQPage /jardins-paysage), R-10 (FAQPage articles), R-11/R-12 (maillage fiches ↔ pages services). REJETÉ : R-09 (5 liens nav footer) — contredit D-22 (suppression nav footer validée fondateur) ; ne pas réintroduire sans nouvel arbitrage.
+
+---
+
+## D-42 — Lot P2 des ré-audits SEO/GEO : FAQ visibles + maillage interne (@fullstack, 2026-06-12)
+
+Application des 4 correctifs P2 reportés par D-41 (`docs/seo/re-audit-scoring.md`). RÈGLE ZÉRO INVENTION respectée : chaque Q/R et chaque libellé de lien est une reformulation/condensation STRICTE de contenu déjà validé (corps d'articles `src/content/blog/*.ts`, pages services, `faq.ts`) — aucun fait, chiffre ou commune nouveau. Aucun corps d'article altéré. « en partenariat avec Les Terres Essentielles » conforme. Zéro cadratin dans les titres/questions (vérifié).
+
+### R-07 — FAQPage /jardins-paysage
+`FAQ_JARDINS` (4 Q/R) ajouté dans `src/content/faq.ts` + `FaqSection` (tone alt, accent forest) avant le CrossSelling + `faqPageJsonLd` @id `absoluteUrl('/jardins-paysage/#faq')`. Accent forest ajouté à `FaqSection` (prop `accent`, défaut water — zéro régression piscines). Q/R et sources de reformulation :
+- « Pouvez-vous concevoir le jardin en même temps que la piscine ? » ← BureauEtudesBlock §3 + A5 (« les deux études menées au même moment »).
+- « Faites-vous une étude avant de planter ? » ← BureauEtudesBlock §1-2 (« pose le plan avant que la première pelle entre dans la terre »).
+- « D'où viennent les végétaux et comment sont-ils choisis ? » ← PepiniereBlock + CreationBlock (sélection sur la plante, sol argilo-calcaire ouest parisien).
+- « Assurez-vous aussi l'entretien des jardins que vous créez ? » ← PepiniereBlock §1 (geste régulier vs rattrapage ponctuel).
+
+### R-10 — FAQ visible + FAQPage JSON-LD par article
+Champ optionnel `faq?: { q; a }[]` ajouté au type `Article` (`src/content/blog.ts`) + rendu dans `notre-regard/[slug]/page.tsx` (bloc `FaqSection` tone alt avant le CTA + `faqPageJsonLd` @id `/notre-regard/<slug>/#faq`). 6 articles × 2-3 Q/R reformulées du corps de CHAQUE article (souvent à partir des blocs `kind: 'geo'` déjà présents, condensés en réponses auto-contenues) :
+- **A1 débordement** : terrain en pente adapté ? / différence débordement vs miroir / génie civil interne.
+- **A4 prix** : béton vs coque / fourchettes publiques 2026 (non tarifs AS) / garantie décennale.
+- **A5 piscine+jardin** : pourquoi concevoir ensemble (niveaux) / synergie pierre Kei-Stone / un seul interlocuteur-marché.
+- **A2 intérieure** : qu'est-ce que l'hygrométrie / conséquences non maîtrisée / 4 configurations.
+- **A3 fond mobile** : fond mobile vs terrasse mobile / ajout sur piscine existante (non) / prix de marché.
+- **A6 rénovation** : quand rénover / test du seau / meilleure saison (automne).
+
+### R-11 — fiche réalisation → page(s) service
+`realisations/[slug]/page.tsx` : nav discrète « Notre savoir-faire » dans l'aside (filet supérieur, liens texte sobres, pas de bloc lourd, pas de doublon avec le SectionCTA). Mapping par `cardType` via `serviceLinks()` : Piscine sur mesure + Espace bien-être → /piscines-bien-etre ; Jardin & Parc → /jardins-paysage ; Projet complet eau + jardin → les deux. Vérifié out/ : fiche piscine = 1 lien, fiche projet complet = 2 liens.
+
+### R-12 — page service → fiches individuelles
+- **Piscines** : prop optionnelle `realisationHref` sur `OuvrageCard` + `realisationSlug` sur 3 ouvrages emblématiques de `OuvragesSection` (Couloir de nage → `piscine-interieure-pierre-poutres` ; Piscine intérieure → `piscine-interieure-beton-baies` ; Fond mobile → `piscine-fond-mobile-terrasse`). Lien texte « Voir cette réalisation » ; les 3 autres cards restent non cliquables (design d'origine préservé).
+- **Jardins** : prop optionnelle `link` sur `MediaSplit` ; posée une fois sur `CreationBlock` (le corps évoque enrochements/terrasses végétalisées) → « Voir un jardin en terrasses étagées » vers `jardin-terrasses-plongee`. Aucune mention forcée ailleurs (consigne « ne force pas »).
+
+### Grep rollout
+- `FaqSection` (composant partagé modifié : prop `accent`) — Grep src/ : 4 usages (`/la-maison`, `/notre-approche` via /la-maison, `/piscines-bien-etre`, + nouveaux jardins/articles). Tous conservent le défaut `water` sauf jardins (`forest`). Aucune régression.
+- `MediaSplit` (prop `link` additive) / `OuvrageCard` (prop `realisationHref` additive) : props optionnelles, tous les usages existants inchangés.
+
+### Vérifications
+`tsc --noEmit` PASS · `next lint` 0 warning · `npm run build` PASS (export statique) · `vitest run` 115/115 · `playwright test` 55/55 (a11y axe-core inclus). out/ : FAQPage @id tous UNIQUES sur l'ensemble du site (10 @id distincts, 1 par page : la-maison, prescripteurs, piscines, jardins + 6 articles). Zéro cadratin dans les questions/headings (les cadratins résiduels sont dans le corps des réponses, ponctuation legitime alignée sur les corps d'articles validés). Captures fold RELUES (clips ≤900px, jamais fullPage) : `tests/screenshots/P2-faq-jardins-{mobile375,desktop1280}.png` + `P2-faq-article-fond-mobile-{mobile375,desktop1280}.png` — rendu propre, design system respecté.
+
+**Fichiers modifiés** : `src/content/faq.ts`, `src/content/blog.ts`, `src/components/sections/FaqSection.tsx`, `src/components/sections/MediaSplit.tsx`, `src/components/sections/OuvrageCard.tsx`, `src/components/sections/OuvragesSection.tsx`, `src/app/jardins-paysage/page.tsx`, `src/app/notre-regard/[slug]/page.tsx`, `src/app/realisations/[slug]/page.tsx` + 4 captures `tests/screenshots/P2-*`.
+
+NON COMMITTÉ, NON DÉPLOYÉ (consigne brief).

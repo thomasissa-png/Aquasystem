@@ -71,6 +71,42 @@ export const FAQ_PISCINES = [
   },
 ] as const;
 
+/**
+ * FAQ /jardins-paysage (R-07 re-audit SEO) — 4 Q/R conversationnelles
+ * extractibles (PAA paysagisme Yvelines). RÈGLE ZÉRO INVENTION : chaque réponse
+ * est une reformulation STRICTE de contenu déjà validé, aucun fait/chiffre
+ * /commune nouveau. Sources :
+ *  - Q1 « piscine + jardin conçus ensemble » : BureauEtudesBlock §3 + A5
+ *    (« deux études menées au même moment », src/content/blog/piscine-jardin-
+ *    concevoir-ensemble.ts).
+ *  - Q2 « bureau d'études avant plantation » : BureauEtudesBlock §1-2
+ *    (jardins-paysage/page.tsx, « pose le plan avant que la première pelle
+ *    entre dans la terre »).
+ *  - Q3 « végétaux / pépinière / reprise » : PepiniereBlock + CreationBlock +
+ *    MatieresBlock (sélection sur la plante, sol argilo-calcaire ouest parisien).
+ *  - Q4 « entretien dans la durée » : PepiniereBlock §1 (geste régulier vs
+ *    rattrapage ponctuel).
+ * Formulations LTE conformes : « en partenariat avec Les Terres Essentielles ».
+ */
+export const FAQ_JARDINS = [
+  {
+    q: 'Pouvez-vous concevoir le jardin en même temps que la piscine ?',
+    a: "Oui. En partenariat avec Les Terres Essentielles, les deux études sont menées au même moment, depuis le même bureau d'études : piscine et jardin sont pensés ensemble dès la phase de plan, pas en deux temps. Le résultat est un espace qui tient ensemble, pas une somme de parties.",
+  },
+  {
+    q: 'Faites-vous une étude avant de planter ?',
+    a: "Oui. Tout commence par la lecture du terrain : les ombrages, les masses végétales existantes, les contraintes de sol. Notre bureau d'études, en partenariat avec Les Terres Essentielles, pose le plan avant que la première pelle entre dans la terre — un jardin qui ne tient pas compte des vues depuis la maison ou des circulations quotidiennes se reprend.",
+  },
+  {
+    q: "D'où viennent les végétaux et comment sont-ils choisis ?",
+    a: "Nos végétaux sont sélectionnés ou issus de notre pépinière aux Alluets-le-Roi, ce qui nous permet de les choisir sur la plante, pas sur catalogue. Ils sont adaptés au sol argilo-calcaire de l'ouest parisien : essences à croissance lente, vivaces qui résistent à la sécheresse, arbres de haie qui s'épaississent avec les années.",
+  },
+  {
+    q: 'Assurez-vous aussi l’entretien des jardins que vous créez ?',
+    a: "Oui. Un jardin suivi dans la durée ne ressemble pas à un jardin entretenu en urgence : taille de forme à la bonne période, suivi des massifs saison après saison, détection d'un problème de sol avant qu'il devienne visible dans les végétaux. C'est ce que le geste régulier construit, pas le rattrapage ponctuel.",
+  },
+] as const;
+
 /** Adapte une liste FAQ readonly au format attendu par faqPageJsonLd. */
 export function toFaqJsonLd(items: readonly { q: string; a: string }[]) {
   return items.map((i) => ({ q: i.q, a: i.a }));

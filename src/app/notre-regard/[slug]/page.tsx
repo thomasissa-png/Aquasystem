@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
-import { SITE_URL, absoluteUrl, breadcrumbJsonLd } from '@/lib/seo';
+import { SITE_URL, absoluteUrl, breadcrumbJsonLd, faqPageJsonLd } from '@/lib/seo';
 import { photoSrc } from '@/content/realisations';
 import {
   ARTICLES,
@@ -11,11 +11,13 @@ import {
   getRelatedArticles,
   type Article,
 } from '@/content/blog';
+import { toFaqJsonLd } from '@/content/faq';
 import { categoryLabel } from '@/content/blog-categories';
 import { Hero } from '@/components/sections/Hero';
 import { ArticleBody } from '@/components/blog/ArticleBody';
 import { AuthorBlock } from '@/components/blog/AuthorBlock';
 import { ArticleCard } from '@/components/blog/ArticleCard';
+import { FaqSection } from '@/components/sections/FaqSection';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { SectionCTA } from '@/components/sections/SectionCTA';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -156,6 +158,25 @@ export default function ArticlePage({
           <AuthorBlock />
         </div>
       </article>
+
+      {/* FAQ de fin d'article (R-10 re-audit SEO) — bloc visible + FAQPage JSON-LD
+          (@id ancré, unique par article). Q/R reformulées du corps de l'article.
+          Rendue avant le CTA, seulement si l'article porte une FAQ. */}
+      {article.faq && article.faq.length > 0 && (
+        <>
+          <JsonLd
+            data={faqPageJsonLd(
+              toFaqJsonLd(article.faq),
+              absoluteUrl(`/notre-regard/${article.slug}/#faq`),
+            )}
+          />
+          <FaqSection
+            heading="Questions fréquentes"
+            items={article.faq}
+            tone="alt"
+          />
+        </>
+      )}
 
       {/* CTA de fin contextuel */}
       <SectionCTA
