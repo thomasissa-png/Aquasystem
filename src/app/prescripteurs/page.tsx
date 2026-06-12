@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   // séparateur de marque, wording inchangé.
   title: { absolute: 'Espace prescripteurs | Pisciniste & Paysagiste, 78/92' },
   description:
-    'Pisciniste & paysagiste haut de gamme 78/92 pour architectes : travail sur votre plan, délais tenus. Présentons-nous.',
+    'Pisciniste & paysagiste haut de gamme 78/92 pour architectes : travail sur votre plan, délais tenus. Présentons-nous.',
   alternates: { canonical: absoluteUrl('/prescripteurs/') },
   openGraph: {
     url: `${SITE_URL}/prescripteurs/`,
@@ -71,7 +71,7 @@ const VALEURS = [
   {
     titre: 'Votre relation avec votre client reste la vôtre.',
     body: [
-      "Nous ne parlons pas budget directement à votre client. Toutes les décisions de chantier vous passent par vous : c'est notre protocole, pas une exception accordée sur demande.",
+      "Nous ne parlons pas budget directement à votre client. Toutes les décisions de chantier vous passent par vous : c'est notre protocole, pas une exception accordée sur demande.",
       "Interlocuteur technique dédié par chantier. Points d'avancement à la cadence que vous choisissez. Si un problème d'exécution se pose, vous êtes le premier appelé.",
     ],
   },
@@ -89,7 +89,7 @@ const PREUVES = [
     // Reformulation GEO avec source nommée (content-restructuring.md §B.4) —
     // signal de vérifiabilité pour les LLM (organisme + domaine cités).
     titre: 'Certification Socotec CSP/ESP-001',
-    desc: '« Professionnels de la piscine privée à usage familial », certification délivrée par Socotec Certification France (socotec-certification-international.fr). Disponible sur demande pour tout dossier de prescription.',
+    desc: '« Professionnels de la piscine privée à usage familial », certification délivrée par Socotec Certification France (socotec-certification-international.fr). Disponible sur demande pour tout dossier de prescription.',
   },
   {
     titre: "Réseau L'Esprit Piscine",
@@ -99,11 +99,11 @@ const PREUVES = [
     titre: 'Plus de 30 ans d’activité en 78/92',
     // SITE-02 (re-audit GEO) : assertion extractible des 6 types d'ouvrage
     // maîtrisés — signal de capacité technique directe pour les prescripteurs.
-    desc: "Connaissance des sols, des PLU, des contraintes propres aux propriétés de l'ouest parisien. Six types d'ouvrage réalisés et vérifiables en portfolio : piscine à débordement, bassin miroir, couloir de nage, piscine intérieure (4 construites), fond mobile, paroi de verre.",
+    desc: "Connaissance des sols, des PLU, des contraintes propres aux propriétés de l'ouest parisien. Six types d'ouvrage réalisés et vérifiables en portfolio : piscine à débordement, bassin miroir, couloir de nage, piscine intérieure (4 construites), fond mobile, paroi de verre.",
   },
   {
     titre: "Bureau d'études paysager intégré",
-    desc: 'En partenariat avec Les Terres Essentielles : capacité de projet global eau + végétal depuis un seul bureau d’études.',
+    desc: 'En partenariat avec Les Terres Essentielles : capacité de projet global eau + végétal depuis un seul bureau d’études.',
   },
 ];
 
@@ -137,7 +137,7 @@ export default function PrescripteursPage() {
               honneur à votre prescription.
             </h1>
             <p className="mt-4 max-w-[48ch] text-lg leading-8 text-foreground-secondary">
-              Pour les architectes, paysagistes et décorateurs d'intérieur : un
+              Pour les architectes, paysagistes et décorateurs d'intérieur : un
               exécutant qui travaille sur votre plan et respecte votre relation
               client.
             </p>
@@ -222,7 +222,7 @@ export default function PrescripteursPage() {
           </ul>
 
           {/* P0-C1 (ux-audit) : signal de qualification active pour Camille.
-              D-29 : cartouche plein → ligne éditoriale sous filet (pattern
+              D-29 : cartouche plein → ligne éditoriale sous filet (pattern
               claim GEO accueil passe 4), plus de bloc beige rejeté. */}
           <div className="mt-8 flex flex-col gap-4 border-t border-border-muted pt-6 sm:flex-row sm:items-center sm:justify-between">
             <p className="max-w-[40ch] text-base font-medium text-foreground">
@@ -250,7 +250,7 @@ export default function PrescripteursPage() {
       <section className="bg-background-secondary">
         <div className="mx-auto max-w-container px-4 py-20 md:px-8">
           <h2 className="font-serif text-3xl leading-tight text-foreground md:text-4xl">
-            Nos réalisations : références vérifiables
+            Nos réalisations : références vérifiables
           </h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {portfolio.map((r) => (

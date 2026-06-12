@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/notre-regard/`,
     title: 'Notre regard | Le blog d’Aqua System',
     description:
-      "Conception, prix, hygrométrie, rénovation : le regard d'expert d'Aqua System sur les piscines sur mesure de l'ouest parisien.",
+      "Conception, prix, hygrométrie, rénovation : le regard d'expert d'Aqua System sur les piscines sur mesure de l'ouest parisien.",
     // R-04 (re-audit SEO) : og:image explicite (l'index n'en héritait aucune).
     images: [
       {

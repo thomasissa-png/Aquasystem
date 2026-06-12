@@ -21,13 +21,13 @@ import { RealisationCard } from './RealisationCard';
  */
 const FILTERS: { label: string; value: FilterValue; aria: string }[] = [
   { label: 'Tous', value: 'tous', aria: 'Afficher toutes les réalisations' },
-  { label: 'Piscine', value: 'piscine', aria: 'Filtrer : piscines sur mesure' },
-  { label: 'Spa & Sauna', value: 'spa_sauna', aria: 'Filtrer : spas et saunas' },
-  { label: 'Jardin & Parc', value: 'jardin_parc', aria: 'Filtrer : jardins et parcs' },
+  { label: 'Piscine', value: 'piscine', aria: 'Filtrer : piscines sur mesure' },
+  { label: 'Spa & Sauna', value: 'spa_sauna', aria: 'Filtrer : spas et saunas' },
+  { label: 'Jardin & Parc', value: 'jardin_parc', aria: 'Filtrer : jardins et parcs' },
   {
     label: 'Projet complet eau+jardin',
     value: 'projet_complet',
-    aria: 'Filtrer : projets complets eau et jardin',
+    aria: 'Filtrer : projets complets eau et jardin',
   },
 ];
 
@@ -111,7 +111,7 @@ export function RealisationsGrid() {
             Aucune réalisation ne correspond à cette sélection pour le moment.
           </p>
           <p className="max-w-md text-base text-foreground-secondary">
-            Notre portfolio s'enrichit régulièrement : revenez consulter
+            Notre portfolio s'enrichit régulièrement : revenez consulter
             prochainement, ou découvrez l'ensemble de nos réalisations.
           </p>
           <button

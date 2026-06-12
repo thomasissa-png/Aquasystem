@@ -1,4 +1,5 @@
 import { cn } from '@/lib/cn';
+import { frTypo } from '@/lib/typography';
 import { toWidthVariant } from '@/content/realisations';
 
 /**
@@ -106,7 +107,7 @@ export function Hero({
           decoding="async"
           className={cn(
             'absolute inset-0 h-full w-full object-cover',
-            objectPosition?.base ?? 'object-center',
+            objectPosition?.base ?? 'object-center',
             objectPosition?.md,
             objectPosition?.lg,
           )}
@@ -142,7 +143,7 @@ export function Hero({
                 '0 1px 4px rgba(26,21,16,0.60), 0 2px 16px rgba(26,21,16,0.45), 0 4px 40px rgba(26,21,16,0.25)',
             }}
           >
-            {title}
+            {frTypo(title)}
           </h1>
           {subtitle && (
             <p
@@ -154,7 +155,7 @@ export function Hero({
                   '0 1px 3px rgba(26,21,16,0.55), 0 2px 12px rgba(26,21,16,0.35)',
               }}
             >
-              {subtitle}
+              {frTypo(subtitle)}
             </p>
           )}
           {cta && (

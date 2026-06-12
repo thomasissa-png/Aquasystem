@@ -816,3 +816,17 @@ NON COMMITTÉ, NON DÉPLOYÉ (consigne brief).
 ## D-43 — Hero /piscines-bien-etre : choix fondateur candidat A (2026-06-12)
 
 Le hero spa-transats (D-40 cas B) REFUSÉ par le fondateur (« je trouve pas la piscine vraiment belle »). Casting soumis au fondateur : 3 crops au ratio bandeau réel (A jardin clos soleil img24/ARN26 Pieau · B paroi de verre crépuscule img46 · C intérieure verrière img20). **Choix fondateur : A.** Set `piscine-jardin-clos-murs-anciens` 4 tailles (1920w q70 = 366 Ko), `object-[center_45%]`, alt factuel. Assets spa-transats supprimés (zéro référence restante), mapping du script build-hero-1920-images.mjs mis à jour. Folds 1280 + 375 capturés et relus (H1 lisible). Leçon : un REMPLACEMENT de visuel hero (vs même visuel plus net) repasse par une validation fondateur sur propositions croppées au ratio réel.
+
+---
+
+## D-44 — Typographie française : zéro ponctuation en début de ligne + bloc réalisations sans compteur (2026-06-12)
+
+**Retours fondateur** : (1) sur mobile, les titres d'articles dans les encarts cassent avec « : » en début de ligne — règle : JAMAIS de ligne commençant par une ponctuation, PC et mobile ; (2) « 25 réalisations… » en ouverture du bloc /realisations plafonne la perception et périme.
+
+**Fix systémique** : helper `frTypo()` (`src/lib/typography.ts`) — espace INSÉCABLE U+00A0 devant : ; ! ? » et après « (tests unitaires `tests/unit/typography.test.ts`, 4 cas dont idempotence). Appliqué AU RENDU dans : Hero (title/subtitle), SectionHeading, ArticleCard (title/excerpt), RichText, ArticleBody (h2/h3/caption/def.term/geo.question/geo.answer), FaqSection (q/a), TextBlock, MediaSplit, OuvrageCard, fiche réalisation (title/visualDescription). + Balayage SOURCE des paragraphes JSX codés en dur (heuristique : lignes de prose et littéraux de chaîne uniquement, jamais le code — les ternaires `? :` TS sont intacts ; commentaires exclus). Vérification BYTE-LEVEL sur le build : **0 ponctuation sécable visible sur les 43 pages** (aria-labels exclus — jamais affichés).
+
+**Bloc /realisations** : compteur visible supprimé → « Nos réalisations… couvrent six types d'ouvrage : … » (extractibilité GEO conservée : 6 types + zones + bureau d'études). Le compte réel reste dans l'ItemList JSON-LD, recalculé au build.
+
+**Leçon outillage (P0 silencieux)** : un NBSP littéral collé dans un Write/heredoc peut être normalisé en espace par le canal — TOUJOURS écrire les insécables via échappements (` ` TS / ` ` python) et vérifier au NIVEAU OCTET (`C2 A0`) dans la sortie. Deux passes ont silencieusement échoué ainsi avant détection.
+
+**Vérifs** : tsc PASS · lint 0 warning · build PASS · vitest 119/119 · playwright 55/55.

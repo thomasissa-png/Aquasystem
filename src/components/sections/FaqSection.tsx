@@ -12,6 +12,7 @@
  * inventé. Registre haut de gamme préservé (réponses factuelles, non défensives).
  */
 import { ChevronDown } from 'lucide-react';
+import { frTypo } from '@/lib/typography';
 
 export interface FaqItem {
   q: string;
@@ -51,7 +52,7 @@ export function FaqSection({
               <details className="group">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2">
                   <span className="text-base font-medium text-foreground md:text-lg">
-                    {item.q}
+                    {frTypo(item.q)}
                   </span>
                   <ChevronDown
                     aria-hidden
@@ -63,7 +64,7 @@ export function FaqSection({
                   />
                 </summary>
                 <p className="max-w-[68ch] pb-4 text-base leading-8 text-foreground-secondary">
-                  {item.a}
+                  {frTypo(item.a)}
                 </p>
               </details>
             </li>

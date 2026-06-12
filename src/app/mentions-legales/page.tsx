@@ -19,7 +19,7 @@ import { absoluteUrl } from '@/lib/seo';
 export const metadata: Metadata = {
   title: 'Mentions légales',
   description:
-    'Mentions légales du site. Éditeur : SARL AQUA SYSTEM, Freneuse (78). Hébergeur : Cloudflare, Inc.',
+    'Mentions légales du site. Éditeur : SARL AQUA SYSTEM, Freneuse (78). Hébergeur : Cloudflare, Inc.',
   alternates: { canonical: absoluteUrl('/mentions-legales/') },
   // R-06 (re-audit SEO) : page légale hors sitemap + noindex (budget crawl).
   robots: { index: false, follow: true },
@@ -41,26 +41,26 @@ export default function MentionsLegalesPage() {
         <p className="font-medium text-foreground">SARL AQUA SYSTEM</p>
         <p>Société à responsabilité limitée au capital de 20 000 €</p>
         <p>
-          Siège social : {CONTACT.address.street}, {CONTACT.address.postalCode}{' '}
+          Siège social : {CONTACT.address.street}, {CONTACT.address.postalCode}{' '}
           {CONTACT.address.city}
         </p>
-        <p>SIREN : {CONTACT.siren}</p>
-        <p>Code NAF/APE : 4399D, Autres travaux de construction spécialisés</p>
-        <p className="mt-3">Téléphone : {CONTACT.phone}</p>
-        <p>Email : {CONTACT.email}</p>
+        <p>SIREN : {CONTACT.siren}</p>
+        <p>Code NAF/APE : 4399D, Autres travaux de construction spécialisés</p>
+        <p className="mt-3">Téléphone : {CONTACT.phone}</p>
+        <p>Email : {CONTACT.email}</p>
         <p className="mt-3">
           <span className="font-medium text-foreground">
             Directeur de la publication
           </span>{' '}
-          : Nicolas Berg, gérant de SARL AQUA SYSTEM
+          : Nicolas Berg, gérant de SARL AQUA SYSTEM
         </p>
       </Section>
 
       <Section title="2. Hébergeur">
         <p className="font-medium text-foreground">Cloudflare, Inc.</p>
         <p>101 Townsend St, San Francisco, CA 94107, États-Unis</p>
-        <p>Téléphone : +1 (650) 319-8930</p>
-        <p>Site web : https://www.cloudflare.com</p>
+        <p>Téléphone : +1 (650) 319-8930</p>
+        <p>Site web : https://www.cloudflare.com</p>
         <p className="mt-2">
           Le site est hébergé sur l'infrastructure Cloudflare Pages. Cloudflare
           exploite des points de présence en Europe, dont en France, permettant
@@ -87,25 +87,25 @@ export default function MentionsLegalesPage() {
       <Section title="4. Présentation des activités">
         <p>
           Ce site présente les activités de deux maisons spécialisées dans
-          l'aménagement extérieur haut de gamme en Île-de-France :
+          l'aménagement extérieur haut de gamme en Île-de-France :
         </p>
         <p className="mt-2">
-          <span className="font-medium text-foreground">AQUA SYSTEM</span> :
+          <span className="font-medium text-foreground">AQUA SYSTEM</span> :
           Conception, construction et entretien de piscines sur mesure, spas,
           saunas et hammams. Implantée dans les Yvelines depuis plus de 30 ans, au
           service des propriétés de l'ouest parisien.
         </p>
         <p className="mt-2">
           <span className="font-medium text-foreground">
-            En partenariat : LES TERRES ESSENTIELLES
+            En partenariat : LES TERRES ESSENTIELLES
           </span>{' '}
-          : Jardinerie, bureau d'études paysager, création et entretien de parcs
+          : Jardinerie, bureau d'études paysager, création et entretien de parcs
           et jardins, pépinière. Implantée à Les Alluets-le-Roi (78580) depuis
           2015.
         </p>
       </Section>
 
-      <Section title="5. Garanties professionnelles : AQUA SYSTEM">
+      <Section title="5. Garanties professionnelles : AQUA SYSTEM">
         <p>
           SARL AQUA SYSTEM est titulaire d'une assurance de responsabilité
           décennale conformément à l'article L241-1 du Code des assurances. Les

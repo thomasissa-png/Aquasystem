@@ -107,7 +107,7 @@ export function ContactForm() {
       ).filter((k) => values[k].trim() !== '').length;
       trackEvent('form_abandonment', {
         derniere_etape: lastFieldRef.current,
-        champs_remplis: filled + (values.type_projet.length > 0 ? 1 : 0),
+        champs_remplis: filled + (values.type_projet.length > 0 ? 1 : 0),
         device_type: detectDevice(),
       });
     }
@@ -245,13 +245,13 @@ export function ContactForm() {
         >
           <p className="flex items-start gap-2 font-medium">
             <AlertCircle aria-hidden className="mt-0.5 h-4 w-4 shrink-0" />
-            Votre message n&apos;a pas pu être envoyé : une erreur technique est
+            Votre message n&apos;a pas pu être envoyé : une erreur technique est
             survenue de notre côté.
           </p>
           <p className="mt-2">
             Vos informations sont conservées dans cette page. Vous pouvez
             réessayer dans quelques instants, ou nous contacter directement par
-            email ou téléphone :
+            email ou téléphone :
           </p>
           <p className="mt-2 font-medium">
             <a
@@ -325,7 +325,7 @@ export function ContactForm() {
       {/* Chips type de projet (optionnels) */}
       <fieldset>
         <legend className="mb-2 block text-sm font-medium text-foreground">
-          Votre projet concerne :
+          Votre projet concerne :
         </legend>
         <div className="flex flex-wrap gap-2">
           {PROJECT_CHIPS.map((chip) => {
@@ -417,11 +417,11 @@ export function ContactForm() {
 
       {/* P1-F1 (ux-audit) : sur mobile, le bouton reste visible (sticky bas) le
           temps de remplir le textarea — le CTA n'est jamais perdu hors écran.
-          NF-3 (re-audit-iteration2 §3, D-18) : le sticky ne s'active qu'APRÈS la
+          NF-3 (re-audit-iteration2 §3, D-18) : le sticky ne s'active qu'APRÈS la
           première interaction (`hasInteracted`). Avant interaction — et sans JS —
           le bouton reste en flux normal (`static`), donc jamais rendu par-dessus
           le textarea obligatoire. A11y/no-JS préservés (même markup, même ordre
-          DOM ; seules les classes de positionnement changent).
+          DOM ; seules les classes de positionnement changent).
           Sur desktop : flux normal en bas de formulaire. */}
       <div
         className={
@@ -456,7 +456,7 @@ function emitSuccessEvent(values: ContactFormValues) {
 
   trackEvent('form_submission_success', {
     type_projet:
-      values.type_projet.length > 0 ? values.type_projet.join(',') : 'null',
+      values.type_projet.length > 0 ? values.type_projet.join(',') : 'null',
     commune: values.commune.trim().toLowerCase().replace(/\s+/g, '_'),
     budget_renseigne: values.budget_tranche !== '',
     budget_tranche: values.budget_tranche || 'non_renseigne',

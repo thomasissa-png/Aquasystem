@@ -76,7 +76,7 @@ export function ProofBadges({
                 ? 'border-l border-gold-600/30'
                 : 'border-l-0',
               // Filet horizontal mobile (2e rangée) — supprimé en desktop
-              mobileTopRule ? 'border-t border-gold-600/25' : 'border-t-0',
+              mobileTopRule ? 'border-t border-gold-600/25' : 'border-t-0',
               'md:border-t-0',
               // Filet vertical desktop : toutes les cellules sauf la première
               index === 0

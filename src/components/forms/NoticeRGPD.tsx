@@ -14,7 +14,7 @@ export function NoticeRGPD() {
       exclusivement pour traiter votre demande et établir un éventuel devis.
       Elles sont conservées 3 ans et ne sont partagées avec aucun tiers
       commercial. Conformément au RGPD, vous disposez d&apos;un droit
-      d&apos;accès, de rectification et d&apos;opposition :{' '}
+      d&apos;accès, de rectification et d&apos;opposition :{' '}
       <a
         href={`mailto:${CONTACT.email}`}
         className="text-foreground-accent-water underline underline-offset-2"

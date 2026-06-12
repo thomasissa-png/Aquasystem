@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { photoSrc } from '@/content/realisations';
 import { formatArticleDate, type Article } from '@/content/blog';
 import { categoryLabel } from '@/content/blog-categories';
+import { frTypo } from '@/lib/typography';
 
 /**
  * ArticleCard — card d'un article (index /notre-regard, teaser accueil, « Pour
@@ -48,11 +49,11 @@ export function ArticleCard({ article }: { article: Article }) {
             href={href}
             className="underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2"
           >
-            {article.title}
+            {frTypo(article.title)}
           </Link>
         </h3>
         <p className="mt-3 flex-1 text-sm leading-7 text-foreground-secondary">
-          {article.excerpt}
+          {frTypo(article.excerpt)}
         </p>
         <Link
           href={href}

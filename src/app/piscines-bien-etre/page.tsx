@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   // Description validée megalot §1.3 (154 car., PASS < 155) : Trophée FPP
   // conservé, 6 types compressés mais tous listés, CTA final préservé.
   description:
-    'Pisciniste certifié Socotec, Trophée Or FPP 2024. Piscines sur mesure en 78/92 : débordement, miroir, intérieure, fond mobile. Parlez-nous de votre projet.',
+    'Pisciniste certifié Socotec, Trophée Or FPP 2024. Piscines sur mesure en 78/92 : débordement, miroir, intérieure, fond mobile. Parlez-nous de votre projet.',
   alternates: { canonical: absoluteUrl('/piscines-bien-etre/') },
   openGraph: {
     url: `${SITE_URL}/piscines-bien-etre/`,
@@ -86,7 +86,7 @@ export default function PiscinesBienEtrePage() {
         accent="water"
         title="De la feuille blanche à l'inauguration"
         body={[
-          "Chaque piscine commence par l'écoute : la pente du terrain, l'orientation de la maison, les usages de la famille. Notre bureau d'études traduit cette vision en un plan, avant de poser la première pierre.",
+          "Chaque piscine commence par l'écoute : la pente du terrain, l'orientation de la maison, les usages de la famille. Notre bureau d'études traduit cette vision en un plan, avant de poser la première pierre.",
           "De la conception à la livraison, un seul interlocuteur porte votre projet. Vous n'avez pas à gérer les interfaces entre les corps de métier.",
         ]}
         imageSrc={photoSrc('piscine-debordement-foret', '800w')}
@@ -94,16 +94,16 @@ export default function PiscinesBienEtrePage() {
       />
 
       {/* Bloc 2 — Spas, saunas, hammams (inversé, fond alterné).
-          D-25 : ré-arbitrage doctrine photos — re-split avec PhotoPlaceholder
-          élégant (conversion d'abord) ; le visuel spa convertirait mieux qu'un
+          D-25 : ré-arbitrage doctrine photos — re-split avec PhotoPlaceholder
+          élégant (conversion d'abord) ; le visuel spa convertirait mieux qu'un
           bloc texte centré. Photo demandée au fondateur (photos-a-fournir.md). */}
       <MediaSplit
         eyebrow="Spa & bien-être"
         accent="water"
         title="L'eau chaude dans votre propriété"
         body={[
-          "Spa extérieur HotSpring, sauna finlandais, hammam, intégrés à l'architecture de votre propriété, pas posés en périphérie. Chaque installation est conçue avec le reste de l'espace : la terrasse, le jardin, les lignes de la maison.",
-          'Partenaire HotSpring pour les spas : une gamme pensée pour le résidentiel haut de gamme.',
+          "Spa extérieur HotSpring, sauna finlandais, hammam, intégrés à l'architecture de votre propriété, pas posés en périphérie. Chaque installation est conçue avec le reste de l'espace : la terrasse, le jardin, les lignes de la maison.",
+          'Partenaire HotSpring pour les spas : une gamme pensée pour le résidentiel haut de gamme.',
         ]}
         // Photo DÉSIGNÉE PAR LE FONDATEUR (2026-06-12) : bassin balnéo en remous
         // (fond mobile Aqualift, 78), photo Magazine Ambiance piscines, source
@@ -132,8 +132,8 @@ export default function PiscinesBienEtrePage() {
 
       {/* Resserrage P1 (gate passe 5, D-32) : fusion ÉDITORIALE des anciens
           §2 « Construit pour durer » + §3 « La matière qui reste » en UN seul
-          TextBlock (tone alt, eyebrow « Construction & finitions »). Aucun fait
-          perdu : CSTB, décennale, Socotec, Propiscines, matières, pont jardin.
+          TextBlock (tone alt, eyebrow « Construction & finitions »). Aucun fait
+          perdu : CSTB, décennale, Socotec, Propiscines, matières, pont jardin.
           3 paragraphes : structure → engagement → matières/cohérence. */}
       <TextBlock
         tone="alt"
@@ -141,9 +141,9 @@ export default function PiscinesBienEtrePage() {
         eyebrow="Construction & finitions"
         title="Ce qui tient dans le temps"
         body={[
-          "Chaque piscine est une structure en béton armé, conçue par notre bureau d'études et contrôlée par un organisme tiers avant réception. Le procédé de construction est couvert par un Avis Technique CSTB : c'est la preuve que la structure répond aux normes de l'ouvrage privé, indépendamment de notre propre déclaration.",
-          "Un seul marché, un seul responsable : vous signez avec Aqua System, qui engage sa garantie décennale sur l'ensemble de l'ouvrage. Certification de services Socotec CSP/ESP-001 « Professionnels de la piscine privée à usage familial », membre Propiscines Certifié.",
-          "Les finitions se décident au même moment que la structure, pas en fin de chantier : margelles en pierre naturelle ou travertin, plages en grès cérame, revêtement dont la teinte compose la couleur d'eau. Ces mêmes pierres, nous les travaillons aussi autour de la propriété : terrasses, allées, soubassements. C'est de là que vient la cohérence entre le bord de bassin et le reste de l'extérieur.",
+          "Chaque piscine est une structure en béton armé, conçue par notre bureau d'études et contrôlée par un organisme tiers avant réception. Le procédé de construction est couvert par un Avis Technique CSTB : c'est la preuve que la structure répond aux normes de l'ouvrage privé, indépendamment de notre propre déclaration.",
+          "Un seul marché, un seul responsable : vous signez avec Aqua System, qui engage sa garantie décennale sur l'ensemble de l'ouvrage. Certification de services Socotec CSP/ESP-001 « Professionnels de la piscine privée à usage familial », membre Propiscines Certifié.",
+          "Les finitions se décident au même moment que la structure, pas en fin de chantier : margelles en pierre naturelle ou travertin, plages en grès cérame, revêtement dont la teinte compose la couleur d'eau. Ces mêmes pierres, nous les travaillons aussi autour de la propriété : terrasses, allées, soubassements. C'est de là que vient la cohérence entre le bord de bassin et le reste de l'extérieur.",
         ]}
       />
 
@@ -157,8 +157,8 @@ export default function PiscinesBienEtrePage() {
               Wording @copywriter conservé (claims sourcés, faq-geo-copy.md §B.1). */}
           <div className="mt-8 border-t border-border-muted pt-5 text-center">
             <p className="mx-auto max-w-[72ch] text-sm leading-7 text-foreground-muted">
-              Aqua System est certifié Socotec CSP/ESP-001 « Professionnels de la
-              piscine privée à usage familial » et membre du réseau L'Esprit
+              Aqua System est certifié Socotec CSP/ESP-001 « Professionnels de la
+              piscine privée à usage familial » et membre du réseau L'Esprit
               Piscine, réseau national de piscinistes professionnels. L'entreprise
               assure l'entretien de plus de 350 piscines dans les Yvelines et les
               Hauts-de-Seine, depuis plus de 30 ans. Trophée d'Or FPP 2024, Piscine
@@ -171,7 +171,7 @@ export default function PiscinesBienEtrePage() {
       </section>
 
       {/* FAQ piscines (P1-GEO-03, megalot §4) — 3 Q/R extractibles, après le
-          TextBlock « Ce qui tient dans le temps » et le bloc Preuves. Tone alt
+          TextBlock « Ce qui tient dans le temps » et le bloc Preuves. Tone alt
           pour alterner avec la section Preuves (fond default) qui précède. */}
       <FaqSection heading="Questions fréquentes" items={[...FAQ_PISCINES]} tone="alt" />
 
@@ -180,7 +180,7 @@ export default function PiscinesBienEtrePage() {
         destinationUnivers="jardins"
         destinationHref="/jardins-paysage"
         title="Votre piscine mérite un jardin à sa mesure."
-        body="L'eau et le végétal se conçoivent ensemble ou ne se conçoivent pas vraiment : c'est ce que nous faisons depuis 30 ans. En partenariat avec Les Terres Essentielles, bureau d'études paysager."
+        body="L'eau et le végétal se conçoivent ensemble ou ne se conçoivent pas vraiment : c'est ce que nous faisons depuis 30 ans. En partenariat avec Les Terres Essentielles, bureau d'études paysager."
         ctaLabel="Voir nos créations paysagères →"
         imageSrc={photoSrc('piscine-jardin-arbre', '800w')}
         imageAlt="Bassin bordé de margelles claires, arbre planté au bord, terrasse en bois et haies dans une propriété de l'ouest parisien"

@@ -33,19 +33,19 @@ interface VivantEntry {
 const ENTRIES: VivantEntry[] = [
   {
     title: 'Le choix des essences',
-    body: "On ne plante pas pour ce que le jardin est aujourd'hui : on plante pour ce qu'il sera dans vingt ans. Un charme taillé en rideau, un tilleul à grandes feuilles, un liquidambar — chacun a un port à maturité, une envergure, une relation avec la lumière qui ne se lisent pas au moment de la plantation. Choisir la mauvaise essence à cinq mètres d'une façade, c'est un problème en vingt ans, pas maintenant.",
+    body: "On ne plante pas pour ce que le jardin est aujourd'hui : on plante pour ce qu'il sera dans vingt ans. Un charme taillé en rideau, un tilleul à grandes feuilles, un liquidambar — chacun a un port à maturité, une envergure, une relation avec la lumière qui ne se lisent pas au moment de la plantation. Choisir la mauvaise essence à cinq mètres d'une façade, c'est un problème en vingt ans, pas maintenant.",
     // Slot F1 comblé : photo réelle d'un massif planté LTE (palmier, agaves,
     // plantes graphiques — photo fondateur 2026-06-12, droits accordés).
     // Alt factuel : essences visibles, sans commune ni détail de chantier.
     visual: {
       kind: 'photo',
       src: '/images/realisations/massif-palmier-agaves-800w.webp',
-      alt: "Massif planté par Les Terres Essentielles : palmier à tronc fibreux, agaves et yuccas aux ports contrastés sur paillage minéral, haie en arrière-plan, ouest parisien",
+      alt: "Massif planté par Les Terres Essentielles : palmier à tronc fibreux, agaves et yuccas aux ports contrastés sur paillage minéral, haie en arrière-plan, ouest parisien",
     },
   },
   {
     title: 'Le sol comme contrainte réelle',
-    body: "Le sol argilo-calcaire qui couvre une grande partie des Yvelines et des Hauts-de-Seine est un sol exigeant : en période humide, il retient l'eau et se compacte ; en été, il durcit et se fissure. Certains végétaux s'y épanouissent naturellement (érables, charmes, sorbiers, cornouillers) ; d'autres nécessitent un travail de sol préalable et un drainage pensé dès la conception. Ignorer cette donnée au départ coûte plus cher qu'une plantation refaite à la deuxième saison.",
+    body: "Le sol argilo-calcaire qui couvre une grande partie des Yvelines et des Hauts-de-Seine est un sol exigeant : en période humide, il retient l'eau et se compacte ; en été, il durcit et se fissure. Certains végétaux s'y épanouissent naturellement (érables, charmes, sorbiers, cornouillers) ; d'autres nécessitent un travail de sol préalable et un drainage pensé dès la conception. Ignorer cette donnée au départ coûte plus cher qu'une plantation refaite à la deuxième saison.",
     visual: { kind: 'none' },
   },
   {
@@ -58,12 +58,12 @@ const ENTRIES: VivantEntry[] = [
     visual: {
       kind: 'photo',
       src: '/images/realisations/jardin-paysage-abords-entretenus-800w.webp',
-      alt: "Abords d'une piscine dans un jardin entretenu : pelouse tondue ras, massifs taillés, soutènement en traverses de bois et transats alignés le long du bassin, ouest parisien",
+      alt: "Abords d'une piscine dans un jardin entretenu : pelouse tondue ras, massifs taillés, soutènement en traverses de bois et transats alignés le long du bassin, ouest parisien",
     },
   },
   {
     title: 'La pépinière',
-    body: "Ce que change une pépinière propre : on choisit les végétaux sur la plante, pas sur une fiche. On sait dans quelle terre ils ont grandi, depuis combien de temps ils sont en conteneur, si la reprise sera facile sur le sol de la propriété. Les végétaux produits ou sélectionnés dans notre pépinière aux Alluets-le-Roi sont adaptés aux conditions climatiques et pédologiques de l'ouest parisien — pas achetés en lot standardisé et revendus.",
+    body: "Ce que change une pépinière propre : on choisit les végétaux sur la plante, pas sur une fiche. On sait dans quelle terre ils ont grandi, depuis combien de temps ils sont en conteneur, si la reprise sera facile sur le sol de la propriété. Les végétaux produits ou sélectionnés dans notre pépinière aux Alluets-le-Roi sont adaptés aux conditions climatiques et pédologiques de l'ouest parisien — pas achetés en lot standardisé et revendus.",
     visual: {
       kind: 'photo',
       src: '/images/jardinerie/jardinerie-allee-pepiniere-800w.webp',

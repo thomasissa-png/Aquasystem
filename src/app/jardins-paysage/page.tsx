@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   title: { absolute: 'Paysagiste Yvelines | Jardins haut de gamme, 78/92' },
   // R-01 (re-audit SEO) : description ramenée ≤ 155 caractères.
   description:
-    "Paysagiste haut de gamme 78/92 : bureau d'études, création de jardins sur mesure. Les Terres Essentielles. Parlez-nous de votre projet.",
+    "Paysagiste haut de gamme 78/92 : bureau d'études, création de jardins sur mesure. Les Terres Essentielles. Parlez-nous de votre projet.",
   alternates: { canonical: absoluteUrl('/jardins-paysage/') },
   openGraph: {
     url: `${SITE_URL}/jardins-paysage/`,
@@ -89,7 +89,7 @@ export default function JardinsPaysagePage() {
         // rester lisible — le dégradé bas renforce la zone texte.
         overlayClassName="bg-gradient-to-t from-[rgba(26,21,16,0.60)] via-[rgba(26,21,16,0.22)] to-transparent"
         title="Jardins & Paysage"
-        subtitle="En partenariat avec Les Terres Essentielles : bureau d'études paysager, création et entretien de parcs et jardins sur mesure."
+        subtitle="En partenariat avec Les Terres Essentielles : bureau d'études paysager, création et entretien de parcs et jardins sur mesure."
       />
 
       {/* Bloc 1 — Bureau d'études paysager (texte éditorial, D-22).
@@ -101,13 +101,13 @@ export default function JardinsPaysagePage() {
       <CreationBlock />
 
       {/* Bloc 3 — Matières (strate savoir-faire D-30, savoir-faire-copy §4).
-          TextBlock neutre, eyebrow « Matières », entre CreationBlock et
+          TextBlock neutre, eyebrow « Matières », entre CreationBlock et
           PepiniereBlock. Pont sobre piscine↔jardin (mêmes pierres). */}
       <MatieresBlock />
 
       {/* Strate « Ce que le vivant impose » (D-32, fond-jardins-copy §1) —
           pendant jardin de OuvragesSection. Insérée entre MatieresBlock et
-          PepiniereBlock. 4 entrées en grille 2 col : essences (slot photo),
+          PepiniereBlock. 4 entrées en grille 2 col : essences (slot photo),
           sol (card texte sans visuel forcé), entretien (slot photo), pépinière
           (photo réelle jardinerie LTE). */}
       <VivantSection />
@@ -153,7 +153,7 @@ export default function JardinsPaysagePage() {
         destinationUnivers="piscines"
         destinationHref="/piscines-bien-etre"
         title="Un jardin pensé avec la piscine, depuis le même bureau d'études."
-        body="Notre maison Aqua System les conçoit ensemble : un seul interlocuteur, un seul bureau d'études, aucune interface à gérer entre un pisciniste et un paysagiste qui ne se parlent pas."
+        body="Notre maison Aqua System les conçoit ensemble : un seul interlocuteur, un seul bureau d'études, aucune interface à gérer entre un pisciniste et un paysagiste qui ne se parlent pas."
         ctaLabel="Découvrir nos piscines sur mesure →"
         imageSrc={photoSrc('piscine-jardin-arbre', '800w')}
         imageAlt="Bassin bordé de margelles claires, arbre planté au bord, terrasse en bois et haies dans une propriété de l'ouest parisien"
@@ -174,12 +174,12 @@ function BureauEtudesBlock() {
       eyebrow="Bureau d'études"
       title="Un projet pensé avant d'être planté"
       body={[
-        "Tout commence par la lecture du terrain : les ombrages, les masses végétales existantes, les contraintes de sol. Notre bureau d'études, en partenariat avec Les Terres Essentielles, pose le plan avant que la première pelle entre dans la terre.",
+        "Tout commence par la lecture du terrain : les ombrages, les masses végétales existantes, les contraintes de sol. Notre bureau d'études, en partenariat avec Les Terres Essentielles, pose le plan avant que la première pelle entre dans la terre.",
         // §2 fond-jardins-copy (D-32) : preuve par l'exemple concret du process
         // bureau d'études (ombres portées, vues, circulations). Inséré en 2e
         // paragraphe pour garder le claim GEO en clôture du bloc.
-        "Concrètement, cela signifie : étudier les ombres portées à différentes heures de la journée, identifier les vues depuis l'intérieur de la maison, cartographier les circulations naturelles sur le terrain avant d'en décider une seule. Un jardin qui ne tient pas compte de la vue depuis la cuisine, ou d'un passage quotidien vers le garage, se reprend.",
-        "Quand un projet comporte aussi une piscine, les deux études sont menées au même moment. Le résultat : un espace qui tient ensemble, pas une somme de parties.",
+        "Concrètement, cela signifie : étudier les ombres portées à différentes heures de la journée, identifier les vues depuis l'intérieur de la maison, cartographier les circulations naturelles sur le terrain avant d'en décider une seule. Un jardin qui ne tient pas compte de la vue depuis la cuisine, ou d'un passage quotidien vers le garage, se reprend.",
+        "Quand un projet comporte aussi une piscine, les deux études sont menées au même moment. Le résultat : un espace qui tient ensemble, pas une somme de parties.",
         // Claim GEO (D-28) : intégré ici comme 3e paragraphe au lieu d'une section
         // standalone qui « flottait » au centre d'un vide (retour fondateur).
         "Les Terres Essentielles dispose d'un bureau d'études paysager intégré aux Alluets-le-Roi (Yvelines, 78580), permettant la co-conception de projets extérieurs associant piscine et jardin dès la phase de plan, dans les Yvelines et les Hauts-de-Seine.",
@@ -201,11 +201,11 @@ function CreationBlock() {
       eyebrow="Création"
       title="La réalisation, du premier arbre à la dernière pierre"
       body={[
-        "Allées, massifs, pelouses, enrochements, terrasses végétalisées : chaque élément est conçu pour son rapport avec les autres et avec l'architecture de la maison. Chaque projet part du terrain : aucun plan ne ressemble au précédent, parce qu'aucun terrain ne se ressemble.",
+        "Allées, massifs, pelouses, enrochements, terrasses végétalisées : chaque élément est conçu pour son rapport avec les autres et avec l'architecture de la maison. Chaque projet part du terrain : aucun plan ne ressemble au précédent, parce qu'aucun terrain ne se ressemble.",
         'Nos végétaux sont sélectionnés ou issus de notre pépinière. Adaptés au sol argilo-calcaire de l\'ouest parisien.',
       ]}
       imageSrc={photoSrc('massif-exotique-escalier', '1280w')}
-      imageAlt="Massif exotique planté par Les Terres Essentielles : palmiers, yucca et plantes graphiques sur paillage minéral, escalier en pierre montant vers un mur ancien, ouest parisien"
+      imageAlt="Massif exotique planté par Les Terres Essentielles : palmiers, yucca et plantes graphiques sur paillage minéral, escalier en pierre montant vers un mur ancien, ouest parisien"
       // R-12 (re-audit SEO) : le corps évoque enrochements et terrasses
       // végétalisées → maillage vers la fiche jardin en terrasses étagées.
       link={{
@@ -220,9 +220,9 @@ function MatieresBlock() {
   return (
     <TextBlock
       eyebrow="Matières"
-      title="Pierre, végétal, sol : ce que nous assemblons"
+      title="Pierre, végétal, sol : ce que nous assemblons"
       body={[
-        "Le jardin tient à ses matières autant qu'à ses plans. La pierre calcaire d'une allée, la teinte d'un grès cérame posé en terrasse, les essences choisies pour leur port à maturité : chaque élément contribue à la cohérence du lieu ou la rompt.",
+        "Le jardin tient à ses matières autant qu'à ses plans. La pierre calcaire d'une allée, la teinte d'un grès cérame posé en terrasse, les essences choisies pour leur port à maturité : chaque élément contribue à la cohérence du lieu ou la rompt.",
         'Nos végétaux sont sélectionnés pour le sol argilo-calcaire de l\'ouest parisien. Les essences à croissance lente, les vivaces qui résistent à la sécheresse, les arbres de haie qui s\'épaississent avec les années, pas les solutions de remplissage.',
         'Quand un projet associe piscine et jardin, les matières des deux espaces sont choisies au même moment, depuis le même bureau d\'études.',
       ]}
@@ -244,14 +244,14 @@ function PepiniereBlock() {
       // (taille au bon moment, suivi massifs, détection sol) et la sélection
       // sur la plante remplacent les listes vagues précédentes.
       body={[
-        "Un jardin suivi dans la durée ne ressemble pas à un jardin entretenu en urgence. La taille de forme à la bonne période, le suivi des massifs saison après saison, la détection d'un problème de sol avant qu'il devienne visible dans les végétaux : c'est ce que le geste régulier construit, pas le rattrapage ponctuel.",
+        "Un jardin suivi dans la durée ne ressemble pas à un jardin entretenu en urgence. La taille de forme à la bonne période, le suivi des massifs saison après saison, la détection d'un problème de sol avant qu'il devienne visible dans les végétaux : c'est ce que le geste régulier construit, pas le rattrapage ponctuel.",
         "Notre pépinière aux Alluets-le-Roi nous permet de sélectionner les végétaux sur la plante, pas sur catalogue. Ce qu'un propriétaire reçoit dans son jardin a été choisi pour ses conditions de sol, sa lumière, et l'effet attendu dans dix ans.",
       ]}
       // Photo CHOISIE PAR LE FONDATEUR (2026-06-12) pour ce slot — bulbes de
       // printemps de la jardinerie (495354275). Droits accordés. Remplace le
       // PhotoPlaceholder ; original conservé dans assets/social-media/.
       imageSrc="/images/jardinerie/jardinerie-bulbes-printemps-800w.webp"
-      imageAlt="Bulbes de printemps en pots à la jardinerie Les Terres Essentielles : narcisses et jacinthes sur les étals, palissade de bois en arrière-plan"
+      imageAlt="Bulbes de printemps en pots à la jardinerie Les Terres Essentielles : narcisses et jacinthes sur les étals, palissade de bois en arrière-plan"
       reversed
     />
   );

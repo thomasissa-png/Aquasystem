@@ -4,6 +4,7 @@ import { REALISATIONS, isDraft } from '@/content/realisations';
 import { RealisationsGrid } from '@/components/sections/RealisationsGrid';
 import { SectionCTA } from '@/components/sections/SectionCTA';
 import { JsonLd } from '@/components/seo/JsonLd';
+import { frTypo } from '@/lib/typography';
 
 /**
  * Réalisations (/realisations) — F-05, WF-05.
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   // Metas finales — metadata-templates.md Page 6 (« Portfolio » retiré, CTA ajouté).
   title: { absolute: 'Réalisations | Piscines, jardins sur mesure, 78/92' },
   description:
-    "Piscines sur mesure, jardins, spas et projets complets : nos réalisations en Yvelines et Hauts-de-Seine. Parlez-nous de votre projet.",
+    "Piscines sur mesure, jardins, spas et projets complets : nos réalisations en Yvelines et Hauts-de-Seine. Parlez-nous de votre projet.",
   alternates: { canonical: absoluteUrl('/realisations/') },
   openGraph: {
     url: `${SITE_URL}/realisations/`,
@@ -71,16 +72,15 @@ export default function RealisationsPage() {
             Hauts-de-Seine.
           </p>
           {/* Bloc extractible GEO (P0-GEO-01, megalot §3) — texte visible et
-              auto-contenu pour les LLM : compteur réel du manifeste + 6 types
-              d'ouvrage nommés + zones + différenciateur bureau d'études. */}
+              auto-contenu pour les LLM : 6 types d'ouvrage nommés + zones +
+              différenciateur bureau d'études. SANS compteur visible (retour
+              fondateur 2026-06-12 : un chiffre en ouverture plafonne la
+              perception et périme — le compte réel reste dans l'ItemList
+              JSON-LD, recalculé au build). */}
           <p className="mt-6 max-w-[72ch] text-base leading-8 text-foreground-secondary">
-            {ITEM_LIST.numberOfItems} réalisations Aqua System dans les Yvelines
-            et les Hauts-de-Seine :
-            piscines à débordement, bassins miroir, couloirs de nage, piscines
-            intérieures, fond mobile, paroi de verre, et des projets associant
-            piscine et jardin conçus depuis le même bureau d'études. Chaque
-            ouvrage est une réponse à un terrain, une architecture et une
-            intention spécifiques.
+            {frTypo(
+              "Nos réalisations dans les Yvelines et les Hauts-de-Seine couvrent six types d'ouvrage : piscines à débordement, bassins miroir, couloirs de nage, piscines intérieures, fond mobile, paroi de verre, ainsi que des projets associant piscine et jardin conçus depuis le même bureau d'études. Chaque ouvrage est une réponse à un terrain, une architecture et une intention spécifiques.",
+            )}
           </p>
           <div className="mt-8">
             <RealisationsGrid />

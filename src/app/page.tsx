@@ -74,7 +74,7 @@ export default function HomePage() {
         // la demeure visible sur grand écran.
         overlayClassName="bg-gradient-to-t from-[rgba(26,21,16,0.88)] via-[rgba(26,21,16,0.65)] via-35% to-[rgba(26,21,16,0.15)] md:from-[rgba(26,21,16,0.85)] md:via-[rgba(26,21,16,0.55)] md:via-30% md:to-[rgba(26,21,16,0.10)]"
         title="L'extérieur à la hauteur de votre propriété."
-        subtitle="De la vision à la réalisation : piscines et jardins sur mesure dans les Yvelines et les Hauts-de-Seine. Un seul interlocuteur, depuis 30 ans."
+        subtitle="De la vision à la réalisation : piscines et jardins sur mesure dans les Yvelines et les Hauts-de-Seine. Un seul interlocuteur, depuis 30 ans."
         cta={
           <CtaTrackerLink
             href="/contact"
@@ -133,7 +133,7 @@ export default function HomePage() {
                 src="/images/accueil/jardin-piscine-parasols-800w.webp"
                 srcSet="/images/accueil/jardin-piscine-parasols-800w.webp 800w, /images/accueil/jardin-piscine-parasols-1280w.webp 1280w"
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                alt="Jardin paysagé autour d'une piscine : parasols en paille, fauteuils suspendus, muret en pierre sèche et massifs plantés — l'eau et le végétal composés ensemble"
+                alt="Jardin paysagé autour d'une piscine : parasols en paille, fauteuils suspendus, muret en pierre sèche et massifs plantés — l'eau et le végétal composés ensemble"
                 width={1394}
                 height={1044}
                 loading="lazy"
@@ -170,7 +170,7 @@ export default function HomePage() {
               de crédit centrée sous filet — statut secondaire assumé vs les badges. */}
           <div className="mt-8 border-t border-border-muted pt-5 text-center">
             <p className="mx-auto max-w-[72ch] text-sm leading-7 text-foreground-muted">
-              Aqua System : certifié Socotec CSP/ESP-001, membre du réseau
+              Aqua System : certifié Socotec CSP/ESP-001, membre du réseau
               L'Esprit Piscine. Plus de 350 piscines entretenues dans les Yvelines
               et les Hauts-de-Seine depuis plus de 30 ans. Trophée d'Or FPP 2024
               (Piscine intérieure, FPP). Award Bronze EUSA 2025, Piscines
@@ -206,7 +206,7 @@ export default function HomePage() {
             <SectionHeading
               eyebrow="Notre regard"
               title="Ce que trente ans de chantiers nous apprennent."
-              subtitle="Conception, prix, rénovation : nos sujets traités sans détour, par ceux qui construisent."
+              subtitle="Conception, prix, rénovation : nos sujets traités sans détour, par ceux qui construisent."
             />
             <div className="grid gap-6 sm:grid-cols-2">
               {latestArticles.map((article) => (

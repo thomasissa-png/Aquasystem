@@ -101,7 +101,7 @@ export function Footer() {
             </ul>
             {/* Réseaux sociaux remontés en col 1 (footer-audit §B) — groupe les
                 signaux de marque, équilibre les hauteurs de colonnes.
-                D-28 : icônes lucide (h-5 w-5) au lieu des liens texte (standard
+                D-28 : icônes lucide (h-5 w-5) au lieu des liens texte (standard
                 premium 2026). aria-label FR + texte sr-only. */}
             <div className="mt-4 flex gap-x-3">
               <a

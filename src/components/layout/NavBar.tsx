@@ -45,7 +45,7 @@ export function NavBar() {
       if (!focusables || focusables.length === 0) return;
       const first = focusables[0];
       const last = focusables[focusables.length - 1];
-      if (!first || !last) return;
+      if (!first || !last) return;
       if (e.shiftKey && document.activeElement === first) {
         e.preventDefault();
         last.focus();
@@ -176,7 +176,7 @@ export function NavBar() {
                       onClick={() => setOpen(false)}
                       className={cn(
                         'block min-h-11 py-4 font-serif text-2xl leading-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2',
-                        isActive(link.href) ? 'text-foreground-accent-water' : 'text-foreground',
+                        isActive(link.href) ? 'text-foreground-accent-water' : 'text-foreground',
                       )}
                     >
                       {link.label}
@@ -192,7 +192,7 @@ export function NavBar() {
             </nav>
 
             {/* Drawer CTA (D-33) : panneau étroit (80%, ≥ 320px) → le libellé long
-                « Parlez-nous de votre projet » ne doit JAMAIS wrapper (whitespace-nowrap
+                « Parlez-nous de votre projet » ne doit JAMAIS wrapper (whitespace-nowrap
                 hérité du ButtonLink). On descend en size md + texte fluide clamp pour
                 tenir dans le panneau jusqu'à 320px sans débordement, et on aligne la
                 flèche → comme les autres CTA. px réduit pour gagner la marge utile. */}

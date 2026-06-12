@@ -1,4 +1,5 @@
 import { cn } from '@/lib/cn';
+import { frTypo } from '@/lib/typography';
 
 /**
  * SectionHeading — design-system.md §8.
@@ -41,11 +42,11 @@ export function SectionHeading({
         </p>
       )}
       <Heading className="font-serif text-3xl leading-tight text-foreground md:text-[32px] lg:text-4xl">
-        {title}
+        {frTypo(title)}
       </Heading>
       {subtitle && (
         <p className="mt-4 max-w-[60ch] text-base leading-8 text-foreground-secondary md:text-[17px] lg:text-lg">
-          {subtitle}
+          {frTypo(subtitle)}
         </p>
       )}
       {separator && (

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { frTypo } from '@/lib/typography';
 
 /**
  * OuvrageCard — card « type d'ouvrage » (strate savoir-faire piscines).
@@ -47,10 +48,10 @@ export function OuvrageCard({
         />
       </figure>
       <h3 className="mt-5 font-serif text-xl leading-snug text-foreground md:text-2xl">
-        {title}
+        {frTypo(title)}
       </h3>
       <p className="mt-3 text-base leading-7 text-foreground-secondary">
-        {body}
+        {frTypo(body)}
       </p>
       {realisationHref && (
         <Link

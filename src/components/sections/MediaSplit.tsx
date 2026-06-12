@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { toWidthVariant } from '@/content/realisations';
 import { PhotoPlaceholder } from '@/components/ui/PhotoPlaceholder';
+import { frTypo } from '@/lib/typography';
 
 /**
  * MediaSplit — bloc prestation texte/photo (page-compositions WF-02/WF-03 §2-4).
@@ -73,7 +74,7 @@ export function MediaSplit({
               {eyebrow}
             </p>
             <h2 className="font-serif text-3xl leading-tight text-foreground md:text-4xl">
-              {title}
+              {frTypo(title)}
             </h2>
             <div className="mt-4 space-y-4">
               {body.map((para, i) => (

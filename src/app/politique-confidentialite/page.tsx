@@ -11,7 +11,7 @@ import { absoluteUrl } from '@/lib/seo';
 export const metadata: Metadata = {
   title: 'Politique de confidentialité',
   description:
-    'Comment SARL AQUA SYSTEM traite vos données personnelles : finalités, durées de conservation, droits RGPD, hébergement Cloudflare.',
+    'Comment SARL AQUA SYSTEM traite vos données personnelles : finalités, durées de conservation, droits RGPD, hébergement Cloudflare.',
   alternates: { canonical: absoluteUrl('/politique-confidentialite/') },
   // R-06 (re-audit SEO) : page légale hors sitemap + noindex (budget crawl).
   robots: { index: false, follow: true },
@@ -24,7 +24,7 @@ export default function PolitiqueConfidentialitePage() {
         Politique de confidentialité
       </h1>
 
-      <Section title="1. Qui sommes-nous ?">
+      <Section title="1. Qui sommes-nous ?">
         <p>
           Le présent site est édité par SARL AQUA SYSTEM, société à responsabilité
           limitée au capital de 20 000 €, immatriculée sous le numéro SIREN{' '}
@@ -36,24 +36,24 @@ export default function PolitiqueConfidentialitePage() {
           personnelles au sens du RGPD (Règlement UE 2016/679).
         </p>
         <p className="mt-2">
-          Contact : {CONTACT.email}, {CONTACT.phone}
+          Contact : {CONTACT.email}, {CONTACT.phone}
         </p>
       </Section>
 
       <Section title="2. Données que nous collectons et pourquoi">
         <p className="font-medium text-foreground">Formulaire de contact</p>
         <p>
-          Lorsque vous remplissez le formulaire de contact, nous collectons : votre
+          Lorsque vous remplissez le formulaire de contact, nous collectons : votre
           nom et prénom, votre adresse email, votre numéro de téléphone (facultatif)
           et la description de votre projet.
         </p>
         <p className="mt-2">
-          <span className="font-medium text-foreground">Finalité</span> : traiter
+          <span className="font-medium text-foreground">Finalité</span> : traiter
           votre demande, vous recontacter pour préciser votre projet, établir un
           devis personnalisé.
         </p>
         <p className="mt-2">
-          <span className="font-medium text-foreground">Base légale</span> :
+          <span className="font-medium text-foreground">Base légale</span> :
           intérêt légitime de SARL AQUA SYSTEM (art. 6.1.f du RGPD) à répondre aux
           demandes initiées par les personnes elles-mêmes.
         </p>
@@ -61,21 +61,21 @@ export default function PolitiqueConfidentialitePage() {
           <span className="font-medium text-foreground">
             Durée de conservation
           </span>{' '}
-          : 3 ans à compter de notre dernier échange si aucun contrat n'est conclu.
+          : 3 ans à compter de notre dernier échange si aucun contrat n'est conclu.
           Si une relation commerciale s'engage, 5 ans à compter de la fin du
           contrat.
         </p>
         <p className="mt-4 font-medium text-foreground">Mesure d'audience</p>
         <p>
           Ce site utilise un outil de mesure d'audience configuré pour être exempt
-          de consentement préalable conformément aux recommandations de la CNIL :
+          de consentement préalable conformément aux recommandations de la CNIL :
           aucun cookie déposé, adresse IP non conservée, aucune donnée
           individuelle, données strictement agrégées, non croisées avec d'autres
           traitements.
         </p>
       </Section>
 
-      <Section title="3. Qui a accès à vos données ?">
+      <Section title="3. Qui a accès à vos données ?">
         <p>
           Vos données ne sont jamais vendues ni cédées à des tiers à des fins
           commerciales. Les données de votre formulaire sont accessibles à l'équipe
@@ -142,14 +142,14 @@ export default function PolitiqueConfidentialitePage() {
           {CONTACT.address.street}, {CONTACT.address.postalCode}{' '}
           {CONTACT.address.city}
         </p>
-        <p>Email : {CONTACT.email}. Téléphone : {CONTACT.phone}</p>
+        <p>Email : {CONTACT.email}. Téléphone : {CONTACT.phone}</p>
       </Section>
 
       <p className="mt-12 text-sm text-foreground-muted">
         Cette politique a été rédigée en conformité avec le RGPD et la loi
         Informatique et Libertés.
       </p>
-      {/* NOTE INTERNE (gate-perception D4, 2026-06-12) — ne pas rendre :
+      {/* NOTE INTERNE (gate-perception D4, 2026-06-12) — ne pas rendre :
           à faire valider par un avocat avant publication définitive. */}
     </article>
   );

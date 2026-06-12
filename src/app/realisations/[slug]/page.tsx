@@ -15,6 +15,7 @@ import {
 import { ArrowRight } from 'lucide-react';
 import { SectionCTA } from '@/components/sections/SectionCTA';
 import { JsonLd } from '@/components/seo/JsonLd';
+import { frTypo } from '@/lib/typography';
 
 /**
  * Maillage fiche → page(s) service (R-11 re-audit SEO). Mapping discret depuis le
@@ -167,7 +168,7 @@ export default function RealisationFiche({
           {/* Infos */}
           <aside>
             <h1 className="font-serif text-3xl leading-tight text-foreground md:text-4xl">
-              {r.title}
+              {frTypo(r.title)}
             </h1>
 
             <div className="mt-6 space-y-1">
@@ -199,7 +200,7 @@ export default function RealisationFiche({
             {/* P1-10 alignements (megalot §6) : max-w-[60ch] retiré — la colonne
                 aside (1fr) borne déjà la mesure, le token ne jouait jamais. */}
             <p className="mt-6 border-t border-border pt-6 text-base leading-8 text-foreground-secondary">
-              {r.visualDescription}
+              {frTypo(r.visualDescription)}
             </p>
 
             {/* Texte éditorial complet uniquement si renseigné (non-draft). */}
@@ -244,11 +245,11 @@ export default function RealisationFiche({
       </section>
 
       {/* Retour fondateur (D-28) : le CrossSellingBlock faisait « cheveu sur la
-          soupe » en bas de fiche → remplacé par un SectionCTA contact sobre.
+          soupe » en bas de fiche → remplacé par un SectionCTA contact sobre.
           Tracking E-09 (cross_selling_clicked) ne vit plus que sur les pages
           univers /piscines-bien-etre et /jardins-paysage — comportement attendu. */}
       <SectionCTA
-        amorce="Ce projet vous inspire ? Parlons du vôtre."
+        amorce="Ce projet vous inspire ? Parlons du vôtre."
         href="/contact?source=realisations"
         trackPosition="realisation_detail"
       />

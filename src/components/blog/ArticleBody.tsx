@@ -1,5 +1,6 @@
 import type { ContentBlock } from '@/content/blog/types';
 import { RichText } from './RichText';
+import { frTypo } from '@/lib/typography';
 
 /**
  * ArticleBody — rendu typé du corps d'un article « Notre regard ».
@@ -23,7 +24,7 @@ export function ArticleBody({ blocks }: { blocks: ContentBlock[] }) {
                 key={i}
                 className="mt-12 font-serif text-2xl leading-tight text-foreground md:text-3xl"
               >
-                {block.text}
+                {frTypo(block.text)}
               </h2>
             );
           case 'h3':
@@ -32,7 +33,7 @@ export function ArticleBody({ blocks }: { blocks: ContentBlock[] }) {
                 key={i}
                 className="mt-8 font-serif text-xl leading-snug text-foreground md:text-2xl"
               >
-                {block.text}
+                {frTypo(block.text)}
               </h3>
             );
           case 'p':
@@ -77,7 +78,7 @@ export function ArticleBody({ blocks }: { blocks: ContentBlock[] }) {
                 className="max-w-[68ch] text-base leading-8 text-foreground-secondary"
               >
                 <strong className="font-semibold text-foreground">
-                  {block.term}.
+                  {frTypo(block.term)}.
                 </strong>{' '}
                 <RichText text={block.text} />
               </p>
@@ -89,10 +90,10 @@ export function ArticleBody({ blocks }: { blocks: ContentBlock[] }) {
                 className="max-w-[68ch] rounded-lg border-l-4 border-foreground-accent-water bg-background-secondary p-5 md:p-6"
               >
                 <p className="font-serif text-lg leading-snug text-foreground">
-                  {block.question}
+                  {frTypo(block.question)}
                 </p>
                 <p className="mt-3 text-base leading-8 text-foreground-secondary">
-                  {block.answer}
+                  {frTypo(block.answer)}
                 </p>
               </aside>
             );
@@ -102,7 +103,7 @@ export function ArticleBody({ blocks }: { blocks: ContentBlock[] }) {
                 key={i}
                 className="max-w-[68ch] text-sm italic leading-7 text-foreground-muted"
               >
-                {block.text}
+                {frTypo(block.text)}
               </p>
             );
           default:

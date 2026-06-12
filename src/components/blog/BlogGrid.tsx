@@ -129,7 +129,7 @@ export function BlogGrid() {
             Aucun article ne correspond à cette catégorie pour le moment.
           </p>
           <p className="max-w-md text-base text-foreground-secondary">
-            Notre regard s&apos;enrichit régulièrement : revenez prochainement,
+            Notre regard s&apos;enrichit régulièrement : revenez prochainement,
             ou parcourez l&apos;ensemble de nos articles.
           </p>
           <button

@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import Link from 'next/link';
+import { frTypo } from '@/lib/typography';
 
 /**
  * RichText — transforme les marqueurs `[texte](/chemin/)` d'un paragraphe en
@@ -23,7 +24,9 @@ export function RichText({ text }: { text: string }) {
     const [full, label, href] = match;
     if (match.index > lastIndex) {
       nodes.push(
-        <Fragment key={key++}>{text.slice(lastIndex, match.index)}</Fragment>,
+        <Fragment key={key++}>
+          {frTypo(text.slice(lastIndex, match.index))}
+        </Fragment>,
       );
     }
     nodes.push(
@@ -32,13 +35,13 @@ export function RichText({ text }: { text: string }) {
         href={href!}
         className="font-medium text-foreground-accent-water underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus-ring)] focus-visible:ring-offset-2"
       >
-        {label}
+        {frTypo(label!)}
       </Link>,
     );
     lastIndex = match.index + full.length;
   }
   if (lastIndex < text.length) {
-    nodes.push(<Fragment key={key++}>{text.slice(lastIndex)}</Fragment>);
+    nodes.push(<Fragment key={key++}>{frTypo(text.slice(lastIndex))}</Fragment>);
   }
   return <>{nodes}</>;
 }
