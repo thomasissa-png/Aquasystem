@@ -63,7 +63,7 @@ export const FAQ_PISCINES = [
   },
   {
     q: 'Aqua System réalise-t-il des piscines à fond mobile ?',
-    a: "Oui. Aqua System a réalisé une piscine à fond mobile dans l'ouest parisien : le plancher motorisé permet de transformer le bassin en terrasse de plain-pied et d'ajuster la profondeur selon les usages. C'est l'ouvrage le plus rare du portfolio, qui se décide impérativement en phase de conception, avant le terrassement.",
+    a: "Oui. Aqua System conçoit et réalise des piscines à fond mobile dans l'ouest parisien : un plancher motorisé transforme le bassin en terrasse de plain-pied et ajuste la profondeur selon les usages. C'est un ouvrage d'exception, qui se décide impérativement en phase de conception, avant le terrassement.",
   },
   {
     q: "Qu'est-ce qu'une piscine intérieure réalisée par Aqua System ?",
