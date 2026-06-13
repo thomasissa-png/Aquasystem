@@ -26,7 +26,7 @@ export default function MerciPage() {
         </h1>
 
         <p className="mt-6 text-lg leading-8 text-foreground-secondary">
-          Nicolas Berg {REPLY_DELAY_TEXT} pour un premier échange autour de votre
+          Nous {REPLY_DELAY_TEXT} pour un premier échange autour de votre
           projet.
         </p>
 

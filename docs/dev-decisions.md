@@ -891,3 +891,13 @@ Correction factuelle (retour fondateur) : Nicolas Berg a REPRIS Aqua System il y
 - Commentaires de citations blog exclues + jardinerie.ts : « fondateur Aqua System » → « gérant d'Aqua System » (futur-proof).
 
 Règle : ne JAMAIS présenter Nicolas Berg comme fondateur/créateur d'Aqua System. Le « 30 ans » appartient à la maison.
+
+---
+
+## D-48 — CTA contact : « Nous » au lieu de « Nicolas Berg » (2026-06-13)
+
+Question fondateur : faut-il dire « nous » plutôt que nommer Nicolas dans la promesse de réponse ? OUI — (1) cohérence avec le « nous » collectif du site (équipe de 8, « nous concevons/construisons/entretenons ») ; (2) ne sur-promet pas une réponse personnelle de Nicolas à chaque lead (faux s'il délègue à un chef de projet) ; (3) plus robuste. La chaleur vient du ton, pas du prénom.
+- `/contact` : « Nicolas Berg reviendra vers vous sous 48 heures… » → « Nous reviendrons vers vous sous 48 heures… ».
+- `/contact/merci` : « Nicolas Berg {REPLY_DELAY_TEXT}… » → « Nous {REPLY_DELAY_TEXT}… ».
+- `REPLY_DELAY_TEXT` : « reviendra… » → « reviendrons… » (accord avec « Nous »).
+Réversible si le fondateur préfère assumer Nicolas comme visage personnel (différenciateur artisan).

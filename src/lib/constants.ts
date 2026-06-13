@@ -141,6 +141,8 @@ export const BUDGET_PLACEHOLDER = 'Choisir si vous le souhaitez';
 
 /**
  * Délai de réponse affiché sur /contact/merci.
- * Délai CONFIRMÉ fondateur (2026-06-12) : réponse sous 48 heures.
+ * Délai CONFIRMÉ client (2026-06-12) : réponse sous 48 heures.
+ * Voix « nous » (D-48) : la maison répond, pas Nicolas nommément (cohérence du
+ * « nous » collectif du site + ne sur-promet pas une réponse personnelle).
  */
-export const REPLY_DELAY_TEXT = 'reviendra vers vous sous 48 heures';
+export const REPLY_DELAY_TEXT = 'reviendrons vers vous sous 48 heures';

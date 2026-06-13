@@ -36,9 +36,8 @@ export default function ContactPage() {
             Parlez-nous de votre projet
           </h1>
           <p className="mt-6 max-w-[48ch] text-lg leading-8 text-foreground-secondary">
-            Quelques mots sur ce que vous imaginez suffisent pour démarrer.
-            Nicolas Berg reviendra vers vous sous 48 heures pour un premier
-            échange.
+            Quelques mots sur ce que vous imaginez suffisent pour démarrer. Nous
+            reviendrons vers vous sous 48 heures pour un premier échange.
           </p>
 
           {/* Coordonnées — masquées sur mobile (accessibles via footer) */}
