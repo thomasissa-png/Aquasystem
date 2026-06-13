@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, CheckCircle } from 'lucide-react';
-import { SITE_URL, absoluteUrl, breadcrumbJsonLd } from '@/lib/seo';
+import { SITE_URL, absoluteUrl, breadcrumbJsonLd, ogPhoto } from '@/lib/seo';
 import {
   REALISATIONS,
   getRealisation,
@@ -56,7 +56,8 @@ export function generateMetadata({
 }): Metadata {
   const r = getRealisation(params.slug);
   if (!r) return { title: 'Réalisation introuvable' };
-  const ogImg = absoluteUrl(photoSrc(r.photos[0]!.base, '1280w'));
+  // OG/Twitter en JPEG (ogPhoto) — aperçu de partage rendu par les messageries.
+  const ogImg = ogPhoto(r.photos[0]!.base);
   // Metas dynamiques — metadata-templates.md Page 9. Le <title> reste < 60 car.
   // (INFO-SEO-1) : titre COURT (sans suffixe de zone) + « | Réalisations » via
   // `absolute` (pas le template marque). Séparateur « | » (megalot §2.1). Le
@@ -72,7 +73,7 @@ export function generateMetadata({
     openGraph: {
       url: `${SITE_URL}/realisations/${r.slug}/`,
       title: r.title,
-      images: [{ url: ogImg, width: 1280, height: 720, alt: r.photos[0]!.alt }],
+      images: [{ url: ogImg, width: 1200, height: 630, alt: r.photos[0]!.alt }],
     },
     // P1-03 (audit-seo T3) : aligner twitter:image sur la photo de réalisation
     // (cohérence OG/Twitter) — sans override, le fallback layout pointait vers

@@ -25,6 +25,16 @@ export function absoluteUrl(path: string): string {
 }
 
 /**
+ * URL absolue d'une image de partage social (og:image / twitter:image) au format
+ * JPEG 1200×630, dérivée d'un visuel de réalisation. Les `.webp` ne sont PAS
+ * rendus par la plupart des messageries (iMessage, WhatsApp, LinkedIn) — d'où un
+ * JPEG dédié, généré par scripts/build-og-image.mjs vers /images/og/<base>.jpg.
+ */
+export function ogPhoto(base: string): string {
+  return absoluteUrl(`/images/og/${base}.jpg`);
+}
+
+/**
  * Coordonnées géographiques de Freneuse (78840) — VÉRIFIÉ via cartesfrance.fr
  * (49.0482 N, 1.60076 E). Utilisé par le LocalBusiness Aqua System (signal
  * local fort pour le Knowledge Panel Bing/Google).

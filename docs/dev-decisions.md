@@ -830,3 +830,21 @@ Le hero spa-transats (D-40 cas B) REFUSÉ par le fondateur (« je trouve pas la 
 **Leçon outillage (P0 silencieux)** : un NBSP littéral collé dans un Write/heredoc peut être normalisé en espace par le canal — TOUJOURS écrire les insécables via échappements (` ` TS / ` ` python) et vérifier au NIVEAU OCTET (`C2 A0`) dans la sortie. Deux passes ont silencieusement échoué ainsi avant détection.
 
 **Vérifs** : tsc PASS · lint 0 warning · build PASS · vitest 119/119 · playwright 55/55.
+
+---
+
+## D-45 — Image de partage social (Open Graph) : photo hero + JPEG partout (2026-06-13)
+
+**Retour fondateur (urgent, répété)** : « quand je partage le lien c'est horrible ». Cause double :
+1. `public/og-image.jpg` était un PLACEHOLDER (fond uni + logo « A » + texte) — pauvre en aperçu de partage.
+2. Les og:image des articles et fiches pointaient vers des `.webp` (`photoSrc(... )`) — format NON rendu en aperçu par iMessage, WhatsApp, LinkedIn, Slack → vignette vide.
+
+**Fix** (`scripts/build-og-image.mjs`, réutilisable) :
+- **Carte de marque 1200×630** : photo hero signature (demeure ancienne + bassin miroir, fondateur-approved, 1920×1292 → bande basse top=110 montrant le reflet complet) + dégradé de lisibilité (vertical renforcé bas 0.95 + bias gauche) + wordmark « Aquasystem » (DM Serif Display 84px) + tagline + ligne preuve dorée + géo. Polices de marque installées (DM Serif Display + DM Sans, Google Fonts OFL). → `public/og-image.jpg` (~120 Ko). Sert toutes les pages statiques (accueil, services, réalisations, la-maison, prescripteurs, contact).
+- **OG photos par visuel** : JPEG 1200×630 (cover centre, q84 mozjpeg) pour les 33 visuels de réalisations → `public/images/og/<base>.jpg`. Helper `ogPhoto(base)` (lib/seo.ts). Les pages article (`/notre-regard/[slug]`) et fiche (`/realisations/[slug]`) émettent og:image + twitter:image en JPEG (largeur/hauteur 1200×630). Le hero on-page et le JSON-LD `image` restent en webp (perf interne, non concernés par l'aperçu social).
+
+**Casting hero OG (D-45)** : crop bas (top=110) retenu vs « north » (D-45 v1, demeure seule sans bassin) — le bassin miroir est la composition signature, il devait apparaître.
+
+**Caveat caching** : les messageries/réseaux CACHENT l'og:image (parfois plusieurs jours). Après déploiement, l'ancien aperçu peut persister → revalider via Facebook Sharing Debugger / LinkedIn Post Inspector (force un re-scrape), ou attendre l'expiration du cache. URL inchangée = certains caches ne se rafraîchissent pas seuls.
+
+**Vérifs** : tsc PASS · lint 0 warning · build PASS (og-image.jpg + images/og/ copiés dans out/). À VÉRIFIER post-naming final : régénérer le wordmark si la marque change (script paramétrable).

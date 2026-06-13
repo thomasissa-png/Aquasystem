@@ -2,7 +2,13 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
-import { SITE_URL, absoluteUrl, breadcrumbJsonLd, faqPageJsonLd } from '@/lib/seo';
+import {
+  SITE_URL,
+  absoluteUrl,
+  breadcrumbJsonLd,
+  faqPageJsonLd,
+  ogPhoto,
+} from '@/lib/seo';
 import { photoSrc } from '@/content/realisations';
 import {
   ARTICLES,
@@ -42,7 +48,9 @@ export function generateMetadata({
 }): Metadata {
   const article = getArticle(params.slug);
   if (!article) return { title: 'Article introuvable' };
-  const ogImg = absoluteUrl(photoSrc(article.heroBase, '1280w'));
+  // OG/Twitter en JPEG (ogPhoto) — les .webp ne s'affichent pas en aperçu de
+  // partage sur la plupart des messageries.
+  const ogImg = ogPhoto(article.heroBase);
   return {
     // metaTitle du manifeste (frontmatter) — séparateur « | » si suffixe,
     // jamais de cadratin. Posé en `absolute` (pas le template marque).
@@ -57,7 +65,7 @@ export function generateMetadata({
       publishedTime: article.datePublished,
       authors: ['Nicolas Berg'],
       images: [
-        { url: ogImg, width: 1280, height: 720, alt: article.heroAlt },
+        { url: ogImg, width: 1200, height: 630, alt: article.heroAlt },
       ],
     },
     twitter: { card: 'summary_large_image', images: [ogImg] },
