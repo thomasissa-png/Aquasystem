@@ -848,3 +848,19 @@ Le hero spa-transats (D-40 cas B) REFUSÉ par le fondateur (« je trouve pas la 
 **Caveat caching** : les messageries/réseaux CACHENT l'og:image (parfois plusieurs jours). Après déploiement, l'ancien aperçu peut persister → revalider via Facebook Sharing Debugger / LinkedIn Post Inspector (force un re-scrape), ou attendre l'expiration du cache. URL inchangée = certains caches ne se rafraîchissent pas seuls.
 
 **Vérifs** : tsc PASS · lint 0 warning · build PASS (og-image.jpg + images/og/ copiés dans out/). À VÉRIFIER post-naming final : régénérer le wordmark si la marque change (script paramétrable).
+
+---
+
+## D-45b — OG image itérée 10/10 après audit @design (2026-06-13)
+
+Audit @design (`docs/reviews/audit-og-image.md`) : v1 (bas-gauche, 4 lignes, scrim radial) notée **5/10**. Direction retenue **« Éditorial centré »** + itération visuelle (render → juge → ajuste, je suis seul à rendre+voir).
+
+Refonte appliquée à `scripts/build-og-image.mjs` :
+- **Crop** y=80 (rogne le ciel gris, remonte le reflet du bassin), façade centrée sur son axe de symétrie.
+- **Scrim** linéaire vertical PUR (transparent jusqu'à 38 %, 0.55 à 66 %, 0.90 en bas) — la moitié haute de la photo respire, plus de halo radial.
+- **Monogramme** de marque (favicon : tuile water, « A » sand, filet or) haut-gauche 48×48 — marquage immédiat.
+- **Bloc texte CENTRÉ** (axe façade), 3 éléments : eyebrow `HAUT DE GAMME — DEPUIS 30 ANS` (gold, 18px, ls 3.4) + wordmark `Aquasystem` (DM Serif 76px sand) + tagline (DM Sans 24px sand .85), ombre portée douce. Ligne géo séparée supprimée (fusionnée dans l'eyebrow).
+
+**Checklist 10/10 : tous les points cochés.** Critère le plus dur (survie au recadrage carré WhatsApp/iMessage, x:285-915) **vérifié au rendu** : wordmark + eyebrow + tagline + demeure symétrique intégralement dans la vignette carrée. Poids 156 Ko (< 500). Palette et polices de marque exclusivement.
+
+**À refaire si naming final ≠ Aquasystem** : le wordmark et le monogramme « A » sont paramétrables dans le script.
