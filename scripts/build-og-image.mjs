@@ -26,17 +26,26 @@ const OUT = 'public/og-image.jpg';
 // Tokens « Rive privée ».
 const SAND = '#F5F0E8';
 const GOLD = '#C4924A';
-const WATER = '#3A6675';
+// Logo v5 (D-46) : tuile bleu profond + vague d'eau ton sur ton.
+const NAVY = '#16304A';
+const WAVE1 = '#4E86A6';
+const WAVE2 = '#3C6E8E';
 
 const esc = (s) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-// Monogramme de marque (favicon.svg) — tuile water, « A » sand, filet or.
-// Placé haut-gauche (48×48 @ x:48,y:40), marquage immédiat en vignette.
-const MONOGRAM = `<g transform="translate(48,40) scale(0.75)">
-    <rect x="0.7" y="0.7" width="62.6" height="62.6" rx="14" ry="14" fill="${WATER}" stroke="${GOLD}" stroke-width="1.4"/>
-    <path fill="${SAND}" fill-rule="evenodd" transform="translate(8.32,8.32) scale(0.74)" d="M 31.4 8 L 39.2 8 L 51.6 51 L 58 51 L 58 55.4 L 38.2 55.4 L 38.2 51 L 43.6 51 L 41.0 41.4 L 24.6 41.4 L 22.0 51 L 28 51 L 28 55.4 L 9.4 55.4 L 9.4 51 L 14.9 51 L 26.9 8 Z M 33.0 15.6 L 25.8 36.6 L 39.8 36.6 Z"/>
+/**
+ * Monogramme de marque (logo v5) : tuile bleu profond + vague, placé en `size`
+ * px à (x,y). Marquage immédiat en vignette, cohérent avec le favicon.
+ */
+const monogram = (x, y, size) => `<g transform="translate(${x},${y}) scale(${size / 64})">
+    <rect width="64" height="64" rx="14" ry="14" fill="${NAVY}"/>
+    <g fill="none" stroke-linecap="round">
+      <path d="M15 39 C 23 31 29 31 34 36 C 39 41 45 41 50 34" stroke="${WAVE1}" stroke-width="3.2"/>
+      <path d="M19 45 C 24.5 40.5 29.5 40.5 33 43.5" stroke="${WAVE2}" stroke-width="2.8"/>
+    </g>
   </g>`;
+const MONOGRAM = monogram(48, 40, 48);
 
 // Bloc texte centré, calé dans le tiers bas (protégé par le scrim) — légère
 // descente vs spec brute (lisibilité du wordmark sur le reflet du bassin,
@@ -98,10 +107,33 @@ const bases = [
   ),
 ];
 
+// Marquage discret commun (logo v5 haut-gauche + wordmark bas-gauche sur léger
+// scrim) — un article/réalisation partagé est immédiatement « Aquasystem ».
+const photoBrand = Buffer.from(`<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="b" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#1A1510" stop-opacity="0.72"/>
+      <stop offset="0.26" stop-color="#1A1510" stop-opacity="0.26"/>
+      <stop offset="0.5" stop-color="#1A1510" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="t" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="1" stdDeviation="5" flood-color="#1A1510" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <rect width="${W}" height="${H}" fill="url(#b)"/>
+  ${monogram(40, 36, 44)}
+  <g filter="url(#t)">
+    <text x="44" y="588" font-family="DM Serif Display" font-size="40" fill="${SAND}">Aquasystem</text>
+  </g>
+</svg>`);
+
 let n = 0;
 for (const base of bases) {
-  await sharp(`${SRC_DIR}/${base}-1280w.webp`)
+  const cropped = await sharp(`${SRC_DIR}/${base}-1280w.webp`)
     .resize(W, H, { fit: 'cover', position: 'centre' })
+    .toBuffer();
+  await sharp(cropped)
+    .composite([{ input: photoBrand, top: 0, left: 0 }])
     .jpeg({ quality: 84, mozjpeg: true })
     .toFile(`${OG_DIR}/${base}.jpg`);
   n++;

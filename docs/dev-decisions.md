@@ -864,3 +864,18 @@ Refonte appliquée à `scripts/build-og-image.mjs` :
 **Checklist 10/10 : tous les points cochés.** Critère le plus dur (survie au recadrage carré WhatsApp/iMessage, x:285-915) **vérifié au rendu** : wordmark + eyebrow + tagline + demeure symétrique intégralement dans la vignette carrée. Poids 156 Ko (< 500). Palette et polices de marque exclusivement.
 
 **À refaire si naming final ≠ Aquasystem** : le wordmark et le monogramme « A » sont paramétrables dans le script.
+
+---
+
+## D-46 — Logo v5 « vague d'eau » : direction fondateur (2026-06-13)
+
+Après itérations refusées (monogramme « A » jugé peu élégant ; concepts goutte+arbre/feuille jugés « bof, trop chargés ») le fondateur a tranché la DIRECTION via une référence (fond bleu profond + signe d'eau ondulé ton sur ton) : **« simple et élégant, un signe qui parle du métier (eau), beau bleu, ton sur ton — l'or et le noir n'ont rien à voir avec l'identité ni le métier »**.
+
+**Logo v5 retenu** : tuile **bleu profond `#16304A`** + **vague d'eau** en deux traits ton sur ton (`#4E86A6` / `#3C6E8E`), bouts arrondis. Monochrome, sans or ni encre. Le signe parle du métier (eau / piscine), lisible sur onglet clair ET sombre (vérifié en mock onglet). Remplace définitivement le monogramme « A » (v1-v4).
+
+**Propagation** :
+- `public/favicon.svg` réécrit (tuile navy + vague).
+- `scripts/build-favicons.mjs` réécrit → favicon-16/32, android 192/512, apple-touch, favicon.ico régénérés.
+- `scripts/build-og-image.mjs` : monogramme de l'image de partage (principale + 33 photos d'articles/fiches) passé au logo vague. La COMPOSITION de l'image principale (photo demeure, eyebrow or, wordmark sable — validée D-45b) est INCHANGÉE : seul le médaillon d'angle adopte le nouveau logo.
+
+**À refaire si naming final ≠ Aquasystem** : le logo (vague) est indépendant du nom, rien à changer côté symbole ; seul le wordmark texte suivra le nom.
