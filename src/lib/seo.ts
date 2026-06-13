@@ -178,7 +178,8 @@ export function nicolasBergJsonLd() {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Nicolas Berg',
-    jobTitle: 'Associé-Gérant',
+    // « Gérant » (et non fondateur) : Nicolas Berg a REPRIS Aqua System (D-47).
+    jobTitle: 'Gérant',
     image: absoluteUrl('/images/equipe/nicolas-berg-400w.webp'),
     worksFor: {
       '@type': 'LocalBusiness',

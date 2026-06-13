@@ -115,7 +115,7 @@ export const a3Body: ContentBlock[] = [
     text: "Ces fourchettes sont des données de marché, pas les tarifs d'Aqua System. Elles permettent de calibrer le projet. Elles ne remplacent pas une conversation sur l'ouvrage réel.",
   },
 
-  // [CITATION À VALIDER NB] — « Nicolas Berg, fondateur Aqua System » : EXCLU
+  // [CITATION À VALIDER NB] — « Nicolas Berg, gérant d’Aqua System » : EXCLU
   // du rendu (citation en attente de validation NB).
 
   {

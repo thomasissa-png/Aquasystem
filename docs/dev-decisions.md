@@ -879,3 +879,15 @@ Après itérations refusées (monogramme « A » jugé peu élégant ; concepts 
 - `scripts/build-og-image.mjs` : monogramme de l'image de partage (principale + 33 photos d'articles/fiches) passé au logo vague. La COMPOSITION de l'image principale (photo demeure, eyebrow or, wordmark sable — validée D-45b) est INCHANGÉE : seul le médaillon d'angle adopte le nouveau logo.
 
 **À refaire si naming final ≠ Aquasystem** : le logo (vague) est indépendant du nom, rien à changer côté symbole ; seul le wordmark texte suivra le nom.
+
+---
+
+## D-47 — Nicolas Berg : « gérant » et non « fondateur » (2026-06-13)
+
+Correction factuelle (retour fondateur) : Nicolas Berg a REPRIS Aqua System il y a quelques années — il n'en est PAS le fondateur. Reformulation cohérente, titre unifié « Gérant » partout :
+- `AuthorBlock` (pied de chaque article) : « Fondateur et gérant d'Aqua System. Plus de 30 ans d'expertise… » → « Gérant d'Aqua System, maison forte de plus de 30 ans de savoir-faire… » (le « 30 ans » est désormais attribué à la MAISON, jamais à Nicolas personnellement). Alt portrait : « fondateur » → « gérant ».
+- JSON-LD : Person de l'article (`jobTitle 'Fondateur, Aqua System'` → `'Gérant, Aqua System'`) et `nicolasBergJsonLd` de seo.ts (`'Associé-Gérant'` → `'Gérant'`) unifiés.
+- /la-maison figcaption portrait : « Associé-Gérant, Aqua System » → « Gérant, Aqua System ». Récit « Notre histoire » inchangé (déjà au « nous » de la maison, n'attribue pas la fondation à Nicolas).
+- Commentaires de citations blog exclues + jardinerie.ts : « fondateur Aqua System » → « gérant d'Aqua System » (futur-proof).
+
+Règle : ne JAMAIS présenter Nicolas Berg comme fondateur/créateur d'Aqua System. Le « 30 ans » appartient à la maison.

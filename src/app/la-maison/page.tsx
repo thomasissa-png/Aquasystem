@@ -213,7 +213,7 @@ export default function LaMaisonPage() {
                 Nicolas Berg
               </span>
               <span className="block text-sm text-foreground-secondary">
-                Associé-Gérant, Aqua System
+                Gérant, Aqua System
               </span>
             </figcaption>
           </figure>

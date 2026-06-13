@@ -173,7 +173,7 @@ export const a6Body: ContentBlock[] = [
     text: "Près de 350 piscines sont actuellement suivies par Aqua System dans l'ouest parisien. Sur ces piscines, certaines ont été construites par nos équipes il y a vingt ans. D'autres ont été rénovées et confiées à notre service d'entretien. La continuité de la relation — connaître l'ouvrage, connaître son historique — est un avantage réel dans la conduite d'une rénovation.",
   },
 
-  // [CITATION À VALIDER NB] — « Nicolas Berg, fondateur Aqua System » : EXCLU
+  // [CITATION À VALIDER NB] — « Nicolas Berg, gérant d’Aqua System » : EXCLU
   // du rendu (citation en attente de validation NB).
 
   {

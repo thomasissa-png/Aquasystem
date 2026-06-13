@@ -8,9 +8,9 @@
  * création de jardin. Les `alt` sont strictement factuels (« serre de la
  * jardinerie », jamais « jardin réalisé »).
  *
- * SOURCE : fournie par le fondateur (Nicolas Berg), page Facebook Les Terres
- * Essentielles. DROITS : accordés le 2026-06-12 (project-context.md →
- * « Validations fondateur (2026-06-12) »).
+ * SOURCE : fournie par Nicolas Berg (gérant d'Aqua System), page Facebook Les
+ * Terres Essentielles. DROITS : accordés le 2026-06-12 (project-context.md →
+ * « Validations client (2026-06-12) »).
  *
  * Tailles WebP disponibles par photo : 1280w / 800w / 400w.
  * Générées par scripts/build-jardinerie-images.mjs.

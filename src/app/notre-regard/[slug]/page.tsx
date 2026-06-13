@@ -85,7 +85,7 @@ function articleJsonLd(article: Article) {
     author: {
       '@type': 'Person',
       name: 'Nicolas Berg',
-      jobTitle: 'Fondateur, Aqua System',
+      jobTitle: 'Gérant, Aqua System',
       worksFor: {
         '@type': 'Organization',
         name: 'Aqua System',

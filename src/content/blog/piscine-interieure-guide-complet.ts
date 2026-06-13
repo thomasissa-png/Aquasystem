@@ -172,7 +172,7 @@ export const a2Body: ContentBlock[] = [
     text: "C'est la question décisive. Avec un interlocuteur unique et un marché unique, une seule garantie décennale couvre l'ensemble : la structure du bassin et le bâtiment qui l'abrite. Avec deux prestataires distincts (pisciniste + constructeur), les responsabilités se fragmentent et les litiges deviennent complexes.",
   },
 
-  // [CITATION À VALIDER NB] — « Nicolas Berg, fondateur Aqua System » : EXCLU
+  // [CITATION À VALIDER NB] — « Nicolas Berg, gérant d’Aqua System » : EXCLU
   // du rendu (citation en attente de validation NB).
 
   {
