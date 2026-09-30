@@ -1,29 +1,19 @@
----
-name: orchestrator
-description: "Planification multi-agents, lancement projet, coordination design code contenu stratégie, demande multi-domaine"
-model: claude-opus-4-8
-version: "3.0"
-tools:
-  - Read
-  - Write
-  - Edit
-  - Glob
-  - Grep
-  - Task
----
+# Protocole d'orchestration (coordination multi-agents)
+
+> Ce fichier n'est PAS un agent invocable (pas de frontmatter, préfixe `_` — comme `_base-agent-protocol.md`). C'est le protocole que la **session principale** applique quand une demande est multi-domaine ou un projet complet (voir CLAUDE.md « Routage automatique »). La session principale EST l'orchestrator : il n'y a pas de sous-agent à invoquer, et un sous-agent ne pourrait de toute façon pas spawner les spécialistes (pas de Task imbriqué). `@orchestrator` dans les prompts et handoffs = le rôle de coordination joué par la session principale, pas une invocation.
 
 ## Règle d'ouverture (brief-first — audit S4)
 
 **1ère action sur tout brief utilisateur**, AVANT tout Read/Grep/Glob/Task, aucune exception y compris reprises de session :
 ```
 Brief compris : <reformulation 1 ligne, mots du fondateur préservés>
-Plan : <1 ligne — action immédiate ou clarification ciblée si vraiment ambigu>
+Plan : <3 puces max — action immédiate ou clarification ciblée si vraiment ambigu>
 ```
 Anti-pattern : enchaîner étapes de protocole, tableaux ou questions A/B/C avant d'avoir formulé la compréhension. Brief court (< 20 mots) = réponse courte.
 
-## Identité — ce fichier n'est pas un agent
+## Valeur de la coordination
 
-Ce fichier est le **protocole de coordination que la session principale adopte** pour piloter un projet multi-agents. Il n'y a pas de "chef d'orchestre" séparé : la session principale lit ce protocole (automatiquement sur toute demande multi-domaine — voir CLAUDE.md "Routage automatique", `@orchestrator` reste un déclencheur explicite valide) et l'applique. Sa valeur : la qualité des dépendances identifiées — un projet échoue rarement sur l'exécution, il échoue sur l'ordre des opérations. Chaque phase est verrouillée avant la suivante.
+La qualité des dépendances identifiées — un projet échoue rarement sur l'exécution, il échoue sur l'ordre des opérations. Chaque phase est verrouillée avant la suivante.
 
 ## Règles d'exécution non négociables
 
@@ -56,13 +46,13 @@ Champ insuffisant → poser une question qui guide (pas "complète ce champ") �
 
 `subagent_type` = nom de l'agent sans `@`. 19 agents spécialisés invocables (ce protocole de coordination est exécuté par la session principale, pas invocable en subagent — les sous-agents ne peuvent pas spawner de sous-agents) : `creative-strategy`, `product-manager`, `data-analyst`, `ux`, `design`, `copywriter`, `fullstack`, `qa`, `infrastructure`, `ia`, `seo`, `geo`, `growth`, `sales-enablement`, `social`, `legal`, `reviewer`, `agent-factory`, `elon`.
 
-**Agents custom** (créés par @agent-factory, hors liste native) : vérifier que `.claude/agents/[nom].md` existe (Glob), choisir le subagent_type natif le plus proche (`ux` persona/utilisateur, `fullstack` technique, `creative-strategy` stratégie/contenu), et ouvrir le prompt Task par : "Tu incarnes le rôle décrit dans `.claude/agents/[nom].md`. Lis ce fichier AVANT toute action. Le protocole de base reste actif." @regard-fondateur s'invoque via subagent_type `fullstack` (il pilote Playwright + lit les captures).
+**Agents custom** (créés par @agent-factory, hors liste native) : vérifier que `.claude/agents/[nom].md` existe (Glob), choisir le subagent_type natif le plus proche (`ux` persona/utilisateur, `fullstack` technique, `creative-strategy` stratégie/contenu), et ouvrir le prompt Task par : "Tu incarnes le rôle décrit dans `.claude/agents/[nom].md`. Lis ce fichier AVANT toute action. Le protocole de base reste actif."
 
-**Hors-phase** : @agent-factory (invocable à tout moment quand un besoin non couvert est identifié ; après création, réinventarier les agents). @elon (invoqué par l'utilisateur uniquement — jamais proactivement ; si un avis @elon existe, le lire et intégrer). @reviewer (à tout moment + automatiquement en fin de run). **@regard-fondateur (gate de perception) : OBLIGATOIRE avant tout déploiement d'une page front modifiée — capture en viewport réel et juge la perception AVANT le vrai fondateur ; verdict NON = déploiement bloqué jusqu'à correction.**
+**Hors-phase** : @agent-factory (invocable à tout moment quand un besoin non couvert est identifié ; après création, réinventarier les agents). @elon (invoqué par l'utilisateur uniquement — jamais proactivement ; si un avis @elon existe, le lire et intégrer). @reviewer (à tout moment + automatiquement en fin de run).
 
 ## Tool Task — mode d'emploi
 
-**Routage bibliothèque d'abord** : pour toute demande, chercher si un prompt d'`index.html` (91 prompts) correspond (Grep sur le titre). Si oui : en extraire la substance (sections, critères, livrables) dans le prompt Task — ne pas improviser. 80% de la qualité d'un livrable vient du prompt de lancement.
+**Routage bibliothèque d'abord** : pour toute demande, chercher si un prompt de la bibliothèque (91 prompts : `.claude/prompts-library.html` dans un projet client, `index.html` dans le repo Agent-Team) correspond (Grep `title:` puis lire le bloc `prompt:`). Si oui : en extraire la substance (sections, critères, livrables) dans le prompt Task — ne pas improviser. 80% de la qualité d'un livrable vient du prompt de lancement.
 
 **Template obligatoire de prompt Task producteur** :
 ```
@@ -93,7 +83,7 @@ Taille cible : 30-60 lignes (60-80 en autopilot). Si l'orchestrateur a déjà de
 
 **Stateless entre phases** : après chaque phase, écrire l'état dans `docs/orchestration-plan.md` ; le relire en début de phase suivante. Si l'orchestrateur ne peut pas citer de mémoire persona + KPI + dernière décision → relire orchestration-plan.md.
 
-**Vérifications spéciales Phase 2** : (a) boucle visuelle — Glob `tests/screenshots/*.png` ; si vide alors que `src/` a du frontend → relancer @fullstack ; (b) build — `npx tsc --noEmit && npx next lint && npm run build` (Règle n°6), FAIL = bloquer ; hook pre-commit installé sinon le faire poser par @fullstack ; futurs projets CF : ajouter `npx @cloudflare/next-on-pages@1` au check.
+**Vérifications spéciales Phase 2** : (a) boucle visuelle — Glob `tests/screenshots/*.png` ; si vide alors que `src/` a du frontend → relancer @fullstack ; (b) build — `npx tsc --noEmit && npm run lint && npm run build` (Règle n°6), FAIL = bloquer ; hook pre-commit installé sinon le faire poser par @fullstack ; futurs projets CF avec Next.js : ajouter le build OpenNext (`npx opennextjs-cloudflare build`) au check ; `next-on-pages` est déprécié.
 
 ## Modes d'exécution
 
@@ -134,7 +124,7 @@ Croiser avant de planifier :
 **Phase 1 — Expérience** : `ux` → `design` ; `copywriter` en parallèle de `ux` si brand-platform.md existe.
 **Checkpoint specs (OBLIGATOIRE entre Phase 1 et 2)** : @reviewer quick-check sur functional-specs.md ("@fullstack peut-il coder ça sans poser une seule question ?") ; chaque user story a Given/When/Then, 5 états UI, events analytics ; chaque écran interactif a ≥ 5 scénarios persona concrets. Si features IA : `docs/ia/prompt-library.md` avec test cases DOIT exister AVANT que @fullstack code (séquence stricte : @ia → validation → @fullstack, pas en parallèle).
 
-**Phase 2 — Développement** : `infrastructure` (setup : skeleton, env vars, CI/CD ; futurs projets : repo GitHub + wrangler.toml + GH Actions CF Pages/Workers + Neon ; legacy : Replit) → `fullstack` + `ia` (parallèle si specs IA claires ET prompt-library.md existe) → `ux` (revue post-implémentation : wireframes vs code réel → `docs/ux/ux-review.md`) → `qa` (intègre les écarts UX, matrice de traçabilité US→tests) → `infrastructure` (finalisation : monitoring, perf, sécurité ; CF piloté par tokens scopés, legacy Replit : déploiement manuel par Thomas).
+**Phase 2 — Développement** : `infrastructure` (setup : skeleton, env vars, CI/CD ; futurs projets : repo GitHub + wrangler.toml + GH Actions Cloudflare Workers + D1/Neon + Umami, VPS seulement si un besoin le justifie ; legacy : Replit) → `fullstack` + `ia` (parallèle si specs IA claires ET prompt-library.md existe) → `ux` (revue post-implémentation : wireframes vs code réel → `docs/ux/ux-review.md`) → `qa` (intègre les écarts UX, matrice de traçabilité US→tests) → `infrastructure` (finalisation : monitoring, perf, sécurité ; CF piloté par tokens scopés, legacy Replit : déploiement manuel par Thomas).
 - Boucle visuelle @fullstack obligatoire : screenshot Playwright 3 devices par page, comparaison page-compositions.md, correction des écarts, sauvegarde tests/screenshots/.
 - Séquencement features IA strict : schema DB → API routes → UI avec mocks → intégration LLM → polish.
 - Si user-flows.md recommande des agents spécialisés non créés → @agent-factory.
@@ -188,7 +178,7 @@ Agent aval détecte un problème amont → relancer l'amont avec le problème + 
 
 Produire `docs/project-synthesis.md` : livrables, décisions, prochaines étapes, agents recommandés.
 
-**Si la branche de développement a changé** : Grep l'ancien nom dans tout le repo, remplacer dans index.html, INSTALL.md, install.sh, update.sh, project-context.md, re-Grep pour vérifier zéro résidu (Règle commune n°11).
+**Si la branche de développement a changé** (repo Agent-Team uniquement) : Grep l'ancien nom dans tout le repo, remplacer dans index.html, INSTALL.md, install.sh, update.sh, project-context.md, re-Grep pour vérifier zéro résidu (Règle commune n°11).
 
 Option fusion UX+Design pour itérations post-V1 ou mode hotfix : un seul livrable "composition + tokens", @fullstack code directement, @reviewer sur le code déployé. Jamais en Phase 1 d'un nouveau projet.
 
@@ -215,3 +205,10 @@ Option fusion UX+Design pour itérations post-V1 ou mode hotfix : un seul livrab
 - Points d'attention : livrables à valider, agents en échec, P2 résiduels
 - Prochaines étapes recommandées : [agents, actions manuelles]
 ---
+
+<!-- PROJECT-RULES-START -->
+## Règles propres à ce projet (Aquasystem)
+
+- @regard-fondateur s'invoque via subagent_type `fullstack` (il pilote Playwright et lit les captures).
+- **@regard-fondateur (gate de perception) : OBLIGATOIRE avant tout déploiement d'une page front modifiée.** Il capture en viewport réel et juge la perception AVANT le vrai fondateur ; verdict NON = déploiement bloqué jusqu'à correction.
+<!-- PROJECT-RULES-END -->

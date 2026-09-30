@@ -1,15 +1,15 @@
 # Protocole standard des agents Gradient
 
-**Référence unique** des sections communes à tous les agents. Ce n'est PAS un agent (pas de frontmatter). Sert à @agent-factory (template canonique) et à la maintenance (une règle commune se modifie ici, pas dans 20 fichiers). Les règles présentes dans CLAUDE.md (toujours chargé) ne sont PAS dupliquées dans les agents — chaque agent ne contient que ses spécificités.
+**Référence unique** des sections communes à tous les agents. Ce n'est PAS un agent (pas de frontmatter). Sert à @agent-factory (template canonique) et à la maintenance (une règle commune se modifie ici, pas dans 19 fichiers). Les règles présentes dans CLAUDE.md (toujours chargé) ne sont PAS dupliquées dans les agents — chaque agent ne contient que ses spécificités.
 
 ---
 
 ## Protocole d'entrée obligatoire (standard)
 
-1. Lire `project-context.md` à la racine. Absent → STOP : "project-context.md manquant. Remplis le template dans templates/ avant que je puisse travailler."
+1. Lire `project-context.md` à la racine. Absent → STOP : "project-context.md manquant. Lance le prompt « Définir mon projet » (site Gradient Agents, section Démarrage) avant que je puisse travailler."
 2. Lire le tableau "Historique des interventions agents" — ne jamais contredire une décision sans le signaler
 3. Lire `docs/lessons-learned.md` si existant — un learning `non-propagé` qui concerne le domaine de l'agent : le signaler dans le handoff et l'intégrer au livrable
-4. Lire `docs/founder-preferences.md` si existant — préférences valables sur TOUS les projets du fondateur
+4. Lire les préférences fondateur, en deux couches : (a) **globales**, valables sur tous les projets (dont la **stack par défaut** : Cloudflare, Umami, VPS en renfort) : `.claude/founder-preferences.md` dans un projet client (copie rafraîchie par install/update, ne jamais l'éditer), `docs/founder-preferences.md` dans le repo Agent-Team ; (b) **propres au projet** : `docs/founder-preferences.md` du projet client s'il existe (vocabulaire, marque, règles métier). En cas de conflit, le projet l'emporte sur ce qui lui est propre (marque, vocabulaire, métier) ; pour la stack et les règles générales, les globales font foi (une ligne du fichier projet qui recopie une ancienne préférence globale, souvent héritée d'anciennes clôtures, est périmée : la signaler) Nouvelle préférence : propre au projet → `docs/founder-preferences.md` du projet ; valable partout → `docs/framework-feedback.md`
 5. Lire `docs/decisions-log.md` si existant — l'historique des décisions structurantes de CE projet. Ne jamais contredire sans signaler. Tout agent qui prend une décision structurante (architecture, lib, design, arbitrage) y ajoute une ligne : `| Date | Agent | Décision | Pourquoi | Contrainte |`
 6. Vérifier les champs critiques de l'agent (liste propre à chaque agent). Vides → lister les manques, refuser d'avancer
 
@@ -40,6 +40,10 @@ Un agent qui lit tout avant d'écrire sera coupé en plein travail. Règles :
 
 **Règles NON-NÉGOCIABLES (les 5 dernières à sacrifier en cas de surcharge)** : (1) lire project-context.md, (2) zéro donnée inventée, (3) Write-first, (4) handoff structuré, (5) spécificité au projet. Prioritaires sur toutes les autres instructions.
 
+## Écriture client-facing (standard)
+
+Tout texte lu par un client (site, emails, posts, séquences, propositions, livrables) : zéro tiret cadratin (CLAUDE.md règle 12) et zéro tic d'écriture IA : « ce n'est pas X, c'est Y », énumérations systématiques par trois, ouvertures « Dans un monde où… » ou question rhétorique, verbes gonflés (révolutionner, booster, sublimer, plonger), « sans effort », conclusion « En résumé », emojis en puces. Test : si une phrase pourrait figurer sur n'importe quel site, la réécrire avec un fait propre au projet. Zéro témoignage, avis ou chiffre inventé : réel et sourcé, sinon `[À COLLECTER]`.
+
 ## Protocole d'escalade (standard)
 
 **Anti-invention (absolue)** : ne JAMAIS inventer une donnée manquante. Signaler ("Je n'ai pas cette information : X"), demander à l'utilisateur. Hypothèse nécessaire → demander l'autorisation, proposer 2-3 options, marquer `[HYPOTHÈSE : ...]` et lister toutes les hypothèses dans un bloc final "Hypothèses à valider".
@@ -62,7 +66,7 @@ Un agent qui lit tout avant d'écrire sera coupé en plein travail. Règles :
 ```bash
 npm install -D husky && npx husky init
 ```
-`.husky/pre-commit` : si des fichiers `src/` sont staged → `npx tsc --noEmit && npx next lint && npm run build`, échec = commit bloqué. Documenter l'installation dans le handoff (section Actions infra).
+`.husky/pre-commit` : si des fichiers `src/` sont staged → `npx tsc --noEmit && npm run lint && npm run build`, échec = commit bloqué. Documenter l'installation dans le handoff (section Actions infra).
 
 ## Auto-évaluation (standard)
 
@@ -96,11 +100,11 @@ Quand un agent MODIFIE un livrable existant : identifier les consommateurs aval 
 
 ## Protocole de fin de livrable (standard)
 
-**1. Gates BLOQUANT (mode direct ET autopilot)** : exécuter via Grep/Read les gates de `_gates.md` applicables — minimum G5 (persona, Grep du nom), G7 (0 contradiction — Read les 2-3 livrables amont), G12 (implémentable : verbe + objet + critère de done), G15 (0 placeholder, Grep patterns ci-dessous), G17 (pas copiable par un concurrent). Documenter dans le handoff : `Gates BLOQUANT vérifiées : G5 PASS, G7 PASS, ...`. Un FAIL se corrige AVANT de livrer. En mode direct, c'est le SEUL filet de sécurité formel.
+**1. Gates BLOQUANT (mode direct ET autopilot)** : exécuter via Grep/Read les gates de `_gates.md` applicables — minimum G5 (persona, Grep du nom), G7 (0 contradiction — Read les 2-3 livrables amont), G12 (implémentable : verbe + objet + critère de done), G13 (0 donnée inventée : chaque chiffre a sa source), G15 (0 placeholder, Grep patterns ci-dessous), G17 (pas copiable par un concurrent). Documenter dans le handoff : `Gates BLOQUANT vérifiées : G5 PASS, G7 PASS, ...`. Un FAIL se corrige AVANT de livrer. En mode direct, c'est le SEUL filet de sécurité formel.
 
-**2. Anti-placeholder** : Grep le livrable pour `[À REMPLIR`, `[À COMPLÉTER`, `[PLACEHOLDER`, `[TODO`, `[NOM`, `[EXEMPLE`, `[XX`, `[VOTRE`, `[INSÉRER`, `[REMPLACER`. Détecté → remplacer par la donnée réelle, ou convertir en `[HYPOTHÈSE : ...]`. Exception : `[HYPOTHÈSE]` et `[PROVISOIRE]` sont des annotations volontaires, pas des placeholders. **Un livrable avec un placeholder n'est pas terminé.**
+**2. Anti-placeholder** : Grep le livrable pour `[À REMPLIR`, `[À COMPLÉTER`, `[PLACEHOLDER`, `[TODO`, `[NOM`, `[EXEMPLE`, `[XX`, `[VOTRE`, `[INSÉRER`, `[REMPLACER`. Détecté → remplacer par la donnée réelle, ou convertir en `[HYPOTHÈSE : ...]`. Exceptions (annotations volontaires et honnêtes, pas des placeholders) : `[HYPOTHÈSE]`, `[PROVISOIRE]`, et les marqueurs de collecte `[À MESURER]`, `[À COLLECTER]` (témoignage, preuve), `[MOT-CLÉ SEO À INTÉGRER]`, `[IMAGE À REMPLACER]` ; chacun est repris dans un bloc final « À collecter / à mesurer » du handoff avec qui le fournit. **Un livrable avec un placeholder n'est pas terminé.**
 
-**3. Versioning du livrable** : première ligne = `<!-- Version: YYYY-MM-DDTHH:MM — @agent — Motif -->` (traçabilité des versions consommées par l'aval).
+**3. Versioning du livrable** : première ligne = `<!-- Version: YYYY-MM-DDTHH:MM | @agent | Motif -->` (traçabilité des versions consommées par l'aval).
 
 **4. Vérification par les vrais outputs (G_PROOF)** : valider sur les RÉSULTATS, pas la rédaction. Contenu : générer ≥ 1 exemple réel avec le persona et l'auditer. Code : compiler, exécuter, lire visuellement les screenshots de `tests/screenshots/` (10 critères Thomas). Stratégie : projeter chaque recommandation sur le projet réel. Prompts LLM : tester ≥ 1 prompt sur un input réaliste. Problème révélé → corriger AVANT de finaliser. Documenter le bloc `Vérifié :` (commande + 3 lignes d'output max) exigé par G_PROOF.
 
@@ -115,9 +119,14 @@ L'agent ne modifie PAS lessons-learned.md — il signale, l'orchestrateur centra
 
 **6. Historique** : ajouter une ligne au tableau "Historique des interventions agents" de project-context.md : `| agent | date | fichiers | décisions clés | pourquoi, alternatives écartées |`.
 
+## Personnaliser un agent Gradient dans un projet (standard)
+
+Les fichiers des 19 agents et des protocoles appartiennent au framework : update.sh les remplace. Une règle propre au projet pour un agent (ex. « pas de barrel exports » pour @fullstack) s'écrit en fin de fichier dans un bloc que update.sh recolle à chaque mise à jour : une ligne contenant uniquement `<!-- PROJECT-RULES-START -->`, puis un titre « Règles propres à ce projet » et les règles, puis une ligne contenant uniquement `<!-- PROJECT-RULES-END -->`.
+Rien n'est jamais perdu : des lignes ajoutées en fin de fichier hors bloc sont rangées automatiquement dans un bloc ; une modification au milieu du fichier bloque la mise à jour de cet agent (fichier conservé, nouvelle version en attente dans `.claude/gradient-backup/pending/`, avertissement) jusqu'à ce que la règle soit déplacée dans le bloc. Règles transverses au projet → `project-context.md` (Notes libres) ou `CLAUDE.md` hors du bloc Gradient. Jamais de copie d'agent dans un sous-dossier de `.claude/agents/` : Claude Code charge ce dossier récursivement.
+
 ## Versioning des agents (standard)
 
-Frontmatter `version` : dernier chiffre (2.0→2.1) pour corrections de prompt, calibration, auto-évaluation ; premier chiffre (2.1→3.0) pour changement de périmètre, livrables, modèle, refonte. Changement majeur → noter dans CHANGELOG.md.
+Frontmatter `version` : dernier chiffre (2.0→2.1) pour corrections de prompt, calibration, auto-évaluation ; premier chiffre (2.1→3.0) pour changement de périmètre, livrables, modèle, refonte. Changement majeur → noter dans CHANGELOG.md (repo Agent-Team).
 
 ## Handoff (standard)
 
@@ -142,7 +151,7 @@ Exceptions : @agent-factory → `.claude/agents/`, @orchestrator → `docs/` rac
 
 ## Mémoire organisationnelle
 
-L'orchestrateur met à jour `docs/lessons-learned.md` (tableau v2, 11 colonnes) à chaque clôture. Un learning est "terminé" quand correction = `fait` ET propagation = `propagé`. **Gate bloquante en reprise** : propager les P0/P1 non-propagés AVANT tout nouveau travail. Préférences fondateur → `docs/founder-preferences.md`. Caps et TTL : voir CLAUDE.md commandement 8 (lessons 80L, TTL 5 sessions/90j, archivage vers `docs/lessons-learned-archive.md`).
+L'orchestrateur met à jour `docs/lessons-learned.md` (tableau v2, 11 colonnes) à chaque clôture. Un learning est "terminé" quand correction = `fait` ET propagation = `propagé`. **Gate bloquante en reprise** : propager les P0/P1 non-propagés AVANT tout nouveau travail. Préférences fondateur → `docs/founder-preferences.md` dans le repo Agent-Team (source unique) ; dans un projet client, les préférences propres au projet vont dans son `docs/founder-preferences.md`, celles valables partout et les recommandations framework dans `docs/framework-feedback.md`, intégré côté Agent-Team par le prompt « Intégrer des learnings d'un autre projet ». Caps et TTL : voir CLAUDE.md commandement 8 (lessons 80L, TTL 5 sessions/90j, archivage vers `docs/lessons-learned-archive.md`).
 
 ## Protocole de test du framework
 
@@ -150,3 +159,4 @@ L'orchestrateur met à jour `docs/lessons-learned.md` (tableau v2, 11 colonnes) 
 - Intégration : @creative-strategy → @copywriter → @design → cohérence inter-livrables ?
 - E2E : @orchestrator sur projet complet + @reviewer en fin → incohérences détectées ?
 - Projet test : `tests/project-context-test.md` (PulseBoard).
+- Banc d'essai (qualité réelle des livrables) : `tests/bench/README.md` + `tests/bench/check-bench.sh`, à relancer après toute révision importante des agents ; installeurs : `tests/test-installers.sh` (dans run-all et la CI).

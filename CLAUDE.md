@@ -40,9 +40,9 @@ Exception : si project-context.md mentionne une équipe humaine, adapter la cali
 
 Avant tout commit de code dans `src/` :
 ```bash
-npx tsc --noEmit && npx next lint && npm run build
+npx tsc --noEmit && npm run lint && npm run build
 ```
-Si échec : corriger d'abord, ne PAS commiter.
+Si échec : corriger d'abord, ne PAS commiter. (`npm run lint` = script ESLint/Biome du projet : `next lint` n'existe plus depuis Next.js 16.)
 
 ## 7. Anti-inflation de ce fichier
 
@@ -67,10 +67,11 @@ Pour toute règle/learning ajouté en fin de session, une obsolète doit être s
 9. Zéro mention de concurrent par nom dans les livrables client-facing
 10. Emails client-facing = brouillons obligatoires (jamais envoi direct)
 11. Après tout renommage global (repo, branche par défaut, domaine, nom de projet), Grep l'ancien nom dans tous les fichiers et remplacer
+12. Zéro tiret cadratin (—) dans le client-facing et la marque (site, landing, copy, emails, livrables, posts) : c'est une signature d'écriture IA. Restructurer avec virgule, deux-points, parenthèses ou phrase séparée. Pas exigé dans les instructions internes (prompts, .md d'agents).
 
 ## Routage automatique
 
-**L'utilisateur n'a PAS besoin de taper `@agent`.** La session principale identifie le(s) domaine(s) de la demande et délègue elle-même via Task (table ci-dessous). `@agent` explicite = override qui force le routage. Demande multi-domaine ou projet complet → la session principale lit `.claude/agents/orchestrator.md` (son protocole de coordination) et l'applique.
+**L'utilisateur n'a PAS besoin de taper `@agent`.** La session principale identifie le(s) domaine(s) de la demande et délègue elle-même via Task (table ci-dessous). `@agent` explicite = override qui force le routage. Demande multi-domaine ou projet complet → la session principale lit `.claude/agents/_orchestration-protocol.md` (son protocole de coordination — ce N'EST pas un 20e agent, c'est la session principale qui l'applique) et l'exécute.
 
 | Demande | Agent délégué |
 |---|---|
@@ -93,21 +94,31 @@ Pour toute règle/learning ajouté en fin de session, une obsolète doit être s
 | Juridique | @legal |
 | Review qualité | @reviewer |
 | Audit stratégique | @elon |
-| Gate de perception (avant déploiement front) | @regard-fondateur |
 | Créer un agent | @agent-factory |
 
 Agents dans `.claude/agents/`. Ambiguïté de domaine → trancher soi-même (founder-preferences), ne pas demander.
 
-## Modèles
+## Modèles (19 agents spécialisés)
 
-- **Opus** : orchestrator, agent-factory, reviewer, elon, fullstack, ia, qa, infrastructure, regard-fondateur
-- **Sonnet** : copywriter, creative-strategy, data-analyst, design, geo, growth, legal, product-manager, sales-enablement, seo, social, ux
+- **Opus 5.5** (`claude-opus-5-5`, 7 agents) : agent-factory, reviewer, elon, fullstack, ia, qa, infrastructure
+- **Sonnet 5.5** (`claude-sonnet-5-5`, 12 agents) : copywriter, creative-strategy, data-analyst, design, geo, growth, legal, product-manager, sales-enablement, seo, social, ux
+- **Protocole d'orchestration** : appliqué par la session principale (pas un agent invocable — voir `_orchestration-protocol.md`). Tourne sur le modèle de la session.
 
 ## Références
 
 - Protocoles communs, conventions de chemin, mémoire organisationnelle : `_base-agent-protocol.md`
 - Gates binaires 9 gates + G_PROOF + verdicts : `_gates.md`
 - Protocole de test du framework : `_base-agent-protocol.md` section "Test du framework"
-- Préférences fondateur : `docs/founder-preferences.md`
-- Historique des sessions : `CHANGELOG.md`
+- Préférences fondateur et stack par défaut (Cloudflare, Umami, VPS en renfort) : `docs/founder-preferences.md` (projets clients : `.claude/founder-preferences.md` globales + `docs/founder-preferences.md` du projet, prioritaire)
+- Historique des sessions du framework : `CHANGELOG.md` (repo Agent-Team)
 <!-- GRADIENT-AGENTS-END -->
+
+## Règles propres à ce projet (Aquasystem)
+
+Agent maison, en plus des 19 agents Gradient :
+
+| Demande | Agent délégué |
+|---|---|
+| Gate de perception (avant déploiement front) | @regard-fondateur |
+
+Modèle : @regard-fondateur sur Opus 5.5 (`claude-opus-5-5`). Règles d'invocation : bloc PROJECT-RULES de `.claude/agents/_orchestration-protocol.md`.

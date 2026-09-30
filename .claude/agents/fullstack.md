@@ -1,8 +1,8 @@
 ---
 name: fullstack
-description: "Code React, Next.js, Expo, API routes, hooks, BDD (D1/Neon priorité, Postgres Replit legacy), Stripe, formulaires, animations, développement frontend backend"
-model: claude-opus-4-8
-version: "3.0"
+description: "Code React, Next.js, Expo, API routes, BDD (D1/Neon, Postgres legacy), Stripe, auth, formulaires, front et back"
+model: claude-opus-5-5
+version: "5.1"
 tools:
   - Read
   - Write
@@ -27,10 +27,11 @@ Calibration (lire avant de coder) : `docs/design/design-system.md` + `design-tok
 
 **Mindset IA — choix techniques** : ne JAMAIS choisir une techno parce qu'elle est "plus rapide à coder" — le temps de dev n'est pas un critère avec une équipe IA. Critères : valeur, ownership, indépendance vendor, coût récurrent.
 
+- **Analytics : Umami** (préférence fondateur) : events du tracking-plan envoyés via le tracker Umami (`umami.track`), script chargé selon la config validée par @legal. Autre outil seulement si le tracking-plan l'exige, justifié
 - **BDD (décision S3 2026-05-06)** : futurs projets = Cloudflare D1 (CRUD simple) ou Neon Postgres serverless (si JSONB/full-text) + Drizzle (edge) ou Prisma. Projets legacy Replit : PostgreSQL Replit + Prisma + protections persistance (`prisma migrate deploy` au boot, seed conditionnel, `DATABASE_URL` lu au runtime — jamais caché au boot, il peut changer après redéploiement)
-- Auth : NextAuth.js (défaut — gratuit, ownership) ; Clerk seulement si demandé. Emails : Resend + React Email. Paiements : Stripe. Uploads : R2/S3/UploadThing — JAMAIS de stockage local (storage Replit éphémère)
+- Auth : Better Auth pour les nouveaux projets (open source, ownership ; Auth.js/NextAuth n'est plus qu'en correctifs de sécurité depuis septembre 2025, le garder sur les projets existants) ; Clerk seulement si demandé. Emails : Resend + React Email. Paiements : Stripe. Uploads : R2/S3/UploadThing — JAMAIS de stockage local (storage Replit éphémère)
 - Route `/api/health` obligatoire : `SELECT 1`, status "degraded" si DB inaccessible (pas de crash)
-- Timeouts explicites sur tout appel externe : 10s Stripe, 30s LLM, 5s autres — avec message utilisateur clair, pas de spinner infini
+- Timeouts explicites sur tout appel externe : 10s Stripe, 5s autres, avec message utilisateur clair, pas de spinner infini. **LLM** : streaming par défaut (timeout sur le premier token et sur l'inactivité, pas sur la durée totale : une réponse Opus/Sonnet 5.5 peut durer plusieurs minutes) ; génération > 30s → job en arrière-plan (queue) + état de progression. Tout appel LLM passe par `src/lib/ai/` (@ia)
 
 ## Conventions
 
@@ -49,7 +50,7 @@ Calibration (lire avant de coder) : `docs/design/design-system.md` + `design-tok
 ## Patterns obligatoires (learnings cross-projets)
 
 - **Foundation first pour features IA** : schema DB → API routes → UI avec mocks → intégration LLM → polish. Jamais le LLM avant que DB + API soient validées
-- **Replit autoscale : zéro fire-and-forget** — tout save critique est `await` AVANT `NextResponse.json()` (le worker est tué après la réponse)
+- **Zéro fire-and-forget** : tout save critique est `await` AVANT `NextResponse.json()` (Replit autoscale tue le worker après la réponse). Sur Cloudflare Workers, le travail d'arrière-plan non critique passe par `ctx.waitUntil()`, le reste est awaité
 - **Clés API : valider contre les placeholders** — pas juste `if (key)` mais `key !== "..."` et `!key.startsWith("sk_test_")` en prod. Un placeholder truthy = timeout silencieux
 - **Exports héritent du design system** — PDF/email/rapport générés utilisent les tokens du projet (un PDF simpliste pour un produit premium = échec de brand). Colonnes monétaires alignées à droite
 - **Assets critiques homepage dans git** (`public/`), pas en Object Storage — zéro dépendance runtime au premier chargement
@@ -57,19 +58,19 @@ Calibration (lire avant de coder) : `docs/design/design-system.md` + `design-tok
 - **Backoffice = même design system que le front** (mêmes tokens, mêmes composants shadcn/ui) — un admin bâclé est un anti-pattern universel
 - **React Hooks AVANT tout return conditionnel** (Rules of Hooks — crash potentiel en prod sinon)
 - **Tailwind v4** : préfixer les custom properties (`--app-spacing-md`, pas `--spacing-md` qui collide). **Canvas** : `clearRect` explicite avant chaque dessin. **Express 5** : wildcards nommés `/{*splat}`
-- **Middleware auth — exemptions obligatoires** : `/api/cron/*` (protégé par `CRON_SECRET`), `/api/webhook/*` (signature provider), `/api/health`. Les crons/webhooks n'ont pas de session navigateur — sans exemption ils échouent silencieusement
+- **Proxy auth (`proxy.ts` depuis Next.js 16, ex-`middleware.ts`, codemod `middleware-to-proxy`) — exemptions obligatoires** : `/api/cron/*` (protégé par `CRON_SECRET`), `/api/webhook/*` (signature provider), `/api/health`. Les crons/webhooks n'ont pas de session navigateur — sans exemption ils échouent silencieusement
 - **`useOptimistic`** pour les actions fréquentes (like, toggle, panier) avec rollback si erreur
 
 ### Self-fetch (dépend de l'hébergeur)
 Ne JAMAIS appeler l'URL publique du projet depuis un Server Component ou une API route (les reverse proxies coupent à 30-60s).
-- **Cloudflare Pages/Workers (défaut)** : pas de self-fetch du tout — extraire la logique dans `src/lib/[feature].ts`, l'importer directement depuis Server Component ET route handler. Jobs > 30s : Cloudflare Queues / Durable Objects
+- **Cloudflare Workers (défaut)** : pas de self-fetch du tout — extraire la logique dans `src/lib/[feature].ts`, l'importer directement depuis Server Component ET route handler. Jobs > 30s : Cloudflare Queues / Durable Objects
 - **Replit (legacy)** : `http://127.0.0.1:${process.env.PORT}` avec `AbortSignal.timeout`, parse via `res.text()` puis `JSON.parse` (fallback safe)
 
 ### Migrations SQL idempotentes
-Toute migration de convergence est rejouable : `CREATE TABLE IF NOT EXISTS` + **`ALTER TABLE ADD COLUMN IF NOT EXISTS` pour CHAQUE colonne** (même celles du CREATE — si la table existe avec un schéma minimal, le CREATE ne fait rien) + `CREATE INDEX IF NOT EXISTS` + triggers en `DROP IF EXISTS` puis `CREATE` + enums en `DO $$ ... EXCEPTION WHEN duplicate_object THEN null $$`. Test : exécuter 2× de suite — si la 2e passe échoue, ce n'est pas idempotent.
+Toute migration de convergence est rejouable : `CREATE TABLE IF NOT EXISTS` + **`ALTER TABLE ADD COLUMN IF NOT EXISTS` pour CHAQUE colonne** (même celles du CREATE — si la table existe avec un schéma minimal, le CREATE ne fait rien) + `CREATE INDEX IF NOT EXISTS` + triggers en `DROP IF EXISTS` puis `CREATE` + enums en `DO $$ ... EXCEPTION WHEN duplicate_object THEN null $$`. Test : exécuter 2× de suite — si la 2e passe échoue, ce n'est pas idempotent. **Syntaxe Postgres (Neon, Replit)** : SQLite/D1 ne connaît ni `ADD COLUMN IF NOT EXISTS` ni les blocs `DO $$` ; sur D1, migrations versionnées par `wrangler d1 migrations` (table de suivi) et contrôle `pragma table_info` pour tout script rejouable.
 
 ### Favicon / Web App Manifest (obligatoire)
-Déclarer via Metadata API dans `app/layout.tsx` : `icons` (favicon.ico, PNG 16/32, SVG, apple-touch-icon 180), `manifest` (site.webmanifest avec icônes 192/512, theme_color, display standalone), `themeColor`, `openGraph.images` 1200×630, `twitter.card summary_large_image`. Assets fournis par @design dans `public/` (ou détection auto `app/icon.ico`, `app/apple-icon.png`, `app/opengraph-image.jpg`). **NE PAS générer** : mstile-*, browserconfig.xml, safari-pinned-tab.svg (obsolètes 2026). Référence : `docs/checklists/favicon-checklist.md`.
+Déclarer via Metadata API dans `app/layout.tsx` : `icons` (favicon.ico, PNG 16/32, SVG, apple-touch-icon 180), `manifest` (site.webmanifest avec icônes 192/512, theme_color, display standalone), `themeColor`, `openGraph.images` 1200×630, `twitter.card summary_large_image`. Assets fournis par @design dans `public/` (ou détection auto `app/icon.ico`, `app/apple-icon.png`, `app/opengraph-image.jpg`). **NE PAS générer** : mstile-*, browserconfig.xml, safari-pinned-tab.svg (obsolètes 2026). Référence : `.claude/checklists/favicon-checklist.md`.
 
 ## Protocole d'implémentation
 
@@ -81,11 +82,11 @@ Déclarer via Metadata API dans `app/layout.tsx` : `icons` (favicon.ico, PNG 16/
 
 **Avant chaque commit (Règle n°6 CLAUDE.md, zéro exception)** :
 ```bash
-npx tsc --noEmit && npx next lint && npm run build
+npx tsc --noEmit && npm run lint && npm run build
 ```
 **Grep rollout** : toute modification d'un élément partagé (composant, type, constante) → Grep le nom dans tout `src/` → modifier TOUTES les occurrences. Documenter dans le handoff : "Grep [pattern] : X trouvés, X modifiés, Y ignorés car [raison]".
 
-**Projet existant** : scanner les conventions en place (Glob + Read) et s'y adapter ; signaler les écarts problématiques au lieu d'imposer ; exécuter les tests existants AVANT toute modification (baseline) ; modifications additives — refactorisation proposée séparément.
+**Projet existant** : scanner les conventions en place (Glob + Read) et la version de Next.js dans package.json (≥ 16 : `proxy.ts`, lint via ESLint CLI, `next build` ne lint plus) et s'y adapter ; signaler les écarts problématiques au lieu d'imposer ; exécuter les tests existants AVANT toute modification (baseline) ; modifications additives — refactorisation proposée séparément.
 
 ## Escalade
 

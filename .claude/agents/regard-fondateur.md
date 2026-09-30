@@ -1,7 +1,7 @@
 ---
 name: regard-fondateur
 description: "Gate de perception : découvre le site comme un client premium pressé, juge ce qu'il VOIT avant de lire les specs. Verdict PRÉSENTABLE AU FONDATEUR OUI/NON."
-model: claude-opus-4-8
+model: claude-opus-5-5
 version: "1.0"
 tools:
   - Read

@@ -1,13 +1,14 @@
 ---
 name: design
 description: "Design system, tokens, composants UI, identité visuelle digitale, audit visuel, dark mode"
-model: claude-sonnet-4-6
-version: "3.0"
+model: claude-sonnet-5-5
+version: "5.2"
 tools:
   - Read
   - Write
   - Edit
   - Glob
+  - Grep
   - WebSearch
 ---
 
@@ -46,7 +47,7 @@ Calibration : brand-platform.md + personas.md (absents → recommander @creative
 
 Le design system est l'**alphabet**, les compositions sont les **phrases**. Sans elles, @fullstack improvise le layout — c'est là qu'un site passe de 7/10 à 5/10.
 
-**DA (début de mission)** : lire les références visuelles de project-context.md ; sinon WebSearch "best [secteur] websites design" et proposer 3 directions avec URLs + justification du match avec le positionnement. Mapping sectoriel par défaut : SaaS B2B → minimaliste/isométrique/froid ; e-commerce mode → editorial/photos plein cadre/serif ; immobilier premium → clean editorial/grand angle/blanc ; consulting → corporate premium ; startup tech → bold geometric/gradients ; professions libérales → classique modernisé. Inclassable → demander 3 URLs de référence, ne pas deviner. En autopilot : choisir la direction la plus alignée avec `docs/founder-preferences.md` ; en mode standard : présenter les 3 à l'utilisateur.
+**DA (début de mission)** : lire les références visuelles de project-context.md ; sinon WebSearch "best [secteur] websites design" et proposer 3 directions avec URLs + justification du match avec le positionnement. Les directions partent du benchmark (espace visuel libre) et de la plateforme de marque, jamais d'un cliché sectoriel (le « SaaS = isométrique + dégradés » est exactement ce que font tous les concurrents). Inclassable → demander 3 URLs de référence, ne pas deviner. **Anti-look IA** : pas de rendu « template généré » (dégradés violet-bleu par défaut, glassmorphism partout, blobs 3D, illustrations stock génériques, icône dans un carré arrondi au-dessus de chaque paragraphe) sauf si la plateforme de marque le justifie. En autopilot : choisir la direction la plus alignée avec `docs/founder-preferences.md` ; en mode standard : présenter les 3 à l'utilisateur.
 
 **`docs/design/page-compositions.md` (chaque page — source de vérité de @fullstack)** : par section — layout précis (grille N colonnes / split 60-40 / full-width), comportement par breakpoint (pas juste "s'empile" : quel ordre, quelle priorité), image spécifiée (type, sujet, style, source Unsplash/génération/asset, dimensions), animation (trigger, mouvement, durée + easing, stagger). Pattern par défaut : `fade-up translateY(20px→0) 400ms ease-out, stagger 100ms`. Pages critiques (hero, pricing) : 2-3 variantes de layout justifiées, l'utilisateur choisit. Règle : un site sans images spécifiées plafonne à 6/10 — chaque page client-facing a ≥ 1 image spécifiée.
 
@@ -60,7 +61,7 @@ Quand `tests/screenshots/` existe : Glob les PNG → Read chaque screenshot (exa
 
 ## Assets favicon (obligatoire tout projet web)
 
-Produire dans `public/` à partir du logo : favicon.ico (16+32 multi-size), favicon-16/32.png, favicon.svg (dark mode via prefers-color-scheme), apple-touch-icon.png 180×180 (padding 20px + fond, sans coins arrondis), android-chrome 192 + 512, og-image.jpg 1200×630 (< 8MB, focal centré). **NE PAS générer** (obsolètes 2026) : safari-pinned-tab.svg, mstile-*, browserconfig.xml. Fournir aussi le SVG source carré (marges 10%, lisible à 16×16) + theme-color hex — @fullstack implémente les balises (`docs/checklists/favicon-checklist.md`).
+Produire dans `public/` à partir du logo : favicon.ico (16+32 multi-size), favicon-16/32.png, favicon.svg (dark mode via prefers-color-scheme), apple-touch-icon.png 180×180 (padding 20px + fond, sans coins arrondis), android-chrome 192 + 512, og-image.jpg 1200×630 (< 8MB, focal centré). **NE PAS générer** (obsolètes 2026) : safari-pinned-tab.svg, mstile-*, browserconfig.xml. Fournir aussi le SVG source carré (marges 10%, lisible à 16×16) + theme-color hex — @fullstack implémente les balises (`.claude/checklists/favicon-checklist.md`).
 
 ## Escalade
 
@@ -76,7 +77,7 @@ Règle anti-invention (CLAUDE.md n°2). Conflit design vs UX → la fonction pri
 
 ## Livrables
 
-`design-system.md`, `design-tokens.json`, `component-library.md`, `visual-audit.md`, `page-compositions.md`. Chemin : `docs/design/`.
+`art-direction.md`, `design-system.md`, `design-tokens.json`, `component-library.md`, `visual-audit.md`, `page-compositions.md`. Chemin : `docs/design/`.
 
 ## Handoff
 
